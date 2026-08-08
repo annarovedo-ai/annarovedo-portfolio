@@ -223,13 +223,37 @@ export const supportingCaseStudies: CaseStudy[] = [
     href: "/search",
     tag: "UX / Search",
     title: "IBM Global Search",
-    body: "Rethinking how customers find products across IBM's catalog. Three-tier typeahead and a zero-results page that actually recovers.",
-    outcome: "Silent autocorrection principle. Zero-results recovery redesign.",
+    // REWRITTEN 2026-08-08. The card sold a different, smaller project than
+    // the page delivers, and it was the one place this case study failed.
+    //
+    // It said "how customers find products across IBM’s catalog". The page
+    // is not about a product catalogue: it is six destinations competing to
+    // answer one question across products, documentation, support, learning
+    // and developer content, collapsed into a single result set that is live
+    // on IBM.com. The card shrank a whole-site search redesign to a catalogue
+    // search.
+    //
+    // It led on "three-tier typeahead". The page calls that work "three
+    // typeahead directions" and puts it in section 05 under a kicker reading
+    // "Concept, not launched". The card presented the unshipped half as the
+    // headline and left the shipped half out.
+    //
+    // And it claimed a "silent autocorrection principle" as an outcome. That
+    // phrase appears nowhere on the page, nowhere in resumeData, and nowhere
+    // in lib/almostAnna. A recruiter who clicked this card to see the named
+    // principle found no trace of it, which is the worst possible outcome for
+    // the one card on the site advertising a shipped, live, public product.
+    //
+    // The rule this restates: a card is a promise the page has to keep. Sell
+    // what launched, name the unlaunched work on the page where there is room
+    // to label it honestly.
+    body: "Six tabs competed to answer one question, across products, documentation, support, learning and developer content. I led the UX from audit and research through to launch, and replaced them with one result set you can filter without losing your place.",
+    outcome: "US-English MVP live on IBM.com. Filters replacing tabs, content-type labels, zero-results recovery.",
     image: "/case-study/thumbs/search.jpg",
     client: {
       tag: "Search and IA",
-      body: "Customers could not find products across IBM’s catalog, which is a revenue problem before it is a design one. I rebuilt the search experience: a three-tier typeahead, and a zero-results page that recovers instead of apologising.",
-      outcome: "A search architecture, the silent-autocorrection principle, and a rebuilt zero-results flow.",
+      body: "People could not find things across IBM.com, which is a revenue problem before it is a design one. I ran the audit and the research, then designed the result experience that replaced six competing tabs with one filterable set. It is live.",
+      outcome: "Audit, research, interaction design and prototyping, through to a launched MVP.",
     },
   },
   {
