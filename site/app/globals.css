@@ -7423,10 +7423,9 @@ blockquote {
 }
 
 .svc-secondary:hover {
-  border-
-  color: var(--ink);
-  color: var(--blue);
+  border-color: var(--flare);
   background: var(--flare);
+  color: var(--ink);
 }
 
 .svc-note {
@@ -9048,24 +9047,4 @@ html[data-anna-razor="bar"] body {
 .aa-composer button:not(:disabled):hover {
   background: var(--flare-ink);
   color: #fff;
-}.svc-secondary {
-  border-
-  color: var(--flare-ink);
-  color: var(--flare-ink);
-  padding: 17px 27px;
-  border: 1px solid var(--flare);
-  background: transparent;
-  font-family: var(--sans);
-  font-size: var(--t-small);
-  font-weight: 600;
-  letter-spacing: var(--track-ui);
-  text-transform: uppercase;
-  border-radius: 0;
-}
-
-.svc-secondary:hover {
-  background: var(--flare);
-  border-
-  color: var(--ink);
-  color: var(--ink);
 }
