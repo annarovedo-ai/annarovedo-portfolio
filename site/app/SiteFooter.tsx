@@ -20,8 +20,10 @@ import ResumeNavLink from "./ResumeNavLink";
 const bio: Record<string, string> = {
   recruiter:
     "Principal Experience Designer, working across complex products, emerging technology, and future vision.",
+  // "helping ambitious teams" was flattery in a sentence that did not need
+  // it. The claim is what the studio does, not who deserves it.
   client:
-    "An independent design studio helping ambitious teams turn complex ideas into products, experiences, and systems people can understand and use.",
+    "An independent design studio that turns complicated ideas into products, experiences, and systems people can understand and use.",
   // First person, no surname: the Ex persona is someone who already knows her.
   ex: "I work on complex products, future vision, and emerging technology. Independently, which you probably could have guessed.",
 };

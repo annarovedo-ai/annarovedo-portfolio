@@ -7,27 +7,27 @@
 
 const capabilities = [
   {
-    title: "Brand and Identity",
+    title: "Brand and identity",
     body: "Positioning, naming, visual identity, brand systems, guidelines, and launch-ready creative.",
   },
   {
-    title: "Product and App Design",
+    title: "Product and app design",
     body: "Product strategy, user experience, interface design, prototypes, research, and scalable design systems.",
   },
   {
-    title: "Websites and Commerce",
+    title: "Websites and commerce",
     body: "Marketing sites, editorial experiences, service platforms, and commerce, from structure and content through design and build.",
   },
   {
-    title: "Campaigns, Content, and Social",
+    title: "Campaigns, content, and social",
     body: "Campaign concepts, launch systems, channel-ready content, social templates, motion, and supporting creative.",
   },
   {
-    title: "Platforms and Complex Systems",
+    title: "Platforms and complex systems",
     body: "Enterprise tools, dashboards, connected workflows, information architecture, and data-rich interfaces.",
   },
   {
-    title: "Development and Production",
+    title: "Development and production",
     body: "Working prototypes, front-end development, production design, quality assurance, launch support, and implementation oversight.",
   },
 ];
@@ -82,15 +82,15 @@ const partners = [
 
 const whatYouGet = [
   {
-    title: "One Accountable Lead",
-    body: "You work directly with Anna throughout the engagement, from the first strategic question through final delivery.",
+    title: "One accountable lead",
+    body: "You work directly with me, from the first strategic question through final delivery.",
   },
   {
-    title: "The Right-Sized Team",
+    title: "The right-sized team",
     body: "Designers, writers, developers, researchers, motion specialists, and production partners are added according to what the work requires.",
   },
   {
-    title: "End-to-End Delivery",
+    title: "End-to-end delivery",
     body: "Brand systems, working products, websites, applications, launch assets, and implementation support, not just concepts or presentation decks.",
   },
 ];
@@ -99,7 +99,7 @@ export default function ServicesBody() {
   return (
     <article id="top">
       <section className="svc-hero shell">
-        <p className="eyebrow">Senior-led creative and product studio</p>
+        <p className="eyebrow">Independent creative and product studio</p>
         {/* Was "One senior partner. The right team for the whole thing." — two
             noun phrases with a full stop between them, which is the tagline
             structure the voice rules say to delete on sight. One comma turns
@@ -124,12 +124,16 @@ export default function ServicesBody() {
             See selected work &rarr;
           </a>
         </div>
-        <p className="svc-note">Senior-led from first question through final delivery.</p>
+        {/* Was "Senior-led from first question through final delivery." — the
+            second "senior-led" on one screen, in a dialect (agency-brochure)
+            the rest of the site does not speak. This says the same thing the
+            way she talks. */}
+        <p className="svc-note">You deal with me the whole way through.</p>
       </section>
 
       <section className="svc-block">
         <div className="shell">
-          <p className="eyebrow">What we can create</p>
+          <p className="eyebrow">What we make</p>
           <div className="svc-capabilities">
             {capabilities.map((c) => (
               <div key={c.title}>
@@ -154,8 +158,8 @@ export default function ServicesBody() {
               ))}
             </ul>
             <p className="svc-model-body">
-              Every engagement is led directly by Anna. A trusted team of specialists is
-              assembled around the brief, giving each project the capabilities it needs without
+              I lead every engagement myself, and assemble a trusted team of specialists
+              around the work, so each project gets the capabilities it needs without
               unnecessary layers.
             </p>
           </div>
