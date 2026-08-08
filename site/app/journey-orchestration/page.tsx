@@ -63,7 +63,7 @@ const stakeholders = [
 const market = [
   {
     title: "Salesforce Einstein Copilot",
-    body: "An AI assistant that doesn’t live in a chat box — it reconfigures dashboards and recommendations based on intent.",
+    body: "An AI assistant that doesn’t live in a chat box. It reconfigures dashboards and recommendations based on intent.",
   },
   {
     title: "Google’s generative search",
@@ -71,7 +71,7 @@ const market = [
   },
   {
     title: "Walmart × OpenAI",
-    body: "An AI-first shopping experience that lets customers plan, shop, and check out through ChatGPT — the whole funnel becomes a conversation.",
+    body: "An AI-first shopping experience that lets customers plan, shop, and check out through ChatGPT. The whole funnel becomes a conversation.",
   },
 ];
 
@@ -86,7 +86,7 @@ const decisions = [
   },
   {
     title: "Qualification needs a handoff",
-    body: "Lead scoring matters only if it helps the system introduce the right human at the right moment — not just tag a record in a CRM.",
+    body: "Lead scoring matters only if it helps the system introduce the right human at the right moment, not just tag a record in a CRM.",
   },
   {
     title: "Personalization must be legible",
@@ -105,7 +105,7 @@ const frameworks = [
   },
   {
     title: "Honest comparison",
-    body: "Let buyers compare alternatives credibly — trust compounds, and a franker comparison surfaces what people actually value.",
+    body: "Let buyers compare alternatives credibly. Trust compounds, and a franker comparison surfaces what people actually value.",
   },
   {
     title: "Consent architecture",
@@ -124,7 +124,7 @@ export default function JourneyOrchestration() {
           <p className="eyebrow">IBM.com · Part two of the Concierge story · Concept direction</p>
           <h1>What if every page rewrote itself around the person reading it?</h1>
           <p className="hero-deck">
-            After the Concierge shipped its first chat-based direction, I kept working on the live experience with IBM’s team. A few weeks into that work, alongside Amy Clark, IBM’s Global Head of UX, we realized the bigger opportunity wasn’t a smarter chatbot. It was a smarter interface — one where AI orchestrates the entire journey, not just a conversation docked to the bottom of it.
+            After the Concierge shipped its first chat-based direction, I kept working on the live experience with IBM’s team. A few weeks into that work, alongside Amy Clark, IBM’s Global Head of UX, we realized the bigger opportunity wasn’t a smarter chatbot. It was a smarter interface: one where AI orchestrates the entire journey, not just a conversation docked to the bottom of it.
           </p>
 
           <div className="hero-meta" aria-label="Project details">
@@ -145,7 +145,7 @@ export default function JourneyOrchestration() {
           <Figure
             src="predictive-entry-hero.jpg"
             alt="IBM.com page pre-assembled around a visitor's search intent, with a message reading 'I see you're searching for Find root cause, lower MTTR'"
-            caption="A visitor arrives already mid-intent. The page — and the assistant’s first line — is assembled around what brought them here, not a generic homepage."
+            caption="A visitor arrives already mid-intent. The page and the assistant’s first line are assembled around what brought them here, not a generic homepage."
           />
         </section>
 
@@ -158,10 +158,10 @@ export default function JourneyOrchestration() {
             <div className="summary-copy">
               <p>
                 The Concierge’s first direction (the full story is in{" "}
-                <a href="/concierge">part one</a>) proved something real: buyers were open to conversational help inside a product page, and would trust it enough to keep going. It used a bottom-docked layer — an early concept internally nicknamed for its thin, blade-like shape — deliberately positioned like the AI panes people already trust (ChatGPT, Gemini, Claude), not a sales popup in the corner.
+                <a href="/concierge">part one</a>) proved something real: buyers were open to conversational help inside a product page, and would trust it enough to keep going. It used a bottom-docked layer, an early concept internally nicknamed for its thin, blade-like shape, deliberately positioned like the AI panes people already trust (ChatGPT, Gemini, Claude), not a sales popup in the corner.
               </p>
               <p>
-                That version still treated AI as a feature bolted onto a page. This direction asks a different question: what if the AI became the page’s operating system instead — shaping what a visitor sees next, not just answering what they ask?
+                That version still treated AI as a feature bolted onto a page. This direction asks a different question: what if the AI became the page’s operating system instead, shaping what a visitor sees next, not just answering what they ask?
               </p>
             </div>
             <aside className="shift-strip">
@@ -195,7 +195,7 @@ export default function JourneyOrchestration() {
           <Figure
             src="market-landscape.jpg"
             alt="Screenshots of Salesforce Einstein Copilot, a Google generative search result, and the Walmart and OpenAI Instant Checkout announcement"
-            caption="Reference points gathered while framing the direction — not products Anna built, but evidence the interface pattern was already moving this way industry-wide."
+            caption="Reference points gathered while framing the direction: not products Anna built, but evidence the interface pattern was already moving this way industry-wide."
           />
 
           <div className="future-framework-grid" style={{ marginTop: 40 }}>
@@ -223,7 +223,7 @@ export default function JourneyOrchestration() {
                 <h2>A chatbot answers. This orchestrates.</h2>
               </div>
               <p>
-                The same intelligence that powers a conversation can also drive orchestration: detecting intent, adapting content, and reshaping what a visitor sees next. Instead of living in a corner, the AI becomes the conductor of the whole experience — turning a passive page into something responsive and alive. Lead scoring turns every one of those interactions into a measurable signal, so the system learns who’s engaged, who’s ready, and where to focus next. Every page becomes a conversation. Every action becomes a signal.
+                The same intelligence that powers a conversation can also drive orchestration: detecting intent, adapting content, and reshaping what a visitor sees next. Instead of living in a corner, the AI becomes the conductor of the whole experience, turning a passive page into something responsive and alive. Lead scoring turns every one of those interactions into a measurable signal, so the system learns who’s engaged, who’s ready, and where to focus next. Every page becomes a conversation. Every action becomes a signal.
               </p>
             </div>
 
@@ -236,7 +236,7 @@ export default function JourneyOrchestration() {
                   <h3 id="personas-title">One purchase, four very different questions.</h3>
                 </div>
                 <p>
-                  Enterprise deals aren’t decided by one visitor. To make the system concrete, we followed Jamal Cross, a technical lead, through the journey — but the same page would adapt just as readily for the finance, strategy, or risk stakeholder evaluating the same purchase alongside him.
+                  Enterprise deals aren’t decided by one visitor. To make the system concrete, we followed Jamal Cross, a technical lead, through the journey. The same page would adapt just as readily for the finance, strategy, or risk stakeholder evaluating the same purchase alongside him.
                 </p>
               </div>
 
@@ -271,7 +271,7 @@ export default function JourneyOrchestration() {
                 <h2>Three phases, one visitor, a page that keeps rewriting itself.</h2>
               </div>
               <p>
-                Every action Jamal takes — a click, a scroll, a demo watched — feeds a live lead score behind the scenes. The score doesn’t just get logged; it decides what the page shows him next.
+                Every action Jamal takes feeds a live lead score behind the scenes: a click, a scroll, a demo watched. The score doesn’t just get logged; it decides what the page shows him next.
               </p>
             </div>
 
@@ -295,13 +295,13 @@ export default function JourneyOrchestration() {
               </div>
               <div className="phase-body">
                 <p>
-                  Jamal googles “find root cause, lower MTTR” and lands on the page already mid-intent, not in browse mode. The system already has a sense of why he’s here, so instead of a generic headline, he sees a message that names his own search back to him and a page pre-assembled around it. The CTAs are framed as prompt options that match what he came looking for — instant relevance from the first second, before he’s typed anything.
+                  Jamal googles “find root cause, lower MTTR” and lands on the page already mid-intent, not in browse mode. The system already has a sense of why he’s here, so instead of a generic headline, he sees a message that names his own search back to him and a page pre-assembled around it. The CTAs are framed as prompt options that match what he came looking for: instant relevance from the first second, before he’s typed anything.
                 </p>
                 <div className="phase-triggers">
                   <span>Lead-scoring triggers</span>
                   <ul>
-                    <li><strong>5 pts</strong> — arrival from a targeted campaign or high-intent keyword</li>
-                    <li><strong>10 pts</strong> — clicks the tailored hero CTA (ROI calculator or demo)</li>
+                    <li><strong>5 pts</strong> · arrival from a targeted campaign or high-intent keyword</li>
+                    <li><strong>10 pts</strong> · clicks the tailored hero CTA (ROI calculator or demo)</li>
                   </ul>
                 </div>
               </div>
@@ -319,20 +319,20 @@ export default function JourneyOrchestration() {
               </div>
               <div className="phase-body">
                 <p>
-                  Jamal never has to open the chat for the system to keep learning. As he scrolls, the page listens and reshuffles: watching a demo pulls a case study forward, lingering on technical content pushes in comparisons and data sheets. When he does engage — asking to “estimate ROI savings” — the conversation happens inline, in the same space, with no pop-up and no redirect. He never loses his place in the journey.
+                  Jamal never has to open the chat for the system to keep learning. As he scrolls, the page listens and reshuffles: watching a demo pulls a case study forward, lingering on technical content pushes in comparisons and data sheets. When he does engage, asking to “estimate ROI savings”, the conversation happens inline, in the same space, with no pop-up and no redirect. He never loses his place in the journey.
                 </p>
                 <div className="phase-triggers">
                   <span>Lead-scoring triggers</span>
                   <ul>
-                    <li><strong>5 pts</strong> — engages with a secondary content module (case study, pricing, calculator)</li>
-                    <li><strong>20 pts</strong> — completes the “upload your data” or “generate roadmap” interaction</li>
+                    <li><strong>5 pts</strong> · engages with a secondary content module (case study, pricing, calculator)</li>
+                    <li><strong>20 pts</strong> · completes the “upload your data” or “generate roadmap” interaction</li>
                   </ul>
                 </div>
               </div>
               <Figure
                 src="roi-calculator-results.jpg"
                 alt="Instana ROI calculator inline within the IBM page, showing MTTR reduction, ROI, annual savings, and investment figures, with an inline chat prompt offering to save the results"
-                caption="Prototype screen: the ROI calculator’s own example output, shown inline rather than as a separate tool — the figures are the tool’s demo data, not a claimed business result."
+                caption="Prototype screen: the ROI calculator’s own example output, shown inline rather than as a separate tool: the figures are the tool’s demo data, not a claimed business result."
               />
             </div>
 
@@ -343,12 +343,12 @@ export default function JourneyOrchestration() {
               </div>
               <div className="phase-body">
                 <p>
-                  When Jamal finishes the calculator, the system offers to save his results — signing in turns that ROI report into a persistent artifact in his workspace, not just a page he’ll lose track of. As his score climbs, the AI adjusts its offer: a medium score surfaces proof points or a free trial; a high score unlocks a personalized demo. Past a threshold, the payoff moment arrives — he’s introduced to a specialist who already knows what he’s interested in, so the handoff starts mid-conversation instead of from zero.
+                  When Jamal finishes the calculator, the system offers to save his results: signing in turns that ROI report into a persistent artifact in his workspace, not just a page he’ll lose track of. As his score climbs, the AI adjusts its offer: a medium score surfaces proof points or a free trial; a high score unlocks a personalized demo. Past a threshold, the payoff moment arrives: he’s introduced to a specialist who already knows what he’s interested in, so the handoff starts mid-conversation instead of from zero.
                 </p>
                 <div className="phase-triggers">
                   <span>Lead-scoring triggers</span>
                   <ul>
-                    <li><strong>25 pts</strong> — opts in for a summary or consult via AI chat</li>
+                    <li><strong>25 pts</strong> · opts in for a summary or consult via AI chat</li>
                     <li>Medium score → proof points or trial · High score → personalized demo + human handoff</li>
                   </ul>
                 </div>
@@ -371,7 +371,7 @@ export default function JourneyOrchestration() {
               </div>
               <div>
                 <p className="lead">
-                  Once Jamal is a qualified lead, the system doesn’t just push him toward a form. It unlocks a specific person — already briefed on what he’s explored — and lets him book time directly. The handoff is the reward for engagement, not an interruption to it.
+                  Once Jamal is a qualified lead, the system doesn’t just push him toward a form. It unlocks a specific person, already briefed on what he’s explored, and lets him book time directly. The handoff is the reward for engagement, not an interruption to it.
                 </p>
               </div>
             </div>
@@ -379,7 +379,7 @@ export default function JourneyOrchestration() {
             <Figure
               src="qualified-handoff.jpg"
               alt="Chat message reading 'You've just unlocked access to Sara Smith, who can answer your questions' with a profile card and a Schedule a call button"
-              caption="Qualification unlocks a real person, introduced with the context the system already gathered — not a generic 'contact sales' link."
+              caption="Qualification unlocks a real person, introduced with the context the system already gathered, not a generic 'contact sales' link."
               className="wide-figure"
             />
           </div>
@@ -418,7 +418,7 @@ export default function JourneyOrchestration() {
             </section>
 
             <p className="future-note">
-              This entire case study is a concept direction, not a shipped claim. It shows the system-level thinking that grew out of the Concierge’s first release and the questions it opened, worked through with Amy Clark and IBM’s UX team — not a launched product.
+              This entire case study is a concept direction, not a shipped claim. It shows the system-level thinking that grew out of the Concierge’s first release and the questions it opened, worked through with Amy Clark and IBM’s UX team, not a launched product.
             </p>
           </div>
         </section>
@@ -432,7 +432,7 @@ export default function JourneyOrchestration() {
                 Once conversation stops being a destination and starts being connective tissue across a whole journey, the real design questions show up: what should the system remember, what should become a durable artifact, when should a person step in, and how transparent should an adaptive page be about what it knows and why it changed.
               </p>
               <p>
-                Those questions were bigger than the Concierge’s original brief, and they’re the ones I’d want to keep working on next — for IBM or anywhere buyers are asked to make a complicated decision alone.
+                Those questions were bigger than the Concierge’s original brief, and they’re the ones I’d want to keep working on next, for IBM or anywhere buyers are asked to make a complicated decision alone.
               </p>
             </div>
           </div>
@@ -440,7 +440,7 @@ export default function JourneyOrchestration() {
           <div className="bridge-note">
             <div>
               <span>Read the first chapter</span>
-              <p>See where this direction started — the Concierge’s shipped V1 chat.</p>
+              <p>See where this direction started: the Concierge’s shipped V1 chat.</p>
             </div>
             <a href="/concierge">Read part one</a>
           </div>

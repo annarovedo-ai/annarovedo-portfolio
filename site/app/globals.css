@@ -5542,19 +5542,11 @@ blockquote {
   font-weight: 400;
 }
 
-.home-chat-persona {
-  margin-left: auto;
-  align-self: flex-start;
-  padding: 4px 9px;
-  background: var(--paper-deep);
-  color: var(--muted);
-  font-size: 11px;
-  font-weight: 600;
-  letter-spacing: 0.09em;
-  text-transform: uppercase;
-  white-space: nowrap;
-}
-
+/* .home-chat-persona was removed 2026-08-07: it styled a persona tag in the
+   hero chat card that no longer exists in any component, and it existed TWICE
+   in this file, identically, several thousand lines apart. Orphaned CSS plus
+   duplication is exactly the combination that caused a live bug earlier the
+   same day, so it goes rather than lingers. */
 
 .persona-intro-note {
   max-width: 62ch;
@@ -5924,19 +5916,6 @@ blockquote {
   display: block;
   color: var(--muted);
   font-weight: 400;
-}
-
-.home-chat-persona {
-  margin-left: auto;
-  align-self: flex-start;
-  padding: 4px 9px;
-  background: var(--paper-deep);
-  color: var(--muted);
-  font-size: 11px;
-  font-weight: 600;
-  letter-spacing: 0.09em;
-  text-transform: uppercase;
-  white-space: nowrap;
 }
 
 /* The outcome panel has to line up across a row, and three separate things

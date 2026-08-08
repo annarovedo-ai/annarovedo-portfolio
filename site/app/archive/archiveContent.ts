@@ -70,7 +70,7 @@ export const archiveGroups: ArchiveGroup[] = [
         slug: "west-indian-carnival",
         client: "West Indian Carnival",
         meta: "Visual identity",
-        body: "A full identity system: logo, color palette, a pattern library, a custom typeface, posters, banners, an Instagram filter and a brochure. Whether this was client work or self-directed isn't documented here — ask if it's relevant.",
+        body: "A full identity system: logo, color palette, a pattern library, a custom typeface, posters, banners, an Instagram filter and a brochure. Whether this was client work or self-directed isn't documented here. Ask if it's relevant.",
         images: [
           img("carnival/cover.png", "A carnival performer in green and pink feathers and a jeweled headpiece and collar, smiling"),
           img("carnival/brochure.webp", "Taste West Indian Carnival trifold food vendor guide with a map of the tasting route down Eastern Parkway"),

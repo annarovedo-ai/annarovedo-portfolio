@@ -20,7 +20,7 @@ const concepts = [
   {
     number: "2.0",
     name: "Dedicated page, filters hidden",
-    body: "Room for real digging, filters tucked away. Tidy — and it means opening that panel every single time.",
+    body: "Room for real digging, filters tucked away. Tidy, and it means opening that panel every single time.",
   },
   {
     number: "3.0",
@@ -60,7 +60,7 @@ function ReductionDiagram() {
         ))}
       </div>
       <figcaption>
-        <strong>Forty specified. Five kept.</strong> The other thirty-five did not disappear — they moved behind &ldquo;See More Filters,&rdquo; where the people who genuinely need them can still find them.
+        <strong>Forty specified. Five kept.</strong> The other thirty-five did not disappear. They moved behind &ldquo;See More Filters,&rdquo; where the people who genuinely need them can still find them.
       </figcaption>
     </figure>
   );
@@ -81,7 +81,7 @@ export default function NikeCaseStudy() {
           <p className="eyebrow">Nike Operations Workspace · Inventory availability</p>
           <h1>Forty fields. Five that mattered.</h1>
           <p className="hero-deck">
-            Nike&rsquo;s order management teams had no single view of whether product was actually available, and the requirements listed roughly forty ways to search for it. I was not permitted to interview a single end user — so I found another way to ask them.
+            Nike&rsquo;s order management teams had no single view of whether product was actually available, and the requirements listed roughly forty ways to search for it. I was not permitted to interview a single end user, so I found another way to ask them.
           </p>
 
           <div className="hero-meta" aria-label="Project details" id="role">
@@ -118,7 +118,7 @@ export default function NikeCaseStudy() {
             </div>
             <div>
               <p className="lead">
-                To find out whether product was available, a specialist ran reports in SAP AFS, cross-referenced a separate reporting tool, then returned to the order they were building — assuming they still remembered where they were.
+                To find out whether product was available, a specialist ran reports in SAP AFS, cross-referenced a separate reporting tool, then returned to the order they were building, assuming they still remembered where they were.
               </p>
               <p>
                 I joined after the platform had already gone live in Greater China, so there was no clean slate. Real people depended on this every day.
@@ -165,7 +165,7 @@ export default function NikeCaseStudy() {
 
           <div className="stat-band">
             <strong>47</strong>
-            <p>responses from working operations staff — the people I was not permitted to interview, answering in their own words.</p>
+            <p>responses from working operations staff: the people I was not permitted to interview, answering in their own words.</p>
           </div>
 
           <p className="body-copy">
@@ -198,7 +198,7 @@ export default function NikeCaseStudy() {
           </div>
 
           <p className="body-copy">
-            I took all three to the subject matter experts and ran a feedback grid. The enthusiasm was useful. The anxiety was more useful — because in the same session, on the same wall, people told me two things that cannot both be solved by opinion.
+            I took all three to the subject matter experts and ran a feedback grid. The enthusiasm was useful. The anxiety was more useful, because in the same session, on the same wall, people told me two things that cannot both be solved by opinion.
           </p>
 
           <figure className="figure">
@@ -241,7 +241,7 @@ export default function NikeCaseStudy() {
           <ReductionDiagram />
 
           <p className="body-copy">
-            Those became the primary filter set — the panel you get by default, without asking for it. Everything the survey did not surface moved one click away.
+            Those became the primary filter set: the panel you get by default, without asking for it. Everything the survey did not surface moved one click away.
           </p>
 
           <figure className="figure">
@@ -253,7 +253,7 @@ export default function NikeCaseStudy() {
               />
             </div>
             <figcaption>
-              The default panel — material number, plant, ISEG and quality all present without hunting, two slots for saved filter sets, and &ldquo;See More Filters&rdquo; holding everything else one click away. Nothing was taken from anyone; it was moved off the default path.
+              The default panel: material number, plant, ISEG and quality all present without hunting, two slots for saved filter sets, and &ldquo;See More Filters&rdquo; holding everything else one click away. Nothing was taken from anyone; it was moved off the default path.
             </figcaption>
           </figure>
 
@@ -267,7 +267,7 @@ export default function NikeCaseStudy() {
                 />
               </div>
               <figcaption>
-                Everything the survey did not surface, one click away. Nothing was taken from anyone — it moved off the default path.
+                Everything the survey did not surface, one click away. Nothing was taken from anyone. It moved off the default path.
               </figcaption>
             </figure>
             <figure className="figure">
@@ -279,7 +279,7 @@ export default function NikeCaseStudy() {
                 />
               </div>
               <figcaption>
-                Download to Excel — the one thing the experts asked for that the requirements never mentioned.
+                Download to Excel: the one thing the experts asked for that the requirements never mentioned.
               </figcaption>
             </figure>
           </div>
@@ -301,7 +301,7 @@ export default function NikeCaseStudy() {
                 Four users, five tasks: search a material number, filter by plant, filter again by ISEG, download the results, and tell me how many size large are available on December 26th. All four finished unaided.
               </p>
               <p>
-                All four also wanted saved filter sets on the flyout — which quietly confirmed concept 1.0 had not been a dead end. It had a different job than I first thought.
+                All four also wanted saved filter sets on the flyout, which quietly confirmed concept 1.0 had not been a dead end. It had a different job than I first thought.
               </p>
             </div>
           </div>
@@ -312,7 +312,7 @@ export default function NikeCaseStudy() {
               <div className="figure-image-wrap">
                 <img
                   src={`${assetRoot}/f-results.png`}
-                  alt="Results grid with three filter chips applied — Material, Plant and ISEG — and a row expanded to show quantities by size across successive availability dates"
+                  alt="Results grid with three filter chips applied (Material, Plant and ISEG) and a row expanded to show quantities by size across successive availability dates"
                   loading="lazy"
                 />
               </div>
