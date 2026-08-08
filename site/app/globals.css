@@ -1489,9 +1489,33 @@ h3 {
   color: #51524f;
 }
 
+/* THE LEAD PARAGRAPH IS A DIFFERENT VOICE, SITE-WIDE.
+   Before 2026-08-08 the shared .lead was 18px Inter against 16px Inter body:
+   a 2px step at identical typeface, weight and colour, which reads as a
+   rendering inconsistency rather than a hierarchy. Anna flagged it on the
+   State Street page ("these are too similar") and the Nike page had already
+   proven this fix locally, with a note saying to promote it deliberately.
+   This is that promotion; the Nike-scoped copy is gone.
+
+   The lead speaks in the display voice (Newsreader, ink, larger), the body
+   answers in the working voice (Inter, muted, smaller). Serif against sans is
+   a difference you can see at a glance from across the room, which is what a
+   hierarchy is for. Page-specific .lead overrides (.ss-*, .search-*) keep
+   their size and colour adjustments and inherit the serif. */
 .lead {
-  font-size: 18px;
-  line-height: 1.55;
+  font-family: var(--serif);
+  font-size: clamp(20px, 2.1vw, 23px);
+  line-height: 1.45;
+  color: var(--ink);
+  letter-spacing: -0.005em;
+}
+
+/* The body half of the pair, everywhere the pair occurs. Muted and a step
+   smaller, so the lead has something to be louder than. */
+.two-column-copy p:not(.lead):not(.eyebrow) {
+  font-size: 16px;
+  line-height: 1.7;
+  color: var(--muted);
 }
 
 /* Why the input was docked along the bottom rather than parked in a corner
@@ -8041,30 +8065,13 @@ blockquote {
   }
 }
 
-/* ------------------------------------------------------------------
-   Nike case study — typographic hierarchy fix.
-   The shared .lead (18px) vs body (16px) is a 2px step at identical
-   typeface, weight and colour, which reads as no hierarchy at all.
-   Here the distinction is carried by typeface + colour + size together,
-   so the lead paragraph is unmistakably a different register.
-   Scoped to .nike-case for now — this pattern is worth promoting
-   site-wide, but that's a deliberate change to make separately.
-   ------------------------------------------------------------------ */
+/* The Nike-scoped .lead hierarchy fix that used to live here was promoted to
+   the global .lead rule on 2026-08-08 (Anna hit the same too-similar pairing
+   on the State Street page). One margin nuance from the Nike version moved
+   with it below; everything else is now the site default. */
 
 .nike-case .lead {
-  font-family: var(--serif);
-  font-size: clamp(20px, 2.1vw, 23px);
-  line-height: 1.45;
-  color: var(--ink);
-  letter-spacing: -0.005em;
   margin: 0 0 1rem;
-}
-
-.nike-case .chapter-intro p:not(.lead):not(.eyebrow) {
-  font-size: 16px;
-  line-height: 1.7;
-  color: var(--muted);
-  margin: 0;
 }
 
 .nike-case .body-copy {
