@@ -15,6 +15,27 @@
   --blue-pale: #ebf8ff;  /* tag background, light accent */
   --night: #1a365d;      /* dark section ground */
   --contrast: #000000;   /* logos, icons, high-contrast elements */
+  --error: #a3342b;      /* form and chat error text, 6.42:1 on paper */
+
+  /* TEXT ON A DARK GROUND
+     Three jobs — reading copy, secondary copy, mono micro-label — were being
+     done by about fifteen near-identical hexes and eight different
+     rgba(255,255,255,a) values, page by page, depending on when each page was
+     written. Search labelled with #a9c8dc, Journey Orchestration with #8fb0ce,
+     the shared .next-case chrome with #b8d0e5: three colours, one job.
+
+     One ladder now, and every step clears WCAG AA for normal text on BOTH
+     dark grounds in the system (--night #1a365d and --ss-navy #09283d):
+       body   #d3dfec   8.98:1 / 11.24:1
+       muted  #aec0d4   6.53:1 /  8.17:1
+       label  #9db4cf   5.70:1 /  7.13:1
+
+     Reach for these rather than an alpha white. rgba whites look identical to
+     a hex right up until the ground changes underneath them, which is exactly
+     how the eight different alphas got here. */
+  --on-dark-body: #d3dfec;
+  --on-dark-muted: #aec0d4;
+  --on-dark-label: #9db4cf;
 
   --serif: "Newsreader", Georgia, "Times New Roman", serif;
   --sans: "Inter", -apple-system, "Helvetica Neue", Arial, sans-serif;
@@ -22,6 +43,43 @@
      semibold, uppercase, wide-tracked. Variable name kept so existing rules
      continue to resolve. */
   --mono: "Inter", -apple-system, "Helvetica Neue", Arial, sans-serif;
+
+  /* TYPE SCALE
+     Before this existed the site set prose at 10.5, 11, 11.5, 12, 12.5, 13,
+     13.5, 14, 14.5, 15, 15.5, 16, 16.5, 17 and 17.5px — plus six different
+     rem values on the Nike page alone, because that page was written by a
+     different habit. Fifteen steps, most of them one pixel apart. A one-pixel
+     step is not a hierarchy; it reads as a rendering fault, which is exactly
+     what Anna caught on the State Street page.
+
+     Five steps, one per job the site actually has:
+       label  the mono micro-label above a heading
+       fine   captions, footnotes, dense grid cells
+       small  supporting copy inside cards and side rails
+       base   the reading paragraph
+       read   long-form single-column reading (archive detail, other work)
+     plus two display sizes, deck and lead.
+
+     Prose only. The simulated product UIs — the State Street component index,
+     the Search anatomy diagram, the pattern-drafting rows — are deliberately
+     OFF this scale. They are pictures of other people's interfaces, and
+     putting them on this site's reading sizes would make them look like this
+     site, which is the opposite of what they are for. If you are tempted to
+     tidy an 8px label in .search-anatomy-body, don't.  */
+  --t-label: 11px;
+  --t-fine: 13px;
+  --t-small: 14px;
+  --t-base: 16px;
+  --t-read: 17px;
+  --t-deck: clamp(18px, 1.7vw, 22px);
+  --t-lead: clamp(20px, 2.1vw, 23px);
+
+  /* Leading. The default is 1.55 and it lives on `body`, so most prose gets it
+     by inheritance and never needs to say so; these three are the deliberate
+     departures. Only three, because a token nobody uses is a token that rots. */
+  --lh-fine: 1.5;   /* captions and dense cells, where 1.55 reads airy */
+  --lh-lead: 1.45;  /* the serif lead, tighter because the type is bigger */
+  --lh-read: 1.7;   /* the long single-column reading measure, and only that */
 }
 
 /* State Street Alpha case study */
@@ -34,6 +92,11 @@
   --ss-yellow: #efbf3f;
   --ss-red: #c40227;
   --ss-surface: #f3f6f6;
+  /* State Street keeps its cyan micro-label rather than the site's
+     --on-dark-label: on this page the cyan IS the identity, and the platform's
+     own UI is built out of it. It was two values doing one job (#8fd7e8 and
+     #86cfe1); now it is one. 9.44:1 on --ss-navy. */
+  --ss-cyan-label: #8fd7e8;
   background: #faf8f4;
 }
 
@@ -98,7 +161,7 @@
 
 .ss-window-bar p {
   margin: 0 0 0 auto;
-  color: #667277;
+  color: var(--muted);
   font-family: var(--mono);
   font-size: 10.5px;
   letter-spacing: 0.05em;
@@ -115,7 +178,7 @@
   max-width: 760px;
   margin-top: 14px;
   color: var(--muted);
-  font-size: 12px;
+  font-size: var(--t-fine);
 }
 
 .ss-summary {
@@ -157,7 +220,7 @@
 .ss-scope-table span {
   display: block;
   margin-bottom: 12px;
-  color: #5e7b8d;
+  color: var(--muted);
   font-family: var(--mono);
   font-size: 10.5px;
   font-weight: 700;
@@ -176,7 +239,7 @@
 .ss-thesis-grid p {
   margin: 0;
   color: var(--muted);
-  font-size: 14px;
+  font-size: var(--t-small);
 }
 
 .ss-constraint-grid {
@@ -255,8 +318,8 @@
 
 .ss-foundation-cards p {
   margin: 0;
-  color: #5e6668;
-  font-size: 13px;
+  color: var(--muted);
+  font-size: var(--t-fine);
 }
 
 .ss-grid-demo {
@@ -335,7 +398,7 @@
 .ss-red-model p {
   margin: 0;
   color: var(--muted);
-  font-size: 13px;
+  font-size: var(--t-fine);
 }
 
 .ss-red-conclusion {
@@ -343,7 +406,7 @@
   margin: 56px 0 0 auto;
   padding-top: 22px;
   border-top: 1px solid var(--line);
-  color: #444a4c;
+  color: var(--body);
   font-family: var(--serif);
   font-size: clamp(22px, 2.2vw, 30px);
   line-height: 1.35;
@@ -356,7 +419,7 @@
 }
 
 .ss-system-section .section-number {
-  color: #8fd7e8;
+  color: var(--ss-cyan-label);
 }
 
 .ss-system-heading {
@@ -364,7 +427,7 @@
 }
 
 .ss-system-heading .lead {
-  color: #d0dde2;
+  color: var(--on-dark-body);
 }
 
 .ss-atomic-stack {
@@ -389,7 +452,7 @@
 }
 
 .ss-atomic-level > div:first-child > span {
-  color: #86cfe1;
+  color: var(--ss-cyan-label);
   font-family: var(--mono);
   font-size: 11px;
 }
@@ -402,8 +465,8 @@
 
 .ss-atomic-level p {
   margin: 0;
-  color: #afc1c8;
-  font-size: 13px;
+  color: var(--on-dark-muted);
+  font-size: var(--t-fine);
 }
 
 .ss-atomic-demo {
@@ -436,7 +499,7 @@
 
 .ss-component-index > div > span,
 .ss-component-index li span {
-  color: #8fd7e8;
+  color: var(--ss-cyan-label);
 }
 
 .ss-component-index > div > strong {
@@ -521,7 +584,7 @@
 }
 
 .ss-final-figure-label span {
-  color: #5e7b8d;
+  color: var(--muted);
   font-family: var(--mono);
   font-size: 10.5px;
   font-weight: 700;
@@ -541,7 +604,7 @@
 
 .ss-product-figure-dark .ss-final-figure-label span,
 .ss-product-figure-dark figcaption {
-  color: #a9bcc5;
+  color: var(--on-dark-muted);
 }
 
 .ss-product-figure-dark .ss-final-figure-label strong {
@@ -575,7 +638,7 @@
 
 .ss-product-decisions p {
   color: var(--muted);
-  font-size: 13px;
+  font-size: var(--t-fine);
 }
 
 .ss-implementation-band {
@@ -610,8 +673,8 @@
 
 .ss-drift-list p {
   margin: 0;
-  color: #5d6668;
-  font-size: 14px;
+  color: var(--muted);
+  font-size: var(--t-small);
 }
 
 .ss-outcome-heading {
@@ -643,7 +706,7 @@
   margin: 0;
   padding: 13px 0;
   border-bottom: 1px solid #ebe7e0;
-  font-size: 14px;
+  font-size: var(--t-small);
 }
 
 .ss-reflection {
@@ -690,7 +753,7 @@
 }
 
 .ss-gallery-tier-label span {
-  color: #5e7b8d;
+  color: var(--muted);
   font-family: var(--mono);
   font-size: 10.5px;
   font-weight: 700;
@@ -701,7 +764,7 @@
 .ss-gallery-tier-label p {
   margin: 0;
   color: var(--muted);
-  font-size: 13px;
+  font-size: var(--t-fine);
 }
 
 .ss-evidence-grid {
@@ -730,7 +793,7 @@
 .ss-evidence-card figcaption {
   margin-top: 12px;
   color: var(--muted);
-  font-size: 12px;
+  font-size: var(--t-fine);
 }
 
 .ss-evidence-wide {
@@ -891,7 +954,7 @@ body {
   background: var(--paper);
   color: var(--body);
   font-family: var(--sans);
-  font-size: 16px;
+  font-size: var(--t-base);
   line-height: 1.55;
   text-rendering: optimizeLegibility;
   -webkit-font-smoothing: antialiased;
@@ -1044,13 +1107,13 @@ img {
 .site-header nav {
   display: flex;
   gap: 34px;
-  font-size: 15px;
+  font-size: var(--t-small);
 }
 
 .footer-links {
   display: flex;
   gap: 28px;
-  font-size: 14px;
+  font-size: var(--t-small);
 }
 
 .site-header nav a,
@@ -1075,7 +1138,7 @@ img {
   padding-top: 28px;
   color: var(--muted);
   font-family: var(--mono);
-  font-size: 11px;
+  font-size: var(--t-label);
   font-weight: 600;
   letter-spacing: 0.08em;
   text-transform: uppercase;
@@ -1102,7 +1165,7 @@ img {
   margin: 0 0 20px;
   color: var(--blue-bright);
   font-family: var(--mono);
-  font-size: 11.5px;
+  font-size: var(--t-label);
   font-weight: 700;
   letter-spacing: 0.11em;
   text-transform: uppercase;
@@ -1146,11 +1209,17 @@ h3 {
   line-height: 1.15;
 }
 
+/* THE DECK IS ONE ROLE, ONE SIZE.
+   The sentence under a page title was set at clamp(18,1.7vw,22) on the seven
+   case studies, clamp(16,1.6vw,18) on Contact, 17.5px on Archive and 16.5px on
+   Services: four sizes for the same sentence in the same position, which is
+   what you notice clicking between pages rather than reading one.
+   .home-hero-deck is deliberately NOT folded in — see the note there. */
 .hero-deck {
   max-width: 735px;
   margin-bottom: 48px;
-  color: #4f504d;
-  font-size: clamp(18px, 1.7vw, 22px);
+  color: var(--muted);
+  font-size: var(--t-deck);
   line-height: 1.5;
 }
 
@@ -1181,7 +1250,7 @@ h3 {
   margin-bottom: 9px;
   color: var(--blue-bright);
   font-family: var(--mono);
-  font-size: 11px;
+  font-size: var(--t-label);
   letter-spacing: 0.1em;
   text-transform: uppercase;
 }
@@ -1212,8 +1281,8 @@ h3 {
   max-width: 770px;
   margin-top: 12px;
   color: var(--muted);
-  font-size: 12px;
-  line-height: 1.45;
+  font-size: var(--t-fine);
+  line-height: var(--lh-fine);
 }
 
 .hero-figure .figure-image-wrap {
@@ -1246,8 +1315,8 @@ h3 {
 
 .summary-copy {
   padding-top: 37px;
-  color: #4f504d;
-  font-size: 17px;
+  color: var(--muted);
+  font-size: var(--t-read);
 }
 
 .summary-copy p:last-child {
@@ -1266,7 +1335,7 @@ h3 {
   padding: 22px 0;
   border-top: 1px solid var(--line);
   color: var(--body);
-  font-size: 16px;
+  font-size: var(--t-base);
   line-height: 1.6;
 }
 
@@ -1278,7 +1347,7 @@ h3 {
   display: block;
   margin-bottom: 10px;
   color: var(--blue-bright);
-  font-size: 11px;
+  font-size: var(--t-label);
   font-weight: 700;
   letter-spacing: 0.12em;
 }
@@ -1316,7 +1385,7 @@ h3 {
 .kmart-surface p {
   margin: 0;
   color: var(--muted);
-  font-size: 15px;
+  font-size: var(--t-base);
   line-height: 1.6;
 }
 
@@ -1337,7 +1406,7 @@ h3 {
   padding: 28px 24px 30px;
   background: var(--paper);
   color: var(--muted);
-  font-size: 14.5px;
+  font-size: var(--t-small);
   line-height: 1.6;
 }
 
@@ -1345,7 +1414,7 @@ h3 {
   display: block;
   margin-bottom: 14px;
   color: var(--blue-bright);
-  font-size: 11px;
+  font-size: var(--t-label);
   font-weight: 700;
   letter-spacing: 0.12em;
 }
@@ -1429,7 +1498,7 @@ h3 {
 .shift-state > span {
   color: var(--blue-bright);
   font-family: var(--mono);
-  font-size: 11px;
+  font-size: var(--t-label);
   font-weight: 700;
   letter-spacing: 0.1em;
   text-transform: uppercase;
@@ -1486,7 +1555,7 @@ h3 {
 
 .two-column-copy > div:last-child {
   padding-top: 36px;
-  color: #51524f;
+  color: var(--muted);
 }
 
 /* THE LEAD PARAGRAPH IS A DIFFERENT VOICE, SITE-WIDE.
@@ -1504,18 +1573,25 @@ h3 {
    their size and colour adjustments and inherit the serif. */
 .lead {
   font-family: var(--serif);
-  font-size: clamp(20px, 2.1vw, 23px);
-  line-height: 1.45;
+  font-size: var(--t-lead);
+  line-height: var(--lh-lead);
   color: var(--ink);
   letter-spacing: -0.005em;
 }
 
-/* The body half of the pair, everywhere the pair occurs. Muted and a step
-   smaller, so the lead has something to be louder than. */
+/* The body half of the pair, everywhere the pair occurs: sans, a step smaller,
+   set looser, so the serif lead has something to be louder than.
+
+   DELIBERATELY NO COLOUR HERE. The first version of this rule also set
+   color: var(--muted). Because the selector targets the paragraph directly it
+   outranked .search-evidence-band p, and it beat the white inherited from
+   .ss-system-section and .result-section — three navy bands would have
+   rendered #555 body copy at about 1.6:1. Colour belongs to the ground, not
+   to the layout: .two-column-copy > div:last-child supplies muted by
+   inheritance on paper, and a dark band's own rule wins on navy. */
 .two-column-copy p:not(.lead):not(.eyebrow) {
-  font-size: 16px;
-  line-height: 1.7;
-  color: var(--muted);
+  font-size: var(--t-base);
+  line-height: var(--lh-read);
 }
 
 /* Why the input was docked along the bottom rather than parked in a corner
@@ -1533,7 +1609,7 @@ h3 {
 .placement-note > span {
   color: var(--blue-bright);
   font-family: var(--mono);
-  font-size: 11px;
+  font-size: var(--t-label);
   font-weight: 700;
   letter-spacing: 0.1em;
   text-transform: uppercase;
@@ -1542,7 +1618,7 @@ h3 {
 .placement-note p {
   margin: 0 0 14px;
   color: var(--body);
-  font-size: 15.5px;
+  font-size: var(--t-base);
   line-height: 1.6;
 }
 
@@ -1580,7 +1656,7 @@ h3 {
 .principle-row p {
   margin: 0;
   color: var(--muted);
-  font-size: 14px;
+  font-size: var(--t-small);
 }
 
 .wide-figure {
@@ -1632,7 +1708,7 @@ h3 {
   margin-bottom: 5px;
   color: var(--blue-bright);
   font-family: var(--mono);
-  font-size: 11px;
+  font-size: var(--t-label);
   font-weight: 700;
   letter-spacing: 0.1em;
   text-transform: uppercase;
@@ -1650,13 +1726,13 @@ h3 {
 .persona-card-meta {
   margin: 6px 0 0;
   color: var(--muted);
-  font-size: 13.5px;
+  font-size: var(--t-fine);
   line-height: 1.5;
 }
 
 .persona-card-lede {
   margin: 0;
-  font-size: 15.5px;
+  font-size: var(--t-base);
   line-height: 1.55;
 }
 
@@ -1671,7 +1747,7 @@ h3 {
 .persona-card dt {
   color: var(--blue-bright);
   font-family: var(--mono);
-  font-size: 11px;
+  font-size: var(--t-label);
   font-weight: 700;
   letter-spacing: 0.1em;
   text-transform: uppercase;
@@ -1680,7 +1756,7 @@ h3 {
 .persona-card dd {
   margin: 6px 0 0;
   color: var(--muted);
-  font-size: 14.5px;
+  font-size: var(--t-small);
   line-height: 1.55;
 }
 
@@ -1758,13 +1834,13 @@ blockquote {
   margin-bottom: 14px;
   color: var(--blue-bright);
   font-family: var(--mono);
-  font-size: 11px;
+  font-size: var(--t-label);
 }
 
 .flow-copy p {
   margin: 0;
   color: var(--muted);
-  font-size: 14px;
+  font-size: var(--t-small);
 }
 
 .fact-note {
@@ -1773,7 +1849,7 @@ blockquote {
   border: 1px solid #cadbe8;
   background: var(--blue-pale);
   color: var(--blue);
-  font-size: 13px;
+  font-size: var(--t-fine);
 }
 
 .study-summary {
@@ -1786,7 +1862,7 @@ blockquote {
   margin-bottom: 14px;
   color: var(--blue-bright);
   font-family: var(--mono);
-  font-size: 11px;
+  font-size: var(--t-label);
   letter-spacing: 0.11em;
   text-transform: uppercase;
 }
@@ -1812,7 +1888,7 @@ blockquote {
   max-width: 470px;
   margin: 15px 0 0;
   color: var(--muted);
-  font-size: 14px;
+  font-size: var(--t-small);
 }
 
 .study-metrics {
@@ -1863,7 +1939,7 @@ blockquote {
   max-width: 260px;
   margin: 0;
   color: var(--muted);
-  font-size: 13px;
+  font-size: var(--t-fine);
 }
 
 .study-questions ol {
@@ -1887,7 +1963,7 @@ blockquote {
 .study-questions li > span {
   color: var(--blue-bright);
   font-family: var(--mono);
-  font-size: 11px;
+  font-size: var(--t-label);
   letter-spacing: 0.08em;
 }
 
@@ -1927,8 +2003,8 @@ blockquote {
 
 .study-participants dd {
   margin: 0;
-  color: #333d48;
-  font-size: 14px;
+  color: var(--body);
+  font-size: var(--t-small);
   line-height: 1.45;
 }
 
@@ -1946,7 +2022,7 @@ blockquote {
 }
 
 .result-copy p {
-  color: #bbc5d2;
+  color: var(--on-dark-muted);
 }
 
 .result-principles {
@@ -1954,7 +2030,7 @@ blockquote {
   gap: 10px;
   margin-top: 40px;
   font-family: var(--mono);
-  font-size: 11px;
+  font-size: var(--t-label);
   letter-spacing: 0.08em;
   text-transform: uppercase;
 }
@@ -1970,7 +2046,7 @@ blockquote {
 }
 
 .figure-dark figcaption {
-  color: #9eadbd;
+  color: var(--on-dark-muted);
 }
 
 .audit-explorer {
@@ -2128,9 +2204,9 @@ blockquote {
   border-bottom: 1px solid rgba(255, 255, 255, 0.22);
   display: flex;
   justify-content: space-between;
-  color: #aec0d4;
+  color: var(--on-dark-muted);
   font-family: var(--mono);
-  font-size: 11px;
+  font-size: var(--t-label);
   letter-spacing: 0.08em;
   text-transform: uppercase;
 }
@@ -2144,7 +2220,7 @@ blockquote {
 
 .future-heading p {
   padding-top: 38px;
-  color: #bec9d6;
+  color: var(--on-dark-muted);
   font-size: 18px;
 }
 
@@ -2165,9 +2241,9 @@ blockquote {
 .future-decisions > div:first-child > p,
 .future-frameworks-heading > p {
   margin: 0;
-  color: #8fb0ce;
+  color: var(--on-dark-label);
   font-family: var(--mono);
-  font-size: 11px;
+  font-size: var(--t-label);
   font-weight: 700;
   letter-spacing: 0.1em;
   text-transform: uppercase;
@@ -2181,7 +2257,7 @@ blockquote {
 }
 
 .future-reframe > div {
-  color: #8fb0ce;
+  color: var(--on-dark-label);
   font-size: 28px;
 }
 
@@ -2208,8 +2284,8 @@ blockquote {
 }
 
 .future-subheading > p {
-  color: #bec9d6;
-  font-size: 17px;
+  color: var(--on-dark-muted);
+  font-size: var(--t-read);
 }
 
 .orchestration-flow {
@@ -2236,7 +2312,7 @@ blockquote {
 .future-framework-grid article > span {
   display: block;
   margin-bottom: 22px;
-  color: #8fb0ce;
+  color: var(--on-dark-label);
   font-family: var(--mono);
   font-size: 10.5px;
   letter-spacing: 0.08em;
@@ -2253,8 +2329,8 @@ blockquote {
 
 .orchestration-flow p {
   margin: 0;
-  color: #9eadbd;
-  font-size: 12px;
+  color: var(--on-dark-muted);
+  font-size: var(--t-fine);
   line-height: 1.45;
 }
 
@@ -2297,8 +2373,8 @@ blockquote {
 
 .agentic-copy p {
   margin: 18px 0 0;
-  color: #aebccd;
-  font-size: 14px;
+  color: var(--on-dark-muted);
+  font-size: var(--t-small);
 }
 
 .future-decisions {
@@ -2325,8 +2401,8 @@ blockquote {
 
 .future-decision-list p {
   margin: 0;
-  color: #aebccd;
-  font-size: 13px;
+  color: var(--on-dark-muted);
+  font-size: var(--t-fine);
 }
 
 .future-frameworks-heading {
@@ -2353,8 +2429,8 @@ blockquote {
 }
 
 .future-framework-grid p {
-  color: #aebccd;
-  font-size: 14px;
+  color: var(--on-dark-muted);
+  font-size: var(--t-small);
 }
 
 .future-note {
@@ -2362,8 +2438,8 @@ blockquote {
   margin: 100px 0 0 auto;
   padding-top: 20px;
   border-top: 1px solid rgba(255, 255, 255, 0.22);
-  color: #aebccd;
-  font-size: 13px;
+  color: var(--on-dark-muted);
+  font-size: var(--t-fine);
 }
 
 .bridge-note {
@@ -2380,7 +2456,7 @@ blockquote {
   display: block;
   color: var(--blue-bright);
   font-family: var(--mono);
-  font-size: 11px;
+  font-size: var(--t-label);
   letter-spacing: 0.1em;
   text-transform: uppercase;
 }
@@ -2398,7 +2474,7 @@ blockquote {
   border: 1px solid var(--ink);
   color: var(--ink);
   font-family: var(--mono);
-  font-size: 11px;
+  font-size: var(--t-label);
   letter-spacing: 0.04em;
   text-transform: uppercase;
   white-space: nowrap;
@@ -2410,7 +2486,7 @@ blockquote {
 }
 
 .bridge-note-dark span {
-  color: #8fb0ce;
+  color: var(--on-dark-label);
 }
 
 .bridge-note-dark p {
@@ -2467,21 +2543,21 @@ blockquote {
 .stakeholder-card h3 {
   margin-bottom: 2px;
   color: var(--ink);
-  font-size: 17px;
+  font-size: var(--t-read);
 }
 
 .stakeholder-card h3 + p {
   margin: 0 0 14px;
   color: var(--muted);
-  font-size: 12px;
+  font-size: var(--t-fine);
 }
 
 .stakeholder-card .stakeholder-quote {
   margin: 0;
   font-style: italic;
-  font-size: 13px;
+  font-size: var(--t-fine);
   line-height: 1.5;
-  color: #35342f;
+  color: var(--body);
 }
 
 .phase-section {
@@ -2502,7 +2578,7 @@ blockquote {
 }
 
 .phase-header span {
-  color: #8fb0ce;
+  color: var(--on-dark-label);
   font-family: var(--mono);
   font-size: 10.5px;
   letter-spacing: 0.08em;
@@ -2523,8 +2599,8 @@ blockquote {
 
 .phase-body p {
   margin: 0;
-  color: #cbd5e0;
-  font-size: 15px;
+  color: var(--on-dark-body);
+  font-size: var(--t-base);
   line-height: 1.6;
 }
 
@@ -2537,7 +2613,7 @@ blockquote {
 .phase-triggers span {
   display: block;
   margin-bottom: 14px;
-  color: #8fb0ce;
+  color: var(--on-dark-label);
   font-family: var(--mono);
   font-size: 10.5px;
   letter-spacing: 0.08em;
@@ -2552,8 +2628,8 @@ blockquote {
 
 .phase-triggers li {
   padding: 9px 0;
-  color: #aebccd;
-  font-size: 12.5px;
+  color: var(--on-dark-muted);
+  font-size: var(--t-fine);
   line-height: 1.5;
 }
 
@@ -2612,12 +2688,14 @@ blockquote {
   height: auto;
 }
 
+/* Was the only serif italic figcaption on the site. Every other caption is
+   sans at --t-fine; one page setting its captions in italic Newsreader reads
+   as a different site, not as emphasis. */
 .loop-figure figcaption {
   margin-top: 18px;
-  color: #aebccd;
-  font-family: var(--serif);
-  font-style: italic;
-  font-size: 15px;
+  color: var(--on-dark-muted);
+  font-size: var(--t-fine);
+  line-height: var(--lh-fine);
   text-align: center;
 }
 
@@ -2635,7 +2713,6 @@ blockquote {
   .loop-figure figcaption {
     position: sticky;
     left: 0;
-    font-size: 14px;
   }
 }
 
@@ -2661,8 +2738,8 @@ blockquote {
 
 .pp-head p {
   margin: 0;
-  color: #b9c8d8;
-  font-size: 15px;
+  color: var(--on-dark-muted);
+  font-size: var(--t-small);
 }
 
 .pp-toggle {
@@ -2680,7 +2757,7 @@ blockquote {
   padding: 13px 22px;
   border: 1px solid rgba(255, 255, 255, 0.28);
   background: transparent;
-  color: #cfdcea;
+  color: var(--on-dark-body);
   font-family: var(--mono);
   font-size: 13px;
   letter-spacing: 0.04em;
@@ -2701,7 +2778,7 @@ blockquote {
 .pp-toggle button.is-active {
   background: #fff;
   border-color: #fff;
-  color: #16263d;
+  color: var(--blue);
 }
 
 .pp-step {
@@ -2712,10 +2789,10 @@ blockquote {
 .pp-caption {
   max-width: 620px;
   margin: 0 auto 30px;
-  color: #d3dfec;
+  color: var(--on-dark-body);
   font-family: var(--serif);
   font-style: italic;
-  font-size: 17px;
+  font-size: var(--t-read);
   text-align: center;
   min-height: 52px;
 }
@@ -2832,7 +2909,7 @@ blockquote {
 }
 
 .pp-label {
-  color: #55534d;
+  color: var(--muted);
   font-family: var(--mono);
   font-size: 12px;
   font-weight: 700;
@@ -2841,17 +2918,17 @@ blockquote {
 }
 
 .pp-descriptor {
-  color: #1d1d1b;
-  font-size: 16.5px;
+  color: var(--ink);
+  font-size: var(--t-base);
   line-height: 1.3;
 }
 
 .pp-row.is-faded .pp-label {
-  color: #55534d;
+  color: var(--muted);
 }
 
 .pp-row.is-faded .pp-descriptor {
-  color: #2c2b27;
+  color: var(--muted);
 }
 
 .pp-tag {
@@ -2862,7 +2939,7 @@ blockquote {
   background: #2e5f96;
   color: #fff;
   font-family: var(--mono);
-  font-size: 11.5px;
+  font-size: var(--t-label);
   font-weight: 700;
   letter-spacing: 0.07em;
   text-transform: uppercase;
@@ -2873,10 +2950,10 @@ blockquote {
   margin: 40px auto 0;
   padding-top: 22px;
   border-top: 1px solid rgba(255, 255, 255, 0.2);
-  color: #c3d2e2;
+  color: var(--on-dark-body);
   font-family: var(--serif);
   font-style: italic;
-  font-size: 16px;
+  font-size: var(--t-base);
   text-align: center;
 }
 
@@ -2907,7 +2984,7 @@ blockquote {
   }
 
   .pp-descriptor {
-    font-size: 15px;
+    font-size: var(--t-small);
   }
 
   .pp-toggle button {
@@ -2916,7 +2993,7 @@ blockquote {
   }
 
   .pp-caption {
-    font-size: 15.5px;
+    font-size: var(--t-base);
     min-height: 72px;
   }
 }
@@ -3020,16 +3097,16 @@ blockquote {
 }
 
 .next-case .eyebrow {
-  color: #b8d0e5;
+  color: var(--on-dark-label);
 }
 
 .next-case-status {
   flex: none;
   padding: 15px 20px;
   border: 1px solid rgba(255, 255, 255, 0.75);
-  color: #dce6f0;
+  color: var(--on-dark-body);
   font-family: var(--mono);
-  font-size: 11px;
+  font-size: var(--t-label);
   letter-spacing: 0.04em;
   text-transform: uppercase;
 }
@@ -3054,7 +3131,7 @@ blockquote {
   max-width: 380px;
   margin-top: 18px;
   color: var(--muted);
-  font-size: 14px;
+  font-size: var(--t-small);
 }
 
 .copyright {
@@ -3062,7 +3139,7 @@ blockquote {
   margin: 30px 0 0;
   padding-top: 24px;
   border-top: 1px solid var(--line);
-  color: #8b8983;
+  color: var(--muted);
   font-family: var(--mono);
   font-size: 10.5px;
   letter-spacing: 0.04em;
@@ -3157,7 +3234,7 @@ blockquote {
 
   .site-header nav {
     gap: 16px;
-    font-size: 11px;
+    font-size: var(--t-label);
   }
 
   /* The lockup was wrapping inside each item rather than between them: the
@@ -3370,7 +3447,7 @@ blockquote {
 }
 
 .search-model-before {
-  color: #3c3d3c;
+  color: var(--body);
   background: #eeece8;
 }
 
@@ -3416,8 +3493,8 @@ blockquote {
 .search-model-before > p:last-child {
   max-width: 330px;
   margin: 0;
-  color: #666662;
-  font-size: 16px;
+  color: var(--muted);
+  font-size: var(--t-base);
 }
 
 .search-model-arrow {
@@ -3457,7 +3534,7 @@ blockquote {
 }
 
 .search-model-result small {
-  color: rgba(255, 255, 255, 0.7);
+  color: var(--on-dark-muted);
   font-size: 12px;
 }
 
@@ -3511,7 +3588,7 @@ blockquote {
 .search-job-grid p {
   margin: 0;
   color: var(--muted);
-  font-size: 14px;
+  font-size: var(--t-small);
 }
 
 .search-inspect-figure {
@@ -3548,7 +3625,7 @@ blockquote {
 .search-inspect-heading p {
   margin: 0;
   color: var(--muted);
-  font-size: 12px;
+  font-size: var(--t-fine);
 }
 
 .search-scroll-shot {
@@ -3577,7 +3654,7 @@ blockquote {
   padding: 16px 28px;
   border-top: 1px solid var(--line);
   color: var(--muted);
-  font-size: 12px;
+  font-size: var(--t-fine);
 }
 
 .search-evidence-band {
@@ -3588,12 +3665,12 @@ blockquote {
 
 .search-evidence-band .section-number,
 .search-evidence-band .eyebrow {
-  color: #a9c8dc;
+  color: var(--on-dark-label);
 }
 
 .search-evidence-band .lead,
 .search-evidence-band p {
-  color: rgba(255, 255, 255, 0.74);
+  color: var(--on-dark-muted);
 }
 
 .search-evidence-chain {
@@ -3614,7 +3691,7 @@ blockquote {
 }
 
 .search-evidence-chain span {
-  color: #a9c8dc;
+  color: var(--on-dark-label);
 }
 
 .search-evidence-chain strong {
@@ -3626,7 +3703,7 @@ blockquote {
 
 .search-evidence-chain p {
   margin: 0;
-  font-size: 13px;
+  font-size: var(--t-fine);
 }
 
 .search-findings {
@@ -3643,7 +3720,7 @@ blockquote {
 }
 
 .search-findings article > span {
-  color: #a9c8dc;
+  color: var(--on-dark-label);
 }
 
 .search-findings h3 {
@@ -3693,7 +3770,7 @@ blockquote {
 .search-decisions p {
   margin-bottom: 0;
   color: var(--muted);
-  font-size: 14px;
+  font-size: var(--t-small);
 }
 
 .search-filter-decision {
@@ -3723,7 +3800,7 @@ blockquote {
 .search-filter-decision-heading > p:last-child {
   margin: 0;
   color: var(--muted);
-  font-size: 14px;
+  font-size: var(--t-small);
 }
 
 .search-filter-options {
@@ -3760,7 +3837,7 @@ blockquote {
   max-width: 440px;
   margin: 0;
   color: var(--muted);
-  font-size: 14px;
+  font-size: var(--t-small);
 }
 
 .search-filter-evidence {
@@ -3784,7 +3861,7 @@ blockquote {
 .search-filter-evidence p {
   margin: 0;
   color: var(--muted);
-  font-size: 13px;
+  font-size: var(--t-fine);
 }
 
 .search-filter-outcome {
@@ -3819,13 +3896,13 @@ blockquote {
 .search-anatomy-query {
   padding: 17px 22px;
   border-bottom: 2px solid #1865ff;
-  color: #6a6e72;
+  color: var(--muted);
   font-size: 12px;
 }
 
 .search-anatomy-query strong {
   margin-left: 16px;
-  color: #16191c;
+  color: var(--ink);
   font-weight: 500;
 }
 
@@ -3845,7 +3922,7 @@ blockquote {
 }
 
 .search-anatomy-body aside span {
-  color: #72777c;
+  color: var(--muted);
   font-family: var(--mono);
   font-size: 8px;
   text-transform: uppercase;
@@ -3883,7 +3960,7 @@ blockquote {
 
 .search-anatomy-body article p {
   margin: 0;
-  color: #62676b;
+  color: var(--muted);
   font-size: 11px;
 }
 
@@ -3903,7 +3980,7 @@ blockquote {
   grid-column: 2;
   margin: -70px 0 0;
   color: var(--muted);
-  font-size: 11px;
+  font-size: var(--t-label);
 }
 
 .search-recovery-section {
@@ -3988,7 +4065,7 @@ blockquote {
 .search-recovery-model > div p {
   margin: 0;
   color: var(--muted);
-  font-size: 13px;
+  font-size: var(--t-fine);
 }
 
 .search-recovery-model > div strong {
@@ -4064,7 +4141,7 @@ blockquote {
 .search-typeahead-principles p {
   margin: 0;
   color: var(--muted);
-  font-size: 13px;
+  font-size: var(--t-fine);
 }
 
 .search-launch-band {
@@ -4074,7 +4151,7 @@ blockquote {
 }
 
 .search-launch-band .section-number {
-  color: #a9c8dc;
+  color: var(--on-dark-label);
 }
 
 .search-launch-heading {
@@ -4085,7 +4162,7 @@ blockquote {
 }
 
 .search-launch-heading .lead {
-  color: rgba(255, 255, 255, 0.78);
+  color: var(--on-dark-body);
 }
 
 .search-scope-table {
@@ -4105,15 +4182,15 @@ blockquote {
 }
 
 .search-scope-table span {
-  color: #a9c8dc;
+  color: var(--on-dark-label);
 }
 
 .search-scope-table p {
   margin: 0;
   padding: 10px 0;
   border-top: 1px solid rgba(255, 255, 255, 0.12);
-  color: rgba(255, 255, 255, 0.82);
-  font-size: 14px;
+  color: var(--on-dark-body);
+  font-size: var(--t-small);
 }
 
 .search-launch-reality {
@@ -4126,7 +4203,7 @@ blockquote {
 }
 
 .search-launch-reality span {
-  color: #a9c8dc;
+  color: var(--on-dark-label);
 }
 
 .search-launch-reality h3 {
@@ -4135,7 +4212,7 @@ blockquote {
 }
 
 .search-launch-reality p {
-  color: rgba(255, 255, 255, 0.72);
+  color: var(--on-dark-muted);
 }
 
 .search-launch-reality p:last-child {
@@ -4147,8 +4224,8 @@ blockquote {
   margin: 48px 0 0;
   padding-left: 18px;
   border-left: 2px solid #a9c8dc;
-  color: rgba(255, 255, 255, 0.72);
-  font-size: 12px;
+  color: var(--on-dark-muted);
+  font-size: var(--t-fine);
 }
 
 .search-future-section {
@@ -4165,13 +4242,13 @@ blockquote {
 }
 
 .search-future-kicker .section-number {
-  color: #a9c8dc;
+  color: var(--on-dark-label);
 }
 
 .search-future-kicker > span {
   padding: 7px 10px;
   border: 1px solid rgba(255, 255, 255, 0.28);
-  color: rgba(255, 255, 255, 0.68);
+  color: var(--on-dark-muted);
   font-family: var(--mono);
   font-size: 7px;
   font-weight: 700;
@@ -4191,11 +4268,11 @@ blockquote {
 }
 
 .search-future-heading p {
-  color: rgba(255, 255, 255, 0.7);
+  color: var(--on-dark-muted);
 }
 
 .search-future-heading .lead {
-  color: rgba(255, 255, 255, 0.84);
+  color: var(--on-dark-body);
 }
 
 .search-ai-shift {
@@ -4222,7 +4299,7 @@ blockquote {
 .search-ai-guardrails span {
   display: block;
   margin-bottom: 16px;
-  color: #a9c8dc;
+  color: var(--on-dark-label);
   font-family: var(--mono);
   font-size: 8px;
   font-weight: 700;
@@ -4241,8 +4318,8 @@ blockquote {
 .search-ai-shift p {
   max-width: 420px;
   margin: 0;
-  color: rgba(255, 255, 255, 0.72);
-  font-size: 13px;
+  color: var(--on-dark-muted);
+  font-size: var(--t-fine);
 }
 
 .search-ai-shift-arrow {
@@ -4250,7 +4327,7 @@ blockquote {
   place-items: center;
   border-right: 1px solid rgba(255, 255, 255, 0.2);
   border-left: 1px solid rgba(255, 255, 255, 0.2);
-  color: #a9c8dc;
+  color: var(--on-dark-label);
   font-size: 24px;
 }
 
@@ -4305,8 +4382,8 @@ blockquote {
 
 .search-ai-steps p {
   margin: 0;
-  color: rgba(255, 255, 255, 0.72);
-  font-size: 13px;
+  color: var(--on-dark-muted);
+  font-size: var(--t-fine);
 }
 
 .search-ai-guardrails {
@@ -4328,14 +4405,14 @@ blockquote {
 
 .search-ai-guardrails p {
   margin: 0;
-  color: rgba(255, 255, 255, 0.72);
-  font-size: 13px;
+  color: var(--on-dark-muted);
+  font-size: var(--t-fine);
 }
 
 .search-future-note {
   max-width: 720px;
   margin: 44px 0 0;
-  color: rgba(255, 255, 255, 0.7);
+  color: var(--on-dark-muted);
 }
 
 .search-back-case .next-case-status {
@@ -4566,6 +4643,10 @@ blockquote {
   margin-bottom: 14px;
 }
 
+/* The one deck deliberately off --t-deck. The homepage hero is a tuned
+   composition -- persona headline, this line, then the chat -- and growing
+   this by two or three pixels pushes the chat down the fold on a laptop.
+   Anna should make that call looking at it, not me guessing from the CSS. */
 .home-hero-deck {
   margin: 0;
   color: var(--muted);
@@ -4582,7 +4663,7 @@ blockquote {
   padding-top: 16px;
   border-top: 1px solid var(--line);
   color: var(--body);
-  font-size: 15px;
+  font-size: var(--t-small);
   line-height: 1.6;
 }
 
@@ -4608,7 +4689,7 @@ blockquote {
   border-top: 1px solid var(--line);
   background: var(--surface);
   color: var(--muted);
-  font-size: 11px;
+  font-size: var(--t-label);
   font-weight: 600;
   letter-spacing: 0.09em;
   text-transform: uppercase;
@@ -4641,14 +4722,14 @@ blockquote {
 .home-chat-head strong {
   display: block;
   font-family: var(--serif);
-  font-size: 16px;
+  font-size: var(--t-base);
 }
 
 .home-chat-disclosure {
   display: block;
   margin-top: 2px;
   color: var(--muted);
-  font-size: 11.5px;
+  font-size: var(--t-label);
   line-height: 1.4;
 }
 
@@ -4666,14 +4747,14 @@ blockquote {
 .home-chat-body > p {
   margin: 0 0 22px;
   color: var(--muted);
-  font-size: 14px;
+  font-size: var(--t-small);
 }
 
 .home-chat-label {
   display: block;
   margin-bottom: 10px;
   color: var(--muted);
-  font-size: 11px;
+  font-size: var(--t-label);
   font-weight: 600;
   letter-spacing: 0.09em;
   text-transform: uppercase;
@@ -4690,7 +4771,7 @@ blockquote {
   border: 1px solid var(--line);
   background: var(--surface);
   color: var(--body);
-  font-size: 12.5px;
+  font-size: var(--t-fine);
 }
 
 .home-chat-composer {
@@ -4701,7 +4782,7 @@ blockquote {
   padding: 14px 16px;
   border-top: 1px solid var(--line);
   color: var(--placeholder);
-  font-size: 14px;
+  font-size: var(--t-base);
 }
 
 .home-chat-send {
@@ -4794,7 +4875,7 @@ blockquote {
 .home-flagship-label {
   margin-bottom: 14px;
   color: var(--muted);
-  font-size: 13px;
+  font-size: var(--t-fine);
   font-weight: 600;
   letter-spacing: 0.06em;
   text-transform: uppercase;
@@ -4905,7 +4986,7 @@ blockquote {
 .home-case-tag {
   display: inline-block;
   color: var(--muted);
-  font-size: 11px;
+  font-size: var(--t-label);
   font-weight: 600;
   letter-spacing: 0.09em;
   text-transform: uppercase;
@@ -4946,7 +5027,7 @@ blockquote {
   padding: 15px 17px;
   background: var(--blue-pale);
   color: var(--blue);
-  font-size: 14.5px;
+  font-size: var(--t-small);
   font-weight: 600;
   line-height: 1.4;
 }
@@ -4954,7 +5035,7 @@ blockquote {
 .home-case-outcome > span {
   display: block;
   margin-bottom: 5px;
-  font-size: 11px;
+  font-size: var(--t-label);
   font-weight: 600;
   letter-spacing: 0.09em;
   text-transform: uppercase;
@@ -4972,7 +5053,7 @@ blockquote {
   padding: 6px 10px;
   background: var(--blue);
   color: #fff;
-  font-size: 11px;
+  font-size: var(--t-label);
   font-weight: 600;
   letter-spacing: 0.09em;
   text-transform: uppercase;
@@ -4986,14 +5067,14 @@ blockquote {
 .home-case p {
   margin: 0 0 20px;
   color: var(--muted);
-  font-size: 14.5px;
+  font-size: var(--t-small);
 }
 
 /* No longer margin-top: auto. That job moved up to .home-case-outcome, which
    now carries the panel and this line to the bottom of the card as one unit. */
 .home-case-cta {
   color: var(--blue);
-  font-size: 11px;
+  font-size: var(--t-label);
   font-weight: 600;
   letter-spacing: 0.09em;
   text-transform: uppercase;
@@ -5020,7 +5101,7 @@ blockquote {
 .home-about-copy p {
   max-width: 78ch;
   margin: 0 0 22px;
-  font-size: 16.5px;
+  font-size: var(--t-base);
 }
 
 .home-about-copy p:last-child {
@@ -5041,7 +5122,7 @@ blockquote {
 
 .home-inline-link {
   color: var(--blue);
-  font-size: 11px;
+  font-size: var(--t-label);
   font-weight: 600;
   letter-spacing: 0.09em;
   text-transform: uppercase;
@@ -5100,7 +5181,7 @@ blockquote {
   background: transparent;
   color: var(--flare-ink);
   font-family: var(--serif);
-  font-size: 17px;
+  font-size: var(--t-read);
   font-weight: 700;
   white-space: nowrap;
   transition: background 0.16s ease, color 0.16s ease, border-color 0.16s ease;
@@ -5122,7 +5203,7 @@ blockquote {
   max-width: 58ch;
   margin: 0;
   color: var(--muted);
-  font-size: 16px;
+  font-size: var(--t-base);
 }
 
 .home-cta-button {
@@ -5130,7 +5211,7 @@ blockquote {
   background: var(--ink);
   color: #fff;
   font-family: var(--serif);
-  font-size: 17px;
+  font-size: var(--t-read);
   font-weight: 700;
   white-space: nowrap;
 }
@@ -5189,7 +5270,7 @@ blockquote {
 
 .about-timeline-meta span {
   display: block;
-  font-size: 11px;
+  font-size: var(--t-label);
   font-weight: 600;
   letter-spacing: 0.09em;
   text-transform: uppercase;
@@ -5213,7 +5294,7 @@ blockquote {
   margin: 0;
   max-width: 74ch;
   color: var(--muted);
-  font-size: 15.5px;
+  font-size: var(--t-base);
 }
 
 .about-principles {
@@ -5235,7 +5316,7 @@ blockquote {
 
 .resume-list dt {
   font-family: var(--serif);
-  font-size: 17px;
+  font-size: var(--t-read);
   font-weight: 700;
   color: var(--ink);
 }
@@ -5244,7 +5325,7 @@ blockquote {
   margin: 0;
   max-width: 74ch;
   color: var(--muted);
-  font-size: 15px;
+  font-size: var(--t-base);
 }
 
 .resume-roles {
@@ -5264,7 +5345,7 @@ blockquote {
 
 .resume-years {
   color: var(--blue-bright);
-  font-size: 11px;
+  font-size: var(--t-label);
   font-weight: 600;
   letter-spacing: 0.09em;
   text-transform: uppercase;
@@ -5278,7 +5359,7 @@ blockquote {
 .resume-org {
   margin: 0 0 12px;
   color: var(--placeholder);
-  font-size: 13px;
+  font-size: var(--t-fine);
   font-weight: 600;
   letter-spacing: 0.04em;
 }
@@ -5287,7 +5368,7 @@ blockquote {
   margin: 0;
   max-width: 74ch;
   color: var(--muted);
-  font-size: 15px;
+  font-size: var(--t-base);
 }
 
 .resume-toolbox {
@@ -5310,7 +5391,7 @@ blockquote {
   border: 1px solid var(--line);
   background: var(--surface);
   color: var(--body);
-  font-size: 13px;
+  font-size: var(--t-fine);
 }
 
 .contact-actions {
@@ -5366,7 +5447,7 @@ blockquote {
 .contact-note {
   margin: 18px 0 0;
   color: var(--muted);
-  font-size: 14.5px;
+  font-size: var(--t-small);
 }
 
 .contact-fit {
@@ -5387,7 +5468,7 @@ blockquote {
   padding: 15px 0 15px 26px;
   border-bottom: 1px solid var(--line);
   color: var(--body);
-  font-size: 15px;
+  font-size: var(--t-base);
 }
 
 .contact-fit li::before {
@@ -5529,7 +5610,7 @@ blockquote {
 
 .persona-switch-label {
   color: #fff;
-  font-size: 11px;
+  font-size: var(--t-label);
   font-weight: 700;
   letter-spacing: 0.11em;
   text-transform: uppercase;
@@ -5538,7 +5619,7 @@ blockquote {
 
 .persona-switch-group:not(.is-compact) .persona-switch-label {
   color: #fff;
-  font-size: 12px;
+  font-size: var(--t-fine);
 }
 
 
@@ -5575,8 +5656,8 @@ blockquote {
 .persona-intro-note {
   max-width: 62ch;
   margin: 0 auto;
-  color: #dbe4ef;
-  font-size: 15.5px;
+  color: var(--on-dark-body);
+  font-size: var(--t-base);
 }
 
 /* Segmented control, shared between both states. Sits on navy ground, so it
@@ -5599,9 +5680,9 @@ blockquote {
   border: 0;
   border-radius: 999px;
   background: transparent;
-  color: #3f4247;
+  color: var(--body);
   font-family: var(--sans);
-  font-size: 14px;
+  font-size: var(--t-small);
   font-weight: 600;
   letter-spacing: 0.05em;
   text-transform: uppercase;
@@ -5635,7 +5716,7 @@ blockquote {
 
 .persona-switch.is-compact button {
   padding: 8px 15px;
-  font-size: 12px;
+  font-size: var(--t-fine);
 }
 
 /* Almost Anna, minimised into the corner */
@@ -5665,7 +5746,7 @@ blockquote {
   background: var(--blue);
   color: #fff;
   font-family: var(--sans);
-  font-size: 13.5px;
+  font-size: var(--t-fine);
   font-weight: 600;
   cursor: pointer;
   box-shadow: 0 6px 22px rgba(17, 17, 17, 0.16);
@@ -5712,14 +5793,14 @@ blockquote {
 .anna-dock-head strong {
   display: block;
   font-family: var(--serif);
-  font-size: 15px;
+  font-size: var(--t-small);
 }
 
 .anna-dock-head span:last-of-type {
   display: block;
   margin-top: 2px;
   color: var(--muted);
-  font-size: 11px;
+  font-size: var(--t-label);
   line-height: 1.4;
 }
 
@@ -5748,7 +5829,7 @@ blockquote {
 .anna-dock-body p {
   margin: 0;
   color: var(--body);
-  font-size: 14px;
+  font-size: var(--t-small);
 }
 
 .anna-dock-composer {
@@ -5759,7 +5840,7 @@ blockquote {
   padding: 12px 14px;
   border-top: 1px solid var(--line);
   color: var(--placeholder);
-  font-size: 13.5px;
+  font-size: var(--t-base);
 }
 
 .anna-dock-send {
@@ -5848,7 +5929,7 @@ blockquote {
 
   .home-header-switch .persona-switch button {
     padding: 7px 11px;
-    font-size: 11px;
+    font-size: var(--t-label);
     letter-spacing: 0.03em;
   }
 
@@ -5911,7 +5992,7 @@ blockquote {
   .site-nav nav a {
     padding-block: 14px;
     border-bottom: 1px solid rgba(255, 255, 255, 0.14);
-    font-size: 16px;
+    font-size: var(--t-base);
   }
 
   .site-nav nav a:last-child {
@@ -5933,7 +6014,7 @@ blockquote {
 
   .persona-switch button {
     padding: 11px 15px;
-    font-size: 12.5px;
+    font-size: var(--t-fine);
   }
 
   .home-headline-soft {
@@ -5968,7 +6049,7 @@ blockquote {
    The earlier copy was deleted 2026-08-07. A duplicated rule is how a fix gets
    made in one copy and silently loses to the other in the cascade. */
 .persona-intro-note {
-    font-size: 14.5px;
+    font-size: var(--t-small);
   }
 
   .anna-dock {
@@ -6038,7 +6119,7 @@ blockquote {
 .home-other-client {
   margin-bottom: 12px;
   color: var(--blue-bright);
-  font-size: 11px;
+  font-size: var(--t-label);
   font-weight: 600;
   letter-spacing: 0.09em;
   text-transform: uppercase;
@@ -6048,7 +6129,7 @@ blockquote {
   margin-bottom: 8px;
   color: var(--ink);
   font-family: var(--serif);
-  font-size: 17px;
+  font-size: var(--t-read);
   font-weight: 700;
   line-height: 1.2;
 }
@@ -6056,14 +6137,14 @@ blockquote {
 .home-other-card p {
   margin: 0 0 14px;
   color: var(--muted);
-  font-size: 13.5px;
+  font-size: var(--t-fine);
   line-height: 1.5;
 }
 
 .home-other-cta {
   margin-top: auto;
   color: var(--blue);
-  font-size: 11px;
+  font-size: var(--t-label);
   font-weight: 600;
   letter-spacing: 0.09em;
   text-transform: uppercase;
@@ -6081,7 +6162,7 @@ blockquote {
 .other-work-client {
   margin-bottom: 10px;
   color: var(--blue-bright);
-  font-size: 11px;
+  font-size: var(--t-label);
   font-weight: 600;
   letter-spacing: 0.09em;
   text-transform: uppercase;
@@ -6095,7 +6176,7 @@ blockquote {
 .other-work-body {
   margin-bottom: 28px;
   color: var(--ink);
-  font-size: 17px;
+  font-size: var(--t-read);
   line-height: 1.6;
 }
 
@@ -6104,7 +6185,7 @@ blockquote {
   padding: 18px 20px;
   background: var(--paper-deep);
   color: var(--muted);
-  font-size: 14.5px;
+  font-size: var(--t-small);
   line-height: 1.6;
 }
 
@@ -6115,14 +6196,14 @@ blockquote {
 
 .other-work-back {
   color: var(--blue);
-  font-size: 13px;
+  font-size: var(--t-fine);
   font-weight: 600;
 }
 
 .home-other-archive-link {
   margin-top: 32px;
   color: var(--muted);
-  font-size: 14px;
+  font-size: var(--t-small);
 }
 
 .home-other-archive-link a {
@@ -6147,7 +6228,7 @@ blockquote {
   color: var(--muted);
   font-family: var(--serif);
   font-style: italic;
-  font-size: 14px;
+  font-size: var(--t-small);
 }
 
 /* CV / résumé, single-column sheet matching the print layout */
@@ -6178,7 +6259,7 @@ blockquote {
   align-items: center;
   gap: 12px;
   margin: 0 0 26px;
-  font-size: 14.5px;
+  font-size: var(--t-small);
 }
 
 .cv-contact a {
@@ -6198,7 +6279,7 @@ blockquote {
   padding: 13px 20px;
   background: var(--ink);
   color: #fff;
-  font-size: 13px;
+  font-size: var(--t-fine);
   font-weight: 600;
 }
 
@@ -6251,7 +6332,7 @@ blockquote {
 .cv-rule-label {
   margin: 0 0 18px;
   color: var(--muted);
-  font-size: 11px;
+  font-size: var(--t-label);
   font-weight: 600;
   letter-spacing: 0.14em;
   text-transform: uppercase;
@@ -6265,7 +6346,7 @@ blockquote {
 .cv-profile {
   max-width: 82ch;
   margin: 0 0 13px;
-  font-size: 15.5px;
+  font-size: var(--t-base);
 }
 
 .cv-expertise-list {
@@ -6279,7 +6360,7 @@ blockquote {
 
 .cv-expertise-list li {
   color: var(--body);
-  font-size: 15px;
+  font-size: var(--t-base);
 }
 
 .cv-roles {
@@ -6300,7 +6381,7 @@ blockquote {
 .cv-role-title {
   margin: 0;
   color: var(--body);
-  font-size: 15px;
+  font-size: var(--t-small);
 }
 
 .cv-role-via {
@@ -6308,7 +6389,7 @@ blockquote {
   color: var(--muted);
   font-family: var(--serif);
   font-style: italic;
-  font-size: 14px;
+  font-size: var(--t-small);
 }
 
 .cv-roles ul {
@@ -6322,7 +6403,7 @@ blockquote {
   max-width: 84ch;
   padding: 4px 0 4px 18px;
   color: var(--muted);
-  font-size: 14.5px;
+  font-size: var(--t-small);
 }
 
 .cv-roles ul li::before {
@@ -6344,7 +6425,7 @@ blockquote {
   display: block;
   color: var(--ink);
   font-family: var(--serif);
-  font-size: 16.5px;
+  font-size: var(--t-base);
   font-weight: 700;
 }
 
@@ -6352,7 +6433,7 @@ blockquote {
   display: block;
   margin-top: 2px;
   color: var(--placeholder);
-  font-size: 11px;
+  font-size: var(--t-label);
   font-weight: 600;
   letter-spacing: 0.07em;
   text-transform: uppercase;
@@ -6362,7 +6443,7 @@ blockquote {
 .cv-education p {
   margin: 7px 0 0;
   color: var(--muted);
-  font-size: 14px;
+  font-size: var(--t-small);
 }
 
 @media (max-width: 800px) {
@@ -6392,7 +6473,7 @@ blockquote {
   display: block;
   margin-bottom: 9px;
   color: var(--placeholder);
-  font-size: 11px;
+  font-size: var(--t-label);
   font-weight: 600;
   letter-spacing: 0.09em;
   text-transform: uppercase;
@@ -6407,7 +6488,7 @@ blockquote {
 .cv-expertise-group li {
   padding: 3px 0;
   color: var(--body);
-  font-size: 14.5px;
+  font-size: var(--t-small);
 }
 
 @media (max-width: 700px) {
@@ -6456,7 +6537,7 @@ blockquote {
   max-width: 66ch;
   margin: 0 0 20px;
   color: var(--body);
-  font-size: 16.5px;
+  font-size: var(--t-base);
   line-height: 1.6;
 }
 
@@ -6508,7 +6589,7 @@ blockquote {
   display: block;
   margin-bottom: 16px;
   color: var(--placeholder);
-  font-size: 12px;
+  font-size: var(--t-fine);
   font-weight: 600;
   letter-spacing: 0.08em;
 }
@@ -6521,7 +6602,7 @@ blockquote {
 .about-points-grid p {
   margin: 0;
   color: var(--muted);
-  font-size: 15px;
+  font-size: var(--t-base);
   line-height: 1.6;
 }
 
@@ -6541,7 +6622,7 @@ blockquote {
 .about-closing p:not(.eyebrow) {
   margin: 0 0 20px;
   color: var(--body);
-  font-size: 17.5px;
+  font-size: var(--t-read);
   line-height: 1.65;
 }
 
@@ -6572,7 +6653,7 @@ blockquote {
 .about-cta p {
   margin: 0 auto 30px;
   color: var(--muted);
-  font-size: 16px;
+  font-size: var(--t-base);
 }
 
 .about-cta-button {
@@ -6580,7 +6661,7 @@ blockquote {
   padding: 18px 28px;
   background: var(--ink);
   color: #fff;
-  font-size: 14.5px;
+  font-size: var(--t-small);
   font-weight: 600;
 }
 
@@ -6642,7 +6723,7 @@ blockquote {
   max-width: 66ch;
   margin: 0;
   color: var(--body);
-  font-size: 17.5px;
+  font-size: var(--t-deck);
   line-height: 1.6;
 }
 
@@ -6664,7 +6745,7 @@ blockquote {
 .archive-group-head p:not(.eyebrow) {
   margin: 0;
   color: var(--muted);
-  font-size: 16.5px;
+  font-size: var(--t-base);
   line-height: 1.6;
 }
 
@@ -6697,7 +6778,7 @@ blockquote {
 .archive-meta {
   margin: 0 0 16px;
   color: var(--blue-bright);
-  font-size: 11.5px;
+  font-size: var(--t-label);
   font-weight: 700;
   letter-spacing: 0.09em;
   text-transform: uppercase;
@@ -6706,14 +6787,14 @@ blockquote {
 .archive-entry-copy p:not(.archive-meta):not(.archive-role) {
   margin: 0 0 18px;
   color: var(--body);
-  font-size: 16px;
+  font-size: var(--t-base);
   line-height: 1.62;
 }
 
 .archive-role {
   margin: 0;
   color: var(--muted);
-  font-size: 14.5px;
+  font-size: var(--t-small);
   line-height: 1.55;
 }
 
@@ -6721,7 +6802,7 @@ blockquote {
   display: block;
   margin-bottom: 4px;
   color: var(--placeholder);
-  font-size: 11px;
+  font-size: var(--t-label);
   font-weight: 700;
   letter-spacing: 0.11em;
   text-transform: uppercase;
@@ -6731,7 +6812,7 @@ blockquote {
   display: inline-block;
   margin-top: 16px;
   color: var(--blue);
-  font-size: 12.5px;
+  font-size: var(--t-fine);
   font-weight: 600;
   letter-spacing: 0.06em;
   text-transform: uppercase;
@@ -6825,7 +6906,7 @@ blockquote {
 
 .archive-card-client {
   font-family: var(--serif);
-  font-size: 17px;
+  font-size: var(--t-read);
   font-weight: 700;
   color: var(--ink);
 }
@@ -6841,7 +6922,7 @@ blockquote {
 .archive-card-cta {
   margin-top: 10px;
   color: var(--blue);
-  font-size: 12px;
+  font-size: var(--t-fine);
   font-weight: 600;
   letter-spacing: 0.04em;
 }
@@ -6885,13 +6966,13 @@ blockquote {
   max-width: 74ch;
   margin: 0 0 18px;
   color: var(--body);
-  font-size: 17px;
+  font-size: var(--t-read);
   line-height: 1.6;
 }
 
 .archive-detail-note {
   color: var(--muted);
-  font-size: 15px;
+  font-size: var(--t-base);
   line-height: 1.6;
 }
 
@@ -6933,8 +7014,8 @@ blockquote {
 .archive-detail-images figcaption {
   margin-top: 10px;
   color: var(--muted);
-  font-size: 13.5px;
-  line-height: 1.5;
+  font-size: var(--t-fine);
+  line-height: var(--lh-fine);
 }
 
 /* Footer, rebuilt to the About design structure */
@@ -6974,7 +7055,7 @@ blockquote {
   max-width: 46ch;
   margin: 0;
   color: var(--muted);
-  font-size: 14.5px;
+  font-size: var(--t-small);
   line-height: 1.6;
 }
 
@@ -7001,7 +7082,7 @@ blockquote {
 
 .site-footer-cols a {
   color: var(--body);
-  font-size: 14.5px;
+  font-size: var(--t-small);
 }
 
 .site-footer-cols a:hover {
@@ -7033,7 +7114,7 @@ blockquote {
   gap: 14px;
   margin: 0 0 24px;
   color: var(--muted);
-  font-size: 11px;
+  font-size: var(--t-label);
   font-weight: 600;
   letter-spacing: 0.11em;
   text-transform: uppercase;
@@ -7056,8 +7137,8 @@ blockquote {
   max-width: 54ch;
   margin: 0;
   color: var(--muted);
-  font-size: clamp(16px, 1.6vw, 18px);
-  line-height: 1.55;
+  font-size: var(--t-deck);
+  line-height: 1.5;
 }
 
 .contact-grid {
@@ -7076,7 +7157,7 @@ blockquote {
   display: block;
   margin-bottom: 9px;
   color: var(--ink);
-  font-size: 11px;
+  font-size: var(--t-label);
   font-weight: 600;
   letter-spacing: 0.09em;
   text-transform: uppercase;
@@ -7090,7 +7171,7 @@ blockquote {
   background: var(--surface);
   color: var(--ink);
   font-family: var(--sans);
-  font-size: 15px;
+  font-size: var(--t-base);
 }
 
 .contact-field textarea {
@@ -7117,7 +7198,7 @@ blockquote {
   background: var(--ink);
   color: #fff;
   font-family: var(--sans);
-  font-size: 13.5px;
+  font-size: var(--t-fine);
   font-weight: 600;
   letter-spacing: 0.09em;
   text-transform: uppercase;
@@ -7131,7 +7212,7 @@ blockquote {
 .contact-alt {
   margin: 16px 0 0;
   color: var(--muted);
-  font-size: 13.5px;
+  font-size: var(--t-fine);
   text-align: center;
 }
 
@@ -7148,7 +7229,7 @@ blockquote {
 .contact-side > p {
   margin: 0 0 26px;
   color: var(--muted);
-  font-size: 15px;
+  font-size: var(--t-base);
   line-height: 1.6;
 }
 
@@ -7160,7 +7241,7 @@ blockquote {
   display: block;
   margin-bottom: 5px;
   color: var(--muted);
-  font-size: 11px;
+  font-size: var(--t-label);
   font-weight: 600;
   letter-spacing: 0.09em;
   text-transform: uppercase;
@@ -7168,7 +7249,7 @@ blockquote {
 
 .contact-channel a {
   color: var(--blue);
-  font-size: 15px;
+  font-size: var(--t-small);
   text-decoration: underline;
 }
 
@@ -7184,7 +7265,7 @@ blockquote {
   gap: 12px;
   padding: 9px 0;
   color: var(--body);
-  font-size: 14.5px;
+  font-size: var(--t-small);
   line-height: 1.5;
 }
 
@@ -7195,7 +7276,7 @@ blockquote {
   height: 22px;
   background: var(--paper-deep);
   color: var(--blue);
-  font-size: 11px;
+  font-size: var(--t-label);
   font-weight: 600;
 }
 
@@ -7222,8 +7303,8 @@ blockquote {
   max-width: 62ch;
   margin: 0 0 30px;
   color: var(--muted);
-  font-size: 16.5px;
-  line-height: 1.6;
+  font-size: var(--t-deck);
+  line-height: 1.5;
 }
 
 .svc-actions {
@@ -7236,7 +7317,7 @@ blockquote {
 .svc-primary,
 .svc-secondary {
   padding: 15px 22px;
-  font-size: 13.5px;
+  font-size: var(--t-fine);
   font-weight: 600;
 }
 
@@ -7262,7 +7343,7 @@ blockquote {
 .svc-note {
   margin: 0;
   color: var(--placeholder);
-  font-size: 13.5px;
+  font-size: var(--t-fine);
 }
 
 .svc-block {
@@ -7293,7 +7374,7 @@ blockquote {
 .svc-get p {
   margin: 0;
   color: var(--muted);
-  font-size: 14px;
+  font-size: var(--t-small);
   line-height: 1.55;
 }
 
@@ -7321,8 +7402,8 @@ blockquote {
 
 .svc-model-role {
   margin: 0 0 26px;
-  color: #c9d6e6;
-  font-size: 11px;
+  color: var(--on-dark-body);
+  font-size: var(--t-label);
   font-weight: 600;
   letter-spacing: 0.11em;
   text-transform: uppercase;
@@ -7330,10 +7411,10 @@ blockquote {
 
 .svc-model-network {
   margin: 0 0 20px;
-  color: #dbe4ef;
+  color: var(--on-dark-body);
   font-family: var(--serif);
   font-style: italic;
-  font-size: 15px;
+  font-size: var(--t-small);
 }
 
 .svc-model-chips {
@@ -7351,8 +7432,8 @@ blockquote {
    .svc-primary/.svc-secondary, are rectangular blocks too) — the fix is to
    stop shaping these as discrete tappable units entirely. */
 .svc-model-chips li {
-  color: #c9d6e6;
-  font-size: 11px;
+  color: var(--on-dark-body);
+  font-size: var(--t-label);
   font-weight: 600;
   letter-spacing: 0.08em;
   text-transform: uppercase;
@@ -7371,8 +7452,8 @@ blockquote {
 .svc-model-body {
   max-width: 62ch;
   margin: 0 auto;
-  color: #dbe4ef;
-  font-size: 14.5px;
+  color: var(--on-dark-body);
+  font-size: var(--t-small);
   line-height: 1.6;
 }
 
@@ -7396,13 +7477,13 @@ blockquote {
 
 .svc-process h2 {
   margin-bottom: 9px;
-  font-size: 17px;
+  font-size: var(--t-read);
 }
 
 .svc-process p {
   margin: 0;
   color: var(--muted);
-  font-size: 13.5px;
+  font-size: var(--t-fine);
   line-height: 1.55;
 }
 
@@ -7422,7 +7503,7 @@ blockquote {
   background: var(--paper);
   color: var(--ink);
   font-family: var(--serif);
-  font-size: 17px;
+  font-size: var(--t-read);
   font-weight: 700;
   text-align: center;
 }
@@ -7430,7 +7511,7 @@ blockquote {
 .svc-partners-note {
   margin: 0;
   color: var(--muted);
-  font-size: 14px;
+  font-size: var(--t-small);
 }
 
 .svc-cta {
@@ -7450,8 +7531,8 @@ blockquote {
 .svc-cta p {
   max-width: 62ch;
   margin: 0 auto 30px;
-  color: #dbe4ef;
-  font-size: 15.5px;
+  color: var(--on-dark-body);
+  font-size: var(--t-base);
   line-height: 1.6;
 }
 
@@ -7460,7 +7541,7 @@ blockquote {
   padding: 16px 26px;
   background: var(--paper);
   color: var(--ink);
-  font-size: 13.5px;
+  font-size: var(--t-fine);
   font-weight: 600;
 }
 
@@ -7483,8 +7564,8 @@ blockquote {
 
 .contact-error {
   margin: 7px 0 0;
-  color: #a3342b;
-  font-size: 13px;
+  color: var(--error);
+  font-size: var(--t-fine);
 }
 
 .contact-error-form {
@@ -7496,7 +7577,7 @@ blockquote {
 }
 
 .contact-error-form a {
-  color: #a3342b;
+  color: var(--error);
   font-weight: 600;
   text-decoration: underline;
 }
@@ -7521,13 +7602,13 @@ blockquote {
   max-width: 52ch;
   margin: 0 0 20px;
   color: var(--muted);
-  font-size: 15px;
+  font-size: var(--t-base);
   line-height: 1.6;
 }
 
 .contact-success a {
   color: var(--blue);
-  font-size: 13px;
+  font-size: var(--t-fine);
   font-weight: 600;
   letter-spacing: 0.08em;
   text-transform: uppercase;
@@ -7605,7 +7686,7 @@ blockquote {
 .aa-head strong {
   display: block;
   font-family: var(--serif);
-  font-size: 17px;
+  font-size: var(--t-read);
   line-height: 1.15;
 }
 
@@ -7615,8 +7696,8 @@ blockquote {
 .aa-disclosure {
   display: block;
   margin-top: 2px;
-  color: rgba(255, 255, 255, 0.74);
-  font-size: 11.5px;
+  color: var(--on-dark-muted);
+  font-size: var(--t-label);
   line-height: 1.4;
 }
 
@@ -7646,7 +7727,7 @@ blockquote {
 .aa-intro p {
   margin: 0 0 14px;
   color: var(--body);
-  font-size: 14.5px;
+  font-size: var(--t-small);
   line-height: 1.55;
 }
 
@@ -7680,7 +7761,7 @@ blockquote {
   padding: 13px 16px;
   border: 1px solid var(--line);
   background: var(--surface);
-  font-size: 14.5px;
+  font-size: var(--t-small);
   line-height: 1.55;
 }
 
@@ -7736,12 +7817,12 @@ blockquote {
   padding: 12px 14px;
   border: 1px solid #e3c9c5;
   background: #fbf3f2;
-  color: #a3342b;
-  font-size: 13.5px;
+  color: var(--error);
+  font-size: var(--t-fine);
 }
 
 .aa-error a {
-  color: #a3342b;
+  color: var(--error);
   font-weight: 600;
   text-decoration: underline;
 }
@@ -7779,7 +7860,7 @@ blockquote {
   display: block;
   margin-bottom: 14px;
   color: var(--muted);
-  font-size: 11px;
+  font-size: var(--t-label);
   font-weight: 600;
   letter-spacing: 0.09em;
   text-transform: uppercase;
@@ -7800,7 +7881,7 @@ blockquote {
   background: var(--paper-deep);
   color: var(--blue);
   font-family: var(--serif);
-  font-size: 14px;
+  font-size: var(--t-small);
   line-height: 1.35;
   text-align: left;
   cursor: pointer;
@@ -7843,7 +7924,7 @@ blockquote {
   background: none;
   color: var(--ink);
   font-family: var(--sans);
-  font-size: 15px;
+  font-size: var(--t-base);
 }
 
 .aa-composer input::placeholder {
@@ -7935,7 +8016,7 @@ blockquote {
   margin: 0;
   max-width: 42ch;
   color: var(--muted);
-  font-size: 0.975rem;
+  font-size: var(--t-small);
   line-height: 1.55;
 }
 
@@ -7956,7 +8037,7 @@ blockquote {
 .concept-card span {
   display: block;
   font-family: var(--sans);
-  font-size: 0.8rem;
+  font-size: var(--t-fine);
   font-weight: 600;
   letter-spacing: 0.08em;
   color: var(--blue-bright);
@@ -7966,7 +8047,7 @@ blockquote {
 .concept-card strong {
   display: block;
   font-family: var(--serif);
-  font-size: 1.2rem;
+  font-size: 19px;
   line-height: 1.25;
   color: var(--ink);
   margin-bottom: 0.75rem;
@@ -7974,7 +8055,7 @@ blockquote {
 
 .concept-card p {
   margin: 0;
-  font-size: 0.94rem;
+  font-size: var(--t-small);
   line-height: 1.6;
   color: var(--body);
 }
@@ -8045,8 +8126,8 @@ blockquote {
 .reduction figcaption {
   max-width: 62ch;
   margin: 0;
-  font-size: 0.95rem;
-  line-height: 1.6;
+  font-size: var(--t-fine);
+  line-height: var(--lh-fine);
   color: var(--muted);
 }
 
@@ -8077,7 +8158,7 @@ blockquote {
 .nike-case .body-copy {
   max-width: 66ch;
   margin: 0 0 1.6rem;
-  font-size: 16px;
+  font-size: var(--t-base);
   line-height: 1.75;
   color: var(--body);
 }
@@ -8152,8 +8233,8 @@ blockquote {
 
 .nike-case .figure figcaption {
   margin-top: 0.75rem;
-  font-size: 0.9rem;
-  line-height: 1.6;
+  font-size: var(--t-fine);
+  line-height: var(--lh-fine);
   color: var(--muted);
   max-width: 68ch;
 }
@@ -8187,7 +8268,7 @@ blockquote {
 
 .tension-label {
   font-family: var(--sans);
-  font-size: 0.78rem;
+  font-size: var(--t-label);
   font-weight: 600;
   letter-spacing: 0.09em;
   text-transform: uppercase;
@@ -8209,7 +8290,7 @@ blockquote {
   border: 1px solid var(--line);
   border-left: 3px solid #c4576b;
   font-family: var(--serif);
-  font-size: 1.05rem;
+  font-size: var(--t-base);
   line-height: 1.4;
   color: var(--ink);
 }
@@ -8220,8 +8301,8 @@ blockquote {
 .tension figcaption {
   margin-top: 1.1rem;
   max-width: 68ch;
-  font-size: 0.9rem;
-  line-height: 1.6;
+  font-size: var(--t-fine);
+  line-height: var(--lh-fine);
   color: var(--muted);
 }
 
@@ -8237,7 +8318,7 @@ blockquote {
   background: var(--ink);
   color: #fff;
   font-family: var(--sans);
-  font-size: 0.7rem;
+  font-size: var(--t-label);
   font-weight: 600;
   letter-spacing: 0.1em;
   text-transform: uppercase;
@@ -8404,7 +8485,7 @@ html[data-anna-razor="bar"] body {
   background: var(--blue);
   color: #fff;
   font-family: var(--serif);
-  font-size: 11px;
+  font-size: var(--t-label);
   font-weight: 600;
 }
 
@@ -8441,7 +8522,7 @@ html[data-anna-razor="bar"] body {
   background: var(--ink);
   color: #fff;
   font-family: var(--sans);
-  font-size: 13px;
+  font-size: var(--t-fine);
   line-height: 1.3;
   white-space: nowrap;
   pointer-events: none;
@@ -8475,7 +8556,7 @@ html[data-anna-razor="bar"] body {
   background: none;
   color: var(--ink);
   font-family: var(--sans);
-  font-size: 15px;
+  font-size: var(--t-base);
 }
 
 .anna-razor-bar input::placeholder {
@@ -8496,7 +8577,7 @@ html[data-anna-razor="bar"] body {
   border-radius: 6px;
   background: var(--blue);
   color: #fff;
-  font-size: 15px;
+  font-size: var(--t-small);
   cursor: pointer;
   transition: opacity 0.16s ease;
 }
@@ -8536,7 +8617,7 @@ html[data-anna-razor="bar"] body {
   background: var(--paper-deep);
   color: var(--blue);
   font-family: var(--serif);
-  font-size: 14px;
+  font-size: var(--t-small);
   line-height: 1.35;
   white-space: nowrap;
   text-overflow: ellipsis;
@@ -8595,7 +8676,7 @@ html[data-anna-razor="bar"] body {
   border-radius: 6px;
   background: none;
   color: var(--placeholder);
-  font-size: 17px;
+  font-size: var(--t-read);
   line-height: 1;
   cursor: pointer;
 }
@@ -8614,7 +8695,7 @@ html[data-anna-razor="bar"] body {
   margin: 0;
   color: var(--muted);
   font-family: var(--serif);
-  font-size: 15px;
+  font-size: var(--t-small);
   line-height: 1.35;
   animation: razor-line-in 0.3s ease both;
 }
@@ -8634,7 +8715,7 @@ html[data-anna-razor="bar"] body {
   background: none;
   color: var(--flare-ink);
   font-family: var(--sans);
-  font-size: 13px;
+  font-size: var(--t-fine);
   font-weight: 600;
   text-decoration: underline;
   text-decoration-thickness: 2px;
@@ -8676,7 +8757,7 @@ html[data-anna-razor="bar"] body {
   background: var(--paper);
   color: var(--blue);
   font-family: var(--sans);
-  font-size: 12.5px;
+  font-size: var(--t-fine);
   font-weight: 600;
   cursor: pointer;
   transition: border-color 0.16s ease, background 0.16s ease, color 0.16s ease;
@@ -8709,7 +8790,7 @@ html[data-anna-razor="bar"] body {
   background: var(--blue);
   color: #fff;
   font-family: var(--serif);
-  font-size: 14px;
+  font-size: var(--t-small);
   font-weight: 600;
   cursor: pointer;
   box-shadow: 0 6px 22px rgba(17, 17, 17, 0.2);
