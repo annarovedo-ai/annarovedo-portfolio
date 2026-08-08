@@ -78,11 +78,14 @@ export default async function ArchiveEntryPage({
               </figure>
             ))}
           </div>
-        ) : (
-          <p className="archive-detail-note">
-            No images extracted for this one yet. Ask me directly and I&rsquo;ll tell you more.
-          </p>
-        )}
+        ) : null}
+        {/* There used to be an apology here: "No images extracted for this one
+            yet. Ask me directly and I'll tell you more." Two problems. It leaked
+            build-process vocabulary to visitors, since nothing is "extracted"
+            from a reader's point of view. And it invited doubt about the work on
+            the one page whose job is to show it, which is the standing voice
+            rule. An entry without images now simply reads as a written entry,
+            and the writing carries it. */}
 
         <a className="archive-link" href="/archive">
           &larr; Back to the archive

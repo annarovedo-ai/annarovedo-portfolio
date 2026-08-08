@@ -162,9 +162,26 @@ export const archiveGroups: ArchiveGroup[] = [
       {
         slug: "lightpost",
         client: "Lightpost",
-        meta: "App branding",
-        body: "Brand and product design for a decision-making app built around big life changes: career switches, caregiving, moving, having children.",
+        // TODO, Anna: the agency. She confirmed this was client work through an
+        // agency, but neither the live site nor docs/live-site-inventory.md
+        // recorded which one, and every sibling in this group carries the
+        // attribution ("Isobar · Compliance product", "Critical Mass ·
+        // Website"). Swap "Agency engagement" for the name when she has it.
+        // Not guessed, per this file's rule at the top.
+        meta: "Agency engagement · Brand and product",
+        // Rewritten 2026-08-08. The old copy described what the app was ABOUT
+        // and said nothing about the design, on the one entry that
+        // docs/live-site-inventory.md calls "the only piece that is brand plus
+        // product on one thing, which is the shape of work she described
+        // wanting". Everything below is visible in the images.
+        body: "Brand and product design for an app that helps people think through big life decisions: changing careers, caregiving, moving, having children. A lightpost points the way, so the arrow became the mark, the shape every screen is built from, and the control you press to move forward. One idea doing the branding and the navigation at once.",
         role: "UX/UI, branding and creative direction",
+        images: [
+          img("lightpost/01.png", "The Lightpost opening screen on a tablet: a large green arrow form filling the screen, the headline Discover what you want most out of your work, and a Get Started action"),
+          img("lightpost/02.png", "The same screen showing the progress stepper and the Your Plan and Saved navigation in the header bar"),
+          img("lightpost/03.png", "The arrow motif carried into the carousel controls, with Read More and a downward chevron for the rest of the section"),
+          img("lightpost/04.png", "The layered greens of the arrow shape, holding the display type and the body copy on one ground"),
+        ],
       },
     ],
   },
