@@ -293,8 +293,15 @@ export const clients: Client[] = [
 export const homeContent: Record<PersonaId, HomeContent> = {
   recruiter: {
     eyebrow: "Recruiter",
+    // Was "I set this up to answer what you'd ask me on a first call." The
+    // line renders directly under the persona pills, so the nearest
+    // antecedent for "this" was the switcher, not the site — it read as a
+    // comment about the buttons. "This version" is what the client line
+    // already says, has an unambiguous referent (the pill you just picked),
+    // and makes recruiter and client structurally parallel while the Ex
+    // breaks the pattern on purpose.
     onboardingText:
-      "I set this up to answer what you’d ask me on a first call.",
+      "This version answers what you’d ask me on a first call.",
     // Single-line headline: headline[1] is intentionally empty and the soft
     // span does not render. Client and Ex keep the two-part question/answer.
     headline: ["I design products, systems, and brands.", ""],

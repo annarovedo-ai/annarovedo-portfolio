@@ -4792,18 +4792,22 @@ blockquote {
   border-right: 1px solid var(--line);
 }
 
-/* State Street, Search, Kmart: three independent case studies, equal weight. */
+/* The independent case studies, two by two. This was repeat(4, 1fr) —
+   four cards sharing one row, each ~270px wide at full desktop and holding a
+   tag, a title, a multi-line body, a filled outcome panel and a CTA. Short
+   line lengths everywhere, and the outcome panels (the most valuable thing on
+   the cards) at their most cramped. Two-up gives every card the same width
+   as the flagship pair above, so the whole work section reads as one grid
+   system instead of a featured tier and a squeezed tier.
+
+   The old ≤1100px media query that collapsed 4 to 2 is gone rather than left
+   restating the same value — this file has already had three duplicate-rule
+   incidents today, one of which shipped a live bug. */
 .home-case-row {
   display: grid;
-  grid-template-columns: repeat(4, 1fr);
+  grid-template-columns: repeat(2, 1fr);
   gap: 24px;
   margin-bottom: 48px;
-}
-
-@media (max-width: 1100px) {
-  .home-case-row {
-    grid-template-columns: repeat(2, 1fr);
-  }
 }
 
 .home-case {
@@ -8891,5 +8895,31 @@ html[data-anna-razor="bar"] body {
    this row is a control rather than a heading. */
 .persona-switch button.is-active {
   background: var(--flare);
+  color: var(--ink);
+}
+
+/* The services page's hero buttons. These were black-fill and gray-outline —
+   the pre-accent button language — so the one page aimed squarely at clients
+   was the one page where the accent system stopped applying. Same pattern as
+   the homepage CTA pair: filled primary with ink type, accent-outlined
+   secondary that resolves into the primary's treatment on hover. */
+.svc-primary {
+  background: var(--flare);
+  color: var(--ink);
+}
+
+.svc-primary:hover {
+  background: var(--flare-ink);
+  color: #fff;
+}
+
+.svc-secondary {
+  border-color: var(--flare);
+  color: var(--flare-ink);
+}
+
+.svc-secondary:hover {
+  background: var(--flare);
+  border-color: var(--flare);
   color: var(--ink);
 }

@@ -100,15 +100,25 @@ export default function ServicesBody() {
     <article id="top">
       <section className="svc-hero shell">
         <p className="eyebrow">Senior-led creative and product studio</p>
-        <h1>One senior partner. The right team for the whole thing.</h1>
+        {/* Was "One senior partner. The right team for the whole thing." — two
+            noun phrases with a full stop between them, which is the tagline
+            structure the voice rules say to delete on sight. One comma turns
+            it back into a sentence somebody would say. */}
+        <h1>One senior partner, with the right team for the whole thing.</h1>
         <p className="svc-deck">
           I lead the strategy and creative direction, then bring together the specialists your
           project needs, from brand and product design to websites, applications, content,
           development, and launch.
         </p>
         <div className="svc-actions">
+          {/* "Bring me the brief" contradicted this page twice over: the CTA
+              band below says "even if the brief is still messy", and her whole
+              positioning is that defining the thing IS the work — asking for a
+              finished brief filters out exactly the client she wants. It was
+              also an order aimed at the person paying. This echoes the client
+              chat copy, which already says "Tell it what you're working on". */}
           <a className="svc-primary" href="/contact">
-            Bring me the brief &rarr;
+            Tell me what you&rsquo;re working on &rarr;
           </a>
           <a className="svc-secondary" href="/#work">
             See selected work &rarr;
@@ -203,7 +213,7 @@ export default function ServicesBody() {
             Tell me what you&rsquo;re building, even if the brief is still messy. I can help
             define the direction, assemble the right team, and take it from first idea to launch.
           </p>
-          <a href="/contact">Bring me the brief &rarr;</a>
+          <a href="/contact">Tell me what you&rsquo;re working on &rarr;</a>
         </div>
       </section>
     </article>
