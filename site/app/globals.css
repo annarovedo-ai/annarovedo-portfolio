@@ -5795,7 +5795,12 @@ blockquote {
 /* Black, not navy. The control sits on a navy ground, so a navy active pill
    loses its edge against the page behind it. Black reads instantly and matches
    the primary button treatment used elsewhere. */
+/* Orange means pressed, here as on every button. Note the active pill differs
+   from its siblings by FILL, not only by hue, so it still reads as selected
+   without colour vision. --ink on --flare is 6.58:1. */
 .persona-switch button.is-active {
+  background: var(--flare);
+  color: var(--ink);
 }
 
 .persona-switch button:focus-visible {
@@ -7426,10 +7431,6 @@ blockquote {
   flex-wrap: wrap;
   gap: 12px;
   margin-bottom: 22px;
-}
-
-.svc-primary,
-.svc-secondary {
 }
 
 .svc-primary {
