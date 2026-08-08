@@ -377,6 +377,42 @@ export default function SearchCaseStudy() {
                 The team dark-launched the MVP at a dedicated v3 URL, then began redirecting US-English traffic to the new experience. The release simplified navigation, introduced filtering and clearer result signals, replaced pagination with continuous results, improved no-results recovery, and created better paths to specialized search experiences. Global rollout was planned as the next deployment phase.
               </p>
             </div>
+
+            {/* THE ONLY PICTURE OF WHAT SHIPPED.
+                Until now this case study carried three images: two of the old
+                design and one of a typeahead concept that never launched. A
+                study about a shipped redesign showed what it replaced and what
+                did not happen, and nothing of the thing itself. Everything the
+                scope table below claims -- tabs becoming a Search by rail,
+                content-type labels on results, the query term emphasised in
+                titles and descriptions -- is visible here, so the reader stops
+                having to take the paragraph on faith.
+
+                Placed above the scope table and above the defects list on
+                purpose: claim, then evidence, then what was still wrong. */}
+            <figure className="search-launch-figure">
+              <div className="search-launch-image">
+                <img
+                  src={`${assetRoot}/launched-results.png`}
+                  alt="The launched IBM.com search results page for the query watsonx: a Search by rail listing All, Products, Documentation, Training and Support, and a single result list where each result carries a content-type label, a description, and its URL, with the query term emphasised throughout"
+                  loading="lazy"
+                />
+              </div>
+              <figcaption>
+                The launched result experience. The tabs became a filter rail,
+                every result carries its content type, and the query term is
+                emphasised in the title and the description.{" "}
+                <a
+                  className="search-launch-live"
+                  href="https://www.ibm.com/search"
+                  target="_blank"
+                  rel="noreferrer"
+                >
+                  Use it on IBM.com
+                </a>
+              </figcaption>
+            </figure>
+
             <div className="search-scope-table">
               <div>
                 <span>Live in the US-English MVP</span>

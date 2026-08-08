@@ -4207,6 +4207,47 @@ blockquote {
   color: var(--on-dark-body);
 }
 
+/* The launched-result figure in the dark launch band. Mirrors
+   .search-typeahead-figure so the two evidence images on this page are framed
+   the same way; the ground and border come from the on-dark ladder rather
+   than --line, which would be invisible on navy. */
+.search-launch-figure {
+  margin: 40px 0 44px;
+}
+
+.search-launch-image {
+  overflow: hidden;
+  border: 1px solid var(--on-dark-line);
+  background: #132744;
+}
+
+.search-launch-image img {
+  display: block;
+  width: 100%;
+  height: auto;
+}
+
+.search-launch-figure figcaption {
+  max-width: 72ch;
+  margin-top: 16px;
+  color: var(--on-dark-muted);
+  font-size: var(--t-fine);
+  line-height: var(--lh-fine);
+}
+
+/* The one link on the site that hands the reader the actual shipped product.
+   Underlined rather than styled as a button: it is a link you follow, not an
+   action you press, and orange is reserved for the latter. */
+.search-launch-live {
+  color: #fff;
+  text-decoration: underline;
+  text-underline-offset: 3px;
+}
+
+.search-launch-live:hover {
+  color: var(--on-dark-label);
+}
+
 .search-scope-table {
   display: grid;
   grid-template-columns: 1.2fr 0.8fr;

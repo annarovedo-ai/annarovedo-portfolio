@@ -247,7 +247,7 @@ export const supportingCaseStudies: CaseStudy[] = [
     // The rule this restates: a card is a promise the page has to keep. Sell
     // what launched, name the unlaunched work on the page where there is room
     // to label it honestly.
-    body: "Six tabs competed to answer one question, across products, documentation, support, learning and developer content. I led the UX from audit and research through to launch, and replaced them with one result set you can filter without losing your place.",
+    body: "Six tabs competed to answer one question: products, downloads, learning, support, developers, and an All that mixed them together. I led the UX from audit and research through to launch, and replaced them with one result set you can filter without losing your place.",
     outcome: "US-English MVP live on IBM.com. Filters replacing tabs, content-type labels, zero-results recovery.",
     image: "/case-study/thumbs/search.jpg",
     client: {
