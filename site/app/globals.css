@@ -3475,7 +3475,7 @@ blockquote {
 .search-hero-model {
   display: grid;
   grid-template-columns: minmax(0, 0.9fr) 58px minmax(0, 1.1fr);
-  align-items: center;
+  align-items: stretch;
   margin-top: 34px;
   border: 1px solid var(--line);
   background: var(--surface);
@@ -3520,15 +3520,16 @@ blockquote {
 
 .search-model-tabs {
   display: flex;
-  flex-wrap: wrap;
+  flex-wrap: nowrap;
   margin: 28px 0 42px;
   gap: 1px;
 }
 
 .search-model-tabs span {
-  padding: 10px 11px;
+  padding: 9px 9px;
   background: #d7d5d1;
-  font-size: 11px;
+  font-size: var(--t-label);
+  white-space: nowrap;
 }
 
 .search-model-before > p:last-child {
