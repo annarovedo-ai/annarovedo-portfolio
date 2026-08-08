@@ -176,12 +176,21 @@ export const archiveGroups: ArchiveGroup[] = [
         // wanting". Everything below is visible in the images.
         body: "Brand and product design for an app that helps people think through big life decisions: changing careers, caregiving, moving, having children. A lightpost points the way, so the arrow became the mark, the shape every screen is built from, and the control you press to move forward. One idea doing the branding and the navigation at once.",
         role: "UX/UI, branding and creative direction",
-        images: [
-          img("lightpost/01.png", "The Lightpost opening screen on a tablet: a large green arrow form filling the screen, the headline Discover what you want most out of your work, and a Get Started action"),
-          img("lightpost/02.png", "The same screen showing the progress stepper and the Your Plan and Saved navigation in the header bar"),
-          img("lightpost/03.png", "The arrow motif carried into the carousel controls, with Read More and a downward chevron for the rest of the section"),
-          img("lightpost/04.png", "The layered greens of the arrow shape, holding the display type and the body copy on one ground"),
-        ],
+        // IMAGES ARE READY TO GO, WAITING ONLY ON THE FILES.
+        // Anna has four screens of this; they have not been saved into the repo
+        // yet. Wiring them up before the files existed rendered four broken
+        // images on a live page, which is worse than no images, so the array is
+        // parked here. Save the screens to
+        //   site/public/archive/lightpost/01.png ... 04.png
+        // then delete these comment markers and uncomment the block. Nothing
+        // else needs to change; the alt text is already written from the images.
+        //
+        // images: [
+        //   img("lightpost/01.png", "The Lightpost opening screen on a tablet: a large green arrow form filling the screen, the headline Discover what you want most out of your work, and a Get Started action"),
+        //   img("lightpost/02.png", "The same screen showing the progress stepper and the Your Plan and Saved navigation in the header bar"),
+        //   img("lightpost/03.png", "The arrow motif carried into the carousel controls, with Read More and a downward chevron for the rest of the section"),
+        //   img("lightpost/04.png", "The layered greens of the arrow shape, holding the display type and the body copy on one ground"),
+        // ],
       },
     ],
   },

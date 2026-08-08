@@ -7005,6 +7005,15 @@ blockquote {
   overflow: hidden;
 }
 
+/* An entry with no images rendered a 4:3 grey rectangle, which reads as a
+   missing image rather than as a card that simply has no picture. The JSX
+   already omits the <img>, so the span is genuinely empty and :empty can
+   collapse it without touching the markup. Cards then size to their text and
+   the grid stays tidy. */
+.archive-card-media:empty {
+  display: none;
+}
+
 .archive-card-media img {
   width: 100%;
   height: 100%;
@@ -7027,7 +7036,7 @@ blockquote {
 
 .archive-card-meta {
   color: var(--blue-bright);
-  font-size: 10.5px;
+  font-size: var(--t-label);
   font-weight: 700;
   letter-spacing: var(--track-wide);
   text-transform: uppercase;
