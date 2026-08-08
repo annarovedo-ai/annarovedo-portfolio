@@ -1,0 +1,479 @@
+import type { Metadata } from "next";
+import SiteHeader from "../SiteHeader";
+import SiteFooter from "../SiteFooter";
+import Breadcrumb from "../Breadcrumb";
+
+export const metadata: Metadata = {
+  title: "SHHHHH · Anna Rovedo",
+  description:
+    "A new business pitch to launch Kmart's redesigned clothing lines. Written and art directed over a four day creative sprint at DraftFCB Chicago in 2010.",
+};
+
+const assetRoot = "/case-study/kmart";
+
+type FigureProps = {
+  src: string;
+  alt: string;
+  caption?: string;
+  className?: string;
+};
+
+function Figure({ src, alt, caption, className = "" }: FigureProps) {
+  return (
+    <figure className={`figure ${className}`}>
+      <div className="figure-image-wrap">
+        <img src={`${assetRoot}/${src}`} alt={alt} loading="lazy" />
+      </div>
+      {caption ? <figcaption>{caption}</figcaption> : null}
+    </figure>
+  );
+}
+
+/** Every surface the one device had to survive. */
+const surfaces = [
+  {
+    title: "The bag",
+    body: "Pink, with the Kmart logo covered by tape reading SHHH.COM. The idea compressed into one object you carry out of the store.",
+  },
+  {
+    title: "The K",
+    body: "The Kmart mark rebuilt out of duct tape, so the brand itself carries the device rather than sitting next to it.",
+  },
+  {
+    title: "Hangtags",
+    body: "Tape over the label, peeling off to reveal the Kmart logo underneath. The reveal happens in your hands.",
+  },
+  {
+    title: "Print",
+    body: "The Keep Your Secret ads, placed in the aspirational fashion titles where Kmart had no business being.",
+  },
+  {
+    title: "The site",
+    body: "A password, then a members' homepage: look of the day, exclusives, video, and the other people who were in on it.",
+  },
+  {
+    title: "Popup stores",
+    body: "Unbranded shops in major cities, stocked entirely with the new lines. Every label taped over. See below.",
+  },
+];
+
+export default function Kmart() {
+  return (
+    <main>
+      <SiteHeader />
+      <Breadcrumb label="SHHHHH" />
+
+      <article id="top">
+        <section className="hero shell">
+          <p className="eyebrow">DraftFCB Chicago · 2010 · New business pitch</p>
+          <h1>Kmart had always sold clothes. Nobody had a reason to look again.</h1>
+          <p className="hero-deck">
+            A new in-house design team, a studio in New York, a genuine relaunch of the
+            clothing line. The product had changed. The assumption about it had not.
+          </p>
+
+          <div className="hero-meta" aria-label="Project details">
+            <div>
+              <span>Role</span>
+              <strong>Art director and designer</strong>
+            </div>
+            <div>
+              <span>Format</span>
+              <strong>Four day creative sprint, global agency team</strong>
+            </div>
+            <div>
+              <span>Status</span>
+              <strong>Pitch concept · outcome unknown</strong>
+            </div>
+          </div>
+
+          <Figure
+            src="ad-cat-astronauts.jpg"
+            alt="Fashion print advertisement. A woman laughing at a party in a pink dress. A caption reads: wrote a screenplay about cat astronauts. Below: some things are best kept to yourself. Keep Your Secret. Kmart logo."
+            caption="The campaign line, and a confession that has nothing to do with clothes."
+          />
+        </section>
+
+        <section className="summary-band" id="brief" data-anna-prompt="What reappraisal meant">
+          <div className="shell summary-grid">
+            <div className="summary-copy">
+              <p className="eyebrow">The brief</p>
+              <h2>The product was not the problem. Reappraisal was.</h2>
+              <p>
+                Target had spent years and a lot of money on its design department, and it
+                had worked. People went to Target on purpose, for the design, and said so
+                afterwards.
+              </p>
+              <p>
+                Kmart was trying to do the same thing, and this part was real. They had
+                hired a team of fashion designers, put them in a studio in New York, and
+                were relaunching the clothing as something worth choosing rather than
+                something that happened to be on the shelf.
+              </p>
+              <p>
+                None of it was public yet. The designers were hired and the studio was
+                working, but the lines had not launched. The work up for grabs was the
+                campaign that would introduce them, and several agencies were pitching for
+                it. Which is worth sitting with for a second, because it means we were
+                building a campaign about a secret for a product that still was one.
+              </p>
+            </div>
+
+            <ol className="summary-list" aria-label="The problem in three parts">
+              <li>
+                <span>01</span>
+                <strong>Nothing about it read as news.</strong>
+                Kmart had always sold clothing, so &ldquo;Kmart sells clothes&rdquo; was not
+                an announcement. What was new was that the clothes were now designed, and
+                nobody had any reason to go and check.
+              </li>
+              <li>
+                <span>02</span>
+                <strong>Nobody arrived intending to buy them.</strong>
+                The people who bought clothes there were in the store for something else,
+                passed a rack, and picked something up because it was in front of them.
+                A discovery, not a destination.
+              </li>
+              <li>
+                <span>03</span>
+                <strong>The ones who did buy would not say so.</strong>
+                Admitting where the clothes came from carried a cost, and no amount of
+                advertising was going to argue somebody out of that.
+              </li>
+            </ol>
+          </div>
+        </section>
+
+        <section className="chapter shell" id="room" data-anna-prompt="Four days, fifteen people">
+          <p className="section-number">01</p>
+          <div className="two-column-copy">
+            <div>
+              <h2>Fifteen people, four countries, four days.</h2>
+            </div>
+            <div>
+              <p className="lead">
+                DraftFCB flew in writers, designers, art directors and creative directors
+                from offices across its global network. Italy, France, Argentina, Germany.
+                About fifteen people in the Chicago office over a long weekend, starting
+                Thursday and pitching Monday night.
+              </p>
+              <p>
+                We were split into three groups of three or four, each taking the same brief
+                from a different angle. It was not a competition between us. Creative
+                directors moved between the teams, and their job was less to judge than to
+                keep the three stories from converging. On the last day we workshopped all
+                three together and sharpened them into what got presented.
+              </p>
+              <p>
+                I was brought in for my fashion background. I had spent years designing
+                apparel graphics, hangtags and labels in Italy and Spain, and I knew that
+                market, including how it worked in Europe. That was the reason I was in the
+                room.
+              </p>
+              <p>
+                The format was closer to how I like to work than anything I have done since.
+                Brainstorm as a group, break apart, build, come back, critique, break apart
+                again. Someone ordered Chinese food. It ran for four days and I have rarely
+                enjoyed work more.
+              </p>
+            </div>
+          </div>
+        </section>
+
+        <section className="chapter chapter-alt" id="idea" data-anna-prompt="Embarrassment as the idea">
+          <div className="shell">
+            <p className="section-number">02</p>
+            <div className="two-column-copy">
+              <div>
+                <h2>We stopped arguing with the embarrassment and made it the mechanic.</h2>
+              </div>
+              <div>
+                <p className="lead">
+                  Fashion advertising, in the aspirational titles, showing women who look
+                  like they have something they are not telling you. The line under each one
+                  is a confession that has nothing to do with clothes.
+                </p>
+                <p>
+                  The secret is not that the dress came from Kmart. That is the joke, and it
+                  means the campaign never has to say the embarrassing part out loud.
+                </p>
+              </div>
+            </div>
+
+            <Figure
+              src="ad-keep-your-secret-2.jpg"
+              alt="Second print advertisement in the Keep Your Secret campaign."
+              caption="Keep Your Secret. Written and art directed over the weekend, in the aspirational fashion titles."
+            />
+          </div>
+        </section>
+
+        <section className="chapter shell" id="site" data-anna-prompt="Why a password?">
+          <p className="section-number">03</p>
+          <div className="two-column-copy">
+            <div>
+              <h2>A password is a reason to go somewhere on purpose.</h2>
+            </div>
+            <div>
+              <p className="lead">
+                Underneath the campaign sat SHHH.com, a members-only site behind a password.
+                Exclusive online deals, must-have pieces, trend and news content, and a
+                network of other people in on it.
+              </p>
+              <p>
+                That is the part that answers the actual brief. The ads buy you awareness,
+                but you cannot stumble into a members-only site the way you stumble into a
+                rack on the way to the checkout. Membership also flips the stigma rather
+                than denying it. The point is no longer that nobody can know. It is that not
+                everybody does.
+              </p>
+              <p>
+                Gated deals, insider content and a social layer were still new for a mass
+                retailer in 2010. The proposal was not a website with a campaign attached.
+                It was a brand you had to be let into.
+              </p>
+            </div>
+          </div>
+
+          <Figure
+            src="site-login.jpg"
+            alt="SHHH.com login screen. A model holds a lit fluorescent tube against a pink background. The SHHH wordmark sits on a strip of duct tape, above member email and password fields."
+            caption="The door. Member email, password, and an app download in the corner."
+            className="wide-figure"
+          />
+
+          <Figure
+            src="site-members.jpg"
+            alt="SHHH.com members homepage showing a video player, look of the day, an exclusives module, a shop link and a grid of member photographs."
+            caption="Inside: look of the day, exclusives, video, and the other members."
+            className="wide-figure"
+          />
+        </section>
+
+        <section className="chapter chapter-alt" id="surfaces" data-anna-prompt="One device, every surface">
+          <div className="shell">
+            <p className="section-number">04</p>
+            <div className="two-column-copy">
+              <div>
+                <h2>One device, every surface.</h2>
+              </div>
+              <div>
+                <p className="lead">
+                  Duct tape. Over the thing you do not want read.
+                </p>
+                <p>
+                  I do not remember who said it first. That weekend was continuous riffing
+                  and nobody owned a single idea. What I can tell you is where mine came
+                  from. I had spent years making hangtags, woven labels and in-store
+                  graphics for clothing brands, so I was thinking about the object in the
+                  customer&rsquo;s hand, and the tape went onto the parts of that object
+                  that name the retailer.
+                </p>
+                <p>
+                  I built the site comps, the bag and the print layouts. The writers worked
+                  the copy. We put it in front of each other several times a day.
+                </p>
+              </div>
+            </div>
+
+            <div className="kmart-surface-grid">
+              {surfaces.map((s) => (
+                <div className="kmart-surface" key={s.title}>
+                  <h3>{s.title}</h3>
+                  <p>{s.body}</p>
+                </div>
+              ))}
+            </div>
+
+            <div className="kmart-artifacts">
+              <Figure
+                src="tape-k.jpg"
+                alt="The Kmart K logo rebuilt from strips of black duct tape."
+                caption="The mark, rebuilt in tape."
+              />
+              <Figure
+                src="bag.jpg"
+                alt="A pink Kmart shopping bag with the logo covered by a strip of duct tape reading SHHH, with .com beneath it."
+                caption="The bag. The logo covered, the site named."
+              />
+              <Figure
+                src="logo-lockup.jpg"
+                alt="SHHH.com logo lockup: a card with the wordmark beneath a strip of duct tape carrying a pair of red lips."
+                caption="The lockup."
+              />
+            </div>
+          </div>
+        </section>
+
+        <section className="chapter shell" id="reveal" data-anna-prompt="What the reveal was">
+          <p className="section-number">05</p>
+          <div className="two-column-copy">
+            <div>
+              <h2>You find out where it came from after you have already decided you want it.</h2>
+            </div>
+            <div>
+              <p className="lead">
+                Popup stores in major cities, stocked entirely with the new Kmart lines.
+                Nothing in the shop branded Kmart. Every hangtag covered with a strip of
+                duct tape.
+              </p>
+              <p>
+                You shop the rails and judge the clothes on the clothes. You buy something.
+                It goes into a bag with the tape over the label. You leave. And somewhere
+                outside, you peel the tape off and find out you just bought it from Kmart.
+              </p>
+              <p>
+                This is the part the whole campaign is built to arrive at, and it is why the
+                tape is the device rather than a graphic style. Every other surface is
+                rehearsing the same move at lower stakes: the ads withhold the secret, the
+                site puts it behind a password, the bag holds it until you are out of the
+                shop.
+              </p>
+            </div>
+          </div>
+
+          <div className="kmart-reveal">
+            <ol aria-label="The popup store sequence">
+              <li>
+                <span>01</span>
+                <strong>Nothing is branded</strong>
+                An unbranded shop, stocked entirely with the new lines. No logo anywhere in
+                the room.
+              </li>
+              <li>
+                <span>02</span>
+                <strong>Every label is taped</strong>
+                A strip of tape over each hangtag. You have nothing to judge but the
+                garment.
+              </li>
+              <li>
+                <span>03</span>
+                <strong>You buy on the clothes alone</strong>
+                The decision gets made before the brand ever enters it.
+              </li>
+              <li>
+                <span>04</span>
+                <strong>The reveal happens outside</strong>
+                Peel the tape off the bag or the tag, and there it is. Too late to be
+                embarrassed about a choice you already made on merit.
+              </li>
+            </ol>
+          </div>
+
+          <p className="kmart-reveal-note">
+            It answers the brief exactly. Nobody had a reason to look again, so the store
+            removes the thing that stops people looking, gets an honest verdict on the
+            product, and only then puts the name back on it.
+          </p>
+        </section>
+
+        <section className="chapter shell" id="markt" data-anna-prompt="The route we didn't take">
+          <p className="section-number">06</p>
+          <div className="two-column-copy">
+            <div>
+              <h2>The route we did not take.</h2>
+            </div>
+            <div>
+              <p className="lead">
+                The same group also explored MARKT, a harder rebrand that moved further from
+                the Kmart name, with SHHH living inside it as a section alongside Look of
+                the Day and a member gallery.
+              </p>
+              <p>
+                It is the more cautious of the two ideas and it did not go as far. Worth
+                keeping in the record, because pitch weeks are not one idea arriving fully
+                formed. They are several, argued out loud, until one of them earns the room.
+              </p>
+            </div>
+          </div>
+
+          <Figure
+            src="markt-route.jpg"
+            alt="An alternative concept: a MARKT branded site with SHHH as a section, showing Look of the Day and a member gallery."
+            caption="MARKT, the alternate route. Comp imagery is placeholder."
+          />
+        </section>
+
+        <section className="reflection shell" id="outcome" data-anna-prompt="What happened to the pitch">
+          <p className="eyebrow">What happened</p>
+          <h2>We were the far end of the scale, and I think that was the point.</h2>
+          <div className="reflection-grid">
+            <div>
+              <p>
+                Three routes went to the client. A safe one, a middle one, and ours. Part of
+                the reason ours was presented at all was to show how far the territory could
+                go. I did not present. I made the work.
+              </p>
+              <p>
+                I do not know which direction the client chose, or whether any of this ended
+                up anywhere. Sixteen years later I am not going to invent an outcome I never
+                saw. What I know is what the pitch was, what I made, and what it felt like
+                to make it.
+              </p>
+            </div>
+            <div>
+              <p>
+                What I can point at is where the brand went. Kmart kept pushing on exactly
+                this problem, and by 2013 it was launching named celebrity clothing lines,
+                including one with Nicki Minaj, so that people would come for the clothing
+                by name rather than find it on the way to something else.
+              </p>
+              <p>
+                I am not going to claim our weekend caused that, because I have no idea
+                whether it did. But the argument we were making in 2010 was the same
+                argument: the product had already changed, and what was missing was a reason
+                to arrive on purpose. We were three years early to a position the brand
+                eventually took.
+              </p>
+            </div>
+          </div>
+        </section>
+
+        <section className="chapter chapter-alt" id="takeaway">
+          <div className="shell">
+            <p className="section-number">07</p>
+            <div className="two-column-copy">
+              <div>
+                <h2 id="detour">I was picked for the detour.</h2>
+              </div>
+              <div>
+                <p className="lead">
+                  Fifteen people flown in from four countries, all of them good, all of them
+                  glad to be there, all pointed at one problem for four days. I had not seen
+                  before that it was possible to assemble that and have it work. I have
+                  wanted to be back in that room ever since.
+                </p>
+                <p>
+                  The second thing is more personal. The years in Italy and Spain designing
+                  clothes, the sewing, the fashion masters I paid for by taking advertising
+                  contracts between terms, all of it read on paper as time spent away from
+                  the career. On this project it was the reason I was useful.
+                </p>
+                <p>
+                  Nobody could have told me that in advance and I would not have believed
+                  them. It is the thing I have relied on ever since: that trends and objects
+                  and interfaces all come from the same human place, and that knowing more
+                  than one field is what lets you see it.
+                </p>
+              </div>
+            </div>
+          </div>
+        </section>
+
+        <section className="next-case">
+          <div className="shell next-case-inner">
+            <div>
+              <p className="eyebrow">Next case study</p>
+              <h2>Forty fields. Five that mattered.</h2>
+            </div>
+            <a className="next-case-status" href="/nike">
+              Read the Nike story
+            </a>
+          </div>
+        </section>
+      </article>
+
+      <SiteFooter />
+    </main>
+  );
+}

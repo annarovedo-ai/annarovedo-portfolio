@@ -1,0 +1,7 @@
+site/node_modules/
+site/.next/
+site/dist/
+site/.wrangler/
+.DS_Store
+site/_to_delete/
+_to_delete/

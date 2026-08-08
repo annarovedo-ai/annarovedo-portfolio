@@ -1,0 +1,213 @@
+"use client";
+
+import { useState } from "react";
+import { useSyncExternalStore } from "react";
+import { getServerSnapshot, getSnapshot, subscribe } from "../personaStore";
+import { contactContent } from "../pageContent";
+import SiteHeader from "../SiteHeader";
+import SiteFooter from "../SiteFooter";
+
+/**
+ * Submissions POST to a form relay service. Two supported setups:
+ *
+ *   Web3Forms  NEXT_PUBLIC_FORM_ACCESS_KEY=<your access key>
+ *   Formspree  NEXT_PUBLIC_FORM_ENDPOINT=https://formspree.io/f/<id>
+ *
+ * With neither configured the form falls back to opening the visitor's mail
+ * client with the message pre-filled, so it never silently does nothing.
+ */
+const ACCESS_KEY = import.meta.env.NEXT_PUBLIC_FORM_ACCESS_KEY;
+const ENDPOINT =
+  import.meta.env.NEXT_PUBLIC_FORM_ENDPOINT ??
+  (ACCESS_KEY ? "https://api.web3forms.com/submit" : undefined);
+const FALLBACK_EMAIL = "anna.rovedo@gmail.com";
+
+type Status = "idle" | "submitting" | "success" | "error";
+
+function fieldId(label: string) {
+  return label.replace(/\W+/g, "-").toLowerCase();
+}
+
+function isEmailField(label: string) {
+  return /email|reply|send a validation/i.test(label);
+}
+
+export default function ContactBody() {
+  const persona = useSyncExternalStore(subscribe, getSnapshot, getServerSnapshot);
+  const c = contactContent[persona];
+
+  const [values, setValues] = useState<Record<string, string>>({});
+  const [errors, setErrors] = useState<Record<string, string>>({});
+  const [status, setStatus] = useState<Status>("idle");
+
+  function validate() {
+    const next: Record<string, string> = {};
+    for (const f of c.fields) {
+      const v = (values[f.label] ?? "").trim();
+      if (!v) {
+        next[f.label] = "This one is required.";
+      } else if (isEmailField(f.label) && !/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(v)) {
+        next[f.label] = "That does not look like an email address.";
+      }
+    }
+    setErrors(next);
+    return Object.keys(next).length === 0;
+  }
+
+  async function handleSubmit(e: React.FormEvent) {
+    e.preventDefault();
+    if (status === "submitting") return;
+    if (!validate()) return;
+
+    const payload: Record<string, string> = {
+      ...(ACCESS_KEY ? { access_key: ACCESS_KEY } : {}),
+      subject: `Website enquiry (${c.eyebrow})`,
+      persona,
+      ...Object.fromEntries(c.fields.map((f) => [f.label, values[f.label] ?? ""])),
+    };
+
+    if (!ENDPOINT) {
+      // No form service configured: hand off to the visitor's mail client.
+      const body = c.fields
+        .map((f) => `${f.label}\n${values[f.label] ?? ""}`)
+        .join("\n\n");
+      window.location.href = `mailto:${FALLBACK_EMAIL}?subject=${encodeURIComponent(
+        `Website enquiry (${c.eyebrow})`
+      )}&body=${encodeURIComponent(body)}`;
+      setStatus("success");
+      return;
+    }
+
+    setStatus("submitting");
+    try {
+      const res = await fetch(ENDPOINT, {
+        method: "POST",
+        headers: { "Content-Type": "application/json", Accept: "application/json" },
+        body: JSON.stringify(payload),
+      });
+      if (!res.ok) throw new Error(`Request failed: ${res.status}`);
+      setStatus("success");
+      setValues({});
+    } catch {
+      setStatus("error");
+    }
+  }
+
+  return (
+    <main>
+      <SiteHeader />
+
+      <article id="top">
+        <section className="contact-top shell">
+          <p className="contact-eyebrow">
+            {c.eyebrow}
+            <span aria-hidden="true" />
+          </p>
+          <h1>{c.headline}</h1>
+          <p className="contact-deck">{c.deck}</p>
+        </section>
+
+        <section className="contact-grid shell">
+          {status === "success" ? (
+            <div className="contact-success" role="status">
+              <h2>Thank you. That has been sent.</h2>
+              <p>
+                I read everything myself and usually reply within a couple of days. If it is
+                urgent, the calendar link below is faster.
+              </p>
+              <a href="https://calendly.com/anna-rovedo/30min">Book a call instead &rarr;</a>
+            </div>
+          ) : (
+            <form className="contact-form" onSubmit={handleSubmit} noValidate>
+              {c.fields.map((f) => {
+                const id = fieldId(f.label);
+                const err = errors[f.label];
+                return (
+                  <div className="contact-field" key={f.label}>
+                    <label htmlFor={id}>{f.label}</label>
+                    {f.multiline ? (
+                      <textarea
+                        id={id}
+                        rows={4}
+                        placeholder={f.placeholder}
+                        value={values[f.label] ?? ""}
+                        aria-invalid={err ? true : undefined}
+                        aria-describedby={err ? `${id}-error` : undefined}
+                        onChange={(e) =>
+                          setValues((v) => ({ ...v, [f.label]: e.target.value }))
+                        }
+                      />
+                    ) : (
+                      <input
+                        id={id}
+                        type={isEmailField(f.label) ? "email" : "text"}
+                        placeholder={f.placeholder}
+                        value={values[f.label] ?? ""}
+                        aria-invalid={err ? true : undefined}
+                        aria-describedby={err ? `${id}-error` : undefined}
+                        onChange={(e) =>
+                          setValues((v) => ({ ...v, [f.label]: e.target.value }))
+                        }
+                      />
+                    )}
+                    {err ? (
+                      <p className="contact-error" id={`${id}-error`}>
+                        {err}
+                      </p>
+                    ) : null}
+                  </div>
+                );
+              })}
+
+              <button
+                type="submit"
+                className="contact-submit"
+                disabled={status === "submitting"}
+              >
+                {status === "submitting" ? "Sending…" : c.submit}
+              </button>
+
+              {status === "error" ? (
+                <p className="contact-error contact-error-form" role="alert">
+                  Something went wrong sending that. You can email me directly at{" "}
+                  <a href={`mailto:${FALLBACK_EMAIL}`}>{FALLBACK_EMAIL}</a>.
+                </p>
+              ) : null}
+
+              <p className="contact-alt">
+                Or book a call on{" "}
+                <a href="https://calendly.com/anna-rovedo/30min">Calendly</a> to start a
+                conversation immediately.
+              </p>
+            </form>
+          )}
+
+          <aside className="contact-side">
+            <h2>{c.sideHeading}</h2>
+            <p>{c.sideBody}</p>
+
+            {c.channels?.map((ch) => (
+              <div className="contact-channel" key={ch.label}>
+                <span>{ch.label}</span>
+                <a href={ch.href}>{ch.value}</a>
+              </div>
+            ))}
+
+            {c.sideList ? (
+              <ol className="contact-side-list">
+                {c.sideList.map((item, i) => (
+                  <li key={item.label}>
+                    <span>{item.ordered ? i + 1 : "!"}</span>
+                    {item.label}
+                  </li>
+                ))}
+              </ol>
+            ) : null}
+          </aside>
+        </section>
+      </article>
+
+      <SiteFooter />
+    </main>
+  );
+}
