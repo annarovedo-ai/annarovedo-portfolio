@@ -33,6 +33,19 @@
      Reach for these rather than an alpha white. rgba whites look identical to
      a hex right up until the ground changes underneath them, which is exactly
      how the eight different alphas got here. */
+  /* THE CHAT FRAME. One token, because the three states of Almost Anna --
+     the inline card in the hero, the docked razor bar, and the open panel --
+     must be styled identically, and the only reliable way to guarantee that
+     is to give them one thing to read from.
+
+     Was 1px solid var(--line) #e5e7eb on var(--surface) #ffffff, sitting on
+     var(--paper) #faf8f5. That is a 1.06:1 surface against the page and a
+     1.17:1 border; WCAG asks 3:1 of any boundary that carries meaning. In
+     practice the only thing separating the bar from the page was a shadow at
+     9% opacity, and Anna reported exactly that: she could not see it.
+     --blue is 11.45:1 against paper. */
+  --chat-frame: var(--blue);
+
   --on-dark-body: #d3dfec;
   --on-dark-muted: #aec0d4;
   --on-dark-label: #9db4cf;
@@ -7621,7 +7634,7 @@ blockquote {
 .aa {
   display: flex;
   flex-direction: column;
-  border: 1px solid var(--line);
+  border: 1px solid var(--chat-frame);
   background: var(--surface);
   min-height: 0;
 }
@@ -7950,8 +7963,17 @@ blockquote {
   transition: opacity 0.16s ease, background 0.16s ease, color 0.16s ease;
 }
 
-.aa-composer button:disabled {
-  opacity: 0.3;
+/* NOT a faded accent. This was opacity: 0.3 over --flare, which computes to
+   #ffd2b2 -- 1.39:1 on the card. Since the input starts empty, the resting
+   state of the site's one accent colour was a washed-out peach blob, and
+   Anna read it as broken rather than disabled. The rule on this site is that
+   orange means press; a faded orange means neither. Disabled is now neutral,
+   so the accent only ever appears when pressing it does something. */
+.aa-composer button:disabled,
+.anna-razor-send:disabled {
+  background: var(--line);
+  color: var(--placeholder);
+  opacity: 1;
   cursor: default;
 }
 
@@ -8433,10 +8455,10 @@ html[data-anna-razor="bar"] body {
   width: min(1160px, calc(100% - 48px));
   margin: 0 auto;
   padding: 8px clamp(16px, 4vw, 32px);
-  border: 1px solid var(--line);
+  border: 1px solid var(--chat-frame);
   border-bottom: 0;
   background: var(--surface);
-  box-shadow: 0 -10px 34px rgba(17, 17, 17, 0.09);
+  box-shadow: 0 -12px 40px rgba(17, 17, 17, 0.16);
 }
 
 /* The bar's own shape (position, background, border) stays put across a
@@ -8580,15 +8602,6 @@ html[data-anna-razor="bar"] body {
   font-size: var(--t-small);
   cursor: pointer;
   transition: opacity 0.16s ease;
-}
-
-.anna-razor-send:disabled {
-  opacity: 0.3;
-  cursor: default;
-}
-
-.anna-razor-send:not(:disabled):hover {
-  background: #16305a;
 }
 
 /* The offer sits apart from the cursor, at the opposite end of the bar. It's
@@ -8818,13 +8831,13 @@ html[data-anna-razor="bar"] body {
   width: min(720px, calc(100vw - 24px));
   margin: 0 auto;
   background: var(--surface);
-  box-shadow: 0 -12px 44px rgba(17, 17, 17, 0.16);
+  box-shadow: 0 -14px 50px rgba(17, 17, 17, 0.22);
 }
 
 .anna-razor-panel .aa-dock {
   width: 100%;
   height: min(75vh, calc(100vh - 64px));
-  border: 1px solid var(--line);
+  border: 1px solid var(--chat-frame);
   border-bottom: 0;
 }
 
