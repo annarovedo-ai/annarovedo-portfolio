@@ -340,7 +340,7 @@ export const homeContent: Record<PersonaId, HomeContent> = {
       eyebrow: "About",
       headline: "I’ve worked in more than one field.",
       body: [
-        "I was put on a Kmart pitch because of the years I spent in fashion, not in spite of them. Trends, objects, interfaces and products all come from the same human place, and you only see that if you have worked in more than one of them.",
+        "I was put on a Kmart pitch because of the years I spent in fashion, not in spite of them. The brief was to relaunch their clothing line, and I was the one who knew the category. Trends, objects, interfaces and products all come from the same human place, and you only see that if you have worked in more than one of them.",
         "I do the same thing now on harder problems, usually the ones that need conceptual clarity and serious design craft at the same time.",
       ],
       pullquote: "Culture is always the brief underneath the brief.",
@@ -483,7 +483,7 @@ export const homeContent: Record<PersonaId, HomeContent> = {
       eyebrow: "About",
       headline: "I’ve worked in more than one field.",
       body: [
-        "I was put on a Kmart pitch because of the years I spent in fashion, not in spite of them. Trends, objects, interfaces and products all come from the same human place, and you only see that if you have worked in more than one of them.",
+        "I was put on a Kmart pitch because of the years I spent in fashion, not in spite of them. The brief was to relaunch their clothing line, and I was the one who knew the category. Trends, objects, interfaces and products all come from the same human place, and you only see that if you have worked in more than one of them.",
         "Most of what I get called in for now is enterprise software, fintech, automotive and AI. It is the same habit, pointed at harder problems.",
       ],
       pullquote: "Culture is always the brief underneath the brief.",
@@ -574,7 +574,7 @@ export const homeContent: Record<PersonaId, HomeContent> = {
       eyebrow: "Since then",
       headline: "I did end up using the fashion degree.",
       body: [
-        "I was put on a Kmart pitch because of the years I spent in fashion, not in spite of them. Trends, objects, interfaces and products all come from the same human place, and you only see that if you have worked in more than one of them.",
+        "I was put on a Kmart pitch because of the years I spent in fashion, not in spite of them. The brief was to relaunch their clothing line, and I was the one who knew the category. Trends, objects, interfaces and products all come from the same human place, and you only see that if you have worked in more than one of them.",
         "Enterprise software, fintech, automotive, AI. Not where I thought it was going either.",
       ],
       pullquote: "Culture is always the brief underneath the brief.",

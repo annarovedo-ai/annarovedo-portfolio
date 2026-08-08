@@ -65,7 +65,7 @@ export const aboutContent: Record<PersonaId, AboutContent> = {
       body: [
         "We get paid for output, so the parts of a life that do not produce anything measurable tend to look like time off. Curiosity does not show up well on a résumé.",
         "I spent years taking advertising contracts to fund the things I actually wanted to learn. A masters in fashion design. Postgraduate work in pattern making and couture sewing. Long stretches in Italy, Spain and Argentina. On paper that reads as gaps.",
-        "It turned out to be the useful part. I was put on a Kmart pitch because of the fashion years, not in spite of them. Trends, objects, interfaces and products all come from the same human place, and knowing more than one field is what lets you see it.",
+        "It turned out to be the useful part. I was put on a Kmart pitch because of the fashion years, not in spite of them. The brief was to relaunch their clothing line, and I was the one who knew the category. Trends, objects, interfaces and products all come from the same human place, and knowing more than one field is what lets you see it.",
         "Nobody could have told me that in advance and I would not have believed them. What I want from the rest of it is the same thing: that the unconnected pieces keep adding up to a way of seeing that is worth more to the people I work with than another decade of the same thing would have been.",
       ],
     },
