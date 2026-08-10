@@ -19,6 +19,14 @@ type FigureProps = {
   caption?: string;
   tone?: "light" | "dark";
   className?: string;
+  /**
+   * Intrinsic pixel size. Optional only because the older assets on this page
+   * have never had theirs recorded; pass it on everything new. Without it the
+   * browser reserves no space and the page reflows as each image arrives,
+   * which is the single largest layout-shift source on the site.
+   */
+  width?: number;
+  height?: number;
 };
 
 function Figure({
@@ -27,11 +35,19 @@ function Figure({
   caption,
   tone = "light",
   className = "",
+  width,
+  height,
 }: FigureProps) {
   return (
     <figure className={`figure ${tone === "dark" ? "figure-dark" : ""} ${className}`}>
       <div className="figure-image-wrap">
-        <img src={`${assetRoot}/${src}`} alt={alt} loading="lazy" />
+        <img
+          src={`${assetRoot}/${src}`}
+          alt={alt}
+          loading="lazy"
+          width={width}
+          height={height}
+        />
       </div>
       {caption ? <figcaption>{caption}</figcaption> : null}
     </figure>
@@ -110,10 +126,12 @@ export default function Home() {
           </div>
 
           <Figure
-            src="v1-interactive-demo-hires.png"
-            alt="An IBM interactive product demonstration with the AI assistant open beside it"
+            src="concierge-demo.webp"
+            alt="An IBM product demo with the Concierge open beside it. The assistant has suggested searching for iPhones, the buyer has replied that the devices are iPads, and the assistant has answered that it will show iPad setup instead."
             label="01 · hero"
-            caption="The Concierge used one product page as its first context, for a vision that covered IBM.com."
+            caption="Asked for iPhones, told it meant iPads. Correcting the assistant costs one sentence, and the demo beside it follows."
+            width={2320}
+            height={1497}
             className="hero-figure"
           />
         </section>
