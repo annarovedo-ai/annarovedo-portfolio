@@ -137,14 +137,6 @@ export default function HomeBody() {
             up yet.{" "}
             <a href="/archive">See the archive &rarr;</a>
           </p>
-          {/* The site itself is a case study, and the one piece of evidence a
-              visitor is already holding. Deliberately persona-agnostic
-              phrasing: "the one you are inside" is true whichever headline
-              they arrived under. */}
-          <p className="home-other-archive-link">
-            There is also the one you are inside.{" "}
-            <a href="/this-site">How this site was made &rarr;</a>
-          </p>
         </div>
       </section>
 

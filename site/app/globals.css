@@ -8606,9 +8606,9 @@ html[data-anna-razor="bar"] body {
   width: min(1160px, calc(100% - 48px));
   margin: 0 auto;
   padding: 8px clamp(16px, 4vw, 32px);
-  border: 1px solid var(--chat-frame);
+  border: 1px solid var(--blue);
   border-bottom: 0;
-  background: var(--surface);
+  background: var(--blue);
   box-shadow: 0 -12px 40px rgba(17, 17, 17, 0.16);
 }
 
@@ -8660,6 +8660,7 @@ html[data-anna-razor="bar"] body {
   font-family: var(--serif);
   font-size: var(--t-label);
   font-weight: 600;
+  border: 1px solid var(--on-dark-line);
 }
 
 .anna-razor-avatar img,
@@ -8727,13 +8728,23 @@ html[data-anna-razor="bar"] body {
   padding: 7px 0;
   border: 0;
   background: none;
-  color: var(--ink);
+  color: #fff;
   font-family: var(--sans);
   font-size: var(--t-base);
+  caret-color: #fff;
 }
 
 .anna-razor-bar input::placeholder {
-  color: var(--placeholder);
+  color: var(--on-dark-muted);
+}
+
+/* On the navy bar a --blue focus ring is invisible; controls inside it focus
+   in white instead. */
+.anna-razor-bar .anna-razor-offer:focus-visible,
+.anna-razor-bar .anna-razor-send:focus-visible,
+.anna-razor-bar .anna-razor-dismiss:focus-visible,
+.anna-razor-bar .anna-razor-undo:focus-visible {
+  outline: 2px solid #fff;
 }
 
 .anna-razor-bar input:focus-visible {
@@ -8840,14 +8851,14 @@ html[data-anna-razor="bar"] body {
   border: 0;
   border-radius: 6px;
   background: none;
-  color: var(--placeholder);
+  color: var(--on-dark-muted);
   font-size: var(--t-read);
   line-height: 1;
   cursor: pointer;
 }
 
 .anna-razor-dismiss:hover {
-  color: var(--ink);
+  color: #fff;
 }
 
 /* The notice on the way out. A dismissal whose undo lives somewhere else is
@@ -8858,7 +8869,7 @@ html[data-anna-razor="bar"] body {
   flex: 1;
   min-width: 0;
   margin: 0;
-  color: var(--muted);
+  color: var(--on-dark-body);
   font-family: var(--serif);
   font-size: var(--t-small);
   line-height: 1.35;
@@ -8878,7 +8889,7 @@ html[data-anna-razor="bar"] body {
   border: 0;
   border-radius: 6px;
   background: none;
-  color: var(--flare-ink);
+  color: #fff;
   font-family: var(--sans);
   font-size: var(--t-fine);
   font-weight: 600;
@@ -8891,7 +8902,7 @@ html[data-anna-razor="bar"] body {
 }
 
 .anna-razor-undo:hover {
-  color: var(--ink);
+  color: var(--on-dark-label);
 }
 
 .anna-razor-undo:focus-visible {
