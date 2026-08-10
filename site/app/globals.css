@@ -8753,7 +8753,7 @@ html[data-anna-razor="bar"] body {
   font-size: var(--t-small);
   cursor: pointer;
   transition: opacity 0.16s ease;
-  margin-left: 14px;
+  margin-left: 18px;
 }
 
 /* The offer sits apart from the cursor, at the opposite end of the bar. It's
@@ -8835,7 +8835,7 @@ html[data-anna-razor="bar"] body {
      edge where a dismiss belongs, rather than tucked inside the content
      column with the things you actually came to use. Its 26px box still ends
      ~6px clear of the border, so it never looks clipped. */
-  margin-left: 22px;
+  margin-left: 4px;
   margin-right: -10px;
   border: 0;
   border-radius: 6px;
@@ -9043,7 +9043,6 @@ html[data-anna-razor="bar"] body {
   /* The bar's side padding drops to 14px here, so the desktop pull would
      leave dismiss almost touching the border. Scaled back to match. */
   .anna-razor-dismiss {
-    margin-left: 12px;
     margin-right: -4px;
   }
 
