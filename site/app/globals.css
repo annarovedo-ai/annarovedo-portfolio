@@ -8910,41 +8910,6 @@ html[data-anna-razor="bar"] body {
   outline-offset: 2px;
 }
 
-/* The way back, at the foot of the conversation, shown ONLY when the bar is
-   off (see the long note in AnnaRazor.tsx — this is the only route back after
-   a dismissal; Close restores quiet). Outlined rather than filled: the accent
-   means "primary action" and send owns that in this panel. */
-.anna-razor-settings {
-  display: flex;
-  justify-content: center;
-  padding: 0 18px 14px;
-  background: var(--surface);
-}
-
-.anna-razor-settings button {
-  padding: 8px 14px;
-  border: 1px solid var(--line);
-  border-radius: 6px;
-  background: var(--paper);
-  color: var(--blue);
-  font-family: var(--sans);
-  font-size: var(--t-fine);
-  font-weight: 600;
-  cursor: pointer;
-  transition: border-color 0.16s ease, background 0.16s ease, color 0.16s ease;
-}
-
-.anna-razor-settings button:hover {
-  border-color: var(--flare);
-  background: var(--surface);
-  color: var(--ink);
-}
-
-.anna-razor-settings button:focus-visible {
-  outline: 2px solid var(--blue);
-  outline-offset: 2px;
-}
-
 /* Collapsed. Deliberately small and quiet: this is the state a reader picks
    when they want to be left alone with the page. left/bottom/right override
    the shared full-bottom-bar position above; width/height/radius give Motion
@@ -8999,6 +8964,12 @@ html[data-anna-razor="bar"] body {
   border-bottom: 0;
 }
 
+/* These sit over the navy panel header; a --blue ring is invisible there. */
+.anna-razor-panel-controls button:focus-visible {
+  outline: 2px solid #fff;
+  outline-offset: 2px;
+}
+
 .anna-razor-panel-controls {
   position: absolute;
   top: 12px;
@@ -9009,11 +8980,11 @@ html[data-anna-razor="bar"] body {
   gap: 2px;
 }
 
-/* .anna-razor-min (the Minimise dash) was removed 2026-08-07 along with its
-   markup — see the long note in AnnaRazor.tsx. The short version: it and
-   Close were two near-identical glyphs an inch apart with different
-   persistent consequences, and Close now restores whatever the reader had,
-   so there is nothing left for Minimise to do. */
+/* Minimise (–) and Close (x), siblings on purpose: identical box, identical
+   weight, because neither is destructive any more (see AnnaRazor.tsx). Minus
+   docks to the bar; x restores what you had. The 2026-08-07 removal of the
+   minus is reversed at Anna's instruction, 2026-08-10. */
+.anna-razor-min,
 .anna-razor-close {
   display: grid;
   place-items: center;
@@ -9032,6 +9003,12 @@ html[data-anna-razor="bar"] body {
   transition: background 0.16s ease, opacity 0.16s ease;
 }
 
+.anna-razor-min {
+  font-size: 22px;
+  font-weight: 700;
+}
+
+.anna-razor-min:hover,
 .anna-razor-close:hover {
   background: var(--on-dark-line);
   opacity: 1;

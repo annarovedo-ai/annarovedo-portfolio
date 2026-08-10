@@ -383,32 +383,45 @@ export default function AnnaRazor() {
                 onTouchEnd={onTouchEnd}
               />
             ) : null}
-            {/* ONE CLOSE, AND IT NEVER COSTS YOU ANYTHING.
-                There were two buttons here: Minimise (–), which closed the
-                panel and turned the bar on, and Close (×), which closed the
-                panel and turned the bar OFF for the rest of the session, in
-                sessionStorage. Two near-identical glyphs, an inch apart,
-                with different persistent consequences.
+            {/* MINUS AND CLOSE, AND NEITHER COSTS YOU ANYTHING.
+                History, because this exact pair has been here before in a
+                worse form. The original Minimise closed the panel and turned
+                the bar on; the original Close turned the bar OFF for the whole
+                session. Two near-identical glyphs, an inch apart, one of them
+                lossy, and x is what everyone reaches for. That trap was fixed
+                on 2026-08-07 by deleting Minimise and making Close restore
+                whatever the reader had before opening.
 
-                That was a trap rather than a rough edge, because × is what
-                "close this" means everywhere on the internet, so × is what
-                everyone reached for — and × was the lossy one. They landed in
-                a state they never picked and never learned they had changed a
-                setting. Escape, meanwhile, only ever called setOpen(false)
-                and left the mode alone, so the keyboard path was safer than
-                the visible button. Backwards.
+                The way back to the bar then moved to a worded button at the
+                panel foot, which failed twice on 2026-08-10: Anna could not
+                parse its first label, and called its position "a terrible
+                spot" under its second. So the minus is back, at her
+                instruction, next to the x where eyes already are.
 
-                Now closing the panel restores whatever the reader had before
-                they opened it, and does nothing else. Came from the bar, go
-                back to the bar; came from the corner, go back to the corner.
-                Escape and × finally agree.
-
-                Changing the mode for real now happens in exactly two places,
-                both of which say so: the bar's own × (which shows the notice,
-                with an Undo in it), and the settings row at the foot of this
-                panel. One destructive control per direction, each with a
-                warning attached, instead of three scattered ones. */}
+                What does NOT come back is the trap, because Close is no
+                longer destructive. Minus means "give me the bar"; x means
+                "put me back where I was". Both are recoverable, so two glyphs
+                an inch apart is now a convenience rather than a gamble. The
+                only mode change that persists something is still the bar's
+                own x, and it still shows the notice with the Undo in it. */}
             <div className="anna-razor-panel-controls">
+              <button
+                type="button"
+                className="anna-razor-min"
+                onClick={() => {
+                  setOpen(false);
+                  choose("razor");
+                  // The reader has explicitly chosen the bar, so the bar is
+                  // what Close should restore from now on. Without this line,
+                  // minimising from a quiet start and then closing would undo
+                  // the choice they just made.
+                  modeBeforeOpen.current = "razor";
+                }}
+                aria-label="Minimise to the bar at the bottom of the page"
+                title="Minimise to the bar"
+              >
+                &minus;
+              </button>
               <button
                 type="button"
                 className="anna-razor-close"
@@ -425,42 +438,13 @@ export default function AnnaRazor() {
 
             <AlmostAnnaChat variant="dock" seed={seed} />
 
-            {/* THE WAY BACK, and only the way back. Shown only when the bar
-                is off: with the bar on, the x in this panel's header already
-                covers it, and a visible duplicate implies a distinction that
-                does not exist.
-
-                This is the ONLY route back to the bar after a dismissal.
-                Close is not one: it restores modeBeforeOpen, and for a reader
-                who dismissed the bar that is quiet. Do not remove this control
-                without giving the bar another way back first. It was removed
-                for about five minutes on 2026-08-10 on the strength of a stale
-                doc that said Minimise still existed; the code is the truth.
-
-                RELABELLED the same day. It said "Show suggestions at the
-                bottom as I browse", and Anna, who designed the feature, said
-                "i still have no idea what this means". "Suggestions" described
-                the hint chips, a thing no visitor has a name for, and named
-                neither the assistant nor what pressing would do. The label now
-                names the visible thing and the action, in the reader's words. */}
-            {!isPhone && mode === "quiet" ? (
-              <div className="anna-razor-settings">
-                <button
-                  type="button"
-                  onClick={() => {
-                    choose("razor");
-                    // Also move the restore point. Close puts the reader back
-                    // in whatever they had when they opened the panel, and
-                    // what they had was quiet — so without this line, turning
-                    // the bar on here and then closing would quietly undo the
-                    // choice they just made.
-                    modeBeforeOpen.current = "razor";
-                  }}
-                >
-                  Pin Almost Anna to the bottom of the page
-                </button>
-              </div>
-            ) : null}
+            {/* The worded restore button lived here until 2026-08-10
+                ("Pin Almost Anna to the bottom of the page", and before that
+                "Show suggestions at the bottom as I browse"). Removed at
+                Anna's instruction: the panel foot was "a terrible spot for
+                it". Its job, the only way back to the bar after a dismissal,
+                moved to the Minimise glyph in the panel controls above, which
+                sets mode to razor and moves the restore point with it. */}
           </motion.div>
         ) : mode === "quiet" ? (
           <motion.button
