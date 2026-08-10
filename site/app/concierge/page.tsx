@@ -126,12 +126,12 @@ export default function Home() {
           </div>
 
           <Figure
-            src="concierge-demo.webp"
-            alt="An IBM product demo with the Concierge open beside it. The assistant suggested searching for iPhones, the buyer replied that the devices are iPads, and the assistant answered that it will show iPad setup instead. The dashboard search field behind it now reads tablets."
+            src="bottom-dock-context.webp"
+            alt="The Concierge docked along the bottom of an IBM product page, offering to answer a question about device support while the supported devices section of the page is on screen above it"
             label="01 · hero"
-            caption="The demo is not on rails. Say iPads instead of iPhones and it rebuilds while it runs."
+            caption="It asks about device support because that is the section he stopped on. The dock reads the page above it, so the offer is specific rather than a greeting."
             width={2320}
-            height={1390}
+            height={1620}
             className="hero-figure"
           />
         </section>
@@ -368,14 +368,6 @@ export default function Home() {
             </div>
           </div>
 
-          <Figure
-            src="bottom-dock-context.png"
-            alt="The Concierge docked along the bottom of an IBM product page, asking about device support while the supported devices section is on screen"
-            label="04 · the dock in context"
-            caption="The prompt reads “Have a question about device support?” because supported devices is the section he stopped on. The dock watches the page above it, so what it offers is specific to where the buyer already is rather than a greeting it would have shown anyone."
-            className="wide-figure"
-          />
-
           <div className="principle-row">
             <div><span>Context</span><p>Respond to what the buyer is already looking at.</p></div>
             <div><span>Continuity</span><p>Carry useful information into the next step.</p></div>
@@ -413,6 +405,16 @@ export default function Home() {
                 </article>
               ))}
             </div>
+
+            <Figure
+              src="concierge-demo.webp"
+              alt="An IBM product demo with the Concierge open beside it. The assistant suggested searching for iPhones, the buyer replied that the devices are iPads, and the assistant answered that it will show iPad setup instead. The dashboard search field behind it now reads tablets."
+              label="05 · redirecting the demo"
+              caption="Midway through the demo, the buyer mentions his devices are iPads, not iPhones. It rebuilds around iPads and keeps going."
+              width={2320}
+              height={1497}
+              className="wide-figure"
+            />
           </div>
         </section>
 
