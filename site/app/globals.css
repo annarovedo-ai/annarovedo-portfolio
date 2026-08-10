@@ -1647,6 +1647,21 @@ h3 {
   letter-spacing: -0.005em;
 }
 
+/* AIR BETWEEN THE VOICES (2026-08-10). Tailwind's preflight zeroes every
+   paragraph margin, and the lead/body pair never got its spacing back, so on
+   every case study the serif lead sat flush against the sans body: one
+   paragraph changing font mid-thought. Anna: "something very inelegant about
+   this typography." The hierarchy needs space as well as contrast. A body
+   line's worth between paragraphs; a touch more after a lead, because the
+   voice change is a bigger break than a paragraph change. */
+:is(.two-column-copy, .reflection-grid, .summary-copy, .chapter-intro) p + p {
+  margin-top: 14px;
+}
+
+.lead + p {
+  margin-top: 20px;
+}
+
 /* The body half of the pair, everywhere the pair occurs: sans, a step smaller,
    set looser, so the serif lead has something to be louder than.
 
@@ -3187,16 +3202,27 @@ blockquote {
 }
 
 .next-case-status {
-  flex: none;
-  padding: 17px 27px;
-  border: 1px solid var(--on-dark-line);
+  /* Was a bordered box: a link wearing a button costume, and Anna's read
+     ("isn't interactive supposed to be orange?") proved the costume misleads.
+     Orange does something; links go somewhere. This goes somewhere, so it
+     wears the homepage's go-read-a-thing pattern (the case cards' VIEW CASE
+     STUDY arrow link), in white for the navy band. The arrow is CSS so nine
+     call sites don't need markup edits. */
+  padding: 0;
+  border: 0;
   color: #fff;
   font-family: var(--sans);
-  font-size: var(--t-small);
-  letter-spacing: var(--track-ui);
-  text-transform: uppercase;
+  font-size: var(--t-label);
   font-weight: 600;
-  border-radius: 6px;
+  letter-spacing: var(--track-wide);
+  text-transform: uppercase;
+}
+
+.next-case-status::after {
+  content: "\2192";
+  display: inline-block;
+  margin-left: 9px;
+  transition: transform 0.18s ease;
 }
 
 /* An earlier .site-footer rule lived here (padding-block: 78px 34px, plus a
@@ -9114,7 +9140,12 @@ html[data-anna-razor="bar"] body {
 
 /* Hover for the two interactive patterns that had none. */
 .next-case-status:hover {
-  border-color: #fff;
+  text-decoration: underline;
+  text-underline-offset: 4px;
+}
+
+.next-case-status:hover::after {
+  transform: translateX(4px);
 }
 
 .svc-cta a:hover {
