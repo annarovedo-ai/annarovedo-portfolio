@@ -1345,13 +1345,12 @@ h3 {
 }
 
 .hero-figure .figure-image-wrap {
-  padding: 16px;
-  background: var(--surface);
+  padding: 0;
+  background: var(--paper-deep);
 }
 
 .hero-figure img {
-  height: 100%;
-  object-fit: contain;
+  height: auto;
 }
 
 .summary-band {

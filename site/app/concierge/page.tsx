@@ -131,7 +131,7 @@ export default function Home() {
             label="01 · hero"
             caption="Asked for iPhones, told it meant iPads. Correcting the assistant costs one sentence, and the demo beside it follows."
             width={2320}
-            height={1497}
+            height={1390}
             className="hero-figure"
           />
         </section>
