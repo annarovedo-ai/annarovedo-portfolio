@@ -44,8 +44,10 @@ const componentGroups = [
     number: "05",
     name: "Product templates",
     detail: "Complete financial workflows assembled from the same rules",
-    demoSrc: "product-template.png",
-    demoAlt: "Crop of the full portfolio-analysis template built from the component system",
+    // product-template.png was the same screen with stray colour-token chips
+    // and a ghost box baked into the export. Anna: "incorrect image."
+    demoSrc: "dashboard-light.png",
+    demoAlt: "The full portfolio-analysis template assembled from the component system: summary cards, sector breakdown, growth chart, and the holdings grid",
   },
 ];
 
@@ -340,7 +342,9 @@ export default function StateStreetCaseStudy() {
             <figure className="figure">
               <div className="figure-image-wrap">
                 <img
-                  src={`${assetRoot}/journey-daily-routine.png`}
+                  src={`${assetRoot}/journey-daily-routine.webp`}
+                  width={2320}
+                  height={1185}
                   alt="Daily routine journey map for an Operations Manager showing actions, thinking, feelings, and opportunities across a seven-step workday"
                   loading="lazy"
                 />

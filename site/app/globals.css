@@ -298,7 +298,7 @@
 }
 
 .ss-foundations-band {
-  padding-block: clamp(96px, 11vw, 150px);
+  padding-block: clamp(80px, 9vw, 120px);
   border-top: 1px solid #d8dddd;
   border-bottom: 1px solid #d8dddd;
   background: var(--ss-surface);
@@ -447,7 +447,7 @@
 }
 
 .ss-system-section {
-  padding-block: clamp(110px, 12vw, 168px);
+  padding-block: clamp(88px, 9.5vw, 128px);
   background: var(--ss-navy);
   color: #fff;
 }
@@ -676,7 +676,7 @@
 }
 
 .ss-implementation-band {
-  padding-block: clamp(96px, 11vw, 148px);
+  padding-block: clamp(80px, 9vw, 120px);
   border-top: 1px solid #d4d8d8;
   border-bottom: 1px solid #d4d8d8;
   background: #edf1f1;
@@ -764,7 +764,7 @@
 }
 
 .ss-gallery-band {
-  padding-block: clamp(96px, 11vw, 150px);
+  padding-block: clamp(80px, 9vw, 120px);
   border-top: 1px solid #d8dddd;
   border-bottom: 1px solid #d8dddd;
   background: var(--ss-surface);
@@ -1585,7 +1585,7 @@ h3 {
 }
 
 .chapter {
-  padding-block: clamp(96px, 10vw, 138px);
+  padding-block: clamp(76px, 8vw, 108px);
 }
 
 .chapter-alt {
@@ -1848,6 +1848,7 @@ h3 {
 .journey-stack {
   display: grid;
   gap: 34px;
+  margin-top: 44px;
 }
 
 blockquote {
