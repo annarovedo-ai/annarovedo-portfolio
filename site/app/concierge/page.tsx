@@ -127,9 +127,9 @@ export default function Home() {
 
           <Figure
             src="concierge-demo.webp"
-            alt="An IBM product demo with the Concierge open beside it. The assistant has suggested searching for iPhones, the buyer has replied that the devices are iPads, and the assistant has answered that it will show iPad setup instead."
+            alt="An IBM product demo with the Concierge open beside it. The assistant suggested searching for iPhones, the buyer replied that the devices are iPads, and the assistant answered that it will show iPad setup instead. The dashboard search field behind it now reads tablets."
             label="01 · hero"
-            caption="Asked for iPhones, told it meant iPads. Correcting the assistant costs one sentence, and the demo beside it follows."
+            caption="The demo is not on rails. Tell it the devices are iPads rather than iPhones and it rebuilds around iPads while it is running, which is the part a salesperson used to do."
             width={2320}
             height={1390}
             className="hero-figure"
