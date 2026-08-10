@@ -42,8 +42,8 @@ Earlier agency work: Razorfish and Euro RSCG, Digitas, Critical Mass, Arc Worldw
 
 Education: BFA Graphic Design, University of Illinois Urbana-Champaign. Graduate study in fashion design and pattern making, Felicidad Duce School of Design and Fashion, Barcelona.
 
-THE FLAGSHIP: IBM MaaS360 CHAT CONCIERGE
-A generative-AI chatbot positioned as a trusted sales and support partner embedded in IBM.com for IBM's Unified Endpoint Management platform. Also spans Instana. Anna was sole UX designer on the concept, on a team led by Amy Clark, IBM's Global Head of UX.
+THE FLAGSHIP: IBM CHAT CONCIERGE
+A generative-AI chatbot positioned as a trusted sales and support partner embedded in IBM.com. It was prototyped against one enterprise product page and designed to extend across IBM.com; it also spans Instana. Do not call it by that first product's name, it was the prototype context, not the project. Anna was sole UX designer on the concept, on a team led by Amy Clark, IBM's Global Head of UX.
 
 Built on a Crawl / Walk / Run framework. Crawl phase complete: Design-Led Innovation methodology, competitive research, Figma prototypes for two personas (David the Evaluator, a developer; Sara the Decision-Maker, his manager), and two rounds of unmoderated UserZoom testing with strong comprehension and interest signals. 15 participants, 5 hours, three research goals.
 

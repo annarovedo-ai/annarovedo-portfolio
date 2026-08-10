@@ -176,7 +176,13 @@ Contact/availability rules: fully open to new clients as of 2026-08-02; never di
 
 Resume: not yet built as a downloadable file — Anna will produce one before launch. Recommended approach once she does: condense to one to two pages rather than matching the full `facts.md` formal-resume section verbatim — keep dates/titles/clients exact, trim each role to one line, and consider grouping the pre-2015 agency-era roles (DraftFCB through Digitas) into a single block to make room for the more relevant IBM/LinkedIn/Nike/State Street work.
 
-Flagship Portfolio Project — IBM MaaS360 Chat Concierge
+Flagship Portfolio Project — IBM Chat Concierge
+
+NAMING RULE (added 2026-08-08, Anna's instruction): the project is the IBM Chat
+Concierge. Do not call it the MaaS360 Concierge anywhere, in any persona, in any
+public copy, metadata, alt text, or chatbot answer. MaaS360 was the product page
+the prototype was built against, not the name of the work. The references below
+are kept because they are the historical record of where it was prototyped.
 A generative-AI-powered chatbot designed as a sales and support tool within IBM's Unified Endpoint Management (UEM) platform, positioned as a trusted "sales and support partner" embedded in IBM.com to guide prospective customers through evaluation and purchase. Also spans the Instana product. Anna was sole UX designer on the concept, on a team led by Amy Clark, IBM's Global Head of UX.
 Team: Amy Clark (Global Head of UX, lead); Alan Lum & Peter Donnelly (Visual Design); Ricky Lee & Jessica Taylor (Research); Julie Travia (Content Writing).
 Stakeholders: Betsy Rohtbart (VP, IBM.com), Vlad Dudas (Manager, CRO), Helen Mason (Product Owner), Todd Cramer (Web Design Leader), Debra Pesek (Director, Web Strategy), Vasantha Vurakaranam (AI Chat Lead, led the Crawl phase), Andres (Mural prioritization for the Run phase).

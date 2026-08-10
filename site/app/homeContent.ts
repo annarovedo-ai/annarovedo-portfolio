@@ -163,7 +163,7 @@ export const flagshipCaseStudies: CaseStudy[] = [
     title: "IBM Chat Concierge",
     body: "A generative-AI guide that works across IBM’s product marketing site and follows the customer into the product itself, from first look through demo, purchase, onboarding and support. Sole UX designer, on a team led by IBM’s Global Head of UX.",
     outcome: "V1 shipped. Two buyer personas validated. Two rounds of user testing.",
-    // NOT thumbs/concierge.jpg. That file is the finished MaaS360 marketing
+    // NOT thumbs/concierge.jpg. That file is the finished IBM product marketing
     // page with the Concierge bar docked along its very bottom edge, and the
     // card crops 16:9 from the centre, so the one element the case study is
     // about was cropped straight out. The card advertised IBM's product page.

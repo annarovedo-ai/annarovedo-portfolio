@@ -5,7 +5,7 @@ import SiteFooter from "../SiteFooter";
 import Breadcrumb from "../Breadcrumb";
 
 export const metadata: Metadata = {
-  title: "IBM MaaS360 Chat Concierge, part one · Anna Rovedo",
+  title: "IBM Chat Concierge, part one · Anna Rovedo",
   description:
     "Part one of the IBM Concierge story: how Anna Rovedo designed and validated an AI concierge for the enterprise buying journey on IBM.com.",
 };
@@ -85,7 +85,7 @@ export default function Home() {
   return (
     <main>
       <SiteHeader />
-      <Breadcrumb label="IBM MaaS360 Chat Concierge" />
+      <Breadcrumb label="IBM Chat Concierge" />
 
       <article id="top">
         <section className="hero shell">
@@ -112,9 +112,9 @@ export default function Home() {
 
           <Figure
             src="v1-interactive-demo-hires.png"
-            alt="IBM MaaS360 interactive product demonstration with an AI assistant open beside it"
+            alt="An IBM interactive product demonstration with the AI assistant open beside it"
             label="01 · hero"
-            caption="The Concierge used MaaS360 as the first product context for a broader IBM.com vision."
+            caption="The Concierge used one product page as its first context, for a vision that covered IBM.com."
             className="hero-figure"
           />
         </section>
@@ -353,7 +353,7 @@ export default function Home() {
 
           <Figure
             src="bottom-dock-context.png"
-            alt="The Concierge docked along the bottom of an IBM MaaS360 page, asking about device support while the supported devices section is on screen"
+            alt="The Concierge docked along the bottom of an IBM product page, asking about device support while the supported devices section is on screen"
             label="04 · the dock in context"
             caption="The prompt reads “Have a question about device support?” because supported devices is the section he stopped on. The dock watches the page above it, so what it offers is specific to where the buyer already is rather than a greeting it would have shown anyone."
             className="wide-figure"
@@ -499,7 +499,7 @@ export default function Home() {
             </div>
             <Figure
               src="v1-final.jpg"
-              alt="Final Concierge concept embedded at the bottom of an IBM MaaS360 page"
+              alt="Final Concierge concept embedded at the bottom of an IBM product page"
               label="12 · V1 direction"
               caption="The V1 direction kept the Concierge visible while preserving the product page as the primary experience."
               tone="dark"
