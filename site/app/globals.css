@@ -1586,7 +1586,7 @@ h3 {
 }
 
 .shift-state-to strong {
-  color: var(--blue);
+  color: var(--ink);
 }
 
 .shift-arrow {
@@ -1924,7 +1924,7 @@ blockquote {
   padding: 18px;
   border: 1px solid #cadbe8;
   background: var(--blue-pale);
-  color: var(--blue);
+  color: var(--blue-bright);
   font-size: var(--t-fine);
 }
 
@@ -2224,7 +2224,7 @@ blockquote {
   padding: 3px 6px;
   border: 1px solid #c7d9e7;
   background: var(--blue-pale);
-  color: var(--blue);
+  color: var(--blue-bright);
 }
 
 .audit-evidence-grid h4,
@@ -4128,7 +4128,7 @@ blockquote {
 
 .search-recovery-model .search-recovery-query {
   margin-bottom: 40px;
-  color: var(--blue);
+  color: var(--ink);
 }
 
 .search-recovery-model > h3 {
@@ -5155,7 +5155,7 @@ blockquote {
   min-height: 92px;
   padding: 15px 17px;
   background: var(--blue-pale);
-  color: var(--blue);
+  color: var(--body);
   font-size: var(--t-small);
   font-weight: 600;
   line-height: 1.4;
@@ -7401,7 +7401,7 @@ blockquote {
   width: 22px;
   height: 22px;
   background: var(--paper-deep);
-  color: var(--blue);
+  color: var(--blue-bright);
   font-size: var(--t-label);
   font-weight: 600;
 }
