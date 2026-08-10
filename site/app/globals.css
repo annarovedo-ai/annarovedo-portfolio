@@ -8734,6 +8734,7 @@ html[data-anna-razor="bar"] body {
   font-size: var(--t-small);
   cursor: pointer;
   transition: opacity 0.16s ease;
+  margin-left: 14px;
 }
 
 /* The offer sits apart from the cursor, at the opposite end of the bar. It's
