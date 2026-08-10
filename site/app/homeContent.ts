@@ -163,14 +163,14 @@ export const flagshipCaseStudies: CaseStudy[] = [
     title: "IBM Chat Concierge",
     body: "The brief was a chatbot. The useful question turned out to be who was actually buying, so I designed for two people at once: the developer evaluating it and the manager who had to approve it. The guide runs from first look through demo, purchase and support. Sole UX designer, on a team led by IBM’s Global Head of UX.",
     outcome: "V1 shipped. Two buyer personas validated. Two rounds of user testing.",
-    // NOT thumbs/concierge.jpg. That file is the finished IBM product marketing
-    // page with the Concierge bar docked along its very bottom edge, and the
-    // card crops 16:9 from the centre, so the one element the case study is
-    // about was cropped straight out. The card advertised IBM's product page.
-    // hero-demo.jpg shows the Concierge open beside the product with a real
-    // conversation in it, which is legible at thumbnail size and unmistakably
-    // the thing being written about.
-    image: "/case-study/concierge/hero-demo.jpg",
+    // concierge-card.webp is a PURPOSE-MADE 16:9 crop (2026-08-10) from the
+    // hi-res demo capture, framed so the card fills edge to edge with UI and
+    // conversation. Its two predecessors both failed in the card slot:
+    // thumbs/concierge.jpg centre-cropped the Concierge bar out entirely, and
+    // hero-demo.jpg carried its own dead space and cropped into a mess Anna
+    // called ugly. Card images get their own crop; page figures do not moonlight
+    // as thumbnails.
+    image: "/case-study/concierge/concierge-card.webp",
     client: {
       tag: "AI product design",
       body: "IBM’s marketing site and its product were owned by different teams, so customers hit a seam halfway through buying. I designed a generative-AI guide that crosses it, from first look through demo, purchase, onboarding and support. Sole designer on it.",

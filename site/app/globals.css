@@ -2110,6 +2110,13 @@ blockquote {
 }
 
 .figure-dark figcaption {
+  color: var(--muted);
+}
+
+/* Inside the navy bands the section ground is dark, so captions go back to
+   the on-dark ladder there. */
+.future-section .figure-dark figcaption,
+.result-section .figure-dark figcaption {
   color: var(--on-dark-muted);
 }
 

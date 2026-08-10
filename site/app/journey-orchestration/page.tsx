@@ -239,11 +239,11 @@ export default function JourneyOrchestration() {
                 </p>
               </div>
 
-              <Figure
-                src="personas-grid.jpg"
-                alt="Four buying-committee persona cards: Jamal Cross (Technical Lead), Elaine Vance (Finance Manager), Richard Sterling (Strategist), and Dr. Mei Lin (Risk Manager)"
-                caption="The full buying committee. Jamal is the persona this case study follows, but the same adaptive logic applies to each of the other three."
-              />
+              {/* personas-grid.jpg used to render here: four persona photos
+                  with the same names, roles and questions as the stakeholder
+                  cards directly below, plus a baked-in deck annotation band.
+                  Anna: "text and image repeat here." The HTML cards win: they
+                  are crisper, responsive, and the single source. */}
 
               <div className="stakeholder-grid" style={{ marginTop: 32 }}>
                 {stakeholders.map((person) => (

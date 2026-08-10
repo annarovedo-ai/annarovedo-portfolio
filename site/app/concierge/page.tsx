@@ -131,12 +131,12 @@ export default function Home() {
           </div>
 
           <Figure
-            src="bottom-dock-context.webp"
-            alt="The Concierge docked along the bottom of an IBM product page, offering to answer a question about device support while the supported devices section of the page is on screen above it"
+            src="v1-final.jpg"
+            alt="The IBM product marketing page with the Concierge docked along its bottom edge, greeting the visitor and offering to tailor content to their organization"
             label="01 · hero"
-            caption="It asks about device support because that is the section he stopped on. The dock reads the page above it, so the offer is specific rather than a greeting."
-            width={2320}
-            height={1620}
+            caption="The V1 direction, docked along the bottom. The product page stays the primary experience."
+            width={1200}
+            height={773}
             className="hero-figure"
           />
         </section>
@@ -512,10 +512,12 @@ export default function Home() {
               </div>
             </div>
             <Figure
-              src="v1-final.jpg"
-              alt="Final Concierge concept embedded at the bottom of an IBM product page"
-              label="12 · V1 direction"
-              caption="The V1 direction kept the Concierge visible while preserving the product page as the primary experience."
+              src="bottom-dock-context.webp"
+              alt="The Concierge docked along the bottom of an IBM product page, offering to answer a question about device support while the supported devices section of the page is on screen above it"
+              label="12 · context"
+              caption="It asks about device support because that is the section the buyer stopped on. The dock reads the page above it."
+              width={2320}
+              height={1620}
               tone="dark"
             />
           </div>
