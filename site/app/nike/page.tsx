@@ -74,11 +74,10 @@ export default function NikeCaseStudy() {
   return (
     <main className="nike-case">
       <SiteHeader />
-      <Breadcrumb label="Nike, Datalogue & Operations Workspace" />
+      <Breadcrumb label="Nike, Datalogue & Operations Workspace" meta="Inventory availability" />
 
       <article id="top">
         <section className="hero shell">
-          <p className="eyebrow">Nike Operations Workspace · Inventory availability</p>
           <h1>Forty fields. Five that mattered.</h1>
           <p className="hero-deck">
             Nike&rsquo;s order management teams had no single view of whether product was actually available, and the requirements listed roughly forty ways to search for it. I was not permitted to interview a single end user, so I found another way to ask them.

@@ -85,11 +85,10 @@ export default function Home() {
   return (
     <main>
       <SiteHeader />
-      <Breadcrumb label="IBM Chat Concierge" />
+      <Breadcrumb label="IBM Chat Concierge" meta="Part one of two" />
 
       <article id="top">
         <section className="hero shell">
-          <p className="eyebrow">IBM.com · Generative AI · Part one of the Concierge story</p>
           <h1>Designing an AI concierge for the enterprise buying journey.</h1>
           <p className="hero-deck">
             IBM needed prospective customers to evaluate a complex enterprise product without a salesperson in the room. The answer was not another chatbot. It was a guided experience that could help buyers understand, compare, decide, and keep moving.

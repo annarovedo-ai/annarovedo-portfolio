@@ -33,11 +33,10 @@ export default function ThisSitePage() {
   return (
     <main>
       <SiteHeader />
-      <Breadcrumb label="This site" />
+      <Breadcrumb label="This site" meta="The site itself" />
 
       <article id="top">
         <section className="hero shell">
-          <p className="eyebrow">Paper Pixel · The site itself</p>
           <h1>This site is the seventh case study.</h1>
           <p className="hero-deck">
             The homepage says I design products and can get them built. That is

@@ -181,11 +181,10 @@ export default function StateStreetCaseStudy() {
   return (
     <main className="state-street-case">
       <SiteHeader />
-      <Breadcrumb label="State Street Alpha" />
+      <Breadcrumb label="State Street Alpha" meta="Visual language and design system" />
 
       <article id="top">
         <section className="hero shell ss-hero">
-          <p className="eyebrow">State Street Alpha · Visual language and design system</p>
           <h1>Designing the visual language for a financial operating system.</h1>
           <p className="hero-deck">
             Alpha brings investment operations, oversight, and analysis onto one platform. I was the sole UI designer who defined the visual language, accessibility foundations, and component system that makes its dozens of workflows feel like one product.

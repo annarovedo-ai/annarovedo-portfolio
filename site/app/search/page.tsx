@@ -65,11 +65,10 @@ export default function SearchCaseStudy() {
   return (
     <main className="search-case">
       <SiteHeader />
-      <Breadcrumb label="IBM Global Search" />
+      <Breadcrumb label="IBM Global Search" meta="Live and evolving" />
 
       <article id="top">
         <section className="hero shell search-hero">
-          <p className="eyebrow">IBM.com · Search · Live and evolving</p>
           <h1>Redesigning search across IBM.com.</h1>
           <p className="hero-deck">
             A search results page looks small until it has to make an ecosystem as complex as IBM understandable. I led the UX from audit and research through interaction design, testing, and launch.

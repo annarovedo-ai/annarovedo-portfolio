@@ -61,11 +61,10 @@ export default function Kmart() {
   return (
     <main>
       <SiteHeader />
-      <Breadcrumb label="SHHHHH" />
+      <Breadcrumb label="SHHHHH" meta="DraftFCB Chicago, 2010 · New business pitch" />
 
       <article id="top">
         <section className="hero shell">
-          <p className="eyebrow">DraftFCB Chicago · 2010 · New business pitch</p>
           <h1>Kmart had always sold clothes. Nobody had a reason to look again.</h1>
           <p className="hero-deck">
             A new in-house design team, a studio in New York, a genuine relaunch of the

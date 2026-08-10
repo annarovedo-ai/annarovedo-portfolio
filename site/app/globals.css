@@ -1166,7 +1166,7 @@ img {
 }
 
 .hero {
-  padding-top: clamp(92px, 10vw, 132px);
+  padding-top: clamp(64px, 7vw, 96px);
   padding-bottom: 112px;
 }
 
@@ -1193,6 +1193,26 @@ img {
 
 .breadcrumb span[aria-hidden] {
   opacity: 0.5;
+}
+
+/* The status note that used to be a second uppercase line in the hero. Pushed
+   to the far end of the breadcrumb row and set in the body face rather than
+   the label face, so the two halves of this line read as different things:
+   navigation on the left, what this project is on the right. */
+.breadcrumb-meta {
+  margin-left: auto;
+  color: var(--placeholder);
+  font-family: var(--sans);
+  font-size: var(--t-fine);
+  font-weight: 400;
+  letter-spacing: 0;
+  text-transform: none;
+}
+
+@media (max-width: 720px) {
+  .breadcrumb-meta {
+    display: none;
+  }
 }
 
 .breadcrumb-current {

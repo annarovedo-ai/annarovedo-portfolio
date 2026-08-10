@@ -117,11 +117,10 @@ export default function JourneyOrchestration() {
   return (
     <main>
       <SiteHeader />
-      <Breadcrumb label="AI-driven journey orchestration" />
+      <Breadcrumb label="AI-driven journey orchestration" meta="Part two of two · Concept direction" />
 
       <article id="top">
         <section className="hero shell">
-          <p className="eyebrow">IBM.com · Part two of the Concierge story · Concept direction</p>
           <h1>What if every page rewrote itself around the person reading it?</h1>
           <p className="hero-deck">
             After the Concierge shipped its first chat-based direction, I kept working on the live experience with IBM’s team. A few weeks into that work, alongside Amy Clark, IBM’s Global Head of UX, we realized the bigger opportunity wasn’t a smarter chatbot. It was a smarter interface: one where AI orchestrates the entire journey, not just a conversation docked to the bottom of it.
