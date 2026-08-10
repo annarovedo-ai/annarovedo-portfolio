@@ -425,24 +425,24 @@ export default function AnnaRazor() {
 
             <AlmostAnnaChat variant="dock" seed={seed} />
 
-            {/* THE WAY BACK, and only the way back.
-                This used to be a two-way switch, which meant that with the bar
-                already on it offered "Stop showing the bar while I read" — a
-                second control for something the × in this panel's own header
-                already does, two inches away. A settings-shaped duplicate of a
-                button you can see at the same time is worse than no control at
-                all: it implies a distinction that isn't there.
+            {/* THE WAY BACK, and only the way back. Shown only when the bar
+                is off: with the bar on, the x in this panel's header already
+                covers it, and a visible duplicate implies a distinction that
+                does not exist.
 
-                So it now appears in one direction only, when the bar is off,
-                which is the one job nothing else can do. Dismissal is easy to
-                do by accident and easy to forget doing, and this panel is
-                reachable from every state including quiet, so it is the only
-                place an undo can't get stranded.
+                This is the ONLY route back to the bar after a dismissal.
+                Close is not one: it restores modeBeforeOpen, and for a reader
+                who dismissed the bar that is quiet. Do not remove this control
+                without giving the bar another way back first. It was removed
+                for about five minutes on 2026-08-10 on the strength of a stale
+                doc that said Minimise still existed; the code is the truth.
 
-                The wording is an offer, not a setting: it says where the thing
-                will appear and what it will do there, in the reader's words
-                rather than ours. "The bar" meant nothing to anyone who hadn't
-                built it. */}
+                RELABELLED the same day. It said "Show suggestions at the
+                bottom as I browse", and Anna, who designed the feature, said
+                "i still have no idea what this means". "Suggestions" described
+                the hint chips, a thing no visitor has a name for, and named
+                neither the assistant nor what pressing would do. The label now
+                names the visible thing and the action, in the reader's words. */}
             {!isPhone && mode === "quiet" ? (
               <div className="anna-razor-settings">
                 <button
@@ -453,12 +453,11 @@ export default function AnnaRazor() {
                     // in whatever they had when they opened the panel, and
                     // what they had was quiet — so without this line, turning
                     // the bar on here and then closing would quietly undo the
-                    // choice they just made, which is the exact failure this
-                    // whole pass was fixing.
+                    // choice they just made.
                     modeBeforeOpen.current = "razor";
                   }}
                 >
-                  Show suggestions at the bottom as I browse
+                  Pin Almost Anna to the bottom of the page
                 </button>
               </div>
             ) : null}

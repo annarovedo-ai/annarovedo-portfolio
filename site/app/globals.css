@@ -8910,15 +8910,10 @@ html[data-anna-razor="bar"] body {
   outline-offset: 2px;
 }
 
-/* The way back, at the foot of the conversation, and shown ONLY when the bar
-   is off (see the long note in AnnaRazor.tsx). The chat is reachable from
-   every state, including quiet, so this is the only control that can undo a
-   dismissal the reader has forgotten making.
-
-   Outlined rather than filled on purpose. The accent means "primary action",
-   and send is the primary action in this panel; a second orange fill here
-   would make two things claim that at once. It picks the accent up on hover
-   instead, which is enough to say "pressable" without competing. */
+/* The way back, at the foot of the conversation, shown ONLY when the bar is
+   off (see the long note in AnnaRazor.tsx — this is the only route back after
+   a dismissal; Close restores quiet). Outlined rather than filled: the accent
+   means "primary action" and send owns that in this panel. */
 .anna-razor-settings {
   display: flex;
   justify-content: center;
