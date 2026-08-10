@@ -1548,8 +1548,6 @@ h3 {
   align-items: start;
   margin-top: 20px;
   padding: 30px 0;
-  border-top: 1px solid var(--line);
-  border-bottom: 1px solid var(--line);
 }
 
 .shift-label,
