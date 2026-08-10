@@ -85,12 +85,6 @@ export default function Kmart() {
               <strong>Pitch concept · outcome unknown</strong>
             </div>
           </div>
-
-          <Figure
-            src="ad-cat-astronauts.jpg"
-            alt="Fashion print advertisement. A woman laughing at a party in a pink dress. A caption reads: wrote a screenplay about cat astronauts. Below: some things are best kept to yourself. Keep Your Secret. Kmart logo."
-            caption="The campaign line, and a confession that has nothing to do with clothes."
-          />
         </section>
 
         <section className="summary-band" id="brief" data-anna-prompt="What reappraisal meant">
@@ -201,8 +195,9 @@ export default function Kmart() {
 
             <Figure
               src="ad-keep-your-secret-2.jpg"
-              alt="Second print advertisement in the Keep Your Secret campaign."
-              caption="Keep Your Secret. Written and art directed over the weekend, in the aspirational fashion titles."
+              alt="Print advertisement: a woman laughing at a party in a pink dress, a confession reading wrote a screenplay about cat astronauts, the line some things are best kept to yourself, and the Keep Your Secret sign-off above the Kmart logo."
+              caption="The campaign line, and a confession that has nothing to do with clothes. Written and art directed over the weekend, for the aspirational fashion titles."
+              className="figure-portrait"
             />
           </div>
         </section>

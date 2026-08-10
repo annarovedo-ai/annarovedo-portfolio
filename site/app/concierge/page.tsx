@@ -66,10 +66,15 @@ const flow = [
     body: "The conversation begins in the context of the product page, without forcing the buyer into a separate tool.",
   },
   {
-    src: "v1-interactive-demo-hires.png",
+    // The demo-redirect capture lives HERE, in the step about the demo, not as
+    // a standalone wide figure after the flow. It was appended full-width
+    // below the grid first, and Anna's verdict was exact: "this is a strange
+    // place to pull this piece out and it's huge." An image belongs inside
+    // the thing that explains it, at the size that role earns.
+    src: "concierge-demo.webp",
     step: "02",
     title: "Explore the product",
-    body: "An interactive demo replaces a generic sales pitch with something the buyer can actually evaluate.",
+    body: "An interactive demo replaces a generic sales pitch with something the buyer can evaluate, and it is not on rails: midway through, this buyer says his devices are iPads, not iPhones, and the demo rebuilds around iPads.",
   },
   {
     src: "v1-assessment-hires.png",
@@ -405,16 +410,6 @@ export default function Home() {
                 </article>
               ))}
             </div>
-
-            <Figure
-              src="concierge-demo.webp"
-              alt="An IBM product demo with the Concierge open beside it. The assistant suggested searching for iPhones, the buyer replied that the devices are iPads, and the assistant answered that it will show iPad setup instead. The dashboard search field behind it now reads tablets."
-              label="05 · redirecting the demo"
-              caption="Midway through the demo, the buyer mentions his devices are iPads, not iPhones. It rebuilds around iPads and keeps going."
-              width={2320}
-              height={1497}
-              className="wide-figure"
-            />
           </div>
         </section>
 

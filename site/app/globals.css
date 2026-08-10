@@ -1547,9 +1547,9 @@ h3 {
      meant to sit alongside. The arrow opts back into centring below. */
   align-items: start;
   margin-top: 20px;
-  padding: 30px 32px;
-  border: 1px solid var(--line);
-  background: var(--surface);
+  padding: 30px 0;
+  border-top: 1px solid var(--line);
+  border-bottom: 1px solid var(--line);
 }
 
 .shift-label,
@@ -1715,6 +1715,14 @@ h3 {
   margin: 0;
   color: var(--muted);
   font-size: var(--t-small);
+}
+
+/* Portrait print pieces: a 1275x1650 magazine page at full column width is a
+   billboard, and Anna called it exactly that ("huge"). Capped near print size
+   and centered, so it reads as a plate in the story rather than a takeover. */
+.figure-portrait {
+  max-width: 560px;
+  margin-inline: auto;
 }
 
 .wide-figure {
