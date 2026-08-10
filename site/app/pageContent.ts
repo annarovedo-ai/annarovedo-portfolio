@@ -43,7 +43,7 @@ export type ResumeContent = {
 export const contactContent: Record<PersonaId, ContactContent> = {
   recruiter: {
     eyebrow: "Availability status",
-    headline: "Open to new roles starting Q4 2026",
+    headline: "Taking on new roles and contracts",
     deck: "I am currently exploring full-time leadership roles, advisory contracts, and selected collaborative projects.",
     fields: [
       { label: "Full name", placeholder: "E.g., Sarah Jenkins" },
@@ -56,11 +56,11 @@ export const contactContent: Record<PersonaId, ContactContent> = {
       },
     ],
     submit: "Get in touch",
-    sideHeading: "Direct Channels",
+    sideHeading: "Direct channels",
     sideBody:
-      "If your system blocks contact forms or you prefer sending full PDF specs immediately, please reach out via my verified addresses below.",
+      "If your system blocks contact forms or you prefer sending a full spec up front, please email me, or book time directly.",
     channels: [
-      { label: "Book a call", value: "calendly.com/paperpixel", href: "https://calendly.com/anna-rovedo/30min" },
+      { label: "Book a call", value: "Book 30 minutes", href: "https://calendly.com/anna-rovedo/30min" },
       { label: "Email address", value: "anna.rovedo@gmail.com", href: "mailto:anna.rovedo@gmail.com" },
       // "Professional network" pointed at an unclaimed LinkedIn vanity URL.
       // Removed 2026-08-07; put it back when linkedin.com/in/anna-paperpixel
@@ -83,7 +83,7 @@ export const contactContent: Record<PersonaId, ContactContent> = {
       { label: "Expected timeline", placeholder: "E.g., Nov 2026 start (approx. 4 months)" },
     ],
     submit: "Start a conversation",
-    sideHeading: "How I Work",
+    sideHeading: "How I work",
     sideBody:
       "No bloated pitch meetings. We align on scope, run on weekly sprints, and keep artifacts lightweight (Figma, production-ready code, and clear documentation).",
     sideList: [
@@ -92,7 +92,7 @@ export const contactContent: Record<PersonaId, ContactContent> = {
       { label: "Daily async communication via Slack", ordered: true },
     ],
     channels: [
-      { label: "Book a call", value: "calendly.com/paperpixel", href: "https://calendly.com/anna-rovedo/30min" },
+      { label: "Book a call", value: "Book 30 minutes", href: "https://calendly.com/anna-rovedo/30min" },
     ],
   },
 
@@ -119,7 +119,7 @@ export const contactContent: Record<PersonaId, ContactContent> = {
       { label: "Replies are strictly asynchronous and may take up to 3 business years." },
     ],
     channels: [
-      { label: "Book a call", value: "calendly.com/paperpixel", href: "https://calendly.com/anna-rovedo/30min" },
+      { label: "Book a call", value: "Book 30 minutes", href: "https://calendly.com/anna-rovedo/30min" },
     ],
   },
 };
@@ -136,7 +136,7 @@ export const resumeContent: Record<PersonaId, ResumeContent> = {
   client: {
     navLabel: "Services",
     eyebrow: "Senior-led creative and product studio",
-    headline: "One senior partner. The right team for the whole thing.",
+    headline: "One senior partner, and the right team for the whole thing.",
     intro: [
       "I lead the strategy and creative direction, then bring together the specialists your project needs, from brand and product design to websites, applications, content, development, and launch.",
     ],

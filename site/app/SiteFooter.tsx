@@ -23,7 +23,7 @@ const bio: Record<string, string> = {
   // "helping ambitious teams" was flattery in a sentence that did not need
   // it. The claim is what the studio does, not who deserves it.
   client:
-    "An independent design studio that turns complicated ideas into products, experiences, and systems people can understand and use.",
+    "Paper Pixel is the independent design studio of Anna Rovedo. It turns complicated ideas into products, experiences, and systems people can understand and use.",
   // First person, no surname: the Ex persona is someone who already knows her.
   ex: "I work on complex products, future vision, and emerging technology. Independently, which you probably could have guessed.",
 };

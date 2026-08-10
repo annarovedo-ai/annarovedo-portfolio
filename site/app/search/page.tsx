@@ -392,7 +392,7 @@ export default function SearchCaseStudy() {
                 study about a shipped redesign showed what it replaced and what
                 did not happen, and nothing of the thing itself. Everything the
                 scope table below claims -- tabs becoming a Search by rail,
-                content-type labels on results, the query term emphasised in
+                content-type labels on results, the query term emphasized in
                 titles and descriptions -- is visible here, so the reader stops
                 having to take the paragraph on faith.
 
@@ -402,14 +402,14 @@ export default function SearchCaseStudy() {
               <div className="search-launch-image">
                 <img
                   src={`${assetRoot}/launched-results.png`}
-                  alt="The launched IBM.com search results page for the query watsonx: a Search by rail listing All, Products, Documentation, Training and Support, and a single result list where each result carries a content-type label, a description, and its URL, with the query term emphasised throughout"
+                  alt="The launched IBM.com search results page for the query watsonx: a Search by rail listing All, Products, Documentation, Training and Support, and a single result list where each result carries a content-type label, a description, and its URL, with the query term emphasized throughout"
                   loading="lazy"
                 />
               </div>
               <figcaption>
                 The launched result experience. The tabs became a filter rail,
                 every result carries its content type, and the query term is
-                emphasised in the title and the description.{" "}
+                emphasized in the title and the description.{" "}
                 <a
                   className="search-launch-live"
                   href="https://www.ibm.com/search"

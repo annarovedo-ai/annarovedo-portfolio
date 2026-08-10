@@ -157,7 +157,7 @@ export default function JourneyOrchestration() {
             <div className="summary-copy">
               <p>
                 The Concierge’s first direction (the full story is in{" "}
-                <a href="/concierge">part one</a>) proved something real: buyers were open to conversational help inside a product page, and would trust it enough to keep going. It used a bottom-docked layer, an early concept internally nicknamed for its thin, blade-like shape, deliberately positioned like the AI panes people already trust (ChatGPT, Gemini, Claude), not a sales popup in the corner.
+                <a href="/concierge">part one</a>) proved something real: buyers were open to conversational help inside a product page, and would trust it enough to keep going. It used a bottom-docked layer, an early concept for a thin input docked along the bottom of the page, deliberately positioned like the AI panes people already trust (ChatGPT, Gemini, Claude), not a sales popup in the corner.
               </p>
               <p>
                 That version still treated AI as a feature bolted onto a page. This direction asks a different question: what if the AI became the page’s operating system instead, shaping what a visitor sees next, not just answering what they ask?
@@ -194,7 +194,7 @@ export default function JourneyOrchestration() {
           <Figure
             src="market-landscape.jpg"
             alt="Screenshots of Salesforce Einstein Copilot, a Google generative search result, and the Walmart and OpenAI Instant Checkout announcement"
-            caption="Reference points gathered while framing the direction: not products Anna built, but evidence the interface pattern was already moving this way industry-wide."
+            caption="Reference points gathered while framing the direction: not products I built, but evidence the interface pattern was already moving this way industry-wide."
           />
 
           <div className="future-framework-grid" style={{ marginTop: 40 }}>
@@ -425,13 +425,22 @@ export default function JourneyOrchestration() {
         <section className="reflection shell" data-anna-prompt="Why it never launched">
           <SectionNumber>05 · Reflection</SectionNumber>
           <div className="reflection-grid">
-            <h2>The interesting problem was never the chat window.</h2>
+            {/* Rewritten 2026-08-10. This reflection used to end in the same
+                paragraph as part one's (connective tissue, what persists, what
+                becomes an artifact, how transparent) — the designed reading
+                path is part one then part two, and the pair ended on one
+                thought twice. Part one keeps that thesis. Part two now closes
+                on what a concept owes next: the tests it never got. Which also
+                answers the honest objection to this page, that the scoring
+                weights read as system design without anyone having pressure
+                tested them. */}
+            <h2>A concept this confident owes you its doubts.</h2>
             <div>
               <p className="lead">
-                Once conversation stops being a destination and starts being connective tissue across a whole journey, the real design questions show up: what should the system remember, what should become a durable artifact, when should a person step in, and how transparent should an adaptive page be about what it knows and why it changed.
+                The lead-scoring weights on this page are a starting hypothesis, not a finding. Nobody has watched a real cohort hit them. The first thing I would do with funding is try to break my own numbers: run the scoring silently against live traffic and see where it flags the wrong people.
               </p>
               <p>
-                Those questions were bigger than the Concierge’s original brief, and they’re the ones I’d want to keep working on next, for IBM or anywhere buyers are asked to make a complicated decision alone.
+                Second test: the consent architecture, because an adaptive page is one bad default away from feeling like surveillance. And third, where a person should step in, which is a threshold you can only find by crossing it. A concept earns the word direction when it names what would prove it wrong. This one is ready to be argued with.
               </p>
             </div>
           </div>

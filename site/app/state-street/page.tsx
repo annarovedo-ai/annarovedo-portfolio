@@ -95,7 +95,7 @@ const changeLog = [
   ["Controls", "Two save buttons did the same thing from two places. Save and close moved to one location, at the bottom of the flyout."],
   ["Iconography", "A refresh icon meant “run” in one context and “delete” in another. It became a plain “Apply” button instead."],
   ["Color", "Brand green was read as a sequential scale for comparing percentages, when the values needed no secondary visual cue at all."],
-  ["Data display", "A bubble chart encoded the same value twice, in both size and position. Size became constant so position could carry the meaning - and every bubble got easier to read and to click."],
+  ["Data display", "A bubble chart encoded the same value twice, in both size and position. Size became constant so position could carry the meaning, and every bubble got easier to read and to click."],
 ];
 
 const foundationsGallery = [
@@ -234,10 +234,10 @@ export default function StateStreetCaseStudy() {
             </div>
             <div className="summary-copy">
               <p>
-                Alpha pulls data from internal and external sources - Bloomberg among them - into real-time visualizations of positions, exposures, and investable cash for operations managers, oversight teams, and analysts, all working from the same platform. A shared product name did not create a shared product language.
+                Alpha pulls data from internal and external sources, Bloomberg among them, into real-time visualizations of positions, exposures, and investable cash for operations managers, oversight teams, and analysts, all working from the same platform. A shared product name did not create a shared product language.
               </p>
               <p>
-                My job was to define the rules underneath the screens: how typography, color, hierarchy, interaction, and data display should behave across teams and products. The core problem was never decoration. It was hierarchy - what to show first, what to let users find, and what to let them ignore.
+                My job was to define the rules underneath the screens: how typography, color, hierarchy, interaction, and data display should behave across teams and products. The core problem was never decoration. It was hierarchy: what to show first, what to let users find, and what to let them ignore.
               </p>
             </div>
           </div>
@@ -295,7 +295,7 @@ export default function StateStreetCaseStudy() {
                 The brief, verbatim: enable users to get a quick snapshot of the most important information at-a-glance, and easily deep-dive into areas of interest or concern.
               </p>
               <p>
-                That meant designing for two speeds of attention - the daily scan and the focused investigation - for operations managers, oversight teams, and analysts who each open Alpha for a different reason.
+                That meant designing for two speeds of attention, the daily scan and the focused investigation, for operations managers, oversight teams, and analysts who each open Alpha for a different reason.
               </p>
             </div>
           </div>
@@ -309,7 +309,7 @@ export default function StateStreetCaseStudy() {
                   loading="lazy"
                 />
               </div>
-              <figcaption>Debra M., Operations Manager - 20 years at State Street, manages a team of 5 to 8 and needs simplicity across her most-used tools.</figcaption>
+              <figcaption>Debra M., Operations Manager: 20 years at State Street, manages a team of 5 to 8 and needs simplicity across her most-used tools.</figcaption>
             </figure>
             <figure className="figure">
               <div className="figure-image-wrap">
@@ -319,7 +319,7 @@ export default function StateStreetCaseStudy() {
                   loading="lazy"
                 />
               </div>
-              <figcaption>Rebecca C., Oversight Manager - owns reporting quality and reconciliation, and needs one place to see and route a problem.</figcaption>
+              <figcaption>Rebecca C., Oversight Manager: owns reporting quality and reconciliation, and needs one place to see and route a problem.</figcaption>
             </figure>
             <figure className="figure">
               <div className="figure-image-wrap">
@@ -329,7 +329,7 @@ export default function StateStreetCaseStudy() {
                   loading="lazy"
                 />
               </div>
-              <figcaption>Ralph W., Operations Analyst - fields escalations from teams in India and Poland and needs a faster way through funds with thousands of assets.</figcaption>
+              <figcaption>Ralph W., Operations Analyst: fields escalations from teams in India and Poland and needs a faster way through funds with thousands of assets.</figcaption>
             </figure>
           </div>
 
@@ -350,7 +350,7 @@ export default function StateStreetCaseStudy() {
                 />
               </div>
               <figcaption>
-                Debra&rsquo;s day starts at 4 or 5am, checking email and Teams for issues from other time zones. By 9:30 she has a running list and is assigning it to her team - then she and Ralph spend the rest of the day in meetings just to communicate where everyone stands, re-running calculations by hand along the way. The opportunity was obvious: surface errors and warnings on the platform itself, automate the calculations, and stop making people meet about a to-do list a tool could show them.
+                Debra&rsquo;s day starts at 4 or 5am, checking email and Teams for issues from other time zones. By 9:30 she has a running list and is assigning it to her team. Then she and Ralph spend the rest of the day in meetings just to communicate where everyone stands, re-running calculations by hand along the way. The opportunity was obvious: surface errors and warnings on the platform itself, automate the calculations, and stop making people meet about a to-do list a tool could show them.
               </figcaption>
             </figure>
           </div>
@@ -364,7 +364,7 @@ export default function StateStreetCaseStudy() {
                   loading="lazy"
                 />
               </div>
-              <figcaption>Across all 6 users interviewed for this research, automation of redundant tasks came up as the strongest single theme - alongside data accuracy, tool integration, and system latency.</figcaption>
+              <figcaption>Across all 6 users interviewed for this research, automation of redundant tasks came up as the strongest single theme, alongside data accuracy, tool integration, and system latency.</figcaption>
             </figure>
           </div>
         </section>
@@ -377,10 +377,10 @@ export default function StateStreetCaseStudy() {
             </div>
             <div>
               <p className="lead">
-                The client had already started building Alpha before this engagement, and a beta launch was approaching. Early on, I audited the existing product and logged the fixes with the most impact for the least effort - unglamorous work, but it set the terms for everything that followed.
+                The client had already started building Alpha before this engagement, and a beta launch was approaching. Early on, I audited the existing product and logged the fixes with the most impact for the least effort. Unglamorous work, but it set the terms for everything that followed.
               </p>
               <p>
-                Three stages tell the real story: the legacy portal I inherited, my own first redesign pass, and the North Star that came out of what that first pass got right and wrong. Nothing here is a mockup standing in for &ldquo;before&rdquo; - every screen below is a real, dated build.
+                Three stages tell the real story: the legacy portal I inherited, my own first redesign pass, and the North Star that came out of what that first pass got right and wrong. Nothing here is a mockup standing in for &ldquo;before&rdquo;. Every screen below is a real, dated build.
               </p>
             </div>
           </div>
@@ -406,7 +406,7 @@ export default function StateStreetCaseStudy() {
                 alt="The pre-existing Alpha Data Portal, a plain gray and white fund-analysis screen with six undifferentiated KPI tiles and five dense reference tables for security types, sector exposure, holdings, currency, and country of risk"
                 loading="lazy"
               />
-              <figcaption>Six identical KPI tiles, five reference tables, unbranded and undifferentiated - everything given equal weight, which is the same as giving nothing weight. Lesson for Round One: fix the hierarchy before touching a single chart.</figcaption>
+              <figcaption>Six identical KPI tiles, five reference tables, unbranded and undifferentiated. Everything given equal weight, which is the same as giving nothing weight. Lesson for Round One: fix the hierarchy before touching a single chart.</figcaption>
             </figure>
 
             <figure className="ss-product-figure ss-product-figure-compact">
@@ -419,7 +419,7 @@ export default function StateStreetCaseStudy() {
                 alt="Round One redesign: a Growth Investing Alpha Capital prototype for a risk-analyst workflow, with a composition donut chart, KPI cards, a portfolio movers list, and a securities table"
                 loading="lazy"
               />
-              <figcaption>Real progress: a subject, a brand, a KPI row, a composition chart, a movers list. Also three problems still unsolved - a donut chart asking users to compare slice angles, a table burying 15 identifier columns under a sparkline and a range slider, and a KPI card colored only because it happened to be built first. Those three became the brief for the Final.</figcaption>
+              <figcaption>Real progress: a subject, a brand, a KPI row, a composition chart, a movers list. Also three problems still unsolved: a donut chart asking users to compare slice angles, a table burying 15 identifier columns under a sparkline and a range slider, and a KPI card colored only because it happened to be built first. Those three became the brief for the Final.</figcaption>
             </figure>
 
             <figure className="ss-product-figure">
@@ -432,7 +432,7 @@ export default function StateStreetCaseStudy() {
                 alt="Final State Street Alpha dashboard with a clear KPI row, a growth-over-time chart, two ranked allocation lists, and a workflow-oriented data grid with color-coded errors and warnings"
                 loading="lazy"
               />
-              <figcaption>The same job, redone: a growth-over-time chart in place of the donut, two ranked bar lists in place of guessing at slice sizes, and a data grid rebuilt around exceptions - errors, warnings, status, and who owns the fix - instead of static security identifiers.</figcaption>
+              <figcaption>The same job, redone: a growth-over-time chart in place of the donut, two ranked bar lists in place of guessing at slice sizes, and a data grid rebuilt around exceptions (errors, warnings, status, and who owns the fix), instead of static security identifiers.</figcaption>
             </figure>
           </div>
 
@@ -440,17 +440,17 @@ export default function StateStreetCaseStudy() {
             <article>
               <span>01</span>
               <h3>Comparison over composition</h3>
-              <p>A donut chart asks a viewer to compare angles - one of the hardest visual judgments there is. Ranked horizontal bars ask them to compare lengths, which people read precisely and fast. Same allocation data, a chart that&rsquo;s actually easier to use.</p>
+              <p>A donut chart asks a viewer to compare angles, one of the hardest visual judgments there is. Ranked horizontal bars ask them to compare lengths, which people read precisely and fast. Same allocation data, a chart that&rsquo;s actually easier to use.</p>
             </article>
             <article>
               <span>02</span>
               <h3>One KPI card, not one loud one</h3>
-              <p>Round One gave Total Market Value a solid color block and left the other two KPIs plain - an accident of build order, not a decision. In the final, all three KPIs share one visual weight, and color is reserved for the value itself: green for a gain, red for a loss.</p>
+              <p>Round One gave Total Market Value a solid color block and left the other two KPIs plain, an accident of build order, not a decision. In the final, all three KPIs share one visual weight, and color is reserved for the value itself: green for a gain, red for a loss.</p>
             </article>
             <article>
               <span>03</span>
               <h3>The table&rsquo;s job changed</h3>
-              <p>Round One&rsquo;s table described every security - 15 columns of identifiers, a sparkline and a range slider in every row. The final grid is built around exceptions: errors and warnings flagged and color-coded, status and an owner visible per row, so the person using it can act instead of just read.</p>
+              <p>Round One&rsquo;s table described every security: 15 columns of identifiers, a sparkline and a range slider in every row. The final grid is built around exceptions: errors and warnings flagged and color-coded, status and an owner visible per row, so the person using it can act instead of just read.</p>
             </article>
           </div>
         </section>
@@ -492,7 +492,7 @@ export default function StateStreetCaseStudy() {
                 alt="Final dark-theme State Street Alpha dashboard preserving the same hierarchy, data semantics, and interaction structure as the light theme"
                 loading="lazy"
               />
-              <figcaption>The same information architecture, component behavior, and semantic color roles carried across environments - system proof, not a cosmetic re-theme.</figcaption>
+              <figcaption>The same information architecture, component behavior, and semantic color roles carried across environments. System proof, not a cosmetic re-theme.</figcaption>
             </figure>
           </div>
 
@@ -509,11 +509,11 @@ export default function StateStreetCaseStudy() {
           <div className="chapter-intro two-column-copy ss-subsection">
             <div>
               <p className="eyebrow">Proven across real workflows</p>
-              <h2>Not a concept - a system running on real screens.</h2>
+              <h2>Not a concept. A system running on real screens.</h2>
             </div>
             <div>
               <p className="lead">
-                Looker powers the visualizations, and early on, powered the data grid itself. Every tile on a page - a ledger, a compliance check, a country exposure view - is its own named component pulling from a Looker or CRIMS source, which is what lets the same system scale to dozens of workflows instead of one screen.
+                Looker powers the visualizations, and early on, powered the data grid itself. Every tile on a page, a ledger, a compliance check, a country exposure view, is its own named component pulling from a Looker or CRIMS source, which is what lets the same system scale to dozens of workflows instead of one screen.
               </p>
             </div>
           </div>
@@ -545,10 +545,10 @@ export default function StateStreetCaseStudy() {
                 Each level inherited the decisions beneath it. That made the system flexible enough to compose, but constrained enough to keep teams from inventing a new product language screen by screen.
               </p>
               <p>
-                The color system is anchored on three brand colors from the Alpha marketing site - green, yellow, and blue - and every other hue in the system is derived from them by shifting hue alone against their HSB values, then calculated into full tint stacks using the Eva Design System. The one deliberate exception: an early version reused the brand red as the primary data-point color, but it read too strongly as an error state, so it became its own color, distinct from system red, reserved only for marking a value.
+                The color system is anchored on three brand colors from the Alpha marketing site, green, yellow, and blue, and every other hue in the system is derived from them by shifting hue alone against their HSB values, then calculated into full tint stacks using the Eva Design System. The one deliberate exception: an early version reused the brand red as the primary data-point color, but it read too strongly as an error state, so it became its own color, distinct from system red, reserved only for marking a value.
               </p>
               <p>
-                Type styles follow the same logic. Alongside a standard heading and paragraph scale, the system names styles for what they&rsquo;re used for - card header, table header, column group title - so another designer could find the right style by the job it does, not by guessing which heading level looks right.
+                Type styles follow the same logic. Alongside a standard heading and paragraph scale, the system names styles for what they&rsquo;re used for: card header, table header, column group title. So another designer could find the right style by the job it does, not by guessing which heading level looks right.
               </p>
             </div>
 
@@ -590,7 +590,7 @@ export default function StateStreetCaseStudy() {
               </div>
               <div>
                 <p className="lead">
-                  A sample of the working UI kit - not every board carries equal weight, so this shows representative foundations, molecules, and organisms, plus one full product template proving the system at density.
+                  A sample of the working UI kit. Not every board carries equal weight, so this shows representative foundations, molecules, and organisms, plus one full product template proving the system at density.
                 </p>
               </div>
             </div>
@@ -651,13 +651,13 @@ export default function StateStreetCaseStudy() {
                   alt="A full State Street Alpha portfolio-analysis template assembled entirely from the component system, showing KPI cards, a growth chart, and a dense holdings table"
                   loading="lazy"
                 />
-                <figcaption>A complete portfolio-analysis template, built entirely from foundation, atom, molecule, and organism rules - no one-off decisions.</figcaption>
+                <figcaption>A complete portfolio-analysis template, built entirely from foundation, atom, molecule, and organism rules. No one-off decisions.</figcaption>
               </figure>
             </div>
           </div>
         </section>
 
-        <section className="chapter shell ss-dataviz-section" data-anna-prompt="Colour that carries meaning">
+        <section className="chapter shell ss-dataviz-section" data-anna-prompt="Color that carries meaning">
           <div className="chapter-intro two-column-copy">
             <div>
               <SectionNumber>05 · Data visualization and accessibility</SectionNumber>
@@ -671,7 +671,7 @@ export default function StateStreetCaseStudy() {
                 The categorical palette was the hardest of the three: enough contrast between colors that a legend stays legible, not so many hues that the chart turns to noise, and every pairing tested for accessibility. Brand colors are front-loaded so the first few series in any chart still read as Alpha.
               </p>
               <p>
-                Designers are trained to make a palette feel harmonious - cool colors and grays, kept close on the wheel, always reads as pleasant. That instinct works against you here. Users build meaning out of unconscious color groupings: if the sector-allocation bars, the top-movers bars, and the background chrome all sit in the same blue family, people will read them as related even when they aren&rsquo;t. Every chart on the North Star dashboard needed its own hue, deliberately, for exactly this reason.
+                Designers are trained to make a palette feel harmonious: cool colors and grays, kept close on the wheel, always reads as pleasant. That instinct works against you here. Users build meaning out of unconscious color groupings: if the sector-allocation bars, the top-movers bars, and the background chrome all sit in the same blue family, people will read them as related even when they aren&rsquo;t. Every chart on the North Star dashboard needed its own hue, deliberately, for exactly this reason.
               </p>
             </div>
           </div>
@@ -685,12 +685,12 @@ export default function StateStreetCaseStudy() {
             <article>
               <span>02</span>
               <h3>Ranking · categorical</h3>
-              <p>Sector allocation and top movers sit side by side, and each gets its own hue - blue for one ranking, green for the other - so a user&rsquo;s eye never merges two different comparisons into one.</p>
+              <p>Sector allocation and top movers sit side by side, and each gets its own hue, blue for one ranking, green for the other, so a user&rsquo;s eye never merges two different comparisons into one.</p>
             </article>
             <article>
               <span>03</span>
               <h3>Exceptions · semantic</h3>
-              <p>Red and yellow are reserved, system-wide, for errors and warnings. They never appear anywhere else on the dashboard - not in a chart, not in a brand accent - so when a cell turns red, it is never ambiguous.</p>
+              <p>Red and yellow are reserved, system-wide, for errors and warnings. They never appear anywhere else on the dashboard: not in a chart, not in a brand accent. So when a cell turns red, it is never ambiguous.</p>
             </article>
           </div>
 
@@ -715,10 +715,10 @@ export default function StateStreetCaseStudy() {
               </div>
               <div>
                 <p className="lead">
-                  Search and sort are never as simple as they look. The easiest way to build search is to search only what the client already has loaded - it&rsquo;s a smaller lift for engineering, and it quietly fails the user, who reasonably expects a search to cover everything in the system.
+                  Search and sort are never as simple as they look. The easiest way to build search is to search only what the client already has loaded, because it&rsquo;s a smaller lift for engineering, and it quietly fails the user, who reasonably expects a search to cover everything in the system.
                 </p>
                 <p>
-                  I pushed back on that shortcut, on search and on sort both. It wasn&rsquo;t about policing engineers - it was about protecting what the system had promised: that a dense, expert-facing tool would still behave the way its users expected it to.
+                  I pushed back on that shortcut, on search and on sort both. It wasn&rsquo;t about policing engineers. It was about protecting what the system had promised: that a dense, expert-facing tool would still behave the way its users expected it to.
                 </p>
               </div>
             </div>
@@ -768,7 +768,7 @@ export default function StateStreetCaseStudy() {
                 A type size, a semantic color, or the alignment of a number can look incidental in isolation. Across a financial platform used by operations managers, oversight teams, and analysts, those decisions become trust, speed, and shared understanding.
               </p>
               <p>
-                The system worked because every visible detail could trace back to the same point of view - and because it gave other designers and engineers a consistent way to make their own decisions, long after I handed it off.
+                The system worked because every visible detail could trace back to the same point of view, and because it gave other designers and engineers a consistent way to make their own decisions, long after I handed it off.
               </p>
             </div>
           </div>

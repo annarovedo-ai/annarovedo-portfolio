@@ -280,7 +280,7 @@ export default function Home() {
                     <h3>Sara Garcia</h3>
                     <p className="persona-card-meta">
                       Tech-savvy manager, 40, New York. Bridges IT and the business to line
-                      solutions up with what the organisation actually needs.
+                      solutions up with what the organization actually needs.
                     </p>
                   </div>
                 </div>
@@ -505,11 +505,11 @@ export default function Home() {
               <p>
                 The design turned chat from a separate destination into a persistent layer within the product experience. It could explain what was on the page, help a buyer make progress, and preserve enough context to make the next interaction better.
               </p>
-              <div className="result-principles">
-                <span>Available, not demanding</span>
-                <span>Contextual, not generic</span>
-                <span>Continuous, not disposable</span>
-              </div>
+              {/* A second formatted triad ("Available, not demanding / Contextual,
+                  not generic / Continuous, not disposable") sat here, one screen
+                  after Context / Continuity / Control. Two triads saying
+                  overlapping things is a template showing; section 03's row
+                  owns the ideas. Cut 2026-08-10. */}
             </div>
             <Figure
               src="bottom-dock-context.webp"
@@ -569,7 +569,7 @@ export default function Home() {
                 <h2>This is where the story keeps going.</h2>
               </div>
               <p>
-                While the live chat work continued, I began working directly with Amy Clark, IBM’s Global Head of UX, on a much bigger question: what if AI didn’t just respond inside a page, but orchestrated the journey itself — adapting content, surfacing tools, and scoring intent in real time? That direction outgrew a single chapter here, so it has its own case study.
+                While the live chat work continued, I began working directly with Amy Clark, IBM’s Global Head of UX, on a much bigger question: what if AI didn’t just respond inside a page, but orchestrated the journey itself: adapting content, surfacing tools, and scoring intent in real time? That direction outgrew a single chapter here, so it has its own case study.
               </p>
             </div>
 
