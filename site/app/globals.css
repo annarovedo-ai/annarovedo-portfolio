@@ -5261,17 +5261,17 @@ blockquote {
    dark sibling is 4.87:1 and passes. The border can be the bright one, since
    a border is not text and only needs 3:1. */
 .home-cta-secondary {
-  padding: 17px 27px;
+  padding: 20px 30px;
   border: 1px solid var(--flare);
   background: transparent;
   color: var(--flare-ink);
-  font-family: var(--sans);
-  font-size: var(--t-small);
-  font-weight: 600;
+  font-family: var(--serif);
+  font-size: var(--t-read);
+  font-weight: 700;
   white-space: nowrap;
   transition: background 0.16s ease, color 0.16s ease, border-color 0.16s ease;
-  letter-spacing: var(--track-ui);
-  text-transform: uppercase;
+  letter-spacing: -0.005em;
+  text-transform: none;
   border-radius: 0;
 }
 
@@ -5296,16 +5296,16 @@ blockquote {
 }
 
 .home-cta-button {
-  padding: 17px 27px;
+  padding: 20px 30px;
   background: var(--flare);
   color: var(--ink);
-  font-family: var(--sans);
-  font-size: var(--t-small);
-  font-weight: 600;
+  font-family: var(--serif);
+  font-size: var(--t-read);
+  font-weight: 700;
   white-space: nowrap;
   border: 1px solid var(--flare-ink);
-  letter-spacing: var(--track-ui);
-  text-transform: uppercase;
+  letter-spacing: -0.005em;
+  text-transform: none;
   border-radius: 0;
 }
 
@@ -6374,15 +6374,15 @@ blockquote {
 
 .cv-download {
   display: inline-block;
-  padding: 17px 27px;
+  padding: 20px 30px;
   background: var(--flare);
   color: var(--ink);
-  font-size: var(--t-small);
-  font-weight: 600;
+  font-size: var(--t-read);
+  font-weight: 700;
   border: 1px solid var(--flare-ink);
-  font-family: var(--sans);
-  letter-spacing: var(--track-ui);
-  text-transform: uppercase;
+  font-family: var(--serif);
+  letter-spacing: -0.005em;
+  text-transform: none;
   border-radius: 0;
 }
 
@@ -6764,15 +6764,15 @@ blockquote {
 
 .about-cta-button {
   display: inline-block;
-  padding: 17px 27px;
+  padding: 20px 30px;
   background: var(--flare);
   color: var(--ink);
-  font-size: var(--t-small);
-  font-weight: 600;
+  font-size: var(--t-read);
+  font-weight: 700;
   border: 1px solid var(--flare-ink);
-  font-family: var(--sans);
-  letter-spacing: var(--track-ui);
-  text-transform: uppercase;
+  font-family: var(--serif);
+  letter-spacing: -0.005em;
+  text-transform: none;
   border-radius: 0;
 }
 
@@ -7318,15 +7318,15 @@ blockquote {
 .contact-submit {
   width: 100%;
   margin-top: 8px;
-  padding: 17px 27px;
+  padding: 20px 30px;
   border: 1px solid var(--flare-ink);
   background: var(--flare);
   color: var(--ink);
-  font-family: var(--sans);
-  font-size: var(--t-small);
-  font-weight: 600;
-  letter-spacing: var(--track-ui);
-  text-transform: uppercase;
+  font-family: var(--serif);
+  font-size: var(--t-read);
+  font-weight: 700;
+  letter-spacing: -0.005em;
+  text-transform: none;
   cursor: pointer;
   border-radius: 0;
 }
@@ -7445,13 +7445,13 @@ blockquote {
 .svc-primary {
   background: var(--flare);
   color: var(--ink);
-  padding: 17px 27px;
+  padding: 20px 30px;
   border: 1px solid var(--flare-ink);
-  font-family: var(--sans);
-  font-size: var(--t-small);
-  font-weight: 600;
-  letter-spacing: var(--track-ui);
-  text-transform: uppercase;
+  font-family: var(--serif);
+  font-size: var(--t-read);
+  font-weight: 700;
+  letter-spacing: -0.005em;
+  text-transform: none;
   border-radius: 0;
 }
 
@@ -7464,13 +7464,13 @@ blockquote {
 .svc-secondary {
   border: 1px solid var(--flare);
   color: var(--flare-ink);
-  padding: 17px 27px;
+  padding: 20px 30px;
   background: transparent;
-  font-family: var(--sans);
-  font-size: var(--t-small);
-  font-weight: 600;
-  letter-spacing: var(--track-ui);
-  text-transform: uppercase;
+  font-family: var(--serif);
+  font-size: var(--t-read);
+  font-weight: 700;
+  letter-spacing: -0.005em;
+  text-transform: none;
   border-radius: 0;
 }
 
@@ -7678,15 +7678,15 @@ blockquote {
 
 .svc-cta a {
   display: inline-block;
-  padding: 17px 27px;
+  padding: 20px 30px;
   background: var(--paper);
   color: var(--ink);
-  font-size: var(--t-small);
-  font-weight: 600;
+  font-size: var(--t-read);
+  font-weight: 700;
   border: 1px solid var(--paper);
-  font-family: var(--sans);
-  letter-spacing: var(--track-ui);
-  text-transform: uppercase;
+  font-family: var(--serif);
+  letter-spacing: -0.005em;
+  text-transform: none;
   border-radius: 0;
 }
 
@@ -9076,13 +9076,13 @@ html[data-anna-razor="bar"] body {
 .home-cta-button {
   background: var(--flare);
   color: var(--ink);
-  padding: 17px 27px;
+  padding: 20px 30px;
   border: 1px solid var(--flare-ink);
-  font-family: var(--sans);
-  font-size: var(--t-small);
-  font-weight: 600;
-  letter-spacing: var(--track-ui);
-  text-transform: uppercase;
+  font-family: var(--serif);
+  font-size: var(--t-read);
+  font-weight: 700;
+  letter-spacing: -0.005em;
+  text-transform: none;
   border-radius: 0;
 }
 /* Send. One button with three homes — the razor bar, the hero card's
