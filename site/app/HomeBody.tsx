@@ -89,7 +89,7 @@ export default function HomeBody() {
 
       <section className="home-clients" data-anna-prompt="What I did for these">
         <div className="shell">
-          <p className="eyebrow">Selected clients</p>
+          <p className="eyebrow">Selected clients and agency partners</p>
           <ul>
             {clients.map((cl) => (
               <li key={cl.name}>

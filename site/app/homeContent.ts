@@ -161,7 +161,7 @@ export const flagshipCaseStudies: CaseStudy[] = [
     tag: "UX / Systems",
     part: "Part one",
     title: "IBM Chat Concierge",
-    body: "A generative-AI guide that works across IBM’s product marketing site and follows the customer into the product itself, from first look through demo, purchase, onboarding and support. Sole UX designer, on a team led by IBM’s Global Head of UX.",
+    body: "The brief was a chatbot. The useful question turned out to be who was actually buying, so I designed for two people at once: the developer evaluating it and the manager who had to approve it. The guide runs from first look through demo, purchase and support. Sole UX designer, on a team led by IBM’s Global Head of UX.",
     outcome: "V1 shipped. Two buyer personas validated. Two rounds of user testing.",
     // NOT thumbs/concierge.jpg. That file is the finished IBM product marketing
     // page with the Concierge bar docked along its very bottom edge, and the
@@ -182,7 +182,7 @@ export const flagshipCaseStudies: CaseStudy[] = [
     tag: "UX / Product",
     part: "Part two",
     title: "AI-driven journey orchestration",
-    body: "Where the Concierge goes next. Instead of a chat sitting on the page, the page itself rearranges around what it learns about you, and scores the lead while it does it.",
+    body: "I argued the chat was the wrong unit. If the assistant already knows who you are, the page should rearrange around that rather than host a conversation in a box, and the same signals should score the lead while it happens. I built the model and the case for funding it.",
     outcome: "Concept direction, not launched.",
     image: "/case-study/thumbs/journey-orchestration.jpg",
     client: {
@@ -210,13 +210,13 @@ export const supportingCaseStudies: CaseStudy[] = [
     href: "/state-street",
     tag: "Design systems",
     title: "State Street Alpha",
-    body: "I built the visual language and the design system behind it, and it ended up being what every other State Street product got measured against.",
-    outcome: "Atomic, tokenized, 22+ component categories, WCAG AA",
+    body: "The call I made early was to build the system before the screens, atomic and tokenized, so every team after me could ship without redrawing anything. The visual language became the North Star for State Street’s broader suite.",
+    outcome: "Atomic, tokenized, 22 component categories, WCAG AA",
     image: "/case-study/thumbs/state-street.jpg",
     client: {
       tag: "Design systems",
       body: "I built the visual language for a fintech platform and the design system underneath it, atomic and tokenized, so every team after me could ship without redrawing anything. It became what the rest of State Street got measured against.",
-      outcome: "A tokenized system, 22+ component categories, WCAG AA, and the brand guide with it.",
+      outcome: "A tokenized system, 22 component categories, WCAG AA, and the brand guide with it.",
     },
   },
   {
@@ -248,12 +248,12 @@ export const supportingCaseStudies: CaseStudy[] = [
     // what launched, name the unlaunched work on the page where there is room
     // to label it honestly.
     body: "Six tabs competed to answer one question: products, downloads, learning, support, developers, and an All that mixed them together. I led the UX from audit and research through to launch, and replaced them with one result set you can filter without losing your place.",
-    outcome: "US-English MVP live on IBM.com. Filters replacing tabs, content-type labels, zero-results recovery.",
+    outcome: "US-English MVP live on IBM.com. A three-tier typeahead and the silent-autocorrection principle, tested, not launched.",
     image: "/case-study/thumbs/search.jpg",
     client: {
       tag: "Search and IA",
       body: "People could not find things across IBM.com, which is a revenue problem before it is a design one. I ran the audit and the research, then designed the result experience that replaced six competing tabs with one filterable set. It is live.",
-      outcome: "Audit, research, interaction design and prototyping, through to a launched MVP.",
+      outcome: "Audit, research, interaction design and prototyping, through to a launched MVP. Plus a three-tier typeahead, tested.",
     },
   },
   {

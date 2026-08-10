@@ -98,15 +98,15 @@ export default function Home() {
           <div className="hero-meta" aria-label="Project details">
             <div>
               <span>Role</span>
-              <strong>Lead UX designer</strong>
+              <strong>Sole UX designer</strong>
             </div>
             <div>
               <span>Methods</span>
               <strong>Journey mapping, prototyping, validation</strong>
             </div>
             <div>
-              <span>Team</span>
-              <strong>IBM.com UX, research, visual design, content</strong>
+              <span>Status</span>
+              <strong>V1 shipped</strong>
             </div>
           </div>
 
@@ -515,7 +515,7 @@ export default function Home() {
             </div>
             <div>
               <p className="lead">
-                I continued working on IBM’s live chat experience, auditing the current state, clarifying how conversation history should work, and translating the future vision into patterns the team could prioritize and build toward.
+                A first version went live, and I stayed with it: auditing the shipped experience, clarifying how conversation history should work across sessions, and turning the future vision into patterns the team could prioritize and build toward.
               </p>
               <p>
                 The work moved between near-term product decisions and the larger question behind them: how should assistance behave when it becomes part of the site rather than a widget attached to it?

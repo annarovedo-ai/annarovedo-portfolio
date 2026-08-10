@@ -344,6 +344,15 @@ export default function SearchCaseStudy() {
               <p className="lead">
                 We also prototyped and tested three typeahead directions. The question was larger than autocomplete: could the search box help people form a useful intent, reach a specialty experience, or act before they reached a results page?
               </p>
+              {/* SILENT AUTOCORRECTION. Documented in facts.md and claimed on
+                  the homepage card for months while this page never named it,
+                  which made the card read as an invention rather than as a
+                  principle. It is the sharpest judgment call in the section, so
+                  it gets its own paragraph rather than a slot in the grid
+                  below, which is a fixed three columns. */}
+              <p>
+                One principle came out of it that I would carry into any search I worked on again. When someone misspells a query and the intent is obvious, correct it and return the right results without announcing the mistake. Silent autocorrection, because nobody needs to be told they cannot spell.
+              </p>
               <p>
                 This work remains a tested direction, separate from the launched SERP. It belongs here because it shows how the project extended from fixing a result page to reconsidering the role of search across IBM.com.
               </p>
