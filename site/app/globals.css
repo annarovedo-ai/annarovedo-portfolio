@@ -3223,20 +3223,7 @@ blockquote {
   display: inline-block;
   margin-left: 9px;
   transition: transform 0.18s ease;
-}
-
-/* An earlier .site-footer rule lived here (padding-block: 78px 34px, plus a
-   grid that laid the footer's two .shell children out in columns). Every one
-   of its declarations was already overridden by the real rule further down, so
-   it did nothing except make the footer look like it had two conflicting
-   layouts. Deleted 2026-08-07, the same day two duplicate .home-case-outcome
-   rules caused a live bug. Search before adding a rule to this file. */
-
-.site-footer .brand {
-  color: var(--ink);
-}
-
-.site-footer .brand-divider,
+}.site-footer .brand-divider,
 .site-footer .brand-credit {
   color: var(--blue-bright);
 }
@@ -5157,58 +5144,7 @@ blockquote {
   font-weight: 600;
   letter-spacing: var(--track-wide);
   text-transform: uppercase;
-}
-
-/* The outcome panel has to line up across a row, and several things were
-   stopping it.
-
-   WIDTH: .home-case-content sets align-items: flex-start, so this block shrank
-   to the width of its own text and two cards with different-length outcomes
-   got two different-width panels. align-self: stretch opts this one child back
-   out, leaving the tag chip above still hugging its text, which is what that
-   one wants.
-
-   VERTICAL START: margin-top: auto used to live on .home-case-cta, which
-   pinned the CTA to the bottom and left this panel floating beneath a body of
-   variable length. The auto margin lives here now, so the panel and the CTA
-   travel to the bottom as one group and the panel stops caring how many lines
-   the description ran to.
-
-   HEIGHT: bottom-aligned panels still have ragged tops when one holds a single
-   line and its neighbour holds two. min-height is sized for the two-line case
-   (30px padding, a 20px label, two 20.3px lines).
-
-   THIS RULE MUST STAY IN THE MAIN CASCADE. It existed twice, byte for byte:
-   once here and once inside @media (max-width: 720px), where it was a pure
-   no-op restating the same values. On 2026-08-07 the wrong copy was deleted,
-   which left the only surviving definition scoped to phones. Above 720px the
-   panel lost its background, padding and label styling entirely, and "Outcome"
-   ran inline into the sentence after it. Verify with brace depth, not with a
-   grep: both copies look identical in isolation. */
-.home-case-outcome {
-  display: block;
-  align-self: stretch;
-  margin-top: auto;
-  margin-bottom: 20px;
-  min-height: 92px;
-  padding: 15px 17px;
-  background: var(--blue-pale);
-  color: var(--body);
-  font-size: var(--t-small);
-  font-weight: 600;
-  line-height: 1.4;
-}
-
-.home-case-outcome > span {
-  display: block;
-  margin-bottom: 5px;
-  font-size: var(--t-label);
-  font-weight: 600;
-  letter-spacing: var(--track-wide);
-  text-transform: uppercase;
-}
-
-/* Part one / Part two sit on the card image itself. Replaces the circular
+}/* Part one / Part two sit on the card image itself. Replaces the circular
    arrow that used to float between the two flagship cards, which read as a
    clickable button rather than a connector. */
 .home-case-part {
@@ -5235,20 +5171,7 @@ blockquote {
   margin: 0 0 20px;
   color: var(--muted);
   font-size: var(--t-small);
-}
-
-/* No longer margin-top: auto. That job moved up to .home-case-outcome, which
-   now carries the panel and this line to the bottom of the card as one unit. */
-.home-case-cta {
-  color: var(--blue);
-  font-size: var(--t-label);
-  font-weight: 600;
-  letter-spacing: var(--track-wide);
-  text-transform: uppercase;
-  font-family: var(--sans);
-}
-
-/* The other half of the same gap: this rule's border-top IS the divider under
+}/* The other half of the same gap: this rule's border-top IS the divider under
    the archive line, so its top padding and .home-work's bottom padding are one
    continuous void. Trimmed together. The bottom stays generous, since it runs
    into the navy CTA band and should. */
@@ -5612,13 +5535,7 @@ blockquote {
 
 .client-work-grid .home-case-content {
   padding: 24px 22px 26px;
-}
-
-.client-work-grid .home-case-outcome {
-  min-height: 112px;
-}
-
-.client-more-work {
+}.client-more-work {
   padding-top: 42px;
   border-top: 1px solid var(--line);
 }

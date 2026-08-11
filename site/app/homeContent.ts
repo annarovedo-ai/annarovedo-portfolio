@@ -16,7 +16,6 @@ import type { PersonaId } from "./personaStore";
 export type CaseVariant = {
   tag?: string;
   body?: string;
-  outcome?: string;
 };
 
 export type CaseStudy = {
@@ -26,7 +25,6 @@ export type CaseStudy = {
   part?: string;
   title: string;
   body: string;
-  outcome: string;
   /** Optional card thumbnail. Falls back to the plain placeholder block when unset. */
   image?: string;
   /**
@@ -70,7 +68,6 @@ export function caseFor(cs: CaseStudy, persona: PersonaId): CaseStudy {
     ...cs,
     tag: v.tag ?? cs.tag,
     body: v.body ?? cs.body,
-    outcome: v.outcome ?? cs.outcome,
   };
 }
 
@@ -107,12 +104,6 @@ export type HomeContent = {
     pullquote: string;
     link: string;
   };
-  /**
-   * The label above the metadata line on every case card. Was hardcoded as
-   * "Outcome" in HomeBody, which is a recruiter's question. The slot holds a
-   * different question per persona, so the label has to move with it.
-   */
-  outcomeLabel: string;
   footerHeadline: string;
   footerBody: string;
   footerButton: string;
@@ -163,13 +154,11 @@ export const flagshipCaseStudies: CaseStudy[] = [
     part: "Part one",
     title: "IBM Chat Concierge",
     body: "The brief was a chatbot. The useful question turned out to be who was actually buying, so I designed for two people at once: the developer evaluating it and the manager who had to approve it. The guide runs from first look through demo, purchase and support. Sole UX designer, on a team led by IBM’s Global Head of UX.",
-    outcome: "V1 shipped. Two buyer personas validated. Two rounds of user testing.",
     // Purpose-made 16:9 MaaS360 frame supplied for the homepage card.
     image: "/case-study/concierge/concierge-card-hero.png",
     client: {
       tag: "AI product design",
       body: "IBM’s marketing site and its product were owned by different teams, so customers hit a seam halfway through buying. I designed a generative-AI guide that crosses it, from first look through demo, purchase, onboarding and support, carrying the UX end to end.",
-      outcome: "Strategy, two validated personas, two rounds of testing, and the shipped V1.",
     },
   },
   {
@@ -178,7 +167,6 @@ export const flagshipCaseStudies: CaseStudy[] = [
     part: "Part two",
     title: "What if the assistant wasn’t a box on the page, but the page itself?",
     body: "I designed an adaptive journey that reorganized around each buyer in real time, using the same behavioral signals to shape the experience and score the lead. Then I built the model and the case for funding it.",
-    outcome: "Concept direction, not launched.",
     image: "/case-study/thumbs/journey-orchestration.jpg",
     client: {
       tag: "Product strategy",
@@ -186,7 +174,6 @@ export const flagshipCaseStudies: CaseStudy[] = [
       // Stays honest. A client who later finds out this never launched will
       // discount everything else on the page, and the willingness to say so
       // is worth more than the card.
-      outcome: "A concept direction and the argument for it. Not launched.",
     },
   },
 ];
@@ -206,12 +193,10 @@ export const supportingCaseStudies: CaseStudy[] = [
     tag: "Design systems",
     title: "State Street Alpha",
     body: "The call I made early was to build the system before the screens, atomic and tokenized, so every team after me could ship without redrawing anything. The visual language became the North Star for State Street’s broader suite.",
-    outcome: "Atomic, tokenized, 22 component categories, WCAG AA",
     image: "/case-study/thumbs/state-street.jpg",
     client: {
       tag: "Design systems",
       body: "I built the visual language for a fintech platform and the atomic, tokenized design system underneath it, so later teams could ship without redrawing anything. It became the benchmark for the rest of State Street.",
-      outcome: "A tokenized system, 22 component categories, WCAG AA, and the brand guide with it.",
     },
   },
   {
@@ -243,12 +228,10 @@ export const supportingCaseStudies: CaseStudy[] = [
     // what launched, name the unlaunched work on the page where there is room
     // to label it honestly.
     body: "Six tabs competed to answer one question: products, downloads, learning, support, developers, and an All that mixed them together. I led the UX from audit and research through to launch, and replaced them with one result set you can filter without losing your place.",
-    outcome: "US-English MVP live on IBM.com. A three-tier typeahead and the silent-autocorrection principle, tested, not launched.",
     image: "/case-study/search/search-card-hero.png",
     client: {
       tag: "Search and IA",
       body: "People could not find things across IBM.com, which is a revenue problem before it is a design one. I led the audit and research, then designed the result experience that replaced six competing tabs with one filterable set. It is live.",
-      outcome: "Audit, research, interaction design and prototyping, through to a launched MVP. Plus a three-tier typeahead, tested.",
     },
   },
   {
@@ -256,12 +239,10 @@ export const supportingCaseStudies: CaseStudy[] = [
     tag: "Brand / Campaign",
     title: "SHHHHH",
     body: "A new business pitch to relaunch Kmart's clothing lines, built around the one thing nobody wanted to admit: shop there anyway. The same device runs across every surface, from the bag to the hangtags to the site.",
-    outcome: "New business pitch. DraftFCB Chicago, 2010.",
     image: "/case-study/kmart/card-cover.png",
     client: {
       tag: "Brand and campaign",
       body: "Kmart’s clothes were fine and nobody would admit shopping there. The relaunch used the admission itself, carrying the same device across every surface, from the bag to the hangtags to the site.",
-      outcome: "Positioning, art direction, and every surface it runs on. A pitch for DraftFCB Chicago.",
     },
   },
   {
@@ -269,7 +250,6 @@ export const supportingCaseStudies: CaseStudy[] = [
     tag: "UX / Research",
     title: "Nike Datalogue & Operations Workspace",
     body: "Forty specified search attributes, reduced to the five people actually used, built without access to a single end-user interview.",
-    outcome: "Shipped. All four usability testers finished unaided.",
     image: "/case-study/nike/hero-w.png",
     client: {
       // The most persuasive card on the page for a client, because the
@@ -277,7 +257,6 @@ export const supportingCaseStudies: CaseStudy[] = [
       // have, and this is the one card that says so out loud.
       tag: "Research under constraint",
       body: "Forty specified search attributes, and no access to a single end-user interview. I found the five people actually used and designed the workspace around those.",
-      outcome: "A shipped tool. All four usability testers finished it unaided, with no training.",
     },
   },
 ];
@@ -360,7 +339,6 @@ export const homeContent: Record<PersonaId, HomeContent> = {
       link: "More about me",
     },
     // A recruiter is asking whether it worked and whether you really did it.
-    outcomeLabel: "Outcome",
     footerHeadline: "Have a role you think might fit?",
     footerBody:
       "Message me, or book a time and talk to the version that occasionally needs a minute to think.",
@@ -522,7 +500,6 @@ export const homeContent: Record<PersonaId, HomeContent> = {
     },
     // A client is asking what they would be buying. The slot holds
     // deliverables, not validation, so the label names the transaction.
-    outcomeLabel: "Contribution",
     footerHeadline: "What are you trying to figure out?",
     footerBody:
       "Send a message, or book a time and talk it through with Anna.",
@@ -613,7 +590,6 @@ export const homeContent: Record<PersonaId, HomeContent> = {
     },
     // Deliberately the recruiter's label, because the ex persona now carries
     // the recruiter's cards verbatim. See the note on CaseStudy.ex.
-    outcomeLabel: "Outcome",
     footerHeadline: "This is probably not that.",
     footerBody: "But if you have a real reason to get in touch, I’m listening.",
     // Two paths here as well, as of 2026-08-07, for the same reason the case

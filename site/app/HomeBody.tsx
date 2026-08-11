@@ -24,11 +24,9 @@ import AlmostAnnaChat from "./AlmostAnnaChat";
 function CaseCard({
   cs,
   persona,
-  outcomeLabel,
 }: {
   cs: CaseStudy;
   persona: PersonaId;
-  outcomeLabel: string;
 }) {
   const c = caseFor(cs, persona);
   return (
@@ -45,13 +43,6 @@ function CaseCard({
         </span>
         <h3>{c.title}</h3>
         <p>{c.body}</p>
-        <span className="home-case-outcome">
-          {/* The label is persona-switched, because the slot below it holds a
-              different question for each reader: what it achieved, what you
-              would be buying, or when and where this was. */}
-          <span>{outcomeLabel}</span>
-          {c.outcome}
-        </span>
         <span className="home-case-cta">View case study &rarr;</span>
       </span>
     </a>
@@ -218,7 +209,6 @@ function ClientHomeBody({ c }: { c: HomeContent }) {
               key={cs.href}
               cs={cs}
               persona="client"
-              outcomeLabel={c.outcomeLabel}
             />
           ))}
         </div>
@@ -382,7 +372,6 @@ export default function HomeBody() {
                 key={cs.href}
                 cs={cs}
                 persona={persona}
-                outcomeLabel={c.outcomeLabel}
               />
             ))}
           </div>
@@ -394,7 +383,6 @@ export default function HomeBody() {
               key={cs.href}
               cs={cs}
               persona={persona}
-              outcomeLabel={c.outcomeLabel}
             />
           ))}
         </div>
