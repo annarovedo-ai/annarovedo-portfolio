@@ -413,7 +413,14 @@ export const homeContent: Record<PersonaId, HomeContent> = {
     //    when she builds it herself, and it does not over-claim to be an
     //    engineer. The specifics of how belong further down the page, not in
     //    an h1, where naming a particular tool would date the line badly.
-    headline: ["I design products, and I can get them built.", ""],
+    // WIDENED 2026-08-10, Anna: "i want to be thought of as a visual designer
+    // too: i can do 360 ad campaigns and digital products, websites, social
+    // media, the whole shebang." The old line did exactly the reduction the
+    // voice rules ban ("don't reduce her to a product designer"). Campaigns
+    // and brands claim the range; the builder clause stays because it is the
+    // client persona's sharpest differentiator; and the shape mirrors the
+    // recruiter's "products, systems, and brands" so the personas rhyme.
+    headline: ["I design products, campaigns, and brands, and I can get them built.", ""],
     // THE SUBTEXT DOES NOT SELL. That is the whole rule here, and it took
     // four tries and one good catch from Anna to arrive at it.
     //
@@ -458,7 +465,11 @@ export const homeContent: Record<PersonaId, HomeContent> = {
     // The proof is better made than claimed: this site was designed and built
     // exactly that way. If it should be explicit, the honest place is About
     // or a case study, where there is room to show rather than say.
-    subtext: "Twenty years, from Flash websites to AI.",
+    // The widened headline claims range; this line proves it instead of
+    // asserting it (the site's own rule). Product teams and ad agencies are
+    // the two worlds, IBM and McDonald's the two proof points, and the logo
+    // strip below becomes the evidence for the claim rather than decoration.
+    subtext: "Twenty years across product teams and ad agencies, IBM to McDonald\u2019s.",
     conciergeHeading:
       "You don’t need another portfolio where everything went perfectly.",
     conciergeBody:
