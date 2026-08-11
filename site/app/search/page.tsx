@@ -100,10 +100,12 @@ export default function SearchCaseStudy() {
                 </div>
                 <p>People had to guess which IBM content category contained the answer.</p>
               </figcaption>
-              <div className="search-comparison-media search-comparison-media-before">
+              <div className="search-comparison-media">
                 <img
-                  src={`${assetRoot}/before-all-results.png`}
+                  src={`${assetRoot}/compare-before.webp`}
                   alt="Old IBM.com search results for data, showing six content tabs, a dense result list, and a separate product rail"
+                  width={2215}
+                  height={1165}
                   loading="eager"
                 />
               </div>
@@ -124,10 +126,11 @@ export default function SearchCaseStudy() {
               </figcaption>
               <div className="search-comparison-media">
                 <img
-                  src={`${assetRoot}/launched-results.webp`}
+                  src={`${assetRoot}/compare-after.webp`}
                   alt="The shipped IBM.com search experience showing one ranked result list with single-select filters and visible content labels"
                   width={2320}
-                  height={1344}
+                  height={1140}
+                  loading="eager"
                 />
               </div>
             </figure>
