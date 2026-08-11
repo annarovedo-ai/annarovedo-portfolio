@@ -382,34 +382,7 @@ export default function SearchCaseStudy() {
             <div className="search-launch-heading">
               <h2>The redesign is live. Search is not finished.</h2>
               <p className="lead">
-                The team dark-launched the MVP at a dedicated v3 URL, then began redirecting US-English traffic to the new experience. The release simplified navigation, introduced filtering and clearer result signals, replaced pagination with continuous results, improved no-results recovery, and created better paths to specialized search experiences. Global rollout was planned as the next deployment phase.
-              </p>
-            </div>
-
-            {/* THE ONLY PICTURE OF WHAT SHIPPED.
-                Until now this case study carried three images: two of the old
-                design and one of a typeahead concept that never launched. A
-                study about a shipped redesign showed what it replaced and what
-                did not happen, and nothing of the thing itself. Everything the
-                scope table below claims -- tabs becoming a Search by rail,
-                content-type labels on results, the query term emphasized in
-                titles and descriptions -- is visible here, so the reader stops
-                having to take the paragraph on faith.
-
-                Placed above the scope table and above the defects list on
-                purpose: claim, then evidence, then what was still wrong. */}
-            <figure className="search-launch-figure">
-              <div className="search-launch-image">
-                <img
-                  src={`${assetRoot}/launched-results.png`}
-                  alt="The launched IBM.com search results page for the query watsonx: a Search by rail listing All, Products, Documentation, Training and Support, and a single result list where each result carries a content-type label, a description, and its URL, with the query term emphasized throughout"
-                  loading="lazy"
-                />
-              </div>
-              <figcaption>
-                The launched result experience. The tabs became a filter rail,
-                every result carries its content type, and the query term is
-                emphasized in the title and the description.{" "}
+                The team dark-launched the MVP at a dedicated v3 URL, then began redirecting US-English traffic to the new experience. The release simplified navigation, introduced filtering and clearer result signals, replaced pagination with continuous results, improved no-results recovery, and created better paths to specialized search experiences. Global rollout was planned as the next deployment phase.{" "}
                 <a
                   className="search-launch-live"
                   href="https://www.ibm.com/search"
@@ -418,8 +391,19 @@ export default function SearchCaseStudy() {
                 >
                   Use it on IBM.com
                 </a>
-              </figcaption>
-            </figure>
+              </p>
+            </div>
+
+            {/* THE LAUNCHED-RESULTS FIGURE IS PARKED, NOT DEAD.
+                It pointed at launched-results.png, which was never saved to
+                disk; the screenshot exists only in a chat. A broken frame on
+                the launch band is worse than no figure. When Anna saves the
+                capture (ibm.com/search results for "watsonx", the Search-by
+                rail with content-type labels) to her Desktop, process it to
+                public/case-study/search/launched-results.webp at 2320 wide
+                and restore the figure that lived here (see git history,
+                commit "Show the launched search, and link to it"). Until
+                then the live link survives below in the lead. */}
 
             <div className="search-scope-table">
               <div>
