@@ -336,7 +336,7 @@ export default function NikeCaseStudy() {
               <p className="eyebrow">Next case study</p>
               <h2>Designing an AI concierge for the enterprise buying journey</h2>
             </div>
-            <a className="next-case-status" href="/concierge">Read part one</a>
+            <a className="next-case-status" href="/concierge">Read the Concierge story</a>
           </div>
         </section>
       </article>
