@@ -183,7 +183,7 @@ export default function ServicesBody() {
 
       <section className="svc-block">
         <div className="shell">
-          <p className="eyebrow">Selected clients and agency partners</p>
+          <p className="eyebrow">Selected clients</p>
           <ul className="svc-partners">
             {partners.map((p) => (
               <li key={p}>{p}</li>

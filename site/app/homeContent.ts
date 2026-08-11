@@ -164,14 +164,8 @@ export const flagshipCaseStudies: CaseStudy[] = [
     title: "IBM Chat Concierge",
     body: "The brief was a chatbot. The useful question turned out to be who was actually buying, so I designed for two people at once: the developer evaluating it and the manager who had to approve it. The guide runs from first look through demo, purchase and support. Sole UX designer, on a team led by IBM’s Global Head of UX.",
     outcome: "V1 shipped. Two buyer personas validated. Two rounds of user testing.",
-    // concierge-card.webp is a PURPOSE-MADE 16:9 crop (2026-08-10) from the
-    // hi-res demo capture, framed so the card fills edge to edge with UI and
-    // conversation. Its two predecessors both failed in the card slot:
-    // thumbs/concierge.jpg centre-cropped the Concierge bar out entirely, and
-    // hero-demo.jpg carried its own dead space and cropped into a mess Anna
-    // called ugly. Card images get their own crop; page figures do not moonlight
-    // as thumbnails.
-    image: "/case-study/concierge/concierge-card.webp",
+    // Purpose-made 16:9 MaaS360 frame supplied for the homepage card.
+    image: "/case-study/concierge/concierge-card-hero.png",
     client: {
       tag: "AI product design",
       body: "IBM’s marketing site and its product were owned by different teams, so customers hit a seam halfway through buying. I designed a generative-AI guide that crosses it, from first look through demo, purchase, onboarding and support, carrying the UX end to end.",
@@ -250,7 +244,7 @@ export const supportingCaseStudies: CaseStudy[] = [
     // to label it honestly.
     body: "Six tabs competed to answer one question: products, downloads, learning, support, developers, and an All that mixed them together. I led the UX from audit and research through to launch, and replaced them with one result set you can filter without losing your place.",
     outcome: "US-English MVP live on IBM.com. A three-tier typeahead and the silent-autocorrection principle, tested, not launched.",
-    image: "/case-study/thumbs/search.jpg",
+    image: "/case-study/search/search-card-hero.png",
     client: {
       tag: "Search and IA",
       body: "People could not find things across IBM.com, which is a revenue problem before it is a design one. I led the audit and research, then designed the result experience that replaced six competing tabs with one filterable set. It is live.",
@@ -329,8 +323,8 @@ export const homeContent: Record<PersonaId, HomeContent> = {
       "This version answers what you’d ask me on a first call.",
     // Single-line headline: headline[1] is intentionally empty and the soft
     // span does not render. Client and Ex keep the two-part question/answer.
-    headline: ["I design products, systems, and brands.", ""],
-    subtext: "Twenty years, from Flash websites to AI.",
+    headline: ["UX is my specialty, not my boundary.", ""],
+    subtext: "Twenty years across products, systems, brands, and campaigns.",
     conciergeHeading:
       "You don’t have to piece me together from a few case studies.",
     conciergeBody:
@@ -343,32 +337,20 @@ export const homeContent: Record<PersonaId, HomeContent> = {
     ],
     workEyebrow: "Selected work",
     casesHeader: "This is the work I’d walk you through.",
-    // Cut from ~200 words to two short paragraphs, and reordered so the proof
-    // comes first. The old opener was "We get paid for output, so the years
-    // that don't produce anything measurable tend to look like gaps" — a
-    // defence, forty words before the payoff, against an accusation nobody
-    // had made. It raised the possibility that the CV has holes so it could
-    // then resolve it, which is the one thing docs/facts.md says never to do:
-    // never invite doubt about the work. On /about that framing earns its
-    // place, because the reader opted into the longer story and it gives that
-    // story a shape. On the homepage it answers a question nobody asked.
-    //
-    // "the fashion years" also had to become "the years I spent in fashion".
-    // Without the paragraph that used to precede it, the original phrase had
-    // no antecedent — the same pronoun-without-a-referent problem as the
-    // razor's "What I did for these" hint.
+    // The homepage states the position without making one project carry the
+    // whole argument. Kmart proves the range in its own case study.
     about: {
       // "About" alone. "About Anna" put the name a fourth time on a page that
       // already carries it in the header lockup, in "Meet actual Anna", and in
       // "Almost Anna" — and this section is written in first person, so the
       // third-person heading was arguing with the paragraph beneath it.
       eyebrow: "About",
-      headline: "I’ve worked in more than one field.",
+      headline: "I start with the problem, not the medium.",
       body: [
-        "I was put on a Kmart pitch because of the years I spent in fashion, not in spite of them. The brief was to relaunch their clothing line, and I was the one who knew the category. Trends, objects, interfaces and products all come from the same human place, and you only see that if you have worked in more than one of them.",
-        "I do the same thing now on harder problems, usually the ones that need conceptual clarity and serious design craft at the same time.",
+        "My background spans graphic design, fashion, advertising, and digital products. UX became my deepest specialization because it gave me the broadest way to solve complex problems.",
+        "I bring that thinking to products, systems, brands, and campaigns, choosing the medium around the idea rather than forcing every problem into an interface.",
       ],
-      pullquote: "Culture is always the brief underneath the brief.",
+      pullquote: "The problem comes first. The medium follows.",
       link: "More about me",
     },
     // A recruiter is asking whether it worked and whether you really did it.
@@ -524,10 +506,10 @@ export const homeContent: Record<PersonaId, HomeContent> = {
       // was 25 characters of set-in-caps text competing with the h2 under it
       // while the recruiter's said "About" in five.
       eyebrow: "About",
-      headline: "The work comes from more than one field.",
+      headline: "The problem decides what gets made.",
       body: [
-        "Anna was put on a Kmart pitch because of her years in fashion, not in spite of them. The brief was to relaunch their clothing line, and she was the one who knew the category. Trends, objects, interfaces and products all come from the same human place, and you only see that after working in more than one of them.",
-        "Most of what the studio gets called in for now is enterprise software, fintech, automotive and AI. The same habit, pointed at harder problems.",
+        "Paper Pixel works across products, brands, campaigns, and digital experiences. UX is the foundation: understand the people, context, and system before deciding what form the answer should take.",
+        "That may mean joining an enterprise product team, shaping a new brand, or leading a launch across digital and physical touchpoints. The scope changes; the standard of thinking and craft does not.",
       ],
       pullquote: "Culture is always the brief underneath the brief.",
       link: "Meet the founder",
@@ -615,10 +597,10 @@ export const homeContent: Record<PersonaId, HomeContent> = {
       // whole joke. Mirrors how workEyebrow works: recruiter and client share
       // a neutral label, the Ex gets its own, and all three stay label-length.
       eyebrow: "Since then",
-      headline: "I did end up using the fashion degree.",
+      headline: "I did end up using all of it.",
       body: [
-        "I was put on a Kmart pitch because of the years I spent in fashion, not in spite of them. The brief was to relaunch their clothing line, and I was the one who knew the category. Trends, objects, interfaces and products all come from the same human place, and you only see that if you have worked in more than one of them.",
-        "Enterprise software, fintech, automotive, AI. Not where I thought it was going either.",
+        "Graphic design, fashion, advertising, product, AI. It looked less like a plan at the time than it does now.",
+        "UX became the specialty, not the boundary. I still prefer the problem first and the medium second.",
       ],
       pullquote: "Culture is always the brief underneath the brief.",
       link: "The longer version",

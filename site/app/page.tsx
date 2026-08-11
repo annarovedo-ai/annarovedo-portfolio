@@ -6,7 +6,7 @@ import HomeBody from "./HomeBody";
 export const metadata: Metadata = {
   title: "Anna Rovedo · Principal Experience Designer",
   description:
-    "Anna Rovedo designs complex enterprise systems and makes them understandable. 20+ years across AI, search, design systems, and information architecture.",
+    "Anna Rovedo specializes in UX and works across digital products, systems, brands, campaigns, and emerging technology.",
 };
 
 export default function Home() {

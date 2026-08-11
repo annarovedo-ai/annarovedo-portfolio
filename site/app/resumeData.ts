@@ -145,7 +145,7 @@ export const earlier = [
  * in facts.md: contractor everywhere except DraftFCB (2008), open to full-time.
  */
 export const defaultProfile = [
-  "Principal Experience Designer with more than 20 years of experience shaping enterprise products, future-facing concepts, AI experiences, search and discovery, information architecture, design systems, and visual languages.",
+  "Principal Experience Designer with more than 20 years across enterprise UX, future-facing concepts, AI, search, design systems, visual identity, advertising, and fashion. Combines product strategy, systems thinking, and visual craft to carry ideas across digital and physical touchpoints.",
   "Particularly effective when the technology is new, the problem is still taking shape, and teams need a direction they can examine, test, and turn into a roadmap. Leads the design direction on the work itself and stays hands-on through it.",
   "Contract by choice for most of that career, with one staff role along the way. That is why the client list runs long and the strongest engagements repeat: IBM came back across a decade. Open to a full-time role now, for the right problem and the right team.",
 ];

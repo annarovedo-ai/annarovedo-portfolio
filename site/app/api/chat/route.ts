@@ -66,9 +66,31 @@ function isPersona(v: unknown): v is PersonaId {
   return v === "recruiter" || v === "client" || v === "ex";
 }
 
+/**
+ * Offline stub, for exercising the UI without spending anything.
+ *
+ * Set AA_MOCK=1 in .env.local and every reply is canned: no request ever
+ * leaves the machine, no token is ever billed. The rate limit, the session
+ * cap, the cookie counter, the error shapes and the typing states all still
+ * run, because those are the parts that actually break. What you cannot test
+ * this way is the one thing a stub can never fake, which is whether she
+ * sounds like herself.
+ *
+ * Deliberately gated on an explicit variable rather than on NODE_ENV. A
+ * missing key in production should surface as a visible error, not silently
+ * serve fake answers under Anna’s name.
+ */
+const MOCK_REPLIES = [
+  "This is the offline stub, so I am not really thinking. But the plumbing works: your message arrived, the session counter moved, and this came back down the same pipe the real answers use.",
+  "Still the stub. Ask me something else and watch the counter tick, or send thirteen in a minute to trip the rate limit.",
+  "Stub again. When the real key is set, this is where twenty years of context would be doing the talking instead.",
+];
+let mockTurn = 0;
+
 export async function POST(request: Request): Promise<Response> {
+  const mocking = process.env.AA_MOCK === "1";
   const apiKey = process.env.ANTHROPIC_API_KEY;
-  if (!apiKey) {
+  if (!apiKey && !mocking) {
     return Response.json(
       { error: "Chat is not configured yet." },
       { status: 503 }
@@ -127,12 +149,25 @@ export async function POST(request: Request): Promise<Response> {
     return Response.json({ error: "Bad request." }, { status: 400 });
   }
 
+  if (mocking) {
+    const reply = MOCK_REPLIES[mockTurn % MOCK_REPLIES.length];
+    mockTurn += 1;
+    return Response.json(
+      { reply, remaining: Math.max(0, SESSION_MESSAGE_CAP - (used + 1)) },
+      {
+        headers: {
+          "Set-Cookie": `aa_count=${used + 1}; Path=/; HttpOnly; SameSite=Lax; Max-Age=86400`,
+        },
+      }
+    );
+  }
+
   try {
     const upstream = await fetch("https://api.anthropic.com/v1/messages", {
       method: "POST",
       headers: {
         "Content-Type": "application/json",
-        "x-api-key": apiKey,
+        "x-api-key": apiKey as string,
         "anthropic-version": "2023-06-01",
       },
       body: JSON.stringify({

@@ -36,14 +36,14 @@ export type AboutContent = {
 export const aboutContent: Record<PersonaId, AboutContent> = {
   recruiter: {
     eyebrow: "Principal Experience Designer",
-    headline: "I design the idea, the system, and the screen.",
+    headline: "UX is my specialty, not my boundary.",
     intro: [
-      "I’m a Principal Experience Designer with more than 20 years of experience across enterprise products, AI, search, design systems, and future vision.",
-      "I’ve worked with companies including IBM, LinkedIn, Nike, Bloomberg, State Street, and Ford, usually on complex products that need more than a polished interface. I help teams understand the real problem, explore what the product could become, and turn that direction into something tangible and testable.",
+      "I’m a Principal Experience Designer with more than 20 years of experience. UX is the deepest part of my practice, particularly across enterprise products, AI, search, design systems, and future vision.",
+      "My work also spans graphic design, advertising, fashion, brands, and campaigns. That range helps me connect customer behavior, business context, technology, and visual culture, and recognize when the answer needs to extend beyond a screen.",
     ],
     introMobile: [
-      "Principal Experience Designer, 20+ years across enterprise products, AI, search, design systems, and future vision.",
-      "IBM, LinkedIn, Nike, Bloomberg, State Street, Ford. Usually on complex products that need more than a polished interface.",
+      "Principal Experience Designer, 20+ years across enterprise UX, AI, search, design systems, brands, and campaigns.",
+      "UX is the deepest part of my practice, not the limit of it.",
     ],
     pointsKicker: "What I bring",
     points: [
@@ -52,8 +52,8 @@ export const aboutContent: Record<PersonaId, AboutContent> = {
         body: "I’m most useful when the technology is new, the direction is unclear, and the team needs someone who can find the right question before designing the answer.",
       },
       {
-        title: "I connect strategy to execution",
-        body: "I move between future vision, systems thinking, prototyping, research, and detailed interaction design without losing the larger idea.",
+        title: "I follow the idea across mediums",
+        body: "I can carry a direction from product strategy and interaction design into brand, campaign, content, and physical experience without losing the central idea.",
       },
       {
         title: "I make complexity understandable",
@@ -61,12 +61,10 @@ export const aboutContent: Record<PersonaId, AboutContent> = {
       },
     ],
     closing: {
-      kicker: "What the detours were for",
+      kicker: "Why the range matters",
       body: [
-        "We get paid for output, so the parts of a life that do not produce anything measurable tend to look like time off. Curiosity does not show up well on a résumé.",
-        "I spent years taking advertising contracts to fund the things I actually wanted to learn. A masters in fashion design. Postgraduate work in pattern making and couture sewing. Long stretches in Italy, Spain and Argentina. On paper that reads as gaps.",
-        "It turned out to be the useful part. I was put on a Kmart pitch because of the fashion years, not in spite of them. The brief was to relaunch their clothing line, and I was the one who knew the category. Trends, objects, interfaces and products all come from the same human place, and knowing more than one field is what lets you see it.",
-        "Nobody could have told me that in advance and I would not have believed them. What I want from the rest of it is the same thing: that the unconnected pieces keep adding up to a way of seeing that is worth more to the people I work with than another decade of the same thing would have been.",
+        "I have spent my career moving between product design, advertising, visual identity, fashion, and emerging technology. That range is not a detour from UX. It is what helps me recognize when a problem needs more than an interface.",
+        "Sometimes the right answer is a product workflow. Sometimes it is a campaign, a brand system, a physical experience, or a combination of them. I want to keep doing work where the idea determines the medium, and where rigorous UX thinking and strong visual craft are equally important.",
       ],
     },
     ctaHeadline: "Looking for someone who can help shape what comes next?",
@@ -76,10 +74,10 @@ export const aboutContent: Record<PersonaId, AboutContent> = {
 
   client: {
     eyebrow: "Founder, Paper Pixel",
-    headline: "I turn ambitious ideas into beautiful, usable products.",
+    headline: "The problem comes before the medium.",
     intro: [
       "I work with teams that have an opportunity, a complicated problem, or the beginnings of an idea, but not yet a clear path forward.",
-      "That might mean defining a new product, exploring how AI should fit into an experience, redesigning a complex system, or building a prototype that helps everyone decide what to do next.",
+      "UX is the foundation, but the answer may be a product, brand, campaign, website, prototype, or a connected system across several of them. I shape the idea, then bring together the people needed to make it real.",
     ],
     pointsKicker: "What working together looks like",
     points: [

@@ -9,7 +9,7 @@ export const metadata: Metadata = {
   // export their own metadata (the homepage does) still override this.
   title: "Anna Rovedo · Principal Experience Designer",
   description:
-    "Anna Rovedo designs complex enterprise systems and makes them understandable. 20+ years across AI, search, design systems, and information architecture.",
+    "Anna Rovedo is a Principal Experience Designer working across digital products, systems, brands, campaigns, and emerging technology.",
   icons: {
     icon: "/favicon.svg",
     shortcut: "/favicon.svg",

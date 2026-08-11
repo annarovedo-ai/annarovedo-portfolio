@@ -203,7 +203,7 @@ export default function NikeCaseStudy() {
           <figure className="figure">
             <div className="figure-image-wrap">
               <img
-                src={`${assetRoot}/feedback-concerns.png`}
+                src={`${assetRoot}/feedback-grid.png`}
                 alt="Concerns column from the feedback grid: sticky notes reading 'Missing fields that are important', 'Having too many options', 'We really need to capture all the features we currently have', and 'Learning curve'"
                 loading="lazy"
               />

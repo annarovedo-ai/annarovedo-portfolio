@@ -71,7 +71,7 @@ export const contactContent: Record<PersonaId, ContactContent> = {
   client: {
     eyebrow: "Collaboration & consulting",
     headline: "What are you working on?",
-    deck: "I take on product design, design system, and brand strategy engagements with teams building complex software. Partnerships typically run 3–6 months.",
+    deck: "I take on product, brand, and campaign work, from complex enterprise systems to new ideas that need a clear path to market. Partnerships typically run 3–6 months.",
     fields: [
       { label: "What’s your name?", placeholder: "Jane Doe" },
       { label: "Where should I reply?", placeholder: "jane@yourstartup.io" },

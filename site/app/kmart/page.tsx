@@ -65,10 +65,12 @@ export default function Kmart() {
 
       <article id="top">
         <section className="hero shell">
-          <h1>Kmart had always sold clothes. Nobody had a reason to look again.</h1>
+          <h1>Kmart rebuilt a clothing line most people didn’t know existed.</h1>
           <p className="hero-deck">
             A new in-house design team, a studio in New York, a genuine relaunch of the
-            clothing line. The product had changed. The assumption about it had not.
+            clothing line. The product had changed. The assumption about it had not. This
+            four-day pitch turned that perception problem into one idea carried through
+            advertising, a members-only website, packaging, and a physical pop-up.
           </p>
 
           <div className="hero-meta" aria-label="Project details">
@@ -112,23 +114,28 @@ export default function Kmart() {
               </p>
             </div>
 
-            <ol className="summary-list" aria-label="The problem in three parts">
+            <ol className="summary-list" aria-label="The problem in four parts">
               <li>
                 <span>01</span>
-                <strong>Nothing about it read as news.</strong>
-                Kmart had always sold clothing, so &ldquo;Kmart sells clothes&rdquo; was not
-                an announcement. What was new was that the clothes were now designed, and
-                nobody had any reason to go and check.
+                <strong>Most people did not know Kmart sold clothes.</strong>
+                Clothing was something shoppers discovered after they were already in the
+                store, not a category they associated with Kmart or sought out on purpose.
               </li>
               <li>
                 <span>02</span>
-                <strong>Nobody arrived intending to buy them.</strong>
-                The people who bought clothes there were in the store for something else,
-                passed a rack, and picked something up because it was in front of them.
-                A discovery, not a destination.
+                <strong>Nobody knew the clothing had been overhauled.</strong>
+                Kmart had built a New York design studio and hired an in-house fashion team,
+                but customers had no reason to know that anything behind the clothes had
+                changed.
               </li>
               <li>
                 <span>03</span>
+                <strong>The people who did buy them bought for utility.</strong>
+                The clothes were affordable, convenient, and already in front of them. They
+                were not buying because they saw Kmart as a source of considered design.
+              </li>
+              <li>
+                <span>04</span>
                 <strong>The ones who did buy would not say so.</strong>
                 Admitting where the clothes came from carried a cost, and no amount of
                 advertising was going to argue somebody out of that.
@@ -178,7 +185,7 @@ export default function Kmart() {
             <p className="section-number">02</p>
             <div className="two-column-copy">
               <div>
-                <h2>We stopped arguing with the embarrassment and made it the mechanic.</h2>
+                <h2>We stopped arguing with the embarrassment and built the campaign around it.</h2>
               </div>
               <div>
                 <p className="lead">
@@ -361,33 +368,6 @@ export default function Kmart() {
           </p>
         </section>
 
-        <section className="chapter shell" id="markt" data-anna-prompt="The route we didn't take">
-          <p className="section-number">06</p>
-          <div className="two-column-copy">
-            <div>
-              <h2>The route we did not take.</h2>
-            </div>
-            <div>
-              <p className="lead">
-                The same group also explored MARKT, a harder rebrand that moved further from
-                the Kmart name, with SHHH living inside it as a section alongside Look of
-                the Day and a member gallery.
-              </p>
-              <p>
-                It is the more cautious of the two ideas and it did not go as far. Worth
-                keeping in the record, because pitch weeks are not one idea arriving fully
-                formed. They are several, argued out loud, until one of them earns the room.
-              </p>
-            </div>
-          </div>
-
-          <Figure
-            src="markt-route.jpg"
-            alt="An alternative concept: a MARKT branded site with SHHH as a section, showing Look of the Day and a member gallery."
-            caption="MARKT, the alternate route. Comp imagery is placeholder."
-          />
-        </section>
-
         <section className="reflection shell" id="outcome" data-anna-prompt="What happened to the pitch">
           <p className="eyebrow">What happened</p>
           <h2>We were the far end of the scale, and I think that was the point.</h2>
@@ -425,29 +405,25 @@ export default function Kmart() {
 
         <section className="chapter chapter-alt" id="takeaway">
           <div className="shell">
-            <p className="section-number">07</p>
+            <p className="section-number">06</p>
             <div className="two-column-copy">
               <div>
-                <h2 id="detour">I was picked for the detour.</h2>
+                <h2 id="across-mediums">The idea came before the medium.</h2>
               </div>
               <div>
                 <p className="lead">
-                  Fifteen people flown in from four countries, all of them good, all of them
-                  glad to be there, all pointed at one problem for four days. I had not seen
-                  before that it was possible to assemble that and have it work. I have
-                  wanted to be back in that room ever since.
+                  I was brought onto the pitch because I understood fashion, but the useful
+                  work was connecting the whole system: the customer tension, the campaign
+                  line, the digital destination, the packaging, and the retail reveal.
                 </p>
                 <p>
-                  The second thing is more personal. The years in Italy and Spain designing
-                  clothes, the sewing, the fashion masters I paid for by taking advertising
-                  contracts between terms, all of it read on paper as time spent away from
-                  the career. On this project it was the reason I was useful.
+                  None of those parts was the answer on its own. Each gave the same idea a
+                  different job.
                 </p>
                 <p>
-                  Nobody could have told me that in advance and I would not have believed
-                  them. It is the thing I have relied on ever since: that trends and objects
-                  and interfaces all come from the same human place, and that knowing more
-                  than one field is what lets you see it.
+                  That is still how I work. UX is my deepest specialization, but I do not
+                  begin by deciding the answer is a product. I start with the problem, then
+                  use the mediums that make the idea real.
                 </p>
               </div>
             </div>

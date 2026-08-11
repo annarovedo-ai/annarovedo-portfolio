@@ -5277,11 +5277,13 @@ blockquote {
 }
 
 .home-pullquote {
+  /* This is a <blockquote>, so it inherits the global rule's top border,
+     navy left bar and padding. All of it is reset here: on the homepage
+     the quote should read as display type, not as a callout. */
   max-width: 900px;
   margin: 40px 0;
-  padding: 30px 34px;
-  border: 1px solid var(--line);
-  background: var(--surface);
+  padding: 0;
+  border: none;
   font-family: var(--serif);
   font-size: var(--d-card);
   font-weight: 700;
@@ -5308,7 +5310,9 @@ blockquote {
    spacing left between the two halves. The border at the TOP of this rule is
    now the top edge of the whole combined block. */
 .home-cta {
-  padding-block: clamp(72px, 9vw, 118px) 0;
+  /* Bottom padding was 0, so the closing line sat flush against the top
+     edge of the footer with no breathing room between the two bands. */
+  padding-block: clamp(72px, 9vw, 118px) clamp(56px, 7vw, 92px);
   border-top: 1px solid var(--line);
 }
 
@@ -9656,4 +9660,27 @@ html[data-anna-razor="bar"] body {
 
 .svc-cta a:hover {
   background: #fff;
+}
+
+/* ------------------------------------------------------------------
+   Figure spacing.
+   .figure sets margin:0 and .wide-figure only sets margin-bottom, so a
+   figure following body copy — or another figure — sits flush against
+   it with no breathing room. Give figures a top margin so they read as
+   separate beats. .nike-case overrides these with its own tighter
+   rhythm further down the file.
+   ------------------------------------------------------------------ */
+.wide-figure {
+  margin-top: 52px;
+}
+
+.figure + .figure,
+.two-column-copy + .figure,
+.chapter-intro + .figure {
+  margin-top: 48px;
+}
+
+.figure + .wide-figure,
+.chapter-intro + .wide-figure {
+  margin-top: 52px;
 }

@@ -62,7 +62,7 @@ function ClientLogoStrip() {
   return (
     <section className="home-clients" data-anna-prompt="Who has Paper Pixel worked with?">
       <div className="shell">
-        <p className="eyebrow">Selected clients and agency partners</p>
+        <p className="eyebrow">Selected clients</p>
         <ul>
           {clients.map((cl) => (
             <li key={cl.name}>
