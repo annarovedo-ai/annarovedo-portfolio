@@ -314,11 +314,28 @@ export const homeContent: Record<PersonaId, HomeContent> = {
     // project should I visit?", which sounds helpful and is not: it asks the
     // reader to have a goal before they have context, and it invites the
     // assistant to answer with a menu instead of an opinion.
+    // A prompt chip should pre-empt the doubt this visitor will not type.
+    // Four jobs, in the order a recruiter works through them: is she good,
+    // what is wrong with her, how does she operate, and would she take the
+    // job.
+    //
+    // The second one is the bet. A CV with this many logos raises the
+    // question whether she sticks, and a recruiter will wonder it silently
+    // and then move on. Asking it on her own behalf turns the objection into
+    // the answer she already has: contract by choice, advertising funded
+    // fashion school, then parenthood changed the frame and she now wants
+    // long and embedded. Naming your own weakness makes the rest of the page
+    // more believable, not less.
+    //
+    // The fourth replaces "What do you bring that a resume won't show?",
+    // which is an interview cliché that invites a soft answer. What a
+    // recruiter actually needs is level, scope and availability, and all
+    // three are on the record now.
     prompts: [
       "Which project best shows how you think?",
-      "What kind of roles suit you best?",
+      "Why have you worked with so many companies?",
       "How do you work when the roadmap isn’t clear?",
-      "What do you bring that a resume won’t show?",
+      "What kind of role are you actually looking for?",
     ],
     workEyebrow: "Selected work",
     casesHeader: "This is the work I’d walk you through.",
@@ -450,7 +467,7 @@ export const homeContent: Record<PersonaId, HomeContent> = {
     promptsLabel: "Start with one of these",
     prompts: [
       // Four prompts, four things a client is actually deciding: can she
-      // handle ambiguity, is she right for this kind of problem, what does
+      // handle ambiguity, does the range claim hold, what does
       // having her around cost us, and how fast can we move.
       //
       // The third one used to be "Can you plug into an existing product
@@ -462,7 +479,7 @@ export const homeContent: Record<PersonaId, HomeContent> = {
       // to mirror the subtext above, so a client who noticed the claim there
       // finds the question waiting for them here.
       "Where should this project start?",
-      "Have you solved something like this?",
+      "Can you do the campaign and the product?",
       "Can you lead the work and bring the right team?",
       "How soon can I see something real?",
     ],
