@@ -5745,7 +5745,7 @@ blockquote {
 }
 
 .client-guide .aa-inline {
-  min-height: 500px;
+  height: min(640px, 78vh);
 }
 
 .client-about-grid {
@@ -5893,7 +5893,7 @@ blockquote {
   }
 
   .client-guide .aa-inline {
-    min-height: 560px;
+    height: min(680px, 80vh);
   }
 }
 
@@ -8302,8 +8302,14 @@ blockquote {
   min-height: 0;
 }
 
+/* FIXED, NOT MINIMUM.
+   This was min-height, so the card grew with the conversation: ask a question,
+   the answer arrives, and the whole hero section below it jumps down the page.
+   A chat is a viewport onto a thread, not a document that expands to fit one.
+   The height is tied to the screen instead, which does not change while you
+   are typing, and .aa-body scrolls inside it. */
 .aa-inline {
-  min-height: 420px;
+  height: min(600px, 74vh);
 }
 
 .aa-dock {

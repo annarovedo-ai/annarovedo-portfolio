@@ -202,12 +202,33 @@ export async function POST(request: Request): Promise<Response> {
       content?: { type: string; text?: string }[];
     };
 
-    const reply =
+    /**
+     * The em dash rule, enforced rather than requested.
+     *
+     * "No em dashes, ever" is the first line of the voice rules and the model
+     * still produced "I am not sure what you are asking—are you looking for".
+     * Instructions are a preference; this is the guarantee. Anna writes with
+     * commas and full stops, and a house style that only holds when the model
+     * is paying attention is not a house style.
+     *
+     * Em and en dashes used as punctuation become commas. Number ranges
+     * (2019-2024) are left alone: those en dashes sit between digits with no
+     * surrounding spaces, which is the one case where the mark is correct.
+     */
+    const deDash = (text: string) =>
+      text
+        .replace(/\s*—\s*/g, ", ")
+        .replace(/(?<!\d)\s*–\s*(?!\d)/g, ", ")
+        .replace(/,\s*,/g, ",")
+        .replace(/,\s*([.!?])/g, "$1");
+
+    const reply = deDash(
       data.content
         ?.filter((c) => c.type === "text")
         .map((c) => c.text ?? "")
         .join("")
-        .trim() ?? "";
+        .trim() ?? ""
+    );
 
     if (!reply) {
       return Response.json(

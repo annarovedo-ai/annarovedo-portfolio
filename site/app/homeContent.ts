@@ -329,8 +329,14 @@ export const homeContent: Record<PersonaId, HomeContent> = {
       "You don’t have to piece me together from a few case studies.",
     conciergeBody:
       "I gave an AI my work and my opinions and taught it how I talk. Ask it why I made a decision, what went wrong, or whether any of this fits the role you’re filling.",
+    // Four questions a recruiter is actually holding, in the order they
+    // arrive: is she any good, would she take this job, how does she operate,
+    // and what is she like to have around. The first used to be "Which
+    // project should I visit?", which sounds helpful and is not: it asks the
+    // reader to have a goal before they have context, and it invites the
+    // assistant to answer with a menu instead of an opinion.
     prompts: [
-      "Which project should I visit?",
+      "Which project best shows how you think?",
       "What kind of roles suit you best?",
       "How do you work when the roadmap isn’t clear?",
       "What do you bring that a resume won’t show?",
