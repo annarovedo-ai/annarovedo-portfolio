@@ -115,7 +115,7 @@ export default function ContactBody() {
                 I read everything myself and usually reply within a couple of days. If it is
                 urgent, the calendar link below is faster.
               </p>
-              <a href="https://calendly.com/anna-rovedo/30min">Book a call instead &rarr;</a>
+              <a href="https://calendly.com/anna-rovedo/30min">Book 30 minutes instead &rarr;</a>
             </div>
           ) : (
             <form className="contact-form" onSubmit={handleSubmit} noValidate>

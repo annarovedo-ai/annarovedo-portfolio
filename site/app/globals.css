@@ -8597,6 +8597,8 @@ blockquote {
   min-width: 0;
   padding: 11px 2px;
   border: 0;
+  border-bottom: 1px solid transparent;
+  transition: border-color 0.16s ease;
   background: none;
   color: var(--ink);
   font-family: var(--sans);
@@ -9239,6 +9241,8 @@ html[data-anna-razor="bar"] body {
   min-width: 0;
   padding: 7px 0;
   border: 0;
+  border-bottom: 1px solid transparent;
+  transition: border-color 0.16s ease;
   background: none;
   color: #fff;
   font-family: var(--sans);
@@ -9257,10 +9261,6 @@ html[data-anna-razor="bar"] body {
 .anna-razor-bar .anna-razor-dismiss:focus-visible,
 .anna-razor-bar .anna-razor-undo:focus-visible {
   outline: 2px solid #fff;
-}
-
-.anna-razor-bar input:focus-visible {
-  outline: 0;
 }
 
 .anna-razor-send {
@@ -9638,14 +9638,21 @@ html[data-anna-razor="bar"] body {
   outline-offset: 3px;
 }
 
-.aa-composer:focus-within {
-  outline: 2px solid var(--blue);
-  outline-offset: -2px;
+/* The composer focuses on the FIELD, not around the whole row.
+   Both of these used to draw a ring around the entire composer, which in the
+   razor meant a heavy white rectangle sitting inside a navy bar: it read as a
+   selected object rather than a cursor position, and it fought the bar it was
+   drawn inside. A rule under the input is the smaller, truer signal — it
+   marks the line you are about to type on. The border is always present and
+   merely changes colour, so nothing shifts by a pixel when focus lands. */
+.aa-composer input:focus-visible {
+  outline: 0;
+  border-bottom-color: var(--blue);
 }
 
-.anna-razor-bar-inner:focus-within {
-  outline: 2px solid #fff;
-  outline-offset: 4px;
+.anna-razor-bar input:focus-visible {
+  outline: 0;
+  border-bottom-color: rgba(255, 255, 255, 0.85);
 }
 
 /* Hover for the two interactive patterns that had none. */
