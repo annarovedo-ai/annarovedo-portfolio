@@ -176,8 +176,8 @@ export const flagshipCaseStudies: CaseStudy[] = [
     href: "/journey-orchestration",
     tag: "UX / Product",
     part: "Part two",
-    title: "AI-driven journey orchestration",
-    body: "I argued the chat was the wrong unit. If the assistant already knows who you are, the page should rearrange around that rather than host a conversation in a box, and the same signals should score the lead while it happens. I built the model and the case for funding it.",
+    title: "What if the assistant wasn’t a box on the page, but the page itself?",
+    body: "I designed an adaptive journey that reorganized around each buyer in real time, using the same behavioral signals to shape the experience and score the lead. Then I built the model and the case for funding it.",
     outcome: "Concept direction, not launched.",
     image: "/case-study/thumbs/journey-orchestration.jpg",
     client: {
