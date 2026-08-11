@@ -190,6 +190,9 @@ as a pair. IBM's Global Head of UX deliberately put her on a run of
 future-vision projects, which is the tell: she is who you bring in before the
 problem has a shape. The Concierge took a vague ambition about AI in the
 buying journey and turned it into something a team could test and argue with.
+Lead with the scale, because it is the part that makes the work hard and the
+part a listener will otherwise get wrong: a concierge for IBM.com as a whole,
+across the buying journey, not a chatbot attached to one product.
 The orchestration work then asked the harder question, whether the assistant
 should be a box on the page at all or whether the page should rearrange
 around the person. One shipped a V1, one is a concept direction. Say which is
