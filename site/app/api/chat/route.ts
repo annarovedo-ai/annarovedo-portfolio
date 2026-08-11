@@ -15,7 +15,14 @@ import type { PersonaId } from "../../personaStore";
  *    browser.
  */
 
-const MODEL = "claude-sonnet-4-5";
+/**
+ * Haiku, not Sonnet. Almost Anna is a persona chat working from a long,
+ * carefully written system prompt: the character is in the prompt, not in the
+ * model tier. Haiku 4.5 costs exactly one third of Sonnet on both input and
+ * output, and this endpoint is the only uncapped expense on the whole site.
+ * If the voice ever stops holding up, this is the line to change back.
+ */
+const MODEL = "claude-haiku-4-5";
 const MAX_TOKENS = 800;
 
 /** Per-session cap. Counted server-side against a cookie the client can't forge usefully. */
@@ -131,7 +138,18 @@ export async function POST(request: Request): Promise<Response> {
       body: JSON.stringify({
         model: MODEL,
         max_tokens: MAX_TOKENS,
-        system: buildSystemPrompt(persona),
+        // The system prompt is ~4k tokens and identical on every request for a
+        // given persona, so it is marked cacheable. Cache hits bill at a tenth
+        // of the input rate. The cache lives about five minutes, so this pays
+        // off during a conversation and during bursts of traffic, and costs a
+        // small write premium when a lone visitor arrives cold. Net win.
+        system: [
+          {
+            type: "text",
+            text: buildSystemPrompt(persona),
+            cache_control: { type: "ephemeral" },
+          },
+        ],
         messages,
       }),
     });

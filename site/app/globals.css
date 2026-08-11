@@ -5699,6 +5699,10 @@ blockquote {
   color: var(--on-dark-label);
 }
 
+.client-process-grid h3 {
+  color: #fff;
+}
+
 .client-process-grid p {
   color: var(--on-dark-body);
 }
