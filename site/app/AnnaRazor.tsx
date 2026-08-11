@@ -1,9 +1,10 @@
 "use client";
 
-import { useEffect, useRef, useState } from "react";
+import { useEffect, useRef, useState, useSyncExternalStore } from "react";
 import { usePathname } from "next/navigation";
 import { AnimatePresence, motion, MotionConfig } from "motion/react";
 import AlmostAnnaChat from "./AlmostAnnaChat";
+import { getServerSnapshot, getSnapshot, subscribe } from "./personaStore";
 
 /**
  * Almost Anna, docked along the bottom of the page.
@@ -73,6 +74,15 @@ const CONTENT_OUT = { duration: 0.12, ease: "easeIn" } as const;
 
 export default function AnnaRazor() {
   const pathname = usePathname();
+  const persona = useSyncExternalStore(subscribe, getSnapshot, getServerSnapshot);
+  const isClient = persona === "client";
+  const assistantName = isClient ? "Ask Paper Pixel" : "Almost Anna";
+  const assistantPrompt = isClient
+    ? "Ask Paper Pixel about your project…"
+    : "Ask Almost Anna anything…";
+  const assistantIntro = isClient
+    ? "Paper Pixel’s AI, guided by Anna’s work. Ask about your project."
+    : "An AI trained on Anna’s work. Ask it anything.";
   const [mode, setMode] = useState<Mode>("razor");
   const [visible, setVisible] = useState(false);
   const [prompts, setPrompts] = useState<string[]>([]);
@@ -368,7 +378,7 @@ export default function AnnaRazor() {
             transition={SHAPE_TRANSITION}
             className="anna-razor-panel"
             role="dialog"
-            aria-label="Almost Anna"
+            aria-label={assistantName}
             style={{ borderRadius: 0 }}
             initial={{ opacity: 0 }}
             animate={{ opacity: 1 }}
@@ -460,7 +470,7 @@ export default function AnnaRazor() {
             onTouchStart={onTouchStart}
             onTouchMove={onTouchMove}
             onTouchEnd={onTouchEnd}
-            aria-label="Open the conversation with Almost Anna"
+            aria-label={`Open the conversation with ${assistantName}`}
             aria-hidden={!visible}
             tabIndex={visible ? 0 : -1}
             initial={{ opacity: 0 }}
@@ -487,7 +497,7 @@ export default function AnnaRazor() {
                   exit={{ opacity: 0, y: 4 }}
                   transition={CONTENT_IN}
                 >
-                  An AI trained on Anna&rsquo;s work. Ask it anything.
+                  {assistantIntro}
                 </motion.span>
               ) : null}
             </AnimatePresence>
@@ -527,7 +537,7 @@ export default function AnnaRazor() {
                   exit={{ opacity: 0, y: 4 }}
                   transition={CONTENT_IN}
                 >
-                  An AI trained on Anna&rsquo;s work. Ask it anything.
+                  {assistantIntro}
                 </motion.span>
               ) : null}
             </AnimatePresence>
@@ -595,8 +605,8 @@ export default function AnnaRazor() {
                     ref={inputRef}
                     value={draft}
                     onChange={(e) => setDraft(e.target.value)}
-                    placeholder="Ask Almost Anna anything…"
-                    aria-label="Ask Almost Anna"
+                    placeholder={assistantPrompt}
+                    aria-label={assistantName}
                     tabIndex={visible ? 0 : -1}
                   />
 

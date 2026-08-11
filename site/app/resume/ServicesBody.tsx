@@ -118,7 +118,7 @@ export default function ServicesBody() {
               also an order aimed at the person paying. This echoes the client
               chat copy, which already says "Tell it what you're working on". */}
           <a className="svc-primary" href="/contact">
-            Tell us what you&rsquo;re working on &rarr;
+            Share what you&rsquo;re working on &rarr;
           </a>
           <a className="svc-secondary" href="/#work">
             See selected work &rarr;
@@ -133,7 +133,7 @@ export default function ServicesBody() {
 
       <section className="svc-block">
         <div className="shell">
-          <p className="eyebrow">What we make</p>
+          <p className="eyebrow">What gets made</p>
           <div className="svc-capabilities">
             {capabilities.map((c) => (
               <div key={c.title}>
@@ -214,10 +214,10 @@ export default function ServicesBody() {
         <div className="shell">
           <h2>Have something difficult to figure out?</h2>
           <p>
-            Tell us what you&rsquo;re building, even if the brief is still messy. We can help
-            define the direction, assemble the right team, and take it from first idea to launch.
+            Bring the messy brief. I can help define the direction, assemble the right team,
+            and take it from first idea to launch.
           </p>
-          <a href="/contact">Tell us what you&rsquo;re working on &rarr;</a>
+          <a href="/contact">Share what you&rsquo;re working on &rarr;</a>
         </div>
       </section>
     </article>

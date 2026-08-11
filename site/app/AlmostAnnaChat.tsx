@@ -17,6 +17,14 @@ export default function AlmostAnnaChat({
 }) {
   const persona = useSyncExternalStore(subscribe, getSnapshot, getServerSnapshot);
   const c = homeContent[persona];
+  const isClient = persona === "client";
+  const assistantName = isClient ? "Ask Paper Pixel" : "Almost Anna";
+  const assistantDisclosure = isClient
+    ? "Guided by Anna’s work and point of view."
+    : "Trained on my work and how I think.";
+  const assistantPlaceholder = isClient
+    ? "Ask about your project…"
+    : "Ask Almost Anna anything…";
 
   const [messages, setMessages] = useState<Msg[]>([]);
   const [input, setInput] = useState("");
@@ -101,8 +109,8 @@ export default function AlmostAnnaChat({
           />
         </span>
         <div>
-          <strong>Almost Anna</strong>
-          <span className="aa-disclosure">Trained on my work and how I think.</span>
+          <strong>{assistantName}</strong>
+          <span className="aa-disclosure">{assistantDisclosure}</span>
         </div>
         {/* The persona tag ("Recruiter" / "Client" / "Ex boyfriend") used to
             sit here. Removed 2026-08-07: the switcher is directly above this
@@ -154,7 +162,7 @@ export default function AlmostAnnaChat({
             <span />
             <span />
             <span />
-            <span className="aa-sr">Almost Anna is thinking</span>
+            <span className="aa-sr">{assistantName} is thinking</span>
           </p>
         ) : null}
 
@@ -172,7 +180,7 @@ export default function AlmostAnnaChat({
 
         {!started && !busy ? (
           <div className="aa-prompts">
-            <span className="aa-prompts-label">You could ask</span>
+            <span className="aa-prompts-label">{c.promptsLabel ?? "You could ask"}</span>
             <div>
               {c.prompts.map((p) => (
                 <button key={p} type="button" onClick={() => send(p)}>
@@ -194,8 +202,8 @@ export default function AlmostAnnaChat({
         <input
           value={input}
           onChange={(e) => setInput(e.target.value)}
-          placeholder={capped ? "That's the limit for now." : "Ask Almost Anna anything…"}
-          aria-label="Ask Almost Anna a question"
+          placeholder={capped ? "That's the limit for now." : assistantPlaceholder}
+          aria-label={isClient ? "Ask Paper Pixel about your project" : "Ask Almost Anna a question"}
           disabled={capped}
         />
         {/* Same arrow, drawn the same way, as the razor bar's send. The bare

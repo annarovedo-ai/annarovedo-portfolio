@@ -20,44 +20,34 @@ const findings = [
     number: "01",
     title: "Tabs behaved like separate search engines",
     body: "People had to understand IBM’s content structure before they could find an answer. A result could exist in another tab while the active tab appeared empty.",
+    response: "Led to one ranked result set with filters.",
   },
   {
     number: "02",
     title: "Results were difficult to scan",
     body: "Dense lists offered too few signals about what each result was, which made comparing products, documentation, learning, and support content unnecessarily slow.",
+    response: "Led to visible content types and a clearer result hierarchy.",
   },
   {
     number: "03",
-    title: "No results ended the journey",
-    body: "The page explained that nothing was found, but gave people weak recovery paths and little help deciding what to try next.",
-  },
-  {
-    number: "04",
-    title: "Specialized search paths were hidden",
-    body: "Product, support, and learning experiences existed, but the general search page did not make those destinations easy to discover at the right moment.",
+    title: "Dead ends hid the next useful path",
+    body: "When results failed, the page offered weak recovery guidance and made specialized product, learning, and documentation experiences difficult to discover.",
+    response: "Led to query-preserving recovery and purposeful destinations.",
   },
 ];
 
 const decisions = [
   {
-    title: "Replace tabs with filters",
-    body: "Keep one coherent result set, then let people narrow it without losing context or wondering whether another tab contains the answer.",
+    title: "Unify the result journey",
+    body: "Replace six tabbed searches with one ranked result set, then let people narrow it without losing context.",
   },
   {
-    title: "Label content types",
-    body: "Make product pages, documentation, learning, support, and editorial content recognizable before a user commits to a click.",
+    title: "Make results recognizable",
+    body: "Use content labels and clearer hierarchy so products, documentation, learning, support, and editorial pages can be distinguished before clicking.",
   },
   {
-    title: "Continue instead of paginate",
-    body: "Use a continuous See more pattern so the result journey does not reset at every page boundary.",
-  },
-  {
-    title: "Design recovery paths",
-    body: "Treat zero results as a moment to reformulate, broaden, or move into a more specialized IBM experience.",
-  },
-  {
-    title: "Connect specialized search",
-    body: "Create clearer pathways to tools such as Product Finder when a general list is not the most useful answer.",
+    title: "Design the way forward",
+    body: "Keep the journey moving with continuous results, query-preserving recovery, and relevant paths into specialized IBM experiences.",
   },
 ];
 
@@ -98,35 +88,49 @@ export default function SearchCaseStudy() {
             </div>
           </div>
 
-          <div className="search-hero-model" aria-label="The search redesign moved from a fragmented tab model to one coherent result experience">
-            <div className="search-model-before">
-              <span className="search-model-label">Before</span>
-              <p className="search-model-query">data</p>
-              <div className="search-model-tabs" aria-hidden="true">
-                <span>All</span>
-                <span>Products</span>
-                <span>Downloads</span>
-                <span>Learning</span>
-                <span>Support</span>
-                <span>Developers</span>
+          <div
+            className="search-hero-comparison"
+            aria-label="Before and after comparison of IBM.com search"
+          >
+            <figure className="search-comparison-panel">
+              <figcaption className="search-comparison-caption">
+                <div>
+                  <span>Before</span>
+                  <strong>Six tabbed result systems</strong>
+                </div>
+                <p>People had to guess which IBM content category contained the answer.</p>
+              </figcaption>
+              <div className="search-comparison-media search-comparison-media-before">
+                <img
+                  src={`${assetRoot}/before-all-results.png`}
+                  alt="Old IBM.com search results for data, showing six content tabs, a dense result list, and a separate product rail"
+                  loading="eager"
+                />
               </div>
-              <p>Six destinations competing to answer one question.</p>
+            </figure>
+
+            <div className="search-comparison-transition" aria-hidden="true">
+              <span>Redesigned into</span>
+              <strong>↓</strong>
             </div>
-            <div className="search-model-arrow" aria-hidden="true">→</div>
-            <div className="search-model-after">
-              <span className="search-model-label">Launched direction</span>
-              <p className="search-model-query">data</p>
-              <div className="search-model-result">
-                <span>Product</span>
-                <strong>One result set</strong>
-                <small>Filter without losing context</small>
+
+            <figure className="search-comparison-panel">
+              <figcaption className="search-comparison-caption">
+                <div>
+                  <span>After · Shipped</span>
+                  <strong>One ranked result experience</strong>
+                </div>
+                <p>Filters preserve context while labels make mixed results easier to recognize.</p>
+              </figcaption>
+              <div className="search-comparison-media">
+                <img
+                  src={`${assetRoot}/launched-results.webp`}
+                  alt="The shipped IBM.com search experience showing one ranked result list with single-select filters and visible content labels"
+                  width={2320}
+                  height={1344}
+                />
               </div>
-              <div className="search-model-result">
-                <span>Documentation</span>
-                <strong>Clearer content signals</strong>
-                <small>Recognize the answer before clicking</small>
-              </div>
-            </div>
+            </figure>
           </div>
         </section>
 
@@ -144,11 +148,6 @@ export default function SearchCaseStudy() {
                 The existing experience exposed those organizational boundaries directly. I led the move from six competing tab experiences to one ranked result set, then designed the filters, labels, recovery paths, and connections that made it usable.
               </p>
             </div>
-          </div>
-          <div className="shell search-job-grid" aria-label="Three jobs of the search experience">
-            <div><span>01</span><strong>Findability</strong><p>Reach known content faster.</p></div>
-            <div><span>02</span><strong>Discoverability</strong><p>Recognize relevant content along the way.</p></div>
-            <div><span>03</span><strong>Recovery</strong><p>Keep moving when the first query fails.</p></div>
           </div>
         </section>
 
@@ -168,22 +167,6 @@ export default function SearchCaseStudy() {
             </div>
           </div>
 
-          <figure className="search-inspect-figure">
-            <div className="search-inspect-heading">
-              <div>
-                <span>Captured before state</span>
-                <strong>The full result page for a single query</strong>
-              </div>
-              <p>Scroll inside the frame to inspect the original experience.</p>
-            </div>
-            <div className="search-scroll-shot" tabIndex={0} aria-label="Scrollable capture of the old IBM.com search results page">
-              <img
-                src={`${assetRoot}/before-all-results.png`}
-                alt="Full capture of the old IBM.com search results page for the query data, showing tabs, a long result list, pagination, and the IBM footer"
-              />
-            </div>
-            <figcaption>The captured page shows how much structure a user had to parse before deciding whether any result was useful.</figcaption>
-          </figure>
         </section>
 
         <section className="search-evidence-band" data-anna-prompt="What research changed">
@@ -191,20 +174,23 @@ export default function SearchCaseStudy() {
             <div className="chapter-intro two-column-copy">
               <div>
                 <SectionNumber>02 · From audit to evidence</SectionNumber>
-                <h2>The audit gave us hypotheses. Research told us which ones mattered.</h2>
+                <h2>Three observations determined the redesign.</h2>
               </div>
               <div>
                 <p className="lead">
-                  The work began in May 2025 with an audit of result quality, user journeys, and friction. That review exposed questions analytics alone could not answer, so the next step was research focused on how people interpreted the page and where they became stuck.
+                  Beginning in May 2025, I audited result patterns, recurring-query journeys, filter behavior, and no-result states. Research then focused on how people interpreted categories, scanned mixed content, and recovered when the first query failed.
                 </p>
               </div>
             </div>
 
-            <div className="search-evidence-chain" aria-label="Evidence process">
-              <div><span>01</span><strong>Audit the system</strong><p>Map the tabs, filters, result patterns, and recovery states.</p></div>
-              <div><span>02</span><strong>Follow the friction</strong><p>Turn observed inconsistencies into research questions.</p></div>
-              <div><span>03</span><strong>Test the mental model</strong><p>Watch how people searched, scanned, narrowed, and recovered.</p></div>
-              <div><span>04</span><strong>Design from evidence</strong><p>Connect each interaction change to a specific user problem.</p></div>
+            <div className="search-evidence-method" aria-label="Research method">
+              <span>Evidence path</span>
+              <ol>
+                <li><small>01</small><strong>Audit current behavior</strong></li>
+                <li><small>02</small><strong>Trace recurring journeys</strong></li>
+                <li><small>03</small><strong>Test interpretation and recovery</strong></li>
+                <li><small>04</small><strong>Connect findings to decisions</strong></li>
+              </ol>
             </div>
 
             <div className="search-findings">
@@ -212,22 +198,25 @@ export default function SearchCaseStudy() {
                 <article key={finding.number}>
                   <span>{finding.number}</span>
                   <h3>{finding.title}</h3>
-                  <p>{finding.body}</p>
+                  <div>
+                    <p>{finding.body}</p>
+                    <strong className="search-finding-response">{finding.response}</strong>
+                  </div>
                 </article>
               ))}
             </div>
           </div>
         </section>
 
-        <section className="chapter shell" data-anna-prompt="The five that mattered">
+        <section className="chapter shell" data-anna-prompt="The three decisions that mattered">
           <div className="chapter-intro two-column-copy">
             <div>
               <SectionNumber>03 · The design response</SectionNumber>
-              <h2>Five changes turned a result list into a way forward.</h2>
+              <h2>Three decisions turned a result list into a way forward.</h2>
             </div>
             <div>
               <p className="lead">
-                The goal was not to decorate the old page. It was to remove the organizational logic users were being asked to carry and replace it with decisions that supported finding, discovering, and recovering.
+                Each decision answers one of the research observations above. Together they remove organizational logic customers were being asked to carry and replace it with a coherent finding, scanning, and recovery model.
               </p>
             </div>
           </div>
@@ -247,30 +236,62 @@ export default function SearchCaseStudy() {
               <p className="eyebrow">A decision before a design</p>
               <h3 id="filter-decision-title">Filter behavior determined the system underneath the screen.</h3>
               <p>
-                Prototyping paused while the team resolved whether filters should allow one selection or several. That choice affected ranking, consistency with IBM’s finder experiences, and the journey a user would have after narrowing the result set.
+                Prototyping paused while the team resolved whether filters should allow one selection or several. The visible control was simple; the underlying questions about cross-category ranking, ecosystem consistency, and MVP feasibility were not.
               </p>
             </div>
             <div className="search-filter-options">
               <article>
                 <span>Option A · Explored</span>
                 <h3>Multi-select</h3>
+                <div className="search-filter-model search-filter-model-multi" aria-hidden="true">
+                  <div className="search-filter-model-rail">
+                    <b>Filter results</b>
+                    <div className="search-filter-model-choice is-selected"><i>✓</i><span>Products</span><small>82</small></div>
+                    <div className="search-filter-model-choice is-selected"><i>✓</i><span>Documentation</span><small>46</small></div>
+                    <div className="search-filter-model-choice"><i /><span>Training</span><small>21</small></div>
+                    <div className="search-filter-model-choice"><i /><span>Support</span><small>18</small></div>
+                  </div>
+                  <div className="search-filter-model-results">
+                    <div><em>Product</em><b /><b /></div>
+                    <div><em>Documentation</em><b /><b /></div>
+                    <div><em>Product</em><b /><b /></div>
+                  </div>
+                </div>
                 <p>More flexible and consistent with finder behavior, but it required a credible way to rank content selected from several categories.</p>
               </article>
               <article>
                 <span>Option B · Shipped</span>
                 <h3>Single-select</h3>
-                <p>Faster to implement and simpler to rank, but potentially inconsistent with the behavior people encountered in specialized finders.</p>
+                <div className="search-filter-model search-filter-model-single" aria-hidden="true">
+                  <div className="search-filter-model-rail">
+                    <b>Search by</b>
+                    <div className="search-filter-model-choice"><span>All</span><small>10k+</small></div>
+                    <div className="search-filter-model-choice is-selected"><span>Products</span><small>82</small></div>
+                    <div className="search-filter-model-choice"><span>Documentation</span><small>46</small></div>
+                    <div className="search-filter-model-choice"><span>Training</span><small>21</small></div>
+                  </div>
+                  <div className="search-filter-model-results">
+                    <div><em>Product</em><b /><b /></div>
+                    <div><em>Product</em><b /><b /></div>
+                    <div><em>Product</em><b /><b /></div>
+                  </div>
+                </div>
+                <p>Credible to rank and feasible for the MVP, but intentionally less flexible than the behavior people encountered in specialized finders.</p>
               </article>
             </div>
             <div className="search-filter-evidence">
-              <div><span>Information architecture</span><p>Document current journeys from entry point to query to destination, using the 50 most recurrent queries.</p></div>
-              <div><span>User research</span><p>Define the ideal state for target audiences through the needs and expectations of different personas.</p></div>
-              <div><span>UX</span><p>Resume prototyping once the behavioral decision was clear enough to design and evaluate.</p></div>
+              <div><span>Ranking integrity</span><p>Several selected categories would require a credible way to compare unlike content in one order.</p></div>
+              <div><span>Ecosystem consistency</span><p>Specialized finders used more flexible filtering, so a simpler global behavior created a known tension.</p></div>
+              <div><span>MVP feasibility</span><p>Single-select preserved one result journey without implying ranking support the system did not yet have.</p></div>
             </div>
-            <p className="search-filter-outcome">
-              Single-select shipped in the US-English MVP. Customers can narrow one ranked result set by content type without returning to the old model of six separate searches. The broader journey work continued to inform masthead and typeahead exploration in parallel.
-            </p>
           </section>
+
+          <div className="search-filter-outcome">
+            <span>Decision takeaway</span>
+            <p>
+              Single-select did not resolve every cross-IBM consistency question. It did remove six result silos without pretending the ranking model could credibly combine several selected categories at once.
+            </p>
+          </div>
 
         </section>
 
@@ -278,12 +299,12 @@ export default function SearchCaseStudy() {
           <div className="shell">
             <div className="chapter-intro two-column-copy">
               <div>
-                <SectionNumber>04 · Recovery</SectionNumber>
+                <SectionNumber>04 · Completing the shipped system</SectionNumber>
                 <h2>Zero results had to become a recovery state, not a verdict.</h2>
               </div>
               <div>
                 <p className="lead">
-                  The old page apologized, offered generic search tips, and scattered possible next steps across unrelated cards. It acknowledged failure without helping people diagnose it.
+                  One of the clearest tests of the shipped model was what happened when it had no result to show. The old page apologized, offered generic search tips, and scattered possible next steps across unrelated cards.
                 </p>
                 <p>
                   The redesign treated no results as part of the search journey: preserve the query, offer relevant ways to broaden or revise it, and reveal a specialized destination when it can do a better job.
@@ -303,14 +324,65 @@ export default function SearchCaseStudy() {
                 </div>
                 <figcaption>Several competing recovery ideas, none clearly connected to the failed query.</figcaption>
               </figure>
-              <div className="search-recovery-model">
-                <span className="search-recovery-label">Recovery model</span>
-                <p className="search-recovery-query">watsonx.ai</p>
-                <h3>No matching results. Here are useful ways forward.</h3>
-                <div><span>01</span><p><strong>Broaden the scope</strong>Search all IBM content without losing the query.</p></div>
-                <div><span>02</span><p><strong>Revise the language</strong>Edit spelling, phrasing, or specificity in place.</p></div>
-                <div><span>03</span><p><strong>Choose a specialist</strong>Move to Product Finder, Support, or another purpose-built experience.</p></div>
+              <figure>
+                <div className="search-recovery-label">Shipped · desktop</div>
+                <div className="search-recovery-image search-recovery-image-desktop">
+                  <img
+                    src={`${assetRoot}/no-results-desktop.png`}
+                    alt="The shipped desktop IBM.com no-results experience preserving the query and offering Product Finder, Learning Hub, and Documentation as next steps"
+                    loading="lazy"
+                  />
+                </div>
+                <figcaption>The failed query stays visible while three purpose-built destinations offer a clear next move.</figcaption>
+              </figure>
+            </div>
+
+            <figure className="search-recovery-mobile">
+              <figcaption>
+                <span>Shipped · mobile</span>
+                <h3>The recovery model survives the smaller screen.</h3>
+                <p>The query remains editable, guidance becomes more direct, and the same destinations stack into a clear vertical path.</p>
+              </figcaption>
+              <div className="search-recovery-mobile-image">
+                <img
+                  src={`${assetRoot}/no-results-mobile.png`}
+                  alt="The shipped mobile IBM.com no-results experience with query guidance, a return to all results, and stacked Product Finder, Learning Hub, and Documentation cards"
+                  loading="lazy"
+                />
               </div>
+            </figure>
+          </div>
+        </section>
+
+        <section className="search-launch-band" data-anna-prompt="What's actually live">
+          <div className="shell">
+            <SectionNumber>05 · Launch</SectionNumber>
+            <div className="search-launch-heading">
+              <h2>The MVP launched. Production showed what came next.</h2>
+              <p className="lead">
+                After a dark launch at a dedicated v3 URL, the new result experience began moving to US-English traffic—and revealed the quality gaps only real use could expose.{" "}
+                <a
+                  className="search-launch-live"
+                  href="https://www.ibm.com/search"
+                  target="_blank"
+                  rel="noreferrer"
+                >
+                  Use it on IBM.com
+                </a>
+              </p>
+            </div>
+
+            <div className="search-launch-summary">
+              <article>
+                <span>Shipped</span>
+                <h3>One result journey</h3>
+                <p>Unified results, single-select filters, recognizable content types, continuous results, and recovery paths.</p>
+              </article>
+              <article>
+                <span>Production exposed</span>
+                <h3>The signals still needed work</h3>
+                <p>Promoted results needed accurate labels, query terms needed consistent emphasis, and the experience still needed globalization.</p>
+              </article>
             </div>
           </div>
         </section>
@@ -319,26 +391,16 @@ export default function SearchCaseStudy() {
           <div className="chapter-intro two-column-copy">
             <div>
               <div className="search-concept-kicker">
-                <SectionNumber>05 · Tested next</SectionNumber>
-                <span>Concept, not launched</span>
+                <SectionNumber>06 · Tested in parallel</SectionNumber>
               </div>
               <h2>Three levels of help before the query is finished.</h2>
             </div>
             <div>
               <p className="lead">
-                We also prototyped and tested a three-tier typeahead model, moving from simple query completion to richer suggestions and guided destinations. The question was larger than autocomplete: could search help people form a useful intent before they reached a results page?
-              </p>
-              {/* SILENT AUTOCORRECTION. Documented in facts.md and claimed on
-                  the homepage card for months while this page never named it,
-                  which made the card read as an invention rather than as a
-                  principle. It is the sharpest judgment call in the section, so
-                  it gets its own paragraph rather than a slot in the grid
-                  below, which is a fixed three columns. */}
-              <p>
-                One design principle came out of that work that I would carry into any search I worked on again. When someone misspells a query and the intent is obvious, correct it and return the right results without announcing the mistake. Silent autocorrection, because nobody needs to be told they cannot spell.
+                Separate from the launched SERP, we tested three levels of typeahead support: simple completion, guided tasks, and a richer discovery surface. The question was whether search could help people form useful intent before they reached a result page.
               </p>
               <p>
-                This work remains a tested direction, separate from the launched SERP. It belongs here because it shows how the project extended from fixing a result page to reconsidering the role of search across IBM.com.
+                The durable principle was simpler: when intent is obvious, correct a misspelling and return the right results without making the customer manage the mistake.
               </p>
             </div>
           </div>
@@ -397,77 +459,6 @@ export default function SearchCaseStudy() {
           </div>
         </section>
 
-        <section className="search-launch-band" data-anna-prompt="What's actually live">
-          <div className="shell">
-            <SectionNumber>06 · Launch</SectionNumber>
-            <div className="search-launch-heading">
-              <h2>The redesign is live. Search is not finished.</h2>
-              <p className="lead">
-                After a dark launch at a dedicated v3 URL, US-English traffic began moving to the new experience. Shipping made the design real, and it exposed the edge cases a prototype could not.{" "}
-                <a
-                  className="search-launch-live"
-                  href="https://www.ibm.com/search"
-                  target="_blank"
-                  rel="noreferrer"
-                >
-                  Use it on IBM.com
-                </a>
-              </p>
-            </div>
-
-            <figure className="search-launch-figure">
-              <div className="search-launch-image">
-                <img
-                  src={`${assetRoot}/launched-results.webp`}
-                  alt="The launched IBM.com search experience for watsonx, showing a single ranked result set with single-select content filters and visible product labels"
-                  width={2320}
-                  height={1344}
-                  loading="lazy"
-                />
-              </div>
-              <figcaption>
-                The shipped IBM.com experience: one ranked result set, single-select content filtering, visible content labels, and a clearer hierarchy for scanning.
-              </figcaption>
-            </figure>
-
-            <div className="search-scope-table">
-              <div>
-                <span>Live in the US-English MVP</span>
-                <p>Unified result journey</p>
-                <p>Single-select content filters replacing tabs</p>
-                <p>Content-type labels in the primary result experience</p>
-                <p>Continuous See more results</p>
-                <p>No-results recovery</p>
-                <p>Specialized search pathways</p>
-              </div>
-              <div>
-                <span>Post-launch iteration</span>
-                <p>Correct labeling for promoted Suggested Matches</p>
-                <p>Consistent query-term emphasis in titles, URLs, and descriptions</p>
-                <p>Clearer relevance signals when a promoted result leads the list</p>
-                <p>Globalization beyond US English</p>
-              </div>
-            </div>
-            <div className="search-launch-reality">
-              <div>
-                <span>What the launch exposed</span>
-                <h3>Production revealed the edge cases the prototype could not.</h3>
-              </div>
-              <div>
-                <p>
-                  Suggested Matches, promoted results managed through IBM’s Kepler tool, could surface a non-product URL inside the Products filter without the expected label. Query terms were also not consistently emphasized across the title, URL, or description.
-                </p>
-                <p>
-                  These issues did not block deployment, but they mattered because they affected the exact signals people use to understand why a result is present. They became concrete iteration work rather than being erased from the story after launch.
-                </p>
-              </div>
-            </div>
-            <p className="search-collaboration-note">
-              The launch brought together Design, Research, Information Architecture, Unified Search, PMO, engineering, content strategy, accessibility, and testing across IBM.com.
-            </p>
-          </div>
-        </section>
-
         <section className="search-future-section" data-anna-prompt="Testing AI before scaling it">
           <div className="shell">
             <div className="search-future-kicker">
@@ -478,10 +469,7 @@ export default function SearchCaseStudy() {
               <h2>AI belongs in Global Search only when its results deserve the reach.</h2>
               <div>
                 <p className="lead">
-                  The live SERP gives people a clearer way to navigate IBM content without asking them to trust an unexplained answer. AI search quality is not yet consistent enough for a surface as broad as Global Search, so we are not integrating it there yet.
-                </p>
-                <p>
-                  Instead, I am designing a narrower test on the Product Finder page. Product intent is more focused there, giving us a credible place to learn whether AI results can help customers identify relevant products without removing the cards, filters, and direct paths they already understand.
+                  AI quality is not yet consistent enough for a surface as broad as Global Search. Instead, I am designing a narrower Product Finder test, where focused product intent gives us a credible place to evaluate relevance, explanation, and customer control.
                 </p>
               </div>
             </div>
@@ -500,40 +488,8 @@ export default function SearchCaseStudy() {
               </div>
             </div>
 
-            <div className="search-ai-model">
-              <div className="search-ai-prompt">
-                <span>Example product need</span>
-                <p>I need security tools for monitoring a hybrid cloud environment.</p>
-              </div>
-              <div className="search-ai-steps">
-                <article>
-                  <span>01</span>
-                  <div><h3>Accept natural language</h3><p>Let customers describe a use case without translating it into catalog terminology first.</p></div>
-                </article>
-                <article>
-                  <span>02</span>
-                  <div><h3>Recommend in the page</h3><p>Present relevant products as structured results, not as a detached chat transcript.</p></div>
-                </article>
-                <article>
-                  <span>03</span>
-                  <div><h3>Explain the match</h3><p>Make AI involvement visible and help customers understand why each result appeared.</p></div>
-                </article>
-                <article>
-                  <span>04</span>
-                  <div><h3>Preserve customer control</h3><p>Keep filters, product cards, direct links, and a clear route back to standard discovery.</p></div>
-                </article>
-              </div>
-            </div>
-
-            <div className="search-ai-guardrails">
-              <div><span>Relevance</span><p>Do AI results help customers reach genuinely useful products faster?</p></div>
-              <div><span>Transparency</span><p>Can customers see what the system understood and why it made each recommendation?</p></div>
-              <div><span>Control</span><p>Can people refine, browse, and recover without being forced into conversation?</p></div>
-              <div><span>Quality gate</span><p>What evidence would justify giving AI the broader reach of Global Search?</p></div>
-            </div>
-
             <p className="future-note search-future-note">
-              AI in Global Search is a conditional future direction, not a committed launch state. The Product Finder test is designed to establish whether the quality is strong enough to earn that reach.
+              The quality gate is deliberate: AI earns broader reach only if customers receive more relevant products, can understand why they were recommended, and can still refine or recover without being forced into a conversation.
             </p>
           </div>
         </section>

@@ -36,7 +36,7 @@ export type AboutContent = {
 export const aboutContent: Record<PersonaId, AboutContent> = {
   recruiter: {
     eyebrow: "Principal Experience Designer",
-    headline: "I do my best work before the roadmap is obvious.",
+    headline: "I design the idea, the system, and the screen.",
     intro: [
       "I’m a Principal Experience Designer with more than 20 years of experience across enterprise products, AI, search, design systems, and future vision.",
       "I’ve worked with companies including IBM, LinkedIn, Nike, Bloomberg, State Street, and Ford, usually on complex products that need more than a polished interface. I help teams understand the real problem, explore what the product could become, and turn that direction into something tangible and testable.",
@@ -76,9 +76,9 @@ export const aboutContent: Record<PersonaId, AboutContent> = {
 
   client: {
     eyebrow: "Founder, Paper Pixel",
-    headline: "We turn ambitious ideas into clear, testable product directions.",
+    headline: "I turn ambitious ideas into beautiful, usable products.",
     intro: [
-      "We work with teams that have an opportunity, a complicated problem, or the beginnings of an idea, but not yet a clear path forward.",
+      "I work with teams that have an opportunity, a complicated problem, or the beginnings of an idea, but not yet a clear path forward.",
       "That might mean defining a new product, exploring how AI should fit into an experience, redesigning a complex system, or building a prototype that helps everyone decide what to do next.",
     ],
     pointsKicker: "What working together looks like",
@@ -89,7 +89,7 @@ export const aboutContent: Record<PersonaId, AboutContent> = {
       },
       {
         title: "Something tangible, early",
-        body: "We turn ideas into prototypes quickly, to expose assumptions, have better conversations, and learn before expensive decisions become fixed.",
+        body: "Ideas become prototypes quickly, exposing assumptions and improving the conversation before expensive decisions become fixed.",
       },
       {
         title: "A direction your team can use",

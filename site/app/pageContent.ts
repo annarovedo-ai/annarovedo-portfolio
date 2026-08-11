@@ -70,22 +70,22 @@ export const contactContent: Record<PersonaId, ContactContent> = {
 
   client: {
     eyebrow: "Collaboration & consulting",
-    headline: "Tell us what you are working on",
-    deck: "We take on product design, design system, and brand strategy engagements with teams building complex software. Typically 3-6 month partnerships.",
+    headline: "What are you working on?",
+    deck: "I take on product design, design system, and brand strategy engagements with teams building complex software. Partnerships typically run 3–6 months.",
     fields: [
       { label: "What’s your name?", placeholder: "Jane Doe" },
-      { label: "Where should we reply?", placeholder: "jane@yourstartup.io" },
+      { label: "Where should I reply?", placeholder: "jane@yourstartup.io" },
       {
         label: "Brief project overview",
-        placeholder: "We are modernizing an enterprise data layer and need…",
+        placeholder: "Modernizing an enterprise data layer and need…",
         multiline: true,
       },
       { label: "Expected timeline", placeholder: "E.g., Nov 2026 start (approx. 4 months)" },
     ],
     submit: "Start a conversation",
-    sideHeading: "How we work",
+    sideHeading: "How engagements work",
     sideBody:
-      "No bloated pitch meetings. We align on scope, run on weekly sprints, and keep artifacts lightweight (Figma, production-ready code, and clear documentation).",
+      "No bloated pitch meetings. Scope is agreed upfront, work runs in weekly sprints, and artifacts stay lightweight: Figma, production-ready code, and clear documentation.",
     sideList: [
       { label: "Intro brief review & scope alignment", ordered: true },
       { label: "Flat-rate monthly engagement structure", ordered: true },
