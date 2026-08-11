@@ -173,7 +173,7 @@ export const flagshipCaseStudies: CaseStudy[] = [
     image: "/case-study/concierge/concierge-card.webp",
     client: {
       tag: "AI product design",
-      body: "IBM’s marketing site and its product were owned by different teams, so customers hit a seam halfway through buying. I designed a generative-AI guide that crosses it, from first look through demo, purchase, onboarding and support. Sole designer on it.",
+      body: "IBM’s marketing site and its product were owned by different teams, so customers hit a seam halfway through buying. We designed a generative-AI guide that crosses it, from first look through demo, purchase, onboarding and support. One designer carried it end to end.",
       outcome: "Strategy, two validated personas, two rounds of testing, and the shipped V1.",
     },
   },
@@ -187,7 +187,7 @@ export const flagshipCaseStudies: CaseStudy[] = [
     image: "/case-study/thumbs/journey-orchestration.jpg",
     client: {
       tag: "Product strategy",
-      body: "Where the Concierge goes next. Instead of a chat sitting on the page, the page rearranges around what it learns about you, and scores the lead while it does it. I built the concept, the model under it, and the case for funding it.",
+      body: "Where the Concierge goes next. Instead of a chat sitting on the page, the page rearranges around what it learns about you, and scores the lead while it does it. We built the concept, the model under it, and the case for funding it.",
       // Stays honest. A client who later finds out this never launched will
       // discount everything else on the page, and the willingness to say so
       // is worth more than the card.
@@ -215,7 +215,7 @@ export const supportingCaseStudies: CaseStudy[] = [
     image: "/case-study/thumbs/state-street.jpg",
     client: {
       tag: "Design systems",
-      body: "I built the visual language for a fintech platform and the design system underneath it, atomic and tokenized, so every team after me could ship without redrawing anything. It became what the rest of State Street got measured against.",
+      body: "We built the visual language for a fintech platform and the design system underneath it, atomic and tokenized, so every team after us could ship without redrawing anything. It became what the rest of State Street got measured against.",
       outcome: "A tokenized system, 22 component categories, WCAG AA, and the brand guide with it.",
     },
   },
@@ -252,7 +252,7 @@ export const supportingCaseStudies: CaseStudy[] = [
     image: "/case-study/thumbs/search.jpg",
     client: {
       tag: "Search and IA",
-      body: "People could not find things across IBM.com, which is a revenue problem before it is a design one. I ran the audit and the research, then designed the result experience that replaced six competing tabs with one filterable set. It is live.",
+      body: "People could not find things across IBM.com, which is a revenue problem before it is a design one. We ran the audit and the research, then designed the result experience that replaced six competing tabs with one filterable set. It is live.",
       outcome: "Audit, research, interaction design and prototyping, through to a launched MVP. Plus a three-tier typeahead, tested.",
     },
   },
@@ -265,7 +265,7 @@ export const supportingCaseStudies: CaseStudy[] = [
     image: "/case-study/kmart/card-cover.png",
     client: {
       tag: "Brand and campaign",
-      body: "Kmart’s clothes were fine and nobody would admit shopping there. I built the relaunch on the admission itself, and ran the same device across every surface, from the bag to the hangtags to the site.",
+      body: "Kmart’s clothes were fine and nobody would admit shopping there. We built the relaunch on the admission itself, and ran the same device across every surface, from the bag to the hangtags to the site.",
       outcome: "Positioning, art direction, and every surface it runs on. A pitch for DraftFCB Chicago.",
     },
   },
@@ -281,7 +281,7 @@ export const supportingCaseStudies: CaseStudy[] = [
       // constraint is theirs too. Nobody has the research access they should
       // have, and this is the one card that says so out loud.
       tag: "Research under constraint",
-      body: "Forty specified search attributes, and no access to a single end-user interview. I found the five people actually used, and designed the workspace around those.",
+      body: "Forty specified search attributes, and no access to a single end-user interview. We found the five people actually used, and designed the workspace around those.",
       outcome: "A shipped tool. All four usability testers finished it unaided, with no training.",
     },
   },
@@ -377,12 +377,12 @@ export const homeContent: Record<PersonaId, HomeContent> = {
       "Message me, or book a time and talk to the version that occasionally needs a minute to think.",
     footerButton: "Book a time",
     footerButtonHref: BOOKING_URL,
-    footerSecondary: { label: "Message me", href: "/contact" },
+    footerSecondary: { label: "Message us", href: "/contact" },
   },
 
   client: {
     eyebrow: "Client",
-    onboardingText: "This version answers what clients usually ask me first.",
+    onboardingText: "This version answers what clients usually ask us first.",
     // Three versions, and the middle one is the cautionary tale.
     //
     // 1. "What are you trying to build?" — the most common headline on studio
@@ -420,7 +420,13 @@ export const homeContent: Record<PersonaId, HomeContent> = {
     // and brands claim the range; the builder clause stays because it is the
     // client persona's sharpest differentiator; and the shape mirrors the
     // recruiter's "products, systems, and brands" so the personas rhyme.
-    headline: ["I design products, campaigns, and brands, and I can get them built.", ""],
+    // Split 2026-08-10 (one line was too long), then sharpened from the
+    // visitor's seat: someone lands here wanting a thing designed AND MADE.
+    // The big line answers designed; the soft line answers made, and it
+    // dropped the hedge on the way. "I can get them built" is a capability;
+    // "Then I get them built" is what happens. Sequential, certain, five
+    // words.
+    headline: ["We design products, campaigns, and brands.", "Then we get them built."],
     // THE SUBTEXT DOES NOT SELL. That is the whole rule here, and it took
     // four tries and one good catch from Anna to arrive at it.
     //
@@ -473,7 +479,7 @@ export const homeContent: Record<PersonaId, HomeContent> = {
     conciergeHeading:
       "You don’t need another portfolio where everything went perfectly.",
     conciergeBody:
-      "I gave an AI my work and my opinions and taught it how I talk. Tell it what you’re working on. It’ll pull up the relevant projects and give you a fairly honest sense of how I’d think about it, including the parts I’d push back on.",
+      "We taught an AI the studio’s work, opinions, and way of talking. Tell it what you’re working on. It’ll pull up the relevant projects and give you a fairly honest sense of how we’d think about it, including the parts we’d push back on.",
     prompts: [
       // Four prompts, four things a client is actually deciding: can she
       // handle ambiguity, is she right for this kind of problem, what does
@@ -516,20 +522,20 @@ export const homeContent: Record<PersonaId, HomeContent> = {
       // was 25 characters of set-in-caps text competing with the h2 under it
       // while the recruiter's said "About" in five.
       eyebrow: "About",
-      headline: "I’ve worked in more than one field.",
+      headline: "We come from more than one field.",
       body: [
-        "I was put on a Kmart pitch because of the years I spent in fashion, not in spite of them. The brief was to relaunch their clothing line, and I was the one who knew the category. Trends, objects, interfaces and products all come from the same human place, and you only see that if you have worked in more than one of them.",
-        "Most of what I get called in for now is enterprise software, fintech, automotive and AI. It is the same habit, pointed at harder problems.",
+        "Anna was put on a Kmart pitch because of her years in fashion, not in spite of them. The brief was to relaunch their clothing line, and she was the one who knew the category. Trends, objects, interfaces and products all come from the same human place, and you only see that after working in more than one of them.",
+        "Most of what the studio gets called in for now is enterprise software, fintech, automotive and AI. The same habit, pointed at harder problems.",
       ],
       pullquote: "Culture is always the brief underneath the brief.",
-      link: "More about me",
+      link: "Meet the founder",
     },
     // A client is asking what they would be buying. The slot holds
     // deliverables, not validation, so the label names the transaction.
-    outcomeLabel: "What I did",
-    footerHeadline: "Tell me what you’re trying to figure out.",
+    outcomeLabel: "What we did",
+    footerHeadline: "Tell us what you’re trying to figure out.",
     footerBody:
-      "Message me, or book a time and tell the actual me what’s going on.",
+      "Message us, or book a time and talk it through with Anna.",
     // Was "Start a conversation", which does not say what happens when you
     // press it, and sitting a few inches from a chat widget it reads as if it
     // opens the chat. Matches the recruiter's button, and now goes where it

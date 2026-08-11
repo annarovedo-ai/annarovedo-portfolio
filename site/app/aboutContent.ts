@@ -76,9 +76,9 @@ export const aboutContent: Record<PersonaId, AboutContent> = {
 
   client: {
     eyebrow: "Founder, Paper Pixel",
-    headline: "I turn ambitious ideas into clear, testable product directions.",
+    headline: "We turn ambitious ideas into clear, testable product directions.",
     intro: [
-      "I work with teams that have an opportunity, a complicated problem, or the beginnings of an idea, but not yet a clear path forward.",
+      "We work with teams that have an opportunity, a complicated problem, or the beginnings of an idea, but not yet a clear path forward.",
       "That might mean defining a new product, exploring how AI should fit into an experience, redesigning a complex system, or building a prototype that helps everyone decide what to do next.",
     ],
     pointsKicker: "What working together looks like",
@@ -89,7 +89,7 @@ export const aboutContent: Record<PersonaId, AboutContent> = {
       },
       {
         title: "Something tangible, early",
-        body: "I turn ideas into prototypes quickly so we can expose assumptions, have better conversations, and learn before expensive decisions become fixed.",
+        body: "We turn ideas into prototypes quickly, to expose assumptions, have better conversations, and learn before expensive decisions become fixed.",
       },
       {
         title: "A direction your team can use",

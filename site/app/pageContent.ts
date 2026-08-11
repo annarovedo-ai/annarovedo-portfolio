@@ -70,11 +70,11 @@ export const contactContent: Record<PersonaId, ContactContent> = {
 
   client: {
     eyebrow: "Collaboration & consulting",
-    headline: "Tell me what you are working on",
-    deck: "I take on product design, design system, and brand strategy engagements with teams building complex software. Typically 3-6 month partnerships.",
+    headline: "Tell us what you are working on",
+    deck: "We take on product design, design system, and brand strategy engagements with teams building complex software. Typically 3-6 month partnerships.",
     fields: [
       { label: "What’s your name?", placeholder: "Jane Doe" },
-      { label: "Where should I reply?", placeholder: "jane@yourstartup.io" },
+      { label: "Where should we reply?", placeholder: "jane@yourstartup.io" },
       {
         label: "Brief project overview",
         placeholder: "We are modernizing an enterprise data layer and need…",
@@ -83,7 +83,7 @@ export const contactContent: Record<PersonaId, ContactContent> = {
       { label: "Expected timeline", placeholder: "E.g., Nov 2026 start (approx. 4 months)" },
     ],
     submit: "Start a conversation",
-    sideHeading: "How I work",
+    sideHeading: "How we work",
     sideBody:
       "No bloated pitch meetings. We align on scope, run on weekly sprints, and keep artifacts lightweight (Figma, production-ready code, and clear documentation).",
     sideList: [

@@ -83,7 +83,7 @@ const partners = [
 const whatYouGet = [
   {
     title: "One accountable lead",
-    body: "You work directly with me, from the first strategic question through final delivery.",
+    body: "You work directly with Anna, from the first strategic question through final delivery.",
   },
   {
     title: "The right-sized team",
@@ -106,19 +106,19 @@ export default function ServicesBody() {
             it back into a sentence somebody would say. */}
         <h1>One senior partner, with the right team for the whole thing.</h1>
         <p className="svc-deck">
-          I lead the strategy and creative direction, then bring together the specialists your
+          Anna leads the strategy and creative direction, then brings together the specialists your
           project needs, from brand and product design to websites, applications, content,
           development, and launch.
         </p>
         <div className="svc-actions">
-          {/* "Bring me the brief" contradicted this page twice over: the CTA
+          {/* "Bring us the brief" contradicted this page twice over: the CTA
               band below says "even if the brief is still messy", and her whole
               positioning is that defining the thing IS the work — asking for a
               finished brief filters out exactly the client she wants. It was
               also an order aimed at the person paying. This echoes the client
               chat copy, which already says "Tell it what you're working on". */}
           <a className="svc-primary" href="/contact">
-            Tell me what you&rsquo;re working on &rarr;
+            Tell us what you&rsquo;re working on &rarr;
           </a>
           <a className="svc-secondary" href="/#work">
             See selected work &rarr;
@@ -128,7 +128,7 @@ export default function ServicesBody() {
             second "senior-led" on one screen, in a dialect (agency-brochure)
             the rest of the site does not speak. This says the same thing the
             way she talks. */}
-        <p className="svc-note">You deal with me the whole way through.</p>
+        <p className="svc-note">You deal with the same person the whole way through.</p>
       </section>
 
       <section className="svc-block">
@@ -158,7 +158,7 @@ export default function ServicesBody() {
               ))}
             </ul>
             <p className="svc-model-body">
-              I lead every engagement myself, and assemble a trusted team of specialists
+              Anna leads every engagement herself, and assembles a trusted team of specialists
               around the work, so each project gets the capabilities it needs without
               unnecessary layers.
             </p>
@@ -214,10 +214,10 @@ export default function ServicesBody() {
         <div className="shell">
           <h2>Have something difficult to figure out?</h2>
           <p>
-            Tell me what you&rsquo;re building, even if the brief is still messy. I can help
+            Tell us what you&rsquo;re building, even if the brief is still messy. We can help
             define the direction, assemble the right team, and take it from first idea to launch.
           </p>
-          <a href="/contact">Tell me what you&rsquo;re working on &rarr;</a>
+          <a href="/contact">Tell us what you&rsquo;re working on &rarr;</a>
         </div>
       </section>
     </article>

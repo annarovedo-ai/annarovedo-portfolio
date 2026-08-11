@@ -1362,6 +1362,7 @@ h3 {
 .hero-figure .figure-image-wrap {
   padding: 0;
   background: var(--paper-deep);
+  border: 0;
 }
 
 .hero-figure img {
