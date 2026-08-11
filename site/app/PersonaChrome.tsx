@@ -19,14 +19,23 @@ export default function PersonaChrome() {
   const [switcherDocked, setSwitcherDocked] = useState(false);
 
   useEffect(() => {
-    const intro = document.querySelector(".persona-intro");
-    if (!intro) return;
+    // WATCH THE SWITCHER, NOT THE BAND IT SITS IN.
+    // This observed .persona-intro, the whole navy band: switcher on top,
+    // onboarding line beneath. The band stays intersecting until its LAST
+    // pixel clears the header, but the switcher reaches the header first and
+    // slides under it while the line below is still on screen. For that
+    // stretch of scroll the control was behind the header and the header had
+    // not yet picked it up, so the switcher was simply gone. Observing the
+    // switcher itself makes the handoff happen at the moment it actually
+    // needs to: it is never on screen twice, and never absent.
+    const anchor = document.querySelector(".persona-intro-switch");
+    if (!anchor) return;
 
     const introIo = new IntersectionObserver(
       ([entry]) => setSwitcherDocked(!entry.isIntersecting),
       { rootMargin: "-68px 0px 0px 0px", threshold: 0 }
     );
-    introIo.observe(intro);
+    introIo.observe(anchor);
     return () => introIo.disconnect();
   }, []);
 
