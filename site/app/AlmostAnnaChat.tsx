@@ -40,7 +40,13 @@ export default function AlmostAnnaChat({
     setError(null);
   }, [persona]);
 
+  // Follow the conversation down, but only once there IS one. The card has a
+  // fixed height, and the opening state (heading, paragraph, four prompts) is
+  // taller than it on a phone. Scrolling to the bottom unconditionally meant a
+  // first-time visitor met the card already scrolled past its own headline,
+  // reading a sentence that started somewhere they could not see.
   useEffect(() => {
+    if (messages.length === 0) return;
     const el = scroller.current;
     if (el) el.scrollTop = el.scrollHeight;
   }, [messages, busy]);

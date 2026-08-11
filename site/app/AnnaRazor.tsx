@@ -162,13 +162,23 @@ export default function AnnaRazor() {
     // inline chat card. On a phone the hero is several screens tall, so
     // waiting for all of it means the button is missing for most of the page.
     // Phones fall back to a plain scroll threshold instead.
-    const hero = isPhone ? null : document.querySelector(".home-hero");
-    if (hero) {
+    // NEVER TWO CHATS AT ONCE.
+    // Desktop watches the whole hero. Phones used to watch a bare scroll
+    // threshold (220px), which put the corner button on screen while the
+    // inline chat card was still fully visible, and tapping it opened the
+    // panel directly on top of the card: the same conversation, with the same
+    // avatar and the same header, twice. On a phone the thing that competes is
+    // the card itself, so watch the card. The button appears when the card has
+    // gone, which is the moment it starts being useful.
+    const anchor = isPhone
+      ? document.querySelector(".aa-inline")
+      : document.querySelector(".home-hero");
+    if (anchor) {
       const io = new IntersectionObserver(
         ([entry]) => setVisible(!entry.isIntersecting),
         { rootMargin: "-68px 0px 0px 0px", threshold: 0 }
       );
-      io.observe(hero);
+      io.observe(anchor);
       return () => io.disconnect();
     }
     const onScroll = () => setVisible(window.scrollY > 220);
