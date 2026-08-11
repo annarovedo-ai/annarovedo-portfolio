@@ -154,7 +154,7 @@ export const flagshipCaseStudies: CaseStudy[] = [
     part: "Part one",
     title: "IBM Chat Concierge",
     body: "The brief was a chatbot. The useful question turned out to be who was actually buying, so I designed for two people at once: the developer evaluating it and the manager who had to approve it. The guide runs from first look through demo, purchase and support. Sole UX designer, on a team led by IBM’s Global Head of UX.",
-    // Purpose-made 16:9 MaaS360 frame supplied for the homepage card.
+    // Purpose-made 16:9 frame supplied for the homepage card.
     image: "/case-study/concierge/concierge-card-hero.png",
     client: {
       tag: "AI product design",

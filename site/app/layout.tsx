@@ -3,10 +3,10 @@ import "./globals.css";
 import AnnaRazor from "./AnnaRazor";
 
 export const metadata: Metadata = {
-  // Was "IBM MaaS360 Chat Concierge · Anna Rovedo" — the concierge case
-  // study's title, left behind as the SITE-WIDE default, so every page
-  // without its own metadata introduced her as an IBM product. Pages that
-  // export their own metadata (the homepage does) still override this.
+  // Was the concierge case study's own title, left behind as the SITE-WIDE
+  // default, so every page without its own metadata introduced her as an IBM
+  // product rather than as herself. Pages that export their own metadata (the
+  // homepage does) still override this.
   title: "Anna Rovedo · Principal Experience Designer",
   description:
     "Anna Rovedo is a Principal Experience Designer working across digital products, systems, brands, campaigns, and emerging technology.",
