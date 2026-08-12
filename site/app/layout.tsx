@@ -3,6 +3,14 @@ import "./globals.css";
 import AnnaRazor from "./AnnaRazor";
 
 export const metadata: Metadata = {
+  // Without this, Next resolves the relative /og.png against its development
+  // fallback and ships <meta property="og:image" content="http://localhost:3000/og.png">
+  // to production. The tag is present, the file exists, and every link preview
+  // is still blank, because the URL points at a machine only Anna has. Now
+  // that the domain is live it can be stated once here and every page inherits
+  // it. Verified in the build output: "localhost:3000" was in the shipped HTML.
+  metadataBase: new URL("https://annarovedo.com"),
+
   // Was the concierge case study's own title, left behind as the SITE-WIDE
   // default, so every page without its own metadata introduced her as an IBM
   // product rather than as herself. Pages that export their own metadata (the
