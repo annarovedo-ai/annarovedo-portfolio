@@ -394,16 +394,13 @@ export default function HomeBody() {
             up yet.{" "}
             <a href="/archive">See the archive &rarr;</a>
           </p>
-          {/* /this-site was written, styled and shipped, and then nothing on
-              the site linked to it. It is the only case study a reader can
-              check against reality while they are reading it, which makes it
-              the most persuasive one here, and it was reachable only by
-              guessing the URL. */}
-          <p className="home-other-archive-link">
-            And this site is a case study in itself: designed, written and
-            built by me, with the AI you have been talking to.{" "}
-            <a href="/this-site">Read how it was made &rarr;</a>
-          </p>
+          {/* NO LINK TO /this-site HERE, AND THAT IS DELIBERATE.
+              Removed 10 August at Anna's instruction (b6076d4): it read as the
+              AI selling its own involvement. The page still exists and still
+              has no inbound links, which is the decision rather than an
+              oversight. Re-added 12 August by an audit that treated the orphan
+              as a bug and reverted the same day. Check the history before
+              "fixing" this again. */}
         </div>
       </section>
 
