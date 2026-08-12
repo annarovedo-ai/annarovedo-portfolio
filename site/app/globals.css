@@ -3339,7 +3339,7 @@ blockquote {
   }
 
   .persona-sticky {
-    padding: 12px 16px;
+    padding: 0 0 14px;
   }
 
   .site-header nav {
@@ -6280,8 +6280,61 @@ a.home-video-label:focus-visible {
 .home-header {
   display: grid;
   grid-template-columns: 1fr auto 1fr;
+  /* Two rows at rest, one row once scrolled. The switcher is a child of the
+     header in BOTH states and only its grid-area changes, which is the whole
+     point: nothing is duplicated, nothing is swapped, nothing can get out of
+     sync. Earlier versions moved the control between two containers and that
+     is what produced every "it jumps" bug. */
+  grid-template-areas:
+    "brand    .        nav"
+    "switcher switcher switcher";
   align-items: center;
   gap: 20px;
+}
+
+.home-header > .brand {
+  grid-area: brand;
+}
+
+.home-header > .site-nav {
+  grid-area: nav;
+  justify-self: end;
+}
+
+.home-header > .persona-sticky {
+  grid-area: switcher;
+}
+
+/* Scrolled: brand, switcher and nav on one bar. Everything the tall state
+   spends height on (the stacked row, the label above the control, the full
+   pill size) collapses here, because past the fold the chrome is a tool, not
+   an introduction. */
+.home-header.is-scrolled {
+  grid-template-areas: "brand switcher nav";
+  min-height: 64px;
+}
+
+.home-header.is-scrolled > .persona-sticky {
+  padding: 0;
+}
+
+.home-header.is-scrolled .persona-switch-group {
+  flex-direction: row;
+  gap: 10px;
+}
+
+.home-header.is-scrolled .persona-switch-label {
+  font-size: var(--t-fine);
+}
+
+.home-header.is-scrolled .persona-switch {
+  padding: 3px;
+  box-shadow: 0 0 0 3px rgba(255, 255, 255, 0.08), 0 6px 16px rgba(0, 0, 0, 0.22);
+}
+
+.home-header.is-scrolled .persona-switch button {
+  padding: 8px 15px;
+  font-size: var(--t-fine);
 }
 
 /* Undocked, the header sits directly on top of the persona intro, so it takes
@@ -6311,9 +6364,8 @@ a.home-video-label:focus-visible {
   justify-self: end;
 }
 
-.home-header .site-nav {
-  grid-column: 3;
-}
+/* Placement lives in grid-template-areas now, so this rule would only be a
+   second, competing source of truth. */
 
 /* Hidden above the breakpoint: the links show inline and there is nothing to
    toggle. */
@@ -6412,25 +6464,16 @@ a.home-video-label:focus-visible {
    switcher sits below the header because it is the next element in the box,
    not because a measurement says so, so it is correct at every width and at
    every header height, permanently. */
-.persona-dock {
-  position: sticky;
-  top: 0;
-  z-index: 30;
-}
-
-/* The wrapper is the sticky element now. A sticky child inside a sticky
-   parent pins against the parent's box rather than the viewport, which is its
-   own quiet bug, so the header goes back to normal flow in here. Every other
-   page still uses .site-header on its own, where it stays sticky. */
-.persona-dock .site-header {
-  position: static;
-}
-
+/* No wrapper and no offset. The switcher is inside the header, so it is
+   carried by the header's own position:sticky and sits under the brand row
+   because that is where the grid puts it. The hardcoded top:84px this
+   replaces was a copy of the header's min-height kept true by hand in three
+   breakpoints, and it was wrong the moment the header rendered taller than
+   its minimum. */
 .persona-sticky {
   display: flex;
   justify-content: center;
-  padding: 18px 24px;
-  background: var(--blue);
+  padding: 2px 0 20px;
 }
 
 .persona-intro {
@@ -6506,11 +6549,15 @@ a.home-video-label:focus-visible {
   outline-offset: -2px;
 }
 
-.persona-switch.is-compact {
+/* is-compact is set on .persona-switch-group by PersonaSwitch, never on
+   .persona-switch itself, so these two rules had matched nothing since they
+   were written and every "compact" switcher on the site was rendering at full
+   size. Descendant selector, so they apply where they were meant to. */
+.persona-switch-group.is-compact .persona-switch {
   padding: 3px;
 }
 
-.persona-switch.is-compact button {
+.persona-switch-group.is-compact .persona-switch button {
   padding: 8px 15px;
   font-size: var(--t-fine);
 }
@@ -6658,6 +6705,9 @@ a.home-video-label:focus-visible {
      same height it always was. */
   .home-header {
     grid-template-columns: auto 1fr;
+    grid-template-areas:
+      "brand    nav"
+      "switcher switcher";
     row-gap: 0;
     padding-block: 10px;
   }
@@ -6666,8 +6716,7 @@ a.home-video-label:focus-visible {
      nothing — and the desktop rule left .site-nav pinned to column 3, which no
      longer exists at this width. That phantom column is what floated the
      hamburger off the corner. */
-  .home-header .site-nav {
-    grid-column: 2;
+  .home-header > .site-nav {
     justify-self: end;
     align-self: center;
   }/* Once docked the wordmark and credit step out and only the 30px mark is
@@ -6675,9 +6724,8 @@ a.home-video-label:focus-visible {
      hamburger on a single row instead of stacking the switcher underneath. */
   .home-header.is-scrolled {
     grid-template-columns: auto 1fr auto;
+    grid-template-areas: "brand switcher nav";
     column-gap: 12px;
-  }.home-header.is-scrolled .site-nav {
-    grid-column: 3;
   }}
 
 @media (max-width: 420px) {.home-header.is-scrolled {
