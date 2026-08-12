@@ -18,11 +18,12 @@ export default function AboutBody() {
 
       <article id="top">
         <section className="about-intro shell">
-          <div
-            className="about-portrait"
-            role="img"
-            aria-label="Portrait of Anna Rovedo"
-          />
+          {/* The portrait placeholder was removed 2026-08-12. It was an empty
+              div with a border and a fill, holding a 4:5 slot for a photograph
+              that does not exist, and on a page whose whole job is to be
+              believed, an empty frame reads as unfinished rather than as
+              considered. If a real photograph arrives, put an <img> back here
+              and restore the two column grid on .about-intro. */}
           <div className="about-intro-copy">
             <p className="eyebrow">{c.eyebrow}</p>
             <h1>{c.headline}</h1>

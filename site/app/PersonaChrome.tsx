@@ -88,7 +88,11 @@ export default function PersonaChrome() {
           immediately before the header. */}
       <div className="home-header-space" aria-hidden="true" />
 
-      <header className="site-header home-header" ref={headerRef}>
+      {/* is-home is load-bearing. .home-header is shared with SiteHeader on
+          every other page, so the two row layout, the collapse and the fixed
+          positioning all have to be scoped or they leak sitewide, and those
+          pages have no spacer to hold the space open. */}
+      <header className="site-header home-header is-home" ref={headerRef}>
         <BrandLockup />
 
         {/* Grid area "switcher": row two at rest, centre of row one when

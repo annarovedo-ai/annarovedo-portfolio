@@ -6280,19 +6280,31 @@ a.home-video-label:focus-visible {
 .home-header {
   display: grid;
   grid-template-columns: 1fr auto 1fr;
-  /* Two rows at rest, one row once scrolled. The switcher is a child of the
-     header in BOTH states and only its grid-area changes, which is the whole
-     point: nothing is duplicated, nothing is swapped, nothing can get out of
-     sync. Earlier versions moved the control between two containers and that
-     is what produced every "it jumps" bug. */
-  grid-template-areas:
-    "brand    .        nav"
-    "switcher switcher switcher";
   align-items: center;
   gap: 20px;
 }
 
-.home-header > .brand {
+/* EVERYTHING BELOW THIS POINT IS THE HOMEPAGE HEADER ONLY.
+ 
+   .home-header is shared: SiteHeader puts it on every other page in the site
+   to get the same grid and the same navy. Only the homepage has the two row
+   layout, the collapse, the spacer and the fixed positioning. Written
+   unscoped, position:fixed leaked onto About, Contact, the resume and every
+   case study, where there is no spacer to hold the space open, so their
+   content slid underneath the bar. Scope anything structural to .is-home. */
+
+/* Two rows at rest, one row once scrolled. The switcher is a child of the
+   header in BOTH states and only its grid-area changes, which is the whole
+   point: nothing is duplicated, nothing is swapped, nothing can get out of
+   sync. Earlier versions moved the control between two containers and that is
+   what produced every "it jumps" bug. */
+.home-header.is-home {
+  grid-template-areas:
+    "brand    .        nav"
+    "switcher switcher switcher";
+}
+
+.home-header.is-home > .brand {
   grid-area: brand;
   /* The wordmark is 24px serif and the nav is 14px sans. Centred on the same
      row their tops do not agree, and the name floated 4.75px above the links.
@@ -6303,12 +6315,15 @@ a.home-video-label:focus-visible {
   top: 5px;
 }
 
-.home-header > .site-nav {
+.home-header.is-home > .site-nav {
   grid-area: nav;
+}
+
+.home-header > .site-nav {
   justify-self: end;
 }
 
-.home-header > .persona-sticky {
+.home-header.is-home > .persona-sticky {
   grid-area: switcher;
 }
 
@@ -6330,7 +6345,7 @@ a.home-video-label:focus-visible {
    different height per persona (the Ex lockup carries a credit line) and per
    breakpoint, and a hardcoded number here is the exact mistake this file has
    already made twice. */
-.home-header {
+.home-header.is-home {
   position: fixed;
   top: 0;
   left: 0;
@@ -6344,7 +6359,7 @@ a.home-video-label:focus-visible {
 
 /* Collapsed there is one row again, and min-height plus align-items centre it
    the way the old header did. Padding here would just make the bar taller. */
-.home-header.is-scrolled {
+.home-header.is-home.is-scrolled {
   padding-block: 0;
 }
 
@@ -6359,7 +6374,7 @@ a.home-video-label:focus-visible {
   background: var(--blue);
 }
 
-.home-header.is-scrolled {
+.home-header.is-home.is-scrolled {
   grid-template-areas: "brand switcher nav";
   min-height: 64px;
 }
@@ -6414,8 +6429,12 @@ a.home-video-label:focus-visible {
   justify-self: end;
 }
 
-/* Placement lives in grid-template-areas now, so this rule would only be a
-   second, competing source of truth. */
+/* SiteHeader's switcher wrapper. It had no rules at all, so on every page
+   except the homepage the control was auto-placed and simply landed wherever
+   the grid put it. Centre column, explicitly. */
+.home-header-switch {
+  justify-self: center;
+}
 
 /* Hidden above the breakpoint: the links show inline and there is nothing to
    toggle. */
@@ -6755,10 +6774,13 @@ a.home-video-label:focus-visible {
      same height it always was. */
   .home-header {
     grid-template-columns: auto 1fr;
+    row-gap: 0;
+  }
+
+  .home-header.is-home {
     grid-template-areas:
       "brand    nav"
       "switcher switcher";
-    row-gap: 0;
     padding-block: 16px 0;
   }
 
@@ -6772,7 +6794,7 @@ a.home-video-label:focus-visible {
   }/* Once docked the wordmark and credit step out and only the 30px mark is
      left, which frees enough width to put the mark, the switcher and the
      hamburger on a single row instead of stacking the switcher underneath. */
-  .home-header.is-scrolled {
+  .home-header.is-home.is-scrolled {
     grid-template-columns: auto 1fr auto;
     grid-template-areas: "brand switcher nav";
     column-gap: 12px;
@@ -7326,24 +7348,11 @@ a.home-video-label:focus-visible {
    About page
    ========================================================== */
 
-/* Sized so the next section's top edge clears the fold on a laptop. The whole
-   block, including its padding, is capped against viewport height rather than
-   left to grow with the copy. */
+/* One column since the portrait placeholder came out. The two column grid
+   and the .about-portrait rules that filled the left one are gone with it;
+   both come back the day there is a real photograph to put there. */
 .about-intro {
-  display: grid;
-  grid-template-columns: 0.66fr 1.34fr;
-  gap: clamp(36px, 5vw, 72px);
-  align-items: start;
   padding-block: clamp(40px, 4.5vw, 64px) clamp(40px, 4.5vw, 64px);
-}
-
-/* The portrait was the tallest thing in the section and set the fold on its
-   own. Capped against viewport height so a short laptop window shrinks it. */
-.about-portrait {
-  aspect-ratio: 4 / 5;
-  max-height: min(52vh, 460px);
-  background: var(--paper-deep);
-  border: 1px solid var(--line);
 }
 
 /* Mobile copy is hidden by default and swapped in below the breakpoint. */
@@ -7501,17 +7510,7 @@ a.home-video-label:focus-visible {
 
 @media (max-width: 900px) {
   .about-intro {
-    grid-template-columns: 1fr;
-    gap: 28px;
     padding-block: 32px;
-  }
-
-  /* Stacked, the portrait is pure vertical cost before any copy is read, so it
-     becomes a wide crop rather than a tall one. */
-  .about-portrait {
-    max-width: 100%;
-    max-height: 30vh;
-    aspect-ratio: 3 / 2;
   }
 
   /* Swap to the short copy so the section below still peeks above the fold on
