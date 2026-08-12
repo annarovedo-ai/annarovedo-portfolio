@@ -4863,6 +4863,29 @@ blockquote {
   position: absolute;
   inset: 0;
   z-index: 2;
+  display: block;
+  padding: 0;
+  border: 0;
+  background: none;
+  color: #fff;
+  text-align: left;
+  cursor: pointer;
+}
+
+.home-video-still {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  object-position: center 22%;
+}
+
+/* A scrim, not a wash. Only the bottom third darkens, enough to hold white
+   type over a bright outdoor frame without dulling the face above it. */
+.home-video-cover-inner {
+  position: absolute;
+  inset: 0;
   display: flex;
   flex-direction: column;
   align-items: flex-start;
@@ -4870,11 +4893,12 @@ blockquote {
   gap: 14px;
   padding: clamp(24px, 4vw, 38px);
   padding-bottom: 84px;
-  border: 0;
-  background: var(--blue);
-  color: #fff;
-  text-align: left;
-  cursor: pointer;
+  background: linear-gradient(
+    to top,
+    rgba(9, 30, 52, 0.88) 0%,
+    rgba(9, 30, 52, 0.6) 34%,
+    rgba(9, 30, 52, 0) 66%
+  );
 }
 
 .home-video-play {
