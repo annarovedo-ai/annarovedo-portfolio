@@ -7355,6 +7355,16 @@ a.home-video-label:focus-visible {
   padding-block: clamp(40px, 4.5vw, 64px) clamp(40px, 4.5vw, 64px);
 }
 
+/* Centred as a column, ranged left inside it. Without the portrait the copy
+   was stranded against the left edge of a 1180px shell with half the page
+   empty beside it. Centring the block fixes that; centring the TEXT would not,
+   because a ragged left edge costs a reader the anchor their eye returns to on
+   every line, and these are real paragraphs rather than a pull quote. */
+.about-intro-copy {
+  max-width: 66ch;
+  margin-inline: auto;
+}
+
 /* Mobile copy is hidden by default and swapped in below the breakpoint. */
 .about-intro-short {
   display: none;
