@@ -6294,6 +6294,13 @@ a.home-video-label:focus-visible {
 
 .home-header > .brand {
   grid-area: brand;
+  /* The wordmark is 24px serif and the nav is 14px sans. Centred on the same
+     row their tops do not agree, and the name floated 4.75px above the links.
+     Measured in the browser, then nudged: a relative offset rather than
+     padding so it moves the text without resizing the row and dragging the
+     nav down with it. */
+  position: relative;
+  top: 5px;
 }
 
 .home-header > .site-nav {
@@ -6341,8 +6348,15 @@ a.home-video-label:focus-visible {
   padding-block: 0;
 }
 
+/* Navy, not transparent. The spacer sits behind the fixed bar and is meant
+   to be invisible, but the measured height and the rendered height differ by
+   a fraction of a pixel (192.83 against 193.00 when I checked), and that
+   sliver let the page background through as a white hairline under the
+   switcher. Painting the spacer the same navy makes the seam impossible to
+   see however the rounding falls. */
 .home-header-space {
   height: var(--home-header-rest, 169px);
+  background: var(--blue);
 }
 
 .home-header.is-scrolled {
