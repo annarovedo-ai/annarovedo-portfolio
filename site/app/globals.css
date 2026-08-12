@@ -5101,8 +5101,8 @@ blockquote {
    with the card's own tag, in the same quiet register, where it answers
    "which comes first" without announcing itself. */
 .home-flagship-grid .home-case-part::before {
-  content: "·";
-  margin-right: 8px;
+  content: "|";
+  margin-right: 10px;
   color: var(--line);
 }
 
