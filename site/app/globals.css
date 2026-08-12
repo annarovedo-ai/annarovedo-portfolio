@@ -4959,13 +4959,16 @@ blockquote {
 .home-clients ul {
   display: grid;
   grid-template-columns: repeat(6, 1fr);
-  /* Modest, because each canvas already carries its own optical padding. */
-  gap: 20px 16px;
+  /* Was 20px/16px, which read as twelve logos crammed shoulder to shoulder.
+     The marks are also capped below (see .home-clients img) rather than
+     filling their cell, so the extra room here is real air around each one
+     instead of a wider canvas with the same crowding inside it. */
+  gap: 40px 34px;
   /* Each canvas centres its mark, so a narrow logo in the first or last column
      sits visibly inside the shell edge while the section label sits on it. The
      negative inline margin absorbs roughly that much padding, pulling the outer
      marks back out to the text margin. */
-  margin: 32px -1.7% 0;
+  margin: 44px -1.7% 0;
   padding: 0;
   list-style: none;
 }
@@ -4983,7 +4986,12 @@ blockquote {
 
 .home-clients img {
   display: block;
+  /* Capped rather than cell-filling. At six columns in the 1160 shell each
+     cell is around 180px, so width:100% drew every mark at roughly its full
+     canvas size and the strip read as a wall of logos competing with the work
+     above it. This is a credibility footnote, not a feature. */
   width: 100%;
+  max-width: 132px;
   height: auto;
   opacity: 0.78;
   transition: opacity 0.18s ease;
@@ -9580,6 +9588,50 @@ html[data-anna-razor="bar"] body {
 .aa-composer input:focus-visible {
   outline: 0;
   border-bottom-color: var(--blue);
+}
+
+/* ---------------------------------------------------------------------------
+   THE CHAT, ON A PHONE (2026-08-12)
+   Two rules, both undoing a decision that is right on desktop and wrong here.
+--------------------------------------------------------------------------- */
+@media (max-width: 720px) {
+  /* SIZE TO THE CONTENT, NOT THE VIEWPORT.
+     The fixed height exists so the card cannot push the hero around as
+     answers arrive. On a phone there is no second column to protect: the card
+     is full width with the page stacked beneath it, and a fixed height just
+     buys a scroll region inside a page that already scrolls. Worse, the
+     opening state is taller than the card, so a visitor met the intro already
+     clipped and read "from a few case studies" with no idea what preceded it.
+     The whole point of that heading is the sentence it opens. */
+  .aa-inline,
+  .client-guide .aa-inline {
+    height: auto;
+  }
+
+  .aa-inline .aa-body {
+    overflow-y: visible;
+  }
+
+  /* LOOK LIKE A FIELD.
+     Borderless is correct where the composer sits inside something already
+     obviously a chat, with the razor bar teaching the pattern first. Neither
+     is true on a phone: the razor defaults to quiet, so this is the only
+     composer a visitor ever meets, and out of that context a line of grey
+     placeholder text over white does not read as somewhere you can type. */
+  .aa-composer {
+    padding: 12px;
+  }
+
+  .aa-composer input {
+    padding: 12px 14px;
+    border: 1px solid var(--line);
+    border-radius: 6px;
+    background: var(--paper-deep);
+  }
+
+  .aa-composer input:focus-visible {
+    border-color: var(--blue);
+  }
 }
 
 .anna-razor-bar input:focus-visible {

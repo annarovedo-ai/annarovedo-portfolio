@@ -18,6 +18,19 @@ export default function PersonaChrome() {
   // root layout so it follows the reader onto every page.
   const [switcherDocked, setSwitcherDocked] = useState(false);
 
+  // ARRIVE AT THE TOP.
+  // The switcher and the line that explains it are the first thing this site
+  // says, and on a phone they occupy most of the opening screen. A visitor who
+  // lands mid-band sees a stripe of navy and a cut-off control, which is the
+  // one place the site cannot afford to look broken. Browsers restore scroll
+  // on reload and Chrome sometimes lands short on a soft navigation, so this
+  // asserts the top explicitly. Skipped when the URL carries a hash, because
+  // then the visitor asked for a specific place on the page.
+  useEffect(() => {
+    if (window.location.hash) return;
+    window.scrollTo(0, 0);
+  }, []);
+
   useEffect(() => {
     // THE SWITCHER IS NEVER HALF A SWITCHER.
     //

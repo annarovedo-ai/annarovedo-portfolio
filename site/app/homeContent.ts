@@ -299,7 +299,7 @@ export const homeContent: Record<PersonaId, HomeContent> = {
     // and makes recruiter and client structurally parallel while the Ex
     // breaks the pattern on purpose.
     onboardingText:
-      "This version answers what you’d ask me on a first call.",
+      "Everything on this page answers what you’d ask me on a first call.",
     // Single-line headline: headline[1] is intentionally empty and the soft
     // span does not render. Client and Ex keep the two-part question/answer.
     headline: ["UX is my specialty, not my boundary.", ""],
@@ -337,8 +337,13 @@ export const homeContent: Record<PersonaId, HomeContent> = {
       "How do you work when the roadmap isn’t clear?",
       "What kind of role are you actually looking for?",
     ],
-    workEyebrow: "Selected work",
-    casesHeader: "This is the work I’d walk you through.",
+    workEyebrow: "Work",
+    // Was "This is the work I'd walk you through." On a portfolio that is
+    // true of every section on the page, so it announced the obvious in a
+    // sentence that sounded like a claim. A section title should tell a
+    // skimmer what they are looking at and how much of it there is. The
+    // eyebrow drops to "Work" so the two lines are not both saying selected.
+    casesHeader: "Selected case studies.",
     // The homepage states the position without making one project carry the
     // whole argument. Kmart proves the range in its own case study.
     about: {

@@ -29,10 +29,18 @@ import { getServerSnapshot, getSnapshot, subscribe } from "./personaStore";
  * already written for a full lockup down there, so nothing new was needed to
  * support it.
  */
-const lockup: Record<string, { wordmark: string; credit?: string }> = {
-  recruiter: { wordmark: "Anna Rovedo" },
-  client: { wordmark: "Paper Pixel" },
-  ex: { wordmark: "Paper Pixel", credit: "Anna Rovedo" },
+/**
+ * The mark follows the wordmark. It used to be "PP" for everyone, on the
+ * reasoning that it is the site's mark rather than a signature. That is wrong
+ * for the recruiter: their whole version of this site is a person, the
+ * wordmark says Anna Rovedo, and a studio monogram in the corner introduces a
+ * company they did not come here to hire. A mark that disagrees with the name
+ * beside it is not a mark, it is a second brand.
+ */
+const lockup: Record<string, { wordmark: string; mark: string; credit?: string }> = {
+  recruiter: { wordmark: "Anna Rovedo", mark: "AR" },
+  client: { wordmark: "Paper Pixel", mark: "PP" },
+  ex: { wordmark: "Paper Pixel", mark: "PP", credit: "Anna Rovedo" },
 };
 
 export default function BrandLockup() {
@@ -43,11 +51,9 @@ export default function BrandLockup() {
     <a className="brand" href="/" aria-label="Home">
       {/* Placeholder for the logo Anna is making. Only visible at ≤900px once
           the homepage header has docked, where the full lockup stops fitting.
-          Swap the span for an <img> when the logo exists; nothing else changes.
-          Deliberately still "PP" for every persona: it is the site's mark, not
-          a signature, and it is about to become a drawing rather than letters. */}
+          Swap the span for an <img> when the logo exists; nothing else changes. */}
       <span className="brand-mark" aria-hidden="true">
-        PP
+        {l.mark}
       </span>
       <span className="brand-wordmark">{l.wordmark}</span>
       {l.credit ? (
