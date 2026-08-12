@@ -153,12 +153,12 @@ export const flagshipCaseStudies: CaseStudy[] = [
     tag: "UX / Systems",
     part: "Part one",
     title: "IBM Chat Concierge",
-    body: "The brief was a chatbot. The useful question turned out to be who was actually buying, so I designed for two people at once: the developer evaluating it and the manager who had to approve it. The guide runs from first look through demo, purchase and support. Sole UX designer, on a team led by IBM’s Global Head of UX.",
+    body: "The brief was a chatbot. The useful question turned out to be who was actually buying, so I designed for two people at once: the developer evaluating it and the manager who had to approve it. A first version went live and the work has continued through the year since, from conversation history and prompt hints to AI summaries on Product Finder. Sole UX designer, on a team led by IBM’s Global Head of UX.",
     // Purpose-made 16:9 frame supplied for the homepage card.
     image: "/case-study/concierge/concierge-card-hero.png",
     client: {
       tag: "AI product design",
-      body: "IBM’s marketing site and its product were owned by different teams, so customers hit a seam halfway through buying. I designed a generative-AI guide that crosses it, from first look through demo, purchase, onboarding and support, carrying the UX end to end.",
+      body: "IBM’s marketing site and its product were owned by different teams, so customers hit a seam halfway through buying. I designed a generative-AI guide that crosses it, from first look through demo, purchase, onboarding and support. It went live and I have kept building it since, which is the part most AI work never reaches.",
     },
   },
   {

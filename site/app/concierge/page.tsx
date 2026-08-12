@@ -126,7 +126,7 @@ export default function Home() {
             </div>
             <div>
               <span>Status</span>
-              <strong>V1 shipped</strong>
+              <strong>Live, still being built</strong>
             </div>
           </div>
 
@@ -527,14 +527,17 @@ export default function Home() {
           <div className="chapter-intro two-column-copy">
             <div>
               <SectionNumber>07 · From vision to live experience</SectionNumber>
-              <h2>The concept did not end when the presentation did.</h2>
+              <h2>Shipping the first version was the start of the work, not the end of it.</h2>
             </div>
             <div>
               <p className="lead">
-                A first version went live, and I stayed with it: auditing the shipped experience, clarifying how conversation history should work across sessions, and turning the future vision into patterns the team could prioritize and build toward.
+                A first version went live, and the concepts from the future-vision prototype have been developed and tested through the year since. Conversation history across sessions. Prompt hints, so a buyer facing an empty field can see what this thing is actually good for. AI summaries on the Product Finder page, and the harder question underneath them: what the handoff looks like when a summary has answered part of the question and a product page has to take over.
               </p>
               <p>
-                The work moved between near-term product decisions and the larger question behind them: how should assistance behave when it becomes part of the site rather than a widget attached to it?
+                So this is a live program rather than a finished deliverable. Each piece ships, gets used, and changes what the next piece should be, which is a slower and more honest way to build than shipping a vision intact.
+              </p>
+              <p>
+                The work moves between those near-term product decisions and the larger question behind them: how should assistance behave when it becomes part of the site rather than a widget attached to it?
               </p>
             </div>
           </div>

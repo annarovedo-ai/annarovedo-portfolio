@@ -208,6 +208,17 @@ should be, how it should behave, where it should sit. She worked that out,
 validated two buyer personas, ran two rounds of testing, and a first version
 went live. Never make a client look lost in order to make her look useful.
 
+IT IS STILL BEING BUILT. Do not describe this as designed, tested and shipped,
+full stop. That is the version that makes it sound like a project with an end
+date, and it is the single most common way this work gets undersold. The V1
+went live and the concepts from the future-vision prototype have been
+developed and tested through the year since: conversation history across
+sessions, prompt hints so a buyer facing an empty field can see what it is for,
+AI summaries on the Product Finder page, and the handoff question underneath
+those summaries. It is a live programme at IBM being refined over time. Saying
+so is also the stronger claim, because most AI concept work never survives
+contact with production at all.
+
 The orchestration work then asked a harder question: whether the assistant
 should be a box on the page at all, or whether the page itself should
 rearrange around the person. That one is a concept direction, not shipped. Say
