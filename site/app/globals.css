@@ -6328,6 +6328,17 @@ a.home-video-label:focus-visible {
   top: 0;
   left: 0;
   right: 0;
+  /* The name and the nav used to sit in an 84px flex row that centred them,
+     which is where their breathing room came from. Now they are row one of a
+     two row grid, so without this they sit hard against the top edge of the
+     bar. Top only: the switcher row below carries its own bottom padding. */
+  padding-block: 24px 0;
+}
+
+/* Collapsed there is one row again, and min-height plus align-items centre it
+   the way the old header did. Padding here would just make the bar taller. */
+.home-header.is-scrolled {
+  padding-block: 0;
 }
 
 .home-header-space {
@@ -6734,7 +6745,7 @@ a.home-video-label:focus-visible {
       "brand    nav"
       "switcher switcher";
     row-gap: 0;
-    padding-block: 10px;
+    padding-block: 16px 0;
   }
 
   /* .site-nav is the grid child, not the inner <nav>, so the old rule here did
