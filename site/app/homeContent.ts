@@ -305,7 +305,7 @@ export const homeContent: Record<PersonaId, HomeContent> = {
     headline: ["UX is my specialty, not my boundary.", ""],
     subtext: "Twenty years across products, systems, brands, and campaigns.",
     conciergeHeading:
-      "You don’t have to piece me together from a few case studies.",
+      "You can piece me together from my case studies, or you can ask Almost Anna.",
     conciergeBody:
       "I gave an AI my work and my opinions and taught it how I talk. Ask it why I made a decision, what went wrong, or whether any of this fits the role you’re filling.",
     // Four questions a recruiter is actually holding, in the order they
