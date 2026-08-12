@@ -1,6 +1,7 @@
 "use client";
 
 import { useEffect, useState, useSyncExternalStore } from "react";
+import { LayoutGroup, motion } from "motion/react";
 import BrandLockup from "./BrandLockup";
 import PersonaSwitch from "./PersonaSwitch";
 import SiteNav from "./SiteNav";
@@ -83,7 +84,7 @@ export default function PersonaChrome() {
   }, []);
 
   return (
-    <>
+    <LayoutGroup>
       <header
         className={`site-header home-header${
           switcherDocked ? " is-docked is-scrolled" : ""
@@ -91,16 +92,24 @@ export default function PersonaChrome() {
       >
         <BrandLockup />
 
-        {/* Only present once the header docks. Undocked, the switcher lives
-            below with the onboarding line; showing both at once would be two
-            copies of the same control on screen together. */}
+        {/* ONE SWITCHER, TWO HOMES, AND IT TRAVELS BETWEEN THEM.
+            There has only ever been one of these on screen at a time, but it
+            used to CUT between the band and the header, and a cut is what made
+            the clipping visible: for the frames around the swap the control
+            was half under an opaque header, which reads as broken rather than
+            as scrolling. Sharing a layoutId with the copy in the band below
+            means Motion measures both boxes and animates the difference, so it
+            physically slides up into the header and stops there. Same
+            technique the razor uses to morph between its three shapes.
+
+            Out of the hero's context the pills are three unexplained words,
+            and anyone arriving on a deep link never sees the hero at all, so
+            the docked control keeps a short label. */}
         {switcherDocked ? (
           <div className="home-header-switch">
-            {/* Out of the hero's context the pills are three unexplained words,
-                and anyone arriving on a deep link never sees the hero at all, so
-                the docked control has to say what it is. Kept short because it
-                shares a row with the mark and the menu. */}
-            <PersonaSwitch compact label="I’m a" />
+            <motion.div layoutId="persona-switch" layout="position">
+              <PersonaSwitch compact label="I’m a" />
+            </motion.div>
           </div>
         ) : null}
 
@@ -114,11 +123,14 @@ export default function PersonaChrome() {
           never more than a scroll away. */}
       <div className={`persona-intro${switcherDocked ? " is-handed-off" : ""}`}>
         <div className="persona-intro-switch">
-          <PersonaSwitch label="I’m a" />
+          {switcherDocked ? null : (
+            <motion.div layoutId="persona-switch" layout="position">
+              <PersonaSwitch label="I’m a" />
+            </motion.div>
+          )}
         </div>
         <p className="persona-intro-note">{homeContent[persona].onboardingText}</p>
       </div>
-
-    </>
+    </LayoutGroup>
   );
 }

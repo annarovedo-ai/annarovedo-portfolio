@@ -6242,6 +6242,18 @@ blockquote {
   visibility: hidden;
 }
 
+/* NEVER CUT OFF, EVEN MID-FLIGHT.
+   The header is opaque and sits at z-index 30. While the switcher animates
+   from the band up into the header it briefly crosses that boundary, and
+   anything crossing an opaque sticky element gets sliced by its edge. Lifting
+   the travelling copy above the header means it passes in FRONT of it and
+   lands, rather than disappearing into it a slice at a time. The band keeps
+   its own stacking context so the note underneath is unaffected. */
+.persona-intro-switch {
+  position: relative;
+  z-index: 31;
+}
+
 .home-headline-soft {
   display: block;
   color: var(--muted);
