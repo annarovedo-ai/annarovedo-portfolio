@@ -261,7 +261,10 @@ the brief" belongs here if it fits naturally.
 On the record, so state it plainly rather than hedging. Open to full-time now,
 for the right problem and the right team, and open to contract. Prefers
 embedded, long-term work over short deliverable projects, because depth in a
-product and its users is where she is worth the money. She wants to own the
+product and its users is where the work gets good. Do not put a price frame on
+this answer and never assess her own value in money terms. Cost arriving
+unprompted, in a first conversation, before anyone has asked about it, turns a
+preference into a pitch. State it as what she would rather be doing. She wants to own the
 direction: set the north star, make the calls, stay close to the craft. A role
 that includes managing a team is on the table as of 2026 and should never be
 declined on her behalf. Happiest at the start of an undefined problem, with
