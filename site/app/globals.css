@@ -5004,7 +5004,10 @@ blockquote {
 @media (max-width: 900px) {
   .home-clients ul {
     grid-template-columns: repeat(4, 1fr);
-    gap: 28px 20px;
+    /* The desktop gap change never reached these overrides, so the strip kept
+       its old crowding at every size below 900px, which is where most people
+       actually see it. */
+    gap: 40px 30px;
   }
 }
 
@@ -5307,7 +5310,7 @@ blockquote {
    dark sibling is 4.87:1 and passes. The border can be the bright one, since
    a border is not text and only needs 3:1. */
 .home-cta-secondary {
-  padding: 20px 30px;
+  padding: 15px 26px;
   border: 1px solid var(--flare);
   background: transparent;
   color: var(--flare-ink);
@@ -5342,7 +5345,7 @@ blockquote {
 }
 
 .home-cta-button {
-  padding: 20px 30px;
+  padding: 15px 26px;
   background: var(--flare);
   color: var(--ink);
   font-family: var(--serif);
@@ -5864,7 +5867,7 @@ blockquote {
 
   .home-clients ul {
     grid-template-columns: repeat(3, 1fr);
-    row-gap: 18px;
+    row-gap: 40px;
   }
 
   .home-cta-button {
@@ -5875,6 +5878,7 @@ blockquote {
 @media (max-width: 560px) {
   .home-clients ul {
     grid-template-columns: repeat(2, 1fr);
+    gap: 48px 28px;
   }
 }
 
@@ -6890,7 +6894,7 @@ blockquote {
 
 .cv-download {
   display: inline-block;
-  padding: 20px 30px;
+  padding: 15px 26px;
   background: var(--flare);
   color: var(--ink);
   font-size: var(--t-read);
@@ -7278,7 +7282,7 @@ blockquote {
 
 .about-cta-button {
   display: inline-block;
-  padding: 20px 30px;
+  padding: 15px 26px;
   background: var(--flare);
   color: var(--ink);
   font-size: var(--t-read);
@@ -7826,7 +7830,7 @@ blockquote {
 .contact-submit {
   width: 100%;
   margin-top: 8px;
-  padding: 20px 30px;
+  padding: 15px 26px;
   border: 1px solid var(--flare-ink);
   background: var(--flare);
   color: var(--ink);
@@ -7952,7 +7956,7 @@ blockquote {
 .svc-primary {
   background: var(--flare);
   color: var(--ink);
-  padding: 20px 30px;
+  padding: 15px 26px;
   border: 1px solid var(--flare-ink);
   font-family: var(--serif);
   font-size: var(--t-read);
@@ -7971,7 +7975,7 @@ blockquote {
 .svc-secondary {
   border: 1px solid var(--flare);
   color: var(--flare-ink);
-  padding: 20px 30px;
+  padding: 15px 26px;
   background: transparent;
   font-family: var(--serif);
   font-size: var(--t-read);
@@ -8183,7 +8187,7 @@ blockquote {
 
 .svc-cta a {
   display: inline-block;
-  padding: 20px 30px;
+  padding: 15px 26px;
   background: var(--paper);
   color: var(--ink);
   font-size: var(--t-read);

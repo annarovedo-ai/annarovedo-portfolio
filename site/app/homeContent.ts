@@ -165,7 +165,7 @@ export const flagshipCaseStudies: CaseStudy[] = [
     href: "/journey-orchestration",
     tag: "UX / Product",
     part: "Part two",
-    title: "What if the assistant wasn’t a box on the page, but the page itself?",
+    title: "What if the page was the assistant?",
     body: "I designed an adaptive journey that reorganized around each buyer in real time, using the same behavioral signals to shape the experience and score the lead. Then I built the model and the case for funding it.",
     image: "/case-study/thumbs/journey-orchestration.jpg",
     client: {
@@ -192,7 +192,7 @@ export const supportingCaseStudies: CaseStudy[] = [
     href: "/state-street",
     tag: "Design systems",
     title: "State Street Alpha",
-    body: "The call I made early was to build the system before the screens, atomic and tokenized, so every team after me could ship without redrawing anything. The visual language became the North Star for State Street’s broader suite.",
+    body: "The system came before the screens: atomic, tokenized, and accessible in light and dark, so every team after could ship without redrawing anything. The visual language became the North Star for State Street’s broader suite of products.",
     image: "/case-study/thumbs/state-street.jpg",
     client: {
       tag: "Design systems",
@@ -238,25 +238,25 @@ export const supportingCaseStudies: CaseStudy[] = [
     href: "/kmart",
     tag: "Brand / Campaign",
     title: "SHHHHH",
-    body: "A new business pitch to relaunch Kmart's clothing lines, built around the one thing nobody wanted to admit: shop there anyway. The same device runs across every surface, from the bag to the hangtags to the site.",
+    body: "A new business pitch to relaunch Kmart's clothing lines. Nobody admitted shopping there, and not out of embarrassment: tell everyone where the dress came from and everyone turns up wearing it. So the campaign sold the secret rather than apologising for it, across every surface from the bag to the hangtags to the site.",
     image: "/case-study/kmart/card-cover.png",
     client: {
       tag: "Brand and campaign",
-      body: "Kmart’s clothes were fine and nobody would admit shopping there. The relaunch used the admission itself, carrying the same device across every surface, from the bag to the hangtags to the site.",
+      body: "Kmart’s clothes were good and nobody was telling anyone. Not shame, scarcity: the moment the secret is out, everyone owns the same dress. The relaunch made that the campaign, carried across every surface from the bag to the hangtags to the site.",
     },
   },
   {
     href: "/nike",
     tag: "UX / Research",
     title: "Nike Datalogue & Operations Workspace",
-    body: "Forty specified search attributes, reduced to the five people actually used, built without access to a single end-user interview.",
+    body: "The spec asked for forty search attributes in a data table. Asking the people who did the job showed most of them used five. So five became the default and the other thirty-five became something you add, because a product should be built around what the majority need, not around its edge cases.",
     image: "/case-study/nike/hero-w.png",
     client: {
       // The most persuasive card on the page for a client, because the
       // constraint is theirs too. Nobody has the research access they should
       // have, and this is the one card that says so out loud.
       tag: "Research under constraint",
-      body: "Forty specified search attributes, and no access to a single end-user interview. I found the five people actually used and designed the workspace around those.",
+      body: "The spec asked for forty search attributes. Asking the people who did the job showed most of them used five. I designed for those five as the default and made the rest addable, so the majority get a tool that fits and the edge cases still get what they need.",
     },
   },
 ];
