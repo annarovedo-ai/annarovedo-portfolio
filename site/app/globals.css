@@ -6198,6 +6198,15 @@ blockquote {
   margin-bottom: 22px;
 }
 
+/* Handed off to the header. visibility rather than display, so the band keeps
+   its height and the page does not jump at the moment of the swap. The header
+   is opaque and sits above this, so the hidden copy is behind it either way,
+   but hiding it explicitly means the two can never both be on screen during
+   the frame the handoff happens. */
+.persona-intro.is-handed-off .persona-intro-switch {
+  visibility: hidden;
+}
+
 .home-headline-soft {
   display: block;
   color: var(--muted);

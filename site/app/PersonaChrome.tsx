@@ -19,24 +19,54 @@ export default function PersonaChrome() {
   const [switcherDocked, setSwitcherDocked] = useState(false);
 
   useEffect(() => {
-    // WATCH THE SWITCHER, NOT THE BAND IT SITS IN.
-    // This observed .persona-intro, the whole navy band: switcher on top,
-    // onboarding line beneath. The band stays intersecting until its LAST
-    // pixel clears the header, but the switcher reaches the header first and
-    // slides under it while the line below is still on screen. For that
-    // stretch of scroll the control was behind the header and the header had
-    // not yet picked it up, so the switcher was simply gone. Observing the
-    // switcher itself makes the handoff happen at the moment it actually
-    // needs to: it is never on screen twice, and never absent.
+    // THE SWITCHER IS NEVER HALF A SWITCHER.
+    //
+    // Three things had to be true at once, and each earlier attempt fixed one
+    // and left the others.
+    //
+    // 1. WATCH THE SWITCHER, NOT THE BAND. This first observed .persona-intro,
+    //    the whole navy block: switcher on top, onboarding line beneath. The
+    //    band counts as on screen until its LAST pixel clears the header, so
+    //    the switcher slid under while the line below was still visible and
+    //    the header had not yet picked it up.
+    //
+    // 2. FLIP BEFORE IT CLIPS, NOT AFTER IT VANISHES. threshold 0 means "some
+    //    part is still visible", so the handoff waited until the pill was
+    //    ENTIRELY hidden. Every scroll passed through a stretch where the
+    //    control was sliced in half by the header edge: a rounded pill with
+    //    its top shaved off, which reads as broken rather than as scrolling.
+    //    threshold 1 means "all of it is visible", so the moment the first
+    //    pixel would be covered, the header takes over instead.
+    //
+    // 3. MEASURE THE HEADER, DO NOT GUESS IT. The margin was hardcoded to
+    //    68px. The header is 84px tall, and 62px under 720px wide, so the
+    //    trigger line sat inside the header at every size and the handoff was
+    //    always late. It is measured now, and remeasured on resize.
+    //
+    // The intro's own copy also hides while docked (see .is-handed-off), so
+    // the two can never be on screen together at the instant of handoff.
     const anchor = document.querySelector(".persona-intro-switch");
     if (!anchor) return;
 
-    const introIo = new IntersectionObserver(
-      ([entry]) => setSwitcherDocked(!entry.isIntersecting),
-      { rootMargin: "-68px 0px 0px 0px", threshold: 0 }
-    );
-    introIo.observe(anchor);
-    return () => introIo.disconnect();
+    let io: IntersectionObserver | null = null;
+
+    const build = () => {
+      io?.disconnect();
+      const header = document.querySelector(".home-header");
+      const h = header ? Math.ceil(header.getBoundingClientRect().height) : 84;
+      io = new IntersectionObserver(
+        ([entry]) => setSwitcherDocked(!entry.isIntersecting),
+        { rootMargin: `-${h}px 0px 0px 0px`, threshold: 1 }
+      );
+      io.observe(anchor);
+    };
+
+    build();
+    window.addEventListener("resize", build);
+    return () => {
+      io?.disconnect();
+      window.removeEventListener("resize", build);
+    };
   }, []);
 
   return (
@@ -69,7 +99,7 @@ export default function PersonaChrome() {
           separate controls. Once this band scrolls out of view the header
           picks the switcher back up (see switcherDocked above), so it is
           never more than a scroll away. */}
-      <div className="persona-intro">
+      <div className={`persona-intro${switcherDocked ? " is-handed-off" : ""}`}>
         <div className="persona-intro-switch">
           <PersonaSwitch label="I’m a" />
         </div>
