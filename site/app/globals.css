@@ -9673,6 +9673,64 @@ html[data-anna-razor="bar"] body {
    THE CHAT, ON A PHONE (2026-08-12)
    Two rules, both undoing a decision that is right on desktop and wrong here.
 --------------------------------------------------------------------------- */
+/* ---------------------------------------------------------------------------
+   THE RAZOR, ON A PHONE (2026-08-12)
+   Full-bleed, square-cornered and flush to the viewport edge, the bar read as
+   a system banner rather than somewhere to type, and on iOS it sat directly
+   underneath the floating URL pill, so two unrelated bars stacked on top of
+   each other at the foot of the screen. Inset, rounded and lifted clear of
+   the browser chrome, it reads as a message box: a thing you tap and write in.
+--------------------------------------------------------------------------- */
+@media (max-width: 720px) {
+  .anna-razor-bar {
+    width: calc(100% - 20px);
+    left: 10px;
+    right: 10px;
+    /* Above the home indicator AND above Safari's floating address bar. */
+    bottom: calc(env(safe-area-inset-bottom, 0px) + 58px);
+    padding: 7px 8px 7px 14px;
+    border: 1px solid var(--blue-deep);
+    border-radius: 26px;
+    box-shadow: 0 10px 30px rgba(9, 40, 61, 0.34);
+  }
+
+  /* The input gets its own surface inside the bar. On a navy band with no
+     edges of its own, placeholder text reads as a caption; given a field it
+     reads as a cursor waiting. */
+  .anna-razor-bar input {
+    padding: 10px 14px;
+    border: 0;
+    border-radius: 18px;
+    background: rgba(255, 255, 255, 0.12);
+  }
+
+  .anna-razor-bar input:focus-visible {
+    background: rgba(255, 255, 255, 0.18);
+    border-bottom-color: transparent;
+  }
+
+  .anna-razor-send {
+    margin-left: 8px;
+    border-radius: 999px;
+    width: 36px;
+    height: 36px;
+  }
+
+  .anna-razor-dismiss {
+    margin-right: 0;
+  }
+
+  /* The grab handle belongs to a sheet flush with the screen edge. Floating,
+     it is a line hovering over nothing. */
+  .anna-razor-grip {
+    display: none;
+  }
+
+  .anna-razor-mini {
+    bottom: calc(env(safe-area-inset-bottom, 0px) + 58px);
+  }
+}
+
 @media (max-width: 720px) {
   /* THE HERO CARD DOES NOT SURVIVE A PHONE.
      On a wide screen the card sits beside the intro video and reads as a

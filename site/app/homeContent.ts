@@ -238,11 +238,11 @@ export const supportingCaseStudies: CaseStudy[] = [
     href: "/kmart",
     tag: "Brand / Campaign",
     title: "SHHHHH",
-    body: "A new business pitch to relaunch Kmart's clothing lines. Nobody admitted shopping there, and not out of embarrassment: tell everyone where the dress came from and everyone turns up wearing it. So the campaign sold the secret rather than apologising for it, across every surface from the bag to the hangtags to the site.",
+    body: "Kmart built a design studio in New York to take on Target, and the clothes were good. Nobody knew they existed, and anyone who did was embarrassed to say where they shopped. The pitch flipped the embarrassment into a reason: keep it a secret, because the moment you say where the dress came from, everyone owns one. Duct tape over the logo, over the hangtag, over the model's mouth.",
     image: "/case-study/kmart/card-cover.png",
     client: {
       tag: "Brand and campaign",
-      body: "Kmart’s clothes were good and nobody was telling anyone. Not shame, scarcity: the moment the secret is out, everyone owns the same dress. The relaunch made that the campaign, carried across every surface from the bag to the hangtags to the site.",
+      body: "Kmart opened a New York design studio to compete with Target. The clothes were good, nobody knew, and the people who did were too embarrassed to admit it. I turned that into the campaign: keep it a secret, because a secret is only worth having while it is still yours. It ran across every surface, from the hangtags to the bags to the site.",
     },
   },
   {
