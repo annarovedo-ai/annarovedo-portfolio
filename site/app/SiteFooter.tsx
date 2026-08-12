@@ -55,6 +55,9 @@ export default function SiteFooter() {
                 <a href="/archive">Earlier work</a>
               </li>
               <li>
+                <a href="/this-site">This site</a>
+              </li>
+              <li>
                 <a href="/contact">Contact</a>
               </li>
             </ul>
