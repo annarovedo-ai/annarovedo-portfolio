@@ -131,12 +131,12 @@ export default function Home() {
           </div>
 
           <Figure
-            src="v1-final.jpg"
+            src="v1-final.webp"
             alt="The IBM product marketing page with the Concierge docked along its bottom edge, greeting the visitor and offering to tailor content to their organization"
             label="01 · hero"
             caption="The V1 direction, docked along the bottom. The product page stays the primary experience."
-            width={1200}
-            height={773}
+            width={1578}
+            height={900}
             className="hero-figure"
           />
         </section>
