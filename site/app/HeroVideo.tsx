@@ -1,24 +1,58 @@
 "use client";
 
-import { useRef, useState } from "react";
+import { useEffect, useRef, useState, useSyncExternalStore } from "react";
+import { getServerSnapshot, getSnapshot, subscribe } from "./personaStore";
+import type { PersonaId } from "./personaStore";
 
 /**
- * NO FREEZE FRAME.
+ * ONE VIDEO PER PERSONA.
  *
- * A poster pulled from the clip was tried and rejected, and the reason is
- * mechanical rather than fussy: the whole thirty seconds is speech, so every
- * frame catches a face between expressions, mouth open or eyes half closed.
- * Sampling harder does not fix that, it just costs more time to arrive at the
- * same answer.
+ * The recruiter and the ex are not owed the same thirty seconds, so they do
+ * not get them. Everything else on this page already switches; the introduction
+ * was the last thing still saying the same words to everybody.
  *
- * Sixty frames were reviewed at half-second intervals. 30.0s is the chosen
- * one and it is the last frame of the clip, which is not a coincidence: the
- * speaker has stopped talking and the face has settled. If a proper portrait
- * turns up later it drops straight into this <img> and nothing else changes.
+ * The client shares the recruiter's cut for now, because it is the one that
+ * talks about work rather than about history. Give this map a third entry the
+ * day a client-specific take exists.
+ *
+ * NO CAPTURED POSTER BY DEFAULT. Stills pulled from talking footage catch a
+ * face between expressions, which is why the first three attempts were all
+ * rejected: it is mechanical, not fussy. Each poster below is a deliberate
+ * choice from a full contact sheet, and the credit line is optional because it
+ * belongs to a specific piece of footage rather than to the slot.
  */
+type Intro = { src: string; poster: string; credit?: string };
+
+const INTRO: Record<PersonaId, Intro> = {
+  recruiter: {
+    src: "/video-recruiter.mp4",
+    poster: "/video-recruiter.webp",
+  },
+  client: {
+    src: "/video-recruiter.mp4",
+    poster: "/video-recruiter.webp",
+  },
+  ex: {
+    src: "/video-ex.mp4",
+    poster: "/video-ex.webp",
+    credit: "Written, filmed and directed by Cary Fukunaga",
+  },
+};
+
 export default function HeroVideo() {
+  const persona = useSyncExternalStore(subscribe, getSnapshot, getServerSnapshot);
+  const intro = INTRO[persona] ?? INTRO.recruiter;
+
   const video = useRef<HTMLVideoElement | null>(null);
   const [playing, setPlaying] = useState(false);
+
+  // Switching persona swaps the file underneath a playing element, so stop
+  // first. Otherwise the new clip inherits the old one's playhead and starts
+  // mid-sentence with no way back to the cover.
+  useEffect(() => {
+    setPlaying(false);
+    video.current?.pause();
+  }, [persona]);
 
   function start() {
     const el = video.current;
@@ -31,51 +65,46 @@ export default function HeroVideo() {
     <div className="home-video-block">
       <div className={`home-video${playing ? " is-playing" : ""}`}>
         <video
-        ref={video}
-        className="home-video-el"
-        src="/meet-anna.mp4"
-        preload="metadata"
-        playsInline
-        controls={playing}
-        onEnded={() => setPlaying(false)}
-      />
+          key={intro.src}
+          ref={video}
+          className="home-video-el"
+          src={intro.src}
+          preload="metadata"
+          playsInline
+          controls={playing}
+          onEnded={() => setPlaying(false)}
+        />
 
         {playing ? null : (
-        <button className="home-video-cover" type="button" onClick={start}>
-          {/* The still is the frame at 30.0s, the last of the clip: the only
-              one where the eyes are open, the mouth is closed and the
-              expression has settled. Every other frame is mid-speech, which is
-              why they read as unflattering. Decorative here, because the
-              button's own text says what pressing it does. */}
-          <img
-            className="home-video-still"
-            src="/meet-anna-poster.webp"
-            alt=""
-            width={720}
-            height={900}
-          />
-          <span className="home-video-cover-inner">
-            <span className="home-video-play" aria-hidden="true">
-              ▶
+          <button className="home-video-cover" type="button" onClick={start}>
+            <img
+              className="home-video-still"
+              src={intro.poster}
+              alt=""
+              width={720}
+              height={900}
+            />
+            <span className="home-video-cover-inner">
+              <span className="home-video-play" aria-hidden="true">
+                ▶
+              </span>
+              <span className="home-video-cover-title">
+                Thirty seconds, in my own voice.
+              </span>
+              <span className="home-video-cover-cta">Play the introduction</span>
             </span>
-            <span className="home-video-cover-title">
-              Thirty seconds, in my own voice.
-            </span>
-            <span className="home-video-cover-cta">Play the introduction</span>
-          </span>
-        </button>
-      )}
+          </button>
+        )}
 
         <span className="home-video-label">Meet actual Anna</span>
       </div>
 
-      {/* Outside the frame on purpose. .home-video clips its overflow so the
-          poster and the video can fill it, so anything positioned past its
-          edge is invisible: the credit lived at bottom:-30px and was never
-          drawn. A credit belongs under the picture anyway, not on it. */}
-      <p className="home-video-credit">
-        Written, filmed and directed by Cary Fukunaga
-      </p>
+      {/* Outside the frame: .home-video clips its overflow so the poster and
+          the video can fill it, and the credit lived at bottom:-30px where it
+          was never drawn. */}
+      {intro.credit ? (
+        <p className="home-video-credit">{intro.credit}</p>
+      ) : null}
     </div>
   );
 }
