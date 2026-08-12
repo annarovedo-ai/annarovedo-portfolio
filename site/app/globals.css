@@ -6309,6 +6309,31 @@ a.home-video-label:focus-visible {
    spends height on (the stacked row, the label above the control, the full
    pill size) collapses here, because past the fold the chrome is a tool, not
    an introduction. */
+/* THE COLLAPSE MUST NOT MOVE THE PAGE.
+ 
+   A sticky header is still IN the document, so shrinking it from 169px to
+   64px pulls everything below it up by 105px in a single frame. That is the
+   jump: the page lurches the moment the bar collapses, and lurches back when
+   you scroll up again.
+ 
+   So the bar is fixed and a spacer holds its resting height in the flow. The
+   spacer never changes, which means the content below it never moves, and the
+   bar is free to shrink over the top of it. The spacer's height is measured
+   from the header itself rather than typed in, because the header is a
+   different height per persona (the Ex lockup carries a credit line) and per
+   breakpoint, and a hardcoded number here is the exact mistake this file has
+   already made twice. */
+.home-header {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+}
+
+.home-header-space {
+  height: var(--home-header-rest, 169px);
+}
+
 .home-header.is-scrolled {
   grid-template-areas: "brand switcher nav";
   min-height: 64px;

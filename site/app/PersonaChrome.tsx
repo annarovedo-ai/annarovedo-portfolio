@@ -53,10 +53,19 @@ export default function PersonaChrome() {
        so it needs the header's real height. Observed rather than hardcoded, so
        it survives a font swap, a wrapped nav, or the row collapsing. */
     const publishHeight = () => {
-      document.documentElement.style.setProperty(
-        "--site-header-bottom",
-        Math.round(header.getBoundingClientRect().height) + "px",
-      );
+      const h = Math.round(header.getBoundingClientRect().height);
+
+      /* Drops the mobile nav panel from below the bar at whatever height the
+         bar currently is. */
+      document.documentElement.style.setProperty("--site-header-bottom", h + "px");
+
+      /* The spacer's height, and therefore the only thing standing between
+         the collapse and a 105px lurch. Only measured while the header is at
+         rest: read it mid-collapse and the spacer shrinks too, which is the
+         jump we are removing. */
+      if (!header.classList.contains("is-scrolled")) {
+        document.documentElement.style.setProperty("--home-header-rest", h + "px");
+      }
     };
 
     onScroll();
@@ -74,6 +83,11 @@ export default function PersonaChrome() {
 
   return (
     <>
+      {/* Holds the bar's resting height open in the document so that when the
+          bar collapses over the top of it, nothing below moves. Must stay
+          immediately before the header. */}
+      <div className="home-header-space" aria-hidden="true" />
+
       <header className="site-header home-header" ref={headerRef}>
         <BrandLockup />
 
