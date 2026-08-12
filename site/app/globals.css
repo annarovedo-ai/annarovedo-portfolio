@@ -4949,10 +4949,21 @@ blockquote {
 /* Sits under the label bar, outside the frame, so it reads as a credit rather
    than as part of the video's own furniture. Quiet on purpose: a name like
    this does more work stated plainly than announced. */
+/* The grid item is now the block, so the video can flex to the row height
+   set by the chat card beside it and the credit sits underneath, outside the
+   frame's clipping. */
+.home-video-block {
+  display: flex;
+  flex-direction: column;
+  min-width: 0;
+}
+
+.home-video-block .home-video {
+  flex: 1;
+}
+
 .home-video-credit {
-  position: absolute;
-  left: 0;
-  bottom: -30px;
+  margin: 12px 0 0;
   color: var(--muted);
   font-family: var(--sans);
   font-size: var(--t-fine);

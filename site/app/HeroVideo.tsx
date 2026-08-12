@@ -28,8 +28,9 @@ export default function HeroVideo() {
   }
 
   return (
-    <div className={`home-video${playing ? " is-playing" : ""}`}>
-      <video
+    <div className="home-video-block">
+      <div className={`home-video${playing ? " is-playing" : ""}`}>
+        <video
         ref={video}
         className="home-video-el"
         src="/meet-anna.mp4"
@@ -39,7 +40,7 @@ export default function HeroVideo() {
         onEnded={() => setPlaying(false)}
       />
 
-      {playing ? null : (
+        {playing ? null : (
         <button className="home-video-cover" type="button" onClick={start}>
           {/* The still is the frame at 30.0s, the last of the clip: the only
               one where the eyes are open, the mouth is closed and the
@@ -65,12 +66,16 @@ export default function HeroVideo() {
         </button>
       )}
 
-      <span className="home-video-label">Meet actual Anna</span>
+        <span className="home-video-label">Meet actual Anna</span>
+      </div>
 
-      {/* A real credit, not a gag. Confirmed by Anna 2026-08-12. */}
-      <span className="home-video-credit">
+      {/* Outside the frame on purpose. .home-video clips its overflow so the
+          poster and the video can fill it, so anything positioned past its
+          edge is invisible: the credit lived at bottom:-30px and was never
+          drawn. A credit belongs under the picture anyway, not on it. */}
+      <p className="home-video-credit">
         Written, filmed and directed by Cary Fukunaga
-      </span>
+      </p>
     </div>
   );
 }
