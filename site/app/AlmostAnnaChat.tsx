@@ -40,15 +40,47 @@ export default function AlmostAnnaChat({
     setError(null);
   }, [persona]);
 
-  // Follow the conversation down, but only once there IS one. The card has a
-  // fixed height, and the opening state (heading, paragraph, four prompts) is
-  // taller than it on a phone. Scrolling to the bottom unconditionally meant a
-  // first-time visitor met the card already scrolled past its own headline,
-  // reading a sentence that started somewhere they could not see.
+  // Land on the START of the answer, not the end of it.
+  //
+  // This used to pin scrollTop to scrollHeight on every change, which is the
+  // right behaviour for a messaging app, where the newest line is the whole
+  // point and everything above it is already read. It is the wrong behaviour
+  // here. An answer from Almost Anna arrives complete and is often six or
+  // seven paragraphs, so jumping to the bottom dropped the reader at the last
+  // sentence of something they had not started, and they had to scroll UP to
+  // find out what was said.
+  //
+  // So: bring the top of the newest exchange to the top of the card. The
+  // question sits at the top, the answer begins directly under it, and reading
+  // continues downward the way reading does. While the reply is still coming
+  // back, follow the bottom instead, because there the newest thing on screen
+  // is the thinking indicator and it should stay visible.
   useEffect(() => {
     if (messages.length === 0) return;
     const el = scroller.current;
-    if (el) el.scrollTop = el.scrollHeight;
+    if (!el) return;
+
+    if (busy) {
+      el.scrollTop = el.scrollHeight;
+      return;
+    }
+
+    // The last question asked. Anchoring on the question rather than the reply
+    // keeps the thing being answered on screen, which is what makes a long
+    // answer legible.
+    const items = el.querySelectorAll<HTMLLIElement>(".aa-thread > li.is-user");
+    const lastAsk = items[items.length - 1];
+    if (!lastAsk) {
+      el.scrollTop = el.scrollHeight;
+      return;
+    }
+
+    // offsetTop is measured against the nearest positioned ancestor, which is
+    // not reliably the scroller, so go through the rects instead.
+    const target =
+      lastAsk.getBoundingClientRect().top - el.getBoundingClientRect().top + el.scrollTop;
+
+    el.scrollTo({ top: Math.max(0, target - 12), behavior: "smooth" });
   }, [messages, busy]);
 
   async function send(text: string) {
