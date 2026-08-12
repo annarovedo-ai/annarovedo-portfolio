@@ -122,7 +122,14 @@ export default function AnnaRazor() {
       setMode(stored);
       return;
     }
-    setMode(window.matchMedia("(max-width: 767px)").matches ? "quiet" : "razor");
+    // Phones used to default to quiet, on the reasoning that the bar exists to
+    // carry contextual hints and phones do not get hints. That was true while
+    // the hero also held a full chat card. With the card gone from small
+    // screens (see globals.css) the bar is now the only way in, so it has to
+    // be the thing you see: a corner avatar reads as a support widget people
+    // have learned to dismiss, and a bar along the bottom reads as somewhere
+    // to type.
+    setMode("razor");
   }, []);
 
   // Dismissing runs on a timer so the notice has time to be read, and the
@@ -170,9 +177,10 @@ export default function AnnaRazor() {
     // avatar and the same header, twice. On a phone the thing that competes is
     // the card itself, so watch the card. The button appears when the card has
     // gone, which is the moment it starts being useful.
-    const anchor = isPhone
-      ? document.querySelector(".aa-inline")
-      : document.querySelector(".home-hero");
+    // The card is display:none on phones, and a hidden element never
+    // intersects, so watching it would show the bar instantly on arrival and
+    // sit it under the headline. Both sizes now wait for the hero itself.
+    const anchor = document.querySelector(".home-hero");
     if (anchor) {
       const io = new IntersectionObserver(
         ([entry]) => setVisible(!entry.isIntersecting),

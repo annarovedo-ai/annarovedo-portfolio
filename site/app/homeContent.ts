@@ -166,11 +166,11 @@ export const flagshipCaseStudies: CaseStudy[] = [
     tag: "UX / Product",
     part: "Part two",
     title: "What if the page was the assistant?",
-    body: "I designed an adaptive journey that reorganized around each buyer in real time, using the same behavioral signals to shape the experience and score the lead. Then I built the model and the case for funding it.",
+    body: "Two ideas at once: agentic in the ordinary sense, able to act on a buyer's behalf, and a page that reformats itself as it learns what they care about. Sections reorder, content changes, and the same signals score the lead while it happens. I built the model and the case for funding it.",
     image: "/case-study/thumbs/journey-orchestration.jpg",
     client: {
       tag: "Product strategy",
-      body: "Where the Concierge goes next. Instead of a chat sitting on the page, the page rearranges around what it learns about you and scores the lead while it does it. I built the concept, the model underneath it, and the case for funding it.",
+      body: "Where the Concierge goes next. Not a chat sitting on the page but a page that reorganizes around what it learns you care about, acting on your behalf as it goes and scoring the lead while it does. I built the concept, the model underneath it, and the case for funding it.",
       // Stays honest. A client who later finds out this never launched will
       // discount everything else on the page, and the willingness to say so
       // is worth more than the card.
@@ -192,7 +192,7 @@ export const supportingCaseStudies: CaseStudy[] = [
     href: "/state-street",
     tag: "Design systems",
     title: "State Street Alpha",
-    body: "The system came before the screens: atomic, tokenized, and accessible in light and dark, so every team after could ship without redrawing anything. The visual language became the North Star for State Street’s broader suite of products.",
+    body: "I started from what a real screen had to hold. These users need density, so type, color and spacing were decided against live data in a working prototype rather than settled in the abstract, and the atomic, tokenized system came out of what actually held up. It became the North Star for State Street’s broader suite of products.",
     image: "/case-study/thumbs/state-street.jpg",
     client: {
       tag: "Design systems",
@@ -249,14 +249,14 @@ export const supportingCaseStudies: CaseStudy[] = [
     href: "/nike",
     tag: "UX / Research",
     title: "Nike Datalogue & Operations Workspace",
-    body: "The spec asked for forty search attributes in a data table. Asking the people who did the job showed most of them used five. So five became the default and the other thirty-five became something you add, because a product should be built around what the majority need, not around its edge cases.",
+    body: "The spec asked for forty search attributes in a data table. I went and found the people who actually did the work, and forty-seven of them told me they used five. So five became the default and the rest became something you add, because a product is built around what the majority need, not around its edge cases.",
     image: "/case-study/nike/hero-w.png",
     client: {
       // The most persuasive card on the page for a client, because the
       // constraint is theirs too. Nobody has the research access they should
       // have, and this is the one card that says so out loud.
       tag: "Research under constraint",
-      body: "The spec asked for forty search attributes. Asking the people who did the job showed most of them used five. I designed for those five as the default and made the rest addable, so the majority get a tool that fits and the edge cases still get what they need.",
+      body: "The spec asked for forty search attributes. I found a way to reach forty-seven people who did the work daily, and they used five. I designed for those five as the default and made the rest addable, so the majority get a tool that fits and the edge cases still get what they need.",
     },
   },
 ];

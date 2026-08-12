@@ -9638,6 +9638,18 @@ html[data-anna-razor="bar"] body {
    Two rules, both undoing a decision that is right on desktop and wrong here.
 --------------------------------------------------------------------------- */
 @media (max-width: 720px) {
+  /* THE HERO CARD DOES NOT SURVIVE A PHONE.
+     On a wide screen the card sits beside the intro video and reads as a
+     feature. Stacked on a phone it becomes a 600px block of heading,
+     paragraph and four grey pills between the headline and the work, and in
+     that form it does not read as an AI you can talk to, it reads as a list
+     of links. The razor bar does the job properly on small screens: one
+     entry point, unmistakably somewhere to type, and it follows the reader
+     down the page instead of being passed once and lost. */
+  .home-hero-grid .aa-inline {
+    display: none;
+  }
+
   /* SIZE TO THE CONTENT, NOT THE VIEWPORT.
      The fixed height exists so the card cannot push the hero around as
      answers arrive. On a phone there is no second column to protect: the card
