@@ -6488,8 +6488,6 @@ blockquote {
   color: #fff;
 }
 
-@media (prefers-reduced-motion: reduce) {}
-
 @media (max-width: 1140px) {
   /* Not enough room for brand, labelled switcher and nav on one line, so the
      switcher drops to its own row underneath. It used to be hidden outright,
