@@ -5043,12 +5043,26 @@ blockquote {
   text-transform: uppercase;
 }
 
+/* ONE STUDY, TWO PARTS.
+   A shared label and PART ONE / PART TWO chips were not enough: two bordered
+   tiles side by side read as two case studies that happen to be adjacent, and
+   the sequence was something the reader had to be told rather than see. The
+   pair now sits inside a recessed panel with its own frame, so the container
+   is the case study and the two cards are its chapters. The seam between them
+   is a hairline rather than two facing borders, which is what makes them look
+   joined rather than merely touching. */
 .home-flagship-grid {
   position: relative;
   display: grid;
   grid-template-columns: repeat(2, 1fr);
   gap: 0;
-  border: 1px solid var(--line);
+  padding: 10px;
+  border: 1px solid var(--blue);
+  background: var(--paper-deep);
+}
+
+.home-flagship-grid .home-case {
+  background: var(--surface);
 }
 
 .home-flagship-grid .home-case {
@@ -5057,6 +5071,19 @@ blockquote {
 
 .home-flagship-grid .home-case:first-child {
   border-right: 1px solid var(--line);
+}
+
+/* The label belongs to the container, not the page above it. Pulled onto the
+   panel's own edge so a skimmer sees a titled object rather than a caption
+   floating over two tiles. */
+.home-flagship-label {
+  display: inline-block;
+  margin-bottom: 0;
+  padding: 9px 14px;
+  border: 1px solid var(--blue);
+  border-bottom: 0;
+  background: var(--blue);
+  color: #fff;
 }
 
 /* The independent case studies, two by two. This was repeat(4, 1fr) —
