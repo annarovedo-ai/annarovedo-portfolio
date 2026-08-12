@@ -8518,6 +8518,7 @@ blockquote {
 .aa-prompts-label {
   display: block;
   margin-bottom: 14px;
+  text-align: right;
   color: var(--muted);
   font-size: var(--t-label);
   font-weight: 600;
@@ -8525,15 +8526,25 @@ blockquote {
   text-transform: uppercase;
 }
 
+/* HUGGED AND RIGHT-ALIGNED, BECAUSE THEY ARE THINGS YOU WOULD SAY.
+   These were full-width rows stacked down the left. That is the shape of a
+   menu, and a menu is a list of places to go, which is the exact affordance
+   the note above says to avoid. In a chat, the side a thing sits on is what
+   says who is speaking: the visitor's own messages arrive on the right, so
+   an unsent draft of a message belongs on the right too, and it should be as
+   wide as the sentence rather than as wide as the panel. Hugging the text
+   also matches .anna-razor-offer, which has always sized to its content. */
 .aa-prompts > div {
   display: flex;
   flex-direction: column;
+  align-items: flex-end;
   gap: 9px;
 }
 
 .aa-prompts button {
   display: block;
-  width: 100%;
+  width: auto;
+  max-width: 100%;
   padding: 10px 16px;
   border: 1px dashed var(--line);
   border-radius: 999px;
