@@ -4841,13 +4841,90 @@ blockquote {
 .home-video {
   position: relative;
   min-height: 340px;
+  overflow: hidden;
   border: 1px solid var(--line);
-  background: var(--paper-deep);
+  background: var(--blue);
   display: flex;
   align-items: flex-end;
 }
 
+.home-video-el {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  background: var(--blue);
+}
+
+/* The resting state. Covers the video until it is asked for, so the first
+   frame is never what a visitor judges. */
+.home-video-cover {
+  position: absolute;
+  inset: 0;
+  z-index: 2;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  justify-content: flex-end;
+  gap: 14px;
+  padding: clamp(24px, 4vw, 38px);
+  padding-bottom: 84px;
+  border: 0;
+  background: var(--blue);
+  color: #fff;
+  text-align: left;
+  cursor: pointer;
+}
+
+.home-video-play {
+  display: grid;
+  place-items: center;
+  width: 62px;
+  height: 62px;
+  margin-bottom: 6px;
+  border-radius: 50%;
+  background: var(--flare);
+  color: var(--ink);
+  font-size: 20px;
+  padding-left: 4px;
+  transition: background 0.16s ease, color 0.16s ease, transform 0.16s ease;
+}
+
+.home-video-cover:hover .home-video-play {
+  background: var(--flare-ink);
+  color: #fff;
+  transform: scale(1.04);
+}
+
+.home-video-cover-title {
+  max-width: 15ch;
+  font-family: var(--serif);
+  font-size: var(--d-card);
+  line-height: 1.2;
+}
+
+.home-video-cover-cta {
+  color: var(--on-dark-muted);
+  font-family: var(--sans);
+  font-size: var(--t-label);
+  font-weight: 600;
+  letter-spacing: var(--track-wide);
+  text-transform: uppercase;
+}
+
+.home-video-cover:focus-visible {
+  outline: 2px solid #fff;
+  outline-offset: -4px;
+}
+
+.home-video.is-playing .home-video-label {
+  display: none;
+}
+
 .home-video-label {
+  position: relative;
+  z-index: 3;
   width: 100%;
   padding: 16px 20px;
   border-top: 1px solid var(--line);

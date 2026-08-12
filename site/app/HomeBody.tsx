@@ -12,6 +12,7 @@ import {
   supportingCaseStudies,
 } from "./homeContent";
 import AlmostAnnaChat from "./AlmostAnnaChat";
+import HeroVideo from "./HeroVideo";
 
 /**
  * Shared card markup for both the flagship pair and the supporting row.
@@ -350,9 +351,7 @@ export default function HomeBody() {
         </div>
 
         <div className="home-hero-grid">
-          <div className="home-video" role="img" aria-label="Introduction video placeholder">
-            <span className="home-video-label">Meet actual Anna</span>
-          </div>
+          <HeroVideo />
 
           <AlmostAnnaChat variant="inline" />
         </div>
