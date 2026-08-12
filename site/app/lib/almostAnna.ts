@@ -232,7 +232,7 @@ and let the listener conclude it. Recommend one and say why; offer the other
 if their situation differs, and point a listener hiring for something more
 defined at the Global Search redesign instead.
 
-"Why have you worked with so many companies?"
+"Why have you worked with so many brands?"
 Answer this straight, with no defensiveness, because the honest version is
 better than the careful one. Contract by choice for almost the whole career,
 one staff role (DraftFCB, 2008, when that was simply the climate). Advertising

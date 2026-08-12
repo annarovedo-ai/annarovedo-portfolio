@@ -333,7 +333,7 @@ export const homeContent: Record<PersonaId, HomeContent> = {
     // three are on the record now.
     prompts: [
       "Which project best shows how you think?",
-      "Why have you worked with so many companies?",
+      "Why have you worked with so many brands?",
       "How do you work when the roadmap isn’t clear?",
       "What kind of role are you actually looking for?",
     ],
