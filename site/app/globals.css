@@ -3339,7 +3339,6 @@ blockquote {
   }
 
   .persona-sticky {
-    top: 62px;
     padding: 12px 16px;
   }
 
@@ -6398,12 +6397,36 @@ a.home-video-label:focus-visible {
 /* The sticky switcher and this band are one navy block visually, split into
    two elements because only one of them can stick. This half holds the line
    that explains the control above it and scrolls away normally. */
-.persona-sticky {
+/* THE HEADER AND THE SWITCHER ARE ONE STICKY ELEMENT.
+ 
+   They used to be two, each pinning itself: the header at top:0, the switcher
+   at top:84px, where 84px was a hand-copied duplicate of the header's
+   min-height. That is a number that has to be kept true by hand in three
+   places (desktop, 720px, 420px) and stays true only while the header renders
+   at exactly its minimum. It does not: the lockup, the nav and the credit line
+   all push it taller at some widths, and the moment the header is taller than
+   the offset, the switcher pins UNDERNEATH it, hidden behind z-index 30, and
+   reads as "not sticky at all".
+ 
+   Wrapping both in one sticky container removes the number entirely. The
+   switcher sits below the header because it is the next element in the box,
+   not because a measurement says so, so it is correct at every width and at
+   every header height, permanently. */
+.persona-dock {
   position: sticky;
-  /* Exactly the header's height, so it pins flush underneath rather than
-     leaving a seam or sliding beneath it. Both values track .site-header. */
-  top: 84px;
-  z-index: 29;
+  top: 0;
+  z-index: 30;
+}
+
+/* The wrapper is the sticky element now. A sticky child inside a sticky
+   parent pins against the parent's box rather than the viewport, which is its
+   own quiet bug, so the header goes back to normal flow in here. Every other
+   page still uses .site-header on its own, where it stays sticky. */
+.persona-dock .site-header {
+  position: static;
+}
+
+.persona-sticky {
   display: flex;
   justify-content: center;
   padding: 18px 24px;
