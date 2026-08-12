@@ -35,11 +35,11 @@ function CaseCard({
           any more. The img keeps alt="" and stays decorative either way. */}
       <span className="home-case-media">
         {c.image ? <img src={c.image} alt="" loading="lazy" /> : null}
-        {c.part ? <span className="home-case-part">{c.part}</span> : null}
       </span>
       <span className="home-case-content">
         <span className="home-case-tags">
           <span className="home-case-tag">{c.tag}</span>
+          {c.part ? <span className="home-case-part">{c.part}</span> : null}
         </span>
         <h3>{c.title}</h3>
         <p>{c.body}</p>

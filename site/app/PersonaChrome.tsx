@@ -1,7 +1,6 @@
 "use client";
 
 import { useEffect, useState, useSyncExternalStore } from "react";
-import { LayoutGroup, motion } from "motion/react";
 import BrandLockup from "./BrandLockup";
 import PersonaSwitch from "./PersonaSwitch";
 import SiteNav from "./SiteNav";
@@ -107,7 +106,7 @@ export default function PersonaChrome() {
   }, []);
 
   return (
-    <LayoutGroup>
+    <>
       <header
         className={`site-header home-header${
           switcherDocked ? " is-docked is-scrolled" : ""
@@ -115,24 +114,21 @@ export default function PersonaChrome() {
       >
         <BrandLockup />
 
-        {/* ONE SWITCHER, TWO HOMES, AND IT TRAVELS BETWEEN THEM.
-            There has only ever been one of these on screen at a time, but it
-            used to CUT between the band and the header, and a cut is what made
-            the clipping visible: for the frames around the swap the control
-            was half under an opaque header, which reads as broken rather than
-            as scrolling. Sharing a layoutId with the copy in the band below
-            means Motion measures both boxes and animates the difference, so it
-            physically slides up into the header and stops there. Same
-            technique the razor uses to morph between its three shapes.
+        {/* ONE SWITCHER, TWO HOMES.
+            A Motion layout animation between the two positions was tried and
+            removed on 2026-08-12: morphing across a sticky, opaque header
+            forced a reflow every frame and produced a visible flash at the
+            seam, which is a worse artefact than the instant swap it replaced.
+            What actually fixed the clipping was the geometry, not the motion:
+            flip at threshold 1 against a measured header height, and hide the
+            band's copy while docked.
 
             Out of the hero's context the pills are three unexplained words,
             and anyone arriving on a deep link never sees the hero at all, so
             the docked control keeps a short label. */}
         {switcherDocked ? (
           <div className="home-header-switch">
-            <motion.div layoutId="persona-switch" layout="position">
-              <PersonaSwitch compact label="I’m a" />
-            </motion.div>
+            <PersonaSwitch compact label="I’m a" />
           </div>
         ) : null}
 
@@ -147,13 +143,11 @@ export default function PersonaChrome() {
       <div className={`persona-intro${switcherDocked ? " is-handed-off" : ""}`}>
         <div className="persona-intro-switch">
           {switcherDocked ? null : (
-            <motion.div layoutId="persona-switch" layout="position">
-              <PersonaSwitch label="I’m a" />
-            </motion.div>
+            <PersonaSwitch label="I’m a" />
           )}
         </div>
         <p className="persona-intro-note">{homeContent[persona].onboardingText}</p>
       </div>
-    </LayoutGroup>
+    </>
   );
 }

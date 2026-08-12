@@ -5059,13 +5059,7 @@ blockquote {
   display: grid;
   grid-template-columns: repeat(2, 1fr);
   gap: 0;
-  padding: 10px;
   border: 1px solid var(--blue);
-  background: var(--paper-deep);
-}
-
-.home-flagship-grid .home-case {
-  background: var(--surface);
 }
 
 .home-flagship-grid .home-case {
@@ -5087,6 +5081,30 @@ blockquote {
   border-bottom: 0;
   background: var(--blue);
   color: #fff;
+}
+
+/* PART ONE / PART TWO, DEMOTED.
+   Two navy chips saying different things, one naming the arc and one naming
+   the order, sat within a few hundred pixels of each other and read as two
+   competing labels for the same object. The container's title is the one
+   carrying an idea, so it keeps the navy. Sequence is a footnote: it sits
+   with the card's own tag, in the same quiet register, where it answers
+   "which comes first" without announcing itself. */
+.home-flagship-grid .home-case-part::before {
+  content: "·";
+  margin-right: 8px;
+  color: var(--line);
+}
+
+.home-flagship-grid .home-case-part {
+  position: static;
+  padding: 0;
+  background: none;
+  color: var(--blue);
+  font-family: var(--mono);
+  font-size: var(--t-label);
+  font-weight: 700;
+  letter-spacing: var(--track-wide);
 }
 
 /* The independent case studies, two by two. This was repeat(4, 1fr) —
@@ -6127,6 +6145,13 @@ blockquote {
   background: var(--blue);
   border-bottom-color: transparent;
   backdrop-filter: none;
+}
+
+/* The rule under the header appears the instant it docks, which registered as
+   a white line flashing at the seam. Fading it in over the same beat as the
+   background means the header arrives as one change rather than two. */
+.home-header {
+  transition: border-bottom-color 0.18s ease, background 0.18s ease;
 }
 
 .home-header nav {
