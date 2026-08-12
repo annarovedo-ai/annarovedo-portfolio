@@ -122,14 +122,15 @@ export default function AnnaRazor() {
       setMode(stored);
       return;
     }
-    // Phones used to default to quiet, on the reasoning that the bar exists to
-    // carry contextual hints and phones do not get hints. That was true while
-    // the hero also held a full chat card. With the card gone from small
-    // screens (see globals.css) the bar is now the only way in, so it has to
-    // be the thing you see: a corner avatar reads as a support widget people
-    // have learned to dismiss, and a bar along the bottom reads as somewhere
-    // to type.
-    setMode("razor");
+    // Phones get the corner button, not the bar. The bar was tried on small
+    // screens on 2026-08-12 and reverted the same day: a full-width control
+    // pinned to the foot of a phone fights Safari's own floating chrome for
+    // the same forty pixels, and no amount of inset and radius made that stop
+    // reading as two bars stacked on each other. The corner button has one
+    // job, sits clear of the browser furniture, and is a pattern people
+    // already know. The hero's chat card stays hidden on phones either way,
+    // so this is the single entry point rather than a second one.
+    setMode(window.matchMedia("(max-width: 767px)").matches ? "quiet" : "razor");
   }, []);
 
   // Dismissing runs on a timer so the notice has time to be read, and the

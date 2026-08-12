@@ -6218,8 +6218,35 @@ blockquote {
 /* Always present. It used to fade in only once the hero's copy scrolled away,
    which meant the control could be off screen at the moment someone wanted it,
    and on a deep link it was simply absent until you scrolled. */
+/* THE SWITCHER ARRIVES, IT DOES NOT APPEAR.
+   The handoff is a swap between two DOM positions, so with no treatment the
+   docked copy simply blinks into existence, which reads as a snap. This gives
+   it the last few pixels of the journey it looks like it should have made:
+   it rises into place and settles. Deliberately CSS rather than a layout
+   animation, because morphing a real element across a sticky opaque header
+   forced a reflow every frame and flashed at the seam (tried and reverted
+   2026-08-12). Transform and opacity only, so nothing reflows and the header
+   never repaints its background mid-move. */
 .home-header-switch {
   justify-self: center;
+  animation: switcher-settle 0.26s cubic-bezier(0.22, 0.61, 0.36, 1) both;
+}
+
+@keyframes switcher-settle {
+  from {
+    opacity: 0;
+    transform: translateY(10px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .home-header-switch {
+    animation: none;
+  }
 }
 
 /* Label + control travel together in both states. */
@@ -6273,7 +6300,13 @@ blockquote {
    but hiding it explicitly means the two can never both be on screen during
    the frame the handoff happens. */
 .persona-intro.is-handed-off .persona-intro-switch {
+  opacity: 0;
+  transform: translateY(-8px);
   visibility: hidden;
+}
+
+.persona-intro-switch {
+  transition: opacity 0.2s ease, transform 0.2s ease;
 }
 
 /* NEVER CUT OFF, EVEN MID-FLIGHT.
