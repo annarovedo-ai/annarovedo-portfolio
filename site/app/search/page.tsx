@@ -181,7 +181,10 @@ export default function SearchCaseStudy() {
               </div>
               <div>
                 <p className="lead">
-                  Beginning in May 2025, I audited result patterns, recurring-query journeys, filter behavior, and no-result states. Research then focused on how people interpreted categories, scanned mixed content, and recovered when the first query failed.
+                  Beginning in May 2025, I audited result types and found the gaps in hierarchy, labeling and filter clarity. The user research was run by Sally, our researcher, and my job was to turn what she found into changes a team could actually build: what people did with mixed results, how they scanned them, and where they gave up.
+                </p>
+                <p>
+                  Then I tested my own screens. Synthesis is a guess until somebody who has never seen the page tries to use it, so the revised layout went into a round of moderated sessions before any of it scaled.
                 </p>
               </div>
             </div>

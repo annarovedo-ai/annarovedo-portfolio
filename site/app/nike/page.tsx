@@ -80,7 +80,7 @@ export default function NikeCaseStudy() {
         <section className="hero shell">
           <h1>Forty fields. Five that mattered.</h1>
           <p className="hero-deck">
-            Nike&rsquo;s order management teams had no single view of whether product was actually available, and the requirements listed roughly forty ways to search for it. I was not permitted to interview a single end user, so I found another way to ask them.
+            Nike&rsquo;s order management teams had no single view of whether product was actually available, and the requirements listed roughly forty ways to search for it. Standard user interviews were not open to me, so I found another way to reach the same people.
           </p>
 
           <div className="hero-meta" aria-label="Project details" id="role">
@@ -145,30 +145,30 @@ export default function NikeCaseStudy() {
           </figure>
         </section>
 
-        <section className="chapter shell" data-anna-prompt="No user interviews. How?">
+        <section className="chapter shell" data-anna-prompt="How I reached the users">
           <SectionNumber>02</SectionNumber>
           <div className="chapter-intro two-column-copy">
             <div>
-              <p className="eyebrow">The constraint</p>
-              <h2>I was not allowed to talk to anyone.</h2>
+              <p className="eyebrow">Getting to the truth</p>
+              <h2>I went and found the people who did the job.</h2>
             </div>
             <div>
               <p className="lead">
-                Internal process blocked me from interviewing end users. For a feature whose entire premise is &ldquo;we do not know what people really search for,&rdquo; that is a problem.
+                Standard user interviews were not available to me on this project. For a feature whose entire premise is &ldquo;we do not know what people really search for,&rdquo; that is not a reason to design from assumptions. It is a reason to find another route to the same people.
               </p>
               <p>
-                Proto-persona workshops with stakeholders got me partway, with conspicuous gaps where firsthand knowledge should have been. So I found a side door: a survey to marketplace operations distribution lists across North America.
+                I ran a Design Thinking workshop to get the internal picture and surface what the team believed, then went around it: a survey straight to marketplace operations distribution lists across North America, reaching the staff who use this software every day.
               </p>
             </div>
           </div>
 
           <div className="stat-band">
             <strong>47</strong>
-            <p>responses from working operations staff: the people I was not permitted to interview, answering in their own words.</p>
+            <p>responses from working operations staff, describing their own job in their own words.</p>
           </div>
 
           <p className="body-copy">
-            It is not a substitute for sitting with users, and I would not claim otherwise. What I ended up with is either very thorough proto-personas or semi-validated ones, depending on how generous you are feeling. But it came from the actual population rather than from people describing that population.
+            Forty-seven people who actually do the work is a real sample, and it beats a room of stakeholders confidently describing them. The workshop gave me the hypotheses. The survey told me which of them were true.
           </p>
         </section>
 
@@ -322,7 +322,7 @@ export default function NikeCaseStudy() {
           </div>
 
           <p className="body-copy">
-            The blocker turned out to be the interesting part. Being denied user interviews forced me to find a population I could actually reach, and forty-seven responses from working operations staff beat a room of stakeholders confidently describing them.
+            The sourcing turned out to be the interesting part. Going around the usual route forced me to find a population I could reach directly, and forty-seven responses from working operations staff beat a room of stakeholders confidently describing them.
           </p>
 
           <p className="body-copy">

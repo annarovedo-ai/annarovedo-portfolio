@@ -248,7 +248,7 @@ export const supportingCaseStudies: CaseStudy[] = [
   {
     href: "/nike",
     tag: "UX / Research",
-    title: "Nike Datalogue & Operations Workspace",
+    title: "Nike: forty fields, five that mattered",
     body: "The spec asked for forty search attributes in a data table. I went and found the people who actually did the work, and forty-seven of them told me they used five. So five became the default and the rest became something you add, because a product is built around what the majority need, not around its edge cases.",
     image: "/case-study/nike/hero-w.png",
     client: {
