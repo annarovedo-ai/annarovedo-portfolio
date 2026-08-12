@@ -3338,6 +3338,11 @@ blockquote {
     padding: 0 16px;
   }
 
+  .persona-sticky {
+    top: 62px;
+    padding: 12px 16px;
+  }
+
   .site-header nav {
     gap: 16px;
     font-size: var(--t-label);
@@ -6218,36 +6223,7 @@ blockquote {
 /* Always present. It used to fade in only once the hero's copy scrolled away,
    which meant the control could be off screen at the moment someone wanted it,
    and on a deep link it was simply absent until you scrolled. */
-/* THE SWITCHER ARRIVES, IT DOES NOT APPEAR.
-   The handoff is a swap between two DOM positions, so with no treatment the
-   docked copy simply blinks into existence, which reads as a snap. This gives
-   it the last few pixels of the journey it looks like it should have made:
-   it rises into place and settles. Deliberately CSS rather than a layout
-   animation, because morphing a real element across a sticky opaque header
-   forced a reflow every frame and flashed at the seam (tried and reverted
-   2026-08-12). Transform and opacity only, so nothing reflows and the header
-   never repaints its background mid-move. */
-.home-header-switch {
-  justify-self: center;
-  animation: switcher-settle 0.26s cubic-bezier(0.22, 0.61, 0.36, 1) both;
-}
 
-@keyframes switcher-settle {
-  from {
-    opacity: 0;
-    transform: translateY(10px);
-  }
-  to {
-    opacity: 1;
-    transform: translateY(0);
-  }
-}
-
-@media (prefers-reduced-motion: reduce) {
-  .home-header-switch {
-    animation: none;
-  }
-}
 
 /* Label + control travel together in both states. */
 .persona-switch-group {
@@ -6281,50 +6257,26 @@ blockquote {
    Holds the switcher and the onboarding line as one locked-up unit: the
    switcher docks into the header once this band scrolls out of view (see
    switcherDocked in PersonaChrome), so the two never show at once. */
+/* The sticky switcher and this band are one navy block visually, split into
+   two elements because only one of them can stick. This half holds the line
+   that explains the control above it and scrolls away normally. */
+.persona-sticky {
+  position: sticky;
+  /* Exactly the header's height, so it pins flush underneath rather than
+     leaving a seam or sliding beneath it. Both values track .site-header. */
+  top: 84px;
+  z-index: 29;
+  display: flex;
+  justify-content: center;
+  padding: 18px 24px;
+  background: var(--blue);
+}
+
 .persona-intro {
-  padding: 32px 24px 34px;
+  padding: 4px 24px 34px;
   background: var(--blue);
   color: #fff;
   text-align: center;
-}
-
-.persona-intro-switch {
-  display: flex;
-  justify-content: center;
-  margin-bottom: 22px;
-}
-
-/* Handed off to the header. visibility rather than display, so the band keeps
-   its height and the page does not jump at the moment of the swap. The header
-   is opaque and sits above this, so the hidden copy is behind it either way,
-   but hiding it explicitly means the two can never both be on screen during
-   the frame the handoff happens. */
-.persona-intro.is-handed-off .persona-intro-switch {
-  opacity: 0;
-  transform: translateY(-8px);
-  visibility: hidden;
-}
-
-.persona-intro-switch {
-  transition: opacity 0.2s ease, transform 0.2s ease;
-}
-
-/* NEVER CUT OFF, EVEN MID-FLIGHT.
-   The header is opaque and sits at z-index 30. While the switcher animates
-   from the band up into the header it briefly crosses that boundary, and
-   anything crossing an opaque sticky element gets sliced by its edge. Lifting
-   the travelling copy above the header means it passes in FRONT of it and
-   lands, rather than disappearing into it a slice at a time. The band keeps
-   its own stacking context so the note underneath is unaffected. */
-.persona-intro-switch {
-  position: relative;
-  z-index: 31;
-}
-
-.home-headline-soft {
-  display: block;
-  color: var(--muted);
-  font-weight: 400;
 }
 
 /* .home-chat-persona was removed 2026-08-07: it styled a persona tag in the
@@ -6536,12 +6488,7 @@ blockquote {
   color: #fff;
 }
 
-@media (prefers-reduced-motion: reduce) {
-  .home-header-switch,
-  .anna-dock {
-    transition: opacity 0.01s linear;
-  }
-}
+@media (prefers-reduced-motion: reduce) {}
 
 @media (max-width: 1140px) {
   /* Not enough room for brand, labelled switcher and nav on one line, so the
@@ -6564,85 +6511,17 @@ blockquote {
     grid-column: 2;
     justify-self: end;
     align-self: center;
-  }
-
-  .home-header-switch {
-    grid-column: 1 / -1;
-    justify-self: center;
-    margin-top: 8px;
-  }
-
-  /* Once docked the wordmark and credit step out and only the 30px mark is
+  }/* Once docked the wordmark and credit step out and only the 30px mark is
      left, which frees enough width to put the mark, the switcher and the
      hamburger on a single row instead of stacking the switcher underneath. */
   .home-header.is-scrolled {
     grid-template-columns: auto 1fr auto;
     column-gap: 12px;
-  }
-
-  /* Scrolled, the lockup steps out and the switcher moves up beside the mark
-     and the menu instead of taking a row of its own. */
-  .home-header.is-scrolled .home-header-switch {
-    grid-column: 2;
-    justify-self: center;
-    margin-top: 0;
-  }
-
-  .home-header.is-scrolled .site-nav {
+  }.home-header.is-scrolled .site-nav {
     grid-column: 3;
-  }
+  }}
 
-  /* The global small-screen rule lets the control wrap onto two lines, which
-     would blow past the collapsed row height. In the header it stays on one. */
-  .home-header-switch .persona-switch {
-    flex-wrap: nowrap;
-  }
-
-  /* The label stays. Without it the docked row is three unexplained words, and
-     a visitor arriving on a deep link never sees the hero that would have
-     explained them. It is short enough to share the row. */
-  .home-header-switch .persona-switch-label {
-    font-size: 10px;
-    letter-spacing: 0.08em;
-  }
-
-  .home-header-switch .persona-switch-group {
-    gap: 8px;
-  }
-
-  .home-header-switch .persona-switch button {
-    padding: 7px 11px;
-    font-size: var(--t-label);
-    letter-spacing: 0.03em;
-  }
-
-  .home-header-switch .persona-switch {
-    padding: 3px;
-  }
-}
-
-@media (max-width: 420px) {
-  .home-header-switch .persona-switch button {
-    padding: 6px 8px;
-    font-size: 10px;
-    letter-spacing: 0.02em;
-  }
-
-  .home-header-switch .persona-switch {
-    padding: 2px;
-    box-shadow: 0 0 0 3px rgba(255, 255, 255, 0.09), 0 8px 20px rgba(0, 0, 0, 0.24);
-  }
-
-  .home-header-switch .persona-switch-label {
-    font-size: 9px;
-    letter-spacing: 0.06em;
-  }
-
-  .home-header-switch .persona-switch-group {
-    gap: 6px;
-  }
-
-  .home-header.is-scrolled {
+@media (max-width: 420px) {.home-header.is-scrolled {
     column-gap: 8px;
   }
 }

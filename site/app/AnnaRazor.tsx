@@ -133,6 +133,21 @@ export default function AnnaRazor() {
     setMode(window.matchMedia("(max-width: 767px)").matches ? "quiet" : "razor");
   }, []);
 
+  // PHONES NEVER GET THE BAR. NOT EVER.
+  //
+  // Changing the DEFAULT was not enough, and this is why: the chosen mode is
+  // remembered in sessionStorage, so anybody whose tab had already stored
+  // "razor" kept the bar no matter what the default said. Minimising the open
+  // panel also restores "razor" by design, which is a second route back to it.
+  //
+  // So this is a hard floor rather than a preference. On a phone the mode is
+  // quiet, whatever is stored and whatever the user last did. The bar competes
+  // with Safari's own floating chrome for the same strip of screen and loses,
+  // and the corner button is a pattern people already understand.
+  useEffect(() => {
+    if (isPhone && mode !== "quiet") setMode("quiet");
+  }, [isPhone, mode]);
+
   // Dismissing runs on a timer so the notice has time to be read, and the
   // timer is held so Undo can cancel it. The 2.1s window used to be dead
   // time: it is the exact moment someone realises they hit the wrong thing,
