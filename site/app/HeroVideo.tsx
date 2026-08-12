@@ -96,7 +96,19 @@ export default function HeroVideo() {
           </button>
         )}
 
-        <span className="home-video-label">Meet actual Anna</span>
+        {/* The label bar was a caption. It is now the one thing a visitor
+            might want after watching thirty seconds of somebody they like:
+            a way to talk to the actual person. Sits above the cover so it
+            stays clickable whether or not the video is playing. */}
+        <a
+          className="home-video-label"
+          href="https://calendly.com/anna-rovedo/30min"
+          target="_blank"
+          rel="noreferrer"
+        >
+          Book a call
+          <span aria-hidden="true"> &rarr;</span>
+        </a>
       </div>
 
       {/* Outside the frame: .home-video clips its overflow so the poster and

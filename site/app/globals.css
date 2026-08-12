@@ -4942,6 +4942,16 @@ blockquote {
   outline-offset: -4px;
 }
 
+a.home-video-label:hover {
+  background: var(--blue);
+  color: #fff;
+}
+
+a.home-video-label:focus-visible {
+  outline: 2px solid var(--blue);
+  outline-offset: -3px;
+}
+
 .home-video.is-playing .home-video-label {
   display: none;
 }
@@ -4973,7 +4983,10 @@ blockquote {
 .home-video-label {
   position: relative;
   z-index: 3;
+  display: block;
   width: 100%;
+  text-decoration: none;
+  transition: background 0.16s ease, color 0.16s ease;
   padding: 16px 20px;
   border-top: 1px solid var(--line);
   background: var(--surface);
