@@ -19,17 +19,40 @@ export default function PersonaChrome() {
   // root layout so it follows the reader onto every page.
   const [switcherDocked, setSwitcherDocked] = useState(false);
 
-  // ARRIVE AT THE TOP.
-  // The switcher and the line that explains it are the first thing this site
-  // says, and on a phone they occupy most of the opening screen. A visitor who
-  // lands mid-band sees a stripe of navy and a cut-off control, which is the
-  // one place the site cannot afford to look broken. Browsers restore scroll
-  // on reload and Chrome sometimes lands short on a soft navigation, so this
-  // asserts the top explicitly. Skipped when the URL carries a hash, because
-  // then the visitor asked for a specific place on the page.
+  // ARRIVE AT THE TOP, AND KEEP ARRIVING THERE.
+  //
+  // The switcher and the line explaining it are the first thing this site
+  // says, and on a phone they fill the opening screen. Landing halfway down
+  // means a visitor's first impression is a logo wall with no idea what the
+  // site is.
+  //
+  // A single scrollTo on mount was not enough, and the reason is timing: the
+  // browser restores the previous scroll position of a history entry AFTER
+  // hydration, so it simply overwrote us. Mobile Safari is the worst of them,
+  // restoring a frame or two later again.
+  //
+  // So: turn restoration off for this entry, which is the actual fix, then
+  // assert the top on this tick, the next painted frame, and once more shortly
+  // after, to cover the browsers that restore late. The window is short enough
+  // that somebody who starts scrolling immediately is not fought for long.
+  // Skipped entirely when the URL carries a hash, because then the visitor
+  // asked for a specific place on the page and the top is not it.
   useEffect(() => {
     if (window.location.hash) return;
-    window.scrollTo(0, 0);
+
+    if ("scrollRestoration" in window.history) {
+      window.history.scrollRestoration = "manual";
+    }
+
+    const top = () => window.scrollTo(0, 0);
+    top();
+    const frame = requestAnimationFrame(top);
+    const late = window.setTimeout(top, 150);
+
+    return () => {
+      cancelAnimationFrame(frame);
+      window.clearTimeout(late);
+    };
   }, []);
 
   useEffect(() => {
