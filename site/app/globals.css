@@ -4946,6 +4946,19 @@ blockquote {
   display: none;
 }
 
+/* Sits under the label bar, outside the frame, so it reads as a credit rather
+   than as part of the video's own furniture. Quiet on purpose: a name like
+   this does more work stated plainly than announced. */
+.home-video-credit {
+  position: absolute;
+  left: 0;
+  bottom: -30px;
+  color: var(--muted);
+  font-family: var(--sans);
+  font-size: var(--t-fine);
+  font-style: italic;
+}
+
 .home-video-label {
   position: relative;
   z-index: 3;

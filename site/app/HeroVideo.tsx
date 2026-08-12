@@ -66,6 +66,11 @@ export default function HeroVideo() {
       )}
 
       <span className="home-video-label">Meet actual Anna</span>
+
+      {/* A real credit, not a gag. Confirmed by Anna 2026-08-12. */}
+      <span className="home-video-credit">
+        Written, filmed and directed by Cary Fukunaga
+      </span>
     </div>
   );
 }
