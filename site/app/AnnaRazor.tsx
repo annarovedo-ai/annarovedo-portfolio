@@ -196,6 +196,24 @@ export default function AnnaRazor() {
     // The card is display:none on phones, and a hidden element never
     // intersects, so watching it would show the bar instantly on arrival and
     // sit it under the headline. Both sizes now wait for the hero itself.
+    // PHONES GET IT IMMEDIATELY.
+    //
+    // The rule above is about not running two chats at once. On a phone there
+    // is only ever one: the inline card is display:none below 720px, so
+    // nothing competes with the corner button and nothing is being duplicated.
+    // Waiting for the hero anyway meant the button was absent for the entire
+    // opening of the page, and on a phone that opening is the headline, the
+    // deck and a full-bleed portrait video, which is most of a screen and a
+    // half of scrolling. A visitor could reach the client logos having seen no
+    // sign that the site has a chat in it at all.
+    //
+    // Quiet mode is one small button in the corner. Showing it on arrival
+    // costs nothing and is what makes the feature discoverable at all here.
+    if (isPhone) {
+      setVisible(true);
+      return;
+    }
+
     const anchor = document.querySelector(".home-hero");
     if (anchor) {
       const io = new IntersectionObserver(

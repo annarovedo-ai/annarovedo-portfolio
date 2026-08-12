@@ -6848,9 +6848,55 @@ a.home-video-label:focus-visible {
     margin-bottom: 18px;
   }
 
+  /* WHAT MADE THE COLLAPSED BAR BREAK ON A PHONE.
+ 
+     The control was allowed to wrap, so at phone width it put a second line of
+     pills straight through the bottom edge of a 64px bar. Dropping the label,
+     shrinking the pills and forbidding the wrap gets the mark, the control and
+     the hamburger onto one row down to 360px, which covers every current
+     phone. Below that it stops fitting and there is a two row fallback
+     further down. Measured across 320, 360, 390, 430, 600 and 720. */
+
+  /* "I'M A" is the first thing to go when width is short. The three options
+     say what the control is without it. */
+  .home-header.is-scrolled .persona-switch-label {
+    display: none;
+  }
+
+  /* Never wrap inside the bar. Wrapping is what put a second line of pills
+     through the bottom edge of the navy. */
+  .home-header .persona-switch {
+    flex-wrap: nowrap;
+  }
+
+  .home-header.is-scrolled .persona-switch button {
+    padding: 7px 12px;
+    font-size: var(--t-label);
+  }
+
   .persona-switch {
     flex-wrap: wrap;
     justify-content: center;
+  }
+}
+
+/* Below 360px the mark, the control and the hamburger genuinely do not fit on
+   one line: measured 27px of overflow at 320px. Two short rows instead, which
+   is still half the height of the tall state. This is the only place the
+   collapsed homepage bar is not a single row. */
+@media (max-width: 359px) {
+  .home-header.is-home.is-scrolled {
+    grid-template-columns: auto 1fr;
+    grid-template-areas:
+      "brand    nav"
+      "switcher switcher";
+    min-height: 0;
+    row-gap: 10px;
+    padding-block: 10px 12px;
+  }
+
+  .home-header.is-home.is-scrolled > .persona-sticky {
+    padding: 0;
   }
 
   .persona-switch button {
