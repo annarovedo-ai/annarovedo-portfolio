@@ -8,6 +8,7 @@ export const metadata: Metadata = {
   title: "IBM Chat Concierge, part one · Anna Rovedo",
   description:
     "Part one of the IBM Concierge story: how Anna Rovedo designed and validated an AI concierge for the enterprise buying journey on IBM.com.",
+  alternates: { canonical: "/concierge" },
 };
 
 const assetRoot = "/case-study/concierge";

@@ -7,6 +7,7 @@ export const metadata: Metadata = {
   title: "This site · Anna Rovedo",
   description:
     "The portfolio as its own case study: a persona-switching site with an AI trained on Anna Rovedo's work, designed and built by her with an AI pair.",
+  alternates: { canonical: "/this-site" },
 };
 
 /**

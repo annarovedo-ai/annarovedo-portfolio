@@ -77,11 +77,39 @@ const worker = {
   async fetch(request: Request, env: Env, ctx: ExecutionContext): Promise<Response> {
     const url = new URL(request.url);
 
+    // ONE REDIRECT, NOT TWO, AND KEEP THE QUERY STRING.
+    //
+    // Host and path were handled separately, which meant a www request for a
+    // legacy path took two hops: www.annarovedo.com/ford went to
+    // annarovedo.com/ford and only then to /archive/ford. Search engines
+    // follow chains but discount them, and every hop is a round trip for the
+    // visitor.
+    //
+    // The path redirect also dropped the query string, because it built a
+    // fresh URL from the origin and never carried url.search across. A link
+    // tagged ?utm_source=linkedin arrived with the attribution gone, which is
+    // the one thing a campaign link exists to preserve.
+    //
+    // Both are decided first and applied together, so the worst case is a
+    // single 301 that keeps the path AND the query.
+    const isWww = url.hostname === "www.annarovedo.com";
+
     // Trailing slashes are normalised so /ford/ matches /ford.
     const legacyPath = url.pathname.replace(/\/+$/, "") || "/";
     const legacy = LEGACY_REDIRECTS[legacyPath];
-    if (legacy) {
-      return Response.redirect(new URL(legacy, url.origin).toString(), 301);
+
+    if (isWww || legacy) {
+      const target = new URL(url.toString());
+      if (isWww) target.hostname = "annarovedo.com";
+      if (legacy) {
+        // Legacy values may carry a fragment (/#work). Split it off so it does
+        // not end up inside the pathname.
+        const [path, hash] = legacy.split("#");
+        target.pathname = path || "/";
+        target.hash = hash ? `#${hash}` : "";
+      }
+      // target.search is untouched, so it still holds the original query.
+      return Response.redirect(target.toString(), 301);
     }
 
     if (url.pathname === "/_vinext/image") {

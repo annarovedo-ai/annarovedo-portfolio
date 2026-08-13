@@ -29,6 +29,7 @@ export async function generateMetadata({
   return {
     title: `${entry.client} · Anna Rovedo`,
     description: entry.body,
+    alternates: { canonical: `/archive/${slug}` },
   };
 }
 

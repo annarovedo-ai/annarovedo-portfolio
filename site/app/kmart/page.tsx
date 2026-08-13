@@ -7,6 +7,7 @@ export const metadata: Metadata = {
   title: "SHHHHH · Anna Rovedo",
   description:
     "A new business pitch to launch Kmart's redesigned clothing lines. Written and art directed over a four day creative sprint at DraftFCB Chicago in 2010.",
+  alternates: { canonical: "/kmart" },
 };
 
 const assetRoot = "/case-study/kmart";

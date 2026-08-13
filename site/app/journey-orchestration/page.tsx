@@ -8,6 +8,7 @@ export const metadata: Metadata = {
   title: "AI-driven journey orchestration, part two · Anna Rovedo",
   description:
     "Part two of the IBM Concierge story: reframing an AI chat layer as the orchestration system for an entire buying journey, designed with Amy Clark, IBM's Global Head of UX.",
+  alternates: { canonical: "/journey-orchestration" },
 };
 
 const assetRoot = "/case-study/journey-orchestration";

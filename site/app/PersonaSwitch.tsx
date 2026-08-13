@@ -1,6 +1,6 @@
 "use client";
 
-import { useEffect, useSyncExternalStore } from "react";
+import { useEffect, useRef, useSyncExternalStore } from "react";
 import {
   getServerSnapshot,
   getSnapshot,
@@ -19,41 +19,60 @@ export default function PersonaSwitch({
   reachable?: boolean;
 }) {
   const persona = useSyncExternalStore(subscribe, getSnapshot, getServerSnapshot);
+  const buttons = useRef<Array<HTMLButtonElement | null>>([]);
 
   useEffect(() => {
     document.documentElement.dataset.persona = persona;
   }, [persona]);
 
+  function moveSelection(from: number, direction: 1 | -1) {
+    const next = (from + direction + personas.length) % personas.length;
+    setPersona(personas[next].id);
+    buttons.current[next]?.focus();
+  }
+
   return (
     <div className={`persona-switch-group${compact ? " is-compact" : ""}`}>
       {label ? <span className="persona-switch-label">{label}</span> : null}
-      {/* radiogroup, not tablist. This used to declare role="tablist" with
-          role="tab" and aria-selected, which is half of the ARIA tab pattern:
-          the other half is tab panels, aria-controls linking each tab to its
-          panel, and arrow-key navigation with a roving tabindex. None of that
-          existed. A screen reader announced "tab, 1 of 3, selected", implied a
-          panel relationship that is not in the markup, and then arrow keys did
-          nothing, which is the first thing someone told "tab" will try.
-
-          It was also the wrong metaphor. Tabs swap one region of content; this
-          swaps copy across the whole page — headline, subtext, chat framing,
-          work eyebrow, footer. That is a preference, not a tab strip, and
-          radiogroup says "pick one of three, it changes things" without
-          promising panels or arrow keys. */}
+      {/* This is a page-wide preference, so radio semantics are a better fit
+          than tabs. The selected option is the group's single Tab stop; arrow
+          keys move and select as native radio groups do. */}
       <div
         className="persona-switch"
         role="radiogroup"
         aria-label="Choose how to read this site"
       >
-        {personas.map((p) => (
+        {personas.map((p, index) => (
           <button
             key={p.id}
+            ref={(element) => {
+              buttons.current[index] = element;
+            }}
             type="button"
             role="radio"
             aria-checked={persona === p.id}
-            tabIndex={reachable ? 0 : -1}
+            tabIndex={reachable && persona === p.id ? 0 : -1}
             className={persona === p.id ? "is-active" : undefined}
             onClick={() => setPersona(p.id)}
+            onKeyDown={(event) => {
+              if (!reachable) return;
+              if (event.key === "ArrowRight" || event.key === "ArrowDown") {
+                event.preventDefault();
+                moveSelection(index, 1);
+              } else if (event.key === "ArrowLeft" || event.key === "ArrowUp") {
+                event.preventDefault();
+                moveSelection(index, -1);
+              } else if (event.key === "Home") {
+                event.preventDefault();
+                setPersona(personas[0].id);
+                buttons.current[0]?.focus();
+              } else if (event.key === "End") {
+                event.preventDefault();
+                const last = personas.length - 1;
+                setPersona(personas[last].id);
+                buttons.current[last]?.focus();
+              }
+            }}
           >
             {p.label}
           </button>

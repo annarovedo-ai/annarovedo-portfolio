@@ -274,18 +274,18 @@ export const supportingCaseStudies: CaseStudy[] = [
 export type Client = { name: string; src: string };
 
 export const clients: Client[] = [
-  { name: "IBM", src: "/logos/logo-ibm.png" },
-  { name: "LinkedIn", src: "/logos/logo-linkedin.png" },
-  { name: "Nike", src: "/logos/logo-nike.png" },
-  { name: "Bloomberg", src: "/logos/logo-bloomberg.png" },
-  { name: "State Street", src: "/logos/logo-state-street.png" },
-  { name: "Ford", src: "/logos/logo-ford.png" },
-  { name: "USAA", src: "/logos/logo-usaa.png" },
-  { name: "HP", src: "/logos/logo-hp.png" },
-  { name: "eBay", src: "/logos/logo-ebay.png" },
-  { name: "McDonald’s", src: "/logos/logo-mcdonalds.png" },
-  { name: "Oreo", src: "/logos/logo-oreo.png" },
-  { name: "Zara", src: "/logos/logo-zara.png" },
+  { name: "IBM", src: "/logos/logo-ibm.webp" },
+  { name: "LinkedIn", src: "/logos/logo-linkedin.webp" },
+  { name: "Nike", src: "/logos/logo-nike.webp" },
+  { name: "Bloomberg", src: "/logos/logo-bloomberg.webp" },
+  { name: "State Street", src: "/logos/logo-state-street.webp" },
+  { name: "Ford", src: "/logos/logo-ford.webp" },
+  { name: "USAA", src: "/logos/logo-usaa.webp" },
+  { name: "HP", src: "/logos/logo-hp.webp" },
+  { name: "eBay", src: "/logos/logo-ebay.webp" },
+  { name: "McDonald’s", src: "/logos/logo-mcdonalds.webp" },
+  { name: "Oreo", src: "/logos/logo-oreo.webp" },
+  { name: "Zara", src: "/logos/logo-zara.webp" },
 ];
 
 export const homeContent: Record<PersonaId, HomeContent> = {

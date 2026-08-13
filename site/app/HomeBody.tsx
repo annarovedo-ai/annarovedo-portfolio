@@ -14,6 +14,48 @@ import {
 import AlmostAnnaChat from "./AlmostAnnaChat";
 import HeroVideo from "./HeroVideo";
 
+const homeImageVariants: Record<string, string> = {
+  "/case-study/concierge/concierge-card-hero.png":
+    "/case-study/concierge/concierge-card-hero-480.webp 480w, /case-study/concierge/concierge-card-hero-960.webp 960w, /case-study/concierge/concierge-card-hero-1280.webp 1280w",
+  "/case-study/thumbs/journey-orchestration.jpg":
+    "/case-study/thumbs/journey-orchestration-480.webp 480w, /case-study/thumbs/journey-orchestration-960.webp 960w, /case-study/thumbs/journey-orchestration-1280.webp 1280w",
+  "/case-study/thumbs/state-street.jpg":
+    "/case-study/thumbs/state-street-480.webp 480w, /case-study/thumbs/state-street-960.webp 960w, /case-study/thumbs/state-street-1280.webp 1280w",
+  "/case-study/search/search-card-hero.png":
+    "/case-study/search/search-card-hero-480.webp 480w, /case-study/search/search-card-hero-960.webp 960w, /case-study/search/search-card-hero-1280.webp 1280w",
+  "/case-study/kmart/card-cover.png":
+    "/case-study/kmart/card-cover-480.webp 480w, /case-study/kmart/card-cover-800.webp 800w",
+  "/case-study/nike/hero-w.png":
+    "/case-study/nike/hero-w-480.webp 480w, /case-study/nike/hero-w-960.webp 960w, /case-study/nike/hero-w-1280.webp 1280w",
+  "/case-study/thumbs/search.jpg":
+    "/case-study/thumbs/search-480.webp 480w, /case-study/thumbs/search-960.webp 960w, /case-study/thumbs/search-1280.webp 1280w",
+};
+
+function HomeImage({
+  src,
+  alt,
+  sizes,
+  loading = "lazy",
+}: {
+  src: string;
+  alt: string;
+  sizes: string;
+  loading?: "eager" | "lazy";
+}) {
+  return (
+    <img
+      src={src}
+      srcSet={homeImageVariants[src]}
+      sizes={sizes}
+      alt={alt}
+      width={1280}
+      height={720}
+      loading={loading}
+      decoding="async"
+    />
+  );
+}
+
 /**
  * Shared card markup for both the flagship pair and the supporting row.
  *
@@ -35,7 +77,13 @@ function CaseCard({
       {/* Part label lives on the media, so the media span cannot be aria-hidden
           any more. The img keeps alt="" and stays decorative either way. */}
       <span className="home-case-media">
-        {c.image ? <img src={c.image} alt="" loading="lazy" /> : null}
+        {c.image ? (
+          <HomeImage
+            src={c.image}
+            alt=""
+            sizes="(max-width: 720px) calc(100vw - 36px), (max-width: 1100px) 50vw, 580px"
+          />
+        ) : null}
       </span>
       <span className="home-case-content">
         <span className="home-case-tags">
@@ -58,7 +106,14 @@ function ClientLogoStrip() {
         <ul>
           {clients.map((cl) => (
             <li key={cl.name}>
-              <img src={cl.src} alt={cl.name} loading="lazy" />
+              <img
+                src={cl.src}
+                alt={cl.name}
+                width={396}
+                height={158}
+                loading="lazy"
+                decoding="async"
+              />
             </li>
           ))}
         </ul>
@@ -161,7 +216,12 @@ function ClientHomeBody({ c }: { c: HomeContent }) {
           <div className="client-hero-proof" aria-label="Selected work across brand, product, and campaign">
             {clientHeroProof.map((item) => (
               <a href={item.href} className="client-hero-proof-card" key={item.href}>
-                <img src={item.image} alt="" />
+                <HomeImage
+                  src={item.image}
+                  alt=""
+                  sizes="(max-width: 720px) 33vw, 200px"
+                  loading="eager"
+                />
                 <span className="client-hero-proof-caption">
                   <span>{item.label}</span>
                   <strong>{item.title}</strong>

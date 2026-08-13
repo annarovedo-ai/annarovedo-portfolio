@@ -7,6 +7,7 @@ export const metadata: Metadata = {
   title: "The archive · Anna Rovedo",
   description:
     "Real work without a full case study: client engagements, advertising, shopper marketing, apparel graphics, brand identity and editorial design.",
+  alternates: { canonical: "/archive" },
 };
 
 const assetRoot = "/archive";

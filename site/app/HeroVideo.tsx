@@ -42,6 +42,7 @@ const INTRO: Record<PersonaId, Intro> = {
 export default function HeroVideo() {
   const persona = useSyncExternalStore(subscribe, getSnapshot, getServerSnapshot);
   const intro = INTRO[persona] ?? INTRO.recruiter;
+  const poster480 = intro.poster.replace(/\.webp$/, "-480.webp");
 
   const video = useRef<HTMLVideoElement | null>(null);
   const [playing, setPlaying] = useState(false);
@@ -80,9 +81,13 @@ export default function HeroVideo() {
             <img
               className="home-video-still"
               src={intro.poster}
+              srcSet={`${poster480} 480w, ${intro.poster} 720w`}
+              sizes="(max-width: 720px) calc(100vw - 36px), 46vw"
               alt=""
               width={720}
               height={900}
+              fetchPriority="high"
+              decoding="async"
             />
             <span className="home-video-cover-inner">
               <span className="home-video-play" aria-hidden="true">

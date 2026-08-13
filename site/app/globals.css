@@ -1,5 +1,41 @@
 @import "tailwindcss";
 
+/* The typefaces are served with the page instead of through a render-blocking
+   Google Fonts stylesheet. These files are the Latin subsets the site already
+   used in production; `swap` keeps first paint independent of font download. */
+@font-face {
+  font-family: "Inter";
+  font-style: normal;
+  font-weight: 400 700;
+  font-display: swap;
+  src: url("/fonts/inter-latin.woff2") format("woff2");
+  unicode-range: U+0000-00FF, U+0131, U+0152-0153, U+02BB-02BC, U+02C6,
+    U+02DA, U+02DC, U+0304, U+0308, U+0329, U+2000-206F, U+20AC, U+2122,
+    U+2191, U+2193, U+2212, U+2215, U+FEFF, U+FFFD;
+}
+
+@font-face {
+  font-family: "Newsreader";
+  font-style: normal;
+  font-weight: 400 700;
+  font-display: swap;
+  src: url("/fonts/newsreader-latin.woff2") format("woff2");
+  unicode-range: U+0000-00FF, U+0131, U+0152-0153, U+02BB-02BC, U+02C6,
+    U+02DA, U+02DC, U+0304, U+0308, U+0329, U+2000-206F, U+20AC, U+2122,
+    U+2191, U+2193, U+2212, U+2215, U+FEFF, U+FFFD;
+}
+
+@font-face {
+  font-family: "Newsreader";
+  font-style: italic;
+  font-weight: 400 700;
+  font-display: swap;
+  src: url("/fonts/newsreader-italic-latin.woff2") format("woff2");
+  unicode-range: U+0000-00FF, U+0131, U+0152-0153, U+02BB-02BC, U+02C6,
+    U+02DA, U+02DC, U+0304, U+0308, U+0329, U+2000-206F, U+20AC, U+2122,
+    U+2191, U+2193, U+2212, U+2215, U+FEFF, U+FFFD;
+}
+
 /* Paper Pixel design system v1.0.0 */
 :root {
   --paper: #faf8f5;      /* page background, warm paper */
@@ -6899,9 +6935,23 @@ a.home-video-label:focus-visible {
     padding: 0;
   }
 
-  .persona-switch button {
-    padding: 11px 15px;
-    font-size: var(--t-fine);
+  .home-header .persona-sticky,
+  .home-header .persona-switch-group {
+    width: 100%;
+    min-width: 0;
+  }
+
+  .home-header .persona-switch {
+    width: calc(100vw - 24px);
+    max-width: 100%;
+    flex-wrap: nowrap;
+  }
+
+  .home-header .persona-switch button {
+    flex: 1 1 0;
+    min-width: 0;
+    padding: 11px 6px;
+    font-size: var(--t-label);
   }
 
   .home-headline-soft {

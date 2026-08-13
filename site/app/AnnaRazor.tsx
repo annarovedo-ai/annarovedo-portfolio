@@ -181,37 +181,28 @@ export default function AnnaRazor() {
   }
 
   useEffect(() => {
-    // The hero handoff exists so the corner button never competes with the
-    // inline chat card. On a phone the hero is several screens tall, so
-    // waiting for all of it means the button is missing for most of the page.
-    // Phones fall back to a plain scroll threshold instead.
-    // NEVER TWO CHATS AT ONCE.
-    // Desktop watches the whole hero. Phones used to watch a bare scroll
-    // threshold (220px), which put the corner button on screen while the
-    // inline chat card was still fully visible, and tapping it opened the
-    // panel directly on top of the card: the same conversation, with the same
-    // avatar and the same header, twice. On a phone the thing that competes is
-    // the card itself, so watch the card. The button appears when the card has
-    // gone, which is the moment it starts being useful.
-    // The card is display:none on phones, and a hidden element never
-    // intersects, so watching it would show the bar instantly on arrival and
-    // sit it under the headline. Both sizes now wait for the hero itself.
-    // PHONES GET IT IMMEDIATELY.
-    //
-    // The rule above is about not running two chats at once. On a phone there
-    // is only ever one: the inline card is display:none below 720px, so
-    // nothing competes with the corner button and nothing is being duplicated.
-    // Waiting for the hero anyway meant the button was absent for the entire
-    // opening of the page, and on a phone that opening is the headline, the
-    // deck and a full-bleed portrait video, which is most of a screen and a
-    // half of scrolling. A visitor could reach the client logos having seen no
-    // sign that the site has a chat in it at all.
-    //
-    // Quiet mode is one small button in the corner. Showing it on arrival
-    // costs nothing and is what makes the feature discoverable at all here.
+    // On phones, wait until the headline and deck have left the viewport. The
+    // launcher remains discoverable over the video, without obscuring the H1
+    // at the 320px reflow width. Desktop keeps the later handoff because its
+    // inline chat card is visible beside the video.
     if (isPhone) {
-      setVisible(true);
-      return;
+      const intro = document.querySelector(".home-hero-copy, .client-hero-copy");
+      if (intro) {
+        const io = new IntersectionObserver(
+          ([entry]) => setVisible(!entry.isIntersecting),
+          { rootMargin: "-16px 0px 0px 0px", threshold: 0 }
+        );
+        io.observe(intro);
+        return () => io.disconnect();
+      }
+      // Same fallback the desktop branch uses. A single rAF sets `visible`
+      // once and then nothing ever updates it, so if the hero copy is missing
+      // the button stays hidden for the whole page with no way to recover.
+      // Unlikely to run, which is exactly why it should not be the brittle one.
+      const onScroll = () => setVisible(window.scrollY > 220);
+      onScroll();
+      window.addEventListener("scroll", onScroll, { passive: true });
+      return () => window.removeEventListener("scroll", onScroll);
     }
 
     const anchor = document.querySelector(".home-hero");

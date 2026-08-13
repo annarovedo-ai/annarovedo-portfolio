@@ -7,6 +7,7 @@ export const metadata: Metadata = {
   title: "Redesigning search across IBM.com · Anna Rovedo",
   description:
     "How Anna Rovedo led the UX from audit and research through interaction design, testing, and launch for IBM.com search.",
+  alternates: { canonical: "/search" },
 };
 
 const assetRoot = "/case-study/search";

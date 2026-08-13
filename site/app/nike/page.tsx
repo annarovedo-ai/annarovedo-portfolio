@@ -7,6 +7,7 @@ export const metadata: Metadata = {
   title: "Forty fields, five that mattered · Nike Operations Workspace · Anna Rovedo",
   description:
     "How Anna Rovedo designed inventory availability for Nike Operations Workspace, reducing a forty-attribute requirement to the five fields users actually searched by.",
+  alternates: { canonical: "/nike" },
 };
 
 const assetRoot = "/case-study/nike";

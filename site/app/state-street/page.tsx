@@ -7,6 +7,7 @@ export const metadata: Metadata = {
   title: "Designing the visual language for State Street Alpha · Anna Rovedo",
   description:
     "How Anna Rovedo created the visual language, color architecture, and component system for State Street Alpha, a financial operating system for institutional investing.",
+  alternates: { canonical: "/state-street" },
 };
 
 const assetRoot = "/case-study/state-street";

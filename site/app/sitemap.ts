@@ -2,7 +2,17 @@ import type { MetadataRoute } from "next";
 
 const BASE = "https://annarovedo.com";
 
-/** Every real route on the site. Case studies first, because they are what a
+/** Every route that should be advertised to search engines.
+ *
+ *  Two deliberate omissions:
+ *  /work redirects to /#work, and a sitemap that lists redirecting URLs gets
+ *  them reported back as errors in Search Console.
+ *  /this-site has no inbound links anywhere on the site, by decision (b6076d4).
+ *  Advertising it through the sitemap would reverse that decision by another
+ *  route. The page stays reachable and stays canonicalised; it is simply not
+ *  promoted.
+ *
+ *  Every real route on the site. Case studies first, because they are what a
  *  search result should land on; the archive entries follow at lower priority
  *  because they are one-card summaries rather than pages anyone should arrive
  *  at cold. Kept as a literal list rather than generated from the filesystem:
@@ -13,9 +23,7 @@ const PAGES = [
   "about",
   "contact",
   "resume",
-  "work",
   "archive",
-  "this-site",
   "concierge",
   "journey-orchestration",
   "state-street",
