@@ -1155,16 +1155,20 @@ img {
   margin-right: 2px;
 }
 
+/* Height, not width: the mark is 23x28, taller than it is wide, so sizing on
+   height is what keeps it in proportion with the wordmark. 22 rather than the
+   19 a bolder cut would take, because this drawing is a hairline against
+   Newsreader bold italic and a lighter mark has to be slightly larger to carry
+   the same weight beside it. */
 .brand-logo svg {
-  width: 19px;
-  height: 19px;
+  height: 22px;
+  width: auto;
   display: block;
 }
 
 @media (max-width: 720px) {
   .brand-logo svg {
-    width: 16px;
-    height: 16px;
+    height: 18px;
   }
 }
 
@@ -1206,6 +1210,26 @@ img {
   font-weight: 700;
   letter-spacing: -0.035em;
 }
+
+/* The studio wordmark. Semibold to match the mark's density, tight tracking so
+   the lockup stays compact enough for a header, and none of the serif's
+   contrast or slant. Deliberately not the uppercase-wide treatment used for
+   eyebrows and the I'M A label: the studio's name should not dress like a
+   label. Overrides the serif rule above, so it has to come after it. */
+.brand-wordmark.is-studio {
+  font-family: var(--sans);
+  font-style: normal;
+  font-weight: 600;
+  font-size: 22px;
+  letter-spacing: -0.02em;
+}
+
+@media (max-width: 720px) {
+  .brand-wordmark.is-studio {
+    font-size: 18px;
+  }
+}
+
 
 .brand-divider {
   opacity: 0.6;

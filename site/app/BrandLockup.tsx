@@ -61,12 +61,26 @@ export default function BrandLockup() {
           rule instead. */}
       {persona === "recruiter" ? null : (
         <span className="brand-logo" aria-hidden="true">
-          <svg viewBox="0 0 22 22" fill="currentColor" aria-hidden="true">
-            <path
-              fillRule="evenodd"
-              d="M0 0h22v13h-5v5h-5v4H0V0Zm2 2v18h6v-4h5v-5h5V2H2Z"
-            />
-            <path d="M6 7h2.5v2.5H6z" />
+          {/* Anna's drawing, 13 August. Built entirely from outline, which is
+              why it is identical white on navy and ink on paper: an earlier
+              version put a solid dog-ear in the corner, and a mass reads as a
+              folded flap on paper and as a hole punched through the sheet when
+              it inverts. The corner still reads as turned because the stair
+              describes its edge rather than filling it.
+
+              fill lives on the <svg> as currentColor, not on the rects as
+              black, so one file serves the navy header and the paper footer. */}
+          <svg viewBox="0 0 23 28" fill="currentColor" aria-hidden="true">
+            <rect x="1" width="22" height="2" />
+            <rect y="28" width="28" height="2" transform="rotate(-90 0 28)" />
+            <rect x="21" y="20" width="20" height="2" transform="rotate(-90 21 20)" />
+            <rect x="1" y="26" width="16" height="2" />
+            <rect x="13" y="28" width="8" height="2" transform="rotate(-90 13 28)" />
+            <rect x="23" y="20" width="8" height="2" transform="rotate(180 23 20)" />
+            <rect x="21" y="20" width="2" height="2" />
+            <rect x="19" y="22" width="2" height="2" />
+            <rect x="17" y="24" width="2" height="2" />
+            <rect x="10" y="9" width="3" height="3" />
           </svg>
         </span>
       )}
@@ -80,7 +94,20 @@ export default function BrandLockup() {
         </span>
       ) : null}
 
-      <span className="brand-wordmark">{l.wordmark}</span>
+      {/* THE PERSON AND THE STUDIO ARE SET DIFFERENTLY, ON PURPOSE.
+          Anna Rovedo stays a serif italic: a signature, a person. Paper Pixel
+          takes the sans, because the mark beside it is flat-weight, upright and
+          on a grid, and Newsreader italic has stress, contrast and a slant.
+          Set together they read as two objects that arrived separately.
+          It is the same reasoning that already makes the Recruiter's monogram
+          initials rather than a logo, carried into the type. */}
+      <span
+        className={
+          persona === "recruiter" ? "brand-wordmark" : "brand-wordmark is-studio"
+        }
+      >
+        {l.wordmark}
+      </span>
       {l.credit ? (
         <>
           <span className="brand-divider">{"//"}</span>
