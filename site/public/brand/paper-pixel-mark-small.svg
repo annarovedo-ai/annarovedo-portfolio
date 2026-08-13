@@ -1,0 +1,15 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 32 32">
+  <title>Paper Pixel</title>
+  <path
+    fill="#1d3d68"
+    d="M3 3h26v3H3z
+       M3 3h3v26H3z
+       M26 3h3v19h-3z
+       M3 26h19v3H3z
+       M19 19h7v3h-7z
+       M19 19h3v7h-3z
+       M14 11h3v3h-3z
+       M22 23h3v3h-3z
+       M25 20h3v3h-3z"
+  />
+</svg>

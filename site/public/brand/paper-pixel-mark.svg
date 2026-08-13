@@ -1,0 +1,16 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256">
+  <title>Paper Pixel</title>
+  <path
+    fill="#1d3d68"
+    d="M24 24h208v16H24z
+       M24 24h16v208H24z
+       M216 24h16v144h-16z
+       M24 216h144v16H24z
+       M152 152h64v16h-64z
+       M152 152h16v64h-16z
+       M120 88h16v16h-16z
+       M168 200h16v16h-16z
+       M184 184h16v16h-16z
+       M200 168h16v16h-16z"
+  />
+</svg>
