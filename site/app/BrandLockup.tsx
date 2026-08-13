@@ -47,8 +47,12 @@ export default function BrandLockup() {
   const persona = useSyncExternalStore(subscribe, getSnapshot, getServerSnapshot);
   const l = lockup[persona] ?? lockup.recruiter;
 
+  // No aria-label on the link. It said "Home", which replaced the visible
+  // name for assistive tech: a screen reader announced "Home" where the
+  // screen said Anna Rovedo or Paper Pixel, and a voice-control user saying
+  // "click Anna Rovedo" got nothing. The link text itself is the right name.
   return (
-    <a className="brand" href="/" aria-label="Home">
+    <a className="brand" href="/">
       {/* THE MARK SITS IN FRONT OF THE WORDMARK, wherever the wordmark reads
           Paper Pixel. Client and Ex only: the Recruiter's version of this site
           is a person, and a studio logo beside her name introduces a company

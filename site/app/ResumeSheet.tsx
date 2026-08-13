@@ -70,7 +70,7 @@ export default function ResumeSheet({
 
       {showIntro ? (
         <section className="cv-block cv-about">
-          <p className="cv-rule-label">About</p>
+          <h2 className="cv-rule-label">About</h2>
           {(c.profile ?? defaultProfile).map((p) => (
             <p className="cv-profile" key={p}>
               {p}
@@ -81,7 +81,7 @@ export default function ResumeSheet({
 
       <div className="cv-body">
         <aside className="cv-rail">
-          <p className="cv-rule-label">Core expertise</p>
+          <h2 className="cv-rule-label">Core expertise</h2>
           <div className="cv-rail-expertise">
             {expertise.map((e) => (
               <div className="cv-expertise-group" key={e.group}>
@@ -98,7 +98,7 @@ export default function ResumeSheet({
 
         <div className="cv-main">
           <section className="cv-block cv-block-first">
-            <p className="cv-rule-label">Selected experience</p>
+            <h2 className="cv-rule-label">Selected experience</h2>
             <ol className="cv-roles">
               {experience.map((r) => (
                 <li key={r.client}>
@@ -116,7 +116,7 @@ export default function ResumeSheet({
           </section>
 
           <section className="cv-block">
-            <p className="cv-rule-label">Earlier selected experience</p>
+            <h2 className="cv-rule-label">Earlier selected experience</h2>
             <div className="cv-earlier">
               {earlier.map((e) => (
                 <div key={e.org}>
@@ -129,7 +129,7 @@ export default function ResumeSheet({
           </section>
 
           <section className="cv-block">
-            <p className="cv-rule-label">Education</p>
+            <h2 className="cv-rule-label">Education</h2>
             <div className="cv-education">
               {education.map((e) => (
                 <div key={e.school}>

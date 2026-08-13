@@ -51,6 +51,19 @@ export default function ContactBody() {
       }
     }
     setErrors(next);
+
+    /* Focus moves to the first invalid field. Without this, a failed submit
+       left focus on the button: the inline errors and aria-invalid were
+       correct, but nothing announced them, so a screen-reader user pressed
+       Send and heard silence. Landing focus in the field reads its label,
+       its invalid state and its error in one move. rAF because the error
+       nodes render on the next commit. */
+    const firstBad = c.fields.find((f) => next[f.label]);
+    if (firstBad) {
+      requestAnimationFrame(() => {
+        document.getElementById(fieldId(firstBad.label))?.focus();
+      });
+    }
     return Object.keys(next).length === 0;
   }
 
@@ -128,6 +141,7 @@ export default function ContactBody() {
                     {f.multiline ? (
                       <textarea
                         id={id}
+                        name={id}
                         rows={4}
                         placeholder={f.placeholder}
                         value={values[f.label] ?? ""}
@@ -140,6 +154,16 @@ export default function ContactBody() {
                     ) : (
                       <input
                         id={id}
+                        name={id}
+                        autoComplete={
+                          isEmailField(f.label)
+                            ? "email"
+                            : /name/i.test(f.label)
+                              ? "name"
+                              : /company|organisation|organization/i.test(f.label)
+                                ? "organization"
+                                : undefined
+                        }
                         type={isEmailField(f.label) ? "email" : "text"}
                         placeholder={f.placeholder}
                         value={values[f.label] ?? ""}

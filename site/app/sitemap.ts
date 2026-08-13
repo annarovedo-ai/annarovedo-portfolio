@@ -32,6 +32,9 @@ const PAGES = [
   "nike",
 ];
 
+/* kmart is deliberately absent: its archive entry carries an href override to
+   the full case study, and /archive/[slug] returns 404 for overridden entries.
+   The sitemap was advertising that 404. The case study itself is in PAGES. */
 const ARCHIVE = [
   "bloomberg",
   "west-indian-carnival",
@@ -43,7 +46,6 @@ const ARCHIVE = [
   "ford",
   "hp",
   "lightpost",
-  "kmart",
   "statefarm",
   "a1",
   "jello",

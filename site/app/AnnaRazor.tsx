@@ -224,7 +224,12 @@ export default function AnnaRazor() {
     // detached from the document, and `visible` freezes at whatever it was
     // when you left. Harmless while ENABLED_PATHS is ["/"]; a real bug the
     // day the razor goes site-wide.
-  }, [isPhone, pathname]);
+    // persona is a dependency because each persona renders its own hero:
+    // switch personas and the observed node is unmounted, the observer keeps
+    // watching a detached element, and `visible` freezes. At 320px that froze
+    // the launcher on screen over the Client copy. Rebinding re-observes the
+    // new persona's hero.
+  }, [isPhone, pathname, persona]);
 
   // Fires once the razor is first visible in this tab, provided the visitor
   // hasn't already opened the conversation on their own (someone who's
