@@ -16,19 +16,20 @@ import test from "node:test";
 
 const root = new URL("../", import.meta.url);
 
-async function worker() {
-  const workerUrl = new URL("dist/server/index.js", root);
-  workerUrl.searchParams.set("test", `${process.pid}-${Date.now()}`);
-  const { default: w } = await import(workerUrl.href);
-  return w;
-}
-
-const env = { ASSETS: { fetch: async () => new Response("Not found", { status: 404 }) } };
-const ctx = { waitUntil() {}, passThroughOnException() {} };
+/**
+ * The redirect tests import worker/redirects.mjs directly rather than the
+ * built worker: dist/server imports "cloudflare:workers" (for the chat log's
+ * D1 binding), a scheme Node cannot load, and every redirect test died of it
+ * the day the chat log landed. The logic is a pure function, so it is tested
+ * as one. Plain .mjs, stock Node, no transpiler.
+ */
+import { redirectTarget } from "../worker/redirects.mjs";
 
 async function hit(url) {
-  const w = await worker();
-  return w.fetch(new Request(url, { headers: { accept: "text/html" }, redirect: "manual" }), env, ctx);
+  const target = redirectTarget(url);
+  return target
+    ? { status: 301, headers: new Map([["location", target]]) }
+    : { status: 200, headers: new Map() };
 }
 
 /* ---------------------------------------------------------- redirects --- */
@@ -104,14 +105,18 @@ test("the sitemap does not advertise redirecting or unlinked pages", async () =>
 
 test("robots keeps crawlers off the paid chat endpoint", async () => {
   const src = await readFile(new URL("app/robots.ts", root), "utf8");
-  assert.match(src, /disallow:\s*"\/api\/"/i);
+  // The chat log added /admin/ alongside /api/, turning disallow into an
+  // array. Both must stay: /api/ burns her Anthropic credit, /admin/ is the
+  // conversation log.
+  assert.match(src, /disallow:.*\/api\//is);
+  assert.match(src, /disallow:.*\/admin\//is);
   assert.match(src, /sitemap:\s*"https:\/\/annarovedo\.com\/sitemap\.xml"/);
 });
 
 /* --------------------------------------------------------- canonicals --- */
 
 test("every indexable page declares a canonical URL", async () => {
-  const skip = new Set(["/work", "/work/[slug]"]); // redirect-only routes
+  const skip = new Set(["/work", "/work/[slug]", "/admin/chat"]); // redirects + keyed admin page
   const missing = [];
   async function walk(dir, base = "") {
     for (const entry of await readdir(new URL(dir, root), { withFileTypes: true })) {

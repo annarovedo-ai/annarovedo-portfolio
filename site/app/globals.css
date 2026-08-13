@@ -8951,6 +8951,20 @@ a.home-video-label:focus-visible {
    disclosure sat directly under the input, in the spot a reader is looking at
    while deciding what to type. Rules deleted rather than orphaned. */
 
+/* The recording disclosure. Fine print in the honest sense: visible, quiet,
+   and always there, under the input where the typing happens. */
+.aa-privacy {
+  margin: 8px 2px 0;
+  color: var(--muted);
+  font-size: var(--t-label);
+  letter-spacing: 0.02em;
+}
+
+.aa-thread ~ .aa-privacy,
+[data-anna-razor] .aa-privacy {
+  color: var(--muted);
+}
+
 .aa-composer {
   display: flex;
   align-items: center;
