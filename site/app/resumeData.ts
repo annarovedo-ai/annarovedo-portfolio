@@ -6,6 +6,26 @@
  * copies that could drift apart.
  */
 
+/**
+ * BRAND AND CAMPAIGN IS A GROUP, NOT A WORD BURIED IN CRAFT.
+ *
+ * This list had three groups and thirteen items, of which exactly one --
+ * "Visual Design", fifth of six in the last group -- pointed at anything
+ * visual, and nothing at all pointed at campaign, art direction or concept
+ * work. Set against a homepage that opens "UX is my specialty, not my
+ * boundary", it contradicted the site's central claim: a recruiter skimming
+ * the rail read a pure UX practitioner and stopped considering her for the
+ * other half of her career.
+ *
+ * A heading is what gets skimmed, so the range needs one of its own rather
+ * than a word tucked into a list about prototyping. Every item below is
+ * evidenced in facts.md: Art Director at DraftFCB across Kmart, State Farm,
+ * Jell-O, A1, Valspar and SC Johnson; 360 campaigns, outdoor, print and
+ * animated banners; storyboards for McDonald's menu boards and for eBay and
+ * KitchenAid pitches; interactive concepts with a writer for Oreo and Sour
+ * Patch Kids; the West Indian Carnival identity; freelance Art/Creative
+ * Director as Anna Rovedo Design, Inc.
+ */
 export const expertise = [
   {
     group: "Strategy",
@@ -18,6 +38,15 @@ export const expertise = [
       "Search and Discovery",
       "Complex Enterprise UX",
       "Interaction Design",
+    ],
+  },
+  {
+    group: "Brand and Campaign",
+    items: [
+      "Creative Direction",
+      "Art Direction",
+      "Campaign Concepts",
+      "Visual Identity",
     ],
   },
   {
