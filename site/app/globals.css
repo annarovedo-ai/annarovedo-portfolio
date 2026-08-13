@@ -7555,8 +7555,12 @@ a.home-video-label:focus-visible {
   margin-bottom: 0;
 }
 
+/* 8px put the button almost against the last line of the paragraph, so the
+   two read as one block and the button lost its status as a separate action.
+   28px is roughly a line of body copy: enough to separate them, not so much
+   that the button drifts away from the text it belongs to. */
 .cv-contact-row {
-  margin-top: 8px;
+  margin-top: 28px;
 }
 
 .about-resume {
