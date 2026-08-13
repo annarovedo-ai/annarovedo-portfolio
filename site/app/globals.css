@@ -6343,8 +6343,16 @@ a.home-video-label:focus-visible {
    sync. Earlier versions moved the control between two containers and that is
    what produced every "it jumps" bug. */
 .home-header.is-home {
+  /* "gap" is a named area nothing occupies, where a null cell (.) would read
+     more naturally. It is here because the minifier strips the whitespace
+     around a lone dot and ships grid-template-areas:"brand.nav", and
+     "brand.nav" is not a valid custom-ident: the whole declaration is invalid
+     per spec. Chromium parses it anyway. Safari follows the spec and drops it,
+     at which point grid-area:brand / nav / switcher point at named lines that
+     no longer exist, every item lands in an implicit row, and the nav falls
+     under the wordmark. A named area cannot be mangled that way. */
   grid-template-areas:
-    "brand    .        nav"
+    "brand    gap      nav"
     "switcher switcher switcher";
 }
 
@@ -6847,6 +6855,15 @@ a.home-video-label:focus-visible {
 @media (max-width: 420px) {.home-header.is-scrolled {
     column-gap: 8px;
   }
+
+  /* The three options fit one line down to about 390px and then wrap by a few
+     pixels, which orphans EX BOYFRIEND on a line of its own and makes the
+     control taller than the headline it sits above. Tightening the pills buys
+     back the width needed to hold one line to 360px. */
+  .persona-switch button {
+    padding: 11px 11px;
+    letter-spacing: 0.04em;
+  }
 }
 
 @media (max-width: 720px) {
@@ -6907,9 +6924,13 @@ a.home-video-label:focus-visible {
     display: none;
   }
 
-  /* Never wrap inside the bar. Wrapping is what put a second line of pills
-     through the bottom edge of the navy. */
-  .home-header .persona-switch {
+  /* Never wrap inside the COLLAPSED bar: wrapping there put a second line of
+     pills through the bottom edge of the navy. Scoped to .is-scrolled, because
+     applying it to the whole header stopped the tall state wrapping too, and
+     the full-size control is wider than a phone: it stopped wrapping and ran
+     off both edges of the screen instead. The tall state has a whole row to
+     itself and is allowed to use two lines of it. */
+  .home-header.is-scrolled .persona-switch {
     flex-wrap: nowrap;
   }
 
@@ -6918,9 +6939,12 @@ a.home-video-label:focus-visible {
     font-size: var(--t-label);
   }
 
+  /* max-width is the backstop: whatever the wrapping rules do, the control
+     cannot be wider than the screen it is on. */
   .persona-switch {
     flex-wrap: wrap;
     justify-content: center;
+    max-width: 100%;
   }
 }
 
