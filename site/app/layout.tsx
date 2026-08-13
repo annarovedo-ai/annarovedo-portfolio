@@ -18,6 +18,13 @@ export const metadata: Metadata = {
   title: "Anna Rovedo · Principal Experience Designer",
   description:
     "Anna Rovedo is a Principal Experience Designer working across digital products, systems, brands, campaigns, and emerging technology.",
+  // One SVG rather than a light/dark PNG pair. The vector is exact at 16, 32
+  // and 180px where a 32x32 raster is soft on a retina tab and unusable as an
+  // apple-touch icon, and it carries its own prefers-color-scheme rule inside
+  // the file, so the colour logic lives with the drawing instead of in this
+  // metadata block. The PNGs remain in the repo, unreferenced: they were drawn
+  // from the earlier version of the mark, and wiring both up would have given
+  // the site a different logo depending on the visitor's colour scheme.
   icons: {
     icon: "/favicon.svg",
     shortcut: "/favicon.svg",
