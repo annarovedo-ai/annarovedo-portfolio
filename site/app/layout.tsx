@@ -16,8 +16,11 @@ export const metadata: Metadata = {
   // product rather than as herself. Pages that export their own metadata (the
   // homepage does) still override this.
   title: "Anna Rovedo · Principal Experience Designer",
+  // The fallback for any page that does not set its own. Carries the studio
+  // name too, since descriptions run to about 155 characters and this one has
+  // room where the titles do not.
   description:
-    "Anna Rovedo is a Principal Experience Designer working across digital products, systems, brands, campaigns, and emerging technology.",
+    "Anna Rovedo, Principal Experience Designer and founder of Paper Pixel. Digital products, systems, brands, campaigns, and emerging technology.",
   // One SVG rather than a light/dark PNG pair. The vector is exact at 16, 32
   // and 180px where a 32x32 raster is soft on a retina tab and unusable as an
   // apple-touch icon, and it carries its own prefers-color-scheme rule inside
