@@ -49,11 +49,31 @@ export default function BrandLockup() {
 
   return (
     <a className="brand" href="/" aria-label="Home">
-      {/* Placeholder for the logo Anna is making. Only visible at ≤900px once
-          the homepage header has docked, where the full lockup stops fitting.
-          Swap the span for an <img> when the logo exists; nothing else changes. */}
+      {/* Only visible at ≤900px once the homepage header has docked, where the
+          full lockup stops fitting.
+
+          THE RECRUITER DOES NOT GET THE STUDIO MARK, and that is the same
+          reasoning that made the wordmark persona-specific in the first place:
+          their whole version of this site is a person, so a studio monogram in
+          the corner introduces a company they did not come here to hire. They
+          keep initials. Client and Ex get the Paper Pixel logo.
+
+          Inline rather than an <img> so it inherits colour: white against the
+          navy header, ink anywhere else, from one file. The standalone icon
+          files cannot do this, which is why /favicon.svg carries its own fill
+          and its own dark-mode rule instead. */}
       <span className="brand-mark" aria-hidden="true">
-        {l.mark}
+        {persona === "recruiter" ? (
+          l.mark
+        ) : (
+          <svg viewBox="0 0 22 22" fill="currentColor" aria-hidden="true">
+            <path
+              fillRule="evenodd"
+              d="M0 0h22v13h-5v5h-5v4H0V0Zm2 2v18h6v-4h5v-5h5V2H2Z"
+            />
+            <path d="M6 7h2.5v2.5H6z" />
+          </svg>
+        )}
       </span>
       <span className="brand-wordmark">{l.wordmark}</span>
       {l.credit ? (

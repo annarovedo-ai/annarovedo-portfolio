@@ -1144,6 +1144,14 @@ img {
 
 /* Logo slot. Hidden until the header docks, where it takes over from the
    wordmark so the row can give its width to the persona switcher instead. */
+/* The logo fills the box; the initials still centre in it. Inline SVG has no
+   intrinsic size worth trusting, so it is sized here rather than in the file. */
+.brand-mark svg {
+  width: 18px;
+  height: 18px;
+  display: block;
+}
+
 .brand-mark {
   display: none;
   place-items: center;
