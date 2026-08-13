@@ -1144,12 +1144,28 @@ img {
 
 /* Logo slot. Hidden until the header docks, where it takes over from the
    wordmark so the row can give its width to the persona switcher instead. */
-/* The logo fills the box; the initials still centre in it. Inline SVG has no
-   intrinsic size worth trusting, so it is sized here rather than in the file. */
-.brand-mark svg {
-  width: 18px;
-  height: 18px;
+/* The logo, standing in front of the wordmark. Sized against the wordmark's
+   cap height rather than its font size, so it reads as part of the lockup
+   instead of an icon parked next to it. .brand aligns on the baseline, which
+   would hang a square shape too low, so this one centres itself. */
+.brand-logo {
+  display: inline-flex;
+  align-self: center;
+  flex: none;
+  margin-right: 2px;
+}
+
+.brand-logo svg {
+  width: 19px;
+  height: 19px;
   display: block;
+}
+
+@media (max-width: 720px) {
+  .brand-logo svg {
+    width: 16px;
+    height: 16px;
+  }
 }
 
 .brand-mark {

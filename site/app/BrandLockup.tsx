@@ -49,23 +49,18 @@ export default function BrandLockup() {
 
   return (
     <a className="brand" href="/" aria-label="Home">
-      {/* Only visible at ≤900px once the homepage header has docked, where the
-          full lockup stops fitting.
-
-          THE RECRUITER DOES NOT GET THE STUDIO MARK, and that is the same
-          reasoning that made the wordmark persona-specific in the first place:
-          their whole version of this site is a person, so a studio monogram in
-          the corner introduces a company they did not come here to hire. They
-          keep initials. Client and Ex get the Paper Pixel logo.
+      {/* THE MARK SITS IN FRONT OF THE WORDMARK, wherever the wordmark reads
+          Paper Pixel. Client and Ex only: the Recruiter's version of this site
+          is a person, and a studio logo beside her name introduces a company
+          they did not come here to hire, which is the same reasoning that made
+          the wordmark persona-specific in the first place.
 
           Inline rather than an <img> so it inherits colour: white against the
-          navy header, ink anywhere else, from one file. The standalone icon
-          files cannot do this, which is why /favicon.svg carries its own fill
-          and its own dark-mode rule instead. */}
-      <span className="brand-mark" aria-hidden="true">
-        {persona === "recruiter" ? (
-          l.mark
-        ) : (
+          navy header, ink in the footer, from one file. /favicon.svg cannot
+          inherit anything, so it carries its own fill and its own dark-mode
+          rule instead. */}
+      {persona === "recruiter" ? null : (
+        <span className="brand-logo" aria-hidden="true">
           <svg viewBox="0 0 22 22" fill="currentColor" aria-hidden="true">
             <path
               fillRule="evenodd"
@@ -73,8 +68,18 @@ export default function BrandLockup() {
             />
             <path d="M6 7h2.5v2.5H6z" />
           </svg>
-        )}
-      </span>
+        </span>
+      )}
+
+      {/* Initials, and only for the Recruiter now: the fallback for ≤900px
+          once the header collapses and the full lockup stops fitting. Client
+          and Ex keep the logo above, which does that job for them. */}
+      {persona === "recruiter" ? (
+        <span className="brand-mark" aria-hidden="true">
+          {l.mark}
+        </span>
+      ) : null}
+
       <span className="brand-wordmark">{l.wordmark}</span>
       {l.credit ? (
         <>
