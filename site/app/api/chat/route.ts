@@ -1,5 +1,6 @@
 import { buildSystemPrompt } from "../../lib/almostAnna";
 import type { PersonaId } from "../../personaStore";
+import { logTurn, newSessionId, readSessionId } from "../../lib/chatLog";
 
 /**
  * Almost Anna chat proxy.
@@ -239,12 +240,37 @@ export async function POST(request: Request): Promise<Response> {
 
     const remaining = Math.max(0, SESSION_MESSAGE_CAP - (used + 1));
 
+    /**
+     * Log the exchange. Best-effort and deliberately after the reply is
+     * assembled: if D1 is unbound or the write fails, logTurn swallows it and
+     * the visitor is unaffected.
+     */
+    const lastUser = [...messages].reverse().find((m) => m.role === "user");
+    const sessionId = readSessionId(request.headers.get("cookie")) ?? newSessionId();
+    if (lastUser) {
+      await logTurn({
+        sessionId,
+        persona,
+        question: lastUser.content,
+        answer: reply,
+        country: request.headers.get("cf-ipcountry"),
+        turn: used + 1,
+      });
+    }
+
     return Response.json(
       { reply, remaining },
       {
-        headers: {
-          "Set-Cookie": `aa_count=${used + 1}; Path=/; HttpOnly; SameSite=Lax; Max-Age=86400`,
-        },
+        headers: new Headers([
+          [
+            "Set-Cookie",
+            `aa_count=${used + 1}; Path=/; HttpOnly; SameSite=Lax; Max-Age=86400`,
+          ],
+          [
+            "Set-Cookie",
+            `aa_sid=${sessionId}; Path=/; HttpOnly; SameSite=Lax; Max-Age=86400`,
+          ],
+        ]),
       }
     );
   } catch (err) {
