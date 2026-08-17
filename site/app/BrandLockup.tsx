@@ -52,7 +52,8 @@ export default function BrandLockup() {
   // screen said Anna Rovedo or Paper Pixel, and a voice-control user saying
   // "click Anna Rovedo" got nothing. The link text itself is the right name.
   return (
-    <a className="brand" href="/">
+    <span className="brand">
+      <a className="brand-home" href="/">
       {/* THE MARK SITS IN FRONT OF THE WORDMARK, wherever the wordmark reads
           Paper Pixel. Client and Ex only: the Recruiter's version of this site
           is a person, and a studio logo beside her name introduces a company
@@ -112,12 +113,18 @@ export default function BrandLockup() {
       >
         {l.wordmark}
       </span>
+      </a>
+      {/* The credit sits OUTSIDE the link. It is an attribution, not a
+          destination: someone who clicks a person's name expects to land
+          somewhere about that person, and this went to the homepage. The
+          studio name is the home button; the signature beside it is just a
+          signature. */}
       {l.credit ? (
         <>
           <span className="brand-divider">{"//"}</span>
           <span className="brand-credit">{l.credit}</span>
         </>
       ) : null}
-    </a>
+    </span>
   );
 }

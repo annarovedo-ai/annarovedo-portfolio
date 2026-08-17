@@ -31,12 +31,23 @@ export const expertise = [
     group: "Strategy",
     items: ["Future Vision", "Product Strategy", "Early Product Direction"],
   },
+  /**
+   * Renamed from "Experience", which sat inches from "Selected experience"
+   * in the same column and made one word mean two things on one screen.
+   *
+   * Design Systems and User Research moved up out of Craft: they are the two
+   * claims with case studies behind them (State Street is a design system,
+   * Nike is a research story), and they were buried at the bottom of the
+   * longest list. Craft is now hands-on output only.
+   */
   {
-    group: "Experience",
+    group: "Product",
     items: [
       "AI Experiences",
       "Search and Discovery",
       "Complex Enterprise UX",
+      "Design Systems",
+      "User Research",
       "Interaction Design",
     ],
   },
@@ -44,7 +55,6 @@ export const expertise = [
     group: "Brand and Campaign",
     items: [
       "Creative Direction",
-      "Art Direction",
       "Campaign Concepts",
       "Visual Identity",
     ],
@@ -53,9 +63,7 @@ export const expertise = [
     group: "Craft",
     items: [
       "Prototyping",
-      "User Research",
       "Information Architecture",
-      "Design Systems",
       "Visual Design",
       "Data Visualization",
     ],
@@ -186,6 +194,11 @@ export const education = [
   },
   {
     school: "Felicidad Duce School of Design and Fashion",
-    detail: "Graduate study in fashion design and pattern making",
+    detail: "Masters in Fashion Design, Barcelona",
+  },
+  {
+    school: "Buenos Aires",
+    detail:
+      "Postgraduate programs in couture sewing and product development, alongside a year designing and producing a runway collection",
   },
 ];

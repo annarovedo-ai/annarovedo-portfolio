@@ -7283,10 +7283,12 @@ a.home-video-label:focus-visible {
 
 .cv-download {
   display: inline-block;
-  padding: 15px 26px;
+  /* Was 15px/26px at 17px serif bold, which read as a hero-scale block
+     rather than a secondary action next to the intro copy. */
+  padding: 11px 20px;
   background: var(--flare);
   color: var(--ink);
-  font-size: var(--t-read);
+  font-size: var(--t-small);
   font-weight: 700;
   border: 1px solid var(--flare-ink);
   font-family: var(--serif);
@@ -7307,9 +7309,11 @@ a.home-video-label:focus-visible {
   border-top: 1px solid var(--line);
 }
 
-/* The About blurb sits full width, directly under the masthead. */
+/* The About blurb sits full width, directly under the masthead.
+   No max-width: it was 74ch, which stopped short of the right edge of the
+   two-column body below it and read as a ragged, unintended indent. */
 .cv-about {
-  max-width: 74ch;
+  max-width: none;
 }
 
 /* Below the blurb, Core expertise runs in a left rail while Selected
@@ -7358,7 +7362,9 @@ a.home-video-label:focus-visible {
 }
 
 .cv-profile {
-  max-width: 82ch;
+  /* Was 82ch. Released so the profile paragraphs share both edges with the
+     Core expertise / Selected experience columns underneath. */
+  max-width: none;
   margin: 0 0 13px;
   font-size: var(--t-base);
 }
@@ -7527,9 +7533,14 @@ a.home-video-label:focus-visible {
    was stranded against the left edge of a 1180px shell with half the page
    empty beside it. Centring the block fixes that; centring the TEXT would not,
    because a ragged left edge costs a reader the anchor their eye returns to on
-   every line, and these are real paragraphs rather than a pull quote. */
+   every line, and these are real paragraphs rather than a pull quote.
+
+   Width matched to .cv-sheet (900px) so the intro and the résumé below it
+   share one left edge. At 66ch the two blocks were both centred but at
+   different widths, which read as the top section being indented from the
+   Core expertise column beneath it. */
 .about-intro-copy {
-  max-width: 66ch;
+  max-width: 900px;
   margin-inline: auto;
 }
 
@@ -7545,7 +7556,9 @@ a.home-video-label:focus-visible {
 }
 
 .about-intro-copy p {
-  max-width: 66ch;
+  /* Was 66ch, which left the intro short of the right edge of the résumé
+     columns below. Both edges now line up. */
+  max-width: none;
   margin: 0 0 20px;
   color: var(--body);
   font-size: var(--t-base);
@@ -7638,14 +7651,10 @@ a.home-video-label:focus-visible {
   font-size: var(--t-read);
 }
 
+/* The closing statement is the point of the section, so it gets the emphasis.
+   Was declared twice, identically apart from the typeface. Merged. */
 .about-closing p:last-child {
   margin-bottom: 0;
-  font-size: var(--t-sub);
-  line-height: var(--lh-fine);
-}
-
-/* The last line is the point of the section, so it gets the emphasis. */
-.about-closing p:last-child {
   font-family: var(--serif);
   font-size: var(--t-sub);
   line-height: var(--lh-fine);
@@ -8293,8 +8302,10 @@ a.home-video-label:focus-visible {
   place-items: center;
   width: 22px;
   height: 22px;
-  background: var(--paper-deep);
-  color: var(--blue-bright);
+  /* Was paper-deep with blue-bright text: near-invisible against the page.
+     Navy chip with white text matches the weight of the copy beside it. */
+  background: var(--blue);
+  color: #fff;
   font-size: var(--t-label);
   font-weight: 600;
 }
@@ -10192,4 +10203,65 @@ html[data-anna-razor="bar"] body {
 .figure + .wide-figure,
 .chapter-intro + .wide-figure {
   margin-top: 52px;
+}
+
+/* ------------------------------------------------------------------
+   Button text centring.
+   These buttons are inline-block with symmetric padding, but the serif
+   (Newsreader) has tall ascenders and deep descenders, so its line box is
+   taller than the glyphs and unevenly distributed around them. Equal padding
+   then centres the *box*, not the letters, and the text reads high.
+   inline-flex with line-height 1 makes the box hug the glyphs so the padding
+   lands where it looks even.
+   ------------------------------------------------------------------ */
+/**
+ * One button, everywhere.
+ *
+ * These were defined in six separate places at 15px/26px, except .cv-download
+ * which had drifted to 11px/20px at a smaller size. Same shape, six sources of
+ * truth, so any change to one silently desynced the rest.
+ *
+ * Box metrics are set here for all of them. Colour is not: each rule above
+ * keeps its own background and border-color, which is the only thing that
+ * should differ between primary and secondary.
+ *
+ * min-height plus line-height:1 is what guarantees identical heights. Left to
+ * the serif's own line box, buttons with descenders ("g", "y") resolved a
+ * pixel or two taller than those without.
+ */
+.cv-download,
+.about-cta-button,
+.home-cta-button,
+.home-cta-secondary,
+.contact-submit,
+.svc-primary,
+.svc-secondary {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  box-sizing: border-box;
+  min-height: 46px;
+  padding: 0 24px;
+  font-family: var(--serif);
+  font-size: var(--t-read);
+  font-weight: 700;
+  line-height: 1;
+  letter-spacing: -0.005em;
+  text-align: center;
+  text-transform: none;
+  border-width: 1px;
+  border-style: solid;
+  border-radius: 0;
+}
+
+/* The brand lockup is now a wrapper, not the link itself: the studio name is
+   the home button and the credit beside it is plain text. The inner <a> has
+   to carry the same inline-flex baseline alignment the wrapper does, so the
+   mark and wordmark keep sitting on one baseline. */
+.brand-home {
+  display: inline-flex;
+  align-items: baseline;
+  gap: 8px;
+  color: inherit;
+  text-decoration: none;
 }

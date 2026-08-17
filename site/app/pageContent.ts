@@ -46,9 +46,9 @@ export const contactContent: Record<PersonaId, ContactContent> = {
     headline: "Taking on new roles and contracts",
     deck: "I am currently exploring full-time leadership roles, advisory contracts, and selected collaborative projects.",
     fields: [
-      { label: "Full name", placeholder: "E.g., Sarah Jenkins" },
+      { label: "Full name", placeholder: "Sarah Jenkins" },
       { label: "Work email", placeholder: "s.jenkins@firm.com" },
-      { label: "Company / firm", placeholder: "E.g., Vanguard Recruiting" },
+      { label: "Company / firm", placeholder: "Vanguard Recruiting" },
       {
         label: "Message / opportunity details",
         placeholder: "Tell me about the role, package range, and expectations…",
@@ -80,7 +80,7 @@ export const contactContent: Record<PersonaId, ContactContent> = {
         placeholder: "Modernizing an enterprise data layer and need…",
         multiline: true,
       },
-      { label: "Expected timeline", placeholder: "E.g., Nov 2026 start (approx. 4 months)" },
+      { label: "Expected timeline", placeholder: "Nov 2026 start, roughly 4 months" },
     ],
     submit: "Start a conversation",
     sideHeading: "How engagements work",
@@ -102,7 +102,7 @@ export const contactContent: Record<PersonaId, ContactContent> = {
     deck: "Genuinely, if you want to say hi, that is fine. Just keep it above 140 characters.",
     fields: [
       { label: "Who are you?", placeholder: "First name (or nickname if you must)" },
-      { label: "Where should I send a validation token?", placeholder: "yourname@gmail.com" },
+      { label: "Where do I reach you, assuming that is still current?", placeholder: "yourname@gmail.com" },
       {
         label: "Your statement",
         placeholder: "Type a civilized, thoughtful message here…",

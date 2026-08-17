@@ -260,14 +260,6 @@ export default function AlmostAnnaChat({
         </button>
       </form>
 
-      {/* The chat log (ef8cadb) records every exchange, and its own schema
-          comment says visitors are not told. This is the telling. One quiet
-          line, always visible, no consent theatre: the honest version of a
-          feature that exists so Anna can read what people ask her site. */}
-      <p className="aa-privacy">
-        Conversations are saved so Anna can see what people ask.
-      </p>
-
       {/* The fine print under the composer ("An AI version of me, built from
           my own work…") was removed 2026-08-07. The header already discloses
           it, once, in four words: "Trained on my work and how I think." A

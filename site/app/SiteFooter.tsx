@@ -25,7 +25,7 @@ const bio: Record<string, string> = {
   client:
     "Paper Pixel is the independent design studio of Anna Rovedo. It turns complicated ideas into products, experiences, and systems people can understand and use.",
   // First person, no surname: the Ex persona is someone who already knows her.
-  ex: "I work on complex products, future vision, and emerging technology. Independently, which you probably could have guessed.",
+  ex: "I work on complex products, future vision, and emerging technology. Independently, which is either personal growth or exactly what you predicted.",
 };
 
 export default function SiteFooter() {

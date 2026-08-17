@@ -62,8 +62,14 @@ export const aboutContent: Record<PersonaId, AboutContent> = {
     ],
     closing: {
       kicker: "Why the range matters",
+      /**
+       * The opening paragraph here restated the intro almost word for word:
+       * both said the range is what lets her recognise when a problem needs
+       * more than a screen. Saying it twice on one page read as circling
+       * rather than emphasis, so the duplicate is gone and the closing keeps
+       * only the part the intro does not already make.
+       */
       body: [
-        "I have spent my career moving between product design, advertising, visual identity, fashion, and emerging technology. That range is not a detour from UX. It is what helps me recognize when a problem needs more than an interface.",
         "Sometimes the right answer is a product workflow. Sometimes it is a campaign, a brand system, a physical experience, or a combination of them. I want to keep doing work where the idea determines the medium, and where rigorous UX thinking and strong visual craft are equally important.",
       ],
     },
@@ -122,6 +128,18 @@ export const aboutContent: Record<PersonaId, AboutContent> = {
         body: "Adding forty minutes does not make it a shortcut. We can leave it there.",
       },
     ],
+    closing: {
+      kicker: "Why the range matters",
+      /**
+       * The recruiter version of this makes the same argument straight. Here
+       * it lands as a callback: the thing that was once a complaint about her
+       * is the thing she now gets hired for. The joke only works because the
+       * point underneath it is true.
+       */
+      body: [
+        "Sometimes the right answer is a product workflow. Sometimes it is a campaign, a brand system, or something physical you can hold. You once described this as an inability to pick a lane. It is now, more or less, the entire value proposition.",
+      ],
+    },
     ctaHeadline: "Curious about the work itself?",
     ctaBody: "That would be a more defensible reason for being here.",
     ctaButton: "See what I’ve been doing",
