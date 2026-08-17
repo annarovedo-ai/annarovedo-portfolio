@@ -107,7 +107,7 @@ export const aboutContent: Record<PersonaId, AboutContent> = {
 
   ex: {
     eyebrow: "Yes, still designing",
-    headline: "You missed more than a few seasons.",
+    headline: "Still designing. New everything else.",
     intro: [
       "Since we last spoke, I built a career designing complex products for companies including IBM, LinkedIn, Nike, Bloomberg, State Street, and Ford.",
       "I became particularly good at taking ambiguous ideas, finding the real problem underneath them, and turning them into something people can see, test, and build.",

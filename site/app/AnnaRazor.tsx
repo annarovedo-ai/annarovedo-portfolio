@@ -48,7 +48,7 @@ import { getServerSnapshot, getSnapshot, subscribe } from "./personaStore";
  * The per-section lines are already written across every case study, so this
  * is all that holds the rollout back. Set to null for site-wide.
  */
-const ENABLED_PATHS: string[] | null = ["/"];
+const ENABLED_PATHS: string[] | null = null;
 
 const MODE_KEY = "pp-anna-razor";
 // Shown once per tab: a brief label explaining this is an AI, not a search
