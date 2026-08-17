@@ -5,6 +5,7 @@ import { getServerSnapshot, getSnapshot, subscribe } from "./personaStore";
 import type { PersonaId } from "./personaStore";
 import type { CaseStudy, HomeContent } from "./homeContent";
 import {
+  BOOKING_URL,
   caseFor,
   clients,
   flagshipCaseStudies,
@@ -412,7 +413,15 @@ export default function HomeBody() {
         </div>
 
         <div className="home-hero-grid">
-          <HeroVideo />
+          <div className="home-hero-video-col">
+            <HeroVideo />
+            {/* The booking link lives directly under the video, always
+                visible: someone the video convinces should not have to hunt
+                the footer for the next step. */}
+            <a className="home-video-book" href={BOOKING_URL}>
+              Book 30 minutes
+            </a>
+          </div>
 
           <AlmostAnnaChat variant="inline" />
         </div>

@@ -5035,9 +5035,10 @@ a.home-video-label:focus-visible {
   outline-offset: -3px;
 }
 
-.home-video.is-playing .home-video-label {
-  display: none;
-}
+/* The "Book a call" bar used to hide during playback, which removed the
+   booking path at the exact moment the video was doing its persuading. It
+   stays visible in every state now: it sits in flow under the frame, so it
+   never covers the native controls. */
 
 /* Sits under the label bar, outside the frame, so it reads as a credit rather
    than as part of the video's own furniture. Quiet on purpose: a name like
@@ -10286,4 +10287,37 @@ html[data-anna-razor="bar"] body {
   font-size: var(--t-read);
   line-height: 1.5;
   color: var(--muted);
+}
+
+/* Booking, directly under the hero video and always visible. Same canonical
+   button metrics as every other primary action (see the shared button block);
+   full width of the video column so the pair reads as one unit. */
+.home-hero-video-col {
+  display: flex;
+  flex-direction: column;
+  gap: 14px;
+}
+
+.home-video-book {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  box-sizing: border-box;
+  min-height: 46px;
+  padding: 0 24px;
+  background: var(--flare);
+  color: var(--ink);
+  font-family: var(--serif);
+  font-size: var(--t-read);
+  font-weight: 700;
+  line-height: 1;
+  letter-spacing: -0.005em;
+  border: 1px solid var(--flare-ink);
+  border-radius: 0;
+}
+
+.home-video-book:hover {
+  background: var(--flare-ink);
+  color: #fff;
+  border-color: var(--flare-ink);
 }
