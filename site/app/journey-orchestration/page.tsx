@@ -3,6 +3,8 @@ import PagePersonalization from "../PagePersonalization";
 import SiteHeader from "../SiteHeader";
 import SiteFooter from "../SiteFooter";
 import Breadcrumb from "../Breadcrumb";
+import CaseHero from "../CaseHero";
+import { caseVoices } from "../caseVoices";
 
 export const metadata: Metadata = {
   title: "AI-driven journey orchestration, part two · Anna Rovedo",
@@ -122,10 +124,7 @@ export default function JourneyOrchestration() {
 
       <article id="top">
         <section className="hero shell">
-          <h1>What if every page rewrote itself around the person reading it?</h1>
-          <p className="hero-deck">
-            After the Concierge shipped its first chat-based direction, I kept working on the live experience with IBM’s team. A few weeks into that work, alongside Amy Clark, IBM’s Global Head of UX, we realized the bigger opportunity wasn’t a smarter chatbot. It was a smarter interface: one where AI orchestrates the entire journey, not just a conversation docked to the bottom of it.
-          </p>
+          <CaseHero voices={caseVoices.journeyOrchestration} />
 
           <div className="hero-meta" aria-label="Project details">
             <div>
@@ -208,7 +207,7 @@ export default function JourneyOrchestration() {
           </div>
         </section>
 
-        <section className="future-section" data-anna-prompt="What orchestration means">
+        <section className="future-section" data-anna-prompt="What is journey orchestration?">
           <div className="shell">
             <div className="future-kicker">
               <span>The thesis</span>
@@ -263,7 +262,7 @@ export default function JourneyOrchestration() {
           </div>
         </section>
 
-        <section className="future-section" style={{ paddingTop: 0 }} data-anna-prompt="A page that rewrites itself">
+        <section className="future-section" style={{ paddingTop: 0 }} data-anna-prompt="How does the page adapt?">
           <div className="shell">
             <div className="future-heading" style={{ marginBottom: 0 }}>
               <div>
@@ -362,7 +361,7 @@ export default function JourneyOrchestration() {
           </div>
         </section>
 
-        <section className="chapter chapter-alt" data-anna-prompt="When to hand off to a person">
+        <section className="chapter chapter-alt" data-anna-prompt="When does it hand off to a person?">
           <div className="shell">
             <div className="chapter-intro two-column-copy">
               <div>
@@ -423,7 +422,7 @@ export default function JourneyOrchestration() {
           </div>
         </section>
 
-        <section className="reflection shell" data-anna-prompt="Why it never launched">
+        <section className="reflection shell" data-anna-prompt="Why didn't it launch?">
           <SectionNumber>05 · Reflection</SectionNumber>
           <div className="reflection-grid">
             {/* Rewritten 2026-08-10. This reflection used to end in the same

@@ -480,7 +480,7 @@ export default function HomeBody() {
         </a>
       </section>
 
-      <section className="home-cta" data-anna-prompt="What I'm looking for">
+      <section className="home-cta" data-anna-prompt="What are you looking for?">
         <div className="shell home-cta-inner">
           <div>
             <h2>{c.footerHeadline}</h2>

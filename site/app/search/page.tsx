@@ -2,6 +2,8 @@ import type { Metadata } from "next";
 import SiteHeader from "../SiteHeader";
 import SiteFooter from "../SiteFooter";
 import Breadcrumb from "../Breadcrumb";
+import CaseHero from "../CaseHero";
+import { caseVoices } from "../caseVoices";
 
 export const metadata: Metadata = {
   title: "Redesigning search across IBM.com · Anna Rovedo",
@@ -60,10 +62,7 @@ export default function SearchCaseStudy() {
 
       <article id="top">
         <section className="hero shell search-hero">
-          <h1>Redesigning search across IBM.com.</h1>
-          <p className="hero-deck">
-            A search results page looks small until it has to make an ecosystem as complex as IBM understandable. I led the redesign of the result system connecting products, documentation, training, support, and technical content.
-          </p>
+          <CaseHero voices={caseVoices.search} />
 
           <div className="hero-meta search-hero-meta" aria-label="Project details">
             <div>
@@ -138,7 +137,7 @@ export default function SearchCaseStudy() {
           </div>
         </section>
 
-        <section className="summary-band" id="story" data-anna-prompt="What search was really doing">
+        <section className="summary-band" id="story" data-anna-prompt="What was search really doing?">
           <div className="shell search-summary">
             <div>
               <p className="eyebrow">Executive summary</p>
@@ -155,7 +154,7 @@ export default function SearchCaseStudy() {
           </div>
         </section>
 
-        <section className="chapter shell" id="role" data-anna-prompt="One query, six searches">
+        <section className="chapter shell" id="role" data-anna-prompt="Why were there six searches?">
           <div className="chapter-intro two-column-copy">
             <div>
               <SectionNumber>01 · The starting point</SectionNumber>
@@ -173,7 +172,7 @@ export default function SearchCaseStudy() {
 
         </section>
 
-        <section className="search-evidence-band" data-anna-prompt="What research changed">
+        <section className="search-evidence-band" data-anna-prompt="What did research change?">
           <div className="shell">
             <div className="chapter-intro two-column-copy">
               <div>
@@ -215,7 +214,7 @@ export default function SearchCaseStudy() {
           </div>
         </section>
 
-        <section className="chapter shell" data-anna-prompt="The three decisions that mattered">
+        <section className="chapter shell" data-anna-prompt="Which decisions mattered most?">
           <div className="chapter-intro two-column-copy">
             <div>
               <SectionNumber>03 · The design response</SectionNumber>
@@ -302,7 +301,7 @@ export default function SearchCaseStudy() {
 
         </section>
 
-        <section className="search-recovery-section" data-anna-prompt="Fixing zero results">
+        <section className="search-recovery-section" data-anna-prompt="What about zero results?">
           <div className="shell">
             <div className="chapter-intro two-column-copy">
               <div>
@@ -361,7 +360,7 @@ export default function SearchCaseStudy() {
           </div>
         </section>
 
-        <section className="search-launch-band" data-anna-prompt="What's actually live">
+        <section className="search-launch-band" data-anna-prompt="What's live today?">
           <div className="shell">
             <SectionNumber>05 · Launch</SectionNumber>
             <div className="search-launch-heading">
@@ -394,7 +393,7 @@ export default function SearchCaseStudy() {
           </div>
         </section>
 
-        <section className="chapter shell search-tested-next" data-anna-prompt="What got tested next">
+        <section className="chapter shell search-tested-next" data-anna-prompt="What got tested next?">
           <div className="chapter-intro two-column-copy">
             <div>
               <div className="search-concept-kicker">
@@ -466,7 +465,7 @@ export default function SearchCaseStudy() {
           </div>
         </section>
 
-        <section className="search-future-section" data-anna-prompt="Testing AI before scaling it">
+        <section className="search-future-section" data-anna-prompt="How do you test AI?">
           <div className="shell">
             <div className="search-future-kicker">
               <SectionNumber>07 · Testing the next layer</SectionNumber>
@@ -501,7 +500,7 @@ export default function SearchCaseStudy() {
           </div>
         </section>
 
-        <section className="reflection shell" data-anna-prompt="What I'd do differently">
+        <section className="reflection shell" data-anna-prompt="What would you do differently?">
           <SectionNumber>08 · Reflection</SectionNumber>
           <div className="reflection-grid">
             <h2>The interface was visible. Ranking and quality were the real design material.</h2>

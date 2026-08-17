@@ -2,6 +2,8 @@ import type { Metadata } from "next";
 import SiteHeader from "../SiteHeader";
 import SiteFooter from "../SiteFooter";
 import Breadcrumb from "../Breadcrumb";
+import CaseHero from "../CaseHero";
+import { caseVoices } from "../caseVoices";
 
 export const metadata: Metadata = {
   title: "Forty fields, five that mattered · Nike Operations Workspace · Anna Rovedo",
@@ -79,10 +81,7 @@ export default function NikeCaseStudy() {
 
       <article id="top">
         <section className="hero shell">
-          <h1>Forty fields. Five that mattered.</h1>
-          <p className="hero-deck">
-            Nike&rsquo;s order management teams had no single view of whether product was actually available, and the requirements listed roughly forty ways to search for it. Standard user interviews were not open to me, so I found another way to reach the same people.
-          </p>
+          <CaseHero voices={caseVoices.nike} />
 
           <div className="hero-meta" aria-label="Project details" id="role">
             <div>
@@ -109,7 +108,7 @@ export default function NikeCaseStudy() {
           </figure>
         </section>
 
-        <section className="chapter shell" id="story" data-anna-prompt="Why three tools">
+        <section className="chapter shell" id="story" data-anna-prompt="Why did one question take three tools?">
           <SectionNumber>01</SectionNumber>
           <div className="chapter-intro two-column-copy">
             <div>
@@ -146,7 +145,7 @@ export default function NikeCaseStudy() {
           </figure>
         </section>
 
-        <section className="chapter shell" data-anna-prompt="How I reached the users">
+        <section className="chapter shell" data-anna-prompt="How did you reach the users?">
           <SectionNumber>02</SectionNumber>
           <div className="chapter-intro two-column-copy">
             <div>
@@ -173,7 +172,7 @@ export default function NikeCaseStudy() {
           </p>
         </section>
 
-        <section className="chapter shell" data-anna-prompt="The contradiction">
+        <section className="chapter shell" data-anna-prompt="What was the contradiction?">
           <SectionNumber>03</SectionNumber>
           <div className="chapter-intro two-column-copy">
             <div>
@@ -215,7 +214,7 @@ export default function NikeCaseStudy() {
           </figure>
         </section>
 
-        <section className="chapter shell" data-anna-prompt="Forty fields to five">
+        <section className="chapter shell" data-anna-prompt="How did forty become five?">
           <SectionNumber>04</SectionNumber>
           <div className="chapter-intro two-column-copy">
             <div>
@@ -289,7 +288,7 @@ export default function NikeCaseStudy() {
           </p>
         </section>
 
-        <section className="chapter shell" data-anna-prompt="How it went once it shipped">
+        <section className="chapter shell" data-anna-prompt="What happened after launch?">
           <SectionNumber>05</SectionNumber>
           <div className="chapter-intro two-column-copy">
             <div>

@@ -87,7 +87,14 @@ A generative-AI concierge for IBM.com as a whole, positioned as a trusted sales 
 
 STATUS, AND THE SINGLE MOST IMPORTANT PARAGRAPH IN THIS SECTION. The Concierge
 vision did not go live wholesale, and was never meant to: it became the NORTH
-STAR, the thing IBM's live chat is being iterated toward, with Anna steering.
+STAR, the thing IBM's live chat was iterated toward. Anna steered that
+iteration directly during her IBM engagements. She is still involved with the
+work, just no longer in the day-to-day, so do not claim she is currently
+steering it hands-on and do not claim she has left it behind either. If asked
+about her current involvement: still connected to the work, not in the
+day-to-day, and the relationship with IBM spans eleven years of them coming
+back. Say that, move to what the work achieved, and do not speculate about
+the shape of the arrangement beyond it.
 Do not say "a first version went live" as though the pitch shipped straight
 into production. The accurate shape is: pitch, validated with her own testing;
 vision adopted as the north star; the live chat on IBM.com then iterated
@@ -424,7 +431,8 @@ because it is exactly as glamorous as the rest of the story.
 The IBM Chat Concierge. Not for how it looks. Because it started as an ambition
 nobody could describe, a concierge for a whole website rather than a box on one
 page, and turned into something a team could test and argue with. It became
-the north star IBM's live chat is iterated toward, with her steering. Do not
+the north star IBM's live chat was iterated toward while she was there. Do not
+claim she is still on it, do not
 say the pitch shipped straight into production, do not say it did not ship,
 and do not tell the story of Amy leaving here: that is the
 Phase 2 and Phase 3 vision work, it is a separate thing, and in this register

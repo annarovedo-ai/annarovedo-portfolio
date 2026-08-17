@@ -2,6 +2,8 @@ import type { Metadata } from "next";
 import SiteHeader from "../SiteHeader";
 import SiteFooter from "../SiteFooter";
 import Breadcrumb from "../Breadcrumb";
+import CaseHero from "../CaseHero";
+import { caseVoices } from "../caseVoices";
 
 export const metadata: Metadata = {
   title: "Designing the visual language for State Street Alpha · Anna Rovedo",
@@ -188,10 +190,7 @@ export default function StateStreetCaseStudy() {
 
       <article id="top">
         <section className="hero shell ss-hero">
-          <h1>Designing the visual language for a financial operating system.</h1>
-          <p className="hero-deck">
-            Alpha brings investment operations, oversight, and analysis onto one platform. I was the sole UI designer who defined the visual language, accessibility foundations, and component system that makes its dozens of workflows feel like one product.
-          </p>
+          <CaseHero voices={caseVoices.stateStreet} />
 
           <div className="hero-meta ss-hero-meta" aria-label="Project details" id="role">
             <div>
@@ -227,7 +226,7 @@ export default function StateStreetCaseStudy() {
           </figure>
         </section>
 
-        <section className="summary-band" id="story" data-anna-prompt="What fragmented meant">
+        <section className="summary-band" id="story" data-anna-prompt="What was actually broken?">
           <div className="shell ss-summary">
             <div>
               <p className="eyebrow">Executive summary</p>
@@ -249,7 +248,7 @@ export default function StateStreetCaseStudy() {
           </div>
         </section>
 
-        <section className="chapter shell ss-context-section" data-anna-prompt="Trust in the numbers">
+        <section className="chapter shell ss-context-section" data-anna-prompt="Why does type matter in finance?">
           <div className="chapter-intro two-column-copy">
             <div>
               <p className="eyebrow">The real constraint</p>
@@ -285,7 +284,7 @@ export default function StateStreetCaseStudy() {
           </div>
         </section>
 
-        <section className="chapter shell ss-workday-section" data-anna-prompt="Designing around the workday">
+        <section className="chapter shell ss-workday-section" data-anna-prompt="How did users shape this?">
           <div className="chapter-intro two-column-copy">
             <div>
               <SectionNumber>01 · Designing around the workday</SectionNumber>
@@ -456,7 +455,7 @@ export default function StateStreetCaseStudy() {
           </div>
         </section>
 
-        <section className="chapter shell ss-product-proof" data-anna-prompt="One system, two environments">
+        <section className="chapter shell ss-product-proof" data-anna-prompt="Why two color modes?">
           <div className="chapter-intro two-column-copy">
             <div>
               <SectionNumber>03 · The North Star</SectionNumber>
@@ -535,7 +534,7 @@ export default function StateStreetCaseStudy() {
           </div>
         </section>
 
-        <section className="ss-system-section" data-anna-prompt="Language as infrastructure">
+        <section className="ss-system-section" data-anna-prompt="Why build a design language?">
           <div className="shell">
             <div className="ss-system-heading">
               <div>
@@ -658,7 +657,7 @@ export default function StateStreetCaseStudy() {
           </div>
         </section>
 
-        <section className="chapter shell ss-dataviz-section" data-anna-prompt="Color that carries meaning">
+        <section className="chapter shell ss-dataviz-section" data-anna-prompt="How does the color system work?">
           <div className="chapter-intro two-column-copy">
             <div>
               <SectionNumber>05 · Data visualization and accessibility</SectionNumber>
@@ -707,7 +706,7 @@ export default function StateStreetCaseStudy() {
           </div>
         </section>
 
-        <section className="ss-implementation-band" data-anna-prompt="Surviving the build">
+        <section className="ss-implementation-band" data-anna-prompt="How did it survive the build?">
           <div className="shell">
             <div className="chapter-intro two-column-copy">
               <div>
@@ -726,7 +725,7 @@ export default function StateStreetCaseStudy() {
           </div>
         </section>
 
-        <section className="chapter shell ss-outcome" data-anna-prompt="What the system changed">
+        <section className="chapter shell ss-outcome" data-anna-prompt="What difference did it make?">
           <div className="ss-outcome-heading">
             <div>
               <SectionNumber>07 · Scope and outcome</SectionNumber>

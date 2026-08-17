@@ -2,6 +2,8 @@ import type { Metadata } from "next";
 import SiteHeader from "../SiteHeader";
 import SiteFooter from "../SiteFooter";
 import Breadcrumb from "../Breadcrumb";
+import CaseHero from "../CaseHero";
+import { caseVoices } from "../caseVoices";
 
 export const metadata: Metadata = {
   title: "SHHHHH · Anna Rovedo",
@@ -66,13 +68,7 @@ export default function Kmart() {
 
       <article id="top">
         <section className="hero shell">
-          <h1>Kmart rebuilt a clothing line most people didn’t know existed.</h1>
-          <p className="hero-deck">
-            A new in-house design team, a studio in New York, a genuine relaunch of the
-            clothing line. The product had changed. The assumption about it had not. This
-            four-day pitch turned that perception problem into one idea carried through
-            advertising, a members-only website, packaging, and a physical pop-up.
-          </p>
+          <CaseHero voices={caseVoices.kmart} />
 
           <div className="hero-meta" aria-label="Project details">
             <div>
@@ -90,7 +86,7 @@ export default function Kmart() {
           </div>
         </section>
 
-        <section className="summary-band" id="brief" data-anna-prompt="What reappraisal meant">
+        <section className="summary-band" id="brief" data-anna-prompt="What was the real problem?">
           <div className="shell summary-grid">
             <div className="summary-copy">
               <p className="eyebrow">The brief</p>
@@ -145,7 +141,7 @@ export default function Kmart() {
           </div>
         </section>
 
-        <section className="chapter shell" id="room" data-anna-prompt="Four days, fifteen people">
+        <section className="chapter shell" id="room" data-anna-prompt="What can four days produce?">
           <p className="section-number">01</p>
           <div className="two-column-copy">
             <div>
@@ -181,7 +177,7 @@ export default function Kmart() {
           </div>
         </section>
 
-        <section className="chapter chapter-alt" id="idea" data-anna-prompt="Embarrassment as the idea">
+        <section className="chapter chapter-alt" id="idea" data-anna-prompt="Why make it a secret?">
           <div className="shell">
             <p className="section-number">02</p>
             <div className="two-column-copy">
@@ -252,7 +248,7 @@ export default function Kmart() {
           />
         </section>
 
-        <section className="chapter chapter-alt" id="surfaces" data-anna-prompt="One device, every surface">
+        <section className="chapter chapter-alt" id="surfaces" data-anna-prompt="How far did the tape go?">
           <div className="shell">
             <p className="section-number">04</p>
             <div className="two-column-copy">
@@ -307,7 +303,7 @@ export default function Kmart() {
           </div>
         </section>
 
-        <section className="chapter shell" id="reveal" data-anna-prompt="What the reveal was">
+        <section className="chapter shell" id="reveal" data-anna-prompt="What was the reveal?">
           <p className="section-number">05</p>
           <div className="two-column-copy">
             <div>
@@ -369,7 +365,7 @@ export default function Kmart() {
           </p>
         </section>
 
-        <section className="reflection shell" id="outcome" data-anna-prompt="What happened to the pitch">
+        <section className="reflection shell" id="outcome" data-anna-prompt="Did Kmart buy it?">
           <p className="eyebrow">What happened</p>
           <h2>We were the far end of the scale, and I think that was the point.</h2>
           <div className="reflection-grid">

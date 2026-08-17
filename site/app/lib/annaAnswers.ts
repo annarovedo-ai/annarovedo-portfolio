@@ -92,7 +92,7 @@ export const cannedAnswers: Record<PersonaId, CannedAnswer[]> = {
     {
       question: "Which project are you most proud of?",
       answer:
-        "The IBM Chat Concierge. Not for how it looks.\n\nIBM had a clear ambition, a concierge for an entire website rather than a box on one page, before anyone knew what it should look like. It turned into something a team could test and argue with. That became the north star, and IBM's live chat has been moving toward it ever since, with me steering.\n\nThat's apparently the thing I'm good at. Turning up before there's a product and working out what it should be.",
+        "The IBM Chat Concierge. Not for how it looks.\n\nIBM had a clear ambition, a concierge for an entire website rather than a box on one page, before anyone knew what it should look like. It turned into something a team could test and argue with. That became the north star, and I spent the time after the pitch moving the live chat toward it.\n\nThat's apparently the thing I'm good at. Turning up before there's a product and working out what it should be.",
     },
     {
       question: "Be honest. Was the frog actually real?",

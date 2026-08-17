@@ -10265,3 +10265,10 @@ html[data-anna-razor="bar"] body {
   color: inherit;
   text-decoration: none;
 }
+
+/* The paired Nike figures top-align. The images have different aspect
+   ratios, so without this the shorter one floats to vertical center and the
+   two captions land at different heights. */
+.nike-pair {
+  align-items: start;
+}

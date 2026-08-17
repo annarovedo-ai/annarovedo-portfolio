@@ -3,6 +3,8 @@ import AuditExplorer from "../AuditExplorer";
 import SiteHeader from "../SiteHeader";
 import SiteFooter from "../SiteFooter";
 import Breadcrumb from "../Breadcrumb";
+import CaseHero from "../CaseHero";
+import { caseVoices } from "../caseVoices";
 
 export const metadata: Metadata = {
   title: "IBM Chat Concierge, part one · Anna Rovedo",
@@ -111,10 +113,7 @@ export default function Home() {
 
       <article id="top">
         <section className="hero shell">
-          <h1>Designing an AI concierge for the enterprise buying journey.</h1>
-          <p className="hero-deck">
-            IBM needed prospective customers to evaluate a complex enterprise product without a salesperson in the room. The answer was not another chatbot. It was a guided experience that could help buyers understand, compare, decide, and keep moving.
-          </p>
+          <CaseHero voices={caseVoices.concierge} />
 
           <div className="hero-meta" aria-label="Project details">
             <div>
@@ -142,7 +141,7 @@ export default function Home() {
           />
         </section>
 
-        <section className="summary-band" id="story" data-anna-prompt="Bigger than a chat window">
+        <section className="summary-band" id="story" data-anna-prompt="Why not just a chatbot?">
           <div className="shell summary-grid">
             <div>
               <p className="eyebrow">Executive summary</p>
@@ -171,7 +170,7 @@ export default function Home() {
           </div>
         </section>
 
-        <section className="chapter shell" id="role" data-anna-prompt="What I owned">
+        <section className="chapter shell" id="role" data-anna-prompt="What was your role?">
           <div className="chapter-intro two-column-copy">
             <div>
               <SectionNumber>01 · The assignment</SectionNumber>
@@ -206,7 +205,7 @@ export default function Home() {
           </div>
         </section>
 
-        <section className="chapter chapter-alt" data-anna-prompt="What the journeys shared">
+        <section className="chapter chapter-alt" data-anna-prompt="What did the journeys reveal?">
           <div className="shell">
             <div className="chapter-intro two-column-copy">
               <div>
@@ -381,7 +380,7 @@ export default function Home() {
           </div>
         </section>
 
-        <section className="prototype chapter" data-anna-prompt="What it had to prove">
+        <section className="prototype chapter" data-anna-prompt="What did it have to prove?">
           <div className="shell">
             <div className="chapter-intro two-column-copy">
               <div>
@@ -414,7 +413,7 @@ export default function Home() {
           </div>
         </section>
 
-        <section className="chapter shell testing" data-anna-prompt="What testing showed">
+        <section className="chapter shell testing" data-anna-prompt="What did testing show?">
           <div className="chapter-intro two-column-copy">
             <div>
               <SectionNumber>05 · Validation</SectionNumber>
@@ -498,7 +497,7 @@ export default function Home() {
           </div>
         </section>
 
-        <section className="result-section" data-anna-prompt="When it stopped being a feature">
+        <section className="result-section" data-anna-prompt="When did it stop being a feature?">
           <div className="shell result-grid">
             <div className="result-copy">
               <SectionNumber>06 · The Concierge</SectionNumber>
@@ -524,7 +523,7 @@ export default function Home() {
           </div>
         </section>
 
-        <section className="chapter shell" data-anna-prompt="What actually shipped">
+        <section className="chapter shell" data-anna-prompt="What actually shipped?">
           <div className="chapter-intro two-column-copy">
             <div>
               <SectionNumber>07 · From vision to live experience</SectionNumber>
@@ -561,7 +560,7 @@ export default function Home() {
           </div>
         </section>
 
-        <section className="future-section" data-anna-prompt="Where this goes next">
+        <section className="future-section" data-anna-prompt="Where does this go next?">
           <div className="shell">
             <div className="future-kicker">
               <span>What came next</span>
@@ -587,7 +586,7 @@ export default function Home() {
           </div>
         </section>
 
-        <section className="reflection shell" id="reflection" data-anna-prompt="How this ended">
+        <section className="reflection shell" id="reflection" data-anna-prompt="How did it end?">
           <SectionNumber>09 · Reflection</SectionNumber>
           <div className="reflection-grid">
             <h2>The interface was never the most interesting part.</h2>

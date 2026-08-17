@@ -181,6 +181,18 @@ export default function AnnaRazor() {
   }
 
   useEffect(() => {
+    // Everywhere except the homepage, the razor is visible immediately. The
+    // scroll-in choreography below exists for one reason: the home hero has
+    // its own inline chat card, and two entry points on screen at once read
+    // as a duplicate. No other page has that card, so on every other page
+    // waiting for a scroll just hides the chat from anyone who doesn't
+    // scroll. This also sidesteps the detached-observer bug the comments
+    // below warn about: on non-home pages there is no .home-hero to observe.
+    if (pathname !== "/") {
+      setVisible(true);
+      return;
+    }
+
     // On phones, wait until the headline and deck have left the viewport. The
     // launcher remains discoverable over the video, without obscuring the H1
     // at the 320px reflow width. Desktop keeps the later handoff because its
