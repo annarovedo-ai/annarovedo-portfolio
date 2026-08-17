@@ -13,6 +13,7 @@
 import assert from "node:assert/strict";
 import { readFile, readdir } from "node:fs/promises";
 import test from "node:test";
+import { cannedAnswers, findCannedAnswer } from "../app/lib/annaAnswers.ts";
 
 const root = new URL("../", import.meta.url);
 
@@ -111,6 +112,38 @@ test("robots keeps crawlers off the paid chat endpoint", async () => {
   assert.match(src, /disallow:.*\/api\//is);
   assert.match(src, /disallow:.*\/admin\//is);
   assert.match(src, /sitemap:\s*"https:\/\/annarovedo\.com\/sitemap\.xml"/);
+});
+
+/* ------------------------------------------------ canonical chat copy --- */
+
+test("every printed chat prompt has one approved verbatim answer", async () => {
+  const home = await readFile(new URL("app/homeContent.ts", root), "utf8");
+
+  for (const persona of ["recruiter", "client", "ex"]) {
+    assert.equal(cannedAnswers[persona].length, 4);
+    for (const { question, answer } of cannedAnswers[persona]) {
+      assert.ok(answer?.trim(), `${persona}: missing answer for ${question}`);
+      assert.doesNotMatch(answer, /—/, `${persona}: em dash in ${question}`);
+      assert.ok(home.includes(question), `${persona}: chip is not printed: ${question}`);
+      assert.equal(findCannedAnswer(persona, question), answer);
+    }
+  }
+
+  assert.equal(
+    findCannedAnswer("ex", "Be honest. Was the frog actually real?"),
+    "Yes. The frog was real. That is the complete answer.",
+  );
+  assert.equal(findCannedAnswer("client", "Be honest. Was the frog actually real?"), null);
+  assert.equal(findCannedAnswer("recruiter", "A question Anna did not prewrite"), null);
+});
+
+test("the chat route returns approved answers before calling Anthropic", async () => {
+  const route = await readFile(new URL("app/api/chat/route.ts", root), "utf8");
+  const lookup = route.indexOf("findCannedAnswer(persona");
+  const upstream = route.indexOf('fetch("https://api.anthropic.com/v1/messages"');
+
+  assert.ok(lookup >= 0, "canonical answer lookup is not wired into the route");
+  assert.ok(upstream > lookup, "Anthropic is called before the canonical lookup");
 });
 
 /* --------------------------------------------------------- canonicals --- */

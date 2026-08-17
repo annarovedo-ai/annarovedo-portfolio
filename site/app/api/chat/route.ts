@@ -1,6 +1,7 @@
 import { buildSystemPrompt } from "../../lib/almostAnna";
 import type { PersonaId } from "../../personaStore";
 import { logTurn, newSessionId, readSessionId } from "../../lib/chatLog";
+import { findCannedAnswer } from "../../lib/annaAnswers";
 
 /**
  * Almost Anna chat proxy.
@@ -91,12 +92,6 @@ let mockTurn = 0;
 export async function POST(request: Request): Promise<Response> {
   const mocking = process.env.AA_MOCK === "1";
   const apiKey = process.env.ANTHROPIC_API_KEY;
-  if (!apiKey && !mocking) {
-    return Response.json(
-      { error: "Chat is not configured yet." },
-      { status: 503 }
-    );
-  }
 
   const ip =
     request.headers.get("cf-connecting-ip") ??
@@ -148,6 +143,56 @@ export async function POST(request: Request): Promise<Response> {
 
   if (messages.length === 0) {
     return Response.json({ error: "Bad request." }, { status: 400 });
+  }
+
+  /**
+   * The printed prompt chips get written answers, not generated ones.
+   *
+   * An exact match against lib/annaAnswers.ts returns Anna's own wording
+   * verbatim, with no model call: the twelve highest-traffic questions on the
+   * site should not vary run to run, and a recruiter's first impression
+   * should be sentences Anna approved rather than sentences Haiku improvised.
+   * Anything typed freehand, including near-misses of these questions, still
+   * goes to the model below.
+   */
+  const cannedUser = [...messages].reverse().find((m) => m.role === "user");
+  const canned = cannedUser ? findCannedAnswer(persona, cannedUser.content) : null;
+  if (canned && cannedUser) {
+    const cannedSession =
+      readSessionId(request.headers.get("cookie")) ?? newSessionId();
+    await logTurn({
+      sessionId: cannedSession,
+      persona,
+      question: cannedUser.content,
+      answer: canned,
+      country: request.headers.get("cf-ipcountry"),
+      turn: used + 1,
+    });
+    return Response.json(
+      { reply: canned, remaining: Math.max(0, SESSION_MESSAGE_CAP - (used + 1)) },
+      {
+        headers: new Headers([
+          [
+            "Set-Cookie",
+            `aa_count=${used + 1}; Path=/; HttpOnly; SameSite=Lax; Max-Age=86400`,
+          ],
+          [
+            "Set-Cookie",
+            `aa_sid=${cannedSession}; Path=/; HttpOnly; SameSite=Lax; Max-Age=86400`,
+          ],
+        ]),
+      }
+    );
+  }
+
+  // Approved chip answers do not need Anthropic at all. Check configuration
+  // only after their deterministic path has had a chance to return, so those
+  // answers remain available even during an upstream configuration incident.
+  if (!apiKey && !mocking) {
+    return Response.json(
+      { error: "Chat is not configured yet." },
+      { status: 503 }
+    );
   }
 
   if (mocking) {
