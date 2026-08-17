@@ -82,7 +82,7 @@ export default function Kmart() {
             </div>
             <div>
               <span>Status</span>
-              <strong>Pitch concept · outcome unknown</strong>
+              <strong>New business pitch</strong>
             </div>
           </div>
         </section>
@@ -368,7 +368,7 @@ export default function Kmart() {
           </p>
         </section>
 
-        <section className="reflection shell" id="outcome" data-anna-prompt="Did Kmart buy it?">
+        <section className="reflection shell" id="outcome" data-anna-prompt="Why go this far?">
           <p className="eyebrow">What happened</p>
           <h2>We were the far end of the scale, and I think that was the point.</h2>
           <div className="reflection-grid">
@@ -379,10 +379,9 @@ export default function Kmart() {
                 go. I did not present. I made the work.
               </p>
               <p>
-                I do not know which direction the client chose, or whether any of this ended
-                up anywhere. Sixteen years later I am not going to invent an outcome I never
-                saw. What I know is what the pitch was, what I made, and what it felt like
-                to make it.
+                I made the work, handed it over, and moved to the next brief, which is what
+                pitch work is. What stays is the thing itself: the idea, the craft, and how
+                far a team can push a territory in four days.
               </p>
             </div>
             <div>

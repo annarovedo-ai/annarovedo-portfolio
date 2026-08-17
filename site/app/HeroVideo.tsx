@@ -24,13 +24,23 @@ import type { PersonaId } from "./personaStore";
 type Intro = { src: string; poster: string; credit?: string };
 
 const INTRO: Record<PersonaId, Intro> = {
+  /**
+   * "-2" because the mount will not overwrite the original files. The old
+   * cut (video-recruiter.mp4) is still on disk, unreferenced; delete it from
+   * Finder when convenient. New footage: "final me.mov", 27s, 1280x720. The
+   * source is landscape and the slot is portrait, so the CSS cover-crop shows
+   * the middle of the frame; if the framing looks off, adjust
+   * object-position for .home-video video in globals.css rather than
+   * re-encoding. Poster is an automatic 1s grab, the exact thing the note
+   * below warns about, so treat it as a placeholder until Anna picks a frame.
+   */
   recruiter: {
-    src: "/video-recruiter.mp4",
-    poster: "/video-recruiter.webp",
+    src: "/video-recruiter-2.mp4",
+    poster: "/video-recruiter-2.webp",
   },
   client: {
-    src: "/video-recruiter.mp4",
-    poster: "/video-recruiter.webp",
+    src: "/video-recruiter-2.mp4",
+    poster: "/video-recruiter-2.webp",
   },
   ex: {
     src: "/video-ex.mp4",

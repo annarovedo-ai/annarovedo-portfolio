@@ -39,7 +39,7 @@ export const caseVoices: Record<string, Record<PersonaId, HeroVoice>> = {
   },
   journeyOrchestration: {
     recruiter: { h1: "What if every page rewrote itself around the person reading it?", deck: "After the Concierge shipped its first chat-based direction, I kept working on the live experience with IBM’s team. A few weeks into that work, alongside Amy Clark, IBM’s Global Head of UX, we realized the bigger opportunity wasn’t a smarter chatbot. It was a smarter interface: one where AI orchestrates the entire journey, not just a conversation docked to the bottom of it." },
-    client: { h1: "Your website shows everyone the same page. It doesn’t have to.", deck: "Concept direction for IBM: pages that reorganize around each visitor’s journey, an assistant woven into the page rather than boxed beside it, and a lead model fed by real behavior. Never launched, and labeled honestly as vision. This is the thinking you bring in before the roadmap exists." },
-    ex: { h1: "I designed a website that pays attention.", deck: "Concept work for IBM: the page rearranges itself around whoever is reading it, no chat box required. It never launched. Paying attention remains an underrated feature." },
+    client: { h1: "Your website shows everyone the same page. It doesn’t have to.", deck: "Concept direction for IBM: pages that reorganize around each visitor’s journey, an assistant woven into the page rather than boxed beside it, and a lead model fed by real behavior. This is the thinking you bring in before the roadmap exists." },
+    ex: { h1: "I designed a website that pays attention.", deck: "Concept work for IBM: the page rearranges itself around whoever is reading it, no chat box required. Paying attention remains an underrated feature." },
   },
 };

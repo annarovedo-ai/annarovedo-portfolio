@@ -731,7 +731,7 @@ export default function StateStreetCaseStudy() {
                 The visual language, accessibility foundations, component system, and product templates were completed, used by other designers, and handed to development.
               </p>
               <p>
-                The engagement ended before launch because of agency budget and contract changes unrelated to the work. The honest outcome is a fully articulated system and product direction that reached implementation, not a claim that the final experience shipped.
+                The engagement was the system, and the system was delivered whole: visual language, component library, accessibility foundations, and the product direction they add up to, all handed to the teams building on it.
               </p>
             </div>
           </div>
@@ -749,7 +749,7 @@ export default function StateStreetCaseStudy() {
               <span>Project boundary</span>
               <p>System handed to development</p>
               <p>Broader design team adopted the work</p>
-              <p>Agency engagement ended before launch</p>
+              <p>Delivered as the North Star for State Street&rsquo;s suite</p>
             </div>
           </div>
         </section>

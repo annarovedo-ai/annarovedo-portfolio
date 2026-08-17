@@ -138,7 +138,7 @@ export default function JourneyOrchestration() {
             </div>
             <div>
               <span>Status</span>
-              <strong>Concept direction · not launched</strong>
+              <strong>Future vision · concept direction</strong>
             </div>
           </div>
 
@@ -212,7 +212,7 @@ export default function JourneyOrchestration() {
           <div className="shell">
             <div className="future-kicker">
               <span>The thesis</span>
-              <span>Concept direction · not launched</span>
+              <span>Future vision · concept direction</span>
             </div>
             <div className="future-heading">
               <div>
@@ -418,12 +418,12 @@ export default function JourneyOrchestration() {
             </section>
 
             <p className="future-note">
-              This entire case study is a concept direction, not a shipped claim. It shows the system-level thinking that grew out of the Concierge’s first release and the questions it opened, worked through with Amy Clark and IBM’s UX team, not a launched product.
+              This entire case study is future vision: the system-level thinking that grew out of the Concierge’s first release and the questions it opened, worked through with Amy Clark and IBM’s UX team.
             </p>
           </div>
         </section>
 
-        <section className="reflection shell" data-anna-prompt="Why didn't it launch?">
+        <section className="reflection shell" data-anna-prompt="What would you test first?">
           <SectionNumber>05 · Reflection</SectionNumber>
           <div className="reflection-grid">
             {/* Rewritten 2026-08-10. This reflection used to end in the same
