@@ -82,7 +82,7 @@ export const cannedAnswers: Record<PersonaId, CannedAnswer[]> = {
     {
       question: "So what do you actually do now?",
       answer:
-        "Design work. A studio called Paper Pixel, mostly US clients, mostly the problems that haven't taken shape yet. AI experiences, search, complicated enterprise products. IBM has kept coming back for eleven years.\n\nAlso, I taught an AI to talk like me, and you're currently finding out how well that works.\n\nWhy do you ask?",
+        "Design work. A studio called Paper Pixel, mostly US clients, mostly the problems that haven't taken shape yet. AI experiences, search, complicated enterprise products. IBM has kept coming back for eleven years.\n\nAlso, I taught an AI to talk like me, and you're currently finding out how well that works.",
     },
     {
       question: "How did you go from fashion to AI?",
