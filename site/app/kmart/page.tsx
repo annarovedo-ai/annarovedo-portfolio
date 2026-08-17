@@ -4,6 +4,7 @@ import SiteFooter from "../SiteFooter";
 import Breadcrumb from "../Breadcrumb";
 import CaseHero from "../CaseHero";
 import { caseVoices } from "../caseVoices";
+import ExAside from "../ExAside";
 
 export const metadata: Metadata = {
   title: "SHHHHH · Anna Rovedo",
@@ -204,6 +205,8 @@ export default function Kmart() {
               className="figure-portrait"
             />
           </div>
+        <ExAside>{"An entire campaign about keeping a secret. I was extremely qualified."}</ExAside>
+
         </section>
 
         <section className="chapter shell" id="site" data-anna-prompt="Why a password?">

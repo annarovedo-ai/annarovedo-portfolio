@@ -4,6 +4,7 @@ import SiteFooter from "../SiteFooter";
 import Breadcrumb from "../Breadcrumb";
 import CaseHero from "../CaseHero";
 import { caseVoices } from "../caseVoices";
+import ExAside from "../ExAside";
 
 export const metadata: Metadata = {
   title: "Redesigning search across IBM.com · Anna Rovedo",
@@ -358,6 +359,8 @@ export default function SearchCaseStudy() {
               </div>
             </figure>
           </div>
+        <ExAside>{"When it has nothing to offer, it suggests a next step instead of apologizing. Take notes."}</ExAside>
+
         </section>
 
         <section className="search-launch-band" data-anna-prompt="What's live today?">

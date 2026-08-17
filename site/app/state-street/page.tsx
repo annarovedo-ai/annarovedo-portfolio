@@ -4,6 +4,7 @@ import SiteFooter from "../SiteFooter";
 import Breadcrumb from "../Breadcrumb";
 import CaseHero from "../CaseHero";
 import { caseVoices } from "../caseVoices";
+import ExAside from "../ExAside";
 
 export const metadata: Metadata = {
   title: "Designing the visual language for State Street Alpha · Anna Rovedo",
@@ -48,9 +49,12 @@ const componentGroups = [
     name: "Product templates",
     detail: "Complete financial workflows assembled from the same rules",
     // product-template.png was the same screen with stray colour-token chips
-    // and a ghost box baked into the export. Anna: "incorrect image."
-    demoSrc: "dashboard-light.png",
-    demoAlt: "The full portfolio-analysis template assembled from the component system: summary cards, sector breakdown, growth chart, and the holdings grid",
+    // and a ghost box baked into the export ("incorrect image"), and its
+    // replacement, dashboard-light, was a fourth appearance of the North Star
+    // screen. Data Imports is a different workflow built from the same rules,
+    // which is what this group is claiming.
+    demoSrc: "prototype-data-imports.png",
+    demoAlt: "The data-imports template built from the component system: feed summaries by source and type with stacked status bars, and a dense imports table with errors, warnings, and resolution status",
   },
 ];
 
@@ -213,11 +217,11 @@ export default function StateStreetCaseStudy() {
                 <span />
                 <span />
                 <span />
-                <p>State Street Alpha · North Star dashboard · Light theme</p>
+                <p>State Street Alpha · North Star dashboard · Dark theme</p>
               </div>
               <img
-                src={`${assetRoot}/north-star-light.png`}
-                alt="Final State Street Alpha dashboard in light theme, showing total market value, percent return, MCSI performance, a portfolio growth chart, and a dense holdings data grid"
+                src={`${assetRoot}/north-star-dark.png`}
+                alt="Final State Street Alpha dashboard in dark theme, showing total market value, percent return, MCSI performance, a portfolio growth chart, and a dense holdings data grid"
               />
             </div>
             <figcaption>
@@ -468,33 +472,22 @@ export default function StateStreetCaseStudy() {
             </div>
           </div>
 
-          <div className="ss-final-dashboard-pair" aria-label="Final State Street Alpha dashboard in light and dark themes">
-            <figure className="ss-product-figure">
-              <div className="ss-final-figure-label">
-                <span>Final product direction</span>
-                <strong>Light theme</strong>
-              </div>
-              <img
-                src={`${assetRoot}/north-star-light.png`}
-                alt="Final light-theme State Street Alpha dashboard with portfolio KPIs, sector allocation, top gainers, growth chart, and holdings table"
-                loading="lazy"
-              />
-              <figcaption>A high-information workspace organized for scanning, comparison, and repeat use.</figcaption>
-            </figure>
-
-            <figure className="ss-product-figure ss-product-figure-dark">
-              <div className="ss-final-figure-label">
-                <span>Same architecture</span>
-                <strong>Dark theme</strong>
-              </div>
-              <img
-                src={`${assetRoot}/north-star-dark.png`}
-                alt="Final dark-theme State Street Alpha dashboard preserving the same hierarchy, data semantics, and interaction structure as the light theme"
-                loading="lazy"
-              />
-              <figcaption>The same information architecture, component behavior, and semantic color roles carried across environments. System proof, not a cosmetic re-theme.</figcaption>
-            </figure>
-          </div>
+          {/* One figure, not a pair: the light dashboard sits directly above in
+              Stage 3, so repeating it here read as a duplicate. The dark theme
+              alone carries the environment argument against the screen the
+              reader has just seen. */}
+          <figure className="ss-product-figure ss-product-figure-dark">
+            <div className="ss-final-figure-label">
+              <span>Same architecture</span>
+              <strong>Dark theme</strong>
+            </div>
+            <img
+              src={`${assetRoot}/north-star-dark.png`}
+              alt="Final dark-theme State Street Alpha dashboard preserving the same hierarchy, data semantics, and interaction structure as the light theme"
+              loading="lazy"
+            />
+            <figcaption>The dashboard above, carried into a dark environment: the same information architecture, component behavior, and semantic color roles. System proof, not a cosmetic re-theme.</figcaption>
+          </figure>
 
           <div className="ss-product-decisions">
             {productDecisions.map((decision, index) => (
@@ -579,6 +572,8 @@ export default function StateStreetCaseStudy() {
               </ul>
             </div>
           </div>
+        <ExAside>{"I wrote the rules. The bank followed them. Refreshing."}</ExAside>
+
         </section>
 
         <section className="ss-gallery-band">
@@ -647,11 +642,11 @@ export default function StateStreetCaseStudy() {
               </div>
               <figure className="ss-evidence-card ss-evidence-wide">
                 <img
-                  src={`${assetRoot}/product-template.png`}
+                  src={`${assetRoot}/prototype-performance-audit.png`}
                   alt="A full State Street Alpha portfolio-analysis template assembled entirely from the component system, showing KPI cards, a growth chart, and a dense holdings table"
                   loading="lazy"
                 />
-                <figcaption>A complete portfolio-analysis template, built entirely from foundation, atom, molecule, and organism rules. No one-off decisions.</figcaption>
+                <figcaption>A complete performance-audit workspace, built entirely from foundation, atom, molecule, and organism rules: status distribution, a return-issues chart, and a forty-page account table, with no one-off decisions anywhere on the screen.</figcaption>
               </figure>
             </div>
           </div>
@@ -778,7 +773,7 @@ export default function StateStreetCaseStudy() {
           <div className="shell next-case-inner">
             <div>
               <p className="eyebrow">Next case study</p>
-              <h2>Kmart, &ldquo;Keep Your Secret&rdquo;</h2>
+              <h2>Kmart SHHHHH</h2>
             </div>
             <a className="next-case-status" href="/kmart">Read the Kmart story</a>
           </div>

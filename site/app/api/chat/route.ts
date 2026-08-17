@@ -117,7 +117,7 @@ export async function POST(request: Request): Promise<Response> {
     );
   }
 
-  let body: { messages?: unknown; persona?: unknown };
+  let body: { messages?: unknown; persona?: unknown; suggested?: unknown };
   try {
     body = await request.json();
   } catch {
@@ -227,7 +227,11 @@ export async function POST(request: Request): Promise<Response> {
         system: [
           {
             type: "text",
-            text: buildSystemPrompt(persona),
+            text:
+              buildSystemPrompt(persona) +
+              (body.suggested === true
+                ? "\n\nTHIS QUESTION CAME FROM THE INTERFACE. The visitor clicked a suggested question the site offered, one of the chips or the per-section hints. Answer it directly and completely from the first sentence, grounded in whichever project or page it belongs to. Do not ask why they are asking, do not ask which part they mean, do not call it a big question. The site asked it for them."
+                : ""),
             cache_control: { type: "ephemeral" },
           },
         ],

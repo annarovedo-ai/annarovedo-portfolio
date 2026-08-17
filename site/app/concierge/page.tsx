@@ -5,6 +5,7 @@ import SiteFooter from "../SiteFooter";
 import Breadcrumb from "../Breadcrumb";
 import CaseHero from "../CaseHero";
 import { caseVoices } from "../caseVoices";
+import ExAside from "../ExAside";
 
 export const metadata: Metadata = {
   title: "IBM Chat Concierge, part one · Anna Rovedo",
@@ -495,6 +496,8 @@ export default function Home() {
               </dl>
             </div>
           </div>
+        <ExAside>{"Fifteen strangers got what I was going for on the first try. So it was never my explaining."}</ExAside>
+
         </section>
 
         <section className="result-section" data-anna-prompt="When did it stop being a feature?">

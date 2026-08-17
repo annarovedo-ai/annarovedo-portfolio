@@ -83,7 +83,14 @@ export default function AlmostAnnaChat({
     el.scrollTo({ top: Math.max(0, target - 12), behavior: "smooth" });
   }, [messages, busy]);
 
-  async function send(text: string) {
+  /**
+   * `suggested` marks questions that came from the interface itself, the
+   * prompt chips and the per-section hints, rather than the visitor's own
+   * typing. The API forwards it so the model knows the site asked on the
+   * visitor's behalf: a clicked chip must be answered directly, never met
+   * with "why do you ask" or a request for specifics.
+   */
+  async function send(text: string, suggested = false) {
     const trimmed = text.trim();
     if (!trimmed || busy || capped) return;
 
@@ -97,7 +104,7 @@ export default function AlmostAnnaChat({
       const res = await fetch("/api/chat", {
         method: "POST",
         headers: { "Content-Type": "application/json" },
-        body: JSON.stringify({ persona, messages: next }),
+        body: JSON.stringify({ persona, messages: next, suggested }),
       });
       const data = (await res.json()) as {
         reply?: string;
@@ -125,7 +132,7 @@ export default function AlmostAnnaChat({
   useEffect(() => {
     if (!seed || seeded.current) return;
     seeded.current = true;
-    void send(seed);
+    void send(seed, true);
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [seed]);
 
@@ -221,7 +228,7 @@ export default function AlmostAnnaChat({
             <span className="aa-prompts-label">{c.promptsLabel ?? "You could ask"}</span>
             <div>
               {c.prompts.map((p) => (
-                <button key={p} type="button" onClick={() => send(p)}>
+                <button key={p} type="button" onClick={() => send(p, true)}>
                   {p}
                 </button>
               ))}

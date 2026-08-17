@@ -10272,3 +10272,18 @@ html[data-anna-razor="bar"] body {
 .nike-pair {
   align-items: start;
 }
+
+/* Ex-only margin commentary inside case studies. Set apart from the body
+   voice: serif italic, muted, a hairline to its left, so it reads as a note
+   in the margin rather than a paragraph that lost its way. */
+.ex-aside {
+  max-width: 52ch;
+  margin: 1.75rem 0;
+  padding-left: 18px;
+  border-left: 2px solid var(--line);
+  font-family: var(--serif);
+  font-style: italic;
+  font-size: var(--t-read);
+  line-height: 1.5;
+  color: var(--muted);
+}

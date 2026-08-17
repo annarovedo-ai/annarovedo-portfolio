@@ -87,7 +87,7 @@ export const cannedAnswers: Record<PersonaId, CannedAnswer[]> = {
     {
       question: "How did you go from fashion to AI?",
       answer:
-        "It wasn't a pivot. The digital work ran the whole way through.\n\nI went to Italy after college and ended up doing graphics for Woolrich. Then a master's in fashion in Barcelona, then postgraduate couture and pattern making in Buenos Aires. Then I designed coats in New York for a few months and discovered that not every passion should become a job. That sentence cost me several years. You can have it for free.\n\nThe deeper through line was culture, and how people signal things to each other. That transfers to products more cleanly than anyone expects.",
+        "It wasn't a pivot, because the digital work never stopped. It funded the curiosity.\n\nI went to Italy after college and did design work, kiosks, websites, then graphics for Woolrich. That work paid for a master's in fashion in Barcelona, then postgraduate couture and pattern making in Buenos Aires. Then I designed coats in New York for a few months and discovered that not every passion should become a job. That sentence cost me several years. You can have it for free.\n\nThe through line was culture, and how people signal things to each other. That transfers to products more cleanly than anyone expects.",
     },
     {
       question: "Which project are you most proud of?",

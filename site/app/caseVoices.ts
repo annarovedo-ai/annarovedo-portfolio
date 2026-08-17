@@ -24,7 +24,7 @@ export const caseVoices: Record<string, Record<PersonaId, HeroVoice>> = {
   },
   stateStreet: {
     recruiter: { h1: "Designing the visual language for a financial operating system.", deck: "Alpha brings investment operations, oversight, and analysis onto one platform. I was the sole UI designer who defined the visual language, accessibility foundations, and component system that makes its dozens of workflows feel like one product." },
-    client: { h1: "Dozens of workflows. One product. That takes a system.", deck: "State Street’s Alpha platform runs investment operations for institutional investors. As sole UI designer I built the visual language that holds it together: 22 categories of components, accessibility built in, light and dark modes tuned separately. The engagement ended before launch; the system reached implementation and set the product’s direction." },
+    client: { h1: "Dozens of workflows. One product. That takes a system.", deck: "State Street’s Alpha platform runs investment operations for institutional investors. As sole UI designer I built the visual language that holds it together: 22 categories of components, accessibility built in, light and dark modes tuned separately. The system reached implementation and set the direction for State Street’s broader suite." },
     ex: { h1: "A trillion dollars was hard to read.", deck: "State Street’s platform moves serious money, and serious money deserves better typography. One visual language, 22 component categories, light and dark modes tuned separately, for people who watch numbers all day. The numbers behave now." },
   },
   nike: {

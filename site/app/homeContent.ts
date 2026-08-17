@@ -200,6 +200,17 @@ export const supportingCaseStudies: CaseStudy[] = [
     },
   },
   {
+    href: "/kmart",
+    tag: "Brand / Campaign",
+    title: "SHHHHH",
+    body: "Kmart built a design studio in New York to take on Target, and the clothes were good. Nobody knew they existed, and anyone who did was embarrassed to say where they shopped. The pitch flipped the embarrassment into a reason: keep it a secret, because the moment you say where the dress came from, everyone owns one. Duct tape over the logo, over the hangtag, over the model's mouth.",
+    image: "/case-study/kmart/card-cover.png",
+    client: {
+      tag: "Brand and campaign",
+      body: "Kmart opened a New York design studio to compete with Target. The clothes were good, nobody knew, and the people who did were too embarrassed to admit it. I turned that into the campaign: keep it a secret, because a secret is only worth having while it is still yours. It ran across every surface, from the hangtags to the bags to the site.",
+    },
+  },
+  {
     href: "/search",
     tag: "UX / Search",
     title: "IBM Global Search",
@@ -232,17 +243,6 @@ export const supportingCaseStudies: CaseStudy[] = [
     client: {
       tag: "Search and IA",
       body: "People could not find things across IBM.com, which is a revenue problem before it is a design one. I led the audit and research, then designed the result experience that replaced six competing tabs with one filterable set. It is live.",
-    },
-  },
-  {
-    href: "/kmart",
-    tag: "Brand / Campaign",
-    title: "SHHHHH",
-    body: "Kmart built a design studio in New York to take on Target, and the clothes were good. Nobody knew they existed, and anyone who did was embarrassed to say where they shopped. The pitch flipped the embarrassment into a reason: keep it a secret, because the moment you say where the dress came from, everyone owns one. Duct tape over the logo, over the hangtag, over the model's mouth.",
-    image: "/case-study/kmart/card-cover.png",
-    client: {
-      tag: "Brand and campaign",
-      body: "Kmart opened a New York design studio to compete with Target. The clothes were good, nobody knew, and the people who did were too embarrassed to admit it. I turned that into the campaign: keep it a secret, because a secret is only worth having while it is still yours. It ran across every surface, from the hangtags to the bags to the site.",
     },
   },
   {

@@ -5,6 +5,7 @@ import SiteFooter from "../SiteFooter";
 import Breadcrumb from "../Breadcrumb";
 import CaseHero from "../CaseHero";
 import { caseVoices } from "../caseVoices";
+import ExAside from "../ExAside";
 
 export const metadata: Metadata = {
   title: "AI-driven journey orchestration, part two · Anna Rovedo",
@@ -452,6 +453,8 @@ export default function JourneyOrchestration() {
             </div>
             <a href="/concierge">Read part one</a>
           </div>
+        <ExAside>{"A page that notices what you need without being told. I know. Science fiction."}</ExAside>
+
         </section>
 
         <section className="next-case">

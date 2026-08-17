@@ -185,13 +185,14 @@ const clientProcessSteps = [
 ];
 
 function ClientHomeBody({ c }: { c: HomeContent }) {
-  const featuredHrefs = ["/state-street", "/search", "/kmart"];
+  const featuredHrefs = ["/state-street", "/kmart"];
   const featuredCases = featuredHrefs
     .map((href) => supportingCaseStudies.find((cs) => cs.href === href))
     .filter((cs): cs is CaseStudy => Boolean(cs));
 
   const moreWork = [
     flagshipCaseStudies[0],
+    supportingCaseStudies.find((cs) => cs.href === "/search"),
     supportingCaseStudies.find((cs) => cs.href === "/nike"),
     flagshipCaseStudies[1],
   ].filter((cs): cs is CaseStudy => Boolean(cs));

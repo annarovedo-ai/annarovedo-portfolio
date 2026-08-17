@@ -4,6 +4,7 @@ import SiteFooter from "../SiteFooter";
 import Breadcrumb from "../Breadcrumb";
 import CaseHero from "../CaseHero";
 import { caseVoices } from "../caseVoices";
+import ExAside from "../ExAside";
 
 export const metadata: Metadata = {
   title: "Forty fields, five that mattered · Nike Operations Workspace · Anna Rovedo",
@@ -328,6 +329,8 @@ export default function NikeCaseStudy() {
           <p className="body-copy">
             The reduction is the piece I would point to. Not because subtraction is virtuous, but because it was the only move that satisfied two groups who appeared to want opposite things. The evidence made it a decision instead of a preference, which is the difference between a design you can defend and one you can only assert.
           </p>
+        <ExAside>{"They found size large for December 26th in seconds. Some dates are easy to remember, apparently."}</ExAside>
+
         </section>
 
         <section className="next-case">
