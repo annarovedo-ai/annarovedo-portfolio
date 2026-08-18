@@ -7785,8 +7785,13 @@ a.home-video-label:focus-visible {
   font-size: var(--t-deck);
 }
 
+/* Tightened from clamp(52px, 6vw, 80px) 2026-08-18, Anna: with 80px on both
+   sides of the rule, consecutive groups sat 160px apart and the page read as
+   ending between sections. The archive is a browsing page, not a sequence of
+   arrivals, so groups only need enough air to separate, not to breathe like
+   case-study chapters. */
 .archive-group {
-  padding-block: clamp(52px, 6vw, 80px);
+  padding-block: clamp(36px, 4vw, 52px);
   border-top: 1px solid var(--line);
 }
 
