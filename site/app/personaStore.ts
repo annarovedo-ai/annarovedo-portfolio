@@ -10,11 +10,13 @@ const STORAGE_KEY = "pp-persona";
 const SESSION_KEY = "pp-persona-session";
 
 /**
- * Persona rules (docs/decisions-log.md; default changed per Anna 2026-08-18):
- * - Client is the default for un-gated traffic, bots and direct links. It was
- *   Recruiter until the pre-outreach pass; with client outreach starting, a
- *   cold visitor should land in the studio, and a recruiter following her
- *   résumé link has the switcher one tap away.
+ * Persona rules (docs/decisions-log.md):
+ * - Recruiter is the default for un-gated traffic, bots and direct links.
+ *   (Flipped to Client for a few hours on 2026-08-18, flipped back the same
+ *   day per Anna. Clients get their own entrance at /studio, which forces
+ *   the Client persona from first paint; annarovedo.com stays recruiter
+ *   territory. If this changes again, getServerSnapshot below and the chat
+ *   route's persona fallback must move with it, or first paint flashes.)
  * - Recruiter and Client persist across visits (localStorage).
  * - Ex Boyfriend is reachable only by explicit selection. It lives in
  *   sessionStorage so it survives navigation inside one tab but dies when the
@@ -24,7 +26,7 @@ const SESSION_KEY = "pp-persona-session";
  *   stays Ex across days of reopening: that is the same tab, not a default.
  */
 function read(): PersonaId {
-  if (typeof window === "undefined") return "client";
+  if (typeof window === "undefined") return "recruiter";
   try {
     if (window.sessionStorage.getItem(SESSION_KEY) === "ex") return "ex";
   } catch {
@@ -36,7 +38,7 @@ function read(): PersonaId {
   } catch {
     /* storage unavailable */
   }
-  return "client";
+  return "recruiter";
 }
 
 let current: PersonaId | null = null;
@@ -55,11 +57,11 @@ export function getSnapshot(): PersonaId {
   return current;
 }
 
-/** Server snapshot is always the default, so crawlers only ever see Client.
+/** Server snapshot is always the default, so crawlers only ever see Recruiter.
     This must match read()'s fallback: a cold visitor's first paint and their
     hydrated page have to agree, or the homepage flashes between personas. */
 export function getServerSnapshot(): PersonaId {
-  return "client";
+  return "recruiter";
 }
 
 export function setPersona(id: PersonaId) {

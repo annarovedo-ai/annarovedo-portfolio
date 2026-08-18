@@ -124,9 +124,9 @@ export async function POST(request: Request): Promise<Response> {
     return Response.json({ error: "Bad request." }, { status: 400 });
   }
 
-  // Fallback matches the site default (client since 2026-08-18); the widget
-  // always sends a persona, so this only guards malformed requests.
-  const persona: PersonaId = isPersona(body.persona) ? body.persona : "client";
+  // Fallback matches the site default (recruiter); the widget always sends a
+  // persona, so this only guards malformed requests.
+  const persona: PersonaId = isPersona(body.persona) ? body.persona : "recruiter";
 
   if (!Array.isArray(body.messages) || body.messages.length === 0) {
     return Response.json({ error: "Bad request." }, { status: 400 });
