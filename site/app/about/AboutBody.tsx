@@ -3,7 +3,6 @@
 import { useSyncExternalStore } from "react";
 import { getServerSnapshot, getSnapshot, subscribe } from "../personaStore";
 import { aboutContent } from "../aboutContent";
-import ResumeSheet from "../ResumeSheet";
 import SiteHeader from "../SiteHeader";
 import SiteFooter from "../SiteFooter";
 
@@ -46,16 +45,20 @@ export default function AboutBody() {
                 <a className="cv-download" href="/anna-rovedo-resume.pdf" download>
                   Download résumé
                 </a>
+                <a className="cv-view-link" href="/resume">
+                  View the résumé &rarr;
+                </a>
               </div>
             ) : null}
           </div>
         </section>
 
-        {showResume ? (
-          <section className="about-resume">
-            <ResumeSheet persona={persona} showIntro={false} showContact={false} />
-          </section>
-        ) : null}
+        {/* The full ResumeSheet was embedded here from 2026-08-12 to
+            2026-08-18, a workaround for the era when Resume was hidden from
+            the primary nav and About was the only path to it. Resume is back
+            in the nav, so the embed made /about and /resume the same page
+            twice (Anna: "about and resume contain the exact same info").
+            About is the story again; /resume is the evidence. */}
 
         <section className="about-points">
           <div className="shell">

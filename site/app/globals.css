@@ -7620,30 +7620,22 @@ a.home-video-label:focus-visible {
    28px is roughly a line of body copy: enough to separate them, not so much
    that the button drifts away from the text it belongs to. */
 .cv-contact-row {
+  display: flex;
+  align-items: center;
+  gap: 22px;
   margin-top: 28px;
 }
 
-.about-resume {
-  border-top: 1px solid var(--line);
+/* Quiet companion to the download button: reading on the site and taking
+   the PDF away are different jobs, so they get different visual weights. */
+.cv-view-link {
+  color: var(--blue);
+  font-weight: 600;
+  white-space: nowrap;
 }
 
-/* Embedded in About the sheet is built without its masthead and without the
-   About block (showIntro and showContact are both false there), so .cv-body is
-   the first thing inside it. .cv-body carries its own border-top, which put a
-   SECOND horizontal rule about 130px below this section's own divider with
-   nothing at all between the two. Collapse the duplicate rule and tighten the
-   run-in. The standalone /resume page is untouched: there the masthead is
-   present, so .cv-body's border is separating real content. */
-.about-resume .cv-sheet {
-  max-width: 900px;
-  padding-top: clamp(32px, 3.5vw, 48px);
-}
-
-.about-resume .cv-sheet > .cv-body:first-child {
-  margin-top: 0;
-  padding-top: 0;
-  border-top: 0;
-}
+/* The .about-resume rules that lived here were removed 2026-08-18 along with
+   the embedded ResumeSheet on the About page; see AboutBody.tsx. */
 
 .about-points {
   padding-block: clamp(56px, 7vw, 88px);
