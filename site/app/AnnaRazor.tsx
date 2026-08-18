@@ -131,21 +131,11 @@ export default function AnnaRazor() {
     // already know. The hero's chat card stays hidden on phones either way,
     // so this is the single entry point rather than a second one.
     //
-    // Internal pages also default to the corner button, on every viewport
-    // (2026-08-18, external review): on a case study the reader came for the
-    // work, and the full-width bar had become the loudest object under it.
-    // The mini stays present and clickable; the bar remains the entrance
-    // default and anything the visitor deliberately chose (stored above).
-    const homeLike = pathname === "/" || pathname === "/studio";
-    setMode(
-      window.matchMedia("(max-width: 767px)").matches || !homeLike
-        ? "quiet"
-        : "razor"
-    );
-    // pathname: client-side routing means no remount between pages, so the
-    // per-page default has to be recomputed on navigation. The stored check
-    // above still wins when the visitor has expressed a preference.
-  }, [pathname]);
+    // (2026-08-18: an external review demoted internal pages to the corner
+    // button by default; reversed the same day per Anna's standing rule that
+    // the bar is the default everywhere on desktop.)
+    setMode(window.matchMedia("(max-width: 767px)").matches ? "quiet" : "razor");
+  }, []);
 
   // PHONES NEVER GET THE BAR. NOT EVER.
   //
@@ -388,13 +378,12 @@ export default function AnnaRazor() {
     if (back && document.contains(back)) back.focus();
   }, [open]);
 
-  // Contact is the one page where the assistant is pure cost: the visitor is
-  // already doing the thing every conversation is meant to lead to, and the
-  // desktop bar was observed covering the form's own controls. Nothing may
-  // ever sit over a form control, so the razor sits this page out entirely.
-  const enabled =
-    (ENABLED_PATHS === null || ENABLED_PATHS.includes(pathname)) &&
-    pathname !== "/contact";
+  // Every page, no exceptions, per Anna 2026-08-18: "the razor belongs on
+  // every page." (An external review had it hidden on /contact for a few
+  // hours the same day; reversed. The bar covering the contact form's own
+  // controls is a layout problem to solve in CSS, not a reason to remove
+  // the assistant from the page.)
+  const enabled = ENABLED_PATHS === null || ENABLED_PATHS.includes(pathname);
 
   // Only reserve room at the foot of the document where the bar is mounted.
   useEffect(() => {
