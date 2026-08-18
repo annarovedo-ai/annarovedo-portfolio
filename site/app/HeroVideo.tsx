@@ -5,19 +5,13 @@ import { getServerSnapshot, getSnapshot, subscribe } from "./personaStore";
 import type { PersonaId } from "./personaStore";
 
 /**
- * A STILL, NOT A VIDEO. Per Anna, 2026-08-18: "remove the videos from the
- * website," stated three times. All playback is gone; what remains is the
- * deliberately chosen poster frame for each persona, in the same slot with
- * the same classes, so the hero composition and the booking button under it
- * (HomeBody) are untouched.
- *
- * The component keeps its name and file so the release test guarding the
- * mobile LCP treatment (fetchPriority + srcSet on this image) keeps guarding
- * the real thing.
- *
- * The video files themselves (video-recruiter.mp4, video-recruiter-2.mp4,
- * video-ex.mp4) are still on disk, unreferenced; delete them from Finder
- * when convenient.
+ * UNUSED — safe to delete. The hero video was first reduced to its poster
+ * still, then removed from the homepage entirely (Anna, 2026-08-18: "remove
+ * the videos from the website"; then confirmed the still and credit should
+ * go too). Nothing imports this component; the matching release test was
+ * retired the same day. Kept only because this sandbox cannot delete files.
+ * Also deletable from Finder: video-recruiter.mp4, video-recruiter-2.mp4,
+ * video-ex.mp4, and the video-*.webp posters in site/public/.
  */
 type Intro = { poster: string; alt: string; credit?: string };
 

@@ -12,7 +12,14 @@ export default function AlmostAnnaChat({
   seed,
   personaOverride,
 }: {
-  variant?: "inline" | "dock";
+  /**
+   * "inline": the boxed card (client Project guide section).
+   * "dock": the razor's open panel.
+   * "hero": the homepage hero conversation bar (2026-08-18, replacing the
+   * video): one input with the chips beneath it, no card chrome; the thread
+   * expands in place above the bar once the first question is asked.
+   */
+  variant?: "inline" | "dock" | "hero";
   /** Opening question handed over from the razor, sent once on mount. */
   seed?: string;
   /** The Client homepage passes "client" so the guide is Ask Paper Pixel in
@@ -142,6 +149,117 @@ export default function AlmostAnnaChat({
   }, [seed]);
 
   const started = messages.length > 0;
+
+  if (variant === "hero") {
+    return (
+      <div className="aa aa-hero">
+        {/* Identity and disclosure in one quiet line: the card masthead's
+            job, without the card. */}
+        <p className="aa-hero-id">
+          <strong>{assistantName}</strong>
+          <span>{assistantDisclosure}</span>
+        </p>
+
+        {started ? (
+          <div className="aa-hero-thread" ref={scroller}>
+            <ul className="aa-thread">
+              {messages.map((m, i) => (
+                <li key={i} className={m.role === "user" ? "is-user" : "is-anna"}>
+                  {m.role === "assistant" ? (
+                    <span className="aa-avatar aa-avatar-sm" aria-hidden="true">
+                      <img
+                        src="/anna-avatar.jpg"
+                        alt=""
+                        onError={(e) => {
+                          e.currentTarget.style.display = "none";
+                        }}
+                      />
+                    </span>
+                  ) : null}
+                  <div className="aa-bubble">
+                    {m.content.split("\n\n").map((p, k) => (
+                      <p key={k}>{p}</p>
+                    ))}
+                  </div>
+                </li>
+              ))}
+            </ul>
+            {busy ? (
+              <p className="aa-typing" role="status">
+                <span />
+                <span />
+                <span />
+                <span className="aa-sr">{assistantName} is thinking</span>
+              </p>
+            ) : null}
+          </div>
+        ) : null}
+
+        <form
+          className="aa-hero-bar"
+          onSubmit={(e) => {
+            e.preventDefault();
+            send(input);
+          }}
+        >
+          <span className="aa-avatar" aria-hidden="true">
+            <img
+              src="/anna-avatar.jpg"
+              alt=""
+              onError={(e) => {
+                e.currentTarget.style.display = "none";
+              }}
+            />
+          </span>
+          <input
+            value={input}
+            onChange={(e) => setInput(e.target.value)}
+            placeholder={capped ? "That's the limit for now." : assistantPlaceholder}
+            aria-label={
+              isClient ? "Ask Paper Pixel about your project" : "Ask Almost Anna a question"
+            }
+            disabled={capped}
+          />
+          <button type="submit" disabled={busy || capped || !input.trim()} aria-label="Send">
+            <svg width="16" height="16" viewBox="0 0 16 16" fill="none" aria-hidden="true">
+              <path
+                d="M3 8H13M13 8L9 4M13 8L9 12"
+                stroke="currentColor"
+                strokeWidth="1.75"
+                strokeLinecap="round"
+                strokeLinejoin="round"
+              />
+            </svg>
+          </button>
+        </form>
+
+        {error ? (
+          <p className="aa-error" role="alert">
+            {error}
+            {capped ? (
+              <>
+                {" "}
+                <a href="https://calendly.com/anna-rovedo/30min">Book a call</a>.
+              </>
+            ) : null}
+          </p>
+        ) : null}
+
+        {!started && !busy ? (
+          <div className="aa-hero-prompts">
+            <span>{c.promptsLabel ?? "You could ask"}</span>
+            <div>
+              {c.prompts.map((p) => (
+                <button key={p} type="button" onClick={() => send(p, true)}>
+                  {p}
+                </button>
+              ))}
+            </div>
+          </div>
+        ) : null}
+      </div>
+    );
+  }
 
   return (
     <div className={`aa aa-${variant}`}>

@@ -215,8 +215,8 @@ test("homepage images offer responsive sources, and every variant exists", async
   }
 });
 
-test("the hero poster is prioritised for mobile LCP", async () => {
-  const src = await readFile(new URL("app/HeroVideo.tsx", root), "utf8");
-  assert.match(src, /fetchPriority="high"/);
-  assert.match(src, /srcSet=/);
-});
+// "the hero poster is prioritised for mobile LCP" was deleted 2026-08-18:
+// the hero video (and then its poster still) was removed from the site
+// entirely per Anna, so the recruiter hero's LCP element is now the
+// headline text and there is no poster to guard. If hero media ever
+// returns, restore an LCP test with it.

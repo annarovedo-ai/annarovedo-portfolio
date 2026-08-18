@@ -4926,6 +4926,162 @@ blockquote {
   align-items: stretch;
 }
 
+/* The booking link, relocated from under the video to under the hero deck.
+   Same component metrics as every primary action; inline width here rather
+   than stretching to the column. */
+.home-hero-book {
+  margin-top: 26px;
+}
+
+/* ------------------------------------------------------------------ */
+/* Chat as the hero (2026-08-18). The video left the hero, and with it the
+   two-column card layout. The chat stops being a boxed product demo beside
+   the intro and becomes the intro's second act: identity line, one round
+   bar you can type into, the printed chips underneath, and a thread that
+   expands in place above the bar once the conversation starts. */
+
+.aa-hero {
+  border: 0;
+  background: transparent;
+  gap: 14px;
+  max-width: 860px;
+  margin-top: clamp(30px, 4.5vw, 48px);
+}
+
+.aa-hero-id {
+  display: flex;
+  align-items: baseline;
+  gap: 10px;
+  margin: 0;
+}
+
+.aa-hero-id strong {
+  font-family: var(--serif);
+  font-size: var(--t-base);
+  color: var(--ink);
+}
+
+.aa-hero-id span {
+  color: var(--muted);
+  font-size: var(--t-small);
+}
+
+/* A viewport onto the thread, same principle as the card: fixed ceiling so
+   answers arriving cannot shove the rest of the page around. */
+.aa-hero-thread {
+  max-height: min(480px, 56vh);
+  overflow-y: auto;
+  border: 1px solid var(--line);
+  background: var(--surface);
+  padding: 18px 20px 8px;
+}
+
+.aa-hero-bar {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  padding: 8px 8px 8px 14px;
+  border: 1px solid var(--chat-frame);
+  border-radius: 999px;
+  background: var(--surface);
+  box-shadow: 0 12px 32px rgba(17, 17, 17, 0.08);
+}
+
+.aa-hero-bar .aa-avatar {
+  flex: none;
+}
+
+.aa-hero-bar input {
+  flex: 1;
+  min-width: 0;
+  border: 0;
+  background: none;
+  color: var(--ink);
+  font-size: var(--t-base);
+}
+
+.aa-hero-bar input:focus {
+  outline: none;
+}
+
+.aa-hero-bar input::placeholder {
+  color: var(--placeholder);
+}
+
+.aa-hero-bar button[type="submit"] {
+  flex: none;
+  display: grid;
+  place-items: center;
+  width: 40px;
+  height: 40px;
+  border: 0;
+  border-radius: 999px;
+  background: var(--blue);
+  color: #fff;
+  cursor: pointer;
+  transition: opacity 0.16s ease;
+}
+
+.aa-hero-bar button[type="submit"]:disabled {
+  opacity: 0.4;
+  cursor: default;
+}
+
+.aa-hero-prompts {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 10px;
+}
+
+.aa-hero-prompts > span {
+  color: var(--muted);
+  font-size: var(--t-label);
+  font-weight: 600;
+  letter-spacing: var(--track-wide);
+  text-transform: uppercase;
+}
+
+.aa-hero-prompts > div {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 10px;
+}
+
+/* Same species as the razor's offer chip and the card's prompts: dashed
+   border, serif, round. Roundness continues to mean "pick one". */
+.aa-hero-prompts button {
+  padding: 9px 16px;
+  border: 1px dashed var(--line);
+  border-radius: 999px;
+  background: var(--paper-deep);
+  color: var(--blue);
+  font-family: var(--serif);
+  font-size: var(--t-small);
+  cursor: pointer;
+  transition: border-color 0.16s ease, border-style 0.16s ease, color 0.16s ease;
+}
+
+.aa-hero-prompts button:hover {
+  border-color: var(--blue);
+  border-style: solid;
+  color: var(--ink);
+}
+
+@media (max-width: 720px) {
+  .aa-hero {
+    margin-top: 26px;
+  }
+
+  .aa-hero-prompts > span {
+    flex-basis: 100%;
+  }
+
+  .aa-hero-thread {
+    max-height: 60vh;
+  }
+}
+
 .home-video {
   position: relative;
   min-height: 340px;

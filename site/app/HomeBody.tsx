@@ -13,7 +13,6 @@ import {
   supportingCaseStudies,
 } from "./homeContent";
 import AlmostAnnaChat from "./AlmostAnnaChat";
-import HeroVideo from "./HeroVideo";
 import { engagements } from "./engagements";
 
 const homeImageVariants: Record<string, string> = {
@@ -421,21 +420,23 @@ export default function HomeBody({
             ) : null}
           </h1>
           <p className="home-hero-deck">{c.subtext}</p>
+          {/* The video block that lived beside the chat is gone entirely
+              (Anna, 2026-08-18: "remove the videos from the website"). The
+              booking link it carried survives here under the deck, still
+              above the fold: someone the page convinces should not have to
+              hunt the footer for the next step. */}
+          <a className="home-video-book home-hero-book" href={BOOKING_URL}>
+            Book 30 minutes
+          </a>
         </div>
 
-        <div className="home-hero-grid">
-          <div className="home-hero-video-col">
-            <HeroVideo />
-            {/* The booking link lives directly under the portrait, always
-                visible: someone the page convinces should not have to hunt
-                the footer for the next step. */}
-            <a className="home-video-book" href={BOOKING_URL}>
-              Book 30 minutes
-            </a>
-          </div>
-
-          <AlmostAnnaChat variant="inline" />
-        </div>
+        {/* Chat as the hero (2026-08-18). With the video gone, the hero's
+            story changed from "watch me" to "ask me": the claim above, then
+            the proof you can interrogate. One bar, the chips beneath it, the
+            thread expanding in place. Phones get this too — the boxed card
+            was hidden on small screens, but a single input line is exactly
+            the pattern a phone already understands. */}
+        <AlmostAnnaChat variant="hero" />
       </section>
 
       <ClientLogoStrip />

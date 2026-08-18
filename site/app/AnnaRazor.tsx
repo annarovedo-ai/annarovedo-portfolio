@@ -227,7 +227,12 @@ export default function AnnaRazor() {
     // at the 320px reflow width. Desktop keeps the later handoff because its
     // inline chat card is visible beside the video.
     if (isPhone) {
-      const intro = document.querySelector(".home-hero-copy, .client-hero-copy");
+      // .home-hero, not .home-hero-copy: since the chat became the hero
+      // (2026-08-18) the phone hero contains a live chat bar, and the corner
+      // button appearing while that bar is still on screen would be two
+      // entry points at once — exactly what this choreography exists to
+      // prevent. The client hero keeps its copy-based anchor.
+      const intro = document.querySelector(".home-hero, .client-hero-copy");
       if (intro) {
         const io = new IntersectionObserver(
           ([entry]) => setVisible(!entry.isIntersecting),
