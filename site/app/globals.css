@@ -6896,6 +6896,47 @@ a.home-video-label:focus-visible {
     grid-template-columns: auto 1fr auto;
     grid-template-areas: "brand switcher nav";
     column-gap: 12px;
+  }
+
+  /* Internal pages, same squeeze, same cure. Everything above is scoped to
+     .is-home, so on About, Contact and the case studies the three header
+     children auto-placed into the two-column grid: the nav fell under the
+     wordmark and the switcher bled off the right edge of the bar (observed
+     live 2026-08-18). Named areas put the switcher on its own centred row. */
+  .home-header.is-docked:not(.is-home) {
+    grid-template-areas:
+      "brand nav"
+      "switcher switcher";
+    row-gap: 14px;
+  }
+
+  .home-header.is-docked:not(.is-home) > .brand {
+    grid-area: brand;
+  }
+
+  .home-header.is-docked:not(.is-home) > .site-nav {
+    grid-area: nav;
+  }
+
+  .home-header.is-docked:not(.is-home) > .home-header-switch {
+    grid-area: switcher;
+    justify-self: center;
+  }
+
+  /* Past the fold the chrome is a tool, not an introduction: the scrolled
+     homepage already proves the smaller pills work, so the docked internal
+     header borrows them at the widths where the full size caused the wrap. */
+  .home-header.is-docked:not(.is-home) .persona-switch {
+    padding: 3px;
+  }
+
+  .home-header.is-docked:not(.is-home) .persona-switch button {
+    padding: 8px 15px;
+    font-size: var(--t-fine);
+  }
+
+  .home-header.is-docked:not(.is-home) .persona-switch-label {
+    font-size: var(--t-fine);
   }}
 
 @media (max-width: 420px) {.home-header.is-scrolled {
