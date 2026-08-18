@@ -10375,9 +10375,12 @@ html[data-anna-razor="bar"] body {
 }
 
 .client-engagement-secondary {
+  /* Matches the primary button's text size so the pair reads as one row of
+     actions at two emphasis levels, not a button with a footnote. */
   color: var(--blue);
-  font-size: var(--t-label);
-  font-weight: 600;
+  font-family: var(--serif);
+  font-size: var(--t-read);
+  font-weight: 700;
 }
 
 .client-engagement-secondary:hover {

@@ -169,14 +169,16 @@ const clientProcessSteps = [
 ];
 
 function ClientHomeBody({ c }: { c: HomeContent }) {
-  const featuredHrefs = ["/state-street", "/kmart"];
+  // State Street, Kmart, Search: one card per discipline in the heading's
+  // order (brand, campaign, product), so "Brand, product, and campaign, in
+  // practice" shows all three in practice.
+  const featuredHrefs = ["/state-street", "/kmart", "/search"];
   const featuredCases = featuredHrefs
     .map((href) => supportingCaseStudies.find((cs) => cs.href === href))
     .filter((cs): cs is CaseStudy => Boolean(cs));
 
   const moreWork = [
     flagshipCaseStudies[0],
-    supportingCaseStudies.find((cs) => cs.href === "/search"),
     supportingCaseStudies.find((cs) => cs.href === "/nike"),
     flagshipCaseStudies[1],
   ].filter((cs): cs is CaseStudy => Boolean(cs));

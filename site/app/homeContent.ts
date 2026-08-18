@@ -460,12 +460,15 @@ export const homeContent: Record<PersonaId, HomeContent> = {
     // The proof is better made than claimed: this site was designed and built
     // exactly that way. If it should be explicit, the honest place is About
     // or a case study, where there is room to show rather than say.
-    // The widened headline claims range; this line proves it instead of
-    // asserting it (the site's own rule). Product teams and ad agencies are
-    // the two worlds, IBM and McDonald's the two proof points, and the logo
-    // strip below becomes the evidence for the claim rather than decoration.
+    // Per Anna, 2026-08-18: the hero must drive home that the CLIENT is the
+    // one getting the bargain — the talent agencies bill out, without the
+    // agency wrapped around it. That claim goes here rather than in the
+    // headline: the headline states what the studio does, this line states
+    // why buying it directly is the smart move, and the twenty-years /
+    // IBM-to-McDonald's proof carries into the same sentence so the value
+    // claim arrives pre-evidenced rather than as discount talk.
     subtext:
-      "An independent design studio led by Anna Rovedo, with twenty years across product teams and ad agencies, IBM to McDonald\u2019s.",
+      "Direct access to top agency talent, without the agency price tag: twenty years across product teams and ad agencies, IBM to McDonald\u2019s, led by Anna Rovedo.",
     conciergeHeading: "Start with the messy brief.",
     conciergeBody:
       "Describe what you’re trying to launch, fix, or figure out. The guide will surface relevant work, explain how Anna would approach the problem, and point out the questions worth answering first.",
