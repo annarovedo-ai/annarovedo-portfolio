@@ -1,50 +1,40 @@
 "use client";
 
-import { useEffect, useRef, useState, useSyncExternalStore } from "react";
+import { useSyncExternalStore } from "react";
 import { getServerSnapshot, getSnapshot, subscribe } from "./personaStore";
 import type { PersonaId } from "./personaStore";
 
 /**
- * ONE VIDEO PER PERSONA.
+ * A STILL, NOT A VIDEO. Per Anna, 2026-08-18: "remove the videos from the
+ * website," stated three times. All playback is gone; what remains is the
+ * deliberately chosen poster frame for each persona, in the same slot with
+ * the same classes, so the hero composition and the booking button under it
+ * (HomeBody) are untouched.
  *
- * The recruiter and the ex are not owed the same thirty seconds, so they do
- * not get them. Everything else on this page already switches; the introduction
- * was the last thing still saying the same words to everybody.
+ * The component keeps its name and file so the release test guarding the
+ * mobile LCP treatment (fetchPriority + srcSet on this image) keeps guarding
+ * the real thing.
  *
- * The client shares the recruiter's cut for now, because it is the one that
- * talks about work rather than about history. Give this map a third entry the
- * day a client-specific take exists.
- *
- * NO CAPTURED POSTER BY DEFAULT. Stills pulled from talking footage catch a
- * face between expressions, which is why the first three attempts were all
- * rejected: it is mechanical, not fussy. Each poster below is a deliberate
- * choice from a full contact sheet, and the credit line is optional because it
- * belongs to a specific piece of footage rather than to the slot.
+ * The video files themselves (video-recruiter.mp4, video-recruiter-2.mp4,
+ * video-ex.mp4) are still on disk, unreferenced; delete them from Finder
+ * when convenient.
  */
-type Intro = { src: string; poster: string; credit?: string };
+type Intro = { poster: string; alt: string; credit?: string };
 
 const INTRO: Record<PersonaId, Intro> = {
-  /**
-   * "-2" because the mount will not overwrite the original files. The old
-   * cut (video-recruiter.mp4) is still on disk, unreferenced; delete it from
-   * Finder when convenient. New footage: "final me.mov", 27s, 1280x720. The
-   * source is landscape and the slot is portrait, so the CSS cover-crop shows
-   * the middle of the frame; if the framing looks off, adjust
-   * object-position for .home-video video in globals.css rather than
-   * re-encoding. Poster is an automatic 1s grab, the exact thing the note
-   * below warns about, so treat it as a placeholder until Anna picks a frame.
-   */
+  // The poster is not a grab from footage; it is the frame Anna picked from
+  // a full contact sheet.
   recruiter: {
-    src: "/video-recruiter-2.mp4",
     poster: "/video-recruiter-2.webp",
+    alt: "Anna Rovedo",
   },
   client: {
-    src: "/video-recruiter-2.mp4",
     poster: "/video-recruiter-2.webp",
+    alt: "Anna Rovedo",
   },
   ex: {
-    src: "/video-ex.mp4",
     poster: "/video-ex.webp",
+    alt: "Anna Rovedo",
     credit: "Written, filmed and directed by Cary Fukunaga",
   },
 };
@@ -54,71 +44,22 @@ export default function HeroVideo() {
   const intro = INTRO[persona] ?? INTRO.recruiter;
   const poster480 = intro.poster.replace(/\.webp$/, "-480.webp");
 
-  const video = useRef<HTMLVideoElement | null>(null);
-  const [playing, setPlaying] = useState(false);
-
-  // Switching persona swaps the file underneath a playing element, so stop
-  // first. Otherwise the new clip inherits the old one's playhead and starts
-  // mid-sentence with no way back to the cover.
-  useEffect(() => {
-    setPlaying(false);
-    video.current?.pause();
-  }, [persona]);
-
-  function start() {
-    const el = video.current;
-    if (!el) return;
-    el.play();
-    setPlaying(true);
-  }
-
   return (
     <div className="home-video-block">
-      <div className={`home-video${playing ? " is-playing" : ""}`}>
-        <video
-          key={intro.src}
-          ref={video}
-          className="home-video-el"
-          src={intro.src}
-          preload="metadata"
-          playsInline
-          controls={playing}
-          onEnded={() => setPlaying(false)}
+      <div className="home-video">
+        <img
+          className="home-video-still"
+          src={intro.poster}
+          srcSet={`${poster480} 480w, ${intro.poster} 720w`}
+          sizes="(max-width: 720px) calc(100vw - 36px), 46vw"
+          alt={intro.alt}
+          width={720}
+          height={900}
+          fetchPriority="high"
+          decoding="async"
         />
-
-        {playing ? null : (
-          <button className="home-video-cover" type="button" onClick={start}>
-            <img
-              className="home-video-still"
-              src={intro.poster}
-              srcSet={`${poster480} 480w, ${intro.poster} 720w`}
-              sizes="(max-width: 720px) calc(100vw - 36px), 46vw"
-              alt=""
-              width={720}
-              height={900}
-              fetchPriority="high"
-              decoding="async"
-            />
-            <span className="home-video-cover-inner">
-              <span className="home-video-play" aria-hidden="true">
-                ▶
-              </span>
-              <span className="home-video-cover-title">
-                Thirty seconds, in my own voice.
-              </span>
-              <span className="home-video-cover-cta">Play the introduction</span>
-            </span>
-          </button>
-        )}
-
-        {/* The in-frame "Book a call" bar is gone: the always-visible
-            booking button now sits directly under this block (HomeBody),
-            and two stacked booking links read as a mistake. */}
       </div>
 
-      {/* Outside the frame: .home-video clips its overflow so the poster and
-          the video can fill it, and the credit lived at bottom:-30px where it
-          was never drawn. */}
       {intro.credit ? (
         <p className="home-video-credit">{intro.credit}</p>
       ) : null}

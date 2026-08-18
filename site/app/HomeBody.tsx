@@ -426,8 +426,8 @@ export default function HomeBody({
         <div className="home-hero-grid">
           <div className="home-hero-video-col">
             <HeroVideo />
-            {/* The booking link lives directly under the video, always
-                visible: someone the video convinces should not have to hunt
+            {/* The booking link lives directly under the portrait, always
+                visible: someone the page convinces should not have to hunt
                 the footer for the next step. */}
             <a className="home-video-book" href={BOOKING_URL}>
               Book 30 minutes
