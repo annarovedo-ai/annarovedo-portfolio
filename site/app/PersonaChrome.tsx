@@ -4,7 +4,9 @@ import { useEffect, useRef, useSyncExternalStore } from "react";
 import BrandLockup from "./BrandLockup";
 import PersonaSwitch from "./PersonaSwitch";
 import SiteNav from "./SiteNav";
+import { useRouter } from "next/navigation";
 import { getServerSnapshot, getSnapshot, subscribe } from "./personaStore";
+import type { PersonaId } from "./personaStore";
 import { homeContent } from "./homeContent";
 
 /**
@@ -34,8 +36,20 @@ import { homeContent } from "./homeContent";
  * the short version is a tool. Below the fold, 290px of navy chrome is just
  * page you cannot read.
  */
-export default function PersonaChrome() {
-  const persona = useSyncExternalStore(subscribe, getSnapshot, getServerSnapshot);
+export default function PersonaChrome({
+  entryPersona,
+}: {
+  /**
+   * Set by an entrance route (/studio) that must render one persona from the
+   * first server-rendered paint, before the store has hydrated or been
+   * written. Selecting a DIFFERENT persona from such a route navigates to /,
+   * so the URL and the visible persona never contradict each other.
+   */
+  entryPersona?: PersonaId;
+} = {}) {
+  const store = useSyncExternalStore(subscribe, getSnapshot, getServerSnapshot);
+  const persona = entryPersona ?? store;
+  const router = useRouter();
   const headerRef = useRef<HTMLElement>(null);
 
   useEffect(() => {
@@ -93,15 +107,21 @@ export default function PersonaChrome() {
           positioning all have to be scoped or they leak sitewide, and those
           pages have no spacer to hold the space open. */}
       <header className="site-header home-header is-home" ref={headerRef}>
-        <BrandLockup />
+        <BrandLockup personaOverride={entryPersona} />
 
         {/* Grid area "switcher": row two at rest, centre of row one when
             scrolled. Do not lift this out of the header again. */}
         <div className="persona-sticky">
-          <PersonaSwitch label="I’m a" />
+          <PersonaSwitch
+            label="I’m a"
+            entryPersona={entryPersona}
+            onSelect={(id) => {
+              if (entryPersona && id !== entryPersona) router.push("/");
+            }}
+          />
         </div>
 
-        <SiteNav />
+        <SiteNav personaOverride={entryPersona} />
       </header>
 
       <div className="persona-intro">

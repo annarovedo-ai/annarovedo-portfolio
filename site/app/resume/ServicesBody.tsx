@@ -1,5 +1,7 @@
 "use client";
 
+import { engagements } from "../engagements";
+
 /**
  * The Client persona sees a Services page in place of the résumé, per Anna's
  * design (resume-client). Nav label switches from "Resume" to "Services".
@@ -120,7 +122,9 @@ export default function ServicesBody() {
           <a className="svc-primary" href="/contact">
             Share what you&rsquo;re working on &rarr;
           </a>
-          <a className="svc-secondary" href="/#work">
+          {/* This page only renders for the Client persona, so the work it
+              points at is the studio's own grid. */}
+          <a className="svc-secondary" href="/studio#client-work">
             See selected work &rarr;
           </a>
         </div>
@@ -142,6 +146,31 @@ export default function ServicesBody() {
               </div>
             ))}
           </div>
+        </div>
+      </section>
+
+      {/* Linked from the client homepage's "See all services". Same data as
+          the homepage cards (app/engagements.ts), longer form: the homepage
+          answers "where can a project start", this answers "what would that
+          actually be like". Sits between what gets made and how the studio
+          works because it is the bridge from output to arrangement. */}
+      <section className="svc-block" id="engagements">
+        <div className="shell">
+          <p className="eyebrow">Ways to work together</p>
+          <div className="svc-engagements">
+            {engagements.map((e) => (
+              <article key={e.id}>
+                <h2>{e.title}</h2>
+                <p>{e.expanded}</p>
+                <p className="svc-engagement-best">
+                  <strong>Best for:</strong> {e.bestFor}
+                </p>
+              </article>
+            ))}
+          </div>
+          <a className="svc-engagement-cta" href="/contact">
+            Share what you&rsquo;re working on <span aria-hidden="true">&rarr;</span>
+          </a>
         </div>
       </section>
 

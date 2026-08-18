@@ -14,6 +14,7 @@ import {
 } from "./homeContent";
 import AlmostAnnaChat from "./AlmostAnnaChat";
 import HeroVideo from "./HeroVideo";
+import { engagements } from "./engagements";
 
 const homeImageVariants: Record<string, string> = {
   "/case-study/concierge/concierge-card-hero.png":
@@ -144,24 +145,6 @@ const clientHeroProof = [
   },
 ];
 
-const clientCapabilityCards = [
-  {
-    number: "01",
-    title: "Brand",
-    body: "Positioning, identity, and the visual system that holds it together.",
-  },
-  {
-    number: "02",
-    title: "Product",
-    body: "Product direction, UX, interface design, and a path to a working build.",
-  },
-  {
-    number: "03",
-    title: "Campaign",
-    body: "Concept, art direction, and the launch system across channels.",
-  },
-];
-
 const clientProcessSteps = [
   {
     number: "01",
@@ -236,26 +219,42 @@ function ClientHomeBody({ c }: { c: HomeContent }) {
 
       <ClientLogoStrip />
 
+      {/* Replaced the Brand/Product/Campaign capability cards 2026-08-17:
+          that triad was already carried by the hero headline, the hero proof
+          images, and the Selected Work heading, so the cards were a fourth
+          telling. What the page did NOT answer was how an engagement actually
+          starts, which is the question a prospective client arrives with. */}
       <section
         className="client-capabilities shell"
-        data-anna-prompt="Can Paper Pixel handle brand, product, and campaign?"
+        data-anna-prompt="How can we start working together?"
       >
         <div className="client-section-intro">
-          <p className="eyebrow">What Paper Pixel can take on</p>
-          <h2>Start with one part, or connect the whole path to market.</h2>
+          <p className="eyebrow">Ways to work together</p>
+          <h2>Where a project can start.</h2>
           <p>
-            A project can begin in one discipline and extend into the others without
-            changing hands halfway through.
+            You do not need to arrive with a finished brief. Start with a focused
+            sprint, bring Anna into the team, or shape a larger engagement around
+            the work.
           </p>
         </div>
-        <div className="client-capability-grid">
-          {clientCapabilityCards.map((item) => (
-            <article key={item.title}>
-              <span>{item.number}</span>
-              <h3>{item.title}</h3>
-              <p>{item.body}</p>
+        <div className="client-engagement-grid">
+          {engagements.map((e) => (
+            <article key={e.id}>
+              <h3>{e.title}</h3>
+              <span className="client-engagement-duration">{e.duration}</span>
+              <p>{e.summary}</p>
             </article>
           ))}
+        </div>
+        {/* One shared CTA, not one per card: describing the situation should
+            not require first diagnosing which engagement model fits it. */}
+        <div className="client-engagement-actions">
+          <a className="home-cta-button" href="/contact">
+            Tell me what you&rsquo;re working on
+          </a>
+          <a className="client-engagement-secondary" href="/resume#engagements">
+            See all services
+          </a>
         </div>
       </section>
 
@@ -316,10 +315,6 @@ function ClientHomeBody({ c }: { c: HomeContent }) {
               </article>
             ))}
           </div>
-          <p className="client-engagement-line">
-            Anna can join your team, lead a defined project, or bring the right
-            collaborators around it.
-          </p>
         </div>
       </section>
 
@@ -335,7 +330,7 @@ function ClientHomeBody({ c }: { c: HomeContent }) {
             relevant work and show you the questions Anna would start with.
           </p>
         </div>
-        <AlmostAnnaChat variant="inline" />
+        <AlmostAnnaChat variant="inline" personaOverride="client" />
       </section>
 
       <section
@@ -388,8 +383,15 @@ function ClientHomeBody({ c }: { c: HomeContent }) {
   );
 }
 
-export default function HomeBody() {
-  const persona = useSyncExternalStore(subscribe, getSnapshot, getServerSnapshot);
+export default function HomeBody({
+  entryPersona,
+}: {
+  /** Set by /studio so the Client homepage is the server-rendered output,
+      not a post-hydration swap. See app/studio/page.tsx. */
+  entryPersona?: PersonaId;
+} = {}) {
+  const store = useSyncExternalStore(subscribe, getSnapshot, getServerSnapshot);
+  const persona = entryPersona ?? store;
   const c = homeContent[persona];
 
   if (persona === "client") {

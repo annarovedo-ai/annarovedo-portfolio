@@ -12,6 +12,8 @@
  * meta below. One line now: navigation on the left, the status or structural
  * note on the right, visually distinct so they do not read as the same thing.
  */
+import WorkLink from "./WorkLink";
+
 type BreadcrumbProps = {
   /** Current page label, e.g. the case study or project title. */
   label: string;
@@ -26,7 +28,7 @@ type BreadcrumbProps = {
 export default function Breadcrumb({ label, meta }: BreadcrumbProps) {
   return (
     <nav className="breadcrumb shell" aria-label="Breadcrumb">
-      <a href="/#work">Work</a>
+      <WorkLink />
       <span aria-hidden="true">/</span>
       <span className="breadcrumb-current">{label}</span>
       {meta ? <span className="breadcrumb-meta">{meta}</span> : null}

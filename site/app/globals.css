@@ -10321,3 +10321,130 @@ html[data-anna-razor="bar"] body {
   color: #fff;
   border-color: var(--flare-ink);
 }
+
+/* ------------------------------------------------------------------
+   Client homepage — "Where a project can start" engagement cards.
+   Replaces the Brand/Product/Campaign capability cards; shares the
+   section shell and intro styles (.client-capabilities,
+   .client-section-intro) so the page rhythm is unchanged.
+   ------------------------------------------------------------------ */
+.client-engagement-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 24px;
+}
+
+.client-engagement-grid article {
+  padding: 26px 24px 28px;
+  background: var(--surface);
+  border: 1px solid var(--line);
+}
+
+.client-engagement-grid h3 {
+  margin: 0 0 6px;
+  font-family: var(--serif);
+  font-size: var(--t-h3);
+  line-height: 1.25;
+  color: var(--ink);
+}
+
+/* Scannable, subordinate to the title. */
+.client-engagement-duration {
+  display: block;
+  margin-bottom: 14px;
+  font-family: var(--sans);
+  font-size: var(--t-label);
+  font-weight: 600;
+  letter-spacing: var(--track-wide);
+  text-transform: uppercase;
+  color: var(--blue-bright);
+}
+
+.client-engagement-grid article p {
+  margin: 0;
+  color: var(--body);
+  font-size: var(--t-base);
+  line-height: 1.6;
+}
+
+.client-engagement-actions {
+  display: flex;
+  align-items: center;
+  gap: 22px;
+  margin-top: 34px;
+}
+
+.client-engagement-secondary {
+  color: var(--blue);
+  font-size: var(--t-label);
+  font-weight: 600;
+}
+
+.client-engagement-secondary:hover {
+  text-decoration: underline;
+}
+
+@media (max-width: 1050px) {
+  .client-engagement-grid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+
+@media (max-width: 720px) {
+  .client-engagement-grid {
+    grid-template-columns: 1fr;
+    gap: 14px;
+  }
+
+  .client-engagement-actions {
+    flex-direction: column;
+    align-items: stretch;
+    gap: 14px;
+    text-align: center;
+  }
+}
+
+/* Services — expanded "Ways to work together" (#engagements). Mirrors the
+   svc-capabilities column rhythm. */
+.svc-engagements {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: clamp(28px, 4vw, 56px);
+  margin-top: 26px;
+}
+
+.svc-engagements h2 {
+  margin: 0 0 12px;
+}
+
+.svc-engagements p {
+  margin: 0 0 14px;
+  color: var(--body);
+  font-size: var(--t-base);
+  line-height: 1.65;
+}
+
+.svc-engagement-best {
+  color: var(--muted);
+}
+
+.svc-engagement-best strong {
+  color: var(--ink);
+}
+
+.svc-engagement-cta {
+  display: inline-block;
+  margin-top: 26px;
+  color: var(--blue);
+  font-weight: 600;
+}
+
+.svc-engagement-cta:hover {
+  text-decoration: underline;
+}
+
+@media (max-width: 900px) {
+  .svc-engagements {
+    grid-template-columns: 1fr;
+  }
+}

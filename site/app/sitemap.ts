@@ -20,6 +20,7 @@ const BASE = "https://annarovedo.com";
  *  no sitemap. */
 const PAGES = [
   "",
+  "studio",
   "about",
   "contact",
   "resume",

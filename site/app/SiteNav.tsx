@@ -1,7 +1,9 @@
 "use client";
 
-import { useEffect, useRef, useState } from "react";
+import { useEffect, useRef, useState, useSyncExternalStore } from "react";
 import ResumeNavLink from "./ResumeNavLink";
+import { getServerSnapshot, getSnapshot, subscribe } from "./personaStore";
+import type { PersonaId } from "./personaStore";
 
 /**
  * Primary navigation, shared by both headers.
@@ -11,8 +13,19 @@ import ResumeNavLink from "./ResumeNavLink";
  * a panel under the header. The links are always in the DOM so nothing changes
  * for crawlers or for anyone with CSS disabled.
  */
-export default function SiteNav() {
+export default function SiteNav({
+  personaOverride,
+}: {
+  /** Entrance routes (/studio) force their persona; see PersonaChrome. */
+  personaOverride?: PersonaId;
+} = {}) {
   const [open, setOpen] = useState(false);
+  const store = useSyncExternalStore(subscribe, getSnapshot, getServerSnapshot);
+  // Effective persona: the entrance override wins for correct SSR on
+  // /studio, and the persisted store carries Client through internal pages,
+  // so Work keeps pointing at the studio's work section after leaving it.
+  const persona = personaOverride ?? store;
+  const workHref = persona === "client" ? "/studio#client-work" : "/#work";
   const wrap = useRef<HTMLDivElement | null>(null);
 
   // Close on Escape, on outside click, and whenever the viewport grows past the
@@ -60,13 +73,17 @@ export default function SiteNav() {
         {/* Points at the case study grid rather than "/", so it does something
             the wordmark does not already do. The work is the primary content of
             the site and until now had no entry in the nav at all. */}
-        <a href="/#work" onClick={() => setOpen(false)}>
+        <a href={workHref} onClick={() => setOpen(false)}>
           Work
         </a>
         <a href="/about" onClick={() => setOpen(false)}>
           About
         </a>
-        <ResumeNavLink primaryNav onNavigate={() => setOpen(false)} />
+        <ResumeNavLink
+          primaryNav
+          personaOverride={personaOverride}
+          onNavigate={() => setOpen(false)}
+        />
         <a href="/contact" onClick={() => setOpen(false)}>
           Contact
         </a>

@@ -2,6 +2,7 @@
 
 import { useSyncExternalStore } from "react";
 import { getServerSnapshot, getSnapshot, subscribe } from "./personaStore";
+import type { PersonaId } from "./personaStore";
 
 /**
  * The brand lockup, and who it names.
@@ -43,9 +44,20 @@ const lockup: Record<string, { wordmark: string; mark: string; credit?: string }
   ex: { wordmark: "Paper Pixel", mark: "PP", credit: "Anna Rovedo" },
 };
 
-export default function BrandLockup() {
-  const persona = useSyncExternalStore(subscribe, getSnapshot, getServerSnapshot);
+export default function BrandLockup({
+  personaOverride,
+}: {
+  /** Entrance routes (/studio) force their persona so the lockup is right in
+      the server-rendered HTML rather than after hydration. */
+  personaOverride?: PersonaId;
+} = {}) {
+  const store = useSyncExternalStore(subscribe, getSnapshot, getServerSnapshot);
+  const persona = personaOverride ?? store;
   const l = lockup[persona] ?? lockup.recruiter;
+  // The wordmark links to the door it names: Paper Pixel goes back to the
+  // studio entrance, from /studio itself and from every internal page a
+  // persisted Client visits. The person goes back to /.
+  const homeHref = persona === "client" ? "/studio" : "/";
 
   // No aria-label on the link. It said "Home", which replaced the visible
   // name for assistive tech: a screen reader announced "Home" where the
@@ -53,7 +65,7 @@ export default function BrandLockup() {
   // "click Anna Rovedo" got nothing. The link text itself is the right name.
   return (
     <span className="brand">
-      <a className="brand-home" href="/">
+      <a className="brand-home" href={homeHref}>
       {/* THE MARK SITS IN FRONT OF THE WORDMARK, wherever the wordmark reads
           Paper Pixel. Client and Ex only: the Recruiter's version of this site
           is a person, and a studio logo beside her name introduces a company

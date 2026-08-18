@@ -8,18 +8,41 @@ import {
   setPersona,
   subscribe,
 } from "./personaStore";
+import type { PersonaId } from "./personaStore";
 
 export default function PersonaSwitch({
   compact = false,
   label = "I’m a",
   reachable = true,
+  entryPersona,
+  onSelect,
 }: {
   compact?: boolean;
   label?: string | null;
   reachable?: boolean;
+  /**
+   * The persona an entrance route (/studio) forces for its own first paint.
+   * Displayed as the active choice until the visitor interacts, so the
+   * server-rendered radio state matches the page around it instead of the
+   * store's Recruiter default. Once the visitor touches the control, the
+   * store is the only truth again.
+   */
+  entryPersona?: PersonaId;
+  /** Called after a selection is written to the store. */
+  onSelect?: (id: PersonaId) => void;
 }) {
-  const persona = useSyncExternalStore(subscribe, getSnapshot, getServerSnapshot);
+  const store = useSyncExternalStore(subscribe, getSnapshot, getServerSnapshot);
+  // On an entrance route the entry persona IS the displayed persona: choosing
+  // anything else navigates away (see PersonaChrome's onSelect), so this
+  // control never renders a persona the URL contradicts, and there is no
+  // render-time ref read for the lint rule to object to.
+  const persona = entryPersona ?? store;
   const buttons = useRef<Array<HTMLButtonElement | null>>([]);
+
+  function choose(id: PersonaId) {
+    setPersona(id);
+    onSelect?.(id);
+  }
 
   useEffect(() => {
     document.documentElement.dataset.persona = persona;
@@ -27,7 +50,7 @@ export default function PersonaSwitch({
 
   function moveSelection(from: number, direction: 1 | -1) {
     const next = (from + direction + personas.length) % personas.length;
-    setPersona(personas[next].id);
+    choose(personas[next].id);
     buttons.current[next]?.focus();
   }
 
@@ -53,7 +76,7 @@ export default function PersonaSwitch({
             aria-checked={persona === p.id}
             tabIndex={reachable && persona === p.id ? 0 : -1}
             className={persona === p.id ? "is-active" : undefined}
-            onClick={() => setPersona(p.id)}
+            onClick={() => choose(p.id)}
             onKeyDown={(event) => {
               if (!reachable) return;
               if (event.key === "ArrowRight" || event.key === "ArrowDown") {
@@ -64,12 +87,12 @@ export default function PersonaSwitch({
                 moveSelection(index, -1);
               } else if (event.key === "Home") {
                 event.preventDefault();
-                setPersona(personas[0].id);
+                choose(personas[0].id);
                 buttons.current[0]?.focus();
               } else if (event.key === "End") {
                 event.preventDefault();
                 const last = personas.length - 1;
-                setPersona(personas[last].id);
+                choose(personas[last].id);
                 buttons.current[last]?.focus();
               }
             }}

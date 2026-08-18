@@ -188,7 +188,10 @@ export default function AnnaRazor() {
     // waiting for a scroll just hides the chat from anyone who doesn't
     // scroll. This also sidesteps the detached-observer bug the comments
     // below warn about: on non-home pages there is no .home-hero to observe.
-    if (pathname !== "/") {
+    // /studio is the client entrance to the same homepage, with the same
+    // inline chat card in its hero, so it gets the same scroll-in treatment.
+    const isHomeLike = pathname === "/" || pathname === "/studio";
+    if (!isHomeLike) {
       setVisible(true);
       return;
     }

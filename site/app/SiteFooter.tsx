@@ -2,6 +2,7 @@
 
 import { useSyncExternalStore } from "react";
 import { getServerSnapshot, getSnapshot, subscribe } from "./personaStore";
+import type { PersonaId } from "./personaStore";
 import BrandLockup from "./BrandLockup";
 import ResumeNavLink from "./ResumeNavLink";
 
@@ -28,8 +29,14 @@ const bio: Record<string, string> = {
   ex: "I work on complex products, future vision, and emerging technology. Independently, which is either personal growth or exactly what you predicted.",
 };
 
-export default function SiteFooter() {
-  const persona = useSyncExternalStore(subscribe, getSnapshot, getServerSnapshot);
+export default function SiteFooter({
+  personaOverride,
+}: {
+  /** See /studio: forces the footer's voice for entrance routes. */
+  personaOverride?: PersonaId;
+} = {}) {
+  const store = useSyncExternalStore(subscribe, getSnapshot, getServerSnapshot);
+  const persona = personaOverride ?? store;
 
   return (
     <footer className="site-footer">
@@ -37,7 +44,7 @@ export default function SiteFooter() {
         <div className="site-footer-brand">
           {/* Shared with both headers, so the name a visitor is given at the
               top of the page is the one that signs it at the bottom. */}
-          <BrandLockup />
+          <BrandLockup personaOverride={personaOverride} />
           <p>{bio[persona]}</p>
         </div>
 
@@ -49,7 +56,7 @@ export default function SiteFooter() {
                 <a href="/about">About</a>
               </li>
               <li>
-                <ResumeNavLink />
+                <ResumeNavLink personaOverride={personaOverride} />
               </li>
               <li>
                 <a href="/archive">Earlier work</a>

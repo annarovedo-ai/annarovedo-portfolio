@@ -2,6 +2,7 @@
 
 import { useSyncExternalStore } from "react";
 import { getServerSnapshot, getSnapshot, subscribe } from "./personaStore";
+import type { PersonaId } from "./personaStore";
 import { resumeContent } from "./pageContent";
 
 /**
@@ -15,12 +16,17 @@ import { resumeContent } from "./pageContent";
 export default function ResumeNavLink({
   onNavigate,
   primaryNav = false,
+  personaOverride,
 }: {
   onNavigate?: () => void;
   /** Set in the header. The footer still lists the résumé for every persona. */
   primaryNav?: boolean;
+  /** Entrance routes (/studio) force their persona so the server-rendered
+      nav already says "Services" rather than waiting for hydration. */
+  personaOverride?: PersonaId;
 }) {
-  const persona = useSyncExternalStore(subscribe, getSnapshot, getServerSnapshot);
+  const store = useSyncExternalStore(subscribe, getSnapshot, getServerSnapshot);
+  const persona = personaOverride ?? store;
   if (primaryNav && persona !== "client") return null;
   return (
     <a href="/resume" onClick={onNavigate}>

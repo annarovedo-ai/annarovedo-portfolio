@@ -10,12 +10,17 @@ type Msg = { role: "user" | "assistant"; content: string };
 export default function AlmostAnnaChat({
   variant = "inline",
   seed,
+  personaOverride,
 }: {
   variant?: "inline" | "dock";
   /** Opening question handed over from the razor, sent once on mount. */
   seed?: string;
+  /** The Client homepage passes "client" so the guide is Ask Paper Pixel in
+      the server-rendered HTML too, not only after the store hydrates. */
+  personaOverride?: import("./personaStore").PersonaId;
 }) {
-  const persona = useSyncExternalStore(subscribe, getSnapshot, getServerSnapshot);
+  const store = useSyncExternalStore(subscribe, getSnapshot, getServerSnapshot);
+  const persona = personaOverride ?? store;
   const c = homeContent[persona];
   const isClient = persona === "client";
   const assistantName = isClient ? "Ask Paper Pixel" : "Almost Anna";
