@@ -260,7 +260,16 @@ export default function AnnaRazor() {
       return () => window.removeEventListener("scroll", onScroll);
     }
 
-    const anchor = document.querySelector(".home-hero");
+    // The anchor is the hero's chat BAR, not the hero section (2026-08-18,
+    // Anna: "it should stick to the bottom of the screen as the user scrolls
+    // past the chat"). The docked pill appears at the exact moment the hero
+    // bar leaves the viewport, wearing the same costume and holding the same
+    // thread (chatStore), so the two read as one object detaching and
+    // following the reader. Scroll back up and it hands back the same way.
+    // The client homepage has no hero bar, so it falls through to the
+    // section anchor and then the scroll threshold, as before.
+    const anchor =
+      document.querySelector(".aa-hero-bar") ?? document.querySelector(".home-hero");
     if (anchor) {
       const io = new IntersectionObserver(
         ([entry]) => setVisible(!entry.isIntersecting),

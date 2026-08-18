@@ -122,12 +122,35 @@ export default function AlmostAnnaChat({
   if (variant === "hero") {
     return (
       <div className="aa aa-hero">
-        {/* Identity and disclosure in one quiet line: the card masthead's
-            job, without the card. */}
-        <p className="aa-hero-id">
-          <strong>{assistantName}</strong>
-          <span>{assistantDisclosure}</span>
-        </p>
+        {/* The conversation is already underway when the visitor arrives:
+            Anna speaks first, in the persona's own voice, as a message
+            bubble. Without this the hero read as a search field with pills
+            under it (observed live 2026-08-18) — an input alone is not a
+            chat; someone talking to you is. */}
+        {!started ? (
+          <div className="aa-hero-greeting">
+            <span className="aa-avatar" aria-hidden="true">
+              <img
+                src="/anna-avatar.jpg"
+                alt=""
+                onError={(e) => {
+                  e.currentTarget.style.display = "none";
+                }}
+              />
+            </span>
+            <div>
+              <p className="aa-hero-greeting-name">
+                <strong>{assistantName}</strong>
+                <span>{assistantDisclosure}</span>
+              </p>
+              <div className="aa-hero-greeting-bubble">
+                <p className="aa-hero-greeting-lead">{c.conciergeHeading}</p>
+                <p>{c.conciergeBody}</p>
+                {c.conciergeAside ? <p className="aa-aside">{c.conciergeAside}</p> : null}
+              </div>
+            </div>
+          </div>
+        ) : null}
 
         {started ? (
           <div className="aa-hero-thread" ref={scroller}>
@@ -161,6 +184,22 @@ export default function AlmostAnnaChat({
                 <span className="aa-sr">{assistantName} is thinking</span>
               </p>
             ) : null}
+          </div>
+        ) : null}
+
+        {/* Quick replies sit between her message and the composer, where a
+            messaging app puts them; the input is the last thing, as a
+            composer should be. */}
+        {!started && !busy ? (
+          <div className="aa-hero-prompts">
+            <span>{c.promptsLabel ?? "You could ask"}</span>
+            <div>
+              {c.prompts.map((p) => (
+                <button key={p} type="button" onClick={() => send(p, true)}>
+                  {p}
+                </button>
+              ))}
+            </div>
           </div>
         ) : null}
 
@@ -214,18 +253,6 @@ export default function AlmostAnnaChat({
           </p>
         ) : null}
 
-        {!started && !busy ? (
-          <div className="aa-hero-prompts">
-            <span>{c.promptsLabel ?? "You could ask"}</span>
-            <div>
-              {c.prompts.map((p) => (
-                <button key={p} type="button" onClick={() => send(p, true)}>
-                  {p}
-                </button>
-              ))}
-            </div>
-          </div>
-        ) : null}
       </div>
     );
   }
