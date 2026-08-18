@@ -7,30 +7,25 @@ import { engagements } from "../engagements";
  * design (resume-client). Nav label switches from "Resume" to "Services".
  */
 
+/**
+ * Cut from six to three, 2026-08-18, external review: the six-item menu
+ * (identity, apps, commerce, campaigns, platforms, production) read as a
+ * full-service agency and attracted poorly matched work. The engagement is
+ * the product; these are supporting evidence of range, so three areas that
+ * map to the actual case studies is the honest size.
+ */
 const capabilities = [
   {
-    title: "Brand and identity",
-    body: "Positioning, naming, visual identity, brand systems, guidelines, and launch-ready creative.",
+    title: "Product and platform design",
+    body: "Product strategy, user experience, interface design, research, prototypes, design systems, and complex, data-rich enterprise tools.",
   },
   {
-    title: "Product and app design",
-    body: "Product strategy, user experience, interface design, prototypes, research, and scalable design systems.",
+    title: "Brand, campaigns, and content",
+    body: "Positioning, visual identity, campaign concepts, launch systems, and channel-ready creative.",
   },
   {
-    title: "Websites and commerce",
-    body: "Marketing sites, editorial experiences, service platforms, and commerce, from structure and content through design and build.",
-  },
-  {
-    title: "Campaigns, content, and social",
-    body: "Campaign concepts, launch systems, channel-ready content, social templates, motion, and supporting creative.",
-  },
-  {
-    title: "Platforms and complex systems",
-    body: "Enterprise tools, dashboards, connected workflows, information architecture, and data-rich interfaces.",
-  },
-  {
-    title: "Development and production",
-    body: "Working prototypes, front-end development, production design, quality assurance, launch support, and implementation oversight.",
+    title: "Websites and build",
+    body: "Marketing sites, editorial experiences, commerce, and working software, from structure and content through front-end development and launch.",
   },
 ];
 
@@ -135,25 +130,12 @@ export default function ServicesBody() {
         <p className="svc-note">You deal with the same person the whole way through.</p>
       </section>
 
-      <section className="svc-block">
-        <div className="shell">
-          <p className="eyebrow">What gets made</p>
-          <div className="svc-capabilities">
-            {capabilities.map((c) => (
-              <div key={c.title}>
-                <h2>{c.title}</h2>
-                <p>{c.body}</p>
-              </div>
-            ))}
-          </div>
-        </div>
-      </section>
-
       {/* Linked from the client homepage's "See all services". Same data as
           the homepage cards (app/engagements.ts), longer form: the homepage
           answers "where can a project start", this answers "what would that
-          actually be like". Sits between what gets made and how the studio
-          works because it is the bridge from output to arrangement. */}
+          actually be like". Moved directly below the hero 2026-08-18,
+          external review: the engagements are the clearest commercial idea
+          on the site, so they lead. Capabilities follow as evidence. */}
       <section className="svc-block" id="engagements">
         <div className="shell">
           <p className="eyebrow">Ways to work together</p>
@@ -171,6 +153,20 @@ export default function ServicesBody() {
           <a className="svc-engagement-cta" href="/contact">
             Share what you&rsquo;re working on <span aria-hidden="true">&rarr;</span>
           </a>
+        </div>
+      </section>
+
+      <section className="svc-block">
+        <div className="shell">
+          <p className="eyebrow">What gets made</p>
+          <div className="svc-capabilities">
+            {capabilities.map((c) => (
+              <div key={c.title}>
+                <h2>{c.title}</h2>
+                <p>{c.body}</p>
+              </div>
+            ))}
+          </div>
         </div>
       </section>
 
@@ -212,7 +208,7 @@ export default function ServicesBody() {
 
       <section className="svc-block">
         <div className="shell">
-          <p className="eyebrow">Selected clients</p>
+          <p className="eyebrow">Selected experience</p>
           <ul className="svc-partners">
             {partners.map((p) => (
               <li key={p}>{p}</li>

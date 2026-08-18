@@ -138,7 +138,7 @@ export default function SearchCaseStudy() {
           </div>
         </section>
 
-        <section className="summary-band" id="story" data-anna-prompt="What was search really doing?">
+        <section className="summary-band" id="story" data-anna-prompt="What job was search really doing?">
           <div className="shell search-summary">
             <div>
               <p className="eyebrow">Executive summary</p>
@@ -363,7 +363,7 @@ export default function SearchCaseStudy() {
 
         </section>
 
-        <section className="search-launch-band" data-anna-prompt="What's live today?">
+        <section className="search-launch-band" data-anna-prompt="What did production reveal?">
           <div className="shell">
             <SectionNumber>05 · Launch</SectionNumber>
             <div className="search-launch-heading">
@@ -396,7 +396,7 @@ export default function SearchCaseStudy() {
           </div>
         </section>
 
-        <section className="chapter shell search-tested-next" data-anna-prompt="What got tested next?">
+        <section className="chapter shell search-tested-next" data-anna-prompt="Why test typeahead separately?">
           <div className="chapter-intro two-column-copy">
             <div>
               <div className="search-concept-kicker">

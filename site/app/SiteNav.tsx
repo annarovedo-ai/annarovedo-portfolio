@@ -80,7 +80,6 @@ export default function SiteNav({
           About
         </a>
         <ResumeNavLink
-          primaryNav
           personaOverride={personaOverride}
           onNavigate={() => setOpen(false)}
         />

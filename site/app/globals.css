@@ -1621,6 +1621,11 @@ h3 {
   margin: 0;
 }
 
+/* Two artifacts since the bag moved up to the hero (2026-08-18). */
+.kmart-artifacts--pair {
+  grid-template-columns: 1fr 1fr;
+}
+
 @media (max-width: 900px) {
   .kmart-surface-grid {
     grid-template-columns: 1fr 1fr;
@@ -10449,5 +10454,108 @@ html[data-anna-razor="bar"] body {
 @media (max-width: 900px) {
   .svc-engagements {
     grid-template-columns: 1fr;
+  }
+}
+
+/* ------------------------------------------------------------------ */
+/* Persona menu: the demoted switcher on internal pages (2026-08-18).
+   The full segmented control stays on the entrances; see PersonaMenu.tsx
+   for why. Trigger reads as quiet header state on the navy ground; the
+   open list borrows the paper surface and the orange active fill from
+   the segmented control so choosing a persona feels like the same act. */
+
+.persona-menu {
+  position: relative;
+}
+
+.persona-menu-trigger {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  padding: 8px 14px;
+  border: 1px solid rgba(255, 255, 255, 0.28);
+  border-radius: 999px;
+  background: transparent;
+  color: #fff;
+  font-family: var(--sans);
+  font-size: var(--t-label);
+  font-weight: 600;
+  letter-spacing: var(--track-ui);
+  text-transform: uppercase;
+  white-space: nowrap;
+  cursor: pointer;
+  transition: border-color 0.18s ease;
+}
+
+.persona-menu-trigger:hover {
+  border-color: rgba(255, 255, 255, 0.6);
+}
+
+.persona-menu-trigger:focus-visible {
+  outline: 2px solid var(--flare);
+  outline-offset: 2px;
+}
+
+.persona-menu-hint {
+  color: var(--on-dark-label);
+}
+
+.persona-menu-caret {
+  font-size: 0.72em;
+  opacity: 0.7;
+}
+
+.persona-menu-list {
+  position: absolute;
+  top: calc(100% + 8px);
+  left: 50%;
+  transform: translateX(-50%);
+  display: flex;
+  flex-direction: column;
+  min-width: 172px;
+  padding: 4px;
+  background: var(--paper);
+  border: 1px solid var(--line);
+  border-radius: 16px;
+  box-shadow: 0 10px 26px rgba(0, 0, 0, 0.26);
+  z-index: 40;
+}
+
+.persona-menu-list button {
+  padding: 10px 14px;
+  border: 0;
+  border-radius: 12px;
+  background: transparent;
+  color: var(--body);
+  font-family: var(--sans);
+  font-size: var(--t-small);
+  font-weight: 600;
+  letter-spacing: var(--track-ui);
+  text-transform: uppercase;
+  text-align: left;
+  white-space: nowrap;
+  cursor: pointer;
+  transition: background 0.18s ease, color 0.18s ease;
+}
+
+.persona-menu-list button:hover {
+  color: var(--blue);
+  background: var(--paper-deep);
+}
+
+.persona-menu-list button.is-active {
+  background: var(--flare);
+  color: var(--ink);
+}
+
+/* On phones the trigger has to survive beside the lockup and the nav
+   toggle, so the label word goes and the persona name carries it. */
+@media (max-width: 767px) {
+  .persona-menu-hint {
+    display: none;
+  }
+
+  .persona-menu-trigger {
+    padding: 7px 12px;
   }
 }

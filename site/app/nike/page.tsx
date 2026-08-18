@@ -289,7 +289,7 @@ export default function NikeCaseStudy() {
           </p>
         </section>
 
-        <section className="chapter shell" data-anna-prompt="What happened after launch?">
+        <section className="chapter shell" data-anna-prompt="What did usability testing validate?">
           <SectionNumber>05</SectionNumber>
           <div className="chapter-intro two-column-copy">
             <div>

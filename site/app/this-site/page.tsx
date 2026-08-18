@@ -39,11 +39,15 @@ export default function ThisSitePage() {
       <article id="top">
         <section className="hero shell">
           <h1>This site is the seventh case study.</h1>
+          {/* Updated 2026-08-18: this used to quote the homepage headline
+              ("I design products and can get them built"), which the homepage
+              no longer says. The claim is now stated as the site's own, so it
+              cannot drift out of date when the hero copy changes again. */}
           <p className="hero-deck">
-            The homepage says I design products and can get them built. That is
-            an easy thing to type. So the proof is the thing you are using
-            right now: a working product with an AI in it, designed, written,
-            and built by me, the same way I would build for you.
+            Every page here claims I can design a product and get it built.
+            That is an easy thing to type. So the proof is the thing you are
+            using right now: a working product with an AI in it, designed,
+            written, and built by me, the same way I would build for you.
           </p>
 
           <div className="hero-meta" aria-label="Project details">
@@ -162,7 +166,7 @@ export default function ThisSitePage() {
           </div>
         </section>
 
-        <section className="reflection shell" data-anna-prompt="Would this work for us?">
+        <section className="reflection shell" data-anna-prompt="When does a persona-based site make sense?">
           <p className="section-number">05 · Reflection</p>
           <div className="reflection-grid">
             <h2>If I would not ship it for myself, I should not pitch it to you.</h2>

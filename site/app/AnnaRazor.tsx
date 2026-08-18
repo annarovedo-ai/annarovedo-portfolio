@@ -31,7 +31,7 @@ import { getServerSnapshot, getSnapshot, subscribe } from "./personaStore";
  * way to restore chrome.
  *
  * Sections opt in with a short line:
- *   <section data-anna-prompt="Why the bottom?">
+ *   <section data-anna-prompt="Why put the input at the bottom?">
  *
  * SHAPE, not swap. The three states below (quiet/razor/open) are one object
  * changing form, not three independent widgets that happen to trade places.
@@ -130,8 +130,22 @@ export default function AnnaRazor() {
     // job, sits clear of the browser furniture, and is a pattern people
     // already know. The hero's chat card stays hidden on phones either way,
     // so this is the single entry point rather than a second one.
-    setMode(window.matchMedia("(max-width: 767px)").matches ? "quiet" : "razor");
-  }, []);
+    //
+    // Internal pages also default to the corner button, on every viewport
+    // (2026-08-18, external review): on a case study the reader came for the
+    // work, and the full-width bar had become the loudest object under it.
+    // The mini stays present and clickable; the bar remains the entrance
+    // default and anything the visitor deliberately chose (stored above).
+    const homeLike = pathname === "/" || pathname === "/studio";
+    setMode(
+      window.matchMedia("(max-width: 767px)").matches || !homeLike
+        ? "quiet"
+        : "razor"
+    );
+    // pathname: client-side routing means no remount between pages, so the
+    // per-page default has to be recomputed on navigation. The stored check
+    // above still wins when the visitor has expressed a preference.
+  }, [pathname]);
 
   // PHONES NEVER GET THE BAR. NOT EVER.
   //
@@ -192,8 +206,30 @@ export default function AnnaRazor() {
     // inline chat card in its hero, so it gets the same scroll-in treatment.
     const isHomeLike = pathname === "/" || pathname === "/studio";
     if (!isHomeLike) {
-      setVisible(true);
-      return;
+      // Desktop: visible immediately, per Anna's standing rule that the chat
+      // must not hide from anyone who never scrolls. On phones that rule met
+      // a worse problem (2026-08-18, external review): the avatar sat
+      // directly on top of the opening paragraph of the case being read. So
+      // small screens wait for the hero to leave the viewport, the same
+      // choreography the homepage uses, and the fallback is a plain scroll
+      // threshold for pages without a .hero section.
+      if (!isPhone) {
+        setVisible(true);
+        return;
+      }
+      const hero = document.querySelector(".hero");
+      if (hero) {
+        const io = new IntersectionObserver(
+          ([entry]) => setVisible(!entry.isIntersecting),
+          { rootMargin: "-16px 0px 0px 0px", threshold: 0 }
+        );
+        io.observe(hero);
+        return () => io.disconnect();
+      }
+      const onScroll = () => setVisible(window.scrollY > 220);
+      onScroll();
+      window.addEventListener("scroll", onScroll, { passive: true });
+      return () => window.removeEventListener("scroll", onScroll);
     }
 
     // On phones, wait until the headline and deck have left the viewport. The
@@ -352,7 +388,13 @@ export default function AnnaRazor() {
     if (back && document.contains(back)) back.focus();
   }, [open]);
 
-  const enabled = ENABLED_PATHS === null || ENABLED_PATHS.includes(pathname);
+  // Contact is the one page where the assistant is pure cost: the visitor is
+  // already doing the thing every conversation is meant to lead to, and the
+  // desktop bar was observed covering the form's own controls. Nothing may
+  // ever sit over a form control, so the razor sits this page out entirely.
+  const enabled =
+    (ENABLED_PATHS === null || ENABLED_PATHS.includes(pathname)) &&
+    pathname !== "/contact";
 
   // Only reserve room at the foot of the document where the bar is mounted.
   useEffect(() => {

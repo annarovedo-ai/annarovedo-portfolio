@@ -701,7 +701,7 @@ export default function StateStreetCaseStudy() {
           </div>
         </section>
 
-        <section className="ss-implementation-band" data-anna-prompt="How did it survive the build?">
+        <section className="ss-implementation-band" data-anna-prompt="How did the design system survive implementation?">
           <div className="shell">
             <div className="chapter-intro two-column-copy">
               <div>
@@ -720,7 +720,7 @@ export default function StateStreetCaseStudy() {
           </div>
         </section>
 
-        <section className="chapter shell ss-outcome" data-anna-prompt="What difference did it make?">
+        <section className="chapter shell ss-outcome" data-anna-prompt="How did it become a shared decision-making system?">
           <div className="ss-outcome-heading">
             <div>
               <SectionNumber>07 · Scope and outcome</SectionNumber>

@@ -206,7 +206,7 @@ export default function Home() {
           </div>
         </section>
 
-        <section className="chapter chapter-alt" data-anna-prompt="What did the journeys reveal?">
+        <section className="chapter chapter-alt" data-anna-prompt="What did mapping the journeys reveal?">
           <div className="shell">
             <div className="chapter-intro two-column-copy">
               <div>
@@ -323,7 +323,7 @@ export default function Home() {
           </div>
         </section>
 
-        <section className="chapter shell" data-anna-prompt="Why the bottom?">
+        <section className="chapter shell" data-anna-prompt="Why put the input at the bottom?">
           <div className="chapter-intro two-column-copy">
             <div>
               <SectionNumber>03 · Interaction model</SectionNumber>
@@ -381,7 +381,7 @@ export default function Home() {
           </div>
         </section>
 
-        <section className="prototype chapter" data-anna-prompt="What did it have to prove?">
+        <section className="prototype chapter" data-anna-prompt="What did the prototype have to prove?">
           <div className="shell">
             <div className="chapter-intro two-column-copy">
               <div>
@@ -424,8 +424,15 @@ export default function Home() {
               <p className="lead">
                 Two rounds of unmoderated UserZoom testing moved the work beyond internal enthusiasm. Participants evaluated the prototype as prospective buyers, giving the team evidence about comprehension and interest before the experience advanced.
               </p>
+              {/* Softened 2026-08-18: "strong comprehension and interest
+                  signals" described confidence rather than findings, and the
+                  session-level data is not Anna's to publish. This states
+                  what the rounds were built to answer and what the signal
+                  earned, which is the honest size of the claim. If Anna
+                  supplies two or three specific observed behaviors, they
+                  belong here in place of the second sentence. */}
               <p className="fact-note">
-                Testing produced strong comprehension and interest signals, giving the team evidence that buyers could follow the model and wanted to continue the experience.
+                The rounds were built to answer three questions: could buyers follow the model, did they trust what it was doing, and did they want to keep going. The signal was strong enough to earn the next iteration, and testing has continued since in partnership with a dedicated researcher.
               </p>
             </div>
           </div>
@@ -500,7 +507,7 @@ export default function Home() {
 
         </section>
 
-        <section className="result-section" data-anna-prompt="When did it stop being a feature?">
+        <section className="result-section" data-anna-prompt="When did AI stop being just a feature?">
           <div className="shell result-grid">
             <div className="result-copy">
               <SectionNumber>06 · The Concierge</SectionNumber>
@@ -526,7 +533,7 @@ export default function Home() {
           </div>
         </section>
 
-        <section className="chapter shell" data-anna-prompt="What actually shipped?">
+        <section className="chapter shell" data-anna-prompt="How did the north star become buildable?">
           <div className="chapter-intro two-column-copy">
             <div>
               <SectionNumber>07 · From vision to live experience</SectionNumber>
@@ -563,7 +570,7 @@ export default function Home() {
           </div>
         </section>
 
-        <section className="future-section" data-anna-prompt="Where does this go next?">
+        <section className="future-section" data-anna-prompt="Why did this become journey orchestration?">
           <div className="shell">
             <div className="future-kicker">
               <span>What came next</span>
@@ -589,7 +596,7 @@ export default function Home() {
           </div>
         </section>
 
-        <section className="reflection shell" id="reflection" data-anna-prompt="How did it end?">
+        <section className="reflection shell" id="reflection" data-anna-prompt="What did this change about how you design AI?">
           <SectionNumber>09 · Reflection</SectionNumber>
           <div className="reflection-grid">
             <h2>The interface was never the most interesting part.</h2>

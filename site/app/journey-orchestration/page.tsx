@@ -149,7 +149,7 @@ export default function JourneyOrchestration() {
           />
         </section>
 
-        <section className="summary-band" id="story" data-anna-prompt="Not a chatbot. Why?">
+        <section className="summary-band" id="story" data-anna-prompt="Why wasn't a chatbot enough?">
           <div className="shell summary-grid">
             <div>
               <p className="eyebrow">Where this picks up</p>
@@ -179,7 +179,7 @@ export default function JourneyOrchestration() {
           </div>
         </section>
 
-        <section className="chapter shell" id="role" data-anna-prompt="Why now?">
+        <section className="chapter shell" id="role" data-anna-prompt="Why did journey orchestration matter now?">
           <div className="chapter-intro two-column-copy">
             <div>
               <SectionNumber>01 · Why now</SectionNumber>

@@ -71,7 +71,10 @@ export const contactContent: Record<PersonaId, ContactContent> = {
   client: {
     eyebrow: "Collaboration & consulting",
     headline: "What are you working on?",
-    deck: "I take on product, brand, and campaign work, from complex enterprise systems to new ideas that need a clear path to market. Partnerships typically run 3–6 months.",
+    // "Partnerships typically run 3–6 months" contradicted the engagement
+    // packages one page over (2–3 weeks to 6–12 weeks exist too). The range
+    // now lives in sideBody below, stated once, matching engagements.ts.
+    deck: "I take on product, brand, and campaign work, from complex enterprise systems to new ideas that need a clear path to market.",
     fields: [
       { label: "What’s your name?", placeholder: "Jane Doe" },
       { label: "Where should I reply?", placeholder: "jane@yourstartup.io" },
@@ -84,13 +87,13 @@ export const contactContent: Record<PersonaId, ContactContent> = {
     ],
     submit: "Start a conversation",
     sideHeading: "How engagements work",
+    // Rewritten 2026-08-18, external review: the old copy promised flat-rate
+    // monthly billing, weekly sprints, daily Slack, and production-ready code
+    // as if every engagement worked identically, which the three packages
+    // say is not true. This describes the actual range and the actual next
+    // step, and promises nothing a 2–3 week sprint would break.
     sideBody:
-      "No bloated pitch meetings. Scope is agreed upfront, work runs in weekly sprints, and artifacts stay lightweight: Figma, production-ready code, and clear documentation.",
-    sideList: [
-      { label: "Intro brief review & scope alignment", ordered: true },
-      { label: "Flat-rate monthly engagement structure", ordered: true },
-      { label: "Daily async communication via Slack", ordered: true },
-    ],
+      "Engagements range from a focused 2–3 week direction sprint to 3–6 months of embedded design leadership. After a short working session, I’ll recommend the smallest useful engagement and send a clear scope, fee, decision-maker, and working rhythm.",
     channels: [
       { label: "Book a call", value: "Book 30 minutes", href: "https://calendly.com/anna-rovedo/30min" },
     ],

@@ -85,6 +85,17 @@ export default function Kmart() {
               <strong>New business pitch</strong>
             </div>
           </div>
+
+          {/* Moved up from the identity artifacts 2026-08-18, external
+              review: a visual campaign story was making the visitor read four
+              sections before seeing any of the work. One arresting object
+              directly after the deck carries the whole idea; the rest of the
+              artifacts stay downstream where the story earns them. */}
+          <Figure
+            src="bag.jpg"
+            alt="A pink Kmart shopping bag with the logo covered by a strip of duct tape reading SHHH, with .com beneath it."
+            caption="The campaign in one object: the logo covered, the site named."
+          />
         </section>
 
         <section className="summary-band" id="brief" data-anna-prompt="What was the real problem?">
@@ -251,7 +262,7 @@ export default function Kmart() {
           />
         </section>
 
-        <section className="chapter chapter-alt" id="surfaces" data-anna-prompt="How far did the tape go?">
+        <section className="chapter chapter-alt" id="surfaces" data-anna-prompt="How far did the tape concept go?">
           <div className="shell">
             <p className="section-number">04</p>
             <div className="two-column-copy">
@@ -286,16 +297,13 @@ export default function Kmart() {
               ))}
             </div>
 
-            <div className="kmart-artifacts">
+            {/* The bag now opens the case from the hero, so this pair holds
+                the remaining identity artifacts. */}
+            <div className="kmart-artifacts kmart-artifacts--pair">
               <Figure
                 src="tape-k.jpg"
                 alt="The Kmart K logo rebuilt from strips of black duct tape."
                 caption="The mark, rebuilt in tape."
-              />
-              <Figure
-                src="bag.jpg"
-                alt="A pink Kmart shopping bag with the logo covered by a strip of duct tape reading SHHH, with .com beneath it."
-                caption="The bag. The logo covered, the site named."
               />
               <Figure
                 src="logo-lockup.jpg"
@@ -306,7 +314,7 @@ export default function Kmart() {
           </div>
         </section>
 
-        <section className="chapter shell" id="reveal" data-anna-prompt="What was the reveal?">
+        <section className="chapter shell" id="reveal" data-anna-prompt="How did the reveal work?">
           <p className="section-number">05</p>
           <div className="two-column-copy">
             <div>
@@ -368,7 +376,7 @@ export default function Kmart() {
           </p>
         </section>
 
-        <section className="reflection shell" id="outcome" data-anna-prompt="Why go this far?">
+        <section className="reflection shell" id="outcome" data-anna-prompt="Why did the campaign need this much detail?">
           <p className="eyebrow">What happened</p>
           <h2>We were the far end of the scale, and I think that was the point.</h2>
           <div className="reflection-grid">

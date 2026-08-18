@@ -415,7 +415,13 @@ export const homeContent: Record<PersonaId, HomeContent> = {
     // dropped the hedge on the way. "I can get them built" is a capability;
     // "Then I get them built" is what happens. Sequential, certain, five
     // words.
-    headline: ["From idea to market: brand, product, and campaign.", ""],
+    // REVERSED 2026-08-18, external review before client outreach: "From
+    // idea to market: brand, product, and campaign" was a full-service menu
+    // in headline form, and menus read as agency, not principal. The review's
+    // point: the buyer should know which expensive problem to hire her for,
+    // and that problem is direction. Breadth survives in the Services page
+    // and the case grid, where it is evidence instead of a claim.
+    headline: ["Principal product design for complex work that needs direction.", ""],
     // THE SUBTEXT DOES NOT SELL. That is the whole rule here, and it took
     // four tries and one good catch from Anna to arrive at it.
     //
@@ -460,15 +466,16 @@ export const homeContent: Record<PersonaId, HomeContent> = {
     // The proof is better made than claimed: this site was designed and built
     // exactly that way. If it should be explicit, the honest place is About
     // or a case study, where there is room to show rather than say.
-    // Per Anna, 2026-08-18: the hero must drive home that the CLIENT is the
-    // one getting the bargain — the talent agencies bill out, without the
-    // agency wrapped around it. That claim goes here rather than in the
-    // headline: the headline states what the studio does, this line states
-    // why buying it directly is the smart move, and the twenty-years /
-    // IBM-to-McDonald's proof carries into the same sentence so the value
-    // claim arrives pre-evidenced rather than as discount talk.
+    // REVERSED 2026-08-18, external review before client outreach. The
+    // earlier line ("Direct access to top agency talent, without the agency
+    // price tag") did drive home that the client gets the bargain, and that
+    // was the problem: it anchored the buyer below agency rates right before
+    // a rate conversation, and "top agency talent" was an unsupported
+    // superlative the roles and tenure make unnecessary. The advantage worth
+    // claiming is continuity and judgment, so this line sells seniority and
+    // range and lets the price question arrive unanchored.
     subtext:
-      "Direct access to top agency talent, without the agency price tag: twenty years across product teams and ad agencies, IBM to McDonald\u2019s, led by Anna Rovedo.",
+      "Anna Rovedo brings twenty years across product teams and agencies to important products, systems, and launches, from early direction through implementation.",
     conciergeHeading: "Start with the messy brief.",
     conciergeBody:
       "Describe what you’re trying to launch, fix, or figure out. The guide will surface relevant work, explain how Anna would approach the problem, and point out the questions worth answering first.",

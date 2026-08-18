@@ -100,11 +100,15 @@ function CaseCard({
   );
 }
 
+// "Selected clients" implied Paper Pixel itself contracted with IBM and
+// Nike. "Selected experience" claims the same logos honestly: companies
+// Anna has designed for, in whatever contractual wrapper. Same reason the
+// section hint asks about Anna rather than the studio.
 function ClientLogoStrip() {
   return (
-    <section className="home-clients" data-anna-prompt="Who has Paper Pixel worked with?">
+    <section className="home-clients" data-anna-prompt="Which companies has Anna designed for?">
       <div className="shell">
-        <p className="eyebrow">Selected clients</p>
+        <p className="eyebrow">Selected experience</p>
         <ul>
           {clients.map((cl) => (
             <li key={cl.name}>
@@ -127,7 +131,10 @@ function ClientLogoStrip() {
 const clientHeroProof = [
   {
     href: "/state-street",
-    label: "Brand",
+    // "Brand" contradicted the case study one click away, which proves a
+    // platform and a design system. The label is a promise of what the case
+    // demonstrates, so it has to match the evidence.
+    label: "Platform",
     title: "State Street Alpha",
     image: "/case-study/thumbs/state-street.jpg",
   },
@@ -263,7 +270,7 @@ function ClientHomeBody({ c }: { c: HomeContent }) {
       <section
         className="home-work client-work shell"
         id="client-work"
-        data-anna-prompt="Which project is most relevant to mine?"
+        data-anna-prompt="Which case study should I start with?"
       >
         <p className="eyebrow">Selected work</p>
         <h2>Brand, product, and campaign, in practice.</h2>
@@ -322,7 +329,7 @@ function ClientHomeBody({ c }: { c: HomeContent }) {
 
       <section
         className="client-guide shell"
-        data-anna-prompt="Where should my project start?"
+        data-anna-prompt="Do I need a sprint or an embedded design lead?"
       >
         <div className="client-guide-intro">
           <p className="eyebrow">Project guide</p>
@@ -362,7 +369,7 @@ function ClientHomeBody({ c }: { c: HomeContent }) {
         </a>
       </section>
 
-      <section className="home-cta client-cta" data-anna-prompt="Ready to talk?">
+      <section className="home-cta client-cta" data-anna-prompt="What should I include when I reach out?">
         <div className="shell home-cta-inner">
           <div>
             <h2>What are you trying to bring to market?</h2>
@@ -433,7 +440,7 @@ export default function HomeBody({
 
       <ClientLogoStrip />
 
-      <section className="home-work shell" id="work" data-anna-prompt="Where to start?">
+      <section className="home-work shell" id="work" data-anna-prompt="Which case study best shows how Anna thinks?">
         <p className="eyebrow">{c.workEyebrow}</p>
         <h2>{c.casesHeader}</h2>
 
@@ -480,7 +487,7 @@ export default function HomeBody({
 
       {/* Persona-switched as of 2026-08-07, and cut to roughly half its length.
           See the note on HomeContent.about for why the old opener had to go. */}
-      <section className="home-about shell" data-anna-prompt="Graphic design to AI?">
+      <section className="home-about shell" data-anna-prompt="How did Anna go from graphic design to AI?">
         <p className="eyebrow">{c.about.eyebrow}</p>
         <h2>{c.about.headline}</h2>
         <div className="home-about-copy">
@@ -494,7 +501,7 @@ export default function HomeBody({
         </a>
       </section>
 
-      <section className="home-cta" data-anna-prompt="What are you looking for?">
+      <section className="home-cta" data-anna-prompt="What kind of role is Anna looking for?">
         <div className="shell home-cta-inner">
           <div>
             <h2>{c.footerHeadline}</h2>
