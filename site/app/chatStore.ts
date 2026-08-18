@@ -26,6 +26,17 @@ export type ChatState = {
   busy: boolean;
   capped: boolean;
   error: string | null;
+  /** The composer's draft, shared across stage, dock, and panel so typed
+      but unsent text survives every change of costume. */
+  input: string;
+  /** Whether the conversation panel is open. Owned here rather than in
+      AnnaRazor so the stage can freeze its dock/undock decisions while the
+      panel is up. */
+  open: boolean;
+  /** True once the visitor has scrolled past the stage composer on / or
+      /studio. The stage writes it (IntersectionObserver on its sentinel);
+      the razor reads it to decide when the dock exists at all. */
+  stageDocked: boolean;
 };
 
 let state: ChatState = {
@@ -34,6 +45,9 @@ let state: ChatState = {
   busy: false,
   capped: false,
   error: null,
+  input: "",
+  open: false,
+  stageDocked: false,
 };
 
 const listeners = new Set<() => void>();
@@ -60,10 +74,50 @@ const SERVER_CHAT: ChatState = {
   busy: false,
   capped: false,
   error: null,
+  input: "",
+  open: false,
+  stageDocked: false,
 };
 
 export function getServerChat(): ChatState {
   return SERVER_CHAT;
+}
+
+export function setChatInput(value: string) {
+  if (state.input === value) return;
+  state = { ...state, input: value };
+  emit();
+}
+
+export function setChatOpen(open: boolean) {
+  if (state.open === open) return;
+  state = { ...state, open };
+  emit();
+}
+
+export function setStageDocked(docked: boolean) {
+  if (state.stageDocked === docked) return;
+  state = { ...state, stageDocked: docked };
+  emit();
+}
+
+/**
+ * Focus handoff between composers. When the composer changes form (stage to
+ * dock or back) the DOM node is different, so the losing side records the
+ * caret here in its cleanup and the arriving side claims it exactly once.
+ * Kept outside the reactive state on purpose: a caret position is not
+ * something to re-render over.
+ */
+let focusCarry: { start: number | null; end: number | null } | null = null;
+
+export function carryFocus(sel: { start: number | null; end: number | null }) {
+  focusCarry = sel;
+}
+
+export function takeFocusCarry() {
+  const c = focusCarry;
+  focusCarry = null;
+  return c;
 }
 
 /**
@@ -73,7 +127,17 @@ export function getServerChat(): ChatState {
  */
 export function ensurePersona(persona: PersonaId) {
   if (state.persona === persona) return;
-  state = { persona, messages: [], busy: false, capped: false, error: null };
+  // The thread and draft reset with the voice; the visitor's view state
+  // (panel open, scrolled past the stage) is theirs and survives.
+  state = {
+    ...state,
+    persona,
+    messages: [],
+    busy: false,
+    capped: false,
+    error: null,
+    input: "",
+  };
   emit();
 }
 

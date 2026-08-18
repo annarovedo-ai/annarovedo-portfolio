@@ -12,7 +12,7 @@ import {
   homeContent,
   supportingCaseStudies,
 } from "./homeContent";
-import AlmostAnnaChat from "./AlmostAnnaChat";
+import AnnaStage from "./AnnaStage";
 import { engagements } from "./engagements";
 
 const homeImageVariants: Record<string, string> = {
@@ -225,6 +225,12 @@ function ClientHomeBody({ c }: { c: HomeContent }) {
         </div>
       </section>
 
+      {/* Same full-viewport chat stage as the recruiter homepage, in the
+          Client voice (Ask Paper Pixel). Hard-coded "client": this branch
+          only renders for the Client persona, and /studio must server-render
+          it correctly from first paint. */}
+      <AnnaStage personaOverride="client" />
+
       <ClientLogoStrip />
 
       {/* Replaced the Brand/Product/Campaign capability cards 2026-08-17:
@@ -326,20 +332,12 @@ function ClientHomeBody({ c }: { c: HomeContent }) {
         </div>
       </section>
 
-      <section
-        className="client-guide shell"
-        data-anna-prompt="Do I need a sprint or an embedded design lead?"
-      >
-        <div className="client-guide-intro">
-          <p className="eyebrow">Project guide</p>
-          <h2>Not sure where your project fits? Ask Paper Pixel.</h2>
-          <p>
-            Describe the situation as it exists now. The guide will connect it to
-            relevant work and show you the questions Anna would start with.
-          </p>
-        </div>
-        <AlmostAnnaChat variant="inline" personaOverride="client" />
-      </section>
+      {/* The mid-page "Project guide" chat card was removed 2026-08-18
+          (final review of the continuous-chat pass): after the full-screen
+          stage establishes Ask Paper Pixel as the primary interaction, a
+          second boxed chat here was a competing surface, and the dock is
+          already following the reader by this point. Its section hint moved
+          nowhere; the engagements section above still carries its own. */}
 
       <section
         className="home-about client-about shell"
@@ -430,14 +428,13 @@ export default function HomeBody({
           </a>
         </div>
 
-        {/* Chat as the hero (2026-08-18). With the video gone, the hero's
-            story changed from "watch me" to "ask me": the claim above, then
-            the proof you can interrogate. One bar, the chips beneath it, the
-            thread expanding in place. Phones get this too — the boxed card
-            was hidden on small screens, but a single input line is exactly
-            the pattern a phone already understands. */}
-        <AlmostAnnaChat variant="hero" />
       </section>
+
+      {/* The full-viewport chat stage (continuous-chat pass, 2026-08-18):
+          the hero makes the claim, then the next full screen is the proof
+          you can interrogate. Scrolling past its composer morphs it into
+          the fixed dock at the foot of the viewport; see AnnaStage.tsx. */}
+      <AnnaStage personaOverride={persona} />
 
       <ClientLogoStrip />
 

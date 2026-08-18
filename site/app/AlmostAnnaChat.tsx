@@ -1,6 +1,6 @@
 "use client";
 
-import { useEffect, useRef, useState } from "react";
+import { useEffect, useRef } from "react";
 import { useSyncExternalStore } from "react";
 import { getServerSnapshot, getSnapshot, subscribe } from "./personaStore";
 import {
@@ -8,6 +8,7 @@ import {
   getChat,
   getServerChat,
   sendChat,
+  setChatInput,
   subscribeChat,
 } from "./chatStore";
 import { homeContent } from "./homeContent";
@@ -20,11 +21,10 @@ export default function AlmostAnnaChat({
   /**
    * "inline": the boxed card (client Project guide section).
    * "dock": the razor's open panel.
-   * "hero": the homepage hero conversation bar (2026-08-18, replacing the
-   * video): one input with the chips beneath it, no card chrome; the thread
-   * expands in place above the bar once the first question is asked.
+   * (A "hero" variant existed for a few hours on 2026-08-18; it grew into
+   * its own component, AnnaStage, in the continuous-chat pass.)
    */
-  variant?: "inline" | "dock" | "hero";
+  variant?: "inline" | "dock";
   /** Opening question handed over from the razor, sent once on mount. */
   seed?: string;
   /** The Client homepage passes "client" so the guide is Ask Paper Pixel in
@@ -48,7 +48,10 @@ export default function AlmostAnnaChat({
   // conversation started in one continues in the others. See chatStore.ts.
   const chat = useSyncExternalStore(subscribeChat, getChat, getServerChat);
   const { messages, busy, capped, error } = chat;
-  const [input, setInput] = useState("");
+  // The draft is shared through the store too, so a question typed into the
+  // dock is still there when the panel opens over it.
+  const input = chat.input;
+  const setInput = setChatInput;
   const scroller = useRef<HTMLDivElement | null>(null);
 
   // Persona switches reset the shared thread; the store ignores the call
@@ -118,144 +121,6 @@ export default function AlmostAnnaChat({
   }, [seed]);
 
   const started = messages.length > 0;
-
-  if (variant === "hero") {
-    return (
-      <div className="aa aa-hero">
-        {/* The conversation is already underway when the visitor arrives:
-            Anna speaks first, in the persona's own voice, as a message
-            bubble. Without this the hero read as a search field with pills
-            under it (observed live 2026-08-18) — an input alone is not a
-            chat; someone talking to you is. */}
-        {!started ? (
-          <div className="aa-hero-greeting">
-            <span className="aa-avatar" aria-hidden="true">
-              <img
-                src="/anna-avatar.jpg"
-                alt=""
-                onError={(e) => {
-                  e.currentTarget.style.display = "none";
-                }}
-              />
-            </span>
-            <div>
-              <p className="aa-hero-greeting-name">
-                <strong>{assistantName}</strong>
-                <span>{assistantDisclosure}</span>
-              </p>
-              <div className="aa-hero-greeting-bubble">
-                <p className="aa-hero-greeting-lead">{c.conciergeHeading}</p>
-                <p>{c.conciergeBody}</p>
-                {c.conciergeAside ? <p className="aa-aside">{c.conciergeAside}</p> : null}
-              </div>
-            </div>
-          </div>
-        ) : null}
-
-        {started ? (
-          <div className="aa-hero-thread" ref={scroller}>
-            <ul className="aa-thread">
-              {messages.map((m, i) => (
-                <li key={i} className={m.role === "user" ? "is-user" : "is-anna"}>
-                  {m.role === "assistant" ? (
-                    <span className="aa-avatar aa-avatar-sm" aria-hidden="true">
-                      <img
-                        src="/anna-avatar.jpg"
-                        alt=""
-                        onError={(e) => {
-                          e.currentTarget.style.display = "none";
-                        }}
-                      />
-                    </span>
-                  ) : null}
-                  <div className="aa-bubble">
-                    {m.content.split("\n\n").map((p, k) => (
-                      <p key={k}>{p}</p>
-                    ))}
-                  </div>
-                </li>
-              ))}
-            </ul>
-            {busy ? (
-              <p className="aa-typing" role="status">
-                <span />
-                <span />
-                <span />
-                <span className="aa-sr">{assistantName} is thinking</span>
-              </p>
-            ) : null}
-          </div>
-        ) : null}
-
-        {/* Quick replies sit between her message and the composer, where a
-            messaging app puts them; the input is the last thing, as a
-            composer should be. */}
-        {!started && !busy ? (
-          <div className="aa-hero-prompts">
-            <span>{c.promptsLabel ?? "You could ask"}</span>
-            <div>
-              {c.prompts.map((p) => (
-                <button key={p} type="button" onClick={() => send(p, true)}>
-                  {p}
-                </button>
-              ))}
-            </div>
-          </div>
-        ) : null}
-
-        <form
-          className="aa-hero-bar"
-          onSubmit={(e) => {
-            e.preventDefault();
-            send(input);
-          }}
-        >
-          <span className="aa-avatar" aria-hidden="true">
-            <img
-              src="/anna-avatar.jpg"
-              alt=""
-              onError={(e) => {
-                e.currentTarget.style.display = "none";
-              }}
-            />
-          </span>
-          <input
-            value={input}
-            onChange={(e) => setInput(e.target.value)}
-            placeholder={capped ? "That's the limit for now." : assistantPlaceholder}
-            aria-label={
-              isClient ? "Ask Paper Pixel about your project" : "Ask Almost Anna a question"
-            }
-            disabled={capped}
-          />
-          <button type="submit" disabled={busy || capped || !input.trim()} aria-label="Send">
-            <svg width="16" height="16" viewBox="0 0 16 16" fill="none" aria-hidden="true">
-              <path
-                d="M3 8H13M13 8L9 4M13 8L9 12"
-                stroke="currentColor"
-                strokeWidth="1.75"
-                strokeLinecap="round"
-                strokeLinejoin="round"
-              />
-            </svg>
-          </button>
-        </form>
-
-        {error ? (
-          <p className="aa-error" role="alert">
-            {error}
-            {capped ? (
-              <>
-                {" "}
-                <a href="https://calendly.com/anna-rovedo/30min">Book a call</a>.
-              </>
-            ) : null}
-          </p>
-        ) : null}
-
-      </div>
-    );
-  }
 
   return (
     <div className={`aa aa-${variant}`}>
