@@ -11,15 +11,12 @@ import {
 import type { PersonaId } from "./personaStore";
 
 /**
- * The demoted persona control for internal pages, added 2026-08-18 after an
- * external review. The full three-way segmented control stays on the two
- * entrances (/ and /studio), where choosing a door is the job of the page.
- * On internal pages it had become the dominant object in the header, and on
- * phones the three options wrapped into a tall bubble beside the logo; an
- * enterprise client reading a case study was shown "Ex Boyfriend" at equal
- * weight to Work and Contact. Here the current persona reads as a quiet
- * "Viewing as" state, and the other two wait inside the menu, so the Ex door
- * stays a signature Easter egg instead of primary navigation.
+ * UNUSED — safe to delete. This "Viewing as" menu replaced the segmented
+ * control in SiteHeader for a few hours on 2026-08-18 (external review
+ * suggestion) and was reverted the same day at Anna's call: the segmented
+ * control is part of the site's personality. Its CSS has been removed from
+ * globals.css, so wiring this back in means restoring that too. Kept only
+ * because this file was created from a sandbox that cannot delete files.
  */
 export default function PersonaMenu({
   personaOverride,

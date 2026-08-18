@@ -9643,7 +9643,10 @@ html[data-anna-razor="bar"] body {
    field. Clicking it only ever places a cursor. */
 .anna-razor-bar input {
   flex: 1;
-  min-width: 0;
+  /* The floor the offer chip shrinks against: the pill sizes to its text
+     until honoring that would leave less than a usable field, then the pill
+     ellipsizes instead. Was 0, which let the field vanish entirely. */
+  min-width: 160px;
   padding: 7px 0;
   border: 0;
   border-bottom: 1px solid transparent;
@@ -9689,8 +9692,13 @@ html[data-anna-razor="bar"] body {
    "tap this to pick a question," so giving it that shape (rather than just
    more text at the end of a row) is what makes it read as a suggestion
    instead of a caption. */
+/* flex: 0 1 auto rather than none (2026-08-18, Anna: "the pill shape should
+   adjust to the text length"). The pill hugs its content at every width the
+   bar can afford, and only starts giving space back once the input hits its
+   floor below. The hard 30ch cap this replaces was truncating mid-question,
+   and a chip that cuts off breaks the every-chip-stands-alone rule. */
 .anna-razor-offer-wrap {
-  flex: none;
+  flex: 0 1 auto;
   display: flex;
   align-items: center;
   min-width: 0;
@@ -9699,10 +9707,10 @@ html[data-anna-razor="bar"] body {
 
 /* Same component as .aa-prompts button — see the long note there. Everything
    below matches it except the background (inverted for its ground) and the
-   truncation, which only this one needs because it lives in a single fixed
-   row rather than a stack that can grow. */
+   ellipsis, which is now only the last-resort safety valve when the bar
+   genuinely runs out of room, not a fixed cap. */
 .anna-razor-offer {
-  max-width: 30ch;
+  max-width: 100%;
   overflow: hidden;
   padding: 10px 16px;
   border: 1px dashed var(--line);
@@ -10454,108 +10462,5 @@ html[data-anna-razor="bar"] body {
 @media (max-width: 900px) {
   .svc-engagements {
     grid-template-columns: 1fr;
-  }
-}
-
-/* ------------------------------------------------------------------ */
-/* Persona menu: the demoted switcher on internal pages (2026-08-18).
-   The full segmented control stays on the entrances; see PersonaMenu.tsx
-   for why. Trigger reads as quiet header state on the navy ground; the
-   open list borrows the paper surface and the orange active fill from
-   the segmented control so choosing a persona feels like the same act. */
-
-.persona-menu {
-  position: relative;
-}
-
-.persona-menu-trigger {
-  display: inline-flex;
-  align-items: center;
-  gap: 8px;
-  padding: 8px 14px;
-  border: 1px solid rgba(255, 255, 255, 0.28);
-  border-radius: 999px;
-  background: transparent;
-  color: #fff;
-  font-family: var(--sans);
-  font-size: var(--t-label);
-  font-weight: 600;
-  letter-spacing: var(--track-ui);
-  text-transform: uppercase;
-  white-space: nowrap;
-  cursor: pointer;
-  transition: border-color 0.18s ease;
-}
-
-.persona-menu-trigger:hover {
-  border-color: rgba(255, 255, 255, 0.6);
-}
-
-.persona-menu-trigger:focus-visible {
-  outline: 2px solid var(--flare);
-  outline-offset: 2px;
-}
-
-.persona-menu-hint {
-  color: var(--on-dark-label);
-}
-
-.persona-menu-caret {
-  font-size: 0.72em;
-  opacity: 0.7;
-}
-
-.persona-menu-list {
-  position: absolute;
-  top: calc(100% + 8px);
-  left: 50%;
-  transform: translateX(-50%);
-  display: flex;
-  flex-direction: column;
-  min-width: 172px;
-  padding: 4px;
-  background: var(--paper);
-  border: 1px solid var(--line);
-  border-radius: 16px;
-  box-shadow: 0 10px 26px rgba(0, 0, 0, 0.26);
-  z-index: 40;
-}
-
-.persona-menu-list button {
-  padding: 10px 14px;
-  border: 0;
-  border-radius: 12px;
-  background: transparent;
-  color: var(--body);
-  font-family: var(--sans);
-  font-size: var(--t-small);
-  font-weight: 600;
-  letter-spacing: var(--track-ui);
-  text-transform: uppercase;
-  text-align: left;
-  white-space: nowrap;
-  cursor: pointer;
-  transition: background 0.18s ease, color 0.18s ease;
-}
-
-.persona-menu-list button:hover {
-  color: var(--blue);
-  background: var(--paper-deep);
-}
-
-.persona-menu-list button.is-active {
-  background: var(--flare);
-  color: var(--ink);
-}
-
-/* On phones the trigger has to survive beside the lockup and the nav
-   toggle, so the label word goes and the persona name carries it. */
-@media (max-width: 767px) {
-  .persona-menu-hint {
-    display: none;
-  }
-
-  .persona-menu-trigger {
-    padding: 7px 12px;
   }
 }

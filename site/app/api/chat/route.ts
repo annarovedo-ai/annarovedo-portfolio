@@ -124,7 +124,9 @@ export async function POST(request: Request): Promise<Response> {
     return Response.json({ error: "Bad request." }, { status: 400 });
   }
 
-  const persona: PersonaId = isPersona(body.persona) ? body.persona : "recruiter";
+  // Fallback matches the site default (client since 2026-08-18); the widget
+  // always sends a persona, so this only guards malformed requests.
+  const persona: PersonaId = isPersona(body.persona) ? body.persona : "client";
 
   if (!Array.isArray(body.messages) || body.messages.length === 0) {
     return Response.json({ error: "Bad request." }, { status: 400 });

@@ -1,11 +1,12 @@
 import BrandLockup from "./BrandLockup";
-import PersonaMenu from "./PersonaMenu";
+import PersonaSwitch from "./PersonaSwitch";
 import SiteNav from "./SiteNav";
 
 /**
- * Internal pages get the quiet "Viewing as" menu rather than the full
- * segmented persona control; see PersonaMenu for the reasoning. The three-way
- * control lives on the entrances (/ and /studio) via PersonaChrome.
+ * The full segmented persona control, on every page. A quieter "Viewing as"
+ * menu (PersonaMenu) was tried here 2026-08-18 per an external review and
+ * reverted the same day at Anna's call: the segmented control is part of the
+ * site's personality, not interface weight.
  */
 export default function SiteHeader() {
   return (
@@ -13,7 +14,7 @@ export default function SiteHeader() {
       <BrandLockup />
 
       <div className="home-header-switch">
-        <PersonaMenu />
+        <PersonaSwitch compact label="I’m a" />
       </div>
 
       <SiteNav />

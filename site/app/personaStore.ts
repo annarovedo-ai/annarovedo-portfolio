@@ -10,16 +10,21 @@ const STORAGE_KEY = "pp-persona";
 const SESSION_KEY = "pp-persona-session";
 
 /**
- * Persona rules (docs/decisions-log.md):
- * - Recruiter is the default for un-gated traffic, bots and direct links.
+ * Persona rules (docs/decisions-log.md; default changed per Anna 2026-08-18):
+ * - Client is the default for un-gated traffic, bots and direct links. It was
+ *   Recruiter until the pre-outreach pass; with client outreach starting, a
+ *   cold visitor should land in the studio, and a recruiter following her
+ *   résumé link has the switcher one tap away.
  * - Recruiter and Client persist across visits (localStorage).
  * - Ex Boyfriend is reachable only by explicit selection. It lives in
  *   sessionStorage so it survives navigation inside one tab but dies when the
  *   tab closes, is never written to localStorage, and has no URL of its own,
- *   so it cannot be linked, bookmarked, shared or crawled.
+ *   so it cannot be linked, bookmarked, shared or crawled. Note that mobile
+ *   browsers restore tabs WITH sessionStorage, so a tab where Ex was chosen
+ *   stays Ex across days of reopening: that is the same tab, not a default.
  */
 function read(): PersonaId {
-  if (typeof window === "undefined") return "recruiter";
+  if (typeof window === "undefined") return "client";
   try {
     if (window.sessionStorage.getItem(SESSION_KEY) === "ex") return "ex";
   } catch {
@@ -31,7 +36,7 @@ function read(): PersonaId {
   } catch {
     /* storage unavailable */
   }
-  return "recruiter";
+  return "client";
 }
 
 let current: PersonaId | null = null;
@@ -50,9 +55,11 @@ export function getSnapshot(): PersonaId {
   return current;
 }
 
-/** Server snapshot is always the default, so crawlers only ever see Recruiter. */
+/** Server snapshot is always the default, so crawlers only ever see Client.
+    This must match read()'s fallback: a cold visitor's first paint and their
+    hydrated page have to agree, or the homepage flashes between personas. */
 export function getServerSnapshot(): PersonaId {
-  return "recruiter";
+  return "client";
 }
 
 export function setPersona(id: PersonaId) {

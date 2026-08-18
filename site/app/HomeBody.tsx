@@ -106,7 +106,7 @@ function CaseCard({
 // section hint asks about Anna rather than the studio.
 function ClientLogoStrip() {
   return (
-    <section className="home-clients" data-anna-prompt="Which companies has Anna designed for?">
+    <section className="home-clients" data-anna-prompt="Who has Anna designed for?">
       <div className="shell">
         <p className="eyebrow">Selected experience</p>
         <ul>
