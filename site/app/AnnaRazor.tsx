@@ -21,6 +21,7 @@ import {
   subscribeChat,
   takeFocusCarry,
 } from "./chatStore";
+import { ALMOST_ANNA_ENABLED } from "./annaFlags";
 
 /**
  * Almost Anna, docked along the bottom of the page.
@@ -360,7 +361,10 @@ export default function AnnaRazor() {
   // hours the same day; reversed. The bar covering the contact form's own
   // controls is a layout problem to solve in CSS, not a reason to remove
   // the assistant from the page.)
-  const enabled = ENABLED_PATHS === null || ENABLED_PATHS.includes(pathname);
+  // ALMOST_ANNA_ENABLED overrides all of it; see annaFlags.ts.
+  const enabled =
+    ALMOST_ANNA_ENABLED &&
+    (ENABLED_PATHS === null || ENABLED_PATHS.includes(pathname));
 
   // What "visible" means depends on the route: on stage routes the stage's
   // sentinel decides (stageDocked); everywhere else the observer above does.

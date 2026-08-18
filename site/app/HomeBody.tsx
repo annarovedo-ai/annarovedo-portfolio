@@ -13,6 +13,7 @@ import {
   supportingCaseStudies,
 } from "./homeContent";
 import AnnaStage from "./AnnaStage";
+import { ALMOST_ANNA_ENABLED } from "./annaFlags";
 import { engagements } from "./engagements";
 
 const homeImageVariants: Record<string, string> = {
@@ -225,11 +226,11 @@ function ClientHomeBody({ c }: { c: HomeContent }) {
         </div>
       </section>
 
-      {/* Same full-viewport chat stage as the recruiter homepage, in the
-          Client voice (Ask Paper Pixel). Hard-coded "client": this branch
-          only renders for the Client persona, and /studio must server-render
-          it correctly from first paint. */}
-      <AnnaStage personaOverride="client" />
+      {/* Same chat stage as the recruiter homepage, in the Client voice
+          (Ask Paper Pixel). Hard-coded "client": this branch only renders
+          for the Client persona, and /studio must server-render it
+          correctly from first paint. Behind the kill switch (annaFlags.ts). */}
+      {ALMOST_ANNA_ENABLED ? <AnnaStage personaOverride="client" /> : null}
 
       <ClientLogoStrip />
 
@@ -430,11 +431,12 @@ export default function HomeBody({
 
       </section>
 
-      {/* The full-viewport chat stage (continuous-chat pass, 2026-08-18):
-          the hero makes the claim, then the next full screen is the proof
-          you can interrogate. Scrolling past its composer morphs it into
-          the fixed dock at the foot of the viewport; see AnnaStage.tsx. */}
-      <AnnaStage personaOverride={persona} />
+      {/* The chat stage (continuous-chat pass, 2026-08-18): the hero makes
+          the claim, then the chat is the proof you can interrogate.
+          Scrolling past its composer morphs it into the fixed dock; see
+          AnnaStage.tsx. Behind the kill switch until Anna is happy with it
+          (annaFlags.ts). */}
+      {ALMOST_ANNA_ENABLED ? <AnnaStage personaOverride={persona} /> : null}
 
       <ClientLogoStrip />
 

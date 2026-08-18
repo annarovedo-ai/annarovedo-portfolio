@@ -209,14 +209,34 @@ export default function AnnaStage({
 
   return (
     <section className="anna-stage" aria-label={assistantName} data-anna-stage>
+      {/* One framed chat object (2026-08-19, Anna: "put it into a chat and
+          get rid of the negative space"): the section hugs its content and
+          everything lives inside a single bordered surface — her message,
+          the quick replies, the composer — so it reads as a conversation,
+          not as display type floating on the page. */}
       <div className="anna-stage-inner">
+        <div className="anna-stage-chat">
         {!started ? (
           <>
             <p className="anna-stage-name">
               <strong>{assistantName}</strong>
               <span>{assistantDisclosure}</span>
             </p>
-            <h2 className="anna-stage-heading">{heading}</h2>
+            <div className="anna-stage-greeting">
+              <span className="aa-avatar" aria-hidden="true">
+                <img
+                  src="/anna-avatar.jpg"
+                  alt=""
+                  onError={(e) => {
+                    e.currentTarget.style.display = "none";
+                  }}
+                />
+              </span>
+              <div className="anna-stage-bubble">
+                <h2 className="anna-stage-heading">{heading}</h2>
+                <p>{c.conciergeBody}</p>
+              </div>
+            </div>
             <div className="anna-stage-chips" aria-label="Suggested questions">
               {c.prompts.map((p) => (
                 <button key={p} type="button" onClick={() => send(p, true)}>
@@ -330,6 +350,7 @@ export default function AnnaStage({
           // page does not jump and the sentinel does not move.
           <div className="anna-stage-ghost" aria-hidden="true" />
         )}
+        </div>
       </div>
       <div ref={sentinelRef} className="anna-stage-sentinel" aria-hidden="true" />
     </section>
