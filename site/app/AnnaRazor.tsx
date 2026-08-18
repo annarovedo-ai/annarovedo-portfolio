@@ -5,6 +5,7 @@ import { usePathname } from "next/navigation";
 import { AnimatePresence, motion, MotionConfig } from "motion/react";
 import AlmostAnnaChat from "./AlmostAnnaChat";
 import { getServerSnapshot, getSnapshot, subscribe } from "./personaStore";
+import { getChat, getServerChat, subscribeChat } from "./chatStore";
 
 /**
  * Almost Anna, docked along the bottom of the page.
@@ -77,9 +78,17 @@ export default function AnnaRazor() {
   const persona = useSyncExternalStore(subscribe, getSnapshot, getServerSnapshot);
   const isClient = persona === "client";
   const assistantName = isClient ? "Ask Paper Pixel" : "Almost Anna";
-  const assistantPrompt = isClient
-    ? "Ask Paper Pixel about your project…"
-    : "Ask Almost Anna anything…";
+  // The thread is shared with the hero bar and the open panel (chatStore),
+  // which is what lets the razor BE the hero chat once the reader scrolls:
+  // same conversation, different costume. The placeholder acknowledges an
+  // in-progress thread instead of greeting the visitor like a stranger.
+  const chatThread = useSyncExternalStore(subscribeChat, getChat, getServerChat);
+  const chatStarted = chatThread.messages.length > 0;
+  const assistantPrompt = chatStarted
+    ? "Continue the conversation…"
+    : isClient
+      ? "Ask Paper Pixel about your project…"
+      : "Ask Almost Anna anything…";
   const assistantIntro = isClient
     ? "Paper Pixel’s AI, guided by Anna’s work. Ask about your project."
     : "An AI trained on Anna’s work. Ask it anything.";

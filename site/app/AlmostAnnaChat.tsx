@@ -3,9 +3,14 @@
 import { useEffect, useRef, useState } from "react";
 import { useSyncExternalStore } from "react";
 import { getServerSnapshot, getSnapshot, subscribe } from "./personaStore";
+import {
+  ensurePersona,
+  getChat,
+  getServerChat,
+  sendChat,
+  subscribeChat,
+} from "./chatStore";
 import { homeContent } from "./homeContent";
-
-type Msg = { role: "user" | "assistant"; content: string };
 
 export default function AlmostAnnaChat({
   variant = "inline",
@@ -38,18 +43,18 @@ export default function AlmostAnnaChat({
     ? "Ask about your project…"
     : "Ask Almost Anna anything…";
 
-  const [messages, setMessages] = useState<Msg[]>([]);
+  // The thread lives in chatStore, shared by every instance of this
+  // component on the page (hero bar, inline card, razor dock), so a
+  // conversation started in one continues in the others. See chatStore.ts.
+  const chat = useSyncExternalStore(subscribeChat, getChat, getServerChat);
+  const { messages, busy, capped, error } = chat;
   const [input, setInput] = useState("");
-  const [busy, setBusy] = useState(false);
-  const [error, setError] = useState<string | null>(null);
-  const [capped, setCapped] = useState(false);
   const scroller = useRef<HTMLDivElement | null>(null);
 
-  // Switching persona starts a fresh conversation: the voice changes, so
-  // carrying the old thread across would read as a continuity error.
+  // Persona switches reset the shared thread; the store ignores the call
+  // when nothing changed, so every mounted instance can say it safely.
   useEffect(() => {
-    setMessages([]);
-    setError(null);
+    ensurePersona(persona);
   }, [persona]);
 
   // Land on the START of the answer, not the end of it.
@@ -95,47 +100,11 @@ export default function AlmostAnnaChat({
     el.scrollTo({ top: Math.max(0, target - 12), behavior: "smooth" });
   }, [messages, busy]);
 
-  /**
-   * `suggested` marks questions that came from the interface itself, the
-   * prompt chips and the per-section hints, rather than the visitor's own
-   * typing. The API forwards it so the model knows the site asked on the
-   * visitor's behalf: a clicked chip must be answered directly, never met
-   * with "why do you ask" or a request for specifics.
-   */
-  async function send(text: string, suggested = false) {
-    const trimmed = text.trim();
-    if (!trimmed || busy || capped) return;
-
-    const next: Msg[] = [...messages, { role: "user", content: trimmed }];
-    setMessages(next);
+  // The network round-trip and the `suggested` contract live in the store
+  // now (sendChat); this wrapper only clears this instance's own input.
+  function send(text: string, suggested = false) {
+    sendChat(persona, text, suggested);
     setInput("");
-    setError(null);
-    setBusy(true);
-
-    try {
-      const res = await fetch("/api/chat", {
-        method: "POST",
-        headers: { "Content-Type": "application/json" },
-        body: JSON.stringify({ persona, messages: next, suggested }),
-      });
-      const data = (await res.json()) as {
-        reply?: string;
-        error?: string;
-        capped?: boolean;
-      };
-
-      if (!res.ok || !data.reply) {
-        if (data.capped) setCapped(true);
-        setError(data.error ?? "Something went wrong. Try again in a moment.");
-        return;
-      }
-
-      setMessages((m) => [...m, { role: "assistant", content: data.reply as string }]);
-    } catch {
-      setError("I couldn't reach the server. Try again in a moment.");
-    } finally {
-      setBusy(false);
-    }
   }
 
   // The razor carries the first question across when it expands, so the

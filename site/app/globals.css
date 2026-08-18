@@ -4940,7 +4940,11 @@ blockquote {
    bar you can type into, the printed chips underneath, and a thread that
    expands in place above the bar once the conversation starts. */
 
-.aa-hero {
+/* Doubled class, not vanity: the base .aa card rule is defined several
+   thousand lines below this block, so at equal specificity its navy border
+   and surface background win the cascade and the hero grows a box it was
+   designed not to have (observed live 2026-08-18). */
+.aa.aa-hero {
   border: 0;
   background: transparent;
   gap: 14px;
@@ -7792,6 +7796,66 @@ a.home-video-label:focus-visible {
 
 /* The .about-resume rules that lived here were removed 2026-08-18 along with
    the embedded ResumeSheet on the About page; see AboutBody.tsx. */
+
+/* ------------------------------------------------------------------ */
+/* THE RAZOR WEARS THE HERO'S PILL (2026-08-18, Anna: "it should connect").
+   The hero bar and the razor share one thread (chatStore); this makes them
+   share one costume, so the bar the reader typed into in the hero and the
+   bar that follows them down the page read as the same object docked to the
+   viewport, not two assistants wearing the same face. Overrides collected
+   here at the end of the cascade rather than scattered through the navy-era
+   rules above, so the old costume remains in one piece above if this is
+   ever reverted. */
+
+.anna-razor-bar {
+  bottom: 14px;
+  width: min(880px, calc(100% - 48px));
+  padding: 8px 10px 8px 16px;
+  border: 1px solid var(--chat-frame);
+  border-radius: 999px;
+  background: var(--surface);
+  box-shadow: 0 14px 40px rgba(17, 17, 17, 0.16);
+}
+
+.anna-razor-bar input {
+  color: var(--ink);
+  caret-color: var(--ink);
+}
+
+.anna-razor-bar input::placeholder {
+  color: var(--placeholder);
+}
+
+/* On white the focus ring goes back to blue; the white ring above was for
+   the navy ground. */
+.anna-razor-bar .anna-razor-offer:focus-visible,
+.anna-razor-bar .anna-razor-send:focus-visible,
+.anna-razor-bar .anna-razor-dismiss:focus-visible,
+.anna-razor-bar .anna-razor-undo:focus-visible {
+  outline: 2px solid var(--blue);
+}
+
+/* Same circle as the hero bar's send. */
+.anna-razor-bar .anna-razor-send {
+  width: 36px;
+  height: 36px;
+  border-radius: 999px;
+  background: var(--blue);
+  color: #fff;
+}
+
+.anna-razor-bar .anna-razor-dismiss {
+  color: var(--muted);
+}
+
+.anna-razor-bar .anna-razor-notice p {
+  color: var(--body);
+}
+
+.anna-razor-bar .anna-razor-undo {
+  color: var(--blue);
+  border-color: currentColor;
+}
 
 .about-points {
   padding-block: clamp(56px, 7vw, 88px);
