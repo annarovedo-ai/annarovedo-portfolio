@@ -9,4 +9,4 @@
  * /api/chat route, the release tests over the answer copy) stays intact
  * and tested, so turning it back on is this one line.
  */
-export const ALMOST_ANNA_ENABLED = false;
+export const ALMOST_ANNA_ENABLED = true;
