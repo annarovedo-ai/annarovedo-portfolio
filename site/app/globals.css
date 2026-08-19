@@ -10990,3 +10990,19 @@ html[data-anna-razor="bar"] body {
     text-overflow: clip;
   }
 }
+
+/* The brand glyph centers on its row in the internal docked header
+   (2026-08-19, Anna: "the glyph needs to be vertically aligned"). .brand
+   aligns to baseline for the wordmark's sake; on phones the glyph stands
+   alone and baseline alignment left it visually low against the pill. */
+@media (max-width: 720px) {
+  .home-header.is-docked:not(.is-home) > .brand {
+    align-items: center;
+    align-self: center;
+  }
+
+  .home-header.is-docked:not(.is-home) {
+    padding-top: 12px;
+    padding-bottom: 12px;
+  }
+}
