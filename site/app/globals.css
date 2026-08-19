@@ -10966,3 +10966,19 @@ html[data-anna-razor="bar"] body {
     letter-spacing: 0.03em;
   }
 }
+
+/* Mobile full-screen empty state (2026-08-19): the composer anchors to the
+   bottom, chips clustered directly above it in thumb range, and the empty
+   space sits ABOVE them as room the conversation will fill. The input at
+   the bottom is the whole thesis; the panel practices it. */
+@media (max-width: 720px) {
+  .anna-razor-panel .anna-chat {
+    justify-content: flex-end;
+  }
+
+  /* The disclosure was truncating mid-word beside the name; at this width
+     the name and the face are introduction enough. */
+  .anna-panel-id span {
+    display: none;
+  }
+}
