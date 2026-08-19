@@ -4949,9 +4949,20 @@ blockquote {
   padding: clamp(36px, 5vh, 64px) 24px;
 }
 
+/* Inside the hero (2026-08-19, Anna: the headline "should actually be
+   locked up with the chat"), the hero shell already provides the side
+   padding and the rhythm; the stage only needs the gap under the copy. */
+.home-hero .anna-stage {
+  padding: clamp(26px, 4vh, 42px) 0 0;
+}
+
 .anna-stage-inner {
   width: min(960px, 100%);
   margin: 0 auto;
+}
+
+.home-hero .anna-stage-inner {
+  width: 100%;
 }
 
 /* The chat, as an object: one bordered surface holding her message, the
@@ -4967,30 +4978,9 @@ blockquote {
   box-shadow: 0 18px 44px rgba(17, 17, 17, 0.07);
 }
 
-/* Anna's opening message: avatar beside a received-message bubble, the
-   squared corner pointing back at her. */
-.anna-stage-greeting {
-  display: flex;
-  gap: 12px;
-}
-
-.anna-stage-greeting > .aa-avatar {
-  flex: none;
-}
-
-.anna-stage-bubble {
-  max-width: 60ch;
-  padding: 14px 18px;
-  border: 1px solid var(--line);
-  border-radius: 4px 18px 18px 18px;
-  background: var(--paper-deep);
-}
-
-.anna-stage-bubble p {
-  margin: 10px 0 0;
-  color: var(--body);
-  font-size: var(--t-base);
-}
+/* The greeting bubble was removed 2026-08-19: with the stage inside the
+   hero, the headline is the greeting, and the bubble was a third
+   introduction. The name row below is the one identifier. */
 
 .anna-stage-name {
   display: flex;
@@ -5008,15 +4998,6 @@ blockquote {
 .anna-stage-name span {
   color: var(--muted);
   font-size: var(--t-small);
-}
-
-/* Sized for a message bubble now, not for display type on the page. */
-.anna-stage-heading {
-  margin: 0;
-  font-family: var(--serif);
-  font-size: clamp(1.3rem, 2.2vw, 1.7rem);
-  line-height: 1.2;
-  color: var(--ink);
 }
 
 .anna-stage-chips {
@@ -5130,10 +5111,6 @@ blockquote {
   .anna-stage-chat {
     padding: 16px;
     border-radius: 16px;
-  }
-
-  .anna-stage-heading {
-    font-size: 1.2rem;
   }
 
   .anna-stage-composer {

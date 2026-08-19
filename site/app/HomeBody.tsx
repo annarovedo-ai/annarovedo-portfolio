@@ -429,14 +429,13 @@ export default function HomeBody({
           </a>
         </div>
 
+        {/* Locked up with the headline (2026-08-19, Anna): the chat IS the
+            hero's second half, not a section after it. The claim above, the
+            conversation below, one unit. Scrolling past the composer morphs
+            it into the fixed dock; see AnnaStage.tsx. Behind the kill
+            switch in annaFlags.ts. */}
+        {ALMOST_ANNA_ENABLED ? <AnnaStage personaOverride={persona} /> : null}
       </section>
-
-      {/* The chat stage (continuous-chat pass, 2026-08-18): the hero makes
-          the claim, then the chat is the proof you can interrogate.
-          Scrolling past its composer morphs it into the fixed dock; see
-          AnnaStage.tsx. Behind the kill switch until Anna is happy with it
-          (annaFlags.ts). */}
-      {ALMOST_ANNA_ENABLED ? <AnnaStage personaOverride={persona} /> : null}
 
       <ClientLogoStrip />
 

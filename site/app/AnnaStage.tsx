@@ -56,12 +56,8 @@ import { homeContent } from "./homeContent";
 // cannot re-trigger the observer it came from.
 const DOCK_MARGIN = "-56px 0px 0px 0px";
 
-const STAGE_HEADINGS: Partial<Record<PersonaId, string>> = {
-  recruiter: "Ask Anna about the work.",
-  client: "Start with the project as it exists now.",
-  // Ex deliberately absent: the Ex voice already has its opening line in
-  // homeContent (conciergeHeading) and inventing new intimacy is off-limits.
-};
+// STAGE_HEADINGS was removed 2026-08-19 along with the greeting bubble: the
+// stage sits inside the hero now, and the hero headline is the heading.
 
 export default function AnnaStage({
   personaOverride,
@@ -84,7 +80,6 @@ export default function AnnaStage({
   const assistantPlaceholder = isClient
     ? "Ask about your project…"
     : "Ask Almost Anna anything…";
-  const heading = STAGE_HEADINGS[persona] ?? c.conciergeHeading;
 
   const started = messages.length > 0;
   const sentinelRef = useRef<HTMLDivElement | null>(null);
@@ -216,27 +211,17 @@ export default function AnnaStage({
           not as display type floating on the page. */}
       <div className="anna-stage-inner">
         <div className="anna-stage-chat">
+        {/* One introduction, not three (2026-08-19, Anna): the greeting
+            bubble ("Ask Anna about the work" + the how-it-was-built
+            paragraph) doubled what the hero headline above and the
+            disclosure line here already say. The name row is the single
+            identifier; then the questions; then the composer. */}
         {!started ? (
           <>
             <p className="anna-stage-name">
               <strong>{assistantName}</strong>
               <span>{assistantDisclosure}</span>
             </p>
-            <div className="anna-stage-greeting">
-              <span className="aa-avatar" aria-hidden="true">
-                <img
-                  src="/anna-avatar.jpg"
-                  alt=""
-                  onError={(e) => {
-                    e.currentTarget.style.display = "none";
-                  }}
-                />
-              </span>
-              <div className="anna-stage-bubble">
-                <h2 className="anna-stage-heading">{heading}</h2>
-                <p>{c.conciergeBody}</p>
-              </div>
-            </div>
             <div className="anna-stage-chips" aria-label="Suggested questions">
               {c.prompts.map((p) => (
                 <button key={p} type="button" onClick={() => send(p, true)}>
