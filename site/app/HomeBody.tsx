@@ -5,7 +5,6 @@ import { getServerSnapshot, getSnapshot, subscribe } from "./personaStore";
 import type { PersonaId } from "./personaStore";
 import type { CaseStudy, HomeContent } from "./homeContent";
 import {
-  BOOKING_URL,
   caseFor,
   clients,
   flagshipCaseStudies,
@@ -414,14 +413,12 @@ export default function HomeBody({
             ) : null}
           </h1>
           <p className="home-hero-deck">{c.subtext}</p>
-          {/* The video block that lived beside the chat is gone entirely
-              (Anna, 2026-08-18: "remove the videos from the website"). The
-              booking link it carried survives here under the deck, still
-              above the fold: someone the page convinces should not have to
-              hunt the footer for the next step. */}
-          <a className="home-video-book home-hero-book" href={BOOKING_URL}>
-            Book 30 minutes
-          </a>
+          {/* "Book 30 minutes" was cut 2026-08-19. It arrived as the video's
+              companion ("someone the video convinces should not have to
+              hunt for the next step") and outlived its reason when the
+              video went. A booking ask five seconds in requests commitment
+              before evidence; booking lives where post-proof happens — the
+              footer CTA, the contact page, and the chat. */}
         </div>
 
         {/* The chat left the hero for good on 2026-08-19, by Anna's own
@@ -482,7 +479,9 @@ export default function HomeBody({
 
       {/* Persona-switched as of 2026-08-07, and cut to roughly half its length.
           See the note on HomeContent.about for why the old opener had to go. */}
-      <section className="home-about shell" data-anna-prompt="How did Anna go from graphic design to AI?">
+      {/* Hint removed 2026-08-19 per Anna; the fashion-to-AI story is the
+          chip's job on the panel menu, and this section says it in prose. */}
+      <section className="home-about shell">
         <p className="eyebrow">{c.about.eyebrow}</p>
         <h2>{c.about.headline}</h2>
         <div className="home-about-copy">

@@ -333,7 +333,7 @@ Art Director, and the range is real rather than decorative.
 If they are hiring for something more defined than either, point them at the
 Global Search redesign instead.
 
-"Why have you worked with so many brands?"
+"What did working across so many brands teach you?"
 Answer this straight, with no defensiveness, because the honest version is
 better than the careful one. Contract by choice for almost the whole career,
 one staff role (DraftFCB, 2008, when that was simply the climate). Advertising

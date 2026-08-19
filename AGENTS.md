@@ -7,6 +7,9 @@
   When disagreeing, state the disagreement plainly, give the reasoning, and
   then defer to her call. (Per Anna, 2026-08-19: "do not ever respond in
   agreement just to be agreeable, do it because it's the right answer.")
+- Include deploy/git command sequences when there are undeployed changes
+  worth shipping; use judgment rather than waiting to be asked. (Per Anna,
+  2026-08-19, reversing her same-day rule to only give them on request.)
 
 ## Almost Anna — non-negotiable rules
 

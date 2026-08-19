@@ -44,7 +44,9 @@ export const contactContent: Record<PersonaId, ContactContent> = {
   recruiter: {
     eyebrow: "Availability status",
     headline: "Taking on new roles and contracts",
-    deck: "I am currently exploring full-time leadership roles, advisory contracts, and selected collaborative projects.",
+    // "Leadership roles" read as wanting to manage people (Anna's testing
+    // note, 2026-08-19); principal says senior without saying manager.
+    deck: "I am currently exploring full-time principal roles, advisory contracts, and selected collaborative projects.",
     fields: [
       { label: "Full name", placeholder: "Sarah Jenkins" },
       { label: "Work email", placeholder: "s.jenkins@firm.com" },
@@ -62,6 +64,10 @@ export const contactContent: Record<PersonaId, ContactContent> = {
     channels: [
       { label: "Book a call", value: "Book 30 minutes", href: "https://calendly.com/anna-rovedo/30min" },
       { label: "Email address", value: "anna.rovedo@gmail.com", href: "mailto:anna.rovedo@gmail.com" },
+      // The résumé, reachable from the contact page too (Anna's testing
+      // note, 2026-08-19: "link resume here too") — a recruiter mid-form
+      // shouldn't have to leave to double-check the CV.
+      { label: "Résumé", value: "Download résumé", href: "/anna-rovedo-resume.pdf" },
       // "Professional network" pointed at an unclaimed LinkedIn vanity URL.
       // Removed 2026-08-07; put it back when linkedin.com/in/anna-paperpixel
       // actually resolves, or swap in the real profile URL.
@@ -71,10 +77,10 @@ export const contactContent: Record<PersonaId, ContactContent> = {
   client: {
     eyebrow: "Collaboration & consulting",
     headline: "What are you working on?",
-    // "Partnerships typically run 3–6 months" contradicted the engagement
-    // packages one page over (2–3 weeks to 6–12 weeks exist too). The range
-    // now lives in sideBody below, stated once, matching engagements.ts.
-    deck: "I take on product, brand, and campaign work, from complex enterprise systems to new ideas that need a clear path to market.",
+    // Rewritten in the visitor's direction (Anna's testing note, 2026-08-19:
+    // "It should be all about them"). The engagement-length range lives in
+    // sideBody, stated once, matching engagements.ts.
+    deck: "Need help with product, brand, or campaign work? From a complex enterprise system to a new idea that needs a clear path to market, bring it in whatever shape it's in.",
     fields: [
       { label: "What’s your name?", placeholder: "Jane Doe" },
       { label: "Where should I reply?", placeholder: "jane@yourstartup.io" },
@@ -129,6 +135,9 @@ export const contactContent: Record<PersonaId, ContactContent> = {
 
 export const resumeContent: Record<PersonaId, ResumeContent> = {
   recruiter: {
+    // The About/Resume merge stands (2026-08-19), but the label stays
+    // "Resume": Anna overruled "Experience" the same day, and rightly —
+    // Resume is the word recruiters scan for.
     navLabel: "Resume",
     eyebrow: "Principal Experience Designer",
     headline: "I help teams figure out what complex products should become.",

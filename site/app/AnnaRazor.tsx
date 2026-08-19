@@ -269,11 +269,14 @@ export default function AnnaRazor() {
     );
     nodes.forEach((n) => io.observe(n));
     return () => io.disconnect();
-    // Same reason as the visibility observer above: re-query the tagged
-    // sections on navigation. Without this the hint chip stays frozen on the
-    // last section of the page you came from, so the razor would offer
-    // "What I did for these" over a case study about something else.
-  }, [pathname]);
+    // pathname: re-query the tagged sections on navigation, or the hint
+    // stays frozen on the page you came from. persona: THE SAME BUG WORE A
+    // SECOND COSTUME (found live 2026-08-19, "there's no prompt hints") —
+    // switching persona rebuilds the homepage body, the observer kept
+    // watching the old persona's detached sections, and the hint went
+    // silent everywhere until the next navigation. Every observer that
+    // watches page content must re-bind on BOTH.
+  }, [pathname, persona]);
 
   // Retract-on-scroll (hide while scrolling down, return on scroll up or a
   // pause) was removed 2026-08-06 at Anna's request — she didn't like the bar

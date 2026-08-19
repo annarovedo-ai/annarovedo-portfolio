@@ -303,7 +303,10 @@ export const homeContent: Record<PersonaId, HomeContent> = {
     // Single-line headline: headline[1] is intentionally empty and the soft
     // span does not render. Client and Ex keep the two-part question/answer.
     headline: ["UX is my specialty, not my boundary.", ""],
-    subtext: "Twenty years across products, systems, brands, and campaigns.",
+    // Depth-led, number kept once (2026-08-19): the headline above already
+    // claims the range, so this line stopped restating it with vague nouns
+    // and started naming the niches recruiters actually search for.
+    subtext: "Enterprise AI, search, and design systems, practiced for twenty years.",
     conciergeHeading:
       "You can piece me together from my case studies, or you can ask Almost Anna.",
     conciergeBody:
@@ -333,7 +336,10 @@ export const homeContent: Record<PersonaId, HomeContent> = {
     // three are on the record now.
     prompts: [
       "Which project best shows how you think?",
-      "Why have you worked with so many brands?",
+      // Reframed 2026-08-19 (Anna): "why so many brands" invited a
+      // job-hopper reading. Asking what the range taught her makes the
+      // breadth the asset it is before she says a word.
+      "What did working across so many brands teach you?",
       "How do you work when the roadmap isn’t clear?",
       "What kind of role are you actually looking for?",
     ],

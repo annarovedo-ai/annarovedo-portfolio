@@ -7,9 +7,13 @@ import SiteHeader from "../SiteHeader";
 import SiteFooter from "../SiteFooter";
 
 export default function AboutBody() {
-  const persona = useSyncExternalStore(subscribe, getSnapshot, getServerSnapshot);
+  const store = useSyncExternalStore(subscribe, getSnapshot, getServerSnapshot);
+  // Ex is one page (2026-08-19): utility pages serve the Recruiter content.
+  // This page itself left the Recruiter/Ex nav in the About/Resume merge;
+  // it remains reachable by URL and for the Client persona.
+  const persona = store === "ex" ? "recruiter" : store;
   const c = aboutContent[persona];
-  const showResume = persona === "recruiter" || persona === "ex";
+  const showResume = persona === "recruiter";
 
   return (
     <main>

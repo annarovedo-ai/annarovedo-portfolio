@@ -117,7 +117,12 @@ export async function POST(request: Request): Promise<Response> {
     );
   }
 
-  let body: { messages?: unknown; persona?: unknown; suggested?: unknown };
+  let body: {
+    messages?: unknown;
+    persona?: unknown;
+    suggested?: unknown;
+    page?: unknown;
+  };
   try {
     body = await request.json();
   } catch {
@@ -127,6 +132,27 @@ export async function POST(request: Request): Promise<Response> {
   // Fallback matches the site default (recruiter); the widget always sends a
   // persona, so this only guards malformed requests.
   const persona: PersonaId = isPersona(body.persona) ? body.persona : "recruiter";
+
+  // Where the visitor is standing. An allowlist, not a passthrough: the
+  // widget reports window.location.pathname, and only paths in this map
+  // reach the model, so the field cannot be used to inject prompt text.
+  const PAGE_CONTEXT: Record<string, string> = {
+    "/": "the homepage",
+    "/studio": "the Paper Pixel studio homepage",
+    "/concierge": "the IBM Chat Concierge case study",
+    "/journey-orchestration": "the Journey Orchestration case study (IBM, future vision)",
+    "/search": "the IBM Global Search case study",
+    "/state-street": "the State Street Alpha design system case study",
+    "/nike": "the Nike Operations Workspace case study (inventory availability, the forty-fields-to-five story)",
+    "/kmart": "the Kmart SHHH campaign pitch case study",
+    "/this-site": "the case study about how this website itself was designed and built",
+    "/archive": "the archive of earlier client and agency work",
+    "/about": "the About page",
+    "/resume": "the resume page",
+    "/contact": "the contact page",
+  };
+  const pageLabel =
+    typeof body.page === "string" ? PAGE_CONTEXT[body.page] : undefined;
 
   if (!Array.isArray(body.messages) || body.messages.length === 0) {
     return Response.json({ error: "Bad request." }, { status: 400 });
@@ -229,13 +255,35 @@ export async function POST(request: Request): Promise<Response> {
         system: [
           {
             type: "text",
-            text:
-              buildSystemPrompt(persona) +
-              (body.suggested === true
-                ? "\n\nTHIS QUESTION CAME FROM THE INTERFACE. The visitor clicked a suggested question the site offered, one of the chips or the per-section hints. Answer it directly and completely from the first sentence, grounded in whichever project or page it belongs to. Do not ask why they are asking, do not ask which part they mean, do not call it a big question. The site asked it for them."
-                : ""),
+            text: buildSystemPrompt(persona),
             cache_control: { type: "ephemeral" },
           },
+          // Request-specific context lives in a SECOND, uncached block so
+          // the big persona prompt above keeps its cache hit regardless of
+          // page or suggested-flag. Added 2026-08-19 after two live
+          // failures on /nike: the per-section hints are page-scoped
+          // questions ("Why did one question take three tools?"), and
+          // without knowing the page the model guessed the wrong project,
+          // blended Nike's story into IBM's, and asked which project was
+          // meant — everything the suggested directive forbids, forced by
+          // missing context rather than disobedience.
+          ...(pageLabel || body.suggested === true
+            ? [
+                {
+                  type: "text" as const,
+                  text: [
+                    pageLabel
+                      ? `THE VISITOR IS CURRENTLY READING ${pageLabel}. A question that is ambiguous on its own, especially a clicked section hint, refers to THIS page's content. Resolve it against this page's project first; never ask which project is meant, and never attribute this page's facts to a different project.`
+                      : "",
+                    body.suggested === true
+                      ? "THIS QUESTION CAME FROM THE INTERFACE. The visitor clicked a suggested question the site offered, one of the chips or the per-section hints. Answer it directly and completely from the first sentence, grounded in whichever project or page it belongs to. Do not ask why they are asking, do not ask which part they mean, do not call it a big question. The site asked it for them."
+                      : "",
+                  ]
+                    .filter(Boolean)
+                    .join("\n\n"),
+                },
+              ]
+            : []),
         ],
         messages,
       }),

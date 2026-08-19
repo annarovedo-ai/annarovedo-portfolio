@@ -39,9 +39,13 @@ export const cannedAnswers: Record<PersonaId, CannedAnswer[]> = {
         "IBM Chat Concierge, if the role involves shaping an undefined product. IBM knew the ambition: a concierge across all of IBM.com, through the whole customer journey. What was unsettled was the interaction model. I designed a bottom-docked input so it read as a tool for working something out, not another support bubble, then tested the concept and turned it into the north star the live chat is moving toward.\n\nIf you want the same thinking carried through brand, campaign, and physical execution, ask about the Kmart pitch next.",
     },
     {
-      question: "Why have you worked with so many brands?",
+      // Question reframed 2026-08-19 (Anna: make the breadth a positive
+      // callout, not a red flag to explain). The answer is her locked copy,
+      // reordered so the first line answers the new question directly;
+      // every sentence is from the previous version.
+      question: "What did working across so many brands teach you?",
       answer:
-        "Contracting, by choice. Agencies bring you in when something has to get made, so twenty years of that stacks up a lot of logos.\n\nThe range was the point. Dashboard interfaces for Ford, compliance software for Bloomberg, a financial platform for State Street, a relaunch pitch for Kmart: each one teaches you a different customer and a different set of constraints, and that pattern recognition is what lets you get a grip on an ambiguous problem.\n\nThese days the preference is depth over breadth: long, embedded engagements where you get to know a product and its users properly. IBM is the proof, roughly eleven years of them coming back. That includes full time, for the right fit.",
+        "A different customer and a different set of constraints every time. Dashboard interfaces for Ford, compliance software for Bloomberg, a financial platform for State Street, a relaunch pitch for Kmart: that pattern recognition is what lets you get a grip on an ambiguous problem.\n\nThe logos stack up because of contracting, by choice. Agencies bring you in when something has to get made, and twenty years of that adds up.\n\nThese days the preference is depth over breadth: long, embedded engagements where you get to know a product and its users properly. IBM is the proof, roughly eleven years of them coming back. That includes full time, for the right fit.",
     },
     {
       question: "How do you work when the roadmap isn’t clear?",

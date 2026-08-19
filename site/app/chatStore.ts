@@ -161,7 +161,15 @@ export function sendChat(persona: PersonaId, text: string, suggested = false) {
       const res = await fetch("/api/chat", {
         method: "POST",
         headers: { "Content-Type": "application/json" },
-        body: JSON.stringify({ persona, messages: next, suggested }),
+        body: JSON.stringify({
+          persona,
+          messages: next,
+          suggested,
+          // Where the visitor is standing, so page-scoped questions (the
+          // per-section hints especially) resolve against the page they
+          // came from. The route allowlists this; unknown paths are ignored.
+          page: typeof window !== "undefined" ? window.location.pathname : undefined,
+        }),
       });
       const data = (await res.json()) as {
         reply?: string;

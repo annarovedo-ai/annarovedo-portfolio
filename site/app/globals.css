@@ -6931,7 +6931,14 @@ a.home-video-label:focus-visible {
     grid-template-areas:
       "brand nav"
       "switcher switcher";
-    row-gap: 14px;
+    row-gap: 12px;
+    /* .site-header has zero vertical padding: fine for one centred row
+       inside the 84px min-height, but the stacked layout outgrows it and
+       the switcher row sat flush on the header's bottom edge, shadow
+       bleeding past the navy (observed live 2026-08-19). The two rows need
+       their own breathing room. */
+    padding-top: 14px;
+    padding-bottom: 16px;
   }
 
   .home-header.is-docked:not(.is-home) > .brand {
@@ -7340,8 +7347,13 @@ a.home-video-label:focus-visible {
   font-size: var(--t-small);
 }
 
+/* Same voice as .cv-download and .cv-view-link: serif, small, bold. The
+   masthead's actions are one family; only fill separates primary from
+   secondary (Anna, 2026-08-19: "style these buttons the same way"). */
 .cv-contact a {
   color: var(--blue);
+  font-family: var(--serif);
+  font-weight: 700;
 }
 
 .cv-contact a:hover {
@@ -7652,9 +7664,15 @@ a.home-video-label:focus-visible {
 
 /* Quiet companion to the download button: reading on the site and taking
    the PDF away are different jobs, so they get different visual weights. */
+/* Matches .cv-download's type exactly (serif, small, bold): they sit on one
+   line as a pair, and a pair speaks in one voice. Weight difference comes
+   from fill vs none, not from the letterforms (caught by Anna 2026-08-19:
+   "why are there 2 diff fonts here?"). */
 .cv-view-link {
   color: var(--blue);
-  font-weight: 600;
+  font-family: var(--serif);
+  font-size: var(--t-small);
+  font-weight: 700;
   white-space: nowrap;
 }
 

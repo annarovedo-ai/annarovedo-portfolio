@@ -76,6 +76,9 @@ export default function SiteNav({
         <a href={workHref} onClick={() => setOpen(false)}>
           Work
         </a>
+        {/* About is back for every persona (Anna, 2026-08-19: "actually,
+            put about back") — the merge experiment lasted an hour. About
+            tells the story, Resume holds the CV, as settled this morning. */}
         <a href="/about" onClick={() => setOpen(false)}>
           About
         </a>

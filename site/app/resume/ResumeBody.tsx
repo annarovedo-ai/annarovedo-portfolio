@@ -8,7 +8,12 @@ import SiteHeader from "../SiteHeader";
 import SiteFooter from "../SiteFooter";
 
 export default function ResumeBody() {
-  const persona = useSyncExternalStore(subscribe, getSnapshot, getServerSnapshot);
+  const store = useSyncExternalStore(subscribe, getSnapshot, getServerSnapshot);
+  // Ex is one page (2026-08-19, Anna's annotations): the homepage carries
+  // the whole joke, and the nav leads to the Recruiter content rather than
+  // an Ex-voiced parallel universe. The case studies keep their Ex voices;
+  // the utility pages do not.
+  const persona = store === "ex" ? "recruiter" : store;
 
   if (persona === "client") {
     return (

@@ -33,7 +33,9 @@ function isEmailField(label: string) {
 }
 
 export default function ContactBody() {
-  const persona = useSyncExternalStore(subscribe, getSnapshot, getServerSnapshot);
+  const store = useSyncExternalStore(subscribe, getSnapshot, getServerSnapshot);
+  // Ex is one page (2026-08-19): utility pages serve the Recruiter content.
+  const persona = store === "ex" ? "recruiter" : store;
   const c = contactContent[persona];
 
   const [values, setValues] = useState<Record<string, string>>({});
