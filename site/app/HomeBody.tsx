@@ -12,8 +12,6 @@ import {
   homeContent,
   supportingCaseStudies,
 } from "./homeContent";
-import AnnaStage from "./AnnaStage";
-import { ALMOST_ANNA_ENABLED } from "./annaFlags";
 import { engagements } from "./engagements";
 
 const homeImageVariants: Record<string, string> = {
@@ -226,11 +224,8 @@ function ClientHomeBody({ c }: { c: HomeContent }) {
         </div>
       </section>
 
-      {/* Same chat stage as the recruiter homepage, in the Client voice
-          (Ask Paper Pixel). Hard-coded "client": this branch only renders
-          for the Client persona, and /studio must server-render it
-          correctly from first paint. Behind the kill switch (annaFlags.ts). */}
-      {ALMOST_ANNA_ENABLED ? <AnnaStage personaOverride="client" /> : null}
+      {/* The client hero lost its chat stage the same day as the recruiter
+          hero (2026-08-19); Ask Paper Pixel lives in the razor sitewide. */}
 
       <ClientLogoStrip />
 
@@ -429,12 +424,13 @@ export default function HomeBody({
           </a>
         </div>
 
-        {/* Locked up with the headline (2026-08-19, Anna): the chat IS the
-            hero's second half, not a section after it. The claim above, the
-            conversation below, one unit. Scrolling past the composer morphs
-            it into the fixed dock; see AnnaStage.tsx. Behind the kill
-            switch in annaFlags.ts. */}
-        {ALMOST_ANNA_ENABLED ? <AnnaStage personaOverride={persona} /> : null}
+        {/* The chat left the hero for good on 2026-08-19, by Anna's own
+            question ("do you think the chat belongs in the hero? at all?")
+            and this answer: a hero's job is identity and credibility in
+            five seconds, and chat asks for effort before showing proof.
+            Almost Anna lives in the razor now — commentary alongside the
+            work, not the opening act. A day of fighting voids and
+            redundancy in this slot was the evidence. */}
       </section>
 
       <ClientLogoStrip />

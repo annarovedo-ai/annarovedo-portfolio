@@ -4944,194 +4944,11 @@ blockquote {
 
 /* Content height, not 100svh (2026-08-19, Anna): the full-viewport version
    put a void above and below a short empty state. The section now hugs the
-   chat object, and the chat object carries the presence. */
-.anna-stage {
-  padding: clamp(36px, 5vh, 64px) 24px;
-}
+/* The .anna-stage-* and stage-era .anna-chat-* rules that lived here were
+   removed 2026-08-19 with the hero chat itself (AnnaStage.tsx is a stub).
+   The razor-redesign chat styles live at the end of this file. */
 
-/* Inside the hero (2026-08-19, Anna: the headline "should actually be
-   locked up with the chat"), the hero shell already provides the side
-   padding and the rhythm; the stage only needs the gap under the copy. */
-.home-hero .anna-stage {
-  padding: clamp(26px, 4vh, 42px) 0 0;
-}
 
-.anna-stage-inner {
-  width: min(960px, 100%);
-  margin: 0 auto;
-}
-
-.home-hero .anna-stage-inner {
-  width: 100%;
-}
-
-/* The chat, as an object: one bordered surface holding her message, the
-   quick replies, and the composer. */
-.anna-stage-chat {
-  display: flex;
-  flex-direction: column;
-  gap: 20px;
-  padding: clamp(20px, 3vw, 30px);
-  border: 1px solid var(--line);
-  border-radius: 20px;
-  background: var(--surface);
-  box-shadow: 0 18px 44px rgba(17, 17, 17, 0.07);
-}
-
-/* The greeting bubble was removed 2026-08-19: with the stage inside the
-   hero, the headline is the greeting, and the bubble was a third
-   introduction. The name row below is the one identifier. */
-
-.anna-stage-name {
-  display: flex;
-  align-items: baseline;
-  gap: 10px;
-  margin: 0;
-}
-
-.anna-stage-name strong {
-  font-family: var(--serif);
-  font-size: var(--t-base);
-  color: var(--ink);
-}
-
-.anna-stage-name span {
-  color: var(--muted);
-  font-size: var(--t-small);
-}
-
-.anna-stage-chips {
-  display: flex;
-  flex-wrap: wrap;
-  gap: 10px;
-}
-
-/* Same species as the razor's offer chip: dashed, serif, round — and
-   visually subordinate to the composer below. */
-.anna-stage-chips button {
-  padding: 9px 16px;
-  border: 1px dashed var(--line);
-  border-radius: 999px;
-  background: var(--paper-deep);
-  color: var(--blue);
-  font-family: var(--serif);
-  font-size: var(--t-small);
-  cursor: pointer;
-  transition: border-color 0.16s ease, border-style 0.16s ease, color 0.16s ease;
-}
-
-.anna-stage-chips button:hover {
-  border-color: var(--blue);
-  border-style: solid;
-  color: var(--ink);
-}
-
-/* A viewport onto the thread: fixed ceiling so arriving answers cannot
-   shove the composer or the page around. Lives inside the chat frame now,
-   so it needs no chrome of its own. */
-.anna-stage-thread {
-  max-height: min(56vh, 540px);
-  overflow-y: auto;
-  padding: 2px 2px 8px;
-}
-
-.anna-stage-composer {
-  display: flex;
-  align-items: center;
-  gap: 14px;
-  width: 100%;
-  min-height: 76px;
-  padding: 12px 12px 12px 18px;
-  border: 1px solid var(--blue);
-  border-radius: 16px;
-  background: var(--blue);
-  box-shadow: 0 18px 44px rgba(17, 17, 17, 0.16);
-}
-
-.anna-stage-composer .aa-avatar {
-  flex: none;
-}
-
-.anna-stage-composer input {
-  flex: 1;
-  min-width: 0;
-  border: 0;
-  background: none;
-  color: #fff;
-  caret-color: #fff;
-  font-family: var(--sans);
-  font-size: 1.05rem;
-}
-
-.anna-stage-composer input::placeholder {
-  color: var(--on-dark-muted);
-}
-
-.anna-stage-composer input:focus {
-  outline: none;
-}
-
-/* Orange means press, as on every primary action; --ink on --flare is the
-   same 6.58:1 pairing the persona switch already uses. */
-.anna-stage-send {
-  flex: none;
-  display: grid;
-  place-items: center;
-  width: 48px;
-  height: 48px;
-  border: 0;
-  border-radius: 12px;
-  background: var(--flare);
-  color: var(--ink);
-  cursor: pointer;
-  transition: opacity 0.16s ease;
-}
-
-.anna-stage-send:disabled {
-  opacity: 0.45;
-  cursor: default;
-}
-
-/* Holds the composer's seat while it is off being the dock, so the page
-   keeps its height and the sentinel holds still. */
-.anna-stage-ghost {
-  min-height: 76px;
-}
-
-.anna-stage-sentinel {
-  height: 1px;
-}
-
-@media (max-width: 720px) {
-  .anna-stage {
-    padding-left: 18px;
-    padding-right: 18px;
-  }
-
-  .anna-stage-chat {
-    padding: 16px;
-    border-radius: 16px;
-  }
-
-  .anna-stage-composer {
-    min-height: 60px;
-    padding: 8px 8px 8px 14px;
-    gap: 10px;
-  }
-
-  .anna-stage-send {
-    width: 44px;
-    height: 44px;
-  }
-
-  .anna-stage-ghost {
-    min-height: 60px;
-  }
-
-  .anna-stage-thread {
-    max-height: 62vh;
-  }
-}
 
 .home-video {
   position: relative;
@@ -10142,18 +9959,15 @@ html[data-anna-razor="bar"] body {
    also going wide, so it still reads as docked to this page rather than a
    full takeover. A quarter of the screen — wherever you were reading — stays
    visible above it, and minimise/close are always one tap away. */
+/* Navy chrome (Anna's 2026-08-19 mockup); the reading area inside is light.
+   Wider than the old card: the panel is the chat's one home now. */
 .anna-razor-panel {
-  width: min(720px, calc(100vw - 24px));
+  width: min(820px, calc(100vw - 24px));
   margin: 0 auto;
-  background: var(--surface);
+  padding: 0 16px 16px;
+  background: var(--blue);
+  border-radius: 14px 14px 0 0;
   box-shadow: 0 -14px 50px rgba(17, 17, 17, 0.22);
-}
-
-.anna-razor-panel .aa-dock {
-  width: 100%;
-  height: min(75vh, calc(100vh - 64px));
-  border: 1px solid var(--chat-frame);
-  border-bottom: 0;
 }
 
 /* These sit over the navy panel header; a --blue ring is invisible there. */
@@ -10229,9 +10043,6 @@ html[data-anna-razor="bar"] body {
     width: 100%;
   }
 
-  .anna-razor-panel .aa-dock {
-    height: min(72vh, calc(100vh - 70px));
-  }
 }
 
 /* ---------------------------------------------------------------------------
@@ -10731,5 +10542,238 @@ html[data-anna-razor="bar"] body {
 @media (max-width: 900px) {
   .svc-engagements {
     grid-template-columns: 1fr;
+  }
+}
+/* ------------------------------------------------------------------ */
+/* RAZOR REDESIGN (2026-08-19, from Anna's mockups). The bar carries one
+   hint inline where the typing goes; the panel is navy chrome with a
+   header row, the four questions as a menu when the thread is empty, a
+   light reading area once it isn't, and an inset composer. Mini is
+   unchanged: her photo, lower right, only when parked. */
+
+/* ---- Panel header ---- */
+
+.anna-panel-head {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  padding: 14px 2px 12px;
+  color: #fff;
+}
+
+.anna-panel-id {
+  display: flex;
+  align-items: baseline;
+  gap: 10px;
+  min-width: 0;
+  margin: 0;
+}
+
+.anna-panel-id strong {
+  font-family: var(--serif);
+  font-size: var(--t-base);
+  white-space: nowrap;
+}
+
+.anna-panel-id span {
+  overflow: hidden;
+  color: var(--on-dark-muted);
+  font-size: var(--t-fine);
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+/* In the header row now, not floated over the corner. */
+.anna-razor-panel-controls {
+  position: static;
+  display: flex;
+  align-items: center;
+  gap: 4px;
+  margin-left: auto;
+}
+
+.anna-razor-panel-controls .anna-razor-min svg {
+  display: block;
+}
+
+/* ---- The chat surface (panel interior) ---- */
+
+.anna-chat {
+  display: flex;
+  flex-direction: column;
+  gap: 14px;
+}
+
+/* The four questions as a menu on the navy ground. Locked wording; see
+   AlmostAnnaChat.tsx. */
+.anna-chat-menu {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 10px;
+  padding-top: 2px;
+}
+
+.anna-chat-menu button {
+  padding: 10px 16px;
+  border: 1px solid rgba(255, 255, 255, 0.4);
+  border-radius: 999px;
+  background: transparent;
+  color: #fff;
+  font-family: var(--sans);
+  font-size: var(--t-small);
+  text-align: left;
+  cursor: pointer;
+  transition: background 0.16s ease, border-color 0.16s ease;
+}
+
+.anna-chat-menu button:hover {
+  background: rgba(255, 255, 255, 0.12);
+  border-color: rgba(255, 255, 255, 0.7);
+}
+
+/* Long answers read on paper, not navy: the thread gets a light ground
+   inside the navy chrome. Height is a viewport onto the thread, sized for
+   reading a full answer; empty state has no body at all, so the panel is
+   only ever as tall as what it holds. */
+.anna-chat-body {
+  height: min(52vh, 500px);
+  padding: 18px;
+  overflow-y: auto;
+  border-radius: 10px;
+  background: var(--paper);
+}
+
+.anna-chat-error {
+  margin: 0;
+}
+
+/* Inset field, per the mockup: a lighter well inside the navy, orange send
+   inside its right edge. */
+.anna-chat-composer {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  min-height: 56px;
+  padding: 5px 5px 5px 16px;
+  border: 1px solid rgba(255, 255, 255, 0.16);
+  border-radius: 14px;
+  background: rgba(255, 255, 255, 0.1);
+}
+
+.anna-chat-composer input {
+  flex: 1;
+  min-width: 0;
+  border: 0;
+  background: none;
+  color: #fff;
+  caret-color: #fff;
+  font-family: var(--sans);
+  font-size: var(--t-base);
+}
+
+.anna-chat-composer input::placeholder {
+  color: var(--on-dark-muted);
+}
+
+.anna-chat-composer input:focus {
+  outline: none;
+}
+
+.anna-chat-send {
+  flex: none;
+  display: grid;
+  place-items: center;
+  width: 44px;
+  height: 44px;
+  border: 0;
+  border-radius: 10px;
+  background: var(--flare);
+  color: var(--ink);
+  cursor: pointer;
+  transition: opacity 0.16s ease;
+}
+
+.anna-chat-send:disabled {
+  opacity: 0.45;
+  cursor: default;
+}
+
+/* ---- The bar's inline hint ---- */
+
+.anna-razor-field {
+  position: relative;
+  display: flex;
+  flex: 1;
+  min-width: 0;
+}
+
+.anna-razor-field input {
+  flex: 1;
+  min-width: 0;
+}
+
+/* A whisper of chip: enough affordance to read as a tappable question
+   rather than ghost placeholder text. Tap sends it; the empty space to its
+   right still focuses the input, which swaps the hint for the plain
+   placeholder. */
+.anna-razor-hint {
+  position: absolute;
+  top: 50%;
+  left: 0;
+  transform: translateY(-50%);
+  max-width: 100%;
+  overflow: hidden;
+  padding: 7px 14px;
+  border: 1px dashed rgba(255, 255, 255, 0.4);
+  border-radius: 999px;
+  background: rgba(255, 255, 255, 0.08);
+  color: #fff;
+  font-family: var(--serif);
+  font-size: var(--t-small);
+  white-space: nowrap;
+  text-overflow: ellipsis;
+  cursor: pointer;
+  transition: border-color 0.16s ease, background 0.16s ease;
+}
+
+.anna-razor-hint:hover {
+  border-style: solid;
+  border-color: rgba(255, 255, 255, 0.8);
+  background: rgba(255, 255, 255, 0.14);
+}
+
+.anna-razor-hint > span {
+  display: block;
+  animation: razor-line-in 0.42s cubic-bezier(0.22, 0.61, 0.36, 1) both;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .anna-razor-hint > span {
+    animation: none;
+  }
+}
+
+/* Orange send in the bar, matching the mockup and the panel. */
+.anna-razor-bar .anna-razor-send {
+  width: 38px;
+  height: 38px;
+  border-radius: 9px;
+  background: var(--flare);
+  color: var(--ink);
+}
+
+@media (max-width: 720px) {
+  .anna-razor-panel {
+    padding: 0 10px 10px;
+  }
+
+  .anna-chat-body {
+    height: min(58vh, 520px);
+    padding: 14px;
+  }
+
+  .anna-chat-send {
+    width: 44px;
+    height: 44px;
   }
 }

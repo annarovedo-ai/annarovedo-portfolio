@@ -1,25 +1,17 @@
 "use client";
 
-import {
-  useEffect,
-  useLayoutEffect,
-  useRef,
-  useState,
-  useSyncExternalStore,
-} from "react";
+import { useEffect, useRef, useState, useSyncExternalStore } from "react";
 import { usePathname } from "next/navigation";
 import { AnimatePresence, motion, MotionConfig } from "motion/react";
 import AlmostAnnaChat from "./AlmostAnnaChat";
 import { getServerSnapshot, getSnapshot, subscribe } from "./personaStore";
 import {
-  carryFocus,
   getChat,
   getServerChat,
   sendChat,
   setChatInput,
   setChatOpen,
   subscribeChat,
-  takeFocusCarry,
 } from "./chatStore";
 import { ALMOST_ANNA_ENABLED } from "./annaFlags";
 
@@ -81,11 +73,7 @@ const INTRO_DURATION = 4200;
 const DISMISS_NOTICE = 2100;
 type Mode = "quiet" | "razor";
 
-/** useLayoutEffect on the client, useEffect during SSR (where layout
-    effects warn and neither runs). See CarryFocusOnUnmount for why the
-    focus capture must be a layout effect. */
-const useIsoLayoutEffect =
-  typeof window === "undefined" ? useEffect : useLayoutEffect;
+
 
 // One transition, shared by every shape change: mode switches and the settle
 // after a drag. Anna's other motion on the site is eased tweens, not springs,
@@ -114,17 +102,17 @@ export default function AnnaRazor() {
     : isClient
       ? "Ask Paper Pixel about your project…"
       : "Ask Almost Anna anything…";
-  // Stage routes: the full-viewport chat section (AnnaStage) is the
-  // composer's home, and its sentinel decides when the dock exists. The
-  // razor renders NOTHING here until the visitor scrolls past the stage
-  // composer — partly so first paint is the stage (never a flashed dock),
-  // and partly because the stage composer and this bar share one Motion
-  // layoutId, and exactly one element may carry it at a time. That single
-  // ownership is what makes the morph read as one object changing form.
-  const isStageRoute = pathname === "/" || pathname === "/studio";
+  // The stage (hero chat) era ended 2026-08-19: the chat left the hero, so
+  // there are no stage routes and no special-casing of / and /studio. The
+  // razor is the chat's one home, on every page. AnnaStage.tsx and the
+  // stageDocked plumbing in chatStore are dormant, kept only because this
+  // sandbox cannot delete files.
   const assistantIntro = isClient
     ? "Paper Pixel’s AI, guided by Anna’s work. Ask about your project."
     : "An AI trained on Anna’s work. Ask it anything.";
+  const assistantDisclosure = isClient
+    ? "Guided by Anna’s work and point of view."
+    : "Trained on my work and how I think.";
   const [mode, setMode] = useState<Mode>("razor");
   const [visible, setVisible] = useState(false);
   const [prompts, setPrompts] = useState<string[]>([]);
@@ -137,6 +125,10 @@ export default function AnnaRazor() {
   const draft = chatThread.input;
   const setDraft = setChatInput;
   const [seed, setSeed] = useState<string | undefined>(undefined);
+  // Whether the bar's input has keyboard focus. The inline hint yields to
+  // typing: focused or non-empty means the hint steps aside and the plain
+  // placeholder takes over.
+  const [inputFocused, setInputFocused] = useState(false);
   const [isPhone, setIsPhone] = useState(false);
   const [drag, setDrag] = useState<number | null>(null);
   const [dismissing, setDismissing] = useState(false);
@@ -220,42 +212,20 @@ export default function AnnaRazor() {
   }
 
   useEffect(() => {
-    // Stage routes (/ and /studio): AnnaStage owns the boundary. Its
-    // sentinel observers write chatStore.stageDocked and this component's
-    // rendering is gated on that flag directly, so there is nothing to
-    // observe here and `visible` stays false (unused on these routes).
-    if (isStageRoute) {
-      setVisible(false);
-      return;
-    }
-
-    // Interior pages with a .hero section (the case studies): the dock
-    // appears after the hero/deck leaves the viewport, not at page load, on
-    // every viewport. Pages without one (about, resume, archive, contact)
-    // start docked or mini immediately.
-    const hero = document.querySelector(".hero");
-    if (hero) {
-      const io = new IntersectionObserver(
-        ([entry]) => setVisible(!entry.isIntersecting),
-        { rootMargin: "-16px 0px 0px 0px", threshold: 0 }
-      );
-      io.observe(hero);
-      return () => io.disconnect();
-    }
+    // Docked from the get go, per Anna 2026-08-19: no scroll gates, no hero
+    // observers, on any page or viewport. The delays existed to keep the
+    // old corner avatar off case-study opening paragraphs; the bottom bar
+    // does not cover text, so the choreography retired with the avatar.
+    // Contact stays mini via the mode floor above.
     setVisible(true);
-    // pathname matters: this is client-side routing, so the component does
-    // not remount between pages; without it the observer keeps watching a
-    // detached .hero from the page you left and `visible` freezes. persona
-    // matters because each persona renders its own hero: switching unmounts
-    // the observed node.
-  }, [isPhone, pathname, persona, isStageRoute]);
+  }, [pathname]);
 
   // Fires once the razor is first visible in this tab, provided the visitor
   // hasn't already opened the conversation on their own (someone who's
   // already tapped it doesn't need telling what it is). sessionStorage keeps
   // it to a single showing per tab, same lifetime as MODE_KEY.
   useEffect(() => {
-    if (!(isStageRoute ? chatThread.stageDocked : visible) || open) return;
+    if (!visible || open) return;
     let seen = false;
     try {
       seen = window.sessionStorage.getItem(INTRO_KEY) === "1";
@@ -271,7 +241,7 @@ export default function AnnaRazor() {
     setShowIntro(true);
     const t = window.setTimeout(() => setShowIntro(false), INTRO_DURATION);
     return () => window.clearTimeout(t);
-  }, [visible, open, isStageRoute, chatThread.stageDocked]);
+  }, [visible, open]);
 
   useEffect(() => {
     const nodes = Array.from(
@@ -342,7 +312,7 @@ export default function AnnaRazor() {
       // One frame, so the panel has actually mounted before we reach into it.
       const t = window.setTimeout(() => {
         const field = document.querySelector<HTMLInputElement>(
-          ".anna-razor-panel .aa-composer input"
+          ".anna-razor-panel .anna-chat-composer input"
         );
         field?.focus();
       }, 0);
@@ -366,9 +336,7 @@ export default function AnnaRazor() {
     ALMOST_ANNA_ENABLED &&
     (ENABLED_PATHS === null || ENABLED_PATHS.includes(pathname));
 
-  // What "visible" means depends on the route: on stage routes the stage's
-  // sentinel decides (stageDocked); everywhere else the observer above does.
-  const shown = isStageRoute ? chatThread.stageDocked : visible;
+  const shown = visible;
 
   // Only reserve room at the foot of the document where the bar is mounted.
   useEffect(() => {
@@ -379,25 +347,6 @@ export default function AnnaRazor() {
       delete el.dataset.annaRazor;
     };
   }, [enabled, mode, open, shown]);
-
-  // Focus handoff with the stage composer, arriving side: when the dock
-  // mounts because the visitor scrolled past the stage mid-typing, claim
-  // the caret the stage carried over — without scrolling the page.
-  useEffect(() => {
-    if (!isStageRoute || !shown || open || mode !== "razor") return;
-    const carry = takeFocusCarry();
-    if (!carry) return;
-    const el = inputRef.current;
-    if (!el) return;
-    el.focus({ preventScroll: true });
-    if (carry.start !== null && carry.end !== null) {
-      try {
-        el.setSelectionRange(carry.start, carry.end);
-      } catch {
-        /* selection not applicable */
-      }
-    }
-  }, [isStageRoute, shown, open, mode]);
 
   if (!enabled) return null;
 
@@ -517,39 +466,66 @@ export default function AnnaRazor() {
                 an inch apart is now a convenience rather than a gamble. The
                 only mode change that persists something is still the bar's
                 own x, and it still shows the notice with the Undo in it. */}
-            <div className="anna-razor-panel-controls">
-              <button
-                type="button"
-                className="anna-razor-min"
-                onClick={() => {
-                  setOpen(false);
-                  choose("razor");
-                  // The reader has explicitly chosen the bar, so the bar is
-                  // what Close should restore from now on. Without this line,
-                  // minimising from a quiet start and then closing would undo
-                  // the choice they just made.
-                  modeBeforeOpen.current = "razor";
-                }}
-                aria-label="Minimise to the bar at the bottom of the page"
-                title="Minimise to the bar"
-              >
-                &minus;
-              </button>
-              <button
-                type="button"
-                className="anna-razor-close"
-                onClick={() => {
-                  setOpen(false);
-                  choose(modeBeforeOpen.current);
-                }}
-                aria-label="Close the conversation"
-                title="Close the conversation"
-              >
-                &times;
-              </button>
+            {/* The header row, per Anna's 2026-08-19 mockup: her face, the
+                name, the one-line disclosure, and the two quiet controls.
+                The minus became a chevron with the same contract (the trap
+                history in the old comment stands: neither control is
+                destructive; chevron means "give me the bar", x means "put
+                me back where I was"). */}
+            <div className="anna-panel-head">
+              <span className="anna-razor-avatar" aria-hidden="true">
+                <img
+                  src="/anna-avatar.jpg"
+                  alt=""
+                  onError={(e) => {
+                    e.currentTarget.style.display = "none";
+                  }}
+                />
+              </span>
+              <p className="anna-panel-id">
+                <strong>{assistantName}</strong>
+                <span>{assistantDisclosure}</span>
+              </p>
+              <div className="anna-razor-panel-controls">
+                <button
+                  type="button"
+                  className="anna-razor-min"
+                  onClick={() => {
+                    setOpen(false);
+                    choose("razor");
+                    // The reader has explicitly chosen the bar, so the bar
+                    // is what Close should restore from now on.
+                    modeBeforeOpen.current = "razor";
+                  }}
+                  aria-label="Minimise to the bar at the bottom of the page"
+                  title="Minimise to the bar"
+                >
+                  <svg width="16" height="16" viewBox="0 0 16 16" fill="none" aria-hidden="true">
+                    <path
+                      d="M3 6L8 11L13 6"
+                      stroke="currentColor"
+                      strokeWidth="1.75"
+                      strokeLinecap="round"
+                      strokeLinejoin="round"
+                    />
+                  </svg>
+                </button>
+                <button
+                  type="button"
+                  className="anna-razor-close"
+                  onClick={() => {
+                    setOpen(false);
+                    choose(modeBeforeOpen.current);
+                  }}
+                  aria-label="Close the conversation"
+                  title="Close the conversation"
+                >
+                  &times;
+                </button>
+              </div>
             </div>
 
-            <AlmostAnnaChat variant="dock" seed={seed} />
+            <AlmostAnnaChat seed={seed} />
 
             {/* The worded restore button lived here until 2026-08-10
                 ("Pin Almost Anna to the bottom of the page", and before that
@@ -559,7 +535,7 @@ export default function AnnaRazor() {
                 moved to the Minimise glyph in the panel controls above, which
                 sets mode to razor and moves the restore point with it. */}
           </motion.div>
-        ) : isStageRoute && !shown ? null : mode === "quiet" ? (
+        ) : mode === "quiet" ? (
           <motion.button
             key="mini"
             layoutId="anna-razor-shape"
@@ -704,45 +680,40 @@ export default function AnnaRazor() {
                       }}
                     />
                   </span>
-                  <input
-                    ref={inputRef}
-                    value={draft}
-                    onChange={(e) => setDraft(e.target.value)}
-                    placeholder={assistantPrompt}
-                    aria-label={assistantName}
-                    tabIndex={shown ? 0 : -1}
-                  />
-                  {/* Departing side of the focus handoff: if the dock
-                      unmounts (visitor scrolled back to the stage) while
-                      the caret is in this input, carry it across. Cleanup
-                      runs while the node is still in the DOM. */}
-                  <CarryFocusOnUnmount inputRef={inputRef} />
-
-                  {/* Left of send, and only while there's nothing typed: once
-                      you have a draft, the chip would sit between you and the
-                      button that sends it, which is confusing about what
-                      "send" even acts on. Gone the instant you start typing,
-                      back the instant you clear it. */}
-                  {offer && !draft.trim() ? (
-                    <span className="anna-razor-offer-wrap">
+                  {/* The hint lives IN the input line now (Anna's 2026-08-19
+                      mockup): one question at a time, where the typing goes.
+                      The dashed pill keeps it readable as a tappable object
+                      rather than ghost placeholder text — tap sends it;
+                      clicking the empty space to its right, or tabbing into
+                      the input, swaps it for the plain placeholder so typing
+                      is never blocked. It changes per section, so no
+                      aria-live: announcing every swap interrupted
+                      screen-reader users mid-page. */}
+                  <span className="anna-razor-field">
+                    <input
+                      ref={inputRef}
+                      value={draft}
+                      onChange={(e) => setDraft(e.target.value)}
+                      onFocus={() => setInputFocused(true)}
+                      onBlur={() => setInputFocused(false)}
+                      placeholder={
+                        offer && !draft.trim() && !inputFocused ? "" : assistantPrompt
+                      }
+                      aria-label={assistantName}
+                      tabIndex={shown ? 0 : -1}
+                    />
+                    {offer && !draft.trim() && !inputFocused ? (
                       <button
                         key={offer}
                         type="button"
-                        className="anna-razor-offer"
+                        className="anna-razor-hint"
                         onClick={() => openWith(offer)}
                         tabIndex={shown ? 0 : -1}
                       >
-                        {/* No aria-live. This text changes every time a new
-                            section scrolls into view, so announcing it meant a
-                            screen-reader user got interrupted with a fresh
-                            question every few seconds while trying to read the
-                            page. It is a suggestion sitting on screen, not an
-                            event worth interrupting for; the button's own
-                            label is read normally when tabbed to. */}
                         <span>{offer}</span>
                       </button>
-                    </span>
-                  ) : null}
+                    ) : null}
+                  </span>
 
                   <button
                     type="submit"
@@ -789,31 +760,4 @@ export default function AnnaRazor() {
   );
 }
 
-/**
- * Records the caret into chatStore when its parent unmounts, so the stage
- * composer can restore it. A component rather than an effect on AnnaRazor
- * itself because the cleanup must run on unmount of the BAR subtree — while
- * the input is still in the DOM and document.activeElement can be checked —
- * not when some dependency of the parent changes.
- */
-function CarryFocusOnUnmount({
-  inputRef,
-}: {
-  inputRef: React.RefObject<HTMLInputElement | null>;
-}) {
-  // LAYOUT effect, deliberately: passive-effect cleanup for an unmounting
-  // subtree runs after the commit, when the input has already left the
-  // document and document.activeElement can no longer identify it. Layout
-  // cleanup runs synchronously during the commit, before the node detaches.
-  // Isomorphic guard because the bar server-renders on interior pages.
-  useIsoLayoutEffect(() => {
-    return () => {
-      const el = inputRef.current;
-      if (el && document.activeElement === el) {
-        carryFocus({ start: el.selectionStart, end: el.selectionEnd });
-      }
-    };
-    // Mount-only by design; the ref is stable for the life of the bar.
-  }, []);
-  return null;
-}
+
