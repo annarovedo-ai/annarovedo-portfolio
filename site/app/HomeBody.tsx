@@ -259,7 +259,11 @@ function ClientHomeBody({ c }: { c: HomeContent }) {
             not require first diagnosing which engagement model fits it. */}
         <div className="client-engagement-actions">
           <a className="home-cta-button" href="/contact">
-            Tell me what you&rsquo;re working on
+            {/* "Tell me what you're working on" was Anna's voice on the
+                visitor's button (Anna, 2026-08-19: "the CTA is for the
+                user - it feels clunky"). A button labels the clicker's
+                action; this now matches the Services page CTAs. */}
+            Share what you&rsquo;re working on
           </a>
           <a className="client-engagement-secondary" href="/resume#engagements">
             See all services

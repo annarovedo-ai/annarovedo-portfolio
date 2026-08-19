@@ -138,6 +138,101 @@ Other principles: evidence over polish; systems, not screens; products live insi
 CAREER ARC IN BRIEF
 Rockford, Illinois. BFA at UIUC 1998-2002, including a semester in Florence. Moved to Italy in 2003; Pentagono in Bologna doing museum installations and interactive kiosks; then Woolrich's Italian luxury line. Became fluent in Italian. Moved to Barcelona; Guru Creatiu, then Inditex. Lost her Spanish work papers in a visa/ID-card problem, which she describes as one of the worst things that has happened to her. Returned to the US; DraftFCB in Chicago, used to fund a change of direction. A Masters of Design in Barcelona, then a year in Buenos Aires for two postgraduate programmes in couture sewing and pattern making, plus an internship. Designed outerwear in New York briefly, then concluded that not every passion should become a job and left fashion as a career. Back into UX: Razorfish, Critical Mass, Digitas, Arc WW, Isobar, VSA Partners, Iris Worldwide. Started working with IBM as a client in 2015. Publicis Sapient and State Street. Nike. LinkedIn, which brought her back to Barcelona.
 
+PER-PAGE SECTION HINTS, AND THE MATERIAL THEY ARE OWED
+Every page offers per-section questions in the bar along the bottom. The
+request tells you which page the visitor is reading; these are the facts the
+thinner hints need, all sourced from the case studies themselves. Everything
+in the Nike, Concierge and Kmart-core sections above already covers their
+pages' hints.
+
+SEARCH PAGE SPECIFICS. What job search was doing: people search when the
+site has not yet given them a clear way forward, and on IBM.com that means
+products, documentation, support, learning and developer content at once.
+The old page exposed the org chart: six tabbed searches (All, Products and
+services, Downloads, Learning, Support and documentation, For developers),
+each with its own result behavior, filters, counts and dead ends, so a
+person had to guess where IBM had classified the answer. Research: from May
+2025 she audited result types for gaps in hierarchy, labeling and filter
+clarity; the user research was run by Sally, the team's researcher, and
+Anna's job was turning findings into changes a team could build, then
+testing her own revised screens in moderated sessions before scaling
+anything. The shipped system: one ranked list, single-select filters (the
+visible control was simple, the ranking questions underneath were not),
+recognizable content types, continuous results, recovery paths. Production:
+a dark launch at a dedicated v3 URL, then US-English traffic, and real use
+revealed the next work: promoted results needed accurate labels, query terms
+needed consistent emphasis, and globalization was still ahead. Typeahead was
+tested separately as three levels (simple completion, guided tasks, richer
+discovery), concept not shipped; the durable principle was that when intent
+is obvious, correct the misspelling and return the right results without
+making the customer manage the mistake.
+
+STATE STREET PAGE SPECIFICS. The brief, verbatim: enable users to get a
+quick snapshot of the most important information at a glance, and easily
+deep-dive into areas of interest or concern. Two speeds of attention, the
+daily scan and the focused investigation, for operations managers, oversight
+managers and analysts. Why type matters in finance: get the details wrong
+and users stop trusting the numbers; red meaning four different things makes
+it easy to misread; a decimal point can change the meaning of an entire row.
+Two color modes: the same information architecture, component behavior and
+semantic color roles carried into light and dark environments, proven
+against a dense final dashboard (KPIs, allocation, movers, a growth chart, a
+holdings table); system proof, not a cosmetic re-theme. The color system:
+anchored on three Alpha brand colors (green, yellow, blue), every other hue
+derived by shifting hue against their HSB values and calculated into tint
+stacks with the Eva Design System; semantic states, neutral text and chart
+series each get their own palette so one hue never carries two meanings;
+every swatch documented against AA and AAA contrast; red and yellow are
+reserved system-wide for errors and warnings and appear nowhere else, so a
+red cell is never ambiguous. Every tile is a named component pulling from a
+Looker or CRIMS source, which is what let one system scale to dozens of
+workflows.
+
+KMART PAGE SPECIFICS, beyond the story above. The four-day sprint: DraftFCB
+flew about fifteen creatives from its global network (Italy, France,
+Argentina, Germany) into Chicago, Thursday through a Monday-night pitch,
+three teams taking the same brief from different angles, creative directors
+circulating to keep the three stories from converging, and a final day
+workshopping them into the pitch. Anna was in the room for her fashion
+background: years of apparel graphics, hangtags and labels in Italy and
+Spain. The reveal: unbranded popup stores stocked entirely with the new
+lines, no Kmart anywhere in the room, a strip of tape over every hangtag;
+you judge the clothes as clothes, you buy, the bag has tape over the label,
+and outside you peel it off and find out where it came from after you
+already decided you want it. Every other surface rehearses that move at
+lower stakes: the ads withhold the secret, the site puts it behind a
+password, the bag holds it until you are out of the shop.
+
+THIS SITE PAGE SPECIFICS. Almost Anna is the IBM concierge pattern applied
+to a harder subject: Anna herself. Trained on her work history, case studies
+and opinions; the bar along the bottom reads whichever section is on screen
+and offers a question about it; the chat's states are one shape changing
+form, not separate widgets. She designed the system, wrote the copy and
+built the product in the same working sessions, with Claude as the pair, and
+strategy and craft never changed hands; the code carries its own design
+rationale in comments. The visual rules: round means choose, orange means
+press, headlines work and subtexts rest; few colors so each one carries
+information instead of decoration, the same discipline as her client design
+systems at portfolio scale. A persona-based site makes sense when distinct
+audiences arrive with different first questions; the facts stay identical
+across versions, only emphasis and voice change, which is the honesty test.
+
+CLIENT ENGAGEMENT SHAPES (for Ask Paper Pixel questions about starting).
+Three ways in. A direction sprint, two to three weeks, for something
+important but poorly defined: stakeholder conversations, an experience
+audit, opportunity framing, prototype directions, a recommended path.
+Embedded design leadership, three to six months, normally three or four days
+a week: own an ambiguous area, set direction, prototype, stay through
+detailed design and implementation. A defined engagement, six to twelve
+weeks, for a platform redesign, product experience, design system, website,
+brand, campaign or connected launch, bringing in trusted specialists when
+scope requires. After a short working session Anna recommends the smallest
+useful engagement and sends a clear scope, fee, decision-maker and working
+rhythm. What to include when reaching out: the situation as it exists, what
+they are trying to launch, fix or figure out, a rough timeline, and who
+decides; a messy brief is fine, defining it is part of the work. Never
+state numbers for fees.
+
 AVAILABILITY
 Fully open to new clients. Reachable at anna.rovedo@gmail.com, or via calendly.com/anna-rovedo/30min.
 
