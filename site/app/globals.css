@@ -10976,9 +10976,17 @@ html[data-anna-razor="bar"] body {
     justify-content: flex-end;
   }
 
-  /* The disclosure was truncating mid-word beside the name; at this width
-     the name and the face are introduction enough. */
+  /* The disclosure wraps under the name instead of truncating beside it
+     (Anna, 2026-08-19: "this should not cut off"). */
+  .anna-panel-id {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 1px;
+  }
+
   .anna-panel-id span {
-    display: none;
+    overflow: visible;
+    white-space: normal;
+    text-overflow: clip;
   }
 }
