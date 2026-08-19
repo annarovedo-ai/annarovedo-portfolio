@@ -87,8 +87,19 @@ export default function AlmostAnnaChat({
         list.push(q);
       }
     }
-    if (persona === "ex" && exQ) list.splice(Math.min(1, list.length), 0, exQ);
-    return list.length ? list : null;
+    if (persona === "ex") {
+      // Ex ALWAYS gets one off-topic question in the menu (Anna,
+      // 2026-08-19). Pages carry their own via data-anna-prompt-ex; any
+      // page without one falls back to the frog, which is never the wrong
+      // answer.
+      const funny = exQ ?? "Be honest. Was the frog actually real?";
+      list.splice(Math.min(1, list.length), 0, funny);
+    }
+    // Four, matching the homepage chips (Anna, 2026-08-19): a case study
+    // can carry nine section hints, and nine chips read as a wall. The
+    // first sections' questions win because they mirror how the page reads,
+    // and the Ex slot at position two always survives the cut.
+    return list.length ? list.slice(0, 4) : null;
   }, [persona, pathname]);
   const menuPrompts = pagePrompts ?? c.prompts;
 
