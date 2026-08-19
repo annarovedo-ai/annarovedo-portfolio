@@ -720,7 +720,7 @@ export default function StateStreetCaseStudy() {
           </div>
         </section>
 
-        <section className="chapter shell ss-outcome" data-anna-prompt="How did it become a shared decision-making system?">
+        <section className="chapter shell ss-outcome" data-anna-prompt="How did it become a shared decision-making system?" data-anna-prompt-client="What would a design system engagement look like?">
           <div className="ss-outcome-heading">
             <div>
               <SectionNumber>07 · Scope and outcome</SectionNumber>

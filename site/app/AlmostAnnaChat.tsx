@@ -71,7 +71,7 @@ export default function AlmostAnnaChat({
     if (typeof document === "undefined") return null;
     const nodes = Array.from(
       document.querySelectorAll<HTMLElement>(
-        "[data-anna-prompt], [data-anna-prompt-ex]"
+        "[data-anna-prompt], [data-anna-prompt-ex], [data-anna-prompt-client]"
       )
     );
     const list: string[] = [];
@@ -81,7 +81,11 @@ export default function AlmostAnnaChat({
       if (persona === "ex" && !exQ && n.dataset.annaPromptEx) {
         exQ = n.dataset.annaPromptEx;
       }
-      const q = n.dataset.annaPrompt;
+      // Client sees the application-shaped variant where a section has one.
+      const q =
+        persona === "client"
+          ? n.dataset.annaPromptClient ?? n.dataset.annaPrompt
+          : n.dataset.annaPrompt;
       if (q && !seen.has(q)) {
         seen.add(q);
         list.push(q);
@@ -95,13 +99,30 @@ export default function AlmostAnnaChat({
       const funny = exQ ?? "Be honest. Was the frog actually real?";
       list.splice(Math.min(1, list.length), 0, funny);
     }
-    // Four, matching the homepage chips (Anna, 2026-08-19): a case study
-    // can carry nine section hints, and nine chips read as a wall. The
-    // first sections' questions win because they mirror how the page reads,
-    // and the Ex slot at position two always survives the cut.
-    return list.length ? list.slice(0, 4) : null;
+    return list.length ? list : null;
   }, [persona, pathname]);
-  const menuPrompts = pagePrompts ?? c.prompts;
+  // The full page pool feeds the follow-ups; the empty-state menu shows
+  // four, matching the homepage chips (Anna, 2026-08-19): a case study can
+  // carry nine section hints, and nine chips read as a wall. The first
+  // sections' questions win because they mirror how the page reads, and
+  // the Ex slot at position two always survives the cut.
+  const promptPool = pagePrompts ?? c.prompts;
+  const menuPrompts = promptPool.slice(0, 4);
+
+  // Follow-ups (Anna, 2026-08-19): after each answer, offer the next
+  // couple of questions from this page the visitor has not asked yet, so
+  // the conversation walks the page the way scrolling would. Every one is
+  // pre-scripted, so each tap is another instant answer.
+  const followUps = messages.length > 0
+    ? promptPool
+        .filter(
+          (q) =>
+            !messages.some(
+              (m) => m.role === "user" && m.content.trim() === q
+            )
+        )
+        .slice(0, 2)
+    : [];
 
   useEffect(() => {
     ensurePersona(persona);
@@ -187,6 +208,16 @@ export default function AlmostAnnaChat({
               <span />
               <span className="aa-sr">{assistantName} is thinking</span>
             </p>
+          ) : null}
+
+          {!busy && followUps.length > 0 ? (
+            <div className="anna-chat-followups" aria-label="Follow-up questions">
+              {followUps.map((q) => (
+                <button key={q} type="button" onClick={() => send(q, true)}>
+                  {q}
+                </button>
+              ))}
+            </div>
           ) : null}
         </div>
       )}

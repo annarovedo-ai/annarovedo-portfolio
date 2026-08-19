@@ -596,7 +596,7 @@ export default function Home() {
           </div>
         </section>
 
-        <section className="reflection shell" id="reflection" data-anna-prompt="What did this change about how you design AI?">
+        <section className="reflection shell" id="reflection" data-anna-prompt="What did this change about how you design AI?" data-anna-prompt-client="Could an assistant like this work on our site?">
           <SectionNumber>09 · Reflection</SectionNumber>
           <div className="reflection-grid">
             <h2>The interface was never the most interesting part.</h2>

@@ -250,7 +250,7 @@ export default function AnnaRazor() {
     // Ex persona prefers its own variant and falls back to the default.
     const nodes = Array.from(
       document.querySelectorAll<HTMLElement>(
-        "[data-anna-prompt], [data-anna-prompt-ex]"
+        "[data-anna-prompt], [data-anna-prompt-ex], [data-anna-prompt-client]"
       )
     );
     if (nodes.length === 0) return;
@@ -268,10 +268,15 @@ export default function AnnaRazor() {
             bestEl = node;
           }
         }
+        // Persona variants fall back to the default: Ex gets its off-topic
+        // question, Client gets the application-shaped one ("could you do
+        // this for us?") where a section carries it (2026-08-19).
         const raw =
           (persona === "ex"
             ? bestEl?.dataset.annaPromptEx ?? bestEl?.dataset.annaPrompt
-            : bestEl?.dataset.annaPrompt) ?? "";
+            : persona === "client"
+              ? bestEl?.dataset.annaPromptClient ?? bestEl?.dataset.annaPrompt
+              : bestEl?.dataset.annaPrompt) ?? "";
         setPrompts(raw.split("|").map((t) => t.trim()).filter(Boolean));
       },
       { threshold: [0, 0.2, 0.4, 0.6, 0.8, 1] }
@@ -443,7 +448,7 @@ export default function AnnaRazor() {
             className="anna-razor-panel"
             role="dialog"
             aria-label={assistantName}
-            style={{ borderRadius: 0 }}
+            style={{ borderRadius: 16 }}
             initial={{ opacity: 0 }}
             animate={{ opacity: 1 }}
             exit={{ opacity: 0, transition: CONTENT_OUT }}
@@ -600,7 +605,7 @@ export default function AnnaRazor() {
             layout
             transition={dragTransition}
             className={`anna-razor-bar${shown ? " is-visible" : ""}`}
-            style={{ borderRadius: 0, y: dragY }}
+            style={{ borderRadius: 14, y: dragY }}
             onSubmit={submit}
             onTouchStart={onTouchStart}
             onTouchMove={onTouchMove}

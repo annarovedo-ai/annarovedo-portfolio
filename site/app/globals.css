@@ -10795,3 +10795,115 @@ html[data-anna-razor="bar"] body {
     height: 44px;
   }
 }
+
+/* Follow-up chips (2026-08-19): after each answer, the next unasked
+   questions from this page, sitting on the light reading ground. Dashed
+   and round, the site's standing grammar for "pick one". */
+.anna-chat-followups {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+  margin: 16px 0 4px 40px;
+}
+
+.anna-chat-followups button {
+  padding: 8px 14px;
+  border: 1px dashed var(--blue-bright);
+  border-radius: 999px;
+  background: var(--paper-deep);
+  color: var(--blue);
+  font-family: var(--serif);
+  font-size: var(--t-small);
+  text-align: left;
+  cursor: pointer;
+  transition: border-color 0.16s ease, border-style 0.16s ease, color 0.16s ease;
+}
+
+.anna-chat-followups button:hover {
+  border-style: solid;
+  border-color: var(--blue);
+  color: var(--ink);
+}
+
+@media (max-width: 720px) {
+  .anna-chat-followups {
+    margin-left: 0;
+  }
+}
+
+/* ------------------------------------------------------------------ */
+/* FLOATING DOCK (2026-08-19, Anna's Figma spec): the bar and panel float
+   inset from the viewport edges rather than sitting flush, "an intentional
+   tool layered over the portfolio rather than permanent site chrome."
+   Radii are Motion inline styles in AnnaRazor.tsx (they animate through
+   the morph); everything positional lives here. */
+
+.anna-razor-bar {
+  bottom: clamp(12px, 2vw, 24px);
+  width: min(1160px, calc(100% - clamp(24px, 4vw, 48px)));
+  border-bottom: 1px solid var(--blue);
+  box-shadow: 0 10px 30px rgba(17, 17, 17, 0.18);
+}
+
+.anna-razor-panel {
+  bottom: clamp(12px, 2vw, 24px);
+  width: min(820px, calc(100% - clamp(24px, 4vw, 48px)));
+  box-shadow: 0 14px 40px rgba(17, 17, 17, 0.24);
+}
+
+/* The page always keeps the last of itself readable above the floating
+   bar: reserve = bar height + the bottom inset. */
+html[data-anna-razor="bar"] body {
+  padding-bottom: 96px;
+}
+
+/* The empty-state chips, as in the mock: two even columns, full-width
+   buttons, one per cell. */
+.anna-chat-menu {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+}
+
+.anna-chat-menu button {
+  width: 100%;
+}
+
+@media (max-width: 720px) {
+  /* Compact bar hugs the edges at 8px, above the safe area and browser
+     chrome as before. */
+  .anna-razor-bar {
+    width: calc(100% - 16px);
+    left: 8px;
+    right: 8px;
+  }
+
+  /* The conversation goes full screen on phones: the floating gap ends
+     where the full-screen begins, per the spec. */
+  .anna-razor-panel {
+    top: 0;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+    margin: 0;
+    padding-top: calc(env(safe-area-inset-top, 0px) + 6px);
+    border-radius: 0 !important;
+  }
+
+  .anna-razor-panel .anna-chat {
+    flex: 1;
+    min-height: 0;
+  }
+
+  .anna-razor-panel .anna-chat-body {
+    flex: 1;
+    height: auto;
+    min-height: 0;
+  }
+
+  .anna-chat-menu {
+    grid-template-columns: 1fr;
+  }
+}

@@ -289,7 +289,7 @@ export default function NikeCaseStudy() {
           </p>
         </section>
 
-        <section className="chapter shell" data-anna-prompt="What did usability testing validate?" data-anna-prompt-ex="Did you finish the series without me?">
+        <section className="chapter shell" data-anna-prompt="What did usability testing validate?" data-anna-prompt-ex="Did you finish the series without me?" data-anna-prompt-client="Could you do this inside our existing tools?">
           <SectionNumber>05</SectionNumber>
           <div className="chapter-intro two-column-copy">
             <div>

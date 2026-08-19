@@ -423,7 +423,7 @@ export default function JourneyOrchestration() {
           </div>
         </section>
 
-        <section className="reflection shell" data-anna-prompt="What would you test first?">
+        <section className="reflection shell" data-anna-prompt="What would you test first?" data-anna-prompt-client="Is my product ready for something like this?">
           <SectionNumber>05 · Reflection</SectionNumber>
           <div className="reflection-grid">
             {/* Rewritten 2026-08-10. This reflection used to end in the same

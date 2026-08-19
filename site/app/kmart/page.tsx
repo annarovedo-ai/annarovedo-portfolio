@@ -376,7 +376,7 @@ export default function Kmart() {
           </p>
         </section>
 
-        <section className="reflection shell" id="outcome" data-anna-prompt="Why did the campaign need this much detail?">
+        <section className="reflection shell" id="outcome" data-anna-prompt="Why did the campaign need this much detail?" data-anna-prompt-client="Could a sprint like this work for our brand?">
           <p className="eyebrow">What happened</p>
           <h2>We were the far end of the scale, and I think that was the point.</h2>
           <div className="reflection-grid">

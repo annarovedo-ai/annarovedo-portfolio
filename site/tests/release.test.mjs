@@ -148,11 +148,14 @@ test("every printed chat prompt has one approved verbatim answer", async () => {
   assert.equal(findCannedAnswer("recruiter", "A question Anna did not prewrite"), null);
 });
 
-test("every Ex page hint has a locked preset behind it", async () => {
-  // The data-anna-prompt-ex hints are served by exact-match presets, never
-  // by generation: a hint whose wording drifts from its preset silently
-  // un-cans its answer and hands invented relationship history to the
-  // model. This walks the app and proves every Ex hint round-trips.
+test("every page hint, every persona, has a pre-scripted answer", async () => {
+  // Anna, 2026-08-19: "make sure all of the question prompts asked has a
+  // pre-scripted answer." Suggested questions never reach the model: the
+  // persona chip sets and the shared hint bank (annaHintAnswers.ts) cover
+  // every data-anna-prompt* attribute in the app. A hint whose wording
+  // drifts from its script silently hands the question to generation, so
+  // this walks the app and proves every variant round-trips for every
+  // persona that can see it.
   const { readdir } = await import("node:fs/promises");
   const appDir = new URL("app/", root);
   const files = (await readdir(appDir, { recursive: true }))
@@ -160,6 +163,22 @@ test("every Ex page hint has a locked preset behind it", async () => {
   let found = 0;
   for (const f of files) {
     const src = await readFile(new URL(`app/${f}`, root), "utf8");
+    for (const m of src.matchAll(/data-anna-prompt="([^"]+)"/g)) {
+      found++;
+      for (const persona of ["recruiter", "client", "ex"]) {
+        assert.ok(
+          findCannedAnswer(persona, m[1]),
+          `hint has no script for ${persona}: ${m[1]} (${f})`,
+        );
+      }
+    }
+    for (const m of src.matchAll(/data-anna-prompt-client="([^"]+)"/g)) {
+      found++;
+      assert.ok(
+        findCannedAnswer("client", m[1]),
+        `client hint has no script: ${m[1]} (${f})`,
+      );
+    }
     for (const m of src.matchAll(/data-anna-prompt-ex="([^"]+)"/g)) {
       found++;
       assert.ok(
@@ -168,7 +187,29 @@ test("every Ex page hint has a locked preset behind it", async () => {
       );
     }
   }
-  assert.ok(found >= 9, `expected Ex hints across the site, found ${found}`);
+  assert.ok(found >= 60, `expected hints across the site, found ${found}`);
+
+  // The shared bank obeys the same copy rules as the chips.
+  const { sharedHintAnswers } = await import("../app/lib/annaAnswers.ts");
+  for (const { question, answer } of sharedHintAnswers) {
+    assert.ok(answer?.trim(), `shared: missing answer for ${question}`);
+    assert.doesNotMatch(answer, /—/, `shared: em dash in ${question}`);
+  }
+
+  // Two shared entries duplicate printed recruiter chips so every persona
+  // resolves them on About and Resume; the text must never drift apart.
+  for (const q of [
+    "How do you work when the roadmap isn’t clear?",
+    "What did working across so many brands teach you?",
+  ]) {
+    const shared = sharedHintAnswers.find((a) => a.question === q);
+    assert.ok(shared, `canonical copy missing in shared bank: ${q}`);
+    assert.equal(
+      shared.answer,
+      findCannedAnswer("recruiter", q),
+      `canonical drift between chip and shared bank: ${q}`,
+    );
+  }
 });
 
 test("the chat route returns approved answers before calling Anthropic", async () => {

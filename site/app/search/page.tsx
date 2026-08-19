@@ -503,7 +503,7 @@ export default function SearchCaseStudy() {
           </div>
         </section>
 
-        <section className="reflection shell" data-anna-prompt="What would you do differently?">
+        <section className="reflection shell" data-anna-prompt="What would you do differently?" data-anna-prompt-client="How would you approach our search?">
           <SectionNumber>08 · Reflection</SectionNumber>
           <div className="reflection-grid">
             <h2>The interface was visible. Ranking and quality were the real design material.</h2>
