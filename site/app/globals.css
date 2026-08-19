@@ -10907,3 +10907,62 @@ html[data-anna-razor="bar"] body {
     grid-template-columns: 1fr;
   }
 }
+
+/* Mobile rest state (2026-08-19, Anna): the persona pill sits close to its
+   explainer line ("For people with something to bring to market") until a
+   real scroll docks it. The band's top padding and the sticky row's bottom
+   padding were holding them a screen apart. */
+@media (max-width: 720px) {
+  /* Top padding stays (the I'M A label needs clearance from the lockup
+     row above it, caught colliding 2026-08-19); only the gap below the
+     pill, toward its explainer line, is collapsed. */
+  .persona-sticky {
+    padding: 14px 0 4px;
+  }
+
+  .persona-intro {
+    padding-top: 2px;
+  }
+}
+
+/* Send and dismiss sit as one control group on phones (2026-08-19, Anna:
+   "move the arrow closer to the x on mobile"). */
+@media (max-width: 720px) {
+  .anna-razor-bar .anna-razor-send {
+    margin-left: auto;
+  }
+
+  .anna-razor-bar .anna-razor-dismiss {
+    margin-left: 0;
+  }
+}
+
+/* The parked chat button hugs the corner tighter on phones (2026-08-19,
+   Anna: "the chat icon should be lower in the corner on mobile"), riding
+   above the home indicator via the safe area. */
+@media (max-width: 720px) {
+  .anna-razor-mini {
+    right: 10px;
+    bottom: calc(env(safe-area-inset-bottom, 0px) + 10px);
+  }
+}
+
+/* Phone width, internal docked header (2026-08-19, from Anna's screenshot):
+   label plus three pills exceeded the viewport and the options wrapped into
+   a two-story bubble. The label steps aside and the pills tighten, same
+   treatment the scrolled homepage header already proved out. */
+@media (max-width: 480px) {
+  .home-header.is-docked:not(.is-home) .persona-switch-label {
+    display: none;
+  }
+
+  .home-header.is-docked:not(.is-home) .persona-switch {
+    padding: 3px;
+  }
+
+  .home-header.is-docked:not(.is-home) .persona-switch button {
+    padding: 9px 10px;
+    font-size: var(--t-fine);
+    letter-spacing: 0.03em;
+  }
+}

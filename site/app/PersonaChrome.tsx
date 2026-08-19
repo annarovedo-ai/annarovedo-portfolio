@@ -60,7 +60,14 @@ export default function PersonaChrome({
        applied the class did not, so the header had been rendering permanently
        in its tall state at every width. */
     const onScroll = () => {
-      header.classList.toggle("is-scrolled", window.scrollY > 8);
+      // 8px on desktop: dock almost immediately, since the tall state is an
+      // introduction and the short state is a tool. Phones need real intent
+      // (2026-08-19, Anna: the pill should stay by its explainer line
+      // "until user scrolls and it docks"): at 8px a rubber-band or a
+      // thumb-graze collapsed the header at page top, leaving the rest-
+      // height spacer as a navy void under the docked row.
+      const threshold = window.matchMedia("(max-width: 767px)").matches ? 140 : 8;
+      header.classList.toggle("is-scrolled", window.scrollY > threshold);
     };
 
     /* The mobile nav panel is fixed-position and drops from below the header,

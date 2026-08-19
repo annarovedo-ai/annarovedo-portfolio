@@ -66,8 +66,6 @@ const MODE_KEY = "pp-anna-razor";
 // beat before settling into the quieter, icon-only state everyone sees
 // afterward. Independent of MODE_KEY: dismissing to quiet or reopening
 // doesn't bring it back, only a brand new tab does.
-const INTRO_KEY = "pp-anna-razor-intro";
-const INTRO_DURATION = 4200;
 // How long the "Hidden…" notice stays before the bar collapses. Long enough
 // to read the sentence and reach the Undo inside it.
 const DISMISS_NOTICE = 2100;
@@ -107,9 +105,6 @@ export default function AnnaRazor() {
   // razor is the chat's one home, on every page. AnnaStage.tsx and the
   // stageDocked plumbing in chatStore are dormant, kept only because this
   // sandbox cannot delete files.
-  const assistantIntro = isClient
-    ? "Paper Pixel’s AI, guided by Anna’s work. Ask about your project."
-    : "An AI trained on Anna’s work. Ask it anything.";
   const assistantDisclosure = isClient
     ? "Guided by Anna’s work and point of view."
     : "Trained on my work and how I think.";
@@ -132,7 +127,6 @@ export default function AnnaRazor() {
   const [isPhone, setIsPhone] = useState(false);
   const [drag, setDrag] = useState<number | null>(null);
   const [dismissing, setDismissing] = useState(false);
-  const [showIntro, setShowIntro] = useState(false);
   const dragFrom = useRef(0);
   const dismissTimer = useRef<number | null>(null);
   // What the reader had before they opened the conversation, so closing it
@@ -140,6 +134,24 @@ export default function AnnaRazor() {
   // button for why that matters.
   const modeBeforeOpen = useRef<Mode>("razor");
   const inputRef = useRef<HTMLInputElement | null>(null);
+  // Guards the phone focus-opens-the-panel behavior below: when the panel
+  // closes, focus returns to the bar's input (accessibility contract), and
+  // without this window that return-focus would immediately reopen the
+  // panel in a loop.
+  const justClosed = useRef(false);
+  const prevOpenForFocus = useRef(open);
+
+  useEffect(() => {
+    if (prevOpenForFocus.current && !open) {
+      justClosed.current = true;
+      const t = window.setTimeout(() => {
+        justClosed.current = false;
+      }, 600);
+      prevOpenForFocus.current = open;
+      return () => window.clearTimeout(t);
+    }
+    prevOpenForFocus.current = open;
+  }, [open]);
 
   useEffect(() => {
     const mq = window.matchMedia("(max-width: 767px)");
@@ -220,28 +232,11 @@ export default function AnnaRazor() {
     setVisible(true);
   }, [pathname]);
 
-  // Fires once the razor is first visible in this tab, provided the visitor
-  // hasn't already opened the conversation on their own (someone who's
-  // already tapped it doesn't need telling what it is). sessionStorage keeps
-  // it to a single showing per tab, same lifetime as MODE_KEY.
-  useEffect(() => {
-    if (!visible || open) return;
-    let seen = false;
-    try {
-      seen = window.sessionStorage.getItem(INTRO_KEY) === "1";
-    } catch {
-      /* storage unavailable */
-    }
-    if (seen) return;
-    try {
-      window.sessionStorage.setItem(INTRO_KEY, "1");
-    } catch {
-      /* storage unavailable */
-    }
-    setShowIntro(true);
-    const t = window.setTimeout(() => setShowIntro(false), INTRO_DURATION);
-    return () => window.clearTimeout(t);
-  }, [visible, open]);
+  // The once-per-tab intro tooltip was removed 2026-08-19 (Anna: "i don't
+  // like the pop-up"): it covered page content at the exact moment a
+  // visitor started reading. The bar's placeholder and the avatar carry
+  // the introduction now.
+
 
   useEffect(() => {
     // Both attributes: sections may carry a default hint, an Ex-only hint
@@ -376,11 +371,6 @@ export default function AnnaRazor() {
     modeBeforeOpen.current = mode;
     setSeed(text);
     setOpen(true);
-    // Opening always cuts the intro short: someone who has just started a
-    // conversation does not need to be told what the thing is. Done here
-    // rather than in an effect watching `open`, which was an extra render
-    // pass to express something that only ever happens on this one path.
-    setShowIntro(false);
   }
 
   function submit(e: React.FormEvent) {
@@ -582,21 +572,7 @@ export default function AnnaRazor() {
                 }}
               />
             </span>
-            <AnimatePresence>
-              {showIntro ? (
-                <motion.span
-                  key="intro-mini"
-                  className="anna-razor-intro anna-razor-intro--mini"
-                  role="status"
-                  initial={{ opacity: 0, y: 4 }}
-                  animate={{ opacity: 1, y: 0 }}
-                  exit={{ opacity: 0, y: 4 }}
-                  transition={CONTENT_IN}
-                >
-                  {assistantIntro}
-                </motion.span>
-              ) : null}
-            </AnimatePresence>
+            
           </motion.button>
         ) : (
           <motion.form
@@ -622,21 +598,7 @@ export default function AnnaRazor() {
                 explains what the face is. Absolutely positioned so it never
                 changes the bar's own height, which would defeat the point of
                 a bar that holds still. */}
-            <AnimatePresence>
-              {showIntro && !dismissing ? (
-                <motion.span
-                  key="intro-bar"
-                  className="anna-razor-intro"
-                  role="status"
-                  initial={{ opacity: 0, y: 4 }}
-                  animate={{ opacity: 1, y: 0 }}
-                  exit={{ opacity: 0, y: 4 }}
-                  transition={CONTENT_IN}
-                >
-                  {assistantIntro}
-                </motion.span>
-              ) : null}
-            </AnimatePresence>
+            
 
             {/* Content only, never the shape: dismissing swaps what the bar
                 says without moving or resizing it, so the "you can bring it
@@ -711,7 +673,18 @@ export default function AnnaRazor() {
                       ref={inputRef}
                       value={draft}
                       onChange={(e) => setDraft(e.target.value)}
-                      onFocus={() => setInputFocused(true)}
+                      onFocus={() => {
+                        setInputFocused(true);
+                        // On phones, focusing the bar IS the transition:
+                        // composing belongs inside the full-screen
+                        // conversation, not in a one-line slot above the
+                        // keyboard (Anna, 2026-08-19). The draft lives in
+                        // the shared store, so nothing typed is lost, and
+                        // the keyboard survives the focus handoff.
+                        if (isPhone && !justClosed.current) {
+                          openWith(undefined);
+                        }
+                      }}
                       onBlur={() => setInputFocused(false)}
                       placeholder={
                         offer && !draft.trim() && !inputFocused ? "" : assistantPrompt
