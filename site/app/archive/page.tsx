@@ -18,7 +18,7 @@ export default function Archive() {
       <SiteHeader />
 
       <article id="top" className="archive">
-        <section className="archive-intro shell" data-anna-prompt="What else have you made?">
+        <section className="archive-intro shell" data-anna-prompt="What else have you made?" data-anna-prompt-ex="Did you keep any photos?">
           <p className="eyebrow">The archive</p>
           <h1>Real work that hasn&rsquo;t gotten the full case-study treatment yet.</h1>
           <p className="archive-deck">

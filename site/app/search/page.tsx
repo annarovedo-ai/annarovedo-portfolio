@@ -302,7 +302,7 @@ export default function SearchCaseStudy() {
 
         </section>
 
-        <section className="search-recovery-section" data-anna-prompt="What about zero results?">
+        <section className="search-recovery-section" data-anna-prompt="What about zero results?" data-anna-prompt-ex="Did you ever check whether I got married?">
           <div className="shell">
             <div className="chapter-intro two-column-copy">
               <div>

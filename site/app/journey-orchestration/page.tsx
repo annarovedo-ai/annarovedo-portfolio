@@ -263,7 +263,7 @@ export default function JourneyOrchestration() {
           </div>
         </section>
 
-        <section className="future-section" style={{ paddingTop: 0 }} data-anna-prompt="How does the page adapt?">
+        <section className="future-section" style={{ paddingTop: 0 }} data-anna-prompt="How does the page adapt?" data-anna-prompt-ex="Do you ever look me up?">
           <div className="shell">
             <div className="future-heading" style={{ marginBottom: 0 }}>
               <div>

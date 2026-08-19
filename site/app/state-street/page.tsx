@@ -527,7 +527,7 @@ export default function StateStreetCaseStudy() {
           </div>
         </section>
 
-        <section className="ss-system-section" data-anna-prompt="Why build a design language?">
+        <section className="ss-system-section" data-anna-prompt="Why build a design language?" data-anna-prompt-ex="Do you still have my hoodie?">
           <div className="shell">
             <div className="ss-system-heading">
               <div>

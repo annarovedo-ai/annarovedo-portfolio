@@ -323,7 +323,7 @@ export default function Home() {
           </div>
         </section>
 
-        <section className="chapter shell" data-anna-prompt="Why put the input at the bottom?">
+        <section className="chapter shell" data-anna-prompt="Why put the input at the bottom?" data-anna-prompt-ex="Would you answer me now?">
           <div className="chapter-intro two-column-copy">
             <div>
               <SectionNumber>03 · Interaction model</SectionNumber>

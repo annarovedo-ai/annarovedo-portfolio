@@ -20,7 +20,11 @@ export default function AboutBody() {
       <SiteHeader />
 
       <article id="top">
-        <section className="about-intro shell">
+        <section
+          className="about-intro shell"
+          data-anna-prompt="Why not just pick one discipline?"
+          data-anna-prompt-ex="Do you think I changed?"
+        >
           {/* The portrait placeholder was removed 2026-08-12. It was an empty
               div with a border and a fill, holding a 4:5 slot for a photograph
               that does not exist, and on a page whose whole job is to be
@@ -64,7 +68,9 @@ export default function AboutBody() {
             twice (Anna: "about and resume contain the exact same info").
             About is the story again; /resume is the evidence. */}
 
-        <section className="about-points">
+        {/* Exact canonical wording: this hint hits the canned-answer lookup
+            and returns Anna's locked copy without a model call. */}
+        <section className="about-points" data-anna-prompt="How do you work when the roadmap isn’t clear?">
           <div className="shell">
             <p className="eyebrow">{c.pointsKicker}</p>
             <ol className="about-points-grid">
@@ -80,7 +86,7 @@ export default function AboutBody() {
         </section>
 
         {c.closing ? (
-          <section className="about-closing">
+          <section className="about-closing" data-anna-prompt="How does the fashion training show up in the work?">
             <div className="shell about-closing-inner">
               <p className="eyebrow">{c.closing.kicker}</p>
               {c.closing.body.map((p) => (

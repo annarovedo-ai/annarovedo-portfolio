@@ -119,12 +119,23 @@ test("robots keeps crawlers off the paid chat endpoint", async () => {
 test("every printed chat prompt has one approved verbatim answer", async () => {
   const home = await readFile(new URL("app/homeContent.ts", root), "utf8");
 
+  // Recruiter and Client: exactly the four printed chips, nothing else.
+  // Ex: the four printed chips FIRST, then the preset bank (Anna's locked
+  // off-topic answers, 2026-08-19), which is not printed on the homepage
+  // and is allowed to grow.
   for (const persona of ["recruiter", "client", "ex"]) {
-    assert.equal(cannedAnswers[persona].length, 4);
-    for (const { question, answer } of cannedAnswers[persona]) {
+    const answers = cannedAnswers[persona];
+    if (persona === "ex") {
+      assert.ok(answers.length >= 4, "ex must keep its four chips");
+    } else {
+      assert.equal(answers.length, 4);
+    }
+    for (const [i, { question, answer }] of answers.entries()) {
       assert.ok(answer?.trim(), `${persona}: missing answer for ${question}`);
       assert.doesNotMatch(answer, /—/, `${persona}: em dash in ${question}`);
-      assert.ok(home.includes(question), `${persona}: chip is not printed: ${question}`);
+      if (persona !== "ex" || i < 4) {
+        assert.ok(home.includes(question), `${persona}: chip is not printed: ${question}`);
+      }
       assert.equal(findCannedAnswer(persona, question), answer);
     }
   }
@@ -135,6 +146,29 @@ test("every printed chat prompt has one approved verbatim answer", async () => {
   );
   assert.equal(findCannedAnswer("client", "Be honest. Was the frog actually real?"), null);
   assert.equal(findCannedAnswer("recruiter", "A question Anna did not prewrite"), null);
+});
+
+test("every Ex page hint has a locked preset behind it", async () => {
+  // The data-anna-prompt-ex hints are served by exact-match presets, never
+  // by generation: a hint whose wording drifts from its preset silently
+  // un-cans its answer and hands invented relationship history to the
+  // model. This walks the app and proves every Ex hint round-trips.
+  const { readdir } = await import("node:fs/promises");
+  const appDir = new URL("app/", root);
+  const files = (await readdir(appDir, { recursive: true }))
+    .filter((f) => f.endsWith(".tsx"));
+  let found = 0;
+  for (const f of files) {
+    const src = await readFile(new URL(`app/${f}`, root), "utf8");
+    for (const m of src.matchAll(/data-anna-prompt-ex="([^"]+)"/g)) {
+      found++;
+      assert.ok(
+        findCannedAnswer("ex", m[1]),
+        `Ex hint has no preset: ${m[1]} (${f})`,
+      );
+    }
+  }
+  assert.ok(found >= 9, `expected Ex hints across the site, found ${found}`);
 });
 
 test("the chat route returns approved answers before calling Anthropic", async () => {

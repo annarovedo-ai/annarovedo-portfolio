@@ -189,7 +189,7 @@ export default function Kmart() {
           </div>
         </section>
 
-        <section className="chapter chapter-alt" id="idea" data-anna-prompt="Why make it a secret?">
+        <section className="chapter chapter-alt" id="idea" data-anna-prompt="Why make it a secret?" data-anna-prompt-ex="Did I get a nickname in the group chat?">
           <div className="shell">
             <p className="section-number">02</p>
             <div className="two-column-copy">

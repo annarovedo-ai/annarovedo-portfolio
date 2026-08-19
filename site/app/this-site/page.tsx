@@ -117,7 +117,7 @@ export default function ThisSitePage() {
           </div>
         </section>
 
-        <section className="chapter shell" data-anna-prompt="What did the AI actually do?">
+        <section className="chapter shell" data-anna-prompt="What did the AI actually do?" data-anna-prompt-ex="Do you still love me?">
           <div className="chapter-intro two-column-copy">
             <div>
               <p className="section-number">03 · The build</p>

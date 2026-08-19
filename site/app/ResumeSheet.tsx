@@ -40,7 +40,11 @@ export default function ResumeSheet({
   return (
     <div className="shell cv-sheet">
       {showIntro || showContact ? (
-        <header className="cv-masthead">
+        <header
+          className="cv-masthead"
+          data-anna-prompt="Are you open to full-time roles?"
+          data-anna-prompt-ex="Did you ever date someone normal after me?"
+        >
           {showIntro ? (
             <>
               <p className="eyebrow">{c.eyebrow}</p>
@@ -69,7 +73,7 @@ export default function ResumeSheet({
       ) : null}
 
       {showIntro ? (
-        <section className="cv-block cv-about">
+        <section className="cv-block cv-about" data-anna-prompt="Which skill should be weighted most heavily?">
           <h2 className="cv-rule-label">About</h2>
           {(c.profile ?? defaultProfile).map((p) => (
             <p className="cv-profile" key={p}>
@@ -97,7 +101,11 @@ export default function ResumeSheet({
         </aside>
 
         <div className="cv-main">
-          <section className="cv-block cv-block-first">
+          {/* Exact canonical wording: hits the canned lookup, no model call. */}
+          <section
+            className="cv-block cv-block-first"
+            data-anna-prompt="What did working across so many brands teach you?"
+          >
             <h2 className="cv-rule-label">Selected experience</h2>
             <ol className="cv-roles">
               {experience.map((r) => (

@@ -436,7 +436,12 @@ export default function HomeBody({
 
       <ClientLogoStrip />
 
-      <section className="home-work shell" id="work" data-anna-prompt="Which case study best shows how Anna thinks?">
+      <section
+        className="home-work shell"
+        id="work"
+        data-anna-prompt="Which case study best shows how Anna thinks?"
+        data-anna-prompt-ex="Did you know I’d click “Ex Boyfriend”?"
+      >
         <p className="eyebrow">{c.workEyebrow}</p>
         <h2>{c.casesHeader}</h2>
 

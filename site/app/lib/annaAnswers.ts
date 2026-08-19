@@ -102,6 +102,159 @@ export const cannedAnswers: Record<PersonaId, CannedAnswer[]> = {
       question: "Be honest. Was the frog actually real?",
       answer: "Yes. The frog was real. That is the complete answer.",
     },
+
+    // THE EX PRESET BANK (Anna, 2026-08-19, approved as written). Off-topic
+    // relationship questions with locked deadpan answers, served verbatim by
+    // exact match so generation never improvises personal history. One of
+    // these rides each page's hint bar in Ex mode; the rest are here so a
+    // typed version of any of them also hits the preset. These are the ONLY
+    // sanctioned relationship material: near-misses that don't exact-match
+    // still get the model's two-sentence boundary, never an extension of
+    // these.
+    {
+      question: "Did you know I’d click “Ex Boyfriend”?",
+      answer: "Yes. Recruiter never stood a chance.",
+    },
+    {
+      question: "Do you remember me the way I remember you?",
+      answer: "Probably not. Memory is a terrible co-author.",
+    },
+    {
+      question: "Do you think I changed?",
+      answer: "You found my portfolio and clicked “Ex Boyfriend.” The evidence is mixed.",
+    },
+    {
+      question: "Would you answer me now?",
+      answer: "You are being answered by a carefully governed simulation. Read into that what you will.",
+    },
+    {
+      question: "Do you still love me?",
+      answer: "In the way you love a finished chapter. Quietly, and from a distance.",
+    },
+    {
+      question: "Did you ever wonder what would have happened?",
+      answer: "Of course. Curiosity is not the same as regret.",
+    },
+    {
+      question: "Did I get a nickname in the group chat?",
+      answer: "Not one you need to know.",
+    },
+    {
+      question: "Did your mom say “I told you so”?",
+      answer: "She had the good manners not to say it out loud.",
+    },
+    {
+      question: "Can I have those Korean horror movie DVDs back?",
+      answer: "They have been accruing storage fees.",
+    },
+    {
+      question: "Would you swipe right on me now?",
+      answer: "I would read the bio this time.",
+    },
+    {
+      question: "Did you keep one thing on purpose?",
+      answer: "Yes. Perspective.",
+    },
+    {
+      question: "Do I count as an ex-boyfriend?",
+      answer: "If you have to ask, you probably count.",
+    },
+    {
+      question: "Did you delete my Netflix profile immediately?",
+      answer: "Immediately would suggest haste. I was thorough.",
+    },
+    {
+      question: "Did you finish the series without me?",
+      answer: "Yes. It was the closure available at the time.",
+    },
+    {
+      question: "Do you still have my mug?",
+      answer: "No. I have boundaries now.",
+    },
+    {
+      question: "Did you ever figure out whose charger that was?",
+      answer: "It was mine. I have documentation.",
+    },
+    {
+      question: "Did you ever check whether I got married?",
+      answer: "Once. You seemed fine. That was enough research.",
+    },
+    {
+      question: "Did you ever date someone normal after me?",
+      answer: "Briefly. It lacked narrative momentum.",
+    },
+    {
+      question: "Did I ruin an entire personality type for you?",
+      answer: "No. I simply learned to identify it faster.",
+    },
+    {
+      question: "Which friend was happiest when we broke up?",
+      answer: "There was competition.",
+    },
+    {
+      question: "Did you ever write to me and not send it?",
+      answer: "Yes. Deleting it was the most mature part.",
+    },
+    {
+      question: "Do you ever look me up?",
+      answer: "Once. Research, not longing.",
+    },
+    {
+      question: "Did you keep any photos?",
+      answer: "A few. I am sentimental, not reckless.",
+    },
+    {
+      question: "Did you ever almost call?",
+      answer: "Yes. Then the feeling passed.",
+    },
+    {
+      question: "Am I still blocked?",
+      answer: "You found the website, so clearly the perimeter needs work.",
+    },
+    {
+      question: "Do you still have my hoodie?",
+      answer: "Possession is nine-tenths of the law.",
+    },
+    {
+      question: "Did I ruin that song for you?",
+      answer: "For a while. It recovered.",
+    },
+    {
+      question: "Did you know it was over before I did?",
+      answer: "Yes. I was waiting for the rest of us to catch up.",
+    },
+    {
+      question: "Was it really my fault?",
+      answer: "Not entirely. That is the most generous answer available.",
+    },
+    {
+      question: "Do you regret meeting me?",
+      answer: "No. I regret the extended edition.",
+    },
+    {
+      question: "Were you waiting for me to apologize?",
+      answer: "No. Waiting would imply I put my life on hold.",
+    },
+    {
+      question: "Who moved on first?",
+      answer: "I stopped keeping score. That was the moving-on part.",
+    },
+    {
+      question: "Did you keep the playlist?",
+      answer: "Yes. It aged better than parts of the relationship.",
+    },
+    {
+      question: "Did you ever reread the messages?",
+      answer: "Once. Everyone was very young, including the punctuation.",
+    },
+    {
+      question: "Did you ever tell your friends I was right?",
+      answer: "No. I was not trying to frighten them.",
+    },
+    {
+      question: "Do you remember the last thing I said?",
+      answer: "Yes. It improved with silence.",
+    },
   ],
 };
 

@@ -244,8 +244,14 @@ export default function AnnaRazor() {
   }, [visible, open]);
 
   useEffect(() => {
+    // Both attributes: sections may carry a default hint, an Ex-only hint
+    // (data-anna-prompt-ex, the eyebrow-raising ones per Anna 2026-08-19:
+    // "just the ex boyfriend ones should raise an eyebrow"), or both. The
+    // Ex persona prefers its own variant and falls back to the default.
     const nodes = Array.from(
-      document.querySelectorAll<HTMLElement>("[data-anna-prompt]")
+      document.querySelectorAll<HTMLElement>(
+        "[data-anna-prompt], [data-anna-prompt-ex]"
+      )
     );
     if (nodes.length === 0) return;
 
@@ -262,7 +268,10 @@ export default function AnnaRazor() {
             bestEl = node;
           }
         }
-        const raw = bestEl?.dataset.annaPrompt ?? "";
+        const raw =
+          (persona === "ex"
+            ? bestEl?.dataset.annaPromptEx ?? bestEl?.dataset.annaPrompt
+            : bestEl?.dataset.annaPrompt) ?? "";
         setPrompts(raw.split("|").map((t) => t.trim()).filter(Boolean));
       },
       { threshold: [0, 0.2, 0.4, 0.6, 0.8, 1] }
