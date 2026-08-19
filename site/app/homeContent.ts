@@ -599,10 +599,12 @@ export const homeContent: Record<PersonaId, HomeContent> = {
     // and by answering it as a joke, so the answer costs nobody anything.
     conciergeAside: "It has absolutely no opinions about you.",
     prompts: [
+      // The frog sits second, not last (Anna, 2026-08-19: "put the funny
+      // one 2nd or 3rd"): last reads as a footnote, second reads as a tell.
       "So what do you actually do now?",
+      "Be honest. Was the frog actually real?",
       "How did you go from fashion to AI?",
       "Which project are you most proud of?",
-      "Be honest. Was the frog actually real?",
     ],
     workEyebrow: "What I’ve been up to",
     casesHeader: "It turns out I was busy.",

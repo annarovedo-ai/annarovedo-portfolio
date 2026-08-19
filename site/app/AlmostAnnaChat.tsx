@@ -1,7 +1,8 @@
 "use client";
 
-import { useEffect, useRef } from "react";
+import { useEffect, useMemo, useRef } from "react";
 import { useSyncExternalStore } from "react";
+import { usePathname } from "next/navigation";
 import { getServerSnapshot, getSnapshot, subscribe } from "./personaStore";
 import {
   ensurePersona,
@@ -54,6 +55,42 @@ export default function AlmostAnnaChat({
   const chat = useSyncExternalStore(subscribeChat, getChat, getServerChat);
   const { messages, busy, capped, error, input } = chat;
   const scroller = useRef<HTMLDivElement | null>(null);
+  const pathname = usePathname();
+
+  // The menu shows the questions that travel down THIS page (Anna,
+  // 2026-08-19: "the prompts here should be the same ones that travel down
+  // the page"): opening the panel on Nike offers Nike's questions, not the
+  // homepage's. The homepage and /studio keep their curated persona chips,
+  // which are those pages' prompts. In Ex mode, the page's one off-topic
+  // preset question slots in second. Safe to read the DOM here: the panel
+  // only ever renders after a client-side interaction, never during SSR.
+  const pagePrompts = useMemo(() => {
+    // Entrances keep their curated chips; the pathname read inside the memo
+    // is also what makes the list recompute on client-side navigation.
+    if (pathname === "/" || pathname === "/studio") return null;
+    if (typeof document === "undefined") return null;
+    const nodes = Array.from(
+      document.querySelectorAll<HTMLElement>(
+        "[data-anna-prompt], [data-anna-prompt-ex]"
+      )
+    );
+    const list: string[] = [];
+    const seen = new Set<string>();
+    let exQ: string | null = null;
+    for (const n of nodes) {
+      if (persona === "ex" && !exQ && n.dataset.annaPromptEx) {
+        exQ = n.dataset.annaPromptEx;
+      }
+      const q = n.dataset.annaPrompt;
+      if (q && !seen.has(q)) {
+        seen.add(q);
+        list.push(q);
+      }
+    }
+    if (persona === "ex" && exQ) list.splice(Math.min(1, list.length), 0, exQ);
+    return list.length ? list : null;
+  }, [persona, pathname]);
+  const menuPrompts = pagePrompts ?? c.prompts;
 
   useEffect(() => {
     ensurePersona(persona);
@@ -102,7 +139,7 @@ export default function AlmostAnnaChat({
     <div className="anna-chat" aria-label={assistantName}>
       {!started ? (
         <div className="anna-chat-menu" aria-label="Suggested questions">
-          {c.prompts.map((p) => (
+          {menuPrompts.map((p) => (
             <button key={p} type="button" onClick={() => send(p, true)}>
               {p}
             </button>
