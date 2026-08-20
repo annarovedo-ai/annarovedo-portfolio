@@ -42,17 +42,26 @@ export const LEGACY_REDIRECTS = {
 
 /**
  * Returns the single 301 target for a request URL, or null if no redirect
- * applies. One hop: host and path corrected together, query preserved,
- * fragments kept out of the pathname.
+ * applies. One hop: protocol, host, and path corrected together, query
+ * preserved, fragments kept out of the pathname.
+ *
+ * The http -> https upgrade exists because Cloudflare does not do this for
+ * a Worker route by itself: a plain "Always Use HTTPS" zone setting only
+ * covers requests that hit Cloudflare's own edge cache/proxy in front of
+ * the Worker, not the case caught 2026-08-20 where a link shared as
+ * http://www.annarovedo.com was served in full over an insecure connection
+ * (browsers/LinkedIn's own interstitial then show the site as untrusted).
  */
 export function redirectTarget(rawUrl) {
   const url = new URL(rawUrl);
+  const isHttp = url.protocol === "http:";
   const isWww = url.hostname === "www.annarovedo.com";
   const legacyPath = url.pathname.replace(/\/+$/, "") || "/";
   const legacy = LEGACY_REDIRECTS[legacyPath];
-  if (!isWww && !legacy) return null;
+  if (!isHttp && !isWww && !legacy) return null;
 
   const target = new URL(url.toString());
+  if (isHttp) target.protocol = "https:";
   if (isWww) target.hostname = "annarovedo.com";
   if (legacy) {
     const [path, hash] = legacy.split("#");

@@ -41,6 +41,27 @@ test("www is canonicalised to the apex domain, permanently", async () => {
   assert.equal(res.headers.get("location"), "https://annarovedo.com/about");
 });
 
+test("http is upgraded to https", async () => {
+  const res = await hit("http://annarovedo.com/about");
+  assert.equal(res.status, 301);
+  assert.equal(res.headers.get("location"), "https://annarovedo.com/about");
+});
+
+test("http and www are corrected together, in one hop", async () => {
+  const res = await hit("http://www.annarovedo.com/about");
+  assert.equal(res.status, 301);
+  assert.equal(res.headers.get("location"), "https://annarovedo.com/about");
+});
+
+test("http on a legacy path resolves protocol, host, and path in one hop", async () => {
+  const res = await hit("http://www.annarovedo.com/ford?utm_source=linkedin");
+  assert.equal(res.status, 301);
+  assert.equal(
+    res.headers.get("location"),
+    "https://annarovedo.com/archive/ford?utm_source=linkedin",
+  );
+});
+
 test("www canonicalisation keeps the query string", async () => {
   const res = await hit("https://www.annarovedo.com/about?utm_source=linkedin");
   assert.equal(res.status, 301);
