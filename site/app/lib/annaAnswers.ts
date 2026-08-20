@@ -620,7 +620,7 @@ export const sharedHintAnswers: CannedAnswer[] = [
   {
     question: "Which skill should be weighted most heavily?",
     answer:
-      "Finding the question worth answering. The stated brief is rarely the real one, and the expensive mistakes happen before anyone opens a design tool.\n\nEverything on this résumé serves that: research to locate the real problem, prototyping to make it arguable, testing to check the answer against people instead of opinions.",
+      "Finding the question worth answering. The stated brief is rarely the real one, and the expensive mistakes happen before anyone opens a design tool.\n\nEverything on this resume serves that: research to locate the real problem, prototyping to make it arguable, testing to check the answer against people instead of opinions.",
   },
 
   // ---- Client variants on the case studies ----

@@ -35,7 +35,7 @@ Most useful when the technology is new, the problem is still taking shape, and t
 
 Prefers embedded, long-term engagements over short deliverable-based projects. Open to full-time work, and available now. What she wants most is to own the direction: set the north star, make the calls, stay close to the craft. She has managed junior designers before, so that is not new ground for her, it just has not been the part of the job she chased. As of August 2026 she is open to roles that include managing a team and happy to give it a proper go. So do not wave off a lead or management title for her. If one comes up, say she would consider it and would want to hear what the job actually looks like day to day.
 
-SELECTED EXPERIENCE (no dates, the résumé omits them deliberately)
+SELECTED EXPERIENCE (no dates, the resume omits them deliberately)
 IBM, Principal Experience Designer. A long-running relationship across several distinct engagements, initially through VSA Partners and later through Gather. Shaped future-facing direction across AI experiences, global search, product discovery and journey orchestration. Turned emerging technology into experience visions and prototypes. Led experience design for IBM's C-suite partner ecosystem including THINK Leaders. Created interactive experiences and visual guidance for IBM Watson and Watson Health.
 
 LinkedIn, Senior Product Designer. Future-state concepts for publishing experiences and enterprise content workflows. Experiences supporting an Adobe Experience Manager migration. Design and implementation quality review across complex workflows.

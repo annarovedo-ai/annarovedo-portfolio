@@ -9,10 +9,10 @@ import { resumeContent } from "./pageContent";
  * Every persona gets this link; the label changes (Client sees "Services",
  * Recruiter and Ex see "Resume").
  *
- * It used to be Client-only, on the theory that the résumé was the least
+ * It used to be Client-only, on the theory that the resume was the least
  * persuasive artifact and hiding it kept recruiters on the case studies.
  * Reversed 2026-08-18, external review: a recruiter actively looks for the
- * résumé, and making them hunt through About or the footer creates doubt
+ * resume, and making them hunt through About or the footer creates doubt
  * instead of avoiding it. Validation paths should be boring to find.
  */
 export default function ResumeNavLink({

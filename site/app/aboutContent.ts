@@ -40,10 +40,14 @@ export const aboutContent: Record<PersonaId, AboutContent> = {
     intro: [
       "I’m a Principal Experience Designer with more than 20 years of experience. UX is the deepest part of my practice, particularly across enterprise products, AI, search, design systems, and future vision.",
       "My work also spans graphic design, advertising, fashion, brands, and campaigns. That range helps me connect customer behavior, business context, technology, and visual culture, and recognize when the answer needs to extend beyond a screen.",
+      // Moved here from the resume's About block 2026-08-19, when that
+      // block was removed: the one fact this page did not already carry.
+      "Contract by choice for most of that career, which is why the client list runs long and the strongest engagements repeat: IBM came back across a decade. Open to a full-time role now, for the right problem and the right team.",
     ],
     introMobile: [
       "Principal Experience Designer, 20+ years across enterprise UX, AI, search, design systems, brands, and campaigns.",
       "UX is the deepest part of my practice, not the limit of it.",
+      "Contract by choice for twenty years. Open to full time now, for the right problem and team.",
     ],
     pointsKicker: "What I bring",
     points: [
@@ -74,7 +78,7 @@ export const aboutContent: Record<PersonaId, AboutContent> = {
       ],
     },
     ctaHeadline: "Looking for someone who can help shape what comes next?",
-    ctaButton: "View my résumé",
+    ctaButton: "View my resume",
     ctaHref: "/resume",
   },
 

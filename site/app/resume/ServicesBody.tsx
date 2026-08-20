@@ -3,7 +3,7 @@
 import { engagements } from "../engagements";
 
 /**
- * The Client persona sees a Services page in place of the résumé, per Anna's
+ * The Client persona sees a Services page in place of the resume, per Anna's
  * design (resume-client). Nav label switches from "Resume" to "Services".
  */
 

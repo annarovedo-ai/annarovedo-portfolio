@@ -32,7 +32,7 @@ export default function ResumeBody() {
       <article id="top" className="cv">
         <ResumeSheet persona={persona} />
 
-        {/* The résumé used to end with Contact only, which asked for commitment
+        {/* The resume used to end with Contact only, which asked for commitment
             before showing any evidence. The work comes first now. */}
         <section className="next-case">
           <div className="shell next-case-inner">

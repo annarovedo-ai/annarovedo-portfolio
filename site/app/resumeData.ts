@@ -1,8 +1,8 @@
 /**
- * Shared résumé data: the structured CV content (expertise, experience,
+ * Shared resume data: the structured CV content (expertise, experience,
  * earlier roles, education, and the default Profile paragraphs). Lives here,
  * separate from any one page, so /resume and the About page's embedded
- * résumé (recruiter and ex personas) read from one source instead of two
+ * resume (recruiter and ex personas) read from one source instead of two
  * copies that could drift apart.
  */
 

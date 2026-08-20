@@ -320,7 +320,7 @@
 .ss-thesis-grid strong {
   display: block;
   margin-bottom: 10px;
-  font-family: var(--serif);
+  font-family: var(--sans);
   font-size: var(--t-h3);
   line-height: 1.15;
 }
@@ -483,7 +483,7 @@
 .ss-red-model strong {
   display: block;
   margin-bottom: 4px;
-  font-family: var(--serif);
+  font-family: var(--sans);
   font-size: var(--t-sub);
 }
 
@@ -597,7 +597,7 @@
 .ss-component-index > div > strong {
   display: block;
   max-width: 270px;
-  font-family: var(--serif);
+  font-family: var(--sans);
   font-size: 24px;
   line-height: 1.2;
 }
@@ -685,7 +685,7 @@
 }
 
 .ss-final-figure-label strong {
-  font-family: var(--serif);
+  font-family: var(--sans);
   font-size: var(--t-sub);
 }
 
@@ -759,7 +759,7 @@
 }
 
 .ss-drift-list strong {
-  font-family: var(--serif);
+  font-family: var(--sans);
   font-size: var(--t-sub);
 }
 
@@ -1520,7 +1520,7 @@ h3 {
   display: block;
   margin-bottom: 6px;
   color: var(--ink);
-  font-family: var(--serif);
+  font-family: var(--sans);
   font-size: var(--t-sub);
   font-weight: 700;
   line-height: 1.25;
@@ -1585,7 +1585,7 @@ h3 {
   display: block;
   margin-bottom: 8px;
   color: var(--ink);
-  font-family: var(--serif);
+  font-family: var(--sans);
   font-size: var(--t-sub);
   font-weight: 700;
   line-height: 1.25;
@@ -1675,7 +1675,7 @@ h3 {
 }
 
 .shift-state strong {
-  font-family: var(--serif);
+  font-family: var(--sans);
   font-size: var(--d-card);
   font-weight: 700;
   letter-spacing: -0.03em;
@@ -2099,7 +2099,7 @@ blockquote {
 
 .study-metrics dt {
   color: var(--blue);
-  font-family: var(--serif);
+  font-family: var(--sans);
   font-size: clamp(58px, 7vw, 88px);
   line-height: 0.82;
   letter-spacing: -0.07em;
@@ -2157,7 +2157,7 @@ blockquote {
 
 .study-questions li p {
   margin: 22px 0 0;
-  font-family: var(--serif);
+  font-family: var(--sans);
   font-size: var(--t-lead);
   line-height: 1.25;
   letter-spacing: -0.02em;
@@ -2518,7 +2518,7 @@ blockquote {
 .orchestration-flow strong {
   display: block;
   margin-bottom: 10px;
-  font-family: var(--serif);
+  font-family: var(--sans);
   font-size: var(--t-sub);
   line-height: 1.15;
 }
@@ -2590,7 +2590,7 @@ blockquote {
 }
 
 .future-decision-list strong {
-  font-family: var(--serif);
+  font-family: var(--sans);
   font-size: var(--t-sub);
   font-weight: 700;
 }
@@ -2659,7 +2659,7 @@ blockquote {
 
 .bridge-note p {
   margin: 10px 0 0;
-  font-family: var(--serif);
+  font-family: var(--sans);
   font-size: var(--t-sub);
   line-height: 1.25;
 }
@@ -2961,6 +2961,7 @@ blockquote {
   cursor: pointer;
   transition: background 0.18s ease, color 0.18s ease, border-color 0.18s ease;
   font-weight: 600;
+  border-radius: 10px;
 }
 
 .pp-toggle button:hover {
@@ -2988,7 +2989,7 @@ blockquote {
   max-width: 620px;
   margin: 0 auto 30px;
   color: var(--on-dark-body);
-  font-family: var(--serif);
+  font-family: var(--sans);
   font-style: italic;
   font-size: var(--t-read);
   text-align: center;
@@ -3149,7 +3150,7 @@ blockquote {
   padding-top: 22px;
   border-top: 1px solid rgba(255, 255, 255, 0.2);
   color: var(--on-dark-body);
-  font-family: var(--serif);
+  font-family: var(--sans);
   font-style: italic;
   font-size: var(--t-base);
   text-align: center;
@@ -3188,7 +3189,8 @@ blockquote {
   .pp-toggle button {
     padding: 12px 16px;
     font-size: var(--t-fine);
-  }
+  border-radius: 10px;
+}
 
   .pp-caption {
     font-size: var(--t-base);
@@ -3202,7 +3204,7 @@ blockquote {
 
 .signal-diagram-title {
   margin: 0 0 28px;
-  font-family: var(--serif);
+  font-family: var(--sans);
   font-size: var(--t-h3);
   color: #fff;
   text-align: center;
@@ -3235,7 +3237,7 @@ blockquote {
 .signal-tag {
   fill: #9eadbd;
   font-style: italic;
-  font-family: var(--serif);
+  font-family: var(--sans);
   font-size: var(--t-fine);
 }
 
@@ -3313,6 +3315,7 @@ blockquote {
   font-weight: 600;
   letter-spacing: var(--track-wide);
   text-transform: uppercase;
+  border-radius: 10px;
 }
 
 .next-case-status::after {
@@ -3677,7 +3680,7 @@ blockquote {
 }
 
 .search-comparison-caption strong {
-  font-family: var(--serif);
+  font-family: var(--sans);
   font-size: var(--d-card);
 }
 
@@ -3760,7 +3763,7 @@ blockquote {
 .search-job-grid strong {
   display: block;
   margin-bottom: 4px;
-  font-family: var(--serif);
+  font-family: var(--sans);
   font-size: var(--t-sub);
 }
 
@@ -4173,7 +4176,7 @@ blockquote {
 .search-filter-outcome p {
   margin: 0;
   color: var(--ink);
-  font-family: var(--serif);
+  font-family: var(--sans);
   font-size: var(--t-sub);
 }
 
@@ -4544,7 +4547,7 @@ blockquote {
 .search-ai-shift strong {
   display: block;
   margin-bottom: 10px;
-  font-family: var(--serif);
+  font-family: var(--sans);
   font-size: var(--d-band);
   letter-spacing: -0.03em;
 }
@@ -4584,7 +4587,7 @@ blockquote {
 .search-ai-prompt p {
   max-width: 430px;
   margin: 0;
-  font-family: var(--serif);
+  font-family: var(--sans);
   font-size: var(--d-band);
   letter-spacing: -0.035em;
   line-height: 1.12;
@@ -4651,6 +4654,7 @@ blockquote {
 
 .search-back-case .next-case-status {
   display: inline-block;
+  border-radius: 10px;
 }
 
 @media (max-width: 980px) {
@@ -5038,7 +5042,7 @@ blockquote {
 
 .home-video-cover-title {
   max-width: 15ch;
-  font-family: var(--serif);
+  font-family: var(--sans);
   font-size: var(--d-card);
   line-height: 1.2;
 }
@@ -5596,7 +5600,7 @@ a.home-video-label:focus-visible {
   border: 1px solid var(--flare);
   background: transparent;
   color: var(--flare-ink);
-  font-family: var(--serif);
+  font-family: var(--sans);
   font-size: var(--t-read);
   font-weight: 700;
   white-space: nowrap;
@@ -5630,14 +5634,14 @@ a.home-video-label:focus-visible {
   padding: 15px 26px;
   background: var(--flare);
   color: var(--ink);
-  font-family: var(--serif);
+  font-family: var(--sans);
   font-size: var(--t-read);
   font-weight: 700;
   white-space: nowrap;
   border: 1px solid var(--flare-ink);
   letter-spacing: -0.005em;
   text-transform: none;
-  border-radius: 0;
+  border-radius: 10px;
 }
 
 .home-cta-button:hover {
@@ -5952,7 +5956,7 @@ a.home-video-label:focus-visible {
   max-width: 940px;
   margin: 38px 0 0;
   color: #fff;
-  font-family: var(--serif);
+  font-family: var(--sans);
   font-size: var(--t-lead);
   line-height: 1.4;
 }
@@ -6154,7 +6158,8 @@ a.home-video-label:focus-visible {
 
   .home-cta-button {
     justify-self: start;
-  }
+  border-radius: 10px;
+}
 }
 
 @media (max-width: 560px) {
@@ -6230,7 +6235,7 @@ a.home-video-label:focus-visible {
 }
 
 .resume-list dt {
-  font-family: var(--serif);
+  font-family: var(--sans);
   font-size: var(--t-read);
   font-weight: 700;
   color: var(--ink);
@@ -7314,7 +7319,7 @@ a.home-video-label:focus-visible {
 .home-chat-aside {
   margin: 0 0 20px;
   color: var(--muted);
-  font-family: var(--serif);
+  font-family: var(--sans);
   font-style: italic;
   font-size: var(--t-small);
 }
@@ -7355,7 +7360,7 @@ a.home-video-label:focus-visible {
    secondary (Anna, 2026-08-19: "style these buttons the same way"). */
 .cv-contact a {
   color: var(--blue);
-  font-family: var(--serif);
+  font-family: var(--sans);
   font-weight: 700;
 }
 
@@ -7377,10 +7382,10 @@ a.home-video-label:focus-visible {
   font-size: var(--t-small);
   font-weight: 700;
   border: 1px solid var(--flare-ink);
-  font-family: var(--serif);
+  font-family: var(--sans);
   letter-spacing: -0.005em;
   text-transform: none;
-  border-radius: 0;
+  border-radius: 10px;
 }
 
 .cv-download:hover {
@@ -7493,7 +7498,7 @@ a.home-video-label:focus-visible {
 .cv-role-via {
   margin: 3px 0 0;
   color: var(--muted);
-  font-family: var(--serif);
+  font-family: var(--sans);
   font-style: italic;
   font-size: var(--t-small);
 }
@@ -7673,7 +7678,7 @@ a.home-video-label:focus-visible {
    "why are there 2 diff fonts here?"). */
 .cv-view-link {
   color: var(--blue);
-  font-family: var(--serif);
+  font-family: var(--sans);
   font-size: var(--t-small);
   font-weight: 700;
   white-space: nowrap;
@@ -7795,10 +7800,10 @@ a.home-video-label:focus-visible {
   font-size: var(--t-read);
   font-weight: 700;
   border: 1px solid var(--flare-ink);
-  font-family: var(--serif);
+  font-family: var(--sans);
   letter-spacing: -0.005em;
   text-transform: none;
-  border-radius: 0;
+  border-radius: 10px;
 }
 
 .about-cta-button:hover {
@@ -8336,13 +8341,13 @@ a.home-video-label:focus-visible {
   border: 1px solid var(--flare-ink);
   background: var(--flare);
   color: var(--ink);
-  font-family: var(--serif);
+  font-family: var(--sans);
   font-size: var(--t-read);
   font-weight: 700;
   letter-spacing: -0.005em;
   text-transform: none;
   cursor: pointer;
-  border-radius: 0;
+  border-radius: 10px;
 }
 
 .contact-submit:hover {
@@ -8462,12 +8467,12 @@ a.home-video-label:focus-visible {
   color: var(--ink);
   padding: 15px 26px;
   border: 1px solid var(--flare-ink);
-  font-family: var(--serif);
+  font-family: var(--sans);
   font-size: var(--t-read);
   font-weight: 700;
   letter-spacing: -0.005em;
   text-transform: none;
-  border-radius: 0;
+  border-radius: 10px;
 }
 
 .svc-primary:hover {
@@ -8481,12 +8486,12 @@ a.home-video-label:focus-visible {
   color: var(--flare-ink);
   padding: 15px 26px;
   background: transparent;
-  font-family: var(--serif);
+  font-family: var(--sans);
   font-size: var(--t-read);
   font-weight: 700;
   letter-spacing: -0.005em;
   text-transform: none;
-  border-radius: 0;
+  border-radius: 10px;
 }
 
 .svc-secondary:hover {
@@ -8567,7 +8572,7 @@ a.home-video-label:focus-visible {
 .svc-model-network {
   margin: 0 0 20px;
   color: var(--on-dark-body);
-  font-family: var(--serif);
+  font-family: var(--sans);
   font-style: italic;
   font-size: var(--t-small);
 }
@@ -8624,7 +8629,7 @@ a.home-video-label:focus-visible {
   display: block;
   margin-bottom: 14px;
   color: var(--muted);
-  font-family: var(--serif);
+  font-family: var(--sans);
   font-size: 34px;
   font-weight: 700;
 }
@@ -8697,10 +8702,10 @@ a.home-video-label:focus-visible {
   font-size: var(--t-read);
   font-weight: 700;
   border: 1px solid var(--paper);
-  font-family: var(--serif);
+  font-family: var(--sans);
   letter-spacing: -0.005em;
   text-transform: none;
-  border-radius: 0;
+  border-radius: 10px;
 }
 
 @media (max-width: 980px) {
@@ -8896,7 +8901,7 @@ a.home-video-label:focus-visible {
 
 .aa-aside {
   color: var(--muted);
-  font-family: var(--serif);
+  font-family: var(--sans);
   font-style: italic;
 }
 
@@ -9054,7 +9059,7 @@ a.home-video-label:focus-visible {
   border-radius: 999px;
   background: var(--paper-deep);
   color: var(--blue);
-  font-family: var(--serif);
+  font-family: var(--sans);
   font-size: var(--t-small);
   line-height: 1.35;
   text-align: left;
@@ -9246,7 +9251,7 @@ a.home-video-label:focus-visible {
 
 .concept-card strong {
   display: block;
-  font-family: var(--serif);
+  font-family: var(--sans);
   font-size: var(--t-sub);
   line-height: 1.25;
   color: var(--ink);
@@ -9683,7 +9688,7 @@ html[data-anna-razor="bar"] body {
   border-radius: 50%;
   background: var(--blue);
   color: #fff;
-  font-family: var(--serif);
+  font-family: var(--sans);
   font-size: var(--t-label);
   font-weight: 600;
   border: 1px solid var(--on-dark-line);
@@ -9824,7 +9829,7 @@ html[data-anna-razor="bar"] body {
   border-radius: 999px;
   background: var(--paper-deep);
   color: var(--blue);
-  font-family: var(--serif);
+  font-family: var(--sans);
   font-size: var(--t-small);
   line-height: 1.35;
   white-space: nowrap;
@@ -9902,7 +9907,7 @@ html[data-anna-razor="bar"] body {
   min-width: 0;
   margin: 0;
   color: var(--on-dark-body);
-  font-family: var(--serif);
+  font-family: var(--sans);
   font-size: var(--t-small);
   line-height: 1.35;
   animation: razor-line-in 0.3s ease both;
@@ -9955,7 +9960,7 @@ html[data-anna-razor="bar"] body {
   border: 0;
   background: var(--blue);
   color: #fff;
-  font-family: var(--serif);
+  font-family: var(--sans);
   font-size: var(--t-small);
   font-weight: 600;
   cursor: pointer;
@@ -10357,7 +10362,7 @@ html[data-anna-razor="bar"] body {
   box-sizing: border-box;
   min-height: 46px;
   padding: 0 24px;
-  font-family: var(--serif);
+  font-family: var(--sans);
   font-size: var(--t-read);
   font-weight: 700;
   line-height: 1;
@@ -10366,7 +10371,7 @@ html[data-anna-razor="bar"] body {
   text-transform: none;
   border-width: 1px;
   border-style: solid;
-  border-radius: 0;
+  border-radius: 10px;
 }
 
 /* The brand lockup is now a wrapper, not the link itself: the studio name is
@@ -10421,13 +10426,13 @@ html[data-anna-razor="bar"] body {
   padding: 0 24px;
   background: var(--flare);
   color: var(--ink);
-  font-family: var(--serif);
+  font-family: var(--sans);
   font-size: var(--t-read);
   font-weight: 700;
   line-height: 1;
   letter-spacing: -0.005em;
   border: 1px solid var(--flare-ink);
-  border-radius: 0;
+  border-radius: 10px;
 }
 
 .home-video-book:hover {
@@ -10492,9 +10497,10 @@ html[data-anna-razor="bar"] body {
   /* Matches the primary button's text size so the pair reads as one row of
      actions at two emphasis levels, not a button with a footnote. */
   color: var(--blue);
-  font-family: var(--serif);
+  font-family: var(--sans);
   font-size: var(--t-read);
   font-weight: 700;
+  border-radius: 10px;
 }
 
 .client-engagement-secondary:hover {
@@ -10554,6 +10560,7 @@ html[data-anna-razor="bar"] body {
   margin-top: 26px;
   color: var(--blue);
   font-weight: 600;
+  border-radius: 10px;
 }
 
 .svc-engagement-cta:hover {
@@ -10749,7 +10756,7 @@ html[data-anna-razor="bar"] body {
   border-radius: 999px;
   background: rgba(255, 255, 255, 0.08);
   color: #fff;
-  font-family: var(--serif);
+  font-family: var(--sans);
   font-size: var(--t-small);
   white-space: nowrap;
   text-overflow: ellipsis;
@@ -10815,7 +10822,7 @@ html[data-anna-razor="bar"] body {
   border-radius: 999px;
   background: var(--paper-deep);
   color: var(--blue);
-  font-family: var(--serif);
+  font-family: var(--sans);
   font-size: var(--t-small);
   text-align: left;
   cursor: pointer;
@@ -11030,4 +11037,31 @@ html[data-anna-razor="bar"] body {
   .anna-chat-menu button {
     border-style: dotted;
   }
+}
+
+/* Inside the masthead pair row, the contact line sheds its stacked-era
+   bottom margin (2026-08-19, side-by-side per Anna). */
+.cv-contact-row .cv-contact {
+  margin: 0;
+}
+
+
+/* ------------------------------------------------------------------ */
+/* SERIF WHEN ANNA SPEAKS (2026-08-19, completing the type system):
+   serif is voice and names, sans is labor. Her chat replies are the most
+   literal voice on the site, so hers set in Newsreader while the
+   visitor's bubbles stay in Inter: the persona system, visible in the
+   typography. The band line under the switcher is her addressing you.
+   Stat numerals are set pieces. */
+
+.aa-thread li.is-anna .aa-bubble {
+  font-family: var(--serif);
+}
+
+.persona-intro-note {
+  font-family: var(--serif);
+}
+
+.stat-band strong {
+  font-family: var(--serif);
 }

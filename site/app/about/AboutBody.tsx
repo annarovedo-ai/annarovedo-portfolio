@@ -51,10 +51,10 @@ export default function AboutBody() {
             {showResume ? (
               <div className="cv-contact-row">
                 <a className="cv-download" href="/anna-rovedo-resume.pdf" download>
-                  Download résumé
+                  Download resume
                 </a>
                 <a className="cv-view-link" href="/resume">
-                  View the résumé &rarr;
+                  View the resume &rarr;
                 </a>
               </div>
             ) : null}

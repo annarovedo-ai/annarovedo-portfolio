@@ -1,7 +1,7 @@
 import type { PersonaId } from "./personaStore";
 
 /**
- * Per-persona framing for Résumé and Contact. About lives in aboutContent.ts.
+ * Per-persona framing for Resume and Contact. About lives in aboutContent.ts.
  *
  * Facts are identical across personas — only emphasis and voice shift, per
  * docs/tone-guide.md. Recruiter leans decisions and process, Client leans
@@ -64,10 +64,10 @@ export const contactContent: Record<PersonaId, ContactContent> = {
     channels: [
       { label: "Book a call", value: "Book 30 minutes", href: "https://calendly.com/anna-rovedo/30min" },
       { label: "Email address", value: "anna.rovedo@gmail.com", href: "mailto:anna.rovedo@gmail.com" },
-      // The résumé, reachable from the contact page too (Anna's testing
+      // The resume, reachable from the contact page too (Anna's testing
       // note, 2026-08-19: "link resume here too") — a recruiter mid-form
       // shouldn't have to leave to double-check the CV.
-      { label: "Résumé", value: "Download résumé", href: "/anna-rovedo-resume.pdf" },
+      { label: "Resume", value: "Download resume", href: "/anna-rovedo-resume.pdf" },
       // "Professional network" pointed at an unclaimed LinkedIn vanity URL.
       // Removed 2026-08-07; put it back when linkedin.com/in/anna-paperpixel
       // actually resolves, or swap in the real profile URL.

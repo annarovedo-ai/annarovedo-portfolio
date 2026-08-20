@@ -1,12 +1,12 @@
 import type { PersonaId } from "./personaStore";
 import { resumeContent } from "./pageContent";
-import { expertise, experience, earlier, education, defaultProfile } from "./resumeData";
+import { expertise, experience, earlier, education } from "./resumeData";
 
 type ResumeSheetProps = {
   persona: PersonaId;
   /**
    * The About page already has its own intro (portrait, headline, a short
-   * blurb). Set this to false there so the résumé doesn't repeat itself with
+   * blurb). Set this to false there so the resume doesn't repeat itself with
    * a second eyebrow/headline/blurb — it skips straight from a shared
    * contact/download row into Core expertise and Selected experience.
    * Defaults to true for /resume, which has no other intro on the page.
@@ -57,34 +57,35 @@ export default function ResumeSheet({
             </>
           ) : null}
           {showContact ? (
-            <>
-              {/* LinkedIn sat here behind an unclaimed vanity URL, removed
-                  2026-08-07. The middot went with it: it existed only to
-                  separate two items, and one item does not need a separator. */}
-              <p className="cv-contact">
-                <a href="mailto:anna.rovedo@gmail.com">Email Anna</a>
-              </p>
+            /* One row, not a stack (Anna, 2026-08-19): filled primary first,
+               quiet link beside it, the same pair grammar as the About page.
+               LinkedIn sat here behind an unclaimed vanity URL, removed
+               2026-08-07. */
+            <div className="cv-contact-row">
               <a className="cv-download" href="/anna-rovedo-resume.pdf" download>
-                Download résumé
+                Download resume
               </a>
-            </>
+              <p className="cv-contact">
+                <a className="cv-view-link" href="mailto:anna.rovedo@gmail.com">
+                  Email Anna &rarr;
+                </a>
+              </p>
+            </div>
           ) : null}
         </header>
       ) : null}
 
-      {showIntro ? (
-        <section className="cv-block cv-about" data-anna-prompt="Which skill should be weighted most heavily?">
-          <h2 className="cv-rule-label">About</h2>
-          {(c.profile ?? defaultProfile).map((p) => (
-            <p className="cv-profile" key={p}>
-              {p}
-            </p>
-          ))}
-        </section>
-      ) : null}
+      {/* The About block left the resume 2026-08-19 (Anna: "remove about
+          section from the resume"): the resume is the validation artifact,
+          the About page is the story, and the profile paragraphs were the
+          story repeated. Their one fact the About page lacked, contract by
+          choice and open to full time, moved into the About intro. */}
 
       <div className="cv-body">
-        <aside className="cv-rail">
+        <aside
+          className="cv-rail"
+          data-anna-prompt="Which skill should be weighted most heavily?"
+        >
           <h2 className="cv-rule-label">Core expertise</h2>
           <div className="cv-rail-expertise">
             {expertise.map((e) => (
