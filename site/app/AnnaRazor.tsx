@@ -364,6 +364,12 @@ export default function AnnaRazor() {
 
   const offer = !isPhone && mode === "razor" ? prompts[0] : undefined;
 
+  // Phones get the short form (Anna, 2026-08-19: "ask anything"): at bar
+  // width the name is already on the avatar, and the long placeholder was
+  // the widest thing in the row. Client keeps its project phrasing.
+  const barPlaceholder =
+    isPhone && !isClient && !chatStarted ? "Ask anything…" : assistantPrompt;
+
   function openWith(text?: string) {
     // Remember what they had, so closing restores it instead of choosing for
     // them. Captured here rather than in an effect because this is the only
@@ -532,7 +538,12 @@ export default function AnnaRazor() {
               </div>
             </div>
 
-            <AlmostAnnaChat seed={seed} />
+            <AlmostAnnaChat
+              seed={seed}
+              placeholderOverride={
+                isPhone && !isClient && !chatStarted ? "Ask anything…" : undefined
+              }
+            />
 
             {/* The worded restore button lived here until 2026-08-10
                 ("Pin Almost Anna to the bottom of the page", and before that
@@ -687,7 +698,7 @@ export default function AnnaRazor() {
                       }}
                       onBlur={() => setInputFocused(false)}
                       placeholder={
-                        offer && !draft.trim() && !inputFocused ? "" : assistantPrompt
+                        offer && !draft.trim() && !inputFocused ? "" : barPlaceholder
                       }
                       aria-label={assistantName}
                       tabIndex={shown ? 0 : -1}

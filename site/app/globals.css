@@ -252,7 +252,7 @@
   margin: 0 0 0 auto;
   color: var(--muted);
   font-family: var(--mono);
-  font-size: 10.5px;
+  font-size: var(--t-label);
   letter-spacing: var(--track-wide);
   text-transform: uppercase;
 }
@@ -311,9 +311,9 @@
   margin-bottom: 12px;
   color: var(--muted);
   font-family: var(--mono);
-  font-size: 10.5px;
+  font-size: var(--t-label);
   font-weight: 700;
-  letter-spacing: 0.11em;
+  letter-spacing: var(--track-wide);
   text-transform: uppercase;
 }
 
@@ -321,7 +321,7 @@
   display: block;
   margin-bottom: 10px;
   font-family: var(--serif);
-  font-size: 23px;
+  font-size: var(--t-h3);
   line-height: 1.15;
 }
 
@@ -402,6 +402,9 @@
 }
 
 .ss-type-card strong {
+  /* CONTENT, not chrome: this card is the State Street type specimen,
+     showing the Alpha system's own typeface. Do not consolidate it into
+     the site's font tokens (typography audit, 2026-08-19). */
   font-family: Lato, Arial, sans-serif;
 }
 
@@ -497,7 +500,7 @@
   border-top: 1px solid var(--line);
   color: var(--body);
   font-family: var(--serif);
-  font-size: clamp(22px, 2.2vw, 30px);
+  font-size: var(--d-card);
   line-height: 1.35;
 }
 
@@ -543,7 +546,7 @@
 .ss-atomic-level > div:first-child > span {
   color: var(--ss-cyan-label);
   font-family: var(--mono);
-  font-size: 11px;
+  font-size: var(--t-label);
 }
 
 .ss-atomic-level h3 {
@@ -615,7 +618,7 @@
   display: grid;
   grid-template-columns: 30px 1fr;
   align-items: center;
-  font-size: 11px;
+  font-size: var(--t-label);
 }
 
 .ss-component-index li span {
@@ -675,15 +678,15 @@
 .ss-final-figure-label span {
   color: var(--muted);
   font-family: var(--mono);
-  font-size: 10.5px;
+  font-size: var(--t-label);
   font-weight: 700;
-  letter-spacing: 0.11em;
+  letter-spacing: var(--track-wide);
   text-transform: uppercase;
 }
 
 .ss-final-figure-label strong {
   font-family: var(--serif);
-  font-size: 20px;
+  font-size: var(--t-sub);
 }
 
 .ss-product-figure-dark {
@@ -844,7 +847,7 @@
 .ss-gallery-tier-label span {
   color: var(--muted);
   font-family: var(--mono);
-  font-size: 10.5px;
+  font-size: var(--t-label);
   font-weight: 700;
   letter-spacing: var(--track-wide);
   text-transform: uppercase;
@@ -1181,7 +1184,7 @@ img {
   border: 1px solid rgba(255, 255, 255, 0.5);
   color: #fff;
   font-family: var(--serif);
-  font-size: 12px;
+  font-size: var(--t-fine);
   font-style: italic;
   font-weight: 700;
   letter-spacing: 0.02em;
@@ -1220,13 +1223,13 @@ img {
   font-family: var(--sans);
   font-style: normal;
   font-weight: 600;
-  font-size: 22px;
+  font-size: var(--t-h3);
   letter-spacing: -0.02em;
 }
 
 @media (max-width: 720px) {
   .brand-wordmark.is-studio {
-    font-size: 18px;
+    font-size: var(--t-read);
   }
 }
 
@@ -1234,13 +1237,13 @@ img {
 .brand-divider {
   opacity: 0.6;
   font-family: var(--sans);
-  font-size: 13px;
+  font-size: var(--t-fine);
 }
 
 .brand-credit {
   opacity: 0.85;
   font-family: var(--sans);
-  font-size: 12px;
+  font-size: var(--t-fine);
   font-weight: 600;
   letter-spacing: var(--track-ui);
   text-transform: uppercase;
@@ -1418,7 +1421,7 @@ h3 {
 }
 
 .hero-meta strong {
-  font-size: 13px;
+  font-size: var(--t-fine);
   font-weight: 600;
 }
 
@@ -1687,7 +1690,7 @@ h3 {
   align-self: center;
   color: var(--blue-bright);
   font-size: 31px;
-  font-weight: 300;
+  font-weight: 400;
 }
 
 .chapter {
@@ -1901,7 +1904,7 @@ h3 {
 .persona-card h3 {
   margin: 0;
   font-family: var(--serif);
-  font-size: 22px;
+  font-size: var(--t-h3);
   font-weight: 600;
   letter-spacing: -0.01em;
   line-height: 1.15;
@@ -2106,7 +2109,7 @@ blockquote {
   margin: 14px 0 0;
   color: var(--muted);
   font-family: var(--mono);
-  font-size: 10.5px;
+  font-size: var(--t-label);
   letter-spacing: var(--track-wide);
   line-height: 1.4;
   text-transform: uppercase;
@@ -2270,7 +2273,7 @@ blockquote {
   max-width: 510px;
   margin: 0;
   color: var(--muted);
-  font-size: 15px;
+  font-size: var(--t-small);
 }
 
 .audit-evidence-grid {
@@ -2350,7 +2353,7 @@ blockquote {
 .audit-mobile-proof > div > p:last-child {
   margin: 0;
   color: var(--muted);
-  font-size: 15px;
+  font-size: var(--t-small);
   line-height: var(--lh-fine);
 }
 
@@ -2414,7 +2417,7 @@ blockquote {
 .future-heading p {
   padding-top: 38px;
   color: var(--on-dark-muted);
-  font-size: 18px;
+  font-size: var(--t-read);
 }
 
 .future-reframe {
@@ -2507,7 +2510,7 @@ blockquote {
   margin-bottom: 22px;
   color: var(--on-dark-label);
   font-family: var(--mono);
-  font-size: 10.5px;
+  font-size: var(--t-label);
   letter-spacing: var(--track-ui);
   text-transform: uppercase;
 }
@@ -2516,7 +2519,7 @@ blockquote {
   display: block;
   margin-bottom: 10px;
   font-family: var(--serif);
-  font-size: 19px;
+  font-size: var(--t-sub);
   line-height: 1.15;
 }
 
@@ -2977,7 +2980,7 @@ blockquote {
 }
 
 .pp-step {
-  font-size: 11px;
+  font-size: var(--t-label);
   opacity: 0.55;
 }
 
@@ -3106,9 +3109,9 @@ blockquote {
 .pp-label {
   color: var(--muted);
   font-family: var(--mono);
-  font-size: 12px;
+  font-size: var(--t-fine);
   font-weight: 700;
-  letter-spacing: 0.11em;
+  letter-spacing: var(--track-wide);
   text-transform: uppercase;
 }
 
@@ -3184,7 +3187,7 @@ blockquote {
 
   .pp-toggle button {
     padding: 12px 16px;
-    font-size: 12px;
+    font-size: var(--t-fine);
   }
 
   .pp-caption {
@@ -3200,7 +3203,7 @@ blockquote {
 .signal-diagram-title {
   margin: 0 0 28px;
   font-family: var(--serif);
-  font-size: 22px;
+  font-size: var(--t-h3);
   color: #fff;
   text-align: center;
 }
@@ -3212,19 +3215,19 @@ blockquote {
 
 .signal-kicker {
   fill: #8fb0ce;
-  font-size: 11px;
-  letter-spacing: 0.1em;
+  font-size: var(--t-label);
+  letter-spacing: var(--track-wide);
   text-transform: uppercase;
 }
 
 .signal-bar-label {
   fill: #dbe4ee;
-  font-size: 12px;
+  font-size: var(--t-fine);
 }
 
 .signal-badge {
   fill: #8fb0ce;
-  font-size: 11px;
+  font-size: var(--t-label);
   letter-spacing: 0.05em;
   text-transform: uppercase;
 }
@@ -3233,19 +3236,19 @@ blockquote {
   fill: #9eadbd;
   font-style: italic;
   font-family: var(--serif);
-  font-size: 12.5px;
+  font-size: var(--t-fine);
 }
 
 .signal-arrow-label {
   fill: #8fb0ce;
-  font-size: 11px;
+  font-size: var(--t-label);
   letter-spacing: 0.05em;
   text-transform: uppercase;
 }
 
 .signal-legend-label {
   fill: #9eadbd;
-  font-size: 11.5px;
+  font-size: var(--t-label);
 }
 
 @media (max-width: 900px) {
@@ -3447,11 +3450,11 @@ blockquote {
   }
 
   .brand-wordmark {
-    font-size: 19px;
+    font-size: var(--t-sub);
   }
 
   .brand-divider {
-    font-size: 11px;
+    font-size: var(--t-label);
   }
 
   .brand-credit {
@@ -3748,7 +3751,7 @@ blockquote {
   margin-bottom: 18px;
   color: var(--blue-bright);
   font-family: var(--mono);
-  font-size: 10.5px;
+  font-size: var(--t-label);
   font-weight: 700;
   letter-spacing: var(--track-wide);
   text-transform: uppercase;
@@ -3824,7 +3827,7 @@ blockquote {
   padding: 20px 0;
   border-bottom: 1px solid rgba(255, 255, 255, 0.2);
   font-family: var(--mono);
-  font-size: 10.5px;
+  font-size: var(--t-label);
   font-weight: 700;
   letter-spacing: var(--track-wide);
   text-transform: uppercase;
@@ -3854,7 +3857,7 @@ blockquote {
   margin-bottom: 20px;
   color: var(--on-dark-label);
   font-family: var(--mono);
-  font-size: 10.5px;
+  font-size: var(--t-label);
   font-weight: 700;
   letter-spacing: var(--track-wide);
 }
@@ -3865,7 +3868,7 @@ blockquote {
   color: var(--on-dark-body);
   font-family: var(--sans);
   font-size: clamp(16px, 1.45vw, 19px);
-  font-weight: 500;
+  font-weight: 600;
   line-height: 1.4;
 }
 
@@ -5022,7 +5025,7 @@ blockquote {
   border-radius: 50%;
   background: var(--flare);
   color: var(--ink);
-  font-size: 20px;
+  font-size: var(--t-sub);
   padding-left: 4px;
   transition: background 0.16s ease, color 0.16s ease, transform 0.16s ease;
 }
@@ -5156,7 +5159,7 @@ a.home-video-label:focus-visible {
 
 .home-chat-body h2 {
   margin-bottom: 10px;
-  font-size: clamp(22px, 2.2vw, 28px);
+  font-size: var(--d-card);
 }
 
 .home-chat-body > p {
@@ -6199,7 +6202,7 @@ a.home-video-label:focus-visible {
 
 .about-timeline-body h3 {
   margin-bottom: 12px;
-  font-size: clamp(20px, 2vw, 26px);
+  font-size: var(--d-card);
 }
 
 .about-timeline-body p {
@@ -6265,7 +6268,7 @@ a.home-video-label:focus-visible {
 
 .resume-roles h3 {
   margin-bottom: 4px;
-  font-size: 20px;
+  font-size: var(--t-sub);
 }
 
 .resume-org {
@@ -6844,7 +6847,7 @@ a.home-video-label:focus-visible {
   border: 0;
   background: none;
   color: var(--ink);
-  font-size: 22px;
+  font-size: var(--t-h3);
   font-weight: 600;
   line-height: 1;
   cursor: pointer;
@@ -7155,7 +7158,7 @@ a.home-video-label:focus-visible {
 
 .home-other h3 {
   margin-bottom: 30px;
-  font-size: clamp(21px, 2.2vw, 28px);
+  font-size: var(--d-card);
 }
 
 .home-other-grid {
@@ -7635,7 +7638,7 @@ a.home-video-label:focus-visible {
 .about-intro-copy h1 {
   max-width: 18ch;
   margin-bottom: 30px;
-  font-size: clamp(36px, 4.4vw, 58px);
+  font-size: var(--d-section);
 }
 
 .about-intro-copy p {
@@ -7841,7 +7844,7 @@ a.home-video-label:focus-visible {
 .archive-intro h1 {
   max-width: 20ch;
   margin-bottom: 26px;
-  font-size: clamp(36px, 4.2vw, 56px);
+  font-size: var(--d-section);
 }
 
 .archive-deck {
@@ -9270,7 +9273,7 @@ a.home-video-label:focus-visible {
   color: #fff;
   font-family: var(--sans);
   font-size: var(--t-small);
-  font-weight: 500;
+  font-weight: 600;
   letter-spacing: 0.01em;
   border-radius: 999px;
 }
@@ -9289,7 +9292,7 @@ a.home-video-label:focus-visible {
 
 @media (max-width: 560px) {
   .attribute-chip {
-    font-size: 0.84rem;
+    font-size: var(--t-fine);
     padding: 0.6rem 1.1rem;
   }
 }
@@ -10019,7 +10022,7 @@ html[data-anna-razor="bar"] body {
   border-radius: 6px;
   background: none;
   color: #fff;
-  font-size: 20px;
+  font-size: var(--t-sub);
   font-weight: 600;
   line-height: 1;
   cursor: pointer;
@@ -10028,7 +10031,7 @@ html[data-anna-razor="bar"] body {
 }
 
 .anna-razor-min {
-  font-size: 22px;
+  font-size: var(--t-h3);
   font-weight: 700;
 }
 
@@ -10913,15 +10916,20 @@ html[data-anna-razor="bar"] body {
    real scroll docks it. The band's top padding and the sticky row's bottom
    padding were holding them a screen apart. */
 @media (max-width: 720px) {
-  /* Top padding stays (the I'M A label needs clearance from the lockup
-     row above it, caught colliding 2026-08-19); only the gap below the
-     pill, toward its explainer line, is collapsed. */
+  /* Spacing matched to Anna's reference shot (2026-08-19, "USE THIS
+     SPACING"): a real pause after the lockup row, air between label, pill,
+     and explainer line, and room below before the page begins. */
   .persona-sticky {
-    padding: 14px 0 4px;
+    padding: 64px 0 10px;
+  }
+
+  .persona-switch-group:not(.is-compact) {
+    gap: 24px;
   }
 
   .persona-intro {
-    padding-top: 2px;
+    padding-top: 20px;
+    padding-bottom: 44px;
   }
 }
 
@@ -11004,5 +11012,22 @@ html[data-anna-razor="bar"] body {
   .home-header.is-docked:not(.is-home) {
     padding-top: 12px;
     padding-bottom: 12px;
+  }
+}
+
+/* Mobile polish batch, 2026-08-19 (Anna's list). */
+@media (max-width: 720px) {
+  /* The P glyph centers against the pill and hamburger once the homepage
+     switcher docks into the single sticky row; baseline alignment served
+     a wordmark that is not rendered at this size. */
+  .home-header.is-home.is-scrolled > .brand {
+    align-items: center;
+    align-self: center;
+  }
+
+  /* Prompt hints wear a dotted outline on phones, reading as suggestions
+     rather than commitments. */
+  .anna-chat-menu button {
+    border-style: dotted;
   }
 }

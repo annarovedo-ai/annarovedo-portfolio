@@ -36,12 +36,16 @@ import { homeContent } from "./homeContent";
 export default function AlmostAnnaChat({
   seed,
   personaOverride,
+  placeholderOverride,
 }: {
   /** Opening question handed over from the razor bar's hint, sent once on
       mount with suggested: true. */
   seed?: string;
   /** Entrance routes force their persona for correct server render. */
   personaOverride?: import("./personaStore").PersonaId;
+  /** The razor passes the short mobile placeholder ("Ask anything…") so
+      this component needs no viewport detection of its own. */
+  placeholderOverride?: string;
 }) {
   const store = useSyncExternalStore(subscribe, getSnapshot, getServerSnapshot);
   const persona = personaOverride ?? store;
@@ -244,7 +248,11 @@ export default function AlmostAnnaChat({
         <input
           value={input}
           onChange={(e) => setChatInput(e.target.value)}
-          placeholder={capped ? "That's the limit for now." : assistantPlaceholder}
+          placeholder={
+            capped
+              ? "That's the limit for now."
+              : placeholderOverride ?? assistantPlaceholder
+          }
           aria-label={
             isClient ? "Ask Paper Pixel about your project" : "Ask Almost Anna a question"
           }
