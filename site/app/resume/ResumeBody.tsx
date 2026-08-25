@@ -45,7 +45,7 @@ export default function ResumeBody() {
                   of twenty years, with the archive holding the rest. */}
               <h2>See what some of this looked like.</h2>
             </div>
-            <a className="next-case-status" href="/#work">
+            <a className="next-case-status" href="/work">
               View the work
             </a>
           </div>

@@ -5,12 +5,21 @@ const BASE = "https://annarovedo.com";
 /** Every route that should be advertised to search engines.
  *
  *  Two deliberate omissions:
- *  /work redirects to /#work, and a sitemap that lists redirecting URLs gets
- *  them reported back as errors in Search Console.
- *  /this-site has no inbound links anywhere on the site, by decision (b6076d4).
- *  Advertising it through the sitemap would reverse that decision by another
- *  route. The page stays reachable and stays canonicalised; it is simply not
- *  promoted.
+ *  /this-site has no inbound links anywhere on the site, by decision
+ *  (b6076d4). Advertising it through the sitemap would reverse that decision
+ *  by another route. The page stays reachable and stays canonicalised; it is
+ *  simply not promoted.
+ *  /about left the nav and footer 2026-08-20 (Anna: "put this on the home
+ *  page and remove the about tab") — its strongest sections now render on
+ *  the homepage directly for every persona. Same treatment as /this-site:
+ *  the page is not deleted, still resolves, still has its own canonical, but
+ *  is not advertised as a destination now that nothing on the site points a
+ *  visitor at it.
+ *
+ *  (/work used to be a third omission here, since it redirected to /#work
+ *  and a sitemap that lists redirecting URLs gets them reported back as
+ *  errors in Search Console. It is a real page as of 2026-08-20, so it is
+ *  listed like any other.)
  *
  *  Every real route on the site. Case studies first, because they are what a
  *  search result should land on; the archive entries follow at lower priority
@@ -20,8 +29,8 @@ const BASE = "https://annarovedo.com";
  *  no sitemap. */
 const PAGES = [
   "",
+  "work",
   "studio",
-  "about",
   "contact",
   "resume",
   "archive",

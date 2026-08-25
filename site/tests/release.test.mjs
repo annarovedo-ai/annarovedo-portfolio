@@ -53,6 +53,16 @@ test("http and www are corrected together, in one hop", async () => {
   assert.equal(res.headers.get("location"), "https://annarovedo.com/about");
 });
 
+// Caught live 2026-08-20: an earlier version of the http upgrade checked
+// protocol only, so http://localhost:3000 also got 301'd to an https URL
+// that local dev cannot serve, and `npm run dev` broke into
+// ERR_SSL_PROTOCOL_ERROR on every request. The upgrade must stay scoped to
+// the production hostnames.
+test("http is NOT upgraded on localhost, so local dev never sees a redirect loop", async () => {
+  const res = await hit("http://localhost:3000/");
+  assert.notEqual(res.status, 301);
+});
+
 test("http on a legacy path resolves protocol, host, and path in one hop", async () => {
   const res = await hit("http://www.annarovedo.com/ford?utm_source=linkedin");
   assert.equal(res.status, 301);
@@ -99,14 +109,27 @@ test("a trailing slash does not defeat the legacy map", async () => {
   assert.equal(res.headers.get("location"), "https://annarovedo.com/archive/ford");
 });
 
-test("a legacy target carrying a fragment keeps it out of the path", async () => {
-  const res = await hit("https://annarovedo.com/portfolio");
-  assert.equal(res.status, 301);
-  assert.equal(res.headers.get("location"), "https://annarovedo.com/#work");
+// Was "a legacy target carrying a fragment keeps it out of the path",
+// testing /portfolio -> /#work. /work became a real page 2026-08-20, so
+// /portfolio and /projects now land on it directly and no legacy target in
+// LEGACY_REDIRECTS carries a "#" any more. redirectTarget still splits one
+// out if a future entry needs it (see worker/redirects.mjs); there is just
+// nothing live to assert that against right now.
+test("old work-page aliases land on the real /work page", async () => {
+  for (const path of ["/portfolio", "/projects"]) {
+    const res = await hit(`https://annarovedo.com${path}`);
+    assert.equal(res.status, 301);
+    assert.equal(res.headers.get("location"), "https://annarovedo.com/work");
+  }
 });
 
 test("a live page is not redirected", async () => {
   const res = await hit("https://annarovedo.com/about");
+  assert.notEqual(res.status, 301);
+});
+
+test("/work is a real page now, not a redirect", async () => {
+  const res = await hit("https://annarovedo.com/work");
   assert.notEqual(res.status, 301);
 });
 
@@ -115,12 +138,14 @@ test("a live page is not redirected", async () => {
 test("the sitemap does not advertise redirecting or unlinked pages", async () => {
   const src = await readFile(new URL("app/sitemap.ts", root), "utf8");
   const pages = src.slice(src.indexOf("const PAGES"), src.indexOf("const ARCHIVE"));
-  // /work redirects to /#work; listing it produces Search Console errors.
-  assert.doesNotMatch(pages, /"work"/);
   // /this-site has no inbound links by decision (b6076d4).
   assert.doesNotMatch(pages, /"this-site"/);
-  // Sanity: the real pages are still there.
-  for (const p of ["about", "contact", "concierge", "nike"]) {
+  // /about left the nav and footer 2026-08-20; same "reachable, not
+  // promoted" treatment as /this-site.
+  assert.doesNotMatch(pages, /"about"/);
+  // Sanity: the real pages are still there, /work included now that it is a
+  // real page rather than a redirect to /#work (2026-08-20).
+  for (const p of ["work", "contact", "concierge", "nike"]) {
     assert.match(pages, new RegExp(`"${p}"`));
   }
 });
@@ -245,7 +270,7 @@ test("the chat route returns approved answers before calling Anthropic", async (
 /* --------------------------------------------------------- canonicals --- */
 
 test("every indexable page declares a canonical URL", async () => {
-  const skip = new Set(["/work", "/work/[slug]", "/admin/chat"]); // redirects + keyed admin page
+  const skip = new Set(["/work/[slug]", "/admin/chat"]); // redirects + keyed admin page
   const missing = [];
   async function walk(dir, base = "") {
     for (const entry of await readdir(new URL(dir, root), { withFileTypes: true })) {
@@ -297,7 +322,10 @@ test("redistributed fonts ship their licence, as the OFL requires", async () => 
 });
 
 test("homepage images offer responsive sources, and every variant exists", async () => {
-  const src = await readFile(new URL("app/HomeBody.tsx", root), "utf8");
+  // homeImageVariants and HomeImage moved out of HomeBody.tsx and into
+  // CaseCard.tsx on 2026-08-20, when /work needed the same responsive image
+  // handling the homepage already had. One definition, shared by both.
+  const src = await readFile(new URL("app/CaseCard.tsx", root), "utf8");
   assert.match(src, /srcSet=\{homeImageVariants\[src\]\}/);
 
   const variants = src.slice(

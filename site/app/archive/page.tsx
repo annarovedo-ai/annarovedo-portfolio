@@ -75,7 +75,7 @@ export default function Archive() {
               <p className="eyebrow">Next</p>
               <h2>The work with a full write-up</h2>
             </div>
-            <a className="next-case-status" href="/#work">
+            <a className="next-case-status" href="/work">
               View the case studies
             </a>
           </div>

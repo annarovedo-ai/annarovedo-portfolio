@@ -2,6 +2,7 @@
 
 import { useEffect, useRef, useState, useSyncExternalStore } from "react";
 import ResumeNavLink from "./ResumeNavLink";
+import WorkLink from "./WorkLink";
 import { getServerSnapshot, getSnapshot, subscribe } from "./personaStore";
 import type { PersonaId } from "./personaStore";
 
@@ -21,11 +22,9 @@ export default function SiteNav({
 } = {}) {
   const [open, setOpen] = useState(false);
   const store = useSyncExternalStore(subscribe, getSnapshot, getServerSnapshot);
-  // Effective persona: the entrance override wins for correct SSR on
-  // /studio, and the persisted store carries Client through internal pages,
-  // so Work keeps pointing at the studio's work section after leaving it.
+  // Still resolved for ResumeNavLink below, which does vary by persona
+  // (Resume vs. Services). Work itself no longer does: see WorkLink.
   const persona = personaOverride ?? store;
-  const workHref = persona === "client" ? "/studio#client-work" : "/#work";
   const wrap = useRef<HTMLDivElement | null>(null);
 
   // Close on Escape, on outside click, and whenever the viewport grows past the
@@ -73,15 +72,17 @@ export default function SiteNav({
         {/* Points at the case study grid rather than "/", so it does something
             the wordmark does not already do. The work is the primary content of
             the site and until now had no entry in the nav at all. */}
-        <a href={workHref} onClick={() => setOpen(false)}>
-          Work
-        </a>
-        {/* About is back for every persona (Anna, 2026-08-19: "actually,
-            put about back") — the merge experiment lasted an hour. About
-            tells the story, Resume holds the CV, as settled this morning. */}
-        <a href="/about" onClick={() => setOpen(false)}>
-          About
-        </a>
+        <WorkLink onClick={() => setOpen(false)}>Work</WorkLink>
+        {/* About left the nav 2026-08-20 (Anna: "put this on the home page
+            and remove the about tab") — the page's two strongest sections,
+            What I Bring and Why The Range Matters, now render directly on
+            the homepage for every persona (see HomeBody.tsx), so the tab was
+            pointing at content that had moved. /about itself still exists
+            and is not deleted, same treatment as /this-site: reachable, not
+            promoted. This is the third time About's nav presence has
+            flipped this project (removed for merge experiment 2026-08-19,
+            restored the same day, removed again here) — check
+            docs/decisions-log.md before flipping it a fourth time. */}
         <ResumeNavLink
           personaOverride={personaOverride}
           onNavigate={() => setOpen(false)}

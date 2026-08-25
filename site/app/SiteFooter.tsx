@@ -52,9 +52,8 @@ export default function SiteFooter({
           <div>
             <p className="eyebrow">Navigation</p>
             <ul>
-              <li>
-                <a href="/about">About</a>
-              </li>
+              {/* About left the footer alongside the nav 2026-08-20; see the
+                  note in SiteNav.tsx. */}
               <li>
                 <ResumeNavLink personaOverride={personaOverride} />
               </li>

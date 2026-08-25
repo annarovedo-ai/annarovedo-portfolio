@@ -92,17 +92,17 @@ export type HomeContent = {
    * The About block on the homepage. Was hardcoded in HomeBody until
    * 2026-08-07, so all three personas read copy written for the recruiter.
    *
-   * It is deliberately SHORT here. The long version belongs on /about, and a
-   * homepage About block that satisfies is one that removes the reason to
-   * click through. This one leads with the payoff and lets the link carry the
-   * rest.
+   * SHORT, and shorter again as of 2026-08-20. First cut (Anna: "make this
+   * one hero section. edit it down for impact") kept a one-line body plus
+   * the pullquote; Anna's very next note ("too broken up") was that h1,
+   * subtext, body and pullquote stacked as four short unconnected
+   * statements in a row, which is its own kind of clutter. Body is gone
+   * now: subtext states the specialty, the pullquote closes the thought,
+   * and that is the whole hero. The long version still lives on /about,
+   * unlinked but not deleted.
    */
   about: {
-    eyebrow: string;
-    headline: string;
-    body: string[];
     pullquote: string;
-    link: string;
   };
   footerHeadline: string;
   footerBody: string;
@@ -202,7 +202,14 @@ export const supportingCaseStudies: CaseStudy[] = [
   {
     href: "/kmart",
     tag: "Brand / Campaign",
-    title: "SHHHHH",
+    // Was "SHHHHH" — the campaign's name, not the client's. Retitled
+    // 2026-08-24 from portfolio feedback ("Shhh should lead with the brand
+    // Kmart - its stronger than Shhh"): a scanner who has never heard of the
+    // campaign has heard of Kmart, and the card is the scanner's surface.
+    // "A secret worth keeping" carries the campaign's own logic — a secret
+    // is only worth having while it is still yours. The case study page
+    // keeps SHHHHH; the drama belongs where there is room for it.
+    title: "Kmart: a secret worth keeping",
     body: "Kmart built a design studio in New York to take on Target, and the clothes were good. Nobody knew they existed, and anyone who did was embarrassed to say where they shopped. The pitch flipped the embarrassment into a reason: keep it a secret, because the moment you say where the dress came from, everyone owns one. Duct tape over the logo, over the hangtag, over the model's mouth.",
     image: "/case-study/kmart/card-cover.png",
     client: {
@@ -353,18 +360,11 @@ export const homeContent: Record<PersonaId, HomeContent> = {
     // The homepage states the position without making one project carry the
     // whole argument. Kmart proves the range in its own case study.
     about: {
-      // "About" alone. "About Anna" put the name a fourth time on a page that
-      // already carries it in the header lockup, in "Meet actual Anna", and in
-      // "Almost Anna" — and this section is written in first person, so the
-      // third-person heading was arguing with the paragraph beneath it.
-      eyebrow: "About",
-      headline: "I start with the problem, not the medium.",
-      body: [
-        "My background spans graphic design, fashion, advertising, and digital products. UX became my deepest specialization because it gave me the broadest way to solve complex problems.",
-        "I bring that thinking to products, systems, brands, and campaigns, choosing the medium around the idea rather than forcing every problem into an interface.",
-      ],
+      // Was two paragraphs and their own headline, then a one-line body,
+      // then no body at all (2026-08-20, "too broken up" — see the note on
+      // HomeContent.about). Subtext already states the specialty; the
+      // pullquote closes it.
       pullquote: "The problem comes first. The medium follows.",
-      link: "More about me",
     },
     // A recruiter is asking whether it worked and whether you really did it.
     footerHeadline: "Have a role you think might fit?",
@@ -523,18 +523,11 @@ export const homeContent: Record<PersonaId, HomeContent> = {
     // eyebrow changes too: "About Anna" is a biography heading, and a client
     // is sizing up a working relationship.
     about: {
-      // A label, not a sentence. This slot is an eyebrow: 11px, uppercase,
-      // wide-tracked, sitting above a headline. "Who you'd be working with"
-      // was 25 characters of set-in-caps text competing with the h2 under it
-      // while the recruiter's said "About" in five.
-      eyebrow: "About",
-      headline: "The problem decides what gets made.",
-      body: [
-        "Paper Pixel works across products, brands, campaigns, and digital experiences. UX is the foundation: understand the people, context, and system before deciding what form the answer should take.",
-        "That may mean joining an enterprise product team, shaping a new brand, or leading a launch across digital and physical touchpoints. The scope changes; the standard of thinking and craft does not.",
-      ],
+      // Was two paragraphs and their own headline, then a one-line body,
+      // then no body at all (2026-08-20, "too broken up" — see the note on
+      // HomeContent.about). Subtext already states the range and the
+      // direction; the pullquote closes it.
       pullquote: "Culture is always the brief underneath the brief.",
-      link: "Meet the founder",
     },
     // A client is asking what they would be buying. The slot holds
     // deliverables, not validation, so the label names the transaction.
@@ -551,7 +544,7 @@ export const homeContent: Record<PersonaId, HomeContent> = {
   },
 
   ex: {
-    eyebrow: "Ex Boyfriend",
+    eyebrow: "Ex-Boyfriend",
     onboardingText: "This was almost certainly not the button you were supposed to click.",
     // Two rewrites on 2026-08-07. First from ["What happened?", "You missed a
     // few seasons."] — the only two-part headline on the site, a setup and a
@@ -616,17 +609,11 @@ export const homeContent: Record<PersonaId, HomeContent> = {
     // doing real work: someone who knew her then would remember the fashion
     // degree, so "I did end up using it" is both the joke and the thesis.
     about: {
-      // Short label like the other two, with the persona in it rather than a
-      // whole joke. Mirrors how workEyebrow works: recruiter and client share
-      // a neutral label, the Ex gets its own, and all three stay label-length.
-      eyebrow: "Since then",
-      headline: "I did end up using all of it.",
-      body: [
-        "Graphic design, fashion, advertising, product, AI. It looked less like a plan at the time than it does now.",
-        "UX became the specialty, not the boundary. I still prefer the problem first and the medium second.",
-      ],
+      // Was two paragraphs and their own headline, then a one-line body,
+      // then no body at all (2026-08-20, "too broken up" — see the note on
+      // HomeContent.about). Subtext already carries the update; the
+      // pullquote closes it.
       pullquote: "Culture is always the brief underneath the brief.",
-      link: "The longer version",
     },
     // Deliberately the recruiter's label, because the ex persona now carries
     // the recruiter's cards verbatim. See the note on CaseStudy.ex.

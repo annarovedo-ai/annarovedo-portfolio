@@ -3,40 +3,47 @@ export type PersonaId = "recruiter" | "client" | "ex";
 export const personas: { id: PersonaId; label: string }[] = [
   { id: "recruiter", label: "Recruiter" },
   { id: "client", label: "Client" },
-  { id: "ex", label: "Ex Boyfriend" },
+  // Hyphenated 2026-08-24 (external feedback, Francesco: "'ex-boyfriend'
+  // would be easier to read with the hyphen"). Every string that quotes the
+  // pill by name — the canned "Did you know I'd click…" question in
+  // annaAnswers.ts, its data-anna-prompt-ex copies, homeContent's ex
+  // eyebrow — moved with it, since the canned-answer lookup matches text
+  // exactly.
+  { id: "ex", label: "Ex-Boyfriend" },
 ];
 
-const STORAGE_KEY = "pp-persona";
 const SESSION_KEY = "pp-persona-session";
 
 /**
  * Persona rules (docs/decisions-log.md):
- * - Recruiter is the default for un-gated traffic, bots and direct links.
- *   (Flipped to Client for a few hours on 2026-08-18, flipped back the same
- *   day per Anna. Clients get their own entrance at /studio, which forces
- *   the Client persona from first paint; annarovedo.com stays recruiter
- *   territory. If this changes again, getServerSnapshot below and the chat
- *   route's persona fallback must move with it, or first paint flashes.)
- * - Recruiter and Client persist across visits (localStorage).
- * - Ex Boyfriend is reachable only by explicit selection. It lives in
- *   sessionStorage so it survives navigation inside one tab but dies when the
- *   tab closes, is never written to localStorage, and has no URL of its own,
- *   so it cannot be linked, bookmarked, shared or crawled. Note that mobile
- *   browsers restore tabs WITH sessionStorage, so a tab where Ex was chosen
- *   stays Ex across days of reopening: that is the same tab, not a default.
+ * - Recruiter is the default for un-gated traffic, bots and direct links,
+ *   and now the default full stop (Anna, 2026-08-20: "it should always
+ *   default on recruiter"). Clients get their own entrance at /studio, which
+ *   forces the Client persona from first paint; annarovedo.com stays
+ *   recruiter territory. If this changes again, getServerSnapshot below and
+ *   the chat route's persona fallback must move with it, or first paint
+ *   flashes.
+ * - Client and Ex Boyfriend are both session-scoped only, as of 2026-08-20.
+ *   Client used to persist across visits in localStorage, which meant
+ *   walking through /studio once left the whole site showing Client on every
+ *   future visit, days later, until someone thought to flip the switcher
+ *   back — Recruiter is supposed to be the thing a visitor lands on, not a
+ *   setting that has to be actively restored. Both personas now live in
+ *   sessionStorage: they survive navigation inside one tab, so /studio's
+ *   promise ("the rest of the site stays Client after entering here") still
+ *   holds for that visit, but neither is ever written to localStorage, has a
+ *   URL of its own, or survives the tab closing. Note that mobile browsers
+ *   restore tabs WITH sessionStorage, so a tab where Client or Ex was chosen
+ *   stays that way across days of reopening: that is the same tab persisting,
+ *   not a default changing.
  */
 function read(): PersonaId {
   if (typeof window === "undefined") return "recruiter";
   try {
-    if (window.sessionStorage.getItem(SESSION_KEY) === "ex") return "ex";
+    const v = window.sessionStorage.getItem(SESSION_KEY);
+    if (v === "client" || v === "ex") return v;
   } catch {
     /* session storage unavailable */
-  }
-  try {
-    const v = window.localStorage.getItem(STORAGE_KEY);
-    if (v === "recruiter" || v === "client") return v;
-  } catch {
-    /* storage unavailable */
   }
   return "recruiter";
 }
@@ -67,13 +74,15 @@ export function getServerSnapshot(): PersonaId {
 export function setPersona(id: PersonaId) {
   current = id;
   try {
-    if (id === "ex") {
-      window.sessionStorage.setItem(SESSION_KEY, "ex");
-      window.localStorage.removeItem(STORAGE_KEY);
-    } else {
+    if (id === "recruiter") {
       window.sessionStorage.removeItem(SESSION_KEY);
-      window.localStorage.setItem(STORAGE_KEY, id);
+    } else {
+      window.sessionStorage.setItem(SESSION_KEY, id);
     }
+    // Cleans up anyone's browser still holding a pre-2026-08-20 long-lived
+    // Client value; read() no longer looks at localStorage at all, but there
+    // is no reason to leave a stale key sitting there once we can remove it.
+    window.localStorage.removeItem("pp-persona");
   } catch {
     /* storage unavailable, selection simply is not persisted */
   }

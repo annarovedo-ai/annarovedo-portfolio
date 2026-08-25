@@ -112,7 +112,7 @@ export const cannedAnswers: Record<PersonaId, CannedAnswer[]> = {
     // still get the model's two-sentence boundary, never an extension of
     // these.
     {
-      question: "Did you know I’d click “Ex Boyfriend”?",
+      question: "Did you know I’d click “Ex-Boyfriend”?",
       answer: "Yes. Recruiter never stood a chance.",
     },
     {
@@ -121,7 +121,7 @@ export const cannedAnswers: Record<PersonaId, CannedAnswer[]> = {
     },
     {
       question: "Do you think I changed?",
-      answer: "You found my portfolio and clicked “Ex Boyfriend.” The evidence is mixed.",
+      answer: "You found my portfolio and clicked “Ex-Boyfriend.” The evidence is mixed.",
     },
     {
       question: "Would you answer me now?",

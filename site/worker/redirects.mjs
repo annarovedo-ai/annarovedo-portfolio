@@ -33,12 +33,16 @@ export const LEGACY_REDIRECTS = {
   "/global-search": "/search",
   "/ibm-search": "/search",
 
-  // Old nav.
-  "/work": "/#work",
-  "/projects": "/#work",
-  "/portfolio": "/#work",
+  // Old nav. /work used to redirect here too, back when it was not a real
+  // page; it is one as of 2026-08-20 (the full six case studies), so it is
+  // no longer in this map at all — a request for /work should reach the
+  // real page, not bounce off it.
+  "/projects": "/work",
+  "/portfolio": "/work",
   "/cv": "/resume",
 };
+
+const PRODUCTION_HOSTS = new Set(["annarovedo.com", "www.annarovedo.com"]);
 
 /**
  * Returns the single 301 target for a request URL, or null if no redirect
@@ -51,10 +55,16 @@ export const LEGACY_REDIRECTS = {
  * the Worker, not the case caught 2026-08-20 where a link shared as
  * http://www.annarovedo.com was served in full over an insecure connection
  * (browsers/LinkedIn's own interstitial then show the site as untrusted).
+ *
+ * Scoped to PRODUCTION_HOSTS, learned the hard way the same day: an
+ * unscoped version also upgraded http://localhost:3000 in local dev, which
+ * has no TLS listener to upgrade to, so every dev request 301'd straight
+ * into ERR_SSL_PROTOCOL_ERROR. Local dev and any other host pass through
+ * untouched; only the real domain gets forced to https.
  */
 export function redirectTarget(rawUrl) {
   const url = new URL(rawUrl);
-  const isHttp = url.protocol === "http:";
+  const isHttp = url.protocol === "http:" && PRODUCTION_HOSTS.has(url.hostname);
   const isWww = url.hostname === "www.annarovedo.com";
   const legacyPath = url.pathname.replace(/\/+$/, "") || "/";
   const legacy = LEGACY_REDIRECTS[legacyPath];

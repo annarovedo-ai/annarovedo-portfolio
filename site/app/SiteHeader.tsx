@@ -14,7 +14,7 @@ export default function SiteHeader() {
       <BrandLockup />
 
       <div className="home-header-switch">
-        <PersonaSwitch compact label="I’m a" />
+        <PersonaSwitch compact label="View as:" />
       </div>
 
       <SiteNav />

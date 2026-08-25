@@ -1190,21 +1190,9 @@ img {
   letter-spacing: 0.02em;
 }
 
-/* The mark replaces the lockup only where the lockup genuinely stops fitting.
-   Above this width the scrolled row holds the full name, the switcher and the
-   nav comfortably, so there is no reason to shorten it — the swap is a
-   response to running out of room, not to scrolling. */
-@media (max-width: 900px) {
-  .home-header.is-scrolled .brand-wordmark,
-  .home-header.is-scrolled .brand-divider,
-  .home-header.is-scrolled .brand-credit {
-    display: none;
-  }
-
-  .home-header.is-scrolled .brand-mark {
-    display: grid;
-  }
-}
+/* The .is-scrolled brand-mark swap that lived here left with the V4 sticky
+   band (2026-08-24): the homepage header no longer has a scrolled state to
+   shorten the lockup for. */
 
 .brand-wordmark {
   font-family: var(--serif);
@@ -3433,10 +3421,6 @@ blockquote {
     padding: 0 16px;
   }
 
-  .persona-sticky {
-    padding: 0 0 14px;
-  }
-
   .site-header nav {
     gap: 16px;
     font-size: var(--t-label);
@@ -4892,11 +4876,67 @@ blockquote {
 
 .home-hero {
   padding-top: clamp(72px, 8vw, 110px);
-  padding-bottom: clamp(56px, 6vw, 84px);
+  /* Was clamp(56px, 6vw, 84px), sized for the old two-paragraph About
+     section that used to close this out. Tightened 2026-08-20 (Anna: "too
+     much empty vertical space") along with .home-hero-copy's margin and
+     .home-hero .home-about/.home-pullquote below, now that the section
+     ends on a single pullquote line instead. */
+  padding-bottom: clamp(32px, 3.5vw, 48px);
 }
 
 .home-hero-copy {
-  margin-bottom: 44px;
+  margin-bottom: 28px;
+}
+
+/* Portrait added to the recruiter/ex hero 2026-08-20 (Anna: "make it a
+   profile image on the homepage on the side as a square"), reusing the still
+   frame from the old hero video. Same grid shape as .client-hero-layout
+   (copy column wider, media column narrower, centered on the cross axis) but
+   simpler: one square photo rather than a three-card proof strip. */
+.home-hero-layout {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) minmax(180px, 260px);
+  gap: clamp(32px, 5vw, 64px);
+  align-items: center;
+}
+
+.home-hero-main {
+  min-width: 0;
+}
+
+.home-hero-portrait {
+  justify-self: end;
+  align-self: start;
+}
+
+.home-hero-portrait-img {
+  display: block;
+  width: 100%;
+  aspect-ratio: 1 / 1;
+  object-fit: cover;
+  object-position: center 22%;
+  border: 1px solid var(--line);
+  background: var(--paper-deep);
+}
+
+.home-hero-portrait-credit {
+  margin: 10px 0 0;
+  color: var(--muted);
+  font-family: var(--sans);
+  font-size: var(--t-fine);
+  font-style: italic;
+  text-align: right;
+}
+
+@media (max-width: 900px) {
+  .home-hero-layout {
+    grid-template-columns: 1fr;
+  }
+
+  .home-hero-portrait {
+    justify-self: start;
+    max-width: 200px;
+  }
 }
 
 .home-hero h1 {
@@ -5294,8 +5334,24 @@ a.home-video-label:focus-visible {
   padding-block: clamp(72px, 9vw, 120px) clamp(40px, 4vw, 64px);
 }
 
+/* /work only (the intro section immediately precedes .home-work there; the
+   homepage's own work section always follows the client strip or engagement
+   cards instead, never this intro, so it keeps the padding above). Large top
+   padding made sense between unrelated sections but read as a gap between
+   the intro copy and the case study it's introducing (2026-08-20, "reduce
+   negative vertical space here"). */
+.archive-intro + .home-work {
+  padding-top: clamp(28px, 3.5vw, 48px);
+}
+
 .home-work h2 {
+  /* Was the bare h2 default (--d-section, up to 54px) — one more size on top
+     of the h1's 84px, the points/pullquote/experience headings' 28px, and the
+     tile titles' 22px. Matched to --d-card (2026-08-20, Anna: "too many size
+     variations") so every secondary heading on the homepage shares one size
+     and only the true h1 gets the display scale. */
   margin-bottom: 48px;
+  font-size: var(--d-card);
 }
 
 /* Concierge / Journey Orchestration: rendered as one story in two linked
@@ -5495,13 +5551,189 @@ a.home-video-label:focus-visible {
   margin: 0 0 20px;
   color: var(--muted);
   font-size: var(--t-small);
-}/* The other half of the same gap: this rule's border-top IS the divider under
+}
+
+/* The homepage's six-tile preview (2026-08-20): a smaller, uniform stand-in
+   for the flagship pair + row of four that used to render directly on the
+   homepage. Full detail (body copy, the Concierge/Journey Orchestration
+   pairing) lives on /work now; this grid's job is fast recognition and a
+   route to any one of the six, not the pitch. Same hover/focus/border
+   language as .home-case so the two card types still read as one system. */
+.home-work-tiles {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 20px;
+  margin-bottom: 32px;
+}
+
+.home-work-tile {
+  display: flex;
+  flex-direction: column;
+  border: 1px solid var(--line);
+  background: var(--surface);
+  color: inherit;
+  text-decoration: none;
+  transition: border-color 0.18s ease, transform 0.18s ease;
+}
+
+.home-work-tile:hover {
+  border-color: var(--blue);
+  transform: translateY(-2px);
+}
+
+.home-work-tile:focus-visible {
+  outline: 2px solid var(--blue);
+  outline-offset: 3px;
+}
+
+.home-work-tile-media {
+  display: block;
+  aspect-ratio: 16 / 9;
+  background: var(--paper-deep);
+  border-bottom: 1px solid var(--line);
+  overflow: hidden;
+}
+
+.home-work-tile-media img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+.home-work-tile-content {
+  display: flex;
+  flex: 1;
+  flex-direction: column;
+  align-items: flex-start;
+  padding: 16px 18px 18px;
+}
+
+.home-work-tile-tag {
+  margin-bottom: 8px;
+  color: var(--muted);
+  font-size: var(--t-label);
+  font-weight: 600;
+  letter-spacing: var(--track-wide);
+  text-transform: uppercase;
+}
+
+.home-work-tile-content h3 {
+  margin: 0;
+  font-size: var(--t-sub);
+  line-height: 1.25;
+}
+
+.home-work-tile-cta {
+  margin-top: 14px;
+  color: var(--blue);
+  font-size: var(--t-label);
+  font-weight: 600;
+  letter-spacing: var(--track-wide);
+  text-transform: uppercase;
+}
+
+.home-work-more {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: baseline;
+  gap: 8px 28px;
+  padding-top: 24px;
+  /* Divider removed 2026-08-20 (Anna: "remove this gray line above the
+     copy") — the tile grid above already separates itself with its own
+     spacing and images; a rule on top of that read as one more section
+     break than the page needed. */
+}
+
+.home-work-more .home-other-archive-link {
+  margin: 0;
+}
+
+@media (max-width: 1000px) {
+  .home-work-tiles {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+
+@media (max-width: 560px) {
+  .home-work-tiles {
+    grid-template-columns: 1fr;
+  }
+}
+
+/* The other half of the same gap: this rule's border-top IS the divider under
    the archive line, so its top padding and .home-work's bottom padding are one
    continuous void. Trimmed together. The bottom stays generous, since it runs
    into the navy CTA band and should. */
 .home-about {
   padding-block: clamp(52px, 6vw, 80px) clamp(64px, 8vw, 104px);
   border-top: 1px solid var(--line);
+}
+
+/* Experience teaser, new 2026-08-20 (Anna's homepage wireframe): a plain
+   two-column band between Work and the closing CTA, pointing at /resume.
+   Text on the left, the link on the right, same shell/eyebrow/h2 language
+   as every other homepage section rather than inventing new type rules for
+   one small band. */
+.home-experience {
+  padding-block: clamp(48px, 6vw, 76px);
+  border-top: 1px solid var(--line);
+}
+
+.home-experience-inner {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  justify-content: space-between;
+  gap: 20px 40px;
+}
+
+.home-experience-inner h2 {
+  margin: 6px 0 8px;
+  font-size: var(--d-card);
+}
+
+/* :not(.eyebrow) added 2026-08-20 (Anna: "why is RESUME a totally diff
+   color and size than the other section headings?"). Without it this rule
+   caught both <p>s in the div — the body copy it was meant for, and the
+   eyebrow label above the h2 — and beat .eyebrow's single-class specificity,
+   so "Resume" rendered muted grey at 14px instead of the label blue at 11px
+   uppercase every other section eyebrow uses. Same fix already in place for
+   .about-closing p and .archive-group-head p. */
+.home-experience-inner > div > p:not(.eyebrow) {
+  margin: 0;
+  color: var(--muted);
+  font-size: var(--t-small);
+}
+
+@media (max-width: 640px) {
+  .home-experience-inner {
+    flex-direction: column;
+    align-items: flex-start;
+  }
+}
+
+/* Hero and Overview became one section 2026-08-20 (Anna: "combine into one
+   section"): when .home-about is nested inside .home-hero rather than
+   standing as its own section, it is a continuation of the introduction,
+   not a new one, so the divider and the section's own padding both go —
+   the hero's own padding-bottom is doing that job now, and a top margin
+   is enough to separate the headline from what follows it. */
+.home-hero .home-about {
+  /* Was clamp(36px, 4vw, 56px), sized to lead into a body paragraph that no
+     longer exists (2026-08-20, "too much empty vertical space"): the
+     pullquote inside now follows the subtext directly, so this only needs
+     to keep the two from touching, not to separate two sections. */
+  margin-top: clamp(12px, 1.5vw, 20px);
+  padding: 0;
+  border-top: none;
+}
+
+/* The pullquote's own generous margin (40px 0, see .home-pullquote below)
+   was doubling up with the gap above once About had nothing left in it but
+   the quote itself. Zeroed here, scoped to this merged-hero placement only
+   — every other .home-pullquote on the site keeps its normal spacing. */
+.home-hero .home-pullquote {
+  margin: 0;
 }
 
 .home-about h2 {
@@ -5619,8 +5851,14 @@ a.home-video-label:focus-visible {
 }
 
 .home-cta h2 {
+  /* Same size correction as .home-work h2 above and for the same reason
+     (2026-08-20, "too many size variations"): the closing band's heading was
+     still at the bare h2 default (54px) while every other secondary heading
+     on the page had already settled at --d-card. Shared by the homepage's
+     closing CTA (both personas) and /work's, so all three stay in step. */
   max-width: 15ch;
   margin-bottom: 18px;
+  font-size: var(--d-card);
 }
 
 .home-cta p {
@@ -6406,140 +6644,61 @@ a.home-video-label:focus-visible {
   gap: 20px;
 }
 
-/* EVERYTHING BELOW THIS POINT IS THE HOMEPAGE HEADER ONLY.
- 
-   .home-header is shared: SiteHeader puts it on every other page in the site
-   to get the same grid and the same navy. Only the homepage has the two row
-   layout, the collapse, the spacer and the fixed positioning. Written
-   unscoped, position:fixed leaked onto About, Contact, the resume and every
-   case study, where there is no spacer to hold the space open, so their
-   content slid underneath the bar. Scope anything structural to .is-home. */
+/* THE HOMEPAGE HEADER IS THE SITE HEADER. (V5, 2026-08-24.)
 
-/* Two rows at rest, one row once scrolled. The switcher is a child of the
-   header in BOTH states and only its grid-area changes, which is the whole
-   point: nothing is duplicated, nothing is swapped, nothing can get out of
-   sync. Earlier versions moved the control between two containers and that is
-   what produced every "it jumps" bug. */
-.home-header.is-home {
-  /* "gap" is a named area nothing occupies, where a null cell (.) would read
-     more naturally. It is here because the minifier strips the whitespace
-     around a lone dot and ships grid-template-areas:"brand.nav", and
-     "brand.nav" is not a valid custom-ident: the whole declaration is invalid
-     per spec. Chromium parses it anyway. Safari follows the spec and drops it,
-     at which point grid-area:brand / nav / switcher point at named lines that
-     no longer exist, every item lands in an implicit row, and the nav falls
-     under the wordmark. A named area cannot be mangled that way. */
-  grid-template-areas:
-    "brand    gap      nav"
-    "switcher switcher switcher";
-}
-
-.home-header.is-home > .brand {
-  grid-area: brand;
-  /* The wordmark is 24px serif and the nav is 14px sans. Centred on the same
-     row their tops do not agree, and the name floated 4.75px above the links.
-     Measured in the browser, then nudged: a relative offset rather than
-     padding so it moves the text without resizing the row and dragging the
-     nav down with it. */
-  position: relative;
-  top: 5px;
-}
-
-.home-header.is-home > .site-nav {
-  grid-area: nav;
-}
+   History, kept because five versions of homepage-only chrome died in this
+   region: V1 rendered the switcher twice and swapped on an observer
+   (teleport); V2 stuck it at a hardcoded top offset (drifted); V3 was a
+   position:fixed header with a measured spacer and a two-state collapse
+   (the layout flip read as a jump — Anna: "the switcher jumps. make it
+   scroll with the rest of the page, and then sticks at the top"); V4 gave
+   the switcher its own sticky band below a scrolling header (no jump, but
+   pinning it left the logo and nav behind — Anna: "now we lose the logo
+   and nav"). V5 deletes the private chrome instead of iterating it again:
+   PersonaChrome renders the SAME markup as SiteHeader (is-docked, one row,
+   brand | switcher | nav), so the base .site-header stickiness carries
+   everything, on every persona's homepage, with zero homepage-only rules.
+   The .is-home class no longer exists in the markup; do not reintroduce
+   it. */
 
 .home-header > .site-nav {
   justify-self: end;
 }
 
-.home-header.is-home > .persona-sticky {
-  grid-area: switcher;
+/* V6 (2026-08-24): the homepage header is a slim brand+nav bar with no
+   switcher column — two grid tracks, not three, or the nav lands in the
+   phantom middle column. Sticky comes from the base .site-header rules. */
+.home-header-plain {
+  grid-template-columns: auto 1fr;
 }
 
-/* Scrolled: brand, switcher and nav on one bar. Everything the tall state
-   spends height on (the stacked row, the label above the control, the full
-   pill size) collapses here, because past the fold the chrome is a tool, not
-   an introduction. */
-/* THE COLLAPSE MUST NOT MOVE THE PAGE.
- 
-   A sticky header is still IN the document, so shrinking it from 169px to
-   64px pulls everything below it up by 105px in a single frame. That is the
-   jump: the page lurches the moment the bar collapses, and lurches back when
-   you scroll up again.
- 
-   So the bar is fixed and a spacer holds its resting height in the flow. The
-   spacer never changes, which means the content below it never moves, and the
-   bar is free to shrink over the top of it. The spacer's height is measured
-   from the header itself rather than typed in, because the header is a
-   different height per persona (the Ex lockup carries a credit line) and per
-   breakpoint, and a hardcoded number here is the exact mistake this file has
-   already made twice. */
-.home-header.is-home {
-  position: fixed;
-  top: 0;
-  left: 0;
-  right: 0;
-  /* The name and the nav used to sit in an 84px flex row that centred them,
-     which is where their breathing room came from. Now they are row one of a
-     two row grid, so without this they sit hard against the top edge of the
-     bar. Top only: the switcher row below carries its own bottom padding. */
-  padding-block: 24px 0;
-}
-
-/* Collapsed there is one row again, and min-height plus align-items centre it
-   the way the old header did. Padding here would just make the bar taller. */
-.home-header.is-home.is-scrolled {
-  padding-block: 0;
-}
-
-/* Navy, not transparent. The spacer sits behind the fixed bar and is meant
-   to be invisible, but the measured height and the rendered height differ by
-   a fraction of a pixel (192.83 against 193.00 when I checked), and that
-   sliver let the page background through as a white hairline under the
-   switcher. Painting the spacer the same navy makes the seam impossible to
-   see however the rounding falls. */
-.home-header-space {
-  height: var(--home-header-rest, 169px);
-  background: var(--blue);
-}
-
-.home-header.is-home.is-scrolled {
-  grid-template-areas: "brand switcher nav";
-  min-height: 64px;
-}
-
-.home-header.is-scrolled > .persona-sticky {
-  padding: 0;
-}
-
-.home-header.is-scrolled .persona-switch-group {
-  flex-direction: row;
-  gap: 10px;
-}
-
-.home-header.is-scrolled .persona-switch-label {
-  font-size: var(--t-fine);
-}
-
-.home-header.is-scrolled .persona-switch {
-  padding: 3px;
-  box-shadow: 0 0 0 3px rgba(255, 255, 255, 0.08), 0 6px 16px rgba(0, 0, 0, 0.22);
-}
-
-.home-header.is-scrolled .persona-switch button {
-  padding: 8px 15px;
-  font-size: var(--t-fine);
-}
-
-/* Undocked, the header sits directly on top of the persona intro, so it takes
-   the same solid navy and drops its rule: the two read as one block. Once
-   docked it floats over white page content, where the translucency, blur, and
-   bottom rule are doing real work, so that treatment comes back. */
-.home-header:not(.is-docked) {
+/* Solid navy and no bottom rule on the homepage bar: it sits on the navy
+   band and intro, and the base header's white hairline read as a line
+   drawn across one continuous block. Interior headers (is-docked) float
+   over white pages, where the translucency and the rule do real work. */
+.home-header-plain {
   background: var(--blue);
   border-bottom-color: transparent;
   backdrop-filter: none;
+}
+
+/* THE PICKER BAND (V6 — see the history note above and PersonaChrome.tsx).
+   Sticky below the header rather than at the viewport top: it scrolls with
+   the page like ordinary content, then pins tucked under the brand+nav bar
+   (Anna: "we don't get the scroll effect of the picker sticking" /
+   "now we lose the logo and nav" — this is the version that keeps both).
+   The offset reads the live-measured --site-header-bottom rather than a
+   hardcoded 84px, which is the exact mistake V2 made. One layout in both
+   states; no shadow, which painted a dark seam on the navy intro at rest
+   (Anna: "remove this dark line"). */
+.persona-band {
+  position: sticky;
+  top: var(--site-header-bottom, 84px);
+  z-index: 29; /* under the header's 30, above page content */
+  display: flex;
+  justify-content: center;
+  padding: 10px 24px 16px;
+  background: var(--blue);
 }
 
 /* The rule under the header appears the instant it docks, which registered as
@@ -6663,17 +6822,9 @@ a.home-video-label:focus-visible {
    switcher sits below the header because it is the next element in the box,
    not because a measurement says so, so it is correct at every width and at
    every header height, permanently. */
-/* No wrapper and no offset. The switcher is inside the header, so it is
-   carried by the header's own position:sticky and sits under the brand row
-   because that is where the grid puts it. The hardcoded top:84px this
-   replaces was a copy of the header's min-height kept true by hand in three
-   breakpoints, and it was wrong the moment the header rendered taller than
-   its minimum. */
-.persona-sticky {
-  display: flex;
-  justify-content: center;
-  padding: 2px 0 20px;
-}
+/* .persona-sticky's rules left with the V3 header (2026-08-24); its V4
+   successor .persona-band left the same day with V5. The switcher lives in
+   the stock is-docked header now — see the history note further up. */
 
 .persona-intro {
   padding: 4px 24px 34px;
@@ -6907,27 +7058,15 @@ a.home-video-label:focus-visible {
     row-gap: 0;
   }
 
-  .home-header.is-home {
-    grid-template-areas:
-      "brand    nav"
-      "switcher switcher";
-    padding-block: 16px 0;
-  }
-
   /* .site-nav is the grid child, not the inner <nav>, so the old rule here did
      nothing — and the desktop rule left .site-nav pinned to column 3, which no
      longer exists at this width. That phantom column is what floated the
-     hamburger off the corner. */
+     hamburger off the corner. (The .is-home one-row variant that sat above
+     this left with V5: the homepage header is the stock is-docked header
+     now and takes the stacked treatment below like every other page.) */
   .home-header > .site-nav {
     justify-self: end;
     align-self: center;
-  }/* Once docked the wordmark and credit step out and only the 30px mark is
-     left, which frees enough width to put the mark, the switcher and the
-     hamburger on a single row instead of stacking the switcher underneath. */
-  .home-header.is-home.is-scrolled {
-    grid-template-columns: auto 1fr auto;
-    grid-template-areas: "brand switcher nav";
-    column-gap: 12px;
   }
 
   /* Internal pages, same squeeze, same cure. Everything above is scoped to
@@ -6978,12 +7117,9 @@ a.home-video-label:focus-visible {
     font-size: var(--t-fine);
   }}
 
-@media (max-width: 420px) {.home-header.is-scrolled {
-    column-gap: 8px;
-  }
-
+@media (max-width: 420px) {
   /* The three options fit one line down to about 390px and then wrap by a few
-     pixels, which orphans EX BOYFRIEND on a line of its own and makes the
+     pixels, which orphans EX-BOYFRIEND on a line of its own and makes the
      control taller than the headline it sits above. Tightening the pills buys
      back the width needed to hold one line to 360px. */
   .persona-switch button {
@@ -7035,35 +7171,9 @@ a.home-video-label:focus-visible {
     margin-bottom: 18px;
   }
 
-  /* WHAT MADE THE COLLAPSED BAR BREAK ON A PHONE.
- 
-     The control was allowed to wrap, so at phone width it put a second line of
-     pills straight through the bottom edge of a 64px bar. Dropping the label,
-     shrinking the pills and forbidding the wrap gets the mark, the control and
-     the hamburger onto one row down to 360px, which covers every current
-     phone. Below that it stops fitting and there is a two row fallback
-     further down. Measured across 320, 360, 390, 430, 600 and 720. */
-
-  /* "I'M A" is the first thing to go when width is short. The three options
-     say what the control is without it. */
-  .home-header.is-scrolled .persona-switch-label {
-    display: none;
-  }
-
-  /* Never wrap inside the COLLAPSED bar: wrapping there put a second line of
-     pills through the bottom edge of the navy. Scoped to .is-scrolled, because
-     applying it to the whole header stopped the tall state wrapping too, and
-     the full-size control is wider than a phone: it stopped wrapping and ran
-     off both edges of the screen instead. The tall state has a whole row to
-     itself and is allowed to use two lines of it. */
-  .home-header.is-scrolled .persona-switch {
-    flex-wrap: nowrap;
-  }
-
-  .home-header.is-scrolled .persona-switch button {
-    padding: 7px 12px;
-    font-size: var(--t-label);
-  }
+  /* The collapsed-bar phone rules (.is-scrolled label drop, nowrap, compact
+     pills) left with the V4 sticky band — there is no collapsed bar any
+     more; the pill is one size in the band whether at rest or pinned. */
 
   /* max-width is the backstop: whatever the wrapping rules do, the control
      cannot be wider than the screen it is on. */
@@ -7074,38 +7184,23 @@ a.home-video-label:focus-visible {
   }
 }
 
-/* Below 360px the mark, the control and the hamburger genuinely do not fit on
-   one line: measured 27px of overflow at 320px. Two short rows instead, which
-   is still half the height of the tall state. This is the only place the
-   collapsed homepage bar is not a single row. */
+/* Below 360px the control genuinely does not fit at its normal padding:
+   measured 27px of overflow at 320px before the pills were squeezed. The
+   band still holds one row by letting the buttons flex-shrink. (The
+   .is-scrolled two-row header fallback that lived here left with V4.) */
 @media (max-width: 359px) {
-  .home-header.is-home.is-scrolled {
-    grid-template-columns: auto 1fr;
-    grid-template-areas:
-      "brand    nav"
-      "switcher switcher";
-    min-height: 0;
-    row-gap: 10px;
-    padding-block: 10px 12px;
-  }
-
-  .home-header.is-home.is-scrolled > .persona-sticky {
-    padding: 0;
-  }
-
-  .home-header .persona-sticky,
-  .home-header .persona-switch-group {
+  .persona-band .persona-switch-group {
     width: 100%;
     min-width: 0;
   }
 
-  .home-header .persona-switch {
+  .persona-band .persona-switch {
     width: calc(100vw - 24px);
     max-width: 100%;
     flex-wrap: nowrap;
   }
 
-  .home-header .persona-switch button {
+  .persona-band .persona-switch button {
     flex: 1 1 0;
     min-width: 0;
     padding: 11px 6px;
@@ -7355,13 +7450,15 @@ a.home-video-label:focus-visible {
   font-size: var(--t-small);
 }
 
-/* Same voice as .cv-download and .cv-view-link: serif, small, bold. The
+/* Same voice as .cv-download and .cv-view-link: small, semibold. The
    masthead's actions are one family; only fill separates primary from
-   secondary (Anna, 2026-08-19: "style these buttons the same way"). */
+   secondary (Anna, 2026-08-19: "style these buttons the same way"). Weight
+   dropped from 700 to 600 2026-08-20 alongside .cv-download and every other
+   sitewide button (Anna: "these button fonts are too big and bold"). */
 .cv-contact a {
   color: var(--blue);
   font-family: var(--sans);
-  font-weight: 700;
+  font-weight: 600;
 }
 
 .cv-contact a:hover {
@@ -7375,12 +7472,15 @@ a.home-video-label:focus-visible {
 .cv-download {
   display: inline-block;
   /* Was 15px/26px at 17px serif bold, which read as a hero-scale block
-     rather than a secondary action next to the intro copy. */
+     rather than a secondary action next to the intro copy. font-size and
+     font-weight are NOT set here any more (2026-08-20): this block and the
+     later "One button, everywhere" consolidated rule (search that heading)
+     both targeted .cv-download, and whichever came later in the file quietly
+     won — the exact six-sources-of-truth problem that consolidated rule was
+     written to end. One source now: the consolidated rule. */
   padding: 11px 20px;
   background: var(--flare);
   color: var(--ink);
-  font-size: var(--t-small);
-  font-weight: 700;
   border: 1px solid var(--flare-ink);
   font-family: var(--sans);
   letter-spacing: -0.005em;
@@ -7679,8 +7779,16 @@ a.home-video-label:focus-visible {
 .cv-view-link {
   color: var(--blue);
   font-family: var(--sans);
+  /* Matches .cv-download's actual rendered size, which lives in the
+     consolidated button-metrics rule further down this file. Was bumped to
+     var(--t-read)/700 on 2026-08-20 ("the font size and weight should be
+     same") to match .cv-download at the time; dropped back to
+     var(--t-small)/600 the same day when that same size/weight turned out to
+     be the actual complaint ("these button fonts are too big and bold") once
+     Anna saw it rendered. Keep this in step with .cv-download and
+     .cv-contact a rather than re-deriving it. */
   font-size: var(--t-small);
-  font-weight: 700;
+  font-weight: 600;
   white-space: nowrap;
 }
 
@@ -7843,7 +7951,15 @@ a.home-video-label:focus-visible {
    ========================================================== */
 
 .archive-intro {
-  padding-block: clamp(56px, 7vw, 92px) clamp(40px, 5vw, 64px);
+  /* Bottom was clamp(40px, 5vw, 64px), which on /work stacks directly on top
+     of .home-work's own clamp(72px, 9vw, 120px) top padding right below it —
+     up to ~184px of empty space between the deck paragraph and the first
+     case study, before Anna flagged it (2026-08-20: "reduce negative
+     vertical space here"). Tightened here; .home-work's own top padding is
+     overridden separately below, scoped to only when it follows this intro,
+     so the homepage's work section (which never sits under .archive-intro)
+     is untouched. */
+  padding-block: clamp(56px, 7vw, 92px) clamp(20px, 2.5vw, 32px);
 }
 
 .archive-intro h1 {
@@ -10348,6 +10464,29 @@ html[data-anna-razor="bar"] body {
  * min-height plus line-height:1 is what guarantees identical heights. Left to
  * the serif's own line box, buttons with descenders ("g", "y") resolved a
  * pixel or two taller than those without.
+ *
+ * THE RULE (written down 2026-08-20 after a "View the resume" link bounced
+ * between styles twice in one session — see the note on it in HomeBody.tsx —
+ * because this rule existed in practice, in every paired-button spot on the
+ * site, but not anywhere a person could read it):
+ *
+ *   FILLED  (.home-cta-button, .cv-download, .about-cta-button,
+ *            .contact-submit, .svc-primary, .client-hero-primary) —
+ *            the one committed action a section wants. At most one per
+ *            section.
+ *
+ *   OUTLINE (.home-cta-secondary, .svc-secondary, .client-hero-secondary,
+ *            .client-engagement-secondary) — a lower-emphasis companion.
+ *            ONLY ever sits directly beside a filled primary in the same
+ *            actions row. An outline button with no filled sibling in
+ *            frame is the bug, not a lighter-weight solo CTA — demote it
+ *            to a text link instead.
+ *
+ *   TEXT LINK (.home-inline-link for a standalone line, or a plain <a>
+ *              inside a sentence for prose) — everything else: "View case
+ *              study", "See the archive", "View the resume", any link
+ *              whose job is pointing at more content rather than asking
+ *              for a commitment. Never gets a border or a fill.
  */
 .cv-download,
 .about-cta-button,
@@ -10363,8 +10502,17 @@ html[data-anna-razor="bar"] body {
   min-height: 46px;
   padding: 0 24px;
   font-family: var(--sans);
-  font-size: var(--t-read);
-  font-weight: 700;
+  /* Was --t-read (17px) at weight 700, set here 2026-08-19 when six
+     separately-drifted button rules were merged into one. That pass fixed
+     the drift but landed on the biggest of the six sizes rather than the
+     most common one (15px, per the note above), so every button on the site
+     read heavier after the merge than any single one had before. Anna,
+     2026-08-20, looking at the resume page's Download/Email pair: "these
+     button fonts are too big and bold" — confirmed as a sitewide call, not
+     just this pair. min-height stays at 46px: that is the tap-target size,
+     not the type size, and shrinking the text should not shrink the target. */
+  font-size: var(--t-small);
+  font-weight: 600;
   line-height: 1;
   letter-spacing: -0.005em;
   text-align: center;
@@ -10495,11 +10643,18 @@ html[data-anna-razor="bar"] body {
 
 .client-engagement-secondary {
   /* Matches the primary button's text size so the pair reads as one row of
-     actions at two emphasis levels, not a button with a footnote. */
+     actions at two emphasis levels, not a button with a footnote. Was
+     --t-read/700 — correct when written, because that was the primary's
+     size then. The 2026-08-20 sitewide button reduction ("these button
+     fonts are too big and bold") moved every consolidated button to
+     --t-small/600 but this class was never in the consolidated list, so it
+     silently kept the old size (Anna, 2026-08-24: "these buttons all need
+     to be the same font size around the website"). Kept in step manually;
+     if this drifts again, add it to the consolidated rule instead. */
   color: var(--blue);
   font-family: var(--sans);
-  font-size: var(--t-read);
-  font-weight: 700;
+  font-size: var(--t-small);
+  font-weight: 600;
   border-radius: 10px;
 }
 
@@ -10918,22 +11073,11 @@ html[data-anna-razor="bar"] body {
   }
 }
 
-/* Mobile rest state (2026-08-19, Anna): the persona pill sits close to its
-   explainer line ("For people with something to bring to market") until a
-   real scroll docks it. The band's top padding and the sticky row's bottom
-   padding were holding them a screen apart. */
+/* Mobile intro spacing. The .persona-band / non-compact switch-group rules
+   that opened this block left with V5 (the switcher lives in the stock
+   is-docked header now, which carries its own mobile treatment); only the
+   intro's own padding remains. */
 @media (max-width: 720px) {
-  /* Spacing matched to Anna's reference shot (2026-08-19, "USE THIS
-     SPACING"): a real pause after the lockup row, air between label, pill,
-     and explainer line, and room below before the page begins. */
-  .persona-sticky {
-    padding: 64px 0 10px;
-  }
-
-  .persona-switch-group:not(.is-compact) {
-    gap: 24px;
-  }
-
   .persona-intro {
     padding-top: 20px;
     padding-bottom: 44px;
@@ -11022,16 +11166,9 @@ html[data-anna-razor="bar"] body {
   }
 }
 
-/* Mobile polish batch, 2026-08-19 (Anna's list). */
+/* Mobile polish batch, 2026-08-19 (Anna's list). The .is-scrolled brand
+   centering that opened this block left with the V4 sticky band. */
 @media (max-width: 720px) {
-  /* The P glyph centers against the pill and hamburger once the homepage
-     switcher docks into the single sticky row; baseline alignment served
-     a wordmark that is not rendered at this size. */
-  .home-header.is-home.is-scrolled > .brand {
-    align-items: center;
-    align-self: center;
-  }
-
   /* Prompt hints wear a dotted outline on phones, reading as suggestions
      rather than commitments. */
   .anna-chat-menu button {

@@ -147,6 +147,6 @@ export const aboutContent: Record<PersonaId, AboutContent> = {
     ctaHeadline: "Curious about the work itself?",
     ctaBody: "That would be a more defensible reason for being here.",
     ctaButton: "See what I’ve been doing",
-    ctaHref: "/#work",
+    ctaHref: "/work",
   },
 };

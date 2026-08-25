@@ -10,9 +10,20 @@ import {
 } from "./personaStore";
 import type { PersonaId } from "./personaStore";
 
+/**
+ * Label default changed from "I'm a" 2026-08-24, on the loudest consensus
+ * item in a round of external portfolio feedback (four independent
+ * reviewers): "is 'I'm' me (the visitor) or you (Anna)?", "I'm immediately
+ * confused why I'm looking at a portfolio for a Recruiter", and a VP who
+ * only worked it out mid-review — "simply changing it to 'View as:' saves
+ * all that." "I'm a" was written from the visitor's mouth; every reader
+ * heard it in Anna's. "View as:" states the mechanic instead of performing
+ * it, and matches the wording the interior pages' PersonaMenu ("Viewing
+ * as") already uses.
+ */
 export default function PersonaSwitch({
   compact = false,
-  label = "I’m a",
+  label = "View as:",
   reachable = true,
   entryPersona,
   onSelect,

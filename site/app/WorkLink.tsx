@@ -1,35 +1,24 @@
-"use client";
-
-import { useSyncExternalStore } from "react";
-import { getServerSnapshot, getSnapshot, subscribe } from "./personaStore";
-import type { PersonaId } from "./personaStore";
-
 /**
- * The one Work link that knows which door the visitor came through.
+ * The one Work link that knows where the work actually lives.
  *
- * A Client's work grid lives on /studio#client-work; everyone else's lives on
- * /#work. This exists so the breadcrumb (a server component) and anything
- * else that links "back to the work" resolve that question in one place
- * instead of each inferring route state on their own.
- *
- * Server-rendered output is the Recruiter default, same as every other
- * store-reading component; a persisted Client gets the studio href on
- * hydration. Entrance routes that must be right in SSR pass personaOverride.
+ * Used to branch by persona (a Client's grid lived on /studio#client-work,
+ * everyone else's on /#work). As of 2026-08-20 /work is a real page with the
+ * full six case studies for every persona, so there is one destination and no
+ * persona read is needed any more. Kept as its own component anyway: the
+ * breadcrumb and anything else that links "back to the work" still resolve
+ * that question in one place instead of each hardcoding the route.
  */
 export default function WorkLink({
-  personaOverride,
   className,
+  onClick,
   children = "Work",
 }: {
-  personaOverride?: PersonaId;
   className?: string;
+  onClick?: () => void;
   children?: React.ReactNode;
 }) {
-  const store = useSyncExternalStore(subscribe, getSnapshot, getServerSnapshot);
-  const persona = personaOverride ?? store;
-  const href = persona === "client" ? "/studio#client-work" : "/#work";
   return (
-    <a href={href} className={className}>
+    <a href="/work" className={className} onClick={onClick}>
       {children}
     </a>
   );

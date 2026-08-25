@@ -117,9 +117,11 @@ export default function ServicesBody() {
           <a className="svc-primary" href="/contact">
             Share what you&rsquo;re working on &rarr;
           </a>
-          {/* This page only renders for the Client persona, so the work it
-              points at is the studio's own grid. */}
-          <a className="svc-secondary" href="/studio#client-work">
+          {/* This page only renders for the Client persona. Pointed at
+              /studio#client-work while /work was not a real page; now that it
+              is, that's the honest "selected work" destination for every
+              persona, this one included. */}
+          <a className="svc-secondary" href="/work">
             See selected work &rarr;
           </a>
         </div>
