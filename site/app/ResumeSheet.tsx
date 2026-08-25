@@ -6,7 +6,7 @@ type ResumeSheetProps = {
   persona: PersonaId;
   /**
    * The About page already has its own intro (portrait, headline, a short
-   * blurb). Set this to false there so the resume doesn't repeat itself with
+   * blurb). Set this to false there so the resume doesn’t repeat itself with
    * a second eyebrow/headline/blurb — it skips straight from a shared
    * contact/download row into Core expertise and Selected experience.
    * Defaults to true for /resume, which has no other intro on the page.
@@ -14,7 +14,7 @@ type ResumeSheetProps = {
   showIntro?: boolean;
   /**
    * The contact links and download button. On /resume these stay in the
-   * masthead. On the About page they're hoisted up into the page's own
+   * masthead. On the About page they’re hoisted up into the page’s own
    * intro section instead (see AboutBody.tsx), so the download button is
    * visible near the top of the page rather than after the intro copy.
    * Defaults to true.

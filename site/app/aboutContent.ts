@@ -1,7 +1,7 @@
 import type { PersonaId } from "./personaStore";
 
 /**
- * About page copy per persona, transcribed from Anna's Figma designs
+ * About page copy per persona, transcribed from Anna’s Figma designs
  * (about-recruiter / about-client / about-ex-boyfriend).
  */
 
@@ -22,7 +22,7 @@ export type AboutContent = {
   points: AboutPoint[];
   /**
    * Reflective closing block. Optional: personas that omit it skip the section
-   * entirely. Written from Anna's own account of why the fashion and travel
+   * entirely. Written from Anna’s own account of why the fashion and travel
    * years turned out to be the useful part, and kept off the case studies
    * deliberately, where it pulls focus from the work.
    */
@@ -40,7 +40,7 @@ export const aboutContent: Record<PersonaId, AboutContent> = {
     intro: [
       "I’m a Principal Experience Designer with more than 20 years of experience. UX is the deepest part of my practice, particularly across enterprise products, AI, search, design systems, and future vision.",
       "My work also spans graphic design, advertising, fashion, brands, and campaigns. That range helps me connect customer behavior, business context, technology, and visual culture, and recognize when the answer needs to extend beyond a screen.",
-      // Moved here from the resume's About block 2026-08-19, when that
+      // Moved here from the resume’s About block 2026-08-19, when that
       // block was removed: the one fact this page did not already carry.
       "Contract by choice for most of that career, which is why the client list runs long and the strongest engagements repeat: IBM came back across a decade. Open to a full-time role now, for the right problem and the right team.",
     ],

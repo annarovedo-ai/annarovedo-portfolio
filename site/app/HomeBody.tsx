@@ -21,7 +21,7 @@ import { aboutContent } from "./aboutContent";
  * side"). These are the same frames HeroVideo.tsx used as poster stills
  * before the hero video was cut entirely on 2026-08-18 — not a grab from
  * footage, but the frame Anna picked from a full contact sheet. HeroVideo.tsx
- * itself stays unused/undeleted (this sandbox can't delete files), so this is
+ * itself stays unused/undeleted (this sandbox can’t delete files), so this is
  * a fresh, much smaller read of the same two assets rather than a dependency
  * on that component. Client keeps its own hero photography (client-hero-proof)
  * and never reads this.
@@ -36,7 +36,7 @@ const heroPortrait: Record<PersonaId, { src: string; srcSmall: string; alt: stri
 };
 
 /**
- * The six case studies, flattened into one list for the homepage's small
+ * The six case studies, flattened into one list for the homepage’s small
  * preview grid. The flagship pair (Concierge / Journey Orchestration) and the
  * supporting four keep their own richer treatment on /work, where each gets
  * the full CaseCard from ./CaseCard.tsx; here they are six equal tiles.
@@ -44,11 +44,11 @@ const heroPortrait: Record<PersonaId, { src: string; srcSmall: string; alt: stri
 const allCaseStudies: CaseStudy[] = [...flagshipCaseStudies, ...supportingCaseStudies];
 
 /**
- * The homepage's small case-study tile (2026-08-20): the "6 big tiles" moved
+ * The homepage’s small case-study tile (2026-08-20): the "6 big tiles" moved
  * to /work wholesale, and the homepage now shows a compact preview of the
  * same six, still linking straight to the case study itself rather than to
  * /work. Deliberately no body paragraph — that is the thing that made the old
- * tiles big, and the preview's job is recognition, not the pitch.
+ * tiles big, and the preview’s job is recognition, not the pitch.
  */
 function CaseTile({ cs, persona }: { cs: CaseStudy; persona: PersonaId }) {
   const c = caseFor(cs, persona);
@@ -74,7 +74,7 @@ function CaseTile({ cs, persona }: { cs: CaseStudy; persona: PersonaId }) {
 
 /**
  * The grid plus its one remaining exit: the archive. Shared by every
- * persona's homepage rather than re-typed per branch, since the six tiles
+ * persona’s homepage rather than re-typed per branch, since the six tiles
  * and the archive line are identical across all three — only the section
  * eyebrow, heading and hint attributes around this still vary by persona,
  * and those stay with each call site.
@@ -83,8 +83,8 @@ function CaseTile({ cs, persona }: { cs: CaseStudy; persona: PersonaId }) {
  * this row (2026-08-20 pass fixing a style mismatch between the two). Cut
  * the same day, one question later (Anna, looking at the result: "why are
  * there two CTAs in one line here?"): every tile already links straight to
- * its own case study, so a second, generic exit to "more of what you're
- * already looking at" had no job the tiles weren't doing. /work is still one
+ * its own case study, so a second, generic exit to "more of what you’re
+ * already looking at" had no job the tiles weren’t doing. /work is still one
  * click away from the primary nav on every page, so nothing became harder to
  * find — this row just stopped competing with itself. */
 function WorkTilesGrid({ persona }: { persona: PersonaId }) {
@@ -188,7 +188,7 @@ function ClientHomeBody({ c }: { c: HomeContent }) {
           applied here too for the same reason: a divider between the
           headline and "Founder and design lead" read as two separate ideas
           when they are one continuous introduction. Reordered the same day
-          per Anna's homepage wireframe: hero-plus-overview leads, before
+          per Anna’s homepage wireframe: hero-plus-overview leads, before
           Work and Brands. Founder/about and Ways to work together both moved
           up here from further down the page; What I Bring moved here from
           /about the same day (Anna: "put this on the home page and remove
@@ -299,9 +299,9 @@ function ClientHomeBody({ c }: { c: HomeContent }) {
             not require first diagnosing which engagement model fits it. */}
         <div className="client-engagement-actions">
           <a className="home-cta-button" href="/contact">
-            {/* "Tell me what you're working on" was Anna's voice on the
-                visitor's button (Anna, 2026-08-19: "the CTA is for the
-                user - it feels clunky"). A button labels the clicker's
+            {/* "Tell me what you’re working on" was Anna’s voice on the
+                visitor’s button (Anna, 2026-08-19: "the CTA is for the
+                user - it feels clunky"). A button labels the clicker’s
                 action; this now matches the Services page CTAs. */}
             Share what you&rsquo;re working on
           </a>
@@ -397,10 +397,10 @@ export default function HomeBody({
           looking at this exact spot: "combine into one section") — a divider
           between the headline and "About" read as two separate ideas when
           they are one continuous introduction. Reordered the same day per
-          Anna's homepage wireframe: hero-plus-overview leads, before Work
+          Anna’s homepage wireframe: hero-plus-overview leads, before Work
           and Brands. What I Bring / Why The Range Matters moved here from
           /about the same day too (Anna: "put this on the home page and
-          remove the about tab"). Ex reads its own persona's points/closing
+          remove the about tab"). Ex reads its own persona’s points/closing
           here as well, same as the case cards: the joke stays in the frame,
           the content underneath does not get thinner for it. */}
       <section className="home-hero shell">
@@ -417,7 +417,7 @@ export default function HomeBody({
                 ) : null}
               </h1>
               <p className="home-hero-deck">{c.subtext}</p>
-              {/* "Book 30 minutes" was cut 2026-08-19. It arrived as the video's
+              {/* "Book 30 minutes" was cut 2026-08-19. It arrived as the video’s
                   companion ("someone the video convinces should not have to
                   hunt for the next step") and outlived its reason when the
                   video went. A booking ask five seconds in requests commitment
@@ -425,9 +425,9 @@ export default function HomeBody({
                   footer CTA, the contact page, and the chat. */}
             </div>
 
-            {/* The chat left the hero for good on 2026-08-19, by Anna's own
+            {/* The chat left the hero for good on 2026-08-19, by Anna’s own
                 question ("do you think the chat belongs in the hero? at all?")
-                and this answer: a hero's job is identity and credibility in
+                and this answer: a hero’s job is identity and credibility in
                 five seconds, and chat asks for effort before showing proof.
                 Almost Anna lives in the razor now — commentary alongside the
                 work, not the opening act. A day of fighting voids and
@@ -501,7 +501,7 @@ export default function HomeBody({
         <WorkTilesGrid persona={persona} />
 
         {/* NO LINK TO /this-site HERE, AND THAT IS DELIBERATE.
-            Removed 10 August at Anna's instruction (b6076d4): it read as the
+            Removed 10 August at Anna’s instruction (b6076d4): it read as the
             AI selling its own involvement. The page still exists and still
             has no inbound links, which is the decision rather than an
             oversight. Re-added 12 August by an audit that treated the orphan
@@ -509,7 +509,7 @@ export default function HomeBody({
             "fixing" this again. */}
       </section>
 
-      {/* Experience teaser, new 2026-08-20: the homepage reorder (Anna's
+      {/* Experience teaser, new 2026-08-20: the homepage reorder (Anna’s
           wireframe) adds a band between Work and the closing CTA pointing at
           the resume. Nav keeps saying "Resume" (the "Experience" nav label
           was tried and explicitly reversed once already — see SiteNav.tsx),
@@ -525,11 +525,11 @@ export default function HomeBody({
           </div>
           {/* Went .home-inline-link -> .home-cta-secondary -> back to
               .home-inline-link, all on 2026-08-20. Round-tripped because the
-              first fix solved the wrong problem: it matched this link's style
-              to the CTA band's buttons below, but never asked whether it
-              should be a button at all. The site's actual rule, read back out
+              first fix solved the wrong problem: it matched this link’s style
+              to the CTA band’s buttons below, but never asked whether it
+              should be a button at all. The site’s actual rule, read back out
               of every other paired-button spot (home-cta, svc-primary/
-              secondary, client-engagement actions): filled = the section's
+              secondary, client-engagement actions): filled = the section’s
               one committed action, outline = a lower-emphasis companion that
               always sits NEXT TO a filled primary in the same row, and a
               solo link with no primary sibling is a text link, full stop —

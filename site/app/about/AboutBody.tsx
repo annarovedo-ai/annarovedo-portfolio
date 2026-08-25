@@ -69,7 +69,7 @@ export default function AboutBody() {
             About is the story again; /resume is the evidence. */}
 
         {/* Exact canonical wording: this hint hits the canned-answer lookup
-            and returns Anna's locked copy without a model call. */}
+            and returns Anna’s locked copy without a model call. */}
         <section className="about-points" data-anna-prompt="How do you work when the roadmap isn’t clear?">
           <div className="shell">
             <p className="eyebrow">{c.pointsKicker}</p>

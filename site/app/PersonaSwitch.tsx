@@ -11,13 +11,13 @@ import {
 import type { PersonaId } from "./personaStore";
 
 /**
- * Label default changed from "I'm a" 2026-08-24, on the loudest consensus
+ * Label default changed from "I’m a" 2026-08-24, on the loudest consensus
  * item in a round of external portfolio feedback (four independent
- * reviewers): "is 'I'm' me (the visitor) or you (Anna)?", "I'm immediately
- * confused why I'm looking at a portfolio for a Recruiter", and a VP who
+ * reviewers): "is 'I’m' me (the visitor) or you (Anna)?", "I’m immediately
+ * confused why I’m looking at a portfolio for a Recruiter", and a VP who
  * only worked it out mid-review — "simply changing it to 'View as:' saves
- * all that." "I'm a" was written from the visitor's mouth; every reader
- * heard it in Anna's. "View as:" states the mechanic instead of performing
+ * all that." "I’m a" was written from the visitor’s mouth; every reader
+ * heard it in Anna’s. "View as:" states the mechanic instead of performing
  * it, and matches the wording the interior pages' PersonaMenu ("Viewing
  * as") already uses.
  */
@@ -35,7 +35,7 @@ export default function PersonaSwitch({
    * The persona an entrance route (/studio) forces for its own first paint.
    * Displayed as the active choice until the visitor interacts, so the
    * server-rendered radio state matches the page around it instead of the
-   * store's Recruiter default. Once the visitor touches the control, the
+   * store’s Recruiter default. Once the visitor touches the control, the
    * store is the only truth again.
    */
   entryPersona?: PersonaId;
@@ -44,7 +44,7 @@ export default function PersonaSwitch({
 }) {
   const store = useSyncExternalStore(subscribe, getSnapshot, getServerSnapshot);
   // On an entrance route the entry persona IS the displayed persona: choosing
-  // anything else navigates away (see PersonaChrome's onSelect), so this
+  // anything else navigates away (see PersonaChrome’s onSelect), so this
   // control never renders a persona the URL contradicts, and there is no
   // render-time ref read for the lint rule to object to.
   const persona = entryPersona ?? store;
@@ -69,7 +69,7 @@ export default function PersonaSwitch({
     <div className={`persona-switch-group${compact ? " is-compact" : ""}`}>
       {label ? <span className="persona-switch-label">{label}</span> : null}
       {/* This is a page-wide preference, so radio semantics are a better fit
-          than tabs. The selected option is the group's single Tab stop; arrow
+          than tabs. The selected option is the group’s single Tab stop; arrow
           keys move and select as native radio groups do. */}
       <div
         className="persona-switch"

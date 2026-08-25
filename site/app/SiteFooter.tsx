@@ -7,7 +7,7 @@ import BrandLockup from "./BrandLockup";
 import ResumeNavLink from "./ResumeNavLink";
 
 /**
- * Studio description, per Anna's About designs.
+ * Studio description, per Anna’s About designs.
  *
  * None of these open with a name any more. The wordmark sits directly above
  * this paragraph and the copyright sits directly below it, so "Anna Rovedo is
@@ -32,7 +32,7 @@ const bio: Record<string, string> = {
 export default function SiteFooter({
   personaOverride,
 }: {
-  /** See /studio: forces the footer's voice for entrance routes. */
+  /** See /studio: forces the footer’s voice for entrance routes. */
   personaOverride?: PersonaId;
 } = {}) {
   const store = useSyncExternalStore(subscribe, getSnapshot, getServerSnapshot);
@@ -78,7 +78,7 @@ export default function SiteFooter({
 
       {/* The copyright band lived here and was removed 2026-08-07.
           It said "© 2026 Paper Pixel", one line under a wordmark already
-          reading Paper Pixel, which made the name's third appearance in a
+          reading Paper Pixel, which made the name’s third appearance in a
           single viewport counting the header lockup.
 
           It also was not doing anything. Copyright is automatic on creation

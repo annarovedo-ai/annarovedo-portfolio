@@ -1,14 +1,14 @@
 import type { PersonaId } from "./personaStore";
 
 /**
- * Homepage copy per persona. Transcribed verbatim from Anna's Figma Make
+ * Homepage copy per persona. Transcribed verbatim from Anna’s Figma Make
  * build (Homepage Variants Implementation), which is the source of truth for
- * this page's wording. Facts are identical across personas; only emphasis and
+ * this page’s wording. Facts are identical across personas; only emphasis and
  * voice change.
  */
 
 /**
- * A card's copy for one persona, holding only the fields that actually differ
+ * A card’s copy for one persona, holding only the fields that actually differ
  * from the default. Anything left out falls back, so a variant is a diff and
  * not a second copy of the card. Title, href, part and image never vary: the
  * work is the work, only the account of it changes.
@@ -28,7 +28,7 @@ export type CaseStudy = {
   /** Optional card thumbnail. Falls back to the plain placeholder block when unset. */
   image?: string;
   /**
-   * The defaults above are the recruiter's, because that is who they were
+   * The defaults above are the recruiter’s, because that is who they were
    * written for. A client asks a different question of the same card, not
    * "did this work and were you really the one who did it" but "what can you
    * do for me", so the client variant leads with the skill and lists
@@ -82,7 +82,7 @@ export type HomeContent = {
   promptsLabel?: string;
   prompts: string[];
   /**
-   * Was hardcoded as "What I've been up to" in HomeBody. That phrasing is
+   * Was hardcoded as "What I’ve been up to" in HomeBody. That phrasing is
    * written for the Ex — it implies absence — and read as a gap on the
    * recruiter page. Persona-switched as of this pass.
    */
@@ -94,7 +94,7 @@ export type HomeContent = {
    *
    * SHORT, and shorter again as of 2026-08-20. First cut (Anna: "make this
    * one hero section. edit it down for impact") kept a one-line body plus
-   * the pullquote; Anna's very next note ("too broken up") was that h1,
+   * the pullquote; Anna’s very next note ("too broken up") was that h1,
    * subtext, body and pullquote stacked as four short unconnected
    * statements in a row, which is its own kind of clutter. Body is gone
    * now: subtext states the specialty, the pullquote closes the thought,
@@ -121,8 +121,8 @@ export type HomeContent = {
    * "Message me, OR book a time" in footerBody: the copy offered two routes
    * while the UI offered one button, so the other route was invisible.
    *
-   * Optional on purpose. The Ex's footer is deliberately a single door ("if
-   * you have a real reason to get in touch, I'm listening"), and pointing an
+   * Optional on purpose. The Ex’s footer is deliberately a single door ("if
+   * you have a real reason to get in touch, I’m listening"), and pointing an
    * ex straight at a booking calendar is a different joke from the one that
    * persona is making.
    */
@@ -131,7 +131,7 @@ export type HomeContent = {
 
 /**
  * One booking link, defined once. It was already hardcoded in four other
- * places (ContactBody twice, AlmostAnnaChat's rate-limit message, and three
+ * places (ContactBody twice, AlmostAnnaChat’s rate-limit message, and three
  * entries in pageContent), which is three too many for a URL that changes if
  * she ever moves scheduler.
  */
@@ -166,7 +166,7 @@ export const flagshipCaseStudies: CaseStudy[] = [
     tag: "UX / Product",
     part: "Part two",
     title: "What if the page was the assistant?",
-    body: "Two ideas at once: agentic in the ordinary sense, able to act on a buyer's behalf, and a page that reformats itself as it learns what they care about. Sections reorder, content changes, and the same signals score the lead while it happens. I built the model and the case for funding it.",
+    body: "Two ideas at once: agentic in the ordinary sense, able to act on a buyer’s behalf, and a page that reformats itself as it learns what they care about. Sections reorder, content changes, and the same signals score the lead while it happens. I built the model and the case for funding it.",
     image: "/case-study/thumbs/journey-orchestration.jpg",
     client: {
       tag: "Product strategy",
@@ -202,15 +202,15 @@ export const supportingCaseStudies: CaseStudy[] = [
   {
     href: "/kmart",
     tag: "Brand / Campaign",
-    // Was "SHHHHH" — the campaign's name, not the client's. Retitled
+    // Was "SHHHHH" — the campaign’s name, not the client’s. Retitled
     // 2026-08-24 from portfolio feedback ("Shhh should lead with the brand
     // Kmart - its stronger than Shhh"): a scanner who has never heard of the
-    // campaign has heard of Kmart, and the card is the scanner's surface.
-    // "A secret worth keeping" carries the campaign's own logic — a secret
+    // campaign has heard of Kmart, and the card is the scanner’s surface.
+    // "A secret worth keeping" carries the campaign’s own logic — a secret
     // is only worth having while it is still yours. The case study page
     // keeps SHHHHH; the drama belongs where there is room for it.
     title: "Kmart: a secret worth keeping",
-    body: "Kmart built a design studio in New York to take on Target, and the clothes were good. Nobody knew they existed, and anyone who did was embarrassed to say where they shopped. The pitch flipped the embarrassment into a reason: keep it a secret, because the moment you say where the dress came from, everyone owns one. Duct tape over the logo, over the hangtag, over the model's mouth.",
+    body: "Kmart built a design studio in New York to take on Target, and the clothes were good. Nobody knew they existed, and anyone who did was embarrassed to say where they shopped. The pitch flipped the embarrassment into a reason: keep it a secret, because the moment you say where the dress came from, everyone owns one. Duct tape over the logo, over the hangtag, over the model’s mouth.",
     image: "/case-study/kmart/card-cover.png",
     client: {
       tag: "Brand and campaign",
@@ -298,7 +298,7 @@ export const clients: Client[] = [
 export const homeContent: Record<PersonaId, HomeContent> = {
   recruiter: {
     eyebrow: "Recruiter",
-    // Was "I set this up to answer what you'd ask me on a first call." The
+    // Was "I set this up to answer what you’d ask me on a first call." The
     // line renders directly under the persona pills, so the nearest
     // antecedent for "this" was the switcher, not the site — it read as a
     // comment about the buttons. "This version" is what the client line
@@ -337,7 +337,7 @@ export const homeContent: Record<PersonaId, HomeContent> = {
     // long and embedded. Naming your own weakness makes the rest of the page
     // more believable, not less.
     //
-    // The fourth replaces "What do you bring that a resume won't show?",
+    // The fourth replaces "What do you bring that a resume won’t show?",
     // which is an interview cliché that invites a soft answer. What a
     // recruiter actually needs is level, scope and availability, and all
     // three are on the record now.
@@ -351,7 +351,7 @@ export const homeContent: Record<PersonaId, HomeContent> = {
       "What kind of role are you actually looking for?",
     ],
     workEyebrow: "Work",
-    // Was "This is the work I'd walk you through." On a portfolio that is
+    // Was "This is the work I’d walk you through." On a portfolio that is
     // true of every section on the page, so it announced the obvious in a
     // sentence that sounded like a claim. A section title should tell a
     // skimmer what they are looking at and how much of it there is. The
@@ -386,7 +386,7 @@ export const homeContent: Record<PersonaId, HomeContent> = {
     //    asks nearly the same question in the same shape.
     //
     // 2. "I work on the parts nobody has figured out yet." — cut on the day
-    //    it was written. It makes a claim about everyone else's inadequacy in
+    //    it was written. It makes a claim about everyone else’s inadequacy in
     //    order to make one about hers: confidence through comparison, where
     //    the whole voice is confidence through understatement. It is also
     //    unfalsifiable, which is the reliable tell for a boast. Worth leaving
@@ -411,19 +411,19 @@ export const homeContent: Record<PersonaId, HomeContent> = {
     // WIDENED 2026-08-10, Anna: "i want to be thought of as a visual designer
     // too: i can do 360 ad campaigns and digital products, websites, social
     // media, the whole shebang." The old line did exactly the reduction the
-    // voice rules ban ("don't reduce her to a product designer"). Campaigns
+    // voice rules ban ("don’t reduce her to a product designer"). Campaigns
     // and brands claim the range; the builder clause stays because it is the
-    // client persona's sharpest differentiator; and the shape mirrors the
-    // recruiter's "products, systems, and brands" so the personas rhyme.
+    // client persona’s sharpest differentiator; and the shape mirrors the
+    // recruiter’s "products, systems, and brands" so the personas rhyme.
     // Split 2026-08-10 (one line was too long), then sharpened from the
-    // visitor's seat: someone lands here wanting a thing designed AND MADE.
+    // visitor’s seat: someone lands here wanting a thing designed AND MADE.
     // The big line answers designed; the soft line answers made, and it
     // dropped the hedge on the way. "I can get them built" is a capability;
     // "Then I get them built" is what happens. Sequential, certain, five
     // words.
     // REVERSED 2026-08-18, external review before client outreach: "From
     // idea to market: brand, product, and campaign" was a full-service menu
-    // in headline form, and menus read as agency, not principal. The review's
+    // in headline form, and menus read as agency, not principal. The review’s
     // point: the buyer should know which expensive problem to hire her for,
     // and that problem is direction. Breadth survives in the Services page
     // and the case grid, where it is evidence instead of a claim.
@@ -431,7 +431,7 @@ export const homeContent: Record<PersonaId, HomeContent> = {
     // THE SUBTEXT DOES NOT SELL. That is the whole rule here, and it took
     // four tries and one good catch from Anna to arrive at it.
     //
-    // The versions that failed, in order: "I'm independent. I work with
+    // The versions that failed, in order: "I’m independent. I work with
     // product teams" (two flat facts answering a question nobody asked);
     // "I work inside product teams, not beside them" (fixed the overhead
     // worry, but foreclosed half the offer by implying embedding is the only
@@ -455,7 +455,7 @@ export const homeContent: Record<PersonaId, HomeContent> = {
     //
     // The recruiter pair never had this problem, because only its first line
     // sells and the second just rests on a fact. That asymmetry is what makes
-    // it sound like a person. So this now borrows the recruiter's line
+    // it sound like a person. So this now borrows the recruiter’s line
     // verbatim, which is legitimate: per the note at the top of this file the
     // facts are identical across personas, only emphasis and voice change.
     //
@@ -466,7 +466,7 @@ export const homeContent: Record<PersonaId, HomeContent> = {
     // put it in the headline and leave this line alone.
     //
     // Also kept quiet about AI, even though building with it is what makes
-    // the headline's "get them built" possible at this scale. Leading with
+    // the headline’s "get them built" possible at this scale. Leading with
     // the tool invites the wrong question ("is this AI slop?") before the
     // work has had a chance to answer it, and tool names age badly in a hero.
     // The proof is better made than claimed: this site was designed and built
@@ -505,13 +505,13 @@ export const homeContent: Record<PersonaId, HomeContent> = {
       "How soon can I see something real?",
     ],
     workEyebrow: "Selected work",
-    // The recruiter's "This is the work I'd walk you through" is right for
+    // The recruiter’s "This is the work I’d walk you through" is right for
     // someone imagining an interview. A client is not imagining an interview.
     // They want to know whether their own situation is one she has been in,
     // so this frames the cases below as evidence rather than as a portfolio,
     // and demonstrates the positioning instead of asserting it.
     // Shortened from "Most of these started with a problem nobody could
-    // describe yet." — 63 characters against the recruiter's 38 and the Ex's
+    // describe yet." — 63 characters against the recruiter’s 38 and the Ex’s
     // 24, which set at a visibly different size in the same slot. Same claim,
     // and "somewhere unclear" is closer to how she actually talks than the
     // longer clause was.
@@ -536,7 +536,7 @@ export const homeContent: Record<PersonaId, HomeContent> = {
       "Send a message, or book a time and talk it through with Anna.",
     // Was "Start a conversation", which does not say what happens when you
     // press it, and sitting a few inches from a chat widget it reads as if it
-    // opens the chat. Matches the recruiter's button, and now goes where it
+    // opens the chat. Matches the recruiter’s button, and now goes where it
     // says it goes.
     footerButton: "Book a time",
     footerButtonHref: BOOKING_URL,
@@ -558,7 +558,7 @@ export const homeContent: Record<PersonaId, HomeContent> = {
     // headline answers the question he actually has. Setting the terms of
     // the encounter IS the work this hero has to do.
     //
-    // The demotion is the good part. The subtext is now the recruiter's
+    // The demotion is the good part. The subtext is now the recruiter’s
     // headline verbatim plus one word, which means the whole pitch for a
     // stranger is the small print for someone who knew her. That is true,
     // and a reader feels it without being able to name it: to a recruiter
@@ -573,8 +573,8 @@ export const homeContent: Record<PersonaId, HomeContent> = {
     headline: ["It’s been a while… let’s not make it weird.", ""],
     subtext: "I design products, systems, and brands now.",
     conciergeHeading: "I had a feeling you’d show up eventually.",
-    // Was "Since you're here — I gave an AI…". The em dash is the one hard
-    // rule in docs/facts.md and this was the last one left in any persona's
+    // Was "Since you’re here — I gave an AI…". The em dash is the one hard
+    // rule in docs/facts.md and this was the last one left in any persona’s
     // copy. "Anyway." does the same work with a full stop: it is the verbal
     // shrug of someone who has just decided not to make it weird, which is
     // the exact instruction the subtext two lines up gives. A comma would
@@ -615,12 +615,12 @@ export const homeContent: Record<PersonaId, HomeContent> = {
       // pullquote closes it.
       pullquote: "Culture is always the brief underneath the brief.",
     },
-    // Deliberately the recruiter's label, because the ex persona now carries
-    // the recruiter's cards verbatim. See the note on CaseStudy.ex.
+    // Deliberately the recruiter’s label, because the ex persona now carries
+    // the recruiter’s cards verbatim. See the note on CaseStudy.ex.
     footerHeadline: "This is probably not that.",
     footerBody: "But if you have a real reason to get in touch, I’m listening.",
     // Two paths here as well, as of 2026-08-07, for the same reason the case
-    // cards are identical to the recruiter's: this version gets read by people
+    // cards are identical to the recruiter’s: this version gets read by people
     // who are not exes, and giving them a worse route to reach her is a real
     // cost paid for a joke nobody asked to pay for.
     //

@@ -1,12 +1,12 @@
 /**
- * The archive: everything real that doesn't have a full case study.
+ * The archive: everything real that doesn’t have a full case study.
  *
- * Merged 2026-08-05 from two previously separate systems: the homepage's
+ * Merged 2026-08-05 from two previously separate systems: the homepage’s
  * "Other work" cards (thin engagements with real facts.md backing, formerly
- * in otherWorkContent.ts) and this page's pre-2011 groups. Anna pointed out
+ * in otherWorkContent.ts) and this page’s pre-2011 groups. Anna pointed out
  * that visitors had no way to know the "Other work" tier and the archive
  * tier were different things, since both are "real work, no full case
- * study" at the same weight. They're one tier now, rendered as one grid,
+ * study" at the same weight. They’re one tier now, rendered as one grid,
  * with an individual page per project at `/archive/[slug]`.
  *
  * Nike was pulled out of this list the same day and promoted to a full case
@@ -14,7 +14,7 @@
  * shipped outcome, closer to the four flagship case studies than to a
  * paragraph-and-a-photo entry.
  *
- * Every description is written from what's documented: the extracted images
+ * Every description is written from what’s documented: the extracted images
  * plus docs/facts.md for the older groups, docs/live-site-inventory.md for
  * the newer client work. Where the brief, agency, or outcome is unknown, the
  * copy does not speculate.
@@ -30,7 +30,7 @@ export type ArchiveEntry = {
   images?: { src: string; alt: string }[];
   /** Optional Vimeo embed, rendered above the image gallery. */
   video?: { vimeoId: string; title: string };
-  /** Links out to a full case study instead of the entry's own /archive/[slug] page. */
+  /** Links out to a full case study instead of the entry’s own /archive/[slug] page. */
   href?: string;
   hrefLabel?: string;
 };
@@ -51,13 +51,13 @@ export const archiveGroups: ArchiveGroup[] = [
     kicker: "Named engagements",
     heading: "More client work",
     intro:
-      "Real, documented engagements that don't have the research, decisions, and outcome depth a full case study promises. Some are recent and just haven't been written up yet; a few have real images below.",
+      "Real, documented engagements that don’t have the research, decisions, and outcome depth a full case study promises. Some are recent and just haven’t been written up yet; a few have real images below.",
     entries: [
       {
         slug: "bloomberg",
         client: "Bloomberg",
         meta: "Isobar · Compliance product",
-        body: "Led UI design for Bloomberg's Know Your Client compliance product and built the design system behind it: iconography, components, style guidance and QA standards, developed alongside Bloomberg's in-house engineering team.",
+        body: "Led UI design for Bloomberg’s Know Your Client compliance product and built the design system behind it: iconography, components, style guidance and QA standards, developed alongside Bloomberg’s in-house engineering team.",
         role: "Senior Art Director and Product Designer",
         images: [
           img("bloomberg/summary.webp", "Entity Exchange company profile summary screen, showing entity type, investment manager, master and feeder structure"),
@@ -70,7 +70,7 @@ export const archiveGroups: ArchiveGroup[] = [
         slug: "west-indian-carnival",
         client: "West Indian Carnival",
         meta: "Visual identity",
-        body: "A full identity system: logo, color palette, a pattern library, a custom typeface, posters, banners, an Instagram filter and a brochure. Whether this was client work or self-directed isn't documented here. Ask if it's relevant.",
+        body: "A full identity system: logo, color palette, a pattern library, a custom typeface, posters, banners, an Instagram filter and a brochure. Whether this was client work or self-directed isn’t documented here. Ask if it’s relevant.",
         images: [
           img("carnival/cover.png", "A carnival performer in green and pink feathers and a jeweled headpiece and collar, smiling"),
           img("carnival/brochure.webp", "Taste West Indian Carnival trifold food vendor guide with a map of the tasting route down Eastern Parkway"),
@@ -87,7 +87,7 @@ export const archiveGroups: ArchiveGroup[] = [
         body: "Concept and execution for an interactive digital vending-machine screen. Brainstormed with a writer, pitched the client, then executed the vision and produced the assets for animation.",
         images: [
           img("sour-patch-kids/vending-machine.webp", "Diji-touch digital vending machine mockup with a person walking past"),
-          img("sour-patch-kids/storyboard.webp", "Eight-panel storyboard for the Sour Patch Kids joy-buzzer spot: first they're sour, then they're sweet, sour sweet gone"),
+          img("sour-patch-kids/storyboard.webp", "Eight-panel storyboard for the Sour Patch Kids joy-buzzer spot: first they’re sour, then they’re sweet, sour sweet gone"),
         ],
       },
       {
@@ -130,7 +130,7 @@ export const archiveGroups: ArchiveGroup[] = [
         slug: "think-2019",
         client: "IBM Think 2019",
         meta: "IBM · Event and conference",
-        body: "Maps, the conference guide, apparel and merchandise, event branding, wayfinding signage and a bus wrap for IBM's Think 2019 conference.",
+        body: "Maps, the conference guide, apparel and merchandise, event branding, wayfinding signage and a bus wrap for IBM’s Think 2019 conference.",
         images: [
           img("think-2019/think-mark.webp", "Abstract particle rendering of the Think 2019 mark in IBM blue"),
           img("think-2019/site-map.webp", "Think 2019 campus site map alongside a rendering of the map on a large outdoor sign"),
@@ -167,7 +167,7 @@ export const archiveGroups: ArchiveGroup[] = [
         // recorded which one, and every sibling in this group carries the
         // attribution ("Isobar · Compliance product", "Critical Mass ·
         // Website"). Swap "Agency engagement" for the name when she has it.
-        // Not guessed, per this file's rule at the top.
+        // Not guessed, per this file’s rule at the top.
         meta: "Agency engagement · Brand and product",
         // Rewritten 2026-08-08. The old copy described what the app was ABOUT
         // and said nothing about the design, on the one entry that
@@ -200,7 +200,7 @@ export const archiveGroups: ArchiveGroup[] = [
         slug: "kmart",
         client: "SHHHHH",
         meta: "DraftFCB · New business pitch",
-        body: "A campaign to launch Kmart's redesigned clothing lines, built around the one thing nobody wanted to admit. This one has a full write up.",
+        body: "A campaign to launch Kmart’s redesigned clothing lines, built around the one thing nobody wanted to admit. This one has a full write up.",
         role: "Art director and designer",
         href: "/kmart",
         hrefLabel: "Read the case study",
@@ -217,7 +217,7 @@ export const archiveGroups: ArchiveGroup[] = [
         role: "Art director. Imagery and animation storyboards; copy by the writer.",
         images: [
           img("statefarm-statefarm6.jpg", "Vertical banners pairing presidents on currency with Chicago expressway names"),
-          img("statefarm-statefarm7.jpg", "Stadium board reading: now that you're surrounded by 90,000 neighbors"),
+          img("statefarm-statefarm7.jpg", "Stadium board reading: now that you’re surrounded by 90,000 neighbors"),
           img("statefarm-statefarm8.jpg", "Bus shelter poster addressing someone waiting"),
           img("statefarm-statefarm3.jpg", "Discount Double Check display banners"),
           img("statefarm-statefarm5.jpg", "Motorcycle insurance landing page"),
@@ -228,11 +228,11 @@ export const archiveGroups: ArchiveGroup[] = [
         slug: "a1",
         client: "A1",
         meta: "DraftFCB · Shopper marketing",
-        body: "In-store work built around a line about ownership: it's your chicken, it's your right. Shelf talkers, produce and meat case takeovers, on-pack and point of sale, designed to catch someone already holding a basket.",
+        body: "In-store work built around a line about ownership: it’s your chicken, it’s your right. Shelf talkers, produce and meat case takeovers, on-pack and point of sale, designed to catch someone already holding a basket.",
         role: "Art director",
         images: [
           img("a1-a4.jpg", "Produce display with A1 bottles and the line: open a bottle, open your mind"),
-          img("a1-a5.jpg", "Meat case takeover reading: it's your chicken, it's your right"),
+          img("a1-a5.jpg", "Meat case takeover reading: it’s your chicken, it’s your right"),
           img("a1-a2.jpg", "Shelf strip with A1 bottles and shelf talkers"),
           img("a1-a3.jpg", "A1 bottle with on-pack tag"),
         ],
@@ -257,8 +257,8 @@ export const archiveGroups: ArchiveGroup[] = [
         body: "An ingredient transparency campaign for a company that wanted to publish what was in its products before it had to. Handwritten type and photography, arguing honesty as a product feature rather than a policy statement.",
         role: "Art director and designer",
         images: [
-          img("scjohnson-scj1.jpg", "Advertisement: it's an ingredient called honesty"),
-          img("scjohnson-scj2.jpg", "Companion execution: we're not a company, we're a family"),
+          img("scjohnson-scj1.jpg", "Advertisement: it’s an ingredient called honesty"),
+          img("scjohnson-scj2.jpg", "Companion execution: we’re not a company, we’re a family"),
         ],
       },
       {
@@ -276,7 +276,7 @@ export const archiveGroups: ArchiveGroup[] = [
         slug: "norton",
         client: "Norton",
         meta: "Arc Worldwide / Leo Burnett · Digital",
-        body: "Media placements built around the thing they were interrupting rather than dropped on top of it. A Pandora unit about hearing something you don't want to hear, and a Hulu takeover about what gets between you and what you came for.",
+        body: "Media placements built around the thing they were interrupting rather than dropped on top of it. A Pandora unit about hearing something you don’t want to hear, and a Hulu takeover about what gets between you and what you came for.",
         role: "Art director",
         images: [
           img("norton-norton1.jpg", "Pandora ad unit: there are some things no one likes to hear"),
@@ -288,7 +288,7 @@ export const archiveGroups: ArchiveGroup[] = [
         slug: "motorola",
         client: "Motorola",
         meta: "Campaign · Display",
-        body: "Banner work for the MOTONAV personal navigation device, around a line about discovery rather than directions: the best spots aren't mapped, they're found.",
+        body: "Banner work for the MOTONAV personal navigation device, around a line about discovery rather than directions: the best spots aren’t mapped, they’re found.",
         role: "Art director and designer",
         images: [img("motorola-moto.jpg", "Four MOTONAV banner executions")],
       },
@@ -296,7 +296,7 @@ export const archiveGroups: ArchiveGroup[] = [
         slug: "kfc",
         client: "KFC",
         meta: "Promotion · Digital",
-        body: "A product launch promotion and the homepage takeover that carried it, built to survive being seen for about two seconds inside somebody else's page.",
+        body: "A product launch promotion and the homepage takeover that carried it, built to survive being seen for about two seconds inside somebody else’s page.",
         role: "Designer",
         images: [
           img("kfc-kfc1.jpg", "KFC Twister promotional site"),
@@ -322,7 +322,7 @@ export const archiveGroups: ArchiveGroup[] = [
     kicker: "Italy, Spain",
     heading: "Apparel graphics and brand",
     intro:
-      "Six years designing for clothing brands before advertising. Print and embroidery artwork, hangtags, woven labels, in-store graphics and full identity systems. This is where the instinct for the object in someone's hand came from, and it is the reason I was pulled onto fashion briefs years later.",
+      "Six years designing for clothing brands before advertising. Print and embroidery artwork, hangtags, woven labels, in-store graphics and full identity systems. This is where the instinct for the object in someone’s hand came from, and it is the reason I was pulled onto fashion briefs years later.",
     entries: [
       {
         slug: "stradivarius",
@@ -349,7 +349,7 @@ export const archiveGroups: ArchiveGroup[] = [
         role: "Graphic designer",
         images: [
           img("woolrich-wool2.jpg", "Woolrich sun and motorcycle graphic"),
-          img("woolrich-wool3.jpg", "Proud to be a Woolrich farmer's daughter lettering"),
+          img("woolrich-wool3.jpg", "Proud to be a Woolrich farmer’s daughter lettering"),
           img("woolrich-wool1.jpg", "Two hooded sweatshirts carrying applied graphics"),
           img("woolrich-wool4.jpg", "Hangtag designs for a classic rugby shirt"),
           img("woolrich-wool5.jpg", "Woven and printed label designs"),

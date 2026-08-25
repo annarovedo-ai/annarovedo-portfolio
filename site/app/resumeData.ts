@@ -1,7 +1,7 @@
 /**
  * Shared resume data: the structured CV content (expertise, experience,
  * earlier roles, education, and the default Profile paragraphs). Lives here,
- * separate from any one page, so /resume and the About page's embedded
+ * separate from any one page, so /resume and the About page’s embedded
  * resume (recruiter and ex personas) read from one source instead of two
  * copies that could drift apart.
  */
@@ -13,7 +13,7 @@
  * "Visual Design", fifth of six in the last group -- pointed at anything
  * visual, and nothing at all pointed at campaign, art direction or concept
  * work. Set against a homepage that opens "UX is my specialty, not my
- * boundary", it contradicted the site's central claim: a recruiter skimming
+ * boundary", it contradicted the site’s central claim: a recruiter skimming
  * the rail read a pure UX practitioner and stopped considering her for the
  * other half of her career.
  *
@@ -21,7 +21,7 @@
  * than a word tucked into a list about prototyping. Every item below is
  * evidenced in facts.md: Art Director at DraftFCB across Kmart, State Farm,
  * Jell-O, A1, Valspar and SC Johnson; 360 campaigns, outdoor, print and
- * animated banners; storyboards for McDonald's menu boards and for eBay and
+ * animated banners; storyboards for McDonald’s menu boards and for eBay and
  * KitchenAid pitches; interactive concepts with a writer for Oreo and Sour
  * Patch Kids; the West Indian Carnival identity; freelance Art/Creative
  * Director as Anna Rovedo Design, Inc.
@@ -80,7 +80,7 @@ export const experience = [
       "Turned emerging technologies and abstract possibilities into experience visions and tangible prototypes.",
       "Used research to understand how people interpreted conversational and emerging interaction models.",
       "Helped multidisciplinary teams translate exploratory concepts into actionable product direction.",
-      "Led experience design for IBM's C-suite partner ecosystem, including THINK Leaders, event experiences, digital tools, and supporting content.",
+      "Led experience design for IBM’s C-suite partner ecosystem, including THINK Leaders, event experiences, digital tools, and supporting content.",
       "Created interactive experiences and visual guidance for IBM Watson and Watson Health.",
     ],
   },
@@ -121,7 +121,7 @@ export const experience = [
     role: "Senior Art Director and Product Designer",
     via: "Through Isobar",
     bullets: [
-      "Led UI design for Bloomberg's Know Your Client compliance product.",
+      "Led UI design for Bloomberg’s Know Your Client compliance product.",
       "Simplified complex review, documentation, and decision-making workflows.",
       "Created a comprehensive digital design system spanning iconography, interface components, style guidance, and quality-assurance standards.",
       "Developed reusable patterns to improve clarity and consistency across the product.",
@@ -161,7 +161,7 @@ export const earlier = [
   {
     org: "Arc Worldwide / Leo Burnett",
     role: "Art Director",
-    body: "Interactive campaigns, digital brand experiences, and interface concepts for McDonald's, Norton Internet Security, and other consumer brands.",
+    body: "Interactive campaigns, digital brand experiences, and interface concepts for McDonald’s, Norton Internet Security, and other consumer brands.",
   },
   {
     org: "Draftfcb",

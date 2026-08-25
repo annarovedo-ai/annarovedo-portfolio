@@ -26,13 +26,13 @@ import type { PersonaId } from "./personaStore";
  * placeholder and SiteHeader did not. Both now render this, as does the footer,
  * so the three places that name her cannot disagree.
  *
- * The footer's existing CSS (.site-footer .brand-divider, .brand-credit) was
+ * The footer’s existing CSS (.site-footer .brand-divider, .brand-credit) was
  * already written for a full lockup down there, so nothing new was needed to
  * support it.
  */
 /**
  * The mark follows the wordmark. It used to be "PP" for everyone, on the
- * reasoning that it is the site's mark rather than a signature. That is wrong
+ * reasoning that it is the site’s mark rather than a signature. That is wrong
  * for the recruiter: their whole version of this site is a person, the
  * wordmark says Anna Rovedo, and a studio monogram in the corner introduces a
  * company they did not come here to hire. A mark that disagrees with the name
@@ -67,7 +67,7 @@ export default function BrandLockup({
     <span className="brand">
       <a className="brand-home" href={homeHref}>
       {/* THE MARK SITS IN FRONT OF THE WORDMARK, wherever the wordmark reads
-          Paper Pixel. Client and Ex only: the Recruiter's version of this site
+          Paper Pixel. Client and Ex only: the Recruiter’s version of this site
           is a person, and a studio logo beside her name introduces a company
           they did not come here to hire, which is the same reasoning that made
           the wordmark persona-specific in the first place.
@@ -78,7 +78,7 @@ export default function BrandLockup({
           rule instead. */}
       {persona === "recruiter" ? null : (
         <span className="brand-logo" aria-hidden="true">
-          {/* Anna's drawing, 13 August. Built entirely from outline, which is
+          {/* Anna’s drawing, 13 August. Built entirely from outline, which is
               why it is identical white on navy and ink on paper: an earlier
               version put a solid dog-ear in the corner, and a mass reads as a
               folded flap on paper and as a hole punched through the sheet when
@@ -116,7 +116,7 @@ export default function BrandLockup({
           takes the sans, because the mark beside it is flat-weight, upright and
           on a grid, and Newsreader italic has stress, contrast and a slant.
           Set together they read as two objects that arrived separately.
-          It is the same reasoning that already makes the Recruiter's monogram
+          It is the same reasoning that already makes the Recruiter’s monogram
           initials rather than a logo, carried into the type. */}
       <span
         className={
@@ -127,7 +127,7 @@ export default function BrandLockup({
       </span>
       </a>
       {/* The credit sits OUTSIDE the link. It is an attribution, not a
-          destination: someone who clicks a person's name expects to land
+          destination: someone who clicks a person’s name expects to land
           somewhere about that person, and this went to the homepage. The
           studio name is the home button; the signature beside it is just a
           signature. */}

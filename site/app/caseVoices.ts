@@ -14,7 +14,7 @@ import type { HeroVoice } from "./CaseHero";
 export const caseVoices: Record<string, Record<PersonaId, HeroVoice>> = {
   concierge: {
     recruiter: { h1: "Designing an AI concierge for the enterprise buying journey.", deck: "IBM needed prospective customers to evaluate a complex enterprise product without a salesperson in the room. The answer was not another chatbot. It was a guided experience that could help buyers understand, compare, decide, and keep moving." },
-    client: { h1: "IBM asked what AI should do for its buyers. This is the answer.", deck: "A guided experience that helps enterprise buyers understand, compare, and decide without a salesperson in the room. Shaped before anyone knew what it should be, tested with real buyers, and now the north star IBM's live chat is moving toward. This is what the start of an undefined product looks like when it goes well." },
+    client: { h1: "IBM asked what AI should do for its buyers. This is the answer.", deck: "A guided experience that helps enterprise buyers understand, compare, and decide without a salesperson in the room. Shaped before anyone knew what it should be, tested with real buyers, and now the north star IBM’s live chat is moving toward. This is what the start of an undefined product looks like when it goes well." },
     ex: { h1: "I taught IBM’s website to hold a conversation.", deck: "A concierge for the whole of IBM.com. It talks to strangers about complicated purchases, knows when to hand off to a person, and remembers what you said three messages ago. Listening, it turns out, is something you can design. There’s a smaller one at the bottom of this page." },
   },
   search: {

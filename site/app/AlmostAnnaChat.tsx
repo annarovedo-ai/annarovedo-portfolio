@@ -15,15 +15,15 @@ import {
 import { homeContent } from "./homeContent";
 
 /**
- * THE CHAT SURFACE, menu model (2026-08-19, Anna's razor redesign).
- * Rendered inside the razor's open panel, under the panel's own header row
+ * THE CHAT SURFACE, menu model (2026-08-19, Anna’s razor redesign).
+ * Rendered inside the razor’s open panel, under the panel’s own header row
  * (photo, name, disclosure, minimise, close — those live in AnnaRazor
  * because they drive razor state).
  *
  * - Empty: the four suggested questions as a menu of chips on the navy
  *   ground, then the composer. No greeting, no explainer, no reserved
  *   height: the panel is as tall as its contents until a conversation
- *   exists. (The greeting-line era ended here; the header's disclosure is
+ *   exists. (The greeting-line era ended here; the header’s disclosure is
  *   the one identifier.)
  * - Started: the thread in a light reading area — long answers read on
  *   paper, not on navy — with the composer below.
@@ -38,7 +38,7 @@ export default function AlmostAnnaChat({
   personaOverride,
   placeholderOverride,
 }: {
-  /** Opening question handed over from the razor bar's hint, sent once on
+  /** Opening question handed over from the razor bar’s hint, sent once on
       mount with suggested: true. */
   seed?: string;
   /** Entrance routes force their persona for correct server render. */
@@ -63,9 +63,9 @@ export default function AlmostAnnaChat({
 
   // The menu shows the questions that travel down THIS page (Anna,
   // 2026-08-19: "the prompts here should be the same ones that travel down
-  // the page"): opening the panel on Nike offers Nike's questions, not the
-  // homepage's. The homepage and /studio keep their curated persona chips,
-  // which are those pages' prompts. In Ex mode, the page's one off-topic
+  // the page"): opening the panel on Nike offers Nike’s questions, not the
+  // homepage’s. The homepage and /studio keep their curated persona chips,
+  // which are those pages' prompts. In Ex mode, the page’s one off-topic
   // preset question slots in second. Safe to read the DOM here: the panel
   // only ever renders after a client-side interaction, never during SSR.
   const pagePrompts = useMemo(() => {
@@ -201,6 +201,16 @@ export default function AlmostAnnaChat({
                   {m.content.split("\n\n").map((p, k) => (
                     <p key={k}>{p}</p>
                   ))}
+                  {/* Curated case-study image, canned answers only (see
+                      ChatImage in annaAnswers.ts): the answer shows the
+                      work instead of describing it, and the whole figure
+                      links into the case study. */}
+                  {m.image ? (
+                    <a className="aa-figure" href={m.image.href}>
+                      <img src={m.image.src} alt={m.image.alt} loading="lazy" />
+                      <span>{m.image.label} &rarr;</span>
+                    </a>
+                  ) : null}
                 </div>
               </li>
             ))}
@@ -250,7 +260,7 @@ export default function AlmostAnnaChat({
           onChange={(e) => setChatInput(e.target.value)}
           placeholder={
             capped
-              ? "That's the limit for now."
+              ? "That’s the limit for now."
               : placeholderOverride ?? assistantPlaceholder
           }
           aria-label={

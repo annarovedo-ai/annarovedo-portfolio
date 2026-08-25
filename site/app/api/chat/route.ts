@@ -6,11 +6,11 @@ import { findCannedAnswer } from "../../lib/annaAnswers";
 /**
  * Almost Anna chat proxy.
  *
- * Deliberate differences from the earlier prototype's api/chat.js:
+ * Deliberate differences from the earlier prototype’s api/chat.js:
  *
  *  - The system prompt is built server-side from the persona, not accepted
  *    from the request body. Previously a caller could send any system prompt
- *    they liked and make the assistant say anything under Anna's name.
+ *    they liked and make the assistant say anything under Anna’s name.
  *  - A per-session message cap and a per-IP rate limit are enforced, both
  *    listed as non-negotiable in docs/decisions-log.md.
  *  - The API key is read from a server-only variable and never reaches the
@@ -27,14 +27,14 @@ import { findCannedAnswer } from "../../lib/annaAnswers";
 const MODEL = "claude-haiku-4-5";
 const MAX_TOKENS = 800;
 
-/** Per-session cap. Counted server-side against a cookie the client can't forge usefully. */
+/** Per-session cap. Counted server-side against a cookie the client can’t forge usefully. */
 const SESSION_MESSAGE_CAP = 25;
 
 /** Crude per-IP throttle: max requests inside the window. */
 const RATE_LIMIT = 12;
 const RATE_WINDOW_MS = 60_000;
 
-/** Longest single message we'll accept, to stop prompt-stuffing. */
+/** Longest single message we’ll accept, to stop prompt-stuffing. */
 const MAX_INPUT_CHARS = 2000;
 const MAX_HISTORY = 20;
 
@@ -100,7 +100,7 @@ export async function POST(request: Request): Promise<Response> {
 
   if (rateLimited(ip)) {
     return Response.json(
-      { error: "That's a lot of questions at once. Give it a minute." },
+      { error: "That’s a lot of questions at once. Give it a minute." },
       { status: 429 }
     );
   }
@@ -110,7 +110,7 @@ export async function POST(request: Request): Promise<Response> {
     return Response.json(
       {
         error:
-          "We've hit the limit for one sitting. This is probably where you should talk to the version of me with a calendar.",
+          "We’ve hit the limit for one sitting. This is probably where you should talk to the version of me with a calendar.",
         capped: true,
       },
       { status: 429 }
@@ -176,28 +176,34 @@ export async function POST(request: Request): Promise<Response> {
   /**
    * The printed prompt chips get written answers, not generated ones.
    *
-   * An exact match against lib/annaAnswers.ts returns Anna's own wording
+   * An exact match against lib/annaAnswers.ts returns Anna’s own wording
    * verbatim, with no model call: the twelve highest-traffic questions on the
-   * site should not vary run to run, and a recruiter's first impression
+   * site should not vary run to run, and a recruiter’s first impression
    * should be sentences Anna approved rather than sentences Haiku improvised.
    * Anything typed freehand, including near-misses of these questions, still
    * goes to the model below.
    */
   const cannedUser = [...messages].reverse().find((m) => m.role === "user");
   const canned = cannedUser ? findCannedAnswer(persona, cannedUser.content) : null;
-  if (canned && cannedUser) {
+  if (canned?.answer && cannedUser) {
     const cannedSession =
       readSessionId(request.headers.get("cookie")) ?? newSessionId();
     await logTurn({
       sessionId: cannedSession,
       persona,
       question: cannedUser.content,
-      answer: canned,
+      answer: canned.answer,
       country: request.headers.get("cf-ipcountry"),
       turn: used + 1,
     });
     return Response.json(
-      { reply: canned, remaining: Math.max(0, SESSION_MESSAGE_CAP - (used + 1)) },
+      {
+        reply: canned.answer,
+        // Curated per answer in annaAnswers.ts; the model path below never
+        // sets this, so an image can only ever appear with Anna's own words.
+        image: canned.image,
+        remaining: Math.max(0, SESSION_MESSAGE_CAP - (used + 1)),
+      },
       {
         headers: new Headers([
           [
@@ -264,7 +270,7 @@ export async function POST(request: Request): Promise<Response> {
           // failures on /nike: the per-section hints are page-scoped
           // questions ("Why did one question take three tools?"), and
           // without knowing the page the model guessed the wrong project,
-          // blended Nike's story into IBM's, and asked which project was
+          // blended Nike’s story into IBM’s, and asked which project was
           // meant — everything the suggested directive forbids, forced by
           // missing context rather than disobedience.
           ...(pageLabel || body.suggested === true
@@ -273,7 +279,7 @@ export async function POST(request: Request): Promise<Response> {
                   type: "text" as const,
                   text: [
                     pageLabel
-                      ? `THE VISITOR IS CURRENTLY READING ${pageLabel}. A question that is ambiguous on its own, especially a clicked section hint, refers to THIS page's content. Resolve it against this page's project first; never ask which project is meant, and never attribute this page's facts to a different project.`
+                      ? `THE VISITOR IS CURRENTLY READING ${pageLabel}. A question that is ambiguous on its own, especially a clicked section hint, refers to THIS page’s content. Resolve it against this page’s project first; never ask which project is meant, and never attribute this page’s facts to a different project.`
                       : "",
                     body.suggested === true
                       ? "THIS QUESTION CAME FROM THE INTERFACE. The visitor clicked a suggested question the site offered, one of the chips or the per-section hints. Answer it directly and completely from the first sentence, grounded in whichever project or page it belongs to. Do not ask why they are asking, do not ask which part they mean, do not call it a big question. The site asked it for them."
@@ -290,7 +296,7 @@ export async function POST(request: Request): Promise<Response> {
     });
 
     if (!upstream.ok) {
-      // Don't leak upstream error detail to the browser.
+      // Don’t leak upstream error detail to the browser.
       console.error("Anthropic error", upstream.status, await upstream.text());
       return Response.json(
         { error: "Something went wrong on my end. Try again in a moment." },

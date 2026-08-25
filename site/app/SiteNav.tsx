@@ -74,12 +74,12 @@ export default function SiteNav({
             the site and until now had no entry in the nav at all. */}
         <WorkLink onClick={() => setOpen(false)}>Work</WorkLink>
         {/* About left the nav 2026-08-20 (Anna: "put this on the home page
-            and remove the about tab") — the page's two strongest sections,
+            and remove the about tab") — the page’s two strongest sections,
             What I Bring and Why The Range Matters, now render directly on
             the homepage for every persona (see HomeBody.tsx), so the tab was
             pointing at content that had moved. /about itself still exists
             and is not deleted, same treatment as /this-site: reachable, not
-            promoted. This is the third time About's nav presence has
+            promoted. This is the third time About’s nav presence has
             flipped this project (removed for merge experiment 2026-08-19,
             restored the same day, removed again here) — check
             docs/decisions-log.md before flipping it a fourth time. */}

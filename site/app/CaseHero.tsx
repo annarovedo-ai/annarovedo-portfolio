@@ -10,7 +10,7 @@ export type HeroVoice = {
 };
 
 /**
- * The case-study hero, in the visitor's persona.
+ * The case-study hero, in the visitor’s persona.
  *
  * Case studies were the last pages on the site that read identically for all
  * three personas: an Ex visitor got the same recruiter-grade headline as a
@@ -18,7 +18,7 @@ export type HeroVoice = {
  * Everything below the hero, the work, the figures, the evidence, stays
  * identical for everyone, because the work is not a bit.
  *
- * Server-rendered output is the recruiter version (the store's server
+ * Server-rendered output is the recruiter version (the store’s server
  * snapshot), which is also what crawlers index; the client swaps on mount the
  * same way the rest of the site does.
  */

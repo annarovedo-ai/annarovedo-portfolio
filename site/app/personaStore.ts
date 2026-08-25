@@ -5,8 +5,8 @@ export const personas: { id: PersonaId; label: string }[] = [
   { id: "client", label: "Client" },
   // Hyphenated 2026-08-24 (external feedback, Francesco: "'ex-boyfriend'
   // would be easier to read with the hyphen"). Every string that quotes the
-  // pill by name — the canned "Did you know I'd click…" question in
-  // annaAnswers.ts, its data-anna-prompt-ex copies, homeContent's ex
+  // pill by name — the canned "Did you know I’d click…" question in
+  // annaAnswers.ts, its data-anna-prompt-ex copies, homeContent’s ex
   // eyebrow — moved with it, since the canned-answer lookup matches text
   // exactly.
   { id: "ex", label: "Ex-Boyfriend" },
@@ -21,7 +21,7 @@ const SESSION_KEY = "pp-persona-session";
  *   default on recruiter"). Clients get their own entrance at /studio, which
  *   forces the Client persona from first paint; annarovedo.com stays
  *   recruiter territory. If this changes again, getServerSnapshot below and
- *   the chat route's persona fallback must move with it, or first paint
+ *   the chat route’s persona fallback must move with it, or first paint
  *   flashes.
  * - Client and Ex Boyfriend are both session-scoped only, as of 2026-08-20.
  *   Client used to persist across visits in localStorage, which meant
@@ -29,7 +29,7 @@ const SESSION_KEY = "pp-persona-session";
  *   future visit, days later, until someone thought to flip the switcher
  *   back — Recruiter is supposed to be the thing a visitor lands on, not a
  *   setting that has to be actively restored. Both personas now live in
- *   sessionStorage: they survive navigation inside one tab, so /studio's
+ *   sessionStorage: they survive navigation inside one tab, so /studio’s
  *   promise ("the rest of the site stays Client after entering here") still
  *   holds for that visit, but neither is ever written to localStorage, has a
  *   URL of its own, or survives the tab closing. Note that mobile browsers
@@ -65,7 +65,7 @@ export function getSnapshot(): PersonaId {
 }
 
 /** Server snapshot is always the default, so crawlers only ever see Recruiter.
-    This must match read()'s fallback: a cold visitor's first paint and their
+    This must match read()'s fallback: a cold visitor’s first paint and their
     hydrated page have to agree, or the homepage flashes between personas. */
 export function getServerSnapshot(): PersonaId {
   return "recruiter";
@@ -79,7 +79,7 @@ export function setPersona(id: PersonaId) {
     } else {
       window.sessionStorage.setItem(SESSION_KEY, id);
     }
-    // Cleans up anyone's browser still holding a pre-2026-08-20 long-lived
+    // Cleans up anyone’s browser still holding a pre-2026-08-20 long-lived
     // Client value; read() no longer looks at localStorage at all, but there
     // is no reason to leave a stale key sitting there once we can remove it.
     window.localStorage.removeItem("pp-persona");

@@ -6,7 +6,7 @@ import Breadcrumb from "../Breadcrumb";
 export const metadata: Metadata = {
   title: "This site · Anna Rovedo",
   description:
-    "The portfolio as its own case study: a persona-switching site with an AI trained on Anna Rovedo's work, designed and built by her with an AI pair.",
+    "The portfolio as its own case study: a persona-switching site with an AI trained on Anna Rovedo’s work, designed and built by her with an AI pair.",
   alternates: { canonical: "/this-site" },
 };
 
@@ -41,7 +41,7 @@ export default function ThisSitePage() {
           <h1>This site is the seventh case study.</h1>
           {/* Updated 2026-08-18: this used to quote the homepage headline
               ("I design products and can get them built"), which the homepage
-              no longer says. The claim is now stated as the site's own, so it
+              no longer says. The claim is now stated as the site’s own, so it
               cannot drift out of date when the hero copy changes again. */}
           <p className="hero-deck">
             Every page here claims I can design a product and get it built.

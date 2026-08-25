@@ -7,7 +7,7 @@
  * `meta` was added 2026-08-08. Every case study used to carry a breadcrumb AND
  * a hero eyebrow directly beneath it, both uppercase, both tracked, both the
  * same size, separated by a large gap. They read as two breadcrumbs. On State
- * Street and Nike the eyebrow repeated the breadcrumb's own label word for
+ * Street and Nike the eyebrow repeated the breadcrumb’s own label word for
  * word, and on Search the status it carried appeared a third time in the hero
  * meta below. One line now: navigation on the left, the status or structural
  * note on the right, visually distinct so they do not read as the same thing.

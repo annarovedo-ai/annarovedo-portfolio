@@ -72,8 +72,8 @@ const flow = [
   {
     // The demo-redirect capture lives HERE, in the step about the demo, not as
     // a standalone wide figure after the flow. It was appended full-width
-    // below the grid first, and Anna's verdict was exact: "this is a strange
-    // place to pull this piece out and it's huge." An image belongs inside
+    // below the grid first, and Anna’s verdict was exact: "this is a strange
+    // place to pull this piece out and it’s huge." An image belongs inside
     // the thing that explains it, at the size that role earns.
     src: "concierge-demo.webp",
     step: "02",
@@ -426,7 +426,7 @@ export default function Home() {
               </p>
               {/* Softened 2026-08-18: "strong comprehension and interest
                   signals" described confidence rather than findings, and the
-                  session-level data is not Anna's to publish. This states
+                  session-level data is not Anna’s to publish. This states
                   what the rounds were built to answer and what the signal
                   earned, which is the honest size of the claim. If Anna
                   supplies two or three specific observed behaviors, they

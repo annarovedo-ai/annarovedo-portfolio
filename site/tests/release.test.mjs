@@ -182,12 +182,14 @@ test("every printed chat prompt has one approved verbatim answer", async () => {
       if (persona !== "ex" || i < 4) {
         assert.ok(home.includes(question), `${persona}: chip is not printed: ${question}`);
       }
-      assert.equal(findCannedAnswer(persona, question), answer);
+      // findCannedAnswer returns the whole entry as of 2026-08-24 (answers
+      // can carry a curated case-study image); the text lives on .answer.
+      assert.equal(findCannedAnswer(persona, question)?.answer, answer);
     }
   }
 
   assert.equal(
-    findCannedAnswer("ex", "Be honest. Was the frog actually real?"),
+    findCannedAnswer("ex", "Be honest. Was the frog actually real?")?.answer,
     "Yes. The frog was real. That is the complete answer.",
   );
   assert.equal(findCannedAnswer("client", "Be honest. Was the frog actually real?"), null);
@@ -252,7 +254,7 @@ test("every page hint, every persona, has a pre-scripted answer", async () => {
     assert.ok(shared, `canonical copy missing in shared bank: ${q}`);
     assert.equal(
       shared.answer,
-      findCannedAnswer("recruiter", q),
+      findCannedAnswer("recruiter", q)?.answer,
       `canonical drift between chip and shared bank: ${q}`,
     );
   }

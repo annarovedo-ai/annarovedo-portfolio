@@ -13,8 +13,8 @@ import type { PersonaId } from "./personaStore";
 /**
  * UNUSED — safe to delete. This "Viewing as" menu replaced the segmented
  * control in SiteHeader for a few hours on 2026-08-18 (external review
- * suggestion) and was reverted the same day at Anna's call: the segmented
- * control is part of the site's personality. Its CSS has been removed from
+ * suggestion) and was reverted the same day at Anna’s call: the segmented
+ * control is part of the site’s personality. Its CSS has been removed from
  * globals.css, so wiring this back in means restoring that too. Kept only
  * because this file was created from a sandbox that cannot delete files.
  */

@@ -1,4 +1,7 @@
 import type { PersonaId } from "./personaStore";
+// Type-only: erased at compile time, so the answer bank itself never enters
+// the client bundle through this import.
+import type { ChatImage } from "./lib/annaAnswers";
 
 /**
  * ONE CONVERSATION, TWO COSTUMES (2026-08-18).
@@ -18,7 +21,10 @@ import type { PersonaId } from "./personaStore";
  * server is the record; the widget is a conversation, not an archive.
  */
 
-export type ChatMsg = { role: "user" | "assistant"; content: string };
+/** image rides only on canned assistant answers (see annaAnswers.ts) — the
+    model path never sets it, so the wrong image can never attach itself to
+    an improvised claim. */
+export type ChatMsg = { role: "user" | "assistant"; content: string; image?: ChatImage };
 
 export type ChatState = {
   persona: PersonaId | null;
@@ -26,7 +32,7 @@ export type ChatState = {
   busy: boolean;
   capped: boolean;
   error: string | null;
-  /** The composer's draft, shared across stage, dock, and panel so typed
+  /** The composer’s draft, shared across stage, dock, and panel so typed
       but unsent text survives every change of costume. */
   input: string;
   /** Whether the conversation panel is open. Owned here rather than in
@@ -127,7 +133,7 @@ export function takeFocusCarry() {
  */
 export function ensurePersona(persona: PersonaId) {
   if (state.persona === persona) return;
-  // The thread and draft reset with the voice; the visitor's view state
+  // The thread and draft reset with the voice; the visitor’s view state
   // (panel open, scrolled past the stage) is theirs and survives.
   state = {
     ...state,
@@ -143,8 +149,8 @@ export function ensurePersona(persona: PersonaId) {
 
 /**
  * `suggested` marks questions that came from the interface itself (prompt
- * chips, per-section hints) rather than the visitor's own typing. The API
- * forwards it so the model knows the site asked on the visitor's behalf:
+ * chips, per-section hints) rather than the visitor’s own typing. The API
+ * forwards it so the model knows the site asked on the visitor’s behalf:
  * a clicked chip must be answered directly, never met with "why do you ask".
  */
 export function sendChat(persona: PersonaId, text: string, suggested = false) {
@@ -173,6 +179,7 @@ export function sendChat(persona: PersonaId, text: string, suggested = false) {
       });
       const data = (await res.json()) as {
         reply?: string;
+        image?: ChatImage;
         error?: string;
         capped?: boolean;
       };
@@ -191,14 +198,17 @@ export function sendChat(persona: PersonaId, text: string, suggested = false) {
       state = {
         ...state,
         busy: false,
-        messages: [...state.messages, { role: "assistant", content: data.reply }],
+        messages: [
+          ...state.messages,
+          { role: "assistant", content: data.reply, image: data.image },
+        ],
       };
       emit();
     } catch {
       state = {
         ...state,
         busy: false,
-        error: "I couldn't reach the server. Try again in a moment.",
+        error: "I couldn’t reach the server. Try again in a moment.",
       };
       emit();
     }

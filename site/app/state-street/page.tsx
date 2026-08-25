@@ -245,7 +245,7 @@ export default function StateStreetCaseStudy() {
               </p>
             </div>
           </div>
-          <div className="shell ss-thesis-grid" aria-label="The system's three jobs">
+          <div className="shell ss-thesis-grid" aria-label="The system’s three jobs">
             <div><span>01</span><strong>Interpret complexity</strong><p>Help expert users scan without removing the information they need.</p></div>
             <div><span>02</span><strong>Protect meaning</strong><p>Give color, type, and interaction consistent jobs across the platform.</p></div>
             <div><span>03</span><strong>Scale decisions</strong><p>Turn one visual point of view into reusable product infrastructure.</p></div>

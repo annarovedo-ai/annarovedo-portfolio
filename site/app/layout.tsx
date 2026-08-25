@@ -11,7 +11,7 @@ export const metadata: Metadata = {
   // it. Verified in the build output: "localhost:3000" was in the shipped HTML.
   metadataBase: new URL("https://annarovedo.com"),
 
-  // Was the concierge case study's own title, left behind as the SITE-WIDE
+  // Was the concierge case study’s own title, left behind as the SITE-WIDE
   // default, so every page without its own metadata introduced her as an IBM
   // product rather than as herself. Pages that export their own metadata (the
   // homepage does) still override this.
@@ -27,7 +27,7 @@ export const metadata: Metadata = {
   // the file, so the colour logic lives with the drawing instead of in this
   // metadata block. The PNGs remain in the repo, unreferenced: they were drawn
   // from the earlier version of the mark, and wiring both up would have given
-  // the site a different logo depending on the visitor's colour scheme.
+  // the site a different logo depending on the visitor’s colour scheme.
   icons: {
     icon: "/favicon.svg",
     shortcut: "/favicon.svg",

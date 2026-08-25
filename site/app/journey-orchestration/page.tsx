@@ -10,7 +10,7 @@ import ExAside from "../ExAside";
 export const metadata: Metadata = {
   title: "AI-driven journey orchestration, part two · Anna Rovedo",
   description:
-    "Part two of the IBM Concierge story: reframing an AI chat layer as the orchestration system for an entire buying journey, designed with Amy Clark, IBM's Global Head of UX.",
+    "Part two of the IBM Concierge story: reframing an AI chat layer as the orchestration system for an entire buying journey, designed with Amy Clark, IBM’s Global Head of UX.",
   alternates: { canonical: "/journey-orchestration" },
 };
 
@@ -50,7 +50,7 @@ const stakeholders = [
   {
     name: "Elaine Vance",
     role: "VP of Finance",
-    quote: "What is the guaranteed ROI, and what's the cheapest way to structure the deal?",
+    quote: "What is the guaranteed ROI, and what’s the cheapest way to structure the deal?",
   },
   {
     name: "Richard Sterling",
@@ -144,12 +144,12 @@ export default function JourneyOrchestration() {
 
           <Figure
             src="predictive-entry-hero.jpg"
-            alt="IBM.com page pre-assembled around a visitor's search intent, with a message reading 'I see you're searching for Find root cause, lower MTTR'"
+            alt="IBM.com page pre-assembled around a visitor’s search intent, with a message reading 'I see you’re searching for Find root cause, lower MTTR'"
             caption="A visitor arrives already mid-intent. The page and the assistant’s first line are assembled around what brought them here, not a generic homepage."
           />
         </section>
 
-        <section className="summary-band" id="story" data-anna-prompt="Why wasn't a chatbot enough?">
+        <section className="summary-band" id="story" data-anna-prompt="Why wasn’t a chatbot enough?">
           <div className="shell summary-grid">
             <div>
               <p className="eyebrow">Where this picks up</p>
@@ -355,7 +355,7 @@ export default function JourneyOrchestration() {
               </div>
               <Figure
                 src="human-assisted-orchestration.jpg"
-                alt="Chat message reading 'Hi, Jamal. You're 35% ready for ROI in your environment. Want to try for free?' alongside an interactive root-cause demo loading"
+                alt="Chat message reading 'Hi, Jamal. You’re 35% ready for ROI in your environment. Want to try for free?' alongside an interactive root-cause demo loading"
                 caption="The AI adjusts its offer based on lead score rather than repeating the same generic CTA to every visitor."
               />
             </div>
@@ -378,7 +378,7 @@ export default function JourneyOrchestration() {
 
             <Figure
               src="qualified-handoff.jpg"
-              alt="Chat message reading 'You've just unlocked access to Sara Smith, who can answer your questions' with a profile card and a Schedule a call button"
+              alt="Chat message reading 'You’ve just unlocked access to Sara Smith, who can answer your questions' with a profile card and a Schedule a call button"
               caption="Qualification unlocks a real person, introduced with the context the system already gathered, not a generic 'contact sales' link."
               className="wide-figure"
             />
@@ -427,7 +427,7 @@ export default function JourneyOrchestration() {
           <SectionNumber>05 · Reflection</SectionNumber>
           <div className="reflection-grid">
             {/* Rewritten 2026-08-10. This reflection used to end in the same
-                paragraph as part one's (connective tissue, what persists, what
+                paragraph as part one’s (connective tissue, what persists, what
                 becomes an artifact, how transparent) — the designed reading
                 path is part one then part two, and the pair ended on one
                 thought twice. Part one keeps that thesis. Part two now closes

@@ -115,9 +115,9 @@ export default function WorkBody() {
         </section>
       ))}
 
-      {/* Closing contact band, new 2026-08-20 (Anna's work-page wireframe:
+      {/* Closing contact band, new 2026-08-20 (Anna’s work-page wireframe:
           "CONTACT ME" as the last thing on the page). Reuses the same
-          per-persona footer fields the homepage's own closing CTA does,
+          per-persona footer fields the homepage’s own closing CTA does,
           rather than writing a third version of this copy. */}
       <section className="home-cta" data-anna-prompt="What should I include when I reach out?">
         <div className="shell home-cta-inner">

@@ -46,7 +46,7 @@ import { ALMOST_ANNA_ENABLED } from "./annaFlags";
  * changing form, not three independent widgets that happen to trade places.
  * They share a single `layoutId`, so leaving one and entering another animates
  * the actual box — position, size, corner radius — from where it was to where
- * it's going, instead of cutting between three unrelated layouts. That is the
+ * it’s going, instead of cutting between three unrelated layouts. That is the
  * whole point of the exercise: tap the corner button and the conversation
  * visibly grows out of the spot you tapped, rather than appearing somewhere
  * else on screen.
@@ -65,7 +65,7 @@ const MODE_KEY = "pp-anna-razor";
 // bar without registering what it was, so this earns it a single explicit
 // beat before settling into the quieter, icon-only state everyone sees
 // afterward. Independent of MODE_KEY: dismissing to quiet or reopening
-// doesn't bring it back, only a brand new tab does.
+// doesn’t bring it back, only a brand new tab does.
 // How long the "Hidden…" notice stays before the bar collapses. Long enough
 // to read the sentence and reach the Undo inside it.
 const DISMISS_NOTICE = 2100;
@@ -74,11 +74,11 @@ type Mode = "quiet" | "razor";
 
 
 // One transition, shared by every shape change: mode switches and the settle
-// after a drag. Anna's other motion on the site is eased tweens, not springs,
+// after a drag. Anna’s other motion on the site is eased tweens, not springs,
 // so this matches that rather than introducing a bouncier feel that would
 // stand out as belonging to a different system.
 // Retimed 2026-08-18 per the continuous-chat spec: 300ms, no overshoot,
-// matching the stage composer's morph so stage → dock → panel is one motion
+// matching the stage composer’s morph so stage → dock → panel is one motion
 // vocabulary.
 const SHAPE_TRANSITION = { duration: 0.3, ease: [0.22, 1, 0.36, 1] } as const;
 const CONTENT_IN = { duration: 0.2, ease: "easeOut" } as const;
@@ -102,7 +102,7 @@ export default function AnnaRazor() {
       : "Ask Almost Anna anything…";
   // The stage (hero chat) era ended 2026-08-19: the chat left the hero, so
   // there are no stage routes and no special-casing of / and /studio. The
-  // razor is the chat's one home, on every page. AnnaStage.tsx and the
+  // razor is the chat’s one home, on every page. AnnaStage.tsx and the
   // stageDocked plumbing in chatStore are dormant, kept only because this
   // sandbox cannot delete files.
   const assistantDisclosure = isClient
@@ -120,7 +120,7 @@ export default function AnnaRazor() {
   const draft = chatThread.input;
   const setDraft = setChatInput;
   const [seed, setSeed] = useState<string | undefined>(undefined);
-  // Whether the bar's input has keyboard focus. The inline hint yields to
+  // Whether the bar’s input has keyboard focus. The inline hint yields to
   // typing: focused or non-empty means the hint steps aside and the plain
   // placeholder takes over.
   const [inputFocused, setInputFocused] = useState(false);
@@ -130,12 +130,12 @@ export default function AnnaRazor() {
   const dragFrom = useRef(0);
   const dismissTimer = useRef<number | null>(null);
   // What the reader had before they opened the conversation, so closing it
-  // can put them back rather than deciding for them. See the panel's close
+  // can put them back rather than deciding for them. See the panel’s close
   // button for why that matters.
   const modeBeforeOpen = useRef<Mode>("razor");
   const inputRef = useRef<HTMLInputElement | null>(null);
   // Guards the phone focus-opens-the-panel behavior below: when the panel
-  // closes, focus returns to the bar's input (accessibility contract), and
+  // closes, focus returns to the bar’s input (accessibility contract), and
   // without this window that return-focus would immediately reopen the
   // panel in a loop.
   const justClosed = useRef(false);
@@ -183,8 +183,8 @@ export default function AnnaRazor() {
   }, [pathname]);
 
   // CONTACT NEVER GETS THE FULL-WIDTH DOCK. A hard floor, not a preference:
-  // stored modes and the panel's own Minimise both route back to "razor",
-  // and on /contact the bar was observed covering the form's own controls.
+  // stored modes and the panel’s own Minimise both route back to "razor",
+  // and on /contact the bar was observed covering the form’s own controls.
   // Nothing may ever sit over a form control. The mini stays available and
   // recoverable; it just never auto-expands here.
   useEffect(() => {
@@ -232,9 +232,9 @@ export default function AnnaRazor() {
     setVisible(true);
   }, [pathname]);
 
-  // The once-per-tab intro tooltip was removed 2026-08-19 (Anna: "i don't
+  // The once-per-tab intro tooltip was removed 2026-08-19 (Anna: "i don’t
   // like the pop-up"): it covered page content at the exact moment a
-  // visitor started reading. The bar's placeholder and the avatar carry
+  // visitor started reading. The bar’s placeholder and the avatar carry
   // the introduction now.
 
 
@@ -280,15 +280,15 @@ export default function AnnaRazor() {
     return () => io.disconnect();
     // pathname: re-query the tagged sections on navigation, or the hint
     // stays frozen on the page you came from. persona: THE SAME BUG WORE A
-    // SECOND COSTUME (found live 2026-08-19, "there's no prompt hints") —
+    // SECOND COSTUME (found live 2026-08-19, "there’s no prompt hints") —
     // switching persona rebuilds the homepage body, the observer kept
-    // watching the old persona's detached sections, and the hint went
+    // watching the old persona’s detached sections, and the hint went
     // silent everywhere until the next navigation. Every observer that
     // watches page content must re-bind on BOTH.
   }, [pathname, persona]);
 
   // Retract-on-scroll (hide while scrolling down, return on scroll up or a
-  // pause) was removed 2026-08-06 at Anna's request — she didn't like the bar
+  // pause) was removed 2026-08-06 at Anna’s request — she didn’t like the bar
   // disappearing during a scroll, full stop, independent of how the
   // thresholds were tuned. The bar now just stays put once visible; it no
   // longer reacts to scroll motion at all, only to mode/open changes and the
@@ -340,7 +340,7 @@ export default function AnnaRazor() {
 
   // Every page, no exceptions, per Anna 2026-08-18: "the razor belongs on
   // every page." (An external review had it hidden on /contact for a few
-  // hours the same day; reversed. The bar covering the contact form's own
+  // hours the same day; reversed. The bar covering the contact form’s own
   // controls is a layout problem to solve in CSS, not a reason to remove
   // the assistant from the page.)
   // ALMOST_ANNA_ENABLED overrides all of it; see annaFlags.ts.
@@ -386,7 +386,7 @@ export default function AnnaRazor() {
       inputRef.current?.focus();
       return;
     }
-    // Typed text is the visitor's own question, so it goes through the store
+    // Typed text is the visitor’s own question, so it goes through the store
     // directly with suggested: false, and the panel opens onto the thread
     // already answering it. The seed path stays reserved for hint chips,
     // whose suggested: true contract is one of the three protected layers.
@@ -477,9 +477,9 @@ export default function AnnaRazor() {
                 longer destructive. Minus means "give me the bar"; x means
                 "put me back where I was". Both are recoverable, so two glyphs
                 an inch apart is now a convenience rather than a gamble. The
-                only mode change that persists something is still the bar's
+                only mode change that persists something is still the bar’s
                 own x, and it still shows the notice with the Undo in it. */}
-            {/* The header row, per Anna's 2026-08-19 mockup: her face, the
+            {/* The header row, per Anna’s 2026-08-19 mockup: her face, the
                 name, the one-line disclosure, and the two quiet controls.
                 The minus became a chevron with the same contract (the trap
                 history in the old comment stands: neither control is
@@ -548,7 +548,7 @@ export default function AnnaRazor() {
             {/* The worded restore button lived here until 2026-08-10
                 ("Pin Almost Anna to the bottom of the page", and before that
                 "Show suggestions at the bottom as I browse"). Removed at
-                Anna's instruction: the panel foot was "a terrible spot for
+                Anna’s instruction: the panel foot was "a terrible spot for
                 it". Its job, the only way back to the bar after a dismissal,
                 moved to the Minimise glyph in the panel controls above, which
                 sets mode to razor and moves the restore point with it. */}
@@ -607,7 +607,7 @@ export default function AnnaRazor() {
             {/* Shown once per tab, anchored over the photo rather than
                 centered, so the eye lands on the face first and the sentence
                 explains what the face is. Absolutely positioned so it never
-                changes the bar's own height, which would defeat the point of
+                changes the bar’s own height, which would defeat the point of
                 a bar that holds still. */}
             
 
@@ -643,7 +643,7 @@ export default function AnnaRazor() {
                       hit the wrong thing, and the bar was inert for all of
                       them. Now the sentence still teaches where the setting
                       lives, for anyone who meant it, and the button fixes it
-                      in one click for anyone who didn't. */}
+                      in one click for anyone who didn’t. */}
                   <button
                     type="button"
                     className="anna-razor-undo"
@@ -670,7 +670,7 @@ export default function AnnaRazor() {
                       }}
                     />
                   </span>
-                  {/* The hint lives IN the input line now (Anna's 2026-08-19
+                  {/* The hint lives IN the input line now (Anna’s 2026-08-19
                       mockup): one question at a time, where the typing goes.
                       The dashed pill keeps it readable as a tappable object
                       rather than ghost placeholder text — tap sends it;

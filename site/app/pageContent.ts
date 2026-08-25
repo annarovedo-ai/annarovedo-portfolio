@@ -44,7 +44,7 @@ export const contactContent: Record<PersonaId, ContactContent> = {
   recruiter: {
     eyebrow: "Availability status",
     headline: "Taking on new roles and contracts",
-    // "Leadership roles" read as wanting to manage people (Anna's testing
+    // "Leadership roles" read as wanting to manage people (Anna’s testing
     // note, 2026-08-19); principal says senior without saying manager.
     deck: "I am currently exploring full-time principal roles, advisory contracts, and selected collaborative projects.",
     fields: [
@@ -64,9 +64,9 @@ export const contactContent: Record<PersonaId, ContactContent> = {
     channels: [
       { label: "Book a call", value: "Book 30 minutes", href: "https://calendly.com/anna-rovedo/30min" },
       { label: "Email address", value: "anna.rovedo@gmail.com", href: "mailto:anna.rovedo@gmail.com" },
-      // The resume, reachable from the contact page too (Anna's testing
+      // The resume, reachable from the contact page too (Anna’s testing
       // note, 2026-08-19: "link resume here too") — a recruiter mid-form
-      // shouldn't have to leave to double-check the CV.
+      // shouldn’t have to leave to double-check the CV.
       { label: "Resume", value: "Download resume", href: "/anna-rovedo-resume.pdf" },
       // "Professional network" pointed at an unclaimed LinkedIn vanity URL.
       // Removed 2026-08-07; put it back when linkedin.com/in/anna-paperpixel
@@ -76,11 +76,21 @@ export const contactContent: Record<PersonaId, ContactContent> = {
 
   client: {
     eyebrow: "Collaboration & consulting",
-    headline: "What are you working on?",
-    // Rewritten in the visitor's direction (Anna's testing note, 2026-08-19:
+    // Reframed 2026-08-24 from external review (a VP reading as a buyer:
+    // "On Contact - I would make it a bit more specific - right now it
+    // reads as desperate. 'Taking on limited number of new clients that
+    // xxxx'"). Open availability signals need; selective capacity signals
+    // demand. The studio genuinely is one person who can only run a few
+    // engagements at once, so the scarcity is true, not manufactured.
+    headline: "Taking on a limited number of new clients",
+    // Rewritten in the visitor’s direction (Anna’s testing note, 2026-08-19:
     // "It should be all about them"). The engagement-length range lives in
     // sideBody, stated once, matching engagements.ts.
-    deck: "Need help with product, brand, or campaign work? From a complex enterprise system to a new idea that needs a clear path to market, bring it in whatever shape it's in.",
+    // The specificity half of the same note: name what the limited slots
+    // are FOR, so the headline reads as a bar to clear rather than a
+    // waiting room. Keeps "bring it in whatever shape it’s in" — the most
+    // visitor-friendly line on the page — as the closer.
+    deck: "The fit: product, brand, or campaign work that needs direction — a complex enterprise system, or a new idea that needs a clear path to market. Bring it in whatever shape it’s in.",
     fields: [
       { label: "What’s your name?", placeholder: "Jane Doe" },
       { label: "Where should I reply?", placeholder: "jane@yourstartup.io" },

@@ -3,7 +3,7 @@
 import { engagements } from "../engagements";
 
 /**
- * The Client persona sees a Services page in place of the resume, per Anna's
+ * The Client persona sees a Services page in place of the resume, per Anna’s
  * design (resume-client). Nav label switches from "Resume" to "Services".
  */
 
@@ -113,13 +113,13 @@ export default function ServicesBody() {
               positioning is that defining the thing IS the work — asking for a
               finished brief filters out exactly the client she wants. It was
               also an order aimed at the person paying. This echoes the client
-              chat copy, which already says "Tell it what you're working on". */}
+              chat copy, which already says "Tell it what you’re working on". */}
           <a className="svc-primary" href="/contact">
             Share what you&rsquo;re working on &rarr;
           </a>
           {/* This page only renders for the Client persona. Pointed at
               /studio#client-work while /work was not a real page; now that it
-              is, that's the honest "selected work" destination for every
+              is, that’s the honest "selected work" destination for every
               persona, this one included. */}
           <a className="svc-secondary" href="/work">
             See selected work &rarr;
@@ -132,7 +132,7 @@ export default function ServicesBody() {
         <p className="svc-note">You deal with the same person the whole way through.</p>
       </section>
 
-      {/* Linked from the client homepage's "See all services". Same data as
+      {/* Linked from the client homepage’s "See all services". Same data as
           the homepage cards (app/engagements.ts), longer form: the homepage
           answers "where can a project start", this answers "what would that
           actually be like". Moved directly below the hero 2026-08-18,

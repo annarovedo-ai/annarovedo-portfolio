@@ -2918,7 +2918,9 @@ blockquote {
 .pp-head h3 {
   margin: 0 0 10px;
   color: #fff;
-  font-size: clamp(26px, 3vw, 36px);
+  /* Was clamp(26px, 3vw, 36px), an unnamed size a hair under --d-band
+     (2026-08-24 typography audit). */
+  font-size: var(--d-band);
 }
 
 .pp-head p {
@@ -3421,6 +3423,50 @@ blockquote {
     padding: 0 16px;
   }
 
+  /* The locked-height pair, phone edition — see the notes on
+     .home-header-plain and .persona-band. Change both together.
+     (62px bar − ~48px pill) / 2 = the pill docks centered in the bar. */
+  .home-header-plain {
+    height: 62px;
+    margin-bottom: -62px;
+  }
+
+  .persona-lead {
+    padding-top: 74px;
+  }
+
+  /* Phone: same dock-inside-the-bar as the 1000px rule, at the phone
+     bar's height and smaller again (Anna: "smaller on mobile"), so the
+     three options still clear the lockup and the hamburger on a 390px
+     screen. (62px bar − ~34px pill) / 2 = 14px. The wordmark gives way to
+     the 30px glyph below (see .brand-mark), which is what buys the width. */
+  .persona-band {
+    top: 14px;
+    padding: 0 8px;
+  }
+
+  .persona-band .persona-switch {
+    padding: 2px;
+  }
+
+  .persona-band .persona-switch button {
+    padding: 7px 8px;
+    font-size: var(--t-label);
+    letter-spacing: 0.03em;
+  }
+
+  /* The lockup drops to its glyph so the pill has room in the middle of
+     the bar. The full wordmark returns above 720px. */
+  .home-header-plain .brand-wordmark,
+  .home-header-plain .brand-divider,
+  .home-header-plain .brand-credit {
+    display: none;
+  }
+
+  .home-header-plain .brand-mark {
+    display: grid;
+  }
+
   .site-header nav {
     gap: 16px;
     font-size: var(--t-label);
@@ -3854,7 +3900,11 @@ blockquote {
   margin: 0;
   color: var(--on-dark-body);
   font-family: var(--sans);
-  font-size: clamp(16px, 1.45vw, 19px);
+  /* Was clamp(16px, 1.45vw, 19px) while the homepage hero deck ran
+     clamp(16px, 1.5vw, 19px): two nearly-but-not-identical private clamps
+     for the same optical job. One value now, matching the hero deck's
+     (2026-08-24 typography audit). */
+  font-size: clamp(16px, 1.5vw, 19px);
   font-weight: 600;
   line-height: 1.4;
 }
@@ -3880,7 +3930,9 @@ blockquote {
 .search-findings h3 {
   max-width: 430px;
   margin: 0;
-  font-size: clamp(27px, 3.1vw, 45px);
+  /* Was clamp(27px, 3.1vw, 45px) — --d-band with a hand-rolled 45px cap
+     (2026-08-24 typography audit). */
+  font-size: var(--d-band);
   line-height: 1.02;
 }
 
@@ -5907,6 +5959,10 @@ a.home-video-label:focus-visible {
 .client-home-hero h1 {
   max-width: 10.5ch;
   margin-bottom: 22px;
+  /* DELIBERATELY one notch under --d-hero (52–84): this headline is nine
+     words against the recruiter's six, and at full hero scale it wraps to
+     four lines inside its 10.5ch column. Kept as a documented exception in
+     the 2026-08-24 typography audit rather than silently off-token. */
   font-size: clamp(48px, 5.5vw, 76px);
 }
 
@@ -6675,11 +6731,41 @@ a.home-video-label:focus-visible {
 /* Solid navy and no bottom rule on the homepage bar: it sits on the navy
    band and intro, and the base header's white hairline read as a line
    drawn across one continuous block. Interior headers (is-docked) float
-   over white pages, where the translucency and the rule do real work. */
+   over white pages, where the translucency and the rule do real work.
+
+   height, not min-height (2026-08-24, after the live-measured band offset
+   put a white gap between header and band a second time — Anna: "this
+   should never happen"): the band below pins at a CONSTANT top that must
+   equal this height, so the height cannot be allowed to drift with
+   content. The bar holds one row of lockup and nav at every width, both
+   shorter than 84px, so locking it changes nothing visually — it makes
+   the number a fact instead of a minimum. */
 .home-header-plain {
-  background: var(--blue);
-  border-bottom-color: transparent;
+  /* NO BACKGROUND OF ITS OWN, and that is the point (2026-08-24, Anna:
+     "make the background of the top nav transparent so we don't cut off
+     'view as'" — restored after one wrong detour through solid navy).
+
+     The bar does not need to paint navy: the persona block behind it
+     (.persona-lead / .persona-band / .persona-note) already does, so at
+     rest the whole area reads as one solid navy field, exactly as Anna's
+     storyboard frame 1 shows. Because the bar contributes no paint of its
+     own, nothing gets sliced when the label scrolls up through it — the
+     label just travels across a continuous navy ground and leaves.
+
+     Once the navy block has scrolled past, the page beneath is paper, and
+     the bar's own navy comes back via the .home-header-plain rule under
+     the persona rules below (scoped to when the block is gone). */
+  background: transparent;
   backdrop-filter: none;
+  border-bottom-color: transparent;
+  height: 84px;
+  /* The bar OVERLAYS the navy block rather than sitting above it. Without
+     this the bar occupied its own 84px of layout, the navy started below
+     it, and a transparent bar over paper rendered the white lockup on
+     white (seen live 2026-08-24). Pulling the next block up by the bar's
+     own height puts navy behind the bar, so at rest the whole area is one
+     navy field and the bar contributes no edge to cut the label with. */
+  margin-bottom: -84px;
 }
 
 /* THE PICKER BAND (V6 — see the history note above and PersonaChrome.tsx).
@@ -6691,14 +6777,111 @@ a.home-video-label:focus-visible {
    hardcoded 84px, which is the exact mistake V2 made. One layout in both
    states; no shadow, which painted a dark seam on the navy intro at rest
    (Anna: "remove this dark line"). */
+/* V7 (2026-08-24, Anna's spec verbatim in PersonaChrome.tsx): only the
+   pill is sticky. The band is TRANSPARENT — nothing navy travels with the
+   pinned pill, so once the lead and note have rolled past, the only blue
+   left on screen is the nav bar, exactly as tall as its content.
+
+   The pin offset and the header height are a locked pair of constants
+   (84px bar → pin at 83px; 62px bar → 61px under 768px): a live-measured
+   offset was tried twice and both times a measurement/paint disagreement
+   opened a white gap ("this should never happen"). Change the pair
+   together or not at all.
+
+   The negative margin pulls the pill up into .persona-lead's reserved
+   bottom padding, so at rest the pill sits on navy the lead painted for
+   it. 64px reserved against a ~54px pill leaves the at-rest gap under the
+   label; tune the pair (padding-bottom here, margin-top below) together. */
+.persona-lead {
+  /* 84px reserved against the pill's real rendered height (~54px, verified
+     from Anna's screenshot 2026-08-24 after the 64px guess put the pill on
+     top of the label): pill occupies the bottom ~66px of this padding via
+     .persona-band's negative margin, leaving ~18px of clear navy between
+     the label and the pill. Tune this and margin-top below together. */
+  /* Top padding carries the bar's height (84) plus the label's own air
+     (16), since the bar now overlays this block instead of preceding it. */
+  padding: 100px 24px 84px;
+  background: var(--blue);
+  color: #fff;
+  text-align: center;
+
+  /* NOT sticky. A sticky version was tried for one edit (to stop the bar
+     slicing the label) and immediately reverted: parking this block over
+     the page meant it covered the sub-copy scrolling behind it. The label
+     scrolls away like ordinary content, which is what Anna's storyboard
+     shows. */
+}
+
 .persona-band {
   position: sticky;
-  top: var(--site-header-bottom, 84px);
-  z-index: 29; /* under the header's 30, above page content */
+  /* Docks INTO the bar, not below it: (84px bar − ~54px pill) / 2, so the
+     pinned pill sits vertically centered in the bar's empty middle, between
+     the lockup and the nav. Pinning below the bar left the pill floating
+     over page copy permanently (Anna's screenshot, 2026-08-24). z 31 rides
+     over the bar's 30; the strip is pointer-events:none so the nav stays
+     clickable. */
+  top: 15px;
+  z-index: 31;
   display: flex;
   justify-content: center;
-  padding: 10px 24px 16px;
+  margin-top: -66px;
+  padding: 0 16px;
+  background: transparent;
+  pointer-events: none; /* the transparent full-width strip must not eat clicks... */
+}
+
+.persona-band .persona-switch {
+  pointer-events: auto; /* ...but the pill itself stays interactive */
+}
+
+.persona-note {
+  padding: 14px 24px 22px;
   background: var(--blue);
+  color: #fff;
+  text-align: center;
+}
+
+/* The bar's navy, back on once the persona block has scrolled past it (see
+   the note on .home-header-plain and the toggle in PersonaChrome). Placed
+   after the persona rules so it wins on order, not on a specificity trick. */
+.home-header-plain.is-solid {
+  background: var(--blue);
+}
+
+/* BELOW 1000px THE PILL PINS UNDER THE BAR, NOT INSIDE IT (2026-08-24).
+   Docking it into the bar put it straight on top of "Anna Rovedo" (seen
+   live in a narrow window): once the lockup and the hamburger are both in
+   there, the bar has no middle left to give. Letting it scroll away was
+   tried for one edit and rejected (Anna: "don't lose it when the screen
+   is small or on mobile"), so instead it pins as its own full-width navy
+   strip immediately below the bar — always visible, never overlapping,
+   and still one pill at one size in both states. */
+@media (max-width: 1000px) {
+  /* Docks INSIDE the bar here too (2026-08-24, Anna: "so it fits between
+     the hamburger and AR"), just smaller: the bar's middle is narrow at
+     this width, so the pill shrinks to fit between the lockup and the
+     hamburger rather than pinning as a strip underneath. (84px bar −
+     ~40px pill) / 2 = 22px. */
+  .persona-band {
+    top: 22px;
+    padding: 0 12px;
+  }
+
+  .persona-band .persona-switch {
+    padding: 3px;
+  }
+
+  .persona-band .persona-switch button {
+    padding: 7px 11px;
+    font-size: var(--t-fine);
+  }
+}
+
+.persona-note .persona-intro-note {
+  /* margin: 0 killed the base rule's `margin: 0 auto` and pinned the 62ch
+     note block to the left edge (visible in Anna's screenshot). auto keeps
+     it centered. */
+  margin: 0 auto;
 }
 
 /* The rule under the header appears the instant it docks, which registered as
@@ -6826,12 +7009,9 @@ a.home-video-label:focus-visible {
    successor .persona-band left the same day with V5. The switcher lives in
    the stock is-docked header now — see the history note further up. */
 
-.persona-intro {
-  padding: 4px 24px 34px;
-  background: var(--blue);
-  color: #fff;
-  text-align: center;
-}
+/* .persona-intro is gone (2026-08-24): the explainer note lives inside
+   .persona-band now, so it stays with the picker when the band pins. The
+   note keeps its own .persona-intro-note styles below. */
 
 /* .home-chat-persona was removed 2026-08-07: it styled a persona tag in the
    hero chat card that no longer exists in any component, and it existed TWICE
@@ -7163,14 +7343,6 @@ a.home-video-label:focus-visible {
     border-bottom: 0;
   }
 
-  .persona-intro {
-    padding: 34px 18px 40px;
-  }
-
-  .persona-intro-switch {
-    margin-bottom: 18px;
-  }
-
   /* The collapsed-bar phone rules (.is-scrolled label drop, nowrap, compact
      pills) left with the V4 sticky band — there is no collapsed bar any
      more; the pill is one size in the band whether at rest or pinned. */
@@ -7360,7 +7532,9 @@ a.home-video-label:focus-visible {
 
 .other-work h1 {
   margin-bottom: 22px;
-  font-size: clamp(28px, 4vw, 40px);
+  /* Was clamp(28px, 4vw, 40px) — see the utility-page note on
+     .contact-top h1 (2026-08-24). */
+  font-size: var(--d-section);
 }
 
 .other-work-body {
@@ -7432,13 +7606,18 @@ a.home-video-label:focus-visible {
 
 .cv-masthead h1 {
   margin-bottom: 8px;
-  font-size: clamp(40px, 5vw, 58px);
+  /* Was clamp(40px, 5vw, 58px) — see the utility-page note on
+     .contact-top h1 (2026-08-24). */
+  font-size: var(--d-section);
 }
 
 .cv-title {
   margin: 0 0 14px;
   color: var(--body);
-  font-size: clamp(15px, 1.6vw, 18px);
+  /* Was a private clamp(15px, 1.6vw, 18px), an unnamed size between
+     --t-small and --t-read (2026-08-24 typography audit). --t-read: this
+     is the masthead's one-line professional summary, a reading line. */
+  font-size: var(--t-read);
 }
 
 .cv-contact {
@@ -8024,7 +8203,9 @@ a.home-video-label:focus-visible {
 
 .archive-entry-copy h3 {
   margin-bottom: 6px;
-  font-size: clamp(24px, 2.4vw, 31px);
+  /* Was clamp(24px, 2.4vw, 31px), an unnamed size wedged between --d-card
+     and --d-band (2026-08-24 typography audit). */
+  font-size: var(--d-card);
 }
 
 .archive-meta {
@@ -8222,7 +8403,9 @@ a.home-video-label:focus-visible {
 
 .archive-detail h1 {
   margin: 0 0 20px;
-  font-size: clamp(32px, 4vw, 48px);
+  /* Was clamp(32px, 4vw, 48px) — see the utility-page note on
+     .contact-top h1 (2026-08-24). */
+  font-size: var(--d-section);
 }
 
 .archive-detail-body {
@@ -8389,7 +8572,12 @@ a.home-video-label:focus-visible {
 .contact-top h1 {
   max-width: 17ch;
   margin-bottom: 24px;
-  font-size: clamp(40px, 5.4vw, 68px);
+  /* Was a private clamp(40px, 5.4vw, 68px). Utility-page titles now share
+     one size (2026-08-24 typography audit): Contact, the resume masthead,
+     archive detail and Other Work each had their own h1 scale (68/58/48/40
+     max), an accidental hierarchy between peer pages. --d-section for all
+     four; only a homepage hero earns --d-hero. */
+  font-size: var(--d-section);
   line-height: 1.05;
 }
 
@@ -9063,6 +9251,40 @@ a.home-video-label:focus-visible {
   margin-bottom: 0;
 }
 
+/* Case-study image inside a canned chat answer (2026-08-24, the LukeW
+   "visual questions" idea: the answer should show the work, not describe
+   it). The whole figure is one link into the case study, so it also acts
+   as the retrieval path out of the chat. */
+.aa-figure {
+  display: block;
+  margin-top: 12px;
+  border: 1px solid var(--line);
+  background: var(--paper-deep);
+}
+
+.aa-figure img {
+  display: block;
+  width: 100%;
+  aspect-ratio: 16 / 9;
+  object-fit: cover;
+}
+
+.aa-figure span {
+  display: block;
+  padding: 9px 12px;
+  border-top: 1px solid var(--line);
+  color: var(--blue);
+  font-family: var(--sans);
+  font-size: var(--t-label);
+  font-weight: 600;
+  letter-spacing: var(--track-wide);
+  text-transform: uppercase;
+}
+
+.aa-figure:hover span {
+  text-decoration: underline;
+}
+
 .aa-typing {
   display: flex;
   align-items: center;
@@ -9326,7 +9548,11 @@ a.home-video-label:focus-visible {
 
 .stat-band strong {
   font-family: var(--sans);
-  font-size: clamp(3.25rem, 9vw, 5.5rem);
+  /* Was clamp(3.25rem, 9vw, 5.5rem) — the one rem-based size in a file
+     that speaks px everywhere else. Same rendered range (52–88px), stated
+     in the file's own dialect (2026-08-24 typography audit). Still off the
+     display scale on purpose: data numerals are a documented exception. */
+  font-size: clamp(52px, 9vw, 88px);
   font-weight: 700;
   line-height: 0.85;
   color: var(--ink);
@@ -11073,16 +11299,8 @@ html[data-anna-razor="bar"] body {
   }
 }
 
-/* Mobile intro spacing. The .persona-band / non-compact switch-group rules
-   that opened this block left with V5 (the switcher lives in the stock
-   is-docked header now, which carries its own mobile treatment); only the
-   intro's own padding remains. */
-@media (max-width: 720px) {
-  .persona-intro {
-    padding-top: 20px;
-    padding-bottom: 44px;
-  }
-}
+/* The mobile .persona-intro spacing block that lived here left 2026-08-24
+   with the intro band itself — the explainer is inside .persona-band now. */
 
 /* Send and dismiss sit as one control group on phones (2026-08-19, Anna:
    "move the arrow closer to the x on mobile"). */

@@ -14,7 +14,7 @@ export const metadata: Metadata = {
   // Note that a title cannot switch by persona, since it is rendered on the
   // server before a persona exists. Recruiters see the studio name too. That
   // is a deliberate trade: being findable by the name clients engage is worth
-  // more than keeping the studio out of one persona's browser tab.
+  // more than keeping the studio out of one persona’s browser tab.
   title: "Anna Rovedo · Principal Experience Designer · Paper Pixel",
   description:
     "Anna Rovedo, Principal Experience Designer and founder of Paper Pixel. UX, AI experiences, search and discovery, design systems, brand and campaign work.",

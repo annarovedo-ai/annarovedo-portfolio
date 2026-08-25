@@ -87,7 +87,7 @@ export async function logTurn(args: LogArgs): Promise<void> {
     });
   } catch (err) {
     // D1 not bound yet, table missing, or a transient write failure. The
-    // visitor's answer has already been sent, so there is nothing to recover.
+    // visitor’s answer has already been sent, so there is nothing to recover.
     console.error("chat log write failed", err);
   }
 }

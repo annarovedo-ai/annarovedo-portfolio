@@ -13,7 +13,7 @@ import SiteFooter from "../SiteFooter";
  *   Web3Forms  NEXT_PUBLIC_FORM_ACCESS_KEY=<your access key>
  *   Formspree  NEXT_PUBLIC_FORM_ENDPOINT=https://formspree.io/f/<id>
  *
- * With neither configured the form falls back to opening the visitor's mail
+ * With neither configured the form falls back to opening the visitor’s mail
  * client with the message pre-filled, so it never silently does nothing.
  */
 const ACCESS_KEY = import.meta.env.NEXT_PUBLIC_FORM_ACCESS_KEY;
@@ -82,7 +82,7 @@ export default function ContactBody() {
     };
 
     if (!ENDPOINT) {
-      // No form service configured: hand off to the visitor's mail client.
+      // No form service configured: hand off to the visitor’s mail client.
       const body = c.fields
         .map((f) => `${f.label}\n${values[f.label] ?? ""}`)
         .join("\n\n");
