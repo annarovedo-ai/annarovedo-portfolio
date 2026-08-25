@@ -40,8 +40,22 @@ const heroPortrait: Record<PersonaId, { src: string; srcSmall: string; alt: stri
  * preview grid. The flagship pair (Concierge / Journey Orchestration) and the
  * supporting four keep their own richer treatment on /work, where each gets
  * the full CaseCard from ./CaseCard.tsx; here they are six equal tiles.
+ *
+ * Kmart is lifted to second, directly after the first IBM study (2026-08-24,
+ * Anna: "put kmart after the first IBM project"). The grid opened with two
+ * IBM AI studies back to back, so the first two tiles a scanner saw made the
+ * same argument twice; Kmart in slot two makes the range visible before
+ * anyone scrolls. This reordering is the HOMEPAGE'S ONLY: /work still renders
+ * the Concierge pair adjacent, where the "part one / part two" treatment
+ * depends on them touching.
  */
-const allCaseStudies: CaseStudy[] = [...flagshipCaseStudies, ...supportingCaseStudies];
+const kmart = supportingCaseStudies.find((cs) => cs.href === "/kmart");
+const allCaseStudies: CaseStudy[] = [
+  flagshipCaseStudies[0],
+  ...(kmart ? [kmart] : []),
+  ...flagshipCaseStudies.slice(1),
+  ...supportingCaseStudies.filter((cs) => cs.href !== "/kmart"),
+];
 
 /**
  * The homepage’s small case-study tile (2026-08-20): the "6 big tiles" moved
