@@ -241,16 +241,11 @@ function ClientHomeBody({ c }: { c: HomeContent }) {
             paragraphs, until 2026-08-20 (Anna: "make this one hero section.
             edit it down for impact"). One line now; the h1 already carries
             the headline. */}
-        {/* The "more than twenty years... deliberately small" paragraph is
-            gone (Anna, 13 August: redundant). The new hero subtext already
-            says twenty years, agency rates, and direct engagement, so this
-            band repeated the hero in smaller type two scrolls later. The
-            pull quote stays and owns the band. */}
-        <div className="home-about client-about" data-anna-prompt="Who would lead the work?">
-          <blockquote className="home-pullquote">
-            Culture is always the brief underneath the brief.
-          </blockquote>
-        </div>
+        {/* The whole about band is gone. First the paragraph (redundant with
+            the new hero subtext), then the pull quote too (Anna, 13 August).
+            The client hero now hands straight to the ways-to-work points.
+            The quote still lives in the chat grounding, where it belongs as
+            something she says rather than something the page declaims. */}
       </section>
 
       <section
