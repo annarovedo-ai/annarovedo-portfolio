@@ -467,7 +467,11 @@ export const homeContent: Record<PersonaId, HomeContent> = {
     // Publicis Sapient, all in resumeData.ts. Nike is deliberately absent:
     // no agency attribution is documented for it, and one wrong name sinks
     // the whole claim.
-    headline: ["The designer agencies staffed on IBM, Bloomberg, and State Street. Without the agency fees.", ""],
+    // 91 characters of display serif set nine lines deep, which read as a wall
+    // (Anna, 13 August). Six words now; the client names moved down into the
+    // subtext where body type can afford them, and the proof cards beside the
+    // hero carry the same evidence visually anyway.
+    headline: ["Agency talent, without the agency fees.", ""],
     // THE SUBTEXT DOES NOT SELL. That is the whole rule here, and it took
     // four tries and one good catch from Anna to arrive at it.
     //
@@ -521,7 +525,7 @@ export const homeContent: Record<PersonaId, HomeContent> = {
     // claiming is continuity and judgment, so this line sells seniority and
     // range and lets the price question arrive unanchored.
     subtext:
-      "Twenty years of product, brand, and campaign work, most of it billed to enterprise clients at agency rates. Paper Pixel is the direct engagement: the same senior direction, from the first question through implementation.",
+      "Twenty years of product, brand, and campaign work, billed to IBM, Bloomberg, and State Street at agency rates. Paper Pixel is the direct engagement: the same senior direction, from the first question through implementation.",
     conciergeHeading: "Start with the messy brief.",
     conciergeBody:
       "Describe what you’re trying to launch, fix, or figure out. The guide will surface relevant work, explain how Anna would approach the problem, and point out the questions worth answering first.",
