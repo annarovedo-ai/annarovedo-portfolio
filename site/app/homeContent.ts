@@ -269,6 +269,36 @@ export const supportingCaseStudies: CaseStudy[] = [
 ];
 
 /**
+ * THE SIX, IN ONE ORDER, FOR BOTH PAGES (2026-08-24, Anna: "lay out case
+ * study cards same as home").
+ *
+ * The homepage grid and /work had drifted into different orders and
+ * different card sizes, so the same six studies arrived in two different
+ * shapes depending on the route. One list now, three across on both pages:
+ *
+ *   row 1   Concierge (part one) · Kmart · State Street
+ *   row 2   Journey Orchestration (part two) · Search · Nike
+ *
+ * Two constraints are baked into that sequence. Kmart sits second so the
+ * range shows before anyone scrolls, instead of two IBM AI studies opening
+ * back to back ("put kmart after the first IBM project"). And Journey
+ * Orchestration lands at position four, directly beneath the Concierge in
+ * a three-column grid, so part two reads as following part one without the
+ * joined-panel treatment that made reviewers think two cards had been
+ * crammed together ("break up the part one and part 2, put part two
+ * below"). Changing the column count breaks that second relationship:
+ * check the grid before reordering.
+ */
+export const orderedCaseStudies: CaseStudy[] = [
+  flagshipCaseStudies[0],
+  supportingCaseStudies[1],
+  supportingCaseStudies[0],
+  flagshipCaseStudies[1],
+  supportingCaseStudies[2],
+  supportingCaseStudies[3],
+];
+
+/**
  * Client logo strip. Every brand here is documented in docs/facts.md, either as
  * a named engagement or as a client of a named agency engagement. Order runs
  * from the enterprise product work outward to the earlier agency brands, so the
@@ -427,7 +457,17 @@ export const homeContent: Record<PersonaId, HomeContent> = {
     // point: the buyer should know which expensive problem to hire her for,
     // and that problem is direction. Breadth survives in the Services page
     // and the case grid, where it is evidence instead of a claim.
-    headline: ["Principal product design for complex work that needs direction.", ""],
+    // "Principal product design for complex work that needs direction" was a
+    // category label, not an argument: it named her role, gestured at the
+    // client's problem, and dropped the campaign half of the practice
+    // entirely. Anna's direction, 13 August: the pitch is top-shelf talent
+    // without the agency fees. The honest version of that claim is the
+    // documented one, so the headline names the placements. IBM through VSA
+    // Partners and Gather, Bloomberg through Isobar, State Street through
+    // Publicis Sapient, all in resumeData.ts. Nike is deliberately absent:
+    // no agency attribution is documented for it, and one wrong name sinks
+    // the whole claim.
+    headline: ["The designer agencies staffed on IBM, Bloomberg, and State Street. Without the agency fees.", ""],
     // THE SUBTEXT DOES NOT SELL. That is the whole rule here, and it took
     // four tries and one good catch from Anna to arrive at it.
     //
@@ -481,7 +521,7 @@ export const homeContent: Record<PersonaId, HomeContent> = {
     // claiming is continuity and judgment, so this line sells seniority and
     // range and lets the price question arrive unanchored.
     subtext:
-      "Anna Rovedo brings twenty years across product teams and agencies to important products, systems, and launches, from early direction through implementation.",
+      "Twenty years of product, brand, and campaign work, most of it billed to enterprise clients at agency rates. Paper Pixel is the direct engagement: the same senior direction, from the first question through implementation.",
     conciergeHeading: "Start with the messy brief.",
     conciergeBody:
       "Describe what you’re trying to launch, fix, or figure out. The guide will surface relevant work, explain how Anna would approach the problem, and point out the questions worth answering first.",
