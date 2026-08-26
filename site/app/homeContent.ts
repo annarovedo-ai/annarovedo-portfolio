@@ -524,8 +524,12 @@ export const homeContent: Record<PersonaId, HomeContent> = {
     // superlative the roles and tenure make unnecessary. The advantage worth
     // claiming is continuity and judgment, so this line sells seniority and
     // range and lets the price question arrive unanchored.
+    // The headline makes the fee argument; the subtext was making it a second
+    // time ("billed at agency rates", "the direct engagement"), which turned
+    // the whole hero into a pitch about money. One nod ("keeps it direct"),
+    // then substance: the range and the client names as plain evidence.
     subtext:
-      "Twenty years of product, brand, and campaign work, billed to IBM, Bloomberg, and State Street at agency rates. Paper Pixel is the direct engagement: the same senior direction, from the first question through implementation.",
+      "Twenty years of product, brand, and campaign work for IBM, Bloomberg, and State Street. Paper Pixel keeps it direct: senior direction from the first question through implementation.",
     conciergeHeading: "Start with the messy brief.",
     conciergeBody:
       "Describe what you’re trying to launch, fix, or figure out. The guide will surface relevant work, explain how Anna would approach the problem, and point out the questions worth answering first.",
