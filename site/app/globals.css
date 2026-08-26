@@ -5411,6 +5411,13 @@ a.home-video-label:focus-visible {
    seam between the two cards rather than reading as two unrelated tiles. */
 .home-flagship {
   margin-bottom: 48px;
+  /* Sized to exactly two of the three columns below it (2026-08-24, Anna:
+     "make all the case study cards smaller"): the pair used to span the
+     full shell, so each flagship card was ~590px against the row's ~380px
+     and the two halves of one page disagreed about how big a case study
+     card is. calc keeps them equal at every width instead of hardcoding a
+     desktop number. */
+  max-width: calc((100% - 40px) / 3 * 2);
 }
 
 .home-flagship-label {
@@ -5494,10 +5501,16 @@ a.home-video-label:focus-visible {
    The old ≤1100px media query that collapsed 4 to 2 is gone rather than left
    restating the same value — this file has already had three duplicate-rule
    incidents today, one of which shipped a live bug. */
+/* Three across, not two (2026-08-24, Anna: "the case study tiles aren't so
+   huge"). Two cards spanning a 1180px shell made each one ~570px wide with
+   a 320px image, so a single supporting study filled most of a laptop
+   viewport and the row of four ran two screens deep. Three is still wide
+   enough for the 16:9 image to read and cuts the section's height by
+   about a third. */
 .home-case-row {
   display: grid;
-  grid-template-columns: repeat(2, 1fr);
-  gap: 24px;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 20px;
   margin-bottom: 48px;
 }
 
@@ -5541,7 +5554,9 @@ a.home-video-label:focus-visible {
   flex-direction: column;
   align-items: flex-start;
   flex: 1;
-  padding: 26px 28px 28px;
+  /* Trimmed from 26/28/28 with the three-across change: the old padding was
+     sized for a much wider card. */
+  padding: 20px 22px 22px;
 }
 
 .home-case-tags {
@@ -5595,14 +5610,17 @@ a.home-video-label:focus-visible {
 }
 
 .home-case h3 {
-  margin-bottom: 10px;
-  font-size: var(--d-card);
+  margin-bottom: 8px;
+  /* --t-h3 rather than --d-card: card-scale display type was set for a
+     half-width card and shouted at a third-width one (2026-08-24). */
+  font-size: var(--t-h3);
 }
 
 .home-case p {
-  margin: 0 0 20px;
+  margin: 0 0 16px;
   color: var(--muted);
-  font-size: var(--t-small);
+  font-size: var(--t-fine);
+  line-height: var(--lh-fine);
 }
 
 /* The homepage's six-tile preview (2026-08-20): a smaller, uniform stand-in
@@ -5959,6 +5977,11 @@ a.home-video-label:focus-visible {
 .client-home-hero h1 {
   max-width: 10.5ch;
   margin-bottom: 22px;
+  /* A notch of air over the global 0.98. At this scale the descenders of one
+     line all but touch the caps of the next ("Agency" into "without"), and a
+     three-line headline needs to breathe. 1.04 is the smallest step that
+     separates them; anything more starts to look leaded out. */
+  line-height: 1.04;
   /* DELIBERATELY one notch under --d-hero (52–84): this headline is nine
      words against the recruiter's six, and at full hero scale it wraps to
      four lines inside its 10.5ch column. Kept as a documented exception in
@@ -6429,6 +6452,14 @@ a.home-video-label:focus-visible {
 
   .client-guide .aa-inline {
     height: min(680px, 80vh);
+  }
+}
+
+/* Three across down to 1100px, then two, then one at 900 (below). Added
+   with the smaller /work cards, 2026-08-24. */
+@media (max-width: 1100px) and (min-width: 901px) {
+  .home-case-row {
+    grid-template-columns: repeat(2, 1fr);
   }
 }
 
