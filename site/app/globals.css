@@ -7568,6 +7568,11 @@ blockquote {
   }
 }
 
+/* READING TIER LIFTED 14 -> 16 (Anna, 26 August): the client's resume page
+   is the services layout and reads at --t-base and --t-read, while this sheet
+   ran its bullets, role lines, earlier roles and expertise items at --t-small.
+   Same page, different persona, visibly smaller type. Labels and eyebrows
+   stay at --t-label: they are furniture, not reading. */
 .cv-rule-label {
   margin: 0 0 18px;
   color: var(--muted);
@@ -7622,7 +7627,7 @@ blockquote {
 .cv-role-title {
   margin: 0;
   color: var(--body);
-  font-size: var(--t-small);
+  font-size: var(--t-base);
 }
 
 .cv-role-via {
@@ -7630,7 +7635,7 @@ blockquote {
   color: var(--muted);
   font-family: var(--sans);
   font-style: italic;
-  font-size: var(--t-small);
+  font-size: var(--t-base);
 }
 
 .cv-roles ul {
@@ -7644,7 +7649,7 @@ blockquote {
   max-width: 84ch;
   padding: 4px 0 4px 18px;
   color: var(--muted);
-  font-size: var(--t-small);
+  font-size: var(--t-base);
 }
 
 .cv-roles ul li::before {
@@ -7684,7 +7689,7 @@ blockquote {
 .cv-education p {
   margin: 7px 0 0;
   color: var(--muted);
-  font-size: var(--t-small);
+  font-size: var(--t-base);
 }
 
 @media (max-width: 800px) {
@@ -7729,7 +7734,7 @@ blockquote {
 .cv-expertise-group li {
   padding: 3px 0;
   color: var(--body);
-  font-size: var(--t-small);
+  font-size: var(--t-base);
 }
 
 @media (max-width: 700px) {
