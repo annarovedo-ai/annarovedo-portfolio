@@ -7,9 +7,8 @@ import type { CaseStudy, HomeContent } from "./homeContent";
 import {
   caseFor,
   clients,
-  flagshipCaseStudies,
   homeContent,
-  supportingCaseStudies,
+  orderedCaseStudies,
 } from "./homeContent";
 import { engagements } from "./engagements";
 import { HomeImage } from "./CaseCard";
@@ -36,26 +35,13 @@ const heroPortrait: Record<PersonaId, { src: string; srcSmall: string; alt: stri
 };
 
 /**
- * The six case studies, flattened into one list for the homepage’s small
- * preview grid. The flagship pair (Concierge / Journey Orchestration) and the
- * supporting four keep their own richer treatment on /work, where each gets
- * the full CaseCard from ./CaseCard.tsx; here they are six equal tiles.
- *
- * Kmart is lifted to second, directly after the first IBM study (2026-08-24,
- * Anna: "put kmart after the first IBM project"). The grid opened with two
- * IBM AI studies back to back, so the first two tiles a scanner saw made the
- * same argument twice; Kmart in slot two makes the range visible before
- * anyone scrolls. This reordering is the HOMEPAGE'S ONLY: /work still renders
- * the Concierge pair adjacent, where the "part one / part two" treatment
- * depends on them touching.
+ * The six, in the one order both pages use — see orderedCaseStudies in
+ * homeContent.ts for why the sequence is what it is. The homepage renders
+ * them as compact tiles (no body copy) and /work as full CaseCards, but the
+ * order and the three-column grid are now identical (2026-08-24, Anna: "lay
+ * out case study cards same as home").
  */
-const kmart = supportingCaseStudies.find((cs) => cs.href === "/kmart");
-const allCaseStudies: CaseStudy[] = [
-  flagshipCaseStudies[0],
-  ...(kmart ? [kmart] : []),
-  ...flagshipCaseStudies.slice(1),
-  ...supportingCaseStudies.filter((cs) => cs.href !== "/kmart"),
-];
+const allCaseStudies: CaseStudy[] = orderedCaseStudies;
 
 /**
  * The homepage’s small case-study tile (2026-08-20): the "6 big tiles" moved
@@ -158,10 +144,17 @@ const clientHeroProof = [
     image: "/case-study/thumbs/state-street.jpg",
   },
   {
-    href: "/search",
+    // Was IBM Global Search on a search-results screenshot, which read as a
+    // grey page of links at thumbnail size and made the middle of the trio
+    // the weakest image (2026-08-24, Anna: "change the product one to the
+    // chat in the hero"). The Concierge card hero is the same asset the
+    // homepage and /work already use for this study: a real product shot
+    // with the AI conversation visible, and AI is the thing a client is
+    // most likely to be shopping for.
+    href: "/concierge",
     label: "Product",
-    title: "IBM Global Search",
-    image: "/case-study/thumbs/search.jpg",
+    title: "IBM Chat Concierge",
+    image: "/case-study/concierge/concierge-card-hero.png",
   },
   {
     href: "/kmart",
@@ -248,19 +241,15 @@ function ClientHomeBody({ c }: { c: HomeContent }) {
             paragraphs, until 2026-08-20 (Anna: "make this one hero section.
             edit it down for impact"). One line now; the h1 already carries
             the headline. */}
+        {/* The "more than twenty years... deliberately small" paragraph is
+            gone (Anna, 13 August: redundant). The new hero subtext already
+            says twenty years, agency rates, and direct engagement, so this
+            band repeated the hero in smaller type two scrolls later. The
+            pull quote stays and owns the band. */}
         <div className="home-about client-about" data-anna-prompt="Who would lead the work?">
-          <div className="client-about-grid">
-            <div className="home-about-copy">
-              <p>
-                More than twenty years across product teams and agencies, from IBM and
-                State Street to McDonald&rsquo;s and Kmart. Paper Pixel stays deliberately
-                small, so Anna leads the direction herself.
-              </p>
-            </div>
-            <blockquote className="home-pullquote">
-              Culture is always the brief underneath the brief.
-            </blockquote>
-          </div>
+          <blockquote className="home-pullquote">
+            Culture is always the brief underneath the brief.
+          </blockquote>
         </div>
       </section>
 
