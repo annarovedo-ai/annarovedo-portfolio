@@ -38,6 +38,20 @@ export default function SiteFooter({
   const store = useSyncExternalStore(subscribe, getSnapshot, getServerSnapshot);
   const persona = personaOverride ?? store;
 
+  /* THE FOOTER RENDERS NOTHING (Anna, 26 August: "remove this", pointing at
+     the whole of it — lockup, bio, and the Navigation column, which was all
+     the footer had left after the copyright band went on 7 August).
+
+     Implemented as a null render rather than deleting the component and its
+     call sites, deliberately: another session holds uncommitted edits in
+     several of the pages that render <SiteFooter />, and touching those files
+     now would entangle this one-line decision with half-finished work that is
+     not mine. One file, one commit, fully reversible. When the tree is quiet,
+     the call sites and the .site-footer CSS can be excised properly. */
+  void persona;
+  return null;
+
+  // eslint-disable-next-line no-unreachable
   return (
     <footer className="site-footer">
       <div className="shell site-footer-inner">
