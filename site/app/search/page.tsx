@@ -369,7 +369,7 @@ export default function SearchCaseStudy() {
             <div className="search-launch-heading">
               <h2>The MVP launched. Production showed what came next.</h2>
               <p className="lead">
-                After a dark launch at a dedicated v3 URL, the new result experience began moving to US-English traffic—and revealed the quality gaps only real use could expose.{" "}
+                After a dark launch at a dedicated v3 URL, the new result experience began moving to US-English traffic, and revealed the quality gaps only real use could expose.{" "}
                 <a
                   className="search-launch-live"
                   href="https://www.ibm.com/search"

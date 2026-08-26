@@ -90,7 +90,7 @@ export const contactContent: Record<PersonaId, ContactContent> = {
     // are FOR, so the headline reads as a bar to clear rather than a
     // waiting room. Keeps "bring it in whatever shape it’s in" — the most
     // visitor-friendly line on the page — as the closer.
-    deck: "The fit: product, brand, or campaign work that needs direction — a complex enterprise system, or a new idea that needs a clear path to market. Bring it in whatever shape it’s in.",
+    deck: "The fit: product, brand, or campaign work that needs direction, whether a complex enterprise system or a new idea that needs a clear path to market. Bring it in whatever shape it’s in.",
     fields: [
       { label: "What’s your name?", placeholder: "Jane Doe" },
       { label: "Where should I reply?", placeholder: "jane@yourstartup.io" },
