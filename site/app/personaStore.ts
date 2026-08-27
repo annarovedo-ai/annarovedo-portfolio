@@ -104,29 +104,18 @@ export function getServerSnapshot(): PersonaId {
  * reduced-motion kill live in globals.css on ::view-transition-*(root).
  */
 export function setPersona(id: PersonaId, opts?: { transition?: boolean }) {
-  const apply = () => {
-    applyPersona(id);
-  };
-  if (
-    opts?.transition &&
-    id !== current &&
-    typeof document !== "undefined" &&
-    !window.matchMedia("(prefers-reduced-motion: reduce)").matches
-  ) {
-    const doc = document as Document & {
-      startViewTransition?: (cb: () => Promise<void> | void) => unknown;
-    };
-    if (doc.startViewTransition) {
-      doc.startViewTransition(() => {
-        apply();
-        return new Promise<void>((resolve) => {
-          requestAnimationFrame(() => requestAnimationFrame(() => resolve()));
-        });
-      });
-      return;
-    }
-  }
-  apply();
+  /* THE CROSSFADE IS DISABLED (hotfix, 2026-08-27 evening, Anna: "i can't
+     even click on buttons... in particular the persona switcher"). The
+     View Transition wrapper that lived here froze input while the browser
+     captured the page, and its double-rAF completion signal starved while
+     rendering was suspended inside the capture, so a pill click could
+     lock the whole page until the API's internal timeout. Every switch is
+     immediate again. If a crossfade returns, it must not gate completion
+     on animation frames, and it must be proven on the heaviest case-study
+     page before it ships. The opts parameter stays so call sites do not
+     churn. */
+  void opts;
+  applyPersona(id);
 }
 
 function applyPersona(id: PersonaId) {
