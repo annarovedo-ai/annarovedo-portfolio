@@ -71,7 +71,45 @@ export function getServerSnapshot(): PersonaId {
   return "recruiter";
 }
 
-export function setPersona(id: PersonaId) {
+/**
+ * The persona-change crossfade (2026-08-27, clarity pass). Only a USER
+ * selection animates: entrance routes (/studio's StudioEntry) and initial
+ * sync call setPersona without options and stay instant, so a page's first
+ * paint never plays a transition. Feature-detected View Transition API,
+ * nothing else: browsers without it (and anyone with reduced motion) get
+ * the same immediate swap this function always did. The callback returns a
+ * double-rAF promise so the API captures the page AFTER React has
+ * re-rendered the new persona; without it the "new" snapshot can be the
+ * old frame and the fade shows the wrong persona. Duration and the
+ * reduced-motion kill live in globals.css on ::view-transition-*(root).
+ */
+export function setPersona(id: PersonaId, opts?: { transition?: boolean }) {
+  const apply = () => {
+    applyPersona(id);
+  };
+  if (
+    opts?.transition &&
+    id !== current &&
+    typeof document !== "undefined" &&
+    !window.matchMedia("(prefers-reduced-motion: reduce)").matches
+  ) {
+    const doc = document as Document & {
+      startViewTransition?: (cb: () => Promise<void> | void) => unknown;
+    };
+    if (doc.startViewTransition) {
+      doc.startViewTransition(() => {
+        apply();
+        return new Promise<void>((resolve) => {
+          requestAnimationFrame(() => requestAnimationFrame(() => resolve()));
+        });
+      });
+      return;
+    }
+  }
+  apply();
+}
+
+function applyPersona(id: PersonaId) {
   current = id;
   try {
     if (id === "recruiter") {

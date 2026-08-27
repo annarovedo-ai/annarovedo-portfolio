@@ -1,6 +1,6 @@
 "use client";
 
-import { useEffect, useRef, useSyncExternalStore } from "react";
+import { useEffect, useRef, useState, useSyncExternalStore } from "react";
 import {
   getServerSnapshot,
   getSnapshot,
@@ -59,8 +59,22 @@ export default function PersonaSwitch({
   const persona = entryPersona ?? store;
   const buttons = useRef<Array<HTMLButtonElement | null>>([]);
 
+  // Announced to screen readers after a USER selection only; empty on
+  // mount so page load stays silent. role="status" is an implicit polite
+  // live region, and the span is visually hidden (.sr-only), so this costs
+  // no vertical space (2026-08-27, clarity pass).
+  const [announcement, setAnnouncement] = useState("");
+
   function choose(id: PersonaId) {
-    setPersona(id);
+    // transition: true is what makes a click crossfade; programmatic syncs
+    // (entrance routes, initial load) call setPersona without it and stay
+    // instant. On an entrance route (/studio) the selection also navigates
+    // (PersonaChrome's onSelect pushes "/"), and a crossfade racing a
+    // navigation reads as two changes, so entrances skip the transition.
+    // See the note on setPersona in personaStore.ts.
+    setPersona(id, { transition: !entryPersona });
+    const chosen = personas.find((p) => p.id === id);
+    if (chosen) setAnnouncement(`Viewing this page as ${chosen.label}.`);
     onSelect?.(id);
   }
 
@@ -121,6 +135,9 @@ export default function PersonaSwitch({
           </button>
         ))}
       </div>
+      <span className="sr-only" role="status">
+        {announcement}
+      </span>
     </div>
   );
 }

@@ -34,6 +34,10 @@ export default function SiteNav({
     "home" | "work" | "resume" | "contact" | null
   >(null);
   useEffect(() => {
+    // Deferred a frame: the react-hooks/set-state-in-effect rule (correctly)
+    // dislikes synchronous setState in an effect, and nothing here needs the
+    // underline on the very first frame.
+    const raf = requestAnimationFrame(() => {
     const path = window.location.pathname;
     const workFamily = [
       "/work",
@@ -54,6 +58,8 @@ export default function SiteNav({
     } else if (path === "/contact") {
       setSection("contact");
     }
+    });
+    return () => cancelAnimationFrame(raf);
   }, []);
   const store = useSyncExternalStore(subscribe, getSnapshot, getServerSnapshot);
   // Still resolved for ResumeNavLink below, which does vary by persona
