@@ -113,7 +113,7 @@ export default function ContactBody() {
       <SiteHeader />
 
       <article id="top">
-        <section className="contact-top shell">
+        <section className="contact-top shell" data-anna-prompt="What happens after I send this?">
           <p className="contact-eyebrow">
             {c.eyebrow}
             <span aria-hidden="true" />
@@ -122,7 +122,7 @@ export default function ContactBody() {
           <p className="contact-deck">{c.deck}</p>
         </section>
 
-        <section className="contact-grid shell">
+        <section className="contact-grid shell" data-anna-prompt="What should I include in the message?" data-anna-prompt-client="What makes a messy brief useful?">
           {status === "success" ? (
             <div className="contact-success" role="status">
               <h2>Thank you. That has been sent.</h2>

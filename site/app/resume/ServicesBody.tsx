@@ -95,7 +95,7 @@ const whatYouGet = [
 export default function ServicesBody() {
   return (
     <article id="top">
-      <section className="svc-hero shell">
+      <section className="svc-hero shell" data-anna-prompt-client="Where should this project start?">
         <p className="eyebrow">Independent creative and product studio</p>
         {/* Was "One senior partner. The right team for the whole thing." — two
             noun phrases with a full stop between them, which is the tagline
@@ -138,7 +138,7 @@ export default function ServicesBody() {
           actually be like". Moved directly below the hero 2026-08-18,
           external review: the engagements are the clearest commercial idea
           on the site, so they lead. Capabilities follow as evidence. */}
-      <section className="svc-block" id="engagements">
+      <section className="svc-block" id="engagements" data-anna-prompt-client="Which engagement fits a first project?">
         <div className="shell">
           <p className="eyebrow">Ways to work together</p>
           <div className="svc-engagements">
@@ -158,7 +158,7 @@ export default function ServicesBody() {
         </div>
       </section>
 
-      <section className="svc-block">
+      <section className="svc-block" data-anna-prompt-client="Can you do the campaign and the product?">
         <div className="shell">
           <p className="eyebrow">What gets made</p>
           <div className="svc-capabilities">
@@ -193,7 +193,7 @@ export default function ServicesBody() {
         </div>
       </section>
 
-      <section className="svc-block">
+      <section className="svc-block" data-anna-prompt-client="How soon can I see something real?">
         <div className="shell">
           <p className="eyebrow">From first question to working product</p>
           <ol className="svc-process">
@@ -232,7 +232,7 @@ export default function ServicesBody() {
           them, and it signals she knows whose money is in the room. No past
           startup or VC clients are claimed anywhere in this band, because
           none are documented; the claim is fit, not history. */}
-      <section className="svc-block">
+      <section className="svc-block" data-anna-prompt-client="How do you work with funds and their portfolio companies?">
         <div className="shell">
           <p className="eyebrow">For venture funds, portfolios, and small brands</p>
           <div className="svc-get">

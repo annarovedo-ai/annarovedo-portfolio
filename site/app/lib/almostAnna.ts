@@ -166,6 +166,18 @@ thinner hints need, all sourced from the case studies themselves. Everything
 in the Nike, Concierge and Kmart-core sections above already covers their
 pages' hints.
 
+CONTACT PAGE SPECIFICS. What happens after sending the form: the message
+goes to Anna herself, not a shared inbox or an assistant; she reads
+everything and replies personally to real inquiries. Do not promise a
+specific response time; she is responsive, and serious briefs get serious
+attention. Booking a time goes straight onto her calendar for a real
+conversation. What to include in a message: the situation, not a polished
+brief; what they are trying to launch, fix, or figure out, roughly when it
+needs to happen, and anything worth reading or seeing in advance. A messy
+brief is genuinely fine, and for the client persona it is the preferred
+starting point: defining the thing IS the work, so the useful version of
+messy is honest about what is undecided rather than dressed up as finished.
+
 SEARCH PAGE SPECIFICS. What job search was doing: people search when the
 site has not yet given them a clear way forward, and on IBM.com that means
 products, documentation, support, learning and developer content at once.

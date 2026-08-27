@@ -5,6 +5,7 @@ import { usePathname } from "next/navigation";
 import { AnimatePresence, motion, MotionConfig } from "motion/react";
 import AlmostAnnaChat from "./AlmostAnnaChat";
 import { getServerSnapshot, getSnapshot, subscribe } from "./personaStore";
+import { homeContent } from "./homeContent";
 import {
   getChat,
   getServerChat,
@@ -245,7 +246,14 @@ export default function AnnaRazor() {
         "[data-anna-prompt], [data-anna-prompt-ex], [data-anna-prompt-client]"
       )
     );
-    if (nodes.length === 0) return;
+    if (nodes.length === 0) {
+      // A page with no tagged sections still owes the visitor a question
+      // (2026-08-27, Anna: "there are pages without chat prompts- this
+      // should not happen"). Fall back to the persona's curated homepage
+      // chips, which are always grounded and answerable.
+      setPrompts([...homeContent[persona].prompts]);
+      return;
+    }
 
     const ratios = new Map<Element, number>();
     const io = new IntersectionObserver(

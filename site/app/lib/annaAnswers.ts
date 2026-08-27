@@ -303,6 +303,37 @@ export const cannedAnswers: Record<PersonaId, CannedAnswer[]> = {
  * runtime imports (the node test runner loads it directly).
  */
 export const sharedHintAnswers: CannedAnswer[] = [
+  // ---- Services page hints (2026-08-27 prompt coverage pass). The page
+  //      renders for the Client persona only; these live in the shared bank
+  //      because the client chip bank is locked to its four printed chips
+  //      (release test 16), and the shared fallback serves any persona. ----
+  {
+    question: "What makes a messy brief useful?",
+    answer:
+      "Honesty about what\u2019s undecided. A messy brief that says \u201cwe don\u2019t know if this is a product or a campaign yet\u201d is more useful than a tidy one that hides the question.\n\nDefining the thing is the work. Bring the real state of it and the first conversation starts where it should.",
+  },
+  {
+    question: "Which engagement fits a first project?",
+    answer:
+      "Usually the Product Direction Sprint: two to three weeks that turn an important but fuzzy initiative into a direction you can evaluate and act on. It\u2019s the smallest honest test of working together.\n\nIf you already know the scope and need it carried through, the six-to-twelve-week Experience System or Launch is the shape. And if what you\u2019re missing is senior design leadership inside the team, that\u2019s the embedded role.",
+  },
+  {
+    question: "How do you work with funds and their portfolio companies?",
+    answer:
+      "Two ways. Inside a portfolio company: a direction sprint before committing a build, an embedded design lead through the ambiguous stretch, or a brand and product taken to launch, senior direction without an agency retainer or a full-time hire.\n\nFor the fund itself: identity, website, and story work, how the firm reads to founders and LPs. Twenty years of enterprise judgment, delivered directly, and I build with AI, so a first version shows up in weeks, not a deck.",
+  },
+  // ---- Contact page (2026-08-27, prompt coverage pass: no page may be
+  //      hintless, and every hint answers instantly) ----
+  {
+    question: "What happens after I send this?",
+    answer:
+      "It goes to Anna herself, not a shared inbox. She reads everything and replies personally to real inquiries.\n\nIf you booked a time instead, that lands straight on her calendar and you talk it through live. Either way a person answers, not a pipeline.",
+  },
+  {
+    question: "What should I include in the message?",
+    answer:
+      "The situation, not a polished brief. What you\u2019re trying to launch, fix, or figure out, roughly when it needs to happen, and anything worth reading or seeing in advance.\n\nIf parts are still undecided, say so. That\u2019s useful information, not a weakness in the message.",
+  },
   // ---- Homepage, recruiter ----
   {
     question: "Which case study best shows how Anna thinks?",
