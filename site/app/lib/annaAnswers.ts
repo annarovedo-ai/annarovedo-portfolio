@@ -290,7 +290,20 @@ export const cannedAnswers: Record<PersonaId, CannedAnswer[]> = {
       question: "Do you remember the last thing I said?",
       answer: "Yes. It improved with silence.",
     },
-  ],
+      // ---- Contact page, Ex variants (2026-08-27, Anna: "better prompts on
+    //      the contact. only funny for ex"). Dry, no invented history, and
+    //      each one still tells the visitor something true about the form. ----
+    {
+      question: "Should I text her instead?",
+      answer:
+        "No. The form exists so that question never has to be answered case by case. It goes to me, it works, and it keeps a record we can both live with.\n\nWrite it like a professional inquiry and everyone comes out of this fine.",
+    },
+    {
+      question: "What should I absolutely not write here?",
+      answer:
+        "Anything that opens with \u201cI\u2019ve been thinking.\u201d This goes straight to me and I read everything, so send something you\u2019d be comfortable hearing read back.\n\nProjects, roles, collaborations: excellent. Closure: out of scope.",
+    },
+],
 };
 
 /**
