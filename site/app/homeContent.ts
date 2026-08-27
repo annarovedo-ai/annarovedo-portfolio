@@ -529,7 +529,7 @@ export const homeContent: Record<PersonaId, HomeContent> = {
     // the whole hero into a pitch about money. One nod ("keeps it direct"),
     // then substance: the range and the client names as plain evidence.
     subtext:
-      "Twenty years of product, brand, and campaign work for IBM, Bloomberg, and State Street. Paper Pixel keeps it direct: senior direction from the first question through implementation.",
+      "Twenty years of product, brand, and campaign work for IBM, Bloomberg, and State Street, always through an agency. Paper Pixel skips that layer: senior direction from the first question through implementation.",
     conciergeHeading: "Start with the messy brief.",
     conciergeBody:
       "Describe what you’re trying to launch, fix, or figure out. The guide will surface relevant work, explain how Anna would approach the problem, and point out the questions worth answering first.",
