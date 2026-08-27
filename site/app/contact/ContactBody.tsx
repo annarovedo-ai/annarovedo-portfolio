@@ -109,7 +109,7 @@ export default function ContactBody() {
   }
 
   return (
-    <main>
+    <main className="contact-page">
       <SiteHeader />
 
       <article id="top">

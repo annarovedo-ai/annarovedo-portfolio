@@ -178,18 +178,15 @@ export default function AnnaRazor() {
     // inset, rounded composer lifted above the browser chrome and the safe
     // area (see the max-720 CSS), which is what the 2026-08-12 full-bleed
     // attempt lacked. The floating avatar covering page text is what it
-    // replaces. Contact is the exception below.
-    setMode(pathname === "/contact" ? "quiet" : "razor");
+    // replaces.
+    // CONTACT'S QUIET FLOOR IS GONE (2026-08-27, Anna, seeing the lone
+    // avatar: "why is the chat minimized on contact page? don't"). The
+    // floor existed because the bar once covered the form's own controls;
+    // the cure moved into the page instead: .contact-page carries bottom
+    // clearance sized to the bar (globals.css), so the bar and the submit
+    // button can no longer overlap and every page gets the same razor.
+    setMode("razor");
   }, [pathname]);
-
-  // CONTACT NEVER GETS THE FULL-WIDTH DOCK. A hard floor, not a preference:
-  // stored modes and the panel’s own Minimise both route back to "razor",
-  // and on /contact the bar was observed covering the form’s own controls.
-  // Nothing may ever sit over a form control. The mini stays available and
-  // recoverable; it just never auto-expands here.
-  useEffect(() => {
-    if (pathname === "/contact" && mode !== "quiet") setMode("quiet");
-  }, [pathname, mode]);
 
   // Dismissing runs on a timer so the notice has time to be read, and the
   // timer is held so Undo can cancel it. The 2.1s window used to be dead
@@ -228,7 +225,7 @@ export default function AnnaRazor() {
     // observers, on any page or viewport. The delays existed to keep the
     // old corner avatar off case-study opening paragraphs; the bottom bar
     // does not cover text, so the choreography retired with the avatar.
-    // Contact stays mini via the mode floor above.
+    // Contact behaves like every page now; see the clearance note above.
     setVisible(true);
   }, [pathname]);
 

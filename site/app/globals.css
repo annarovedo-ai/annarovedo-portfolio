@@ -6452,6 +6452,15 @@ blockquote {
   font-size: var(--type-small);
 }
 
+/* Clearance for the docked razor bar (2026-08-27): the contact page used
+   to force the chat down to a lone avatar so the bar could never cover the
+   submit button; Anna wanted the bar back, so the room for it lives in the
+   page instead. Nothing may ever sit over a form control, and now nothing
+   can. */
+.contact-page {
+  padding-bottom: 120px;
+}
+
 .contact-actions {
   margin-top: 44px;
   padding-top: 32px;
