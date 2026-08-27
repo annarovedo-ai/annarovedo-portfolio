@@ -101,9 +101,9 @@ export type HomeContent = {
    * and that is the whole hero. The long version still lives on /about,
    * unlinked but not deleted.
    */
-  about: {
-    pullquote: string;
-  };
+  /* about/pullquote removed 2026-08-27 (Anna: "remove: The problem comes
+   * first. The medium follows." then the Culture line). The band had already
+   * shrunk to a single quote per persona; the quotes themselves went last. */
   footerHeadline: string;
   footerBody: string;
   footerButton: string;
@@ -389,13 +389,6 @@ export const homeContent: Record<PersonaId, HomeContent> = {
     casesHeader: "Selected case studies.",
     // The homepage states the position without making one project carry the
     // whole argument. Kmart proves the range in its own case study.
-    about: {
-      // Was two paragraphs and their own headline, then a one-line body,
-      // then no body at all (2026-08-20, "too broken up" — see the note on
-      // HomeContent.about). Subtext already states the specialty; the
-      // pullquote closes it.
-      pullquote: "The problem comes first. The medium follows.",
-    },
     // A recruiter is asking whether it worked and whether you really did it.
     footerHeadline: "Have a role you think might fit?",
     footerBody:
@@ -570,13 +563,6 @@ export const homeContent: Record<PersonaId, HomeContent> = {
     // done anything like mine" is the question actually being asked. The
     // eyebrow changes too: "About Anna" is a biography heading, and a client
     // is sizing up a working relationship.
-    about: {
-      // Was two paragraphs and their own headline, then a one-line body,
-      // then no body at all (2026-08-20, "too broken up" — see the note on
-      // HomeContent.about). Subtext already states the range and the
-      // direction; the pullquote closes it.
-      pullquote: "Culture is always the brief underneath the brief.",
-    },
     // A client is asking what they would be buying. The slot holds
     // deliverables, not validation, so the label names the transaction.
     footerHeadline: "What are you trying to figure out?",
@@ -656,13 +642,6 @@ export const homeContent: Record<PersonaId, HomeContent> = {
     // identical argument the other two personas make. The headline is also
     // doing real work: someone who knew her then would remember the fashion
     // degree, so "I did end up using it" is both the joke and the thesis.
-    about: {
-      // Was two paragraphs and their own headline, then a one-line body,
-      // then no body at all (2026-08-20, "too broken up" — see the note on
-      // HomeContent.about). Subtext already carries the update; the
-      // pullquote closes it.
-      pullquote: "Culture is always the brief underneath the brief.",
-    },
     // Deliberately the recruiter’s label, because the ex persona now carries
     // the recruiter’s cards verbatim. See the note on CaseStudy.ex.
     footerHeadline: "This is probably not that.",

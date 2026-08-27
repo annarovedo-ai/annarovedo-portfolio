@@ -431,9 +431,11 @@ export default function HomeBody({
                 work, not the opening act. A day of fighting voids and
                 redundancy in this slot was the evidence. */}
 
-            <div className="home-about">
-              <blockquote className="home-pullquote">{c.about.pullquote}</blockquote>
-            </div>
+            {/* The pullquote is gone (2026-08-27, Anna: "remove: The problem
+                comes first. The medium follows." and the Culture line with
+                it). It was the last survivor of the about band; the hero is
+                now h1, subtext, portrait, done. The long-form thinking still
+                lives in the chat answers and on /about, unlinked. */}
           </div>
 
           {/* Portrait, new 2026-08-20 (Anna: "make it a profile image on the
@@ -507,40 +509,14 @@ export default function HomeBody({
             "fixing" this again. */}
       </section>
 
-      {/* Experience teaser, new 2026-08-20: the homepage reorder (Anna’s
-          wireframe) adds a band between Work and the closing CTA pointing at
-          the resume. Nav keeps saying "Resume" (the "Experience" nav label
-          was tried and explicitly reversed once already — see SiteNav.tsx),
-          but a homepage teaser band for it is new and welcome. Kept
-          deliberately short: this is a pointer to /resume, not a rewrite of
-          it. */}
-      <section className="home-experience shell" data-anna-prompt="Are you open to full-time roles?">
-        <div className="home-experience-inner">
-          <div>
-            <p className="eyebrow">Resume</p>
-            <h2>Twenty years, one document.</h2>
-            <p>Enterprise AI, search, design systems, and the brands in between.</p>
-          </div>
-          {/* Went .home-inline-link -> .home-cta-secondary -> back to
-              .home-inline-link, all on 2026-08-20. Round-tripped because the
-              first fix solved the wrong problem: it matched this link’s style
-              to the CTA band’s buttons below, but never asked whether it
-              should be a button at all. The site’s actual rule, read back out
-              of every other paired-button spot (home-cta, svc-primary/
-              secondary, client-engagement actions): filled = the section’s
-              one committed action, outline = a lower-emphasis companion that
-              always sits NEXT TO a filled primary in the same row, and a
-              solo link with no primary sibling is a text link, full stop —
-              same treatment as "View case study" on a tile or "See the
-              archive". This band was deliberately kept to one light pointer
-              at /resume, not a real CTA pair, so the solo outline button was
-              the actual bug (Anna: "why are there 4 different buttons
-              here"), not the mismatch it was first taken for. */}
-          <a className="home-inline-link" href="/resume">
-            View the resume &rarr;
-          </a>
-        </div>
-      </section>
+      {/* THE RESUME BAND IS GONE (2026-08-24). Added four days earlier from
+          Anna's homepage wireframe — eyebrow, "Twenty years, one document",
+          one line, and a link — and cut once it was built and read: it
+          spent a full band saying "there is a resume", which the nav says
+          on every page, under a subtext that restated the hero's own. A
+          scanner met the same claim twice and was handed an exit they
+          already had. The link survives where it is actually useful, as
+          the third action in the closing CTA below, next to Book a time. */}
 
       <section className="home-cta" data-anna-prompt="What kind of role is Anna looking for?">
         <div className="shell home-cta-inner">
@@ -563,6 +539,14 @@ export default function HomeBody({
                 {c.footerSecondary.label}
               </a>
             ) : null}
+            {/* The resume link, rehomed here when its own band was cut
+                (2026-08-24, see the note above). A text link, not a third
+                button: the pair beside it is the section's committed
+                action and its companion, and this is navigation to more
+                reading. */}
+            <a className="home-inline-link" href="/resume">
+              View the resume &rarr;
+            </a>
           </div>
         </div>
       </section>

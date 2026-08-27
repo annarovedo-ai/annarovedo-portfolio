@@ -5553,14 +5553,10 @@ blockquote {
   }
 }
 
-/* The other half of the same gap: this rule's border-top IS the divider under
-   the archive line, so its top padding and .home-work's bottom padding are one
-   continuous void. Trimmed together. The bottom stays generous, since it runs
-   into the navy CTA band and should. */
-.home-about {
-  padding-block: clamp(52px, 6vw, 80px) clamp(64px, 8vw, 104px);
-  border-top: 1px solid var(--line);
-}
+/* THE PULLQUOTE CSS IS GONE (2026-08-27). .home-about, .home-pullquote and
+   their hero-scoped overrides all styled a hero quote block that no longer
+   renders anywhere: Anna cut the last two quotes ("The problem comes first"
+   and the Culture line) and the markup went with them in HomeBody.tsx. */
 
 /* Experience teaser, new 2026-08-20 (Anna's homepage wireframe): a plain
    two-column band between Work and the closing CTA, pointing at /resume.
@@ -5603,63 +5599,6 @@ blockquote {
     flex-direction: column;
     align-items: flex-start;
   }
-}
-
-/* Hero and Overview became one section 2026-08-20 (Anna: "combine into one
-   section"): when .home-about is nested inside .home-hero rather than
-   standing as its own section, it is a continuation of the introduction,
-   not a new one, so the divider and the section's own padding both go —
-   the hero's own padding-bottom is doing that job now, and a top margin
-   is enough to separate the headline from what follows it. */
-.home-hero .home-about {
-  /* Was clamp(36px, 4vw, 56px), sized to lead into a body paragraph that no
-     longer exists (2026-08-20, "too much empty vertical space"): the
-     pullquote inside now follows the subtext directly, so this only needs
-     to keep the two from touching, not to separate two sections. */
-  margin-top: clamp(12px, 1.5vw, 20px);
-  padding: 0;
-  border-top: none;
-}
-
-/* The pullquote's own generous margin (40px 0, see .home-pullquote below)
-   was doubling up with the gap above once About had nothing left in it but
-   the quote itself. Zeroed here, scoped to this merged-hero placement only
-   — every other .home-pullquote on the site keeps its normal spacing. */
-.home-hero .home-pullquote {
-  margin: 0;
-}
-
-.home-about h2 {
-  max-width: 20ch;
-  margin-bottom: 28px;
-}
-
-/* margin: 0 until 2026-08-07, which meant the two paragraphs ran together as
-   one 200-word slab: "...to pay for them." landed directly above "On paper
-   that reads like a detour." with no gap, so the break between the setup and
-   the payoff was invisible. That break is the whole structure of the passage. */
-.home-about-copy p {
-  max-width: 78ch;
-  margin: 0 0 22px;
-  font-size: var(--t-base);
-}
-
-.home-about-copy p:last-child {
-  margin-bottom: 0;
-}
-
-.home-pullquote {
-  /* This is a <blockquote>, so it inherits the global rule's top border,
-     navy left bar and padding. All of it is reset here: on the homepage
-     the quote should read as display type, not as a callout. */
-  max-width: 900px;
-  margin: 40px 0;
-  padding: 0;
-  border: none;
-  font-family: var(--serif);
-  font-size: var(--d-card);
-  font-weight: 700;
-  color: var(--ink);
 }
 
 .home-inline-link {
@@ -6134,10 +6073,6 @@ blockquote {
   gap: clamp(40px, 6vw, 80px);
   align-items: start;
   margin-bottom: 34px;
-}
-
-.client-about .home-pullquote {
-  margin: 0;
 }
 
 .client-cta {
