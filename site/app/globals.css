@@ -1506,7 +1506,9 @@ h3 {
 }
 
 .summary-copy {
-  padding-top: 37px;
+  /* padding-top: 37px removed 2026-08-27 (Anna: "top align", "all
+     sections") along with two-column-copy's 36px and future-heading's 38px:
+     the site-wide rule is now that paired columns start together. */
   color: var(--muted);
   font-size: var(--t-read);
 }
@@ -2447,7 +2449,8 @@ blockquote {
 }
 
 .future-heading p {
-  padding-top: 38px;
+  /* padding-top: 38px removed 2026-08-27, same sweep as two-column-copy and
+     summary-copy: paired columns start together. */
   color: var(--on-dark-muted);
   font-size: var(--t-read);
 }
