@@ -1746,7 +1746,12 @@ h3 {
 }
 
 .two-column-copy > div:last-child {
-  padding-top: 36px;
+  /* Was padding-top: 36px, an offset that dropped the right column's first
+     line well below the heading's cap height. Removed 2026-08-27 (Anna:
+     "top align", on the Kmart 01 section): the two columns now start
+     together, and the small optical difference that remains is just the two
+     line-heights, not a built-in stagger. Sitewide rule, so every
+     two-column-copy section on every case study aligns the same way. */
   color: var(--muted);
 }
 
