@@ -171,6 +171,45 @@
   --lh-read: 1.7;   /* the long single-column reading measure, and only that */
 }
 
+/* ---------------------------------------------------------------------------
+   PERSONA GROUNDS (2026-08-27, Anna: "what if each persona had a different
+   color scheme?"). Three rooms in the same house, not three themes: each
+   persona swaps ONE color family, the navy that paints the dark grounds,
+   buttons, labels and links, and everything else stays. The orange stays
+   constant in the chat and the switcher across all three on purpose: same
+   person, different room, and the switcher is the doorway.
+
+   Recruiter is the default :root navy above and needs no rule here, which is
+   also what makes this flash-free: crawlers and first paint get recruiter,
+   and html[data-persona] arrives with hydration (personaStore.setPersona and
+   PersonaSwitch's mount effect already maintain the attribute).
+
+   Every pair was contrast-checked against the recruiter baseline before
+   shipping (white on ground, ground on paper/surface, bright on paper and on
+   pale). All pass AA with room; the darks beat navy's own ratios.
+
+   Client is ink-forward: Paper Pixel's own near-black now that the mark is
+   ink, studio rather than corporate. Ex is a deep bordeaux, warmer and a
+   shade off-register, which is the right room for that reader. If a token
+   joins the navy family (anything derived from --blue), it must be added to
+   BOTH rules below or that surface will stay navy in two personas.
+   --------------------------------------------------------------------------- */
+html[data-persona="client"] {
+  --blue: #17181c;
+  --night: #17181c;
+  --blue-deep: #0b0c0f;
+  --blue-bright: #4a4f58;
+  --blue-pale: #eef0f3;
+}
+
+html[data-persona="ex"] {
+  --blue: #521a26;
+  --night: #521a26;
+  --blue-deep: #3a1019;
+  --blue-bright: #8a3a48;
+  --blue-pale: #f7ecec;
+}
+
 /* State Street Alpha case study */
 
 .state-street-case {
