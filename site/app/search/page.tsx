@@ -190,16 +190,12 @@ export default function SearchCaseStudy() {
               </div>
             </div>
 
-            <div className="search-evidence-method" aria-label="Research method">
-              <span>Evidence path</span>
-              <ol>
-                <li><small>01</small><strong>Audit current behavior</strong></li>
-                <li><small>02</small><strong>Trace recurring journeys</strong></li>
-                <li><small>03</small><strong>Test interpretation and recovery</strong></li>
-                <li><small>04</small><strong>Connect findings to decisions</strong></li>
-              </ol>
-            </div>
-
+            {/* The Evidence path strip is gone (2026-08-27, Anna: "this is
+                too repetitive"). It restated as a numbered diagram what the
+                lead above already says in prose and the findings below prove
+                with numbers of their own: three tellings of one method, two
+                of them numbered 01-0N back to back. The prose sets it up,
+                the findings deliver it; the middle layer was scaffolding. */}
             <div className="search-findings">
               {findings.map((finding) => (
                 <article key={finding.number}>

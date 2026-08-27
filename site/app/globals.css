@@ -3992,67 +3992,6 @@ blockquote {
 .search-evidence-band p {
   color: var(--on-dark-muted);
 }
-
-.search-evidence-method {
-  margin-bottom: 58px;
-  border-top: 1px solid rgba(255, 255, 255, 0.2);
-  border-bottom: 1px solid rgba(255, 255, 255, 0.2);
-}
-
-.search-evidence-method > span {
-  display: block;
-  padding: 20px 0;
-  border-bottom: 1px solid rgba(255, 255, 255, 0.2);
-  font-family: var(--font-label);
-  font-size: var(--type-label);
-  font-weight: 700;
-  letter-spacing: var(--tracking-label);
-  text-transform: uppercase;
-  color: var(--on-dark-label);
-}
-
-.search-evidence-method ol {
-  display: grid;
-  grid-template-columns: repeat(4, minmax(0, 1fr));
-  margin: 0;
-  padding: 0;
-  list-style: none;
-}
-
-.search-evidence-method li {
-  min-height: 132px;
-  padding: 26px 24px 30px 0;
-}
-
-.search-evidence-method li + li {
-  padding-left: 24px;
-  border-left: 1px solid rgba(255, 255, 255, 0.2);
-}
-
-.search-evidence-method small {
-  display: block;
-  margin-bottom: 20px;
-  color: var(--on-dark-label);
-  font-family: var(--font-label);
-  font-size: var(--type-label);
-  font-weight: 700;
-  letter-spacing: var(--tracking-label);
-}
-
-.search-evidence-method strong {
-  display: block;
-  margin: 0;
-  color: var(--on-dark-body);
-  font-family: var(--font-body);
-  /* Was clamp(16px, 1.45vw, 19px) while the homepage hero deck ran
-     clamp(16px, 1.5vw, 19px): two nearly-but-not-identical private clamps
-     for the same optical job. One value now, matching the hero deck's
-     (2026-08-24 typography audit). */
-  font-size: clamp(16px, 1.5vw, 19px);
-  font-weight: 600;
-  line-height: 1.4;
-}
-
 .search-findings {
   border-top: 1px solid rgba(255, 255, 255, 0.2);
 }
@@ -4948,32 +4887,6 @@ blockquote {
   .search-launch-summary article:first-child {
     border-top: 0;
   }
-
-  .search-evidence-method {
-    margin-bottom: 38px;
-  }
-
-  .search-evidence-method ol {
-    grid-template-columns: 1fr;
-  }
-
-  .search-evidence-method li,
-  .search-evidence-method li + li {
-    display: grid;
-    grid-template-columns: 38px minmax(0, 1fr);
-    min-height: 0;
-    padding: 20px 0;
-    border-left: 0;
-  }
-
-  .search-evidence-method li + li {
-    border-top: 1px solid rgba(255, 255, 255, 0.2);
-  }
-
-  .search-evidence-method small {
-    margin: 4px 0 0;
-  }
-
   .search-findings article {
     grid-template-columns: 40px minmax(0, 1fr);
     gap: 10px 18px;
