@@ -3344,7 +3344,6 @@ blockquote {
   font-weight: 600;
   letter-spacing: var(--track-wide);
   text-transform: uppercase;
-  border-radius: 10px;
 }
 
 .next-case-status::after {
@@ -4729,7 +4728,6 @@ blockquote {
 
 .search-back-case .next-case-status {
   display: inline-block;
-  border-radius: 10px;
 }
 
 @media (max-width: 980px) {
@@ -8835,7 +8833,6 @@ blockquote {
   font-family: var(--sans);
   letter-spacing: -0.005em;
   text-transform: none;
-  border-radius: 10px;
 }
 
 @media (max-width: 980px) {
@@ -10682,7 +10679,6 @@ html[data-anna-razor="bar"] body {
   font-family: var(--sans);
   font-size: var(--t-small);
   font-weight: 600;
-  border-radius: 10px;
 }
 
 .client-engagement-secondary:hover {
@@ -10742,7 +10738,6 @@ html[data-anna-razor="bar"] body {
   margin-top: 26px;
   color: var(--blue);
   font-weight: 600;
-  border-radius: 10px;
 }
 
 .svc-engagement-cta:hover {
