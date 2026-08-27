@@ -78,7 +78,7 @@ export default function RootLayout({
         <script
           dangerouslySetInnerHTML={{
             __html:
-              'try{var p=sessionStorage.getItem("pp-persona-session");if(p==="client"||p==="ex")document.documentElement.dataset.persona=p}catch(e){}',
+              'try{var p=sessionStorage.getItem("pp-persona-session");var t=Number(sessionStorage.getItem("pp-persona-at"));if((p==="client"||p==="ex")&&t&&Date.now()-t<=18e5){sessionStorage.setItem("pp-persona-at",String(Date.now()));document.documentElement.dataset.persona=p}else{sessionStorage.removeItem("pp-persona-session");sessionStorage.removeItem("pp-persona-at")}}catch(e){}',
           }}
         />
         {children}

@@ -37,11 +37,31 @@ const SESSION_KEY = "pp-persona-session";
  *   stays that way across days of reopening: that is the same tab persisting,
  *   not a default changing.
  */
+/** How long a chosen persona survives without a page visit. Anna,
+ * 2026-08-27: "it should default to recruiter". The persona was already
+ * session-scoped, but browsers restore tabs WITH sessionStorage, so her own
+ * tab greeted her as the Ex days later, and the persona color system makes
+ * that stickiness loud. Thirty minutes keeps continuity within a sitting
+ * (every page load refreshes the clock) and returns any fresh sitting to
+ * Recruiter. The pre-paint script in layout.tsx mirrors this exactly, keys,
+ * TTL and refresh; change them together or first paint will disagree with
+ * hydration. */
+const SESSION_AT_KEY = "pp-persona-at";
+const SESSION_TTL_MS = 30 * 60 * 1000;
+
 function read(): PersonaId {
   if (typeof window === "undefined") return "recruiter";
   try {
     const v = window.sessionStorage.getItem(SESSION_KEY);
-    if (v === "client" || v === "ex") return v;
+    if (v === "client" || v === "ex") {
+      const at = Number(window.sessionStorage.getItem(SESSION_AT_KEY));
+      if (at && Date.now() - at <= SESSION_TTL_MS) {
+        window.sessionStorage.setItem(SESSION_AT_KEY, String(Date.now()));
+        return v;
+      }
+      window.sessionStorage.removeItem(SESSION_KEY);
+      window.sessionStorage.removeItem(SESSION_AT_KEY);
+    }
   } catch {
     /* session storage unavailable */
   }
@@ -114,8 +134,10 @@ function applyPersona(id: PersonaId) {
   try {
     if (id === "recruiter") {
       window.sessionStorage.removeItem(SESSION_KEY);
+      window.sessionStorage.removeItem(SESSION_AT_KEY);
     } else {
       window.sessionStorage.setItem(SESSION_KEY, id);
+      window.sessionStorage.setItem(SESSION_AT_KEY, String(Date.now()));
     }
     // Cleans up anyone’s browser still holding a pre-2026-08-20 long-lived
     // Client value; read() no longer looks at localStorage at all, but there
