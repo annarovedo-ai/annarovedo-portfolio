@@ -294,7 +294,7 @@ export const cannedAnswers: Record<PersonaId, CannedAnswer[]> = {
     //      the contact. only funny for ex"). Dry, no invented history, and
     //      each one still tells the visitor something true about the form. ----
     {
-      question: "Should I text her instead?",
+      question: "Should I just text you instead?",
       answer:
         "No. The form exists so that question never has to be answered case by case. It goes to me, it works, and it keeps a record we can both live with.\n\nWrite it like a professional inquiry and everyone comes out of this fine.",
     },

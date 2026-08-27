@@ -113,7 +113,7 @@ export default function ContactBody() {
       <SiteHeader />
 
       <article id="top">
-        <section className="contact-top shell" data-anna-prompt="What happens after I send this?" data-anna-prompt-ex="Should I text her instead?">
+        <section className="contact-top shell" data-anna-prompt="What happens after I send this?" data-anna-prompt-ex="Should I just text you instead?">
           <p className="contact-eyebrow">
             {c.eyebrow}
             <span aria-hidden="true" />
