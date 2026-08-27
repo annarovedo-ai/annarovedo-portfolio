@@ -71,8 +71,9 @@ export default function AlmostAnnaChat({
   const pagePrompts = useMemo(() => {
     // Entrances keep their curated chips; the pathname read inside the memo
     // is also what makes the list recompute on client-side navigation.
-    if (pathname === "/" || pathname === "/studio") return null;
-    if (typeof document === "undefined") return null;
+    if (pathname === "/" || pathname === "/studio")
+      return { pageList: null, exQ: null };
+    if (typeof document === "undefined") return { pageList: null, exQ: null };
     const nodes = Array.from(
       document.querySelectorAll<HTMLElement>(
         "[data-anna-prompt], [data-anna-prompt-ex], [data-anna-prompt-client]"
@@ -95,22 +96,31 @@ export default function AlmostAnnaChat({
         list.push(q);
       }
     }
-    if (persona === "ex") {
-      // Ex ALWAYS gets one off-topic question in the menu (Anna,
-      // 2026-08-19). Pages carry their own via data-anna-prompt-ex; any
-      // page without one falls back to the frog, which is never the wrong
-      // answer.
-      const funny = exQ ?? "Be honest. Was the frog actually real?";
-      list.splice(Math.min(1, list.length), 0, funny);
-    }
-    return list.length ? list : null;
+    // The Ex injection moved OUT of this memo (2026-08-27, Anna, on
+    // /contact as Ex: "why is this the only question prompt"). It used to
+    // splice the frog in here, which meant a page with zero section hints
+    // still returned a one-item list, the "no page prompts, use the
+    // persona's curated chips" fallback below never fired, and the Ex got a
+    // menu of exactly one frog. The memo now reports what the page actually
+    // carries and leaves persona seasoning to the pool below.
+    return { pageList: list.length ? list : null, exQ };
   }, [persona, pathname]);
-  // The full page pool feeds the follow-ups; the empty-state menu shows
-  // four, matching the homepage chips (Anna, 2026-08-19): a case study can
-  // carry nine section hints, and nine chips read as a wall. The first
-  // sections' questions win because they mirror how the page reads, and
-  // the Ex slot at position two always survives the cut.
-  const promptPool = pagePrompts ?? c.prompts;
+  // The full pool feeds the follow-ups; the empty-state menu shows four,
+  // matching the homepage chips (Anna, 2026-08-19): a case study can carry
+  // nine section hints, and nine chips read as a wall. The first sections'
+  // questions win because they mirror how the page reads. Ex ALWAYS gets
+  // one off-topic question slotted second (Anna, 2026-08-19), whether the
+  // rest of the menu came from the page or from the persona's curated
+  // chips; pages carry their own via data-anna-prompt-ex, and the frog is
+  // the fallback, which is never the wrong answer.
+  const promptPool = useMemo(() => {
+    const base = [...(pagePrompts.pageList ?? c.prompts)];
+    if (persona === "ex") {
+      const funny = pagePrompts.exQ ?? "Be honest. Was the frog actually real?";
+      if (!base.includes(funny)) base.splice(Math.min(1, base.length), 0, funny);
+    }
+    return base;
+  }, [pagePrompts, persona, c]);
   const menuPrompts = promptPool.slice(0, 4);
 
   // Follow-ups (Anna, 2026-08-19): after each answer, offer the next
