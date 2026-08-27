@@ -55,8 +55,32 @@ export default function RootLayout({
   children: React.ReactNode;
 }>) {
   return (
-    <html lang="en">
+    <html lang="en" suppressHydrationWarning>
+      {/* PERSONA BEFORE PAINT (2026-08-27, Anna: "the internal pages do not
+          match the homepage color. apply throughout as a system"). The
+          persona color tokens are scoped to html[data-persona], but that
+          attribute was only set from PersonaSwitch's mount effect, so every
+          full page load painted recruiter navy first and re-colored after
+          hydration: instant on the homepage where you just clicked the pill,
+          seconds late on a heavy case study, which read as interior pages
+          ignoring the scheme. This inline script mirrors personaStore.read()
+          (same key, same recruiter default, same try/catch) and runs before
+          first paint, so the whole site holds one color from frame one.
+          suppressHydrationWarning on <html> is required: the server renders
+          no data-persona and this script may add one before React hydrates.
+          If the storage key or default ever changes in personaStore.ts, this
+          script changes with it. */}
       <body>
+        {/* First child of body on purpose: a synchronous script here blocks
+            rendering of everything after it, which is exactly the guarantee
+            needed, and unlike a child of <html> it is valid HTML that the
+            parser will not relocate. */}
+        <script
+          dangerouslySetInnerHTML={{
+            __html:
+              'try{var p=sessionStorage.getItem("pp-persona-session");if(p==="client"||p==="ex")document.documentElement.dataset.persona=p}catch(e){}',
+          }}
+        />
         {children}
         {/* Site-wide: it reads whichever section is on screen and offers a
             line about it, on every page rather than just the homepage. */}
