@@ -217,7 +217,7 @@ export default function JourneyOrchestration() {
             <div className="future-heading">
               <div>
                 <SectionNumber>02 · The thesis</SectionNumber>
-                <p style={{ fontFamily: "var(--mono)", fontSize: 11, letterSpacing: "0.08em", textTransform: "uppercase", color: "#8fb0ce", margin: "0 0 10px" }}>
+                <p style={{ fontFamily: "var(--font-label)", fontSize: 11, letterSpacing: "0.08em", textTransform: "uppercase", color: "#8fb0ce", margin: "0 0 10px" }}>
                   AI-driven journey orchestration + lead scoring
                 </p>
                 <h2>A chatbot answers. This orchestrates.</h2>
