@@ -539,14 +539,12 @@ export default function HomeBody({
                 {c.footerSecondary.label}
               </a>
             ) : null}
-            {/* The resume link, rehomed here when its own band was cut
-                (2026-08-24, see the note above). A text link, not a third
-                button: the pair beside it is the section's committed
-                action and its companion, and this is navigation to more
-                reading. */}
-            <a className="home-inline-link" href="/resume">
-              View the resume &rarr;
-            </a>
+            {/* The resume link is gone from this band too (2026-08-27,
+                Anna: "remove VIEW THE RESUME from this section"). It was
+                rehomed here on 2026-08-24 when its own band was cut, and
+                survived three days. The CTA pair now stands alone, and the
+                resume keeps its one entrance: the nav. Do not rehome the
+                link a third time. */}
           </div>
         </div>
       </section>
