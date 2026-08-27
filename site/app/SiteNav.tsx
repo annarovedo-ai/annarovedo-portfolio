@@ -30,7 +30,9 @@ export default function SiteNav({
      here). Crawlers and first paint see no underline, which is harmless.
      Case-study pages and the archive count as Work: their breadcrumbs
      already say "WORK /", so the nav agrees with the breadcrumb. */
-  const [section, setSection] = useState<"work" | "resume" | "contact" | null>(null);
+  const [section, setSection] = useState<
+    "home" | "work" | "resume" | "contact" | null
+  >(null);
   useEffect(() => {
     const path = window.location.pathname;
     const workFamily = [
@@ -43,7 +45,9 @@ export default function SiteNav({
       "/nike",
       "/kmart",
     ];
-    if (workFamily.some((p) => path === p || path.startsWith(p + "/"))) {
+    if (path === "/" || path === "/studio") {
+      setSection("home");
+    } else if (workFamily.some((p) => path === p || path.startsWith(p + "/"))) {
       setSection("work");
     } else if (path === "/resume") {
       setSection("resume");
@@ -102,6 +106,18 @@ export default function SiteNav({
         {/* Points at the case study grid rather than "/", so it does something
             the wordmark does not already do. The work is the primary content of
             the site and until now had no entry in the nav at all. */}
+        {/* Home joined the nav 2026-08-27 (Anna: "add home to the nav").
+            The wordmark already goes home, but a wordmark is a convention
+            you have to know; a nav item is a label you can read. /studio
+            counts as home for the underline: it is the client's front
+            door to the same page. */}
+        <a
+          href="/"
+          onClick={() => setOpen(false)}
+          aria-current={section === "home" ? "page" : undefined}
+        >
+          Home
+        </a>
         <WorkLink onClick={() => setOpen(false)} current={section === "work"}>
           Work
         </WorkLink>
