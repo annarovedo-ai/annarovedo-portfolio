@@ -22,17 +22,18 @@ import type { PersonaId } from "./personaStore";
  * as") already uses.
  *
  * Changed again 2026-08-27, Anna, after a workshop that tried "I’m the",
- * "You’re a?", "You are a…?", and articled pills ("a recruiter / a client /
- * an ex-boyfriend"): the label is now "You are?". Second person, so the
- * pronoun can only be the visitor, which was the confusion that killed
+ * "You’re a?", "You are a…?", "You are?", and articled pills ("a recruiter /
+ * an ex-boyfriend"): the label landed on "And you are?". Second person, so
+ * the pronoun can only be the visitor, which was the confusion that killed
  * "I’m a"; no article, so no a/an trap in front of Ex-Boyfriend; and the
- * question mark keeps the doorman energy that "View as:" flattened. The
+ * "And" implies a conversation already in progress that the visitor just
+ * walked into, which is exactly what visiting this site is. The
  * articled-pills variant was parked over pill width on small phones, the
  * exact fight the switcher already lost once.
  */
 export default function PersonaSwitch({
   compact = false,
-  label = "You are?",
+  label = "And you are?",
   reachable = true,
   entryPersona,
   onSelect,
