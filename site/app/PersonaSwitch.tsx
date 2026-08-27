@@ -20,10 +20,19 @@ import type { PersonaId } from "./personaStore";
  * heard it in Anna’s. "View as:" states the mechanic instead of performing
  * it, and matches the wording the interior pages' PersonaMenu ("Viewing
  * as") already uses.
+ *
+ * Changed again 2026-08-27, Anna, after a workshop that tried "I’m the",
+ * "You’re a?", "You are a…?", and articled pills ("a recruiter / a client /
+ * an ex-boyfriend"): the label is now "You are?". Second person, so the
+ * pronoun can only be the visitor, which was the confusion that killed
+ * "I’m a"; no article, so no a/an trap in front of Ex-Boyfriend; and the
+ * question mark keeps the doorman energy that "View as:" flattened. The
+ * articled-pills variant was parked over pill width on small phones, the
+ * exact fight the switcher already lost once.
  */
 export default function PersonaSwitch({
   compact = false,
-  label = "View as:",
+  label = "You are?",
   reachable = true,
   entryPersona,
   onSelect,

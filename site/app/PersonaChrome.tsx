@@ -135,7 +135,7 @@ export default function PersonaChrome({
           - .persona-note   the explainer line, navy, ordinary flow. Rolls
                             past the pinned pill like any other content. */}
       <div className="persona-lead" aria-hidden="true">
-        <span className="persona-switch-label">View as:</span>
+        <span className="persona-switch-label">You are?</span>
       </div>
       <div className="persona-band">
         <PersonaSwitch
