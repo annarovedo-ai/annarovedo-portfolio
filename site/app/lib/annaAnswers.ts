@@ -335,6 +335,12 @@ export const sharedHintAnswers: CannedAnswer[] = [
     answer:
       "Two ways. Inside a portfolio company: a direction sprint before committing a build, an embedded design lead through the ambiguous stretch, or a brand and product taken to launch, senior direction without an agency retainer or a full-time hire.\n\nFor the fund itself: identity, website, and story work, how the firm reads to founders and LPs. Twenty years of enterprise judgment, delivered directly, and I build with AI, so a first version shows up in weeks, not a deck.",
   },
+  // ---- Concierge page, client variant (2026-08-27 persona pass) ----
+  {
+    question: "What would this look like for a company our size?",
+    answer:
+      "Smaller surface, same shape. You don\u2019t need IBM\u2019s scale to have this problem: a buyer who asks a question, leaves, and comes back is every company\u2019s buyer.\n\nA version at your size starts with one high-intent page and the questions people actually ask on it, built with the same method: journey first, interface second, evidence before build. The Product Direction Sprint is the engagement shaped for exactly that first step.",
+  },
   // ---- Contact page (2026-08-27, prompt coverage pass: no page may be
   //      hintless, and every hint answers instantly) ----
   {

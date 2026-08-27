@@ -6,6 +6,8 @@ import Breadcrumb from "../Breadcrumb";
 import CaseHero from "../CaseHero";
 import { caseVoices } from "../caseVoices";
 import ExAside from "../ExAside";
+import PersonaText from "../PersonaCopy";
+import { conciergeCopy } from "./conciergeCopy";
 
 export const metadata: Metadata = {
   title: "IBM Chat Concierge, part one · Anna Rovedo",
@@ -142,15 +144,15 @@ export default function Home() {
           />
         </section>
 
-        <section className="summary-band" id="story" data-anna-prompt="Why not just a chatbot?">
+        <section className="summary-band" id="story" data-anna-prompt="Why not just a chatbot?" data-anna-prompt-client="What would this look like for a company our size?">
           <div className="shell summary-grid">
             <div>
               <p className="eyebrow">Executive summary</p>
-              <h2>The opportunity was larger than chat.</h2>
+              <h2><PersonaText t={conciergeCopy.summaryHeading} /></h2>
             </div>
             <div className="summary-copy">
               <p>
-                Enterprise software is rarely bought by one person in one sitting. Buyers move between research, demos, internal conversations, approvals, setup, and support. The existing experience treated those moments as separate transactions.
+                <PersonaText t={conciergeCopy.summaryOpen} />
               </p>
               <p>
                 The Concierge explored a different model: make help available in context, preserve continuity across the journey, and turn conversation into something a buying team could act on.
@@ -179,7 +181,7 @@ export default function Home() {
             </div>
             <div>
               <p className="lead">
-                I owned UX for the concept on a multidisciplinary team led by IBM’s Global Head of UX. My job was to connect the buyer journey, the interaction model, and the evidence into one direction people could see, question, and test.
+                <PersonaText t={conciergeCopy.assignmentLead} />
               </p>
               <p>
                 That meant working across research, journey architecture, conversational patterns, prototyping, and validation. It also meant resisting the temptation to start with the chat interface. The journey came first.
@@ -422,7 +424,7 @@ export default function Home() {
             </div>
             <div>
               <p className="lead">
-                Two rounds of unmoderated UserZoom testing moved the work beyond internal enthusiasm. Participants evaluated the prototype as prospective buyers, giving the team evidence about comprehension and interest before the experience advanced.
+                <PersonaText t={conciergeCopy.validationLead} />
               </p>
               {/* Softened 2026-08-18: "strong comprehension and interest
                   signals" described confidence rather than findings, and the
@@ -541,7 +543,7 @@ export default function Home() {
             </div>
             <div>
               <p className="lead">
-                A first version went live, and the concepts from the future-vision prototype have been developed and tested through the year since. Conversation history across sessions. Prompt hints, so a buyer facing an empty field can see what this thing is actually good for. AI summaries on the Product Finder page, and the harder question underneath them: what the handoff looks like when a summary has answered part of the question and a product page has to take over.
+                <PersonaText t={conciergeCopy.outcomeLead} />
               </p>
               <p>
                 So this is a live program rather than a finished deliverable. Each piece ships, gets used, and changes what the next piece should be, which is a slower and more honest way to build than shipping a vision intact.
@@ -599,10 +601,10 @@ export default function Home() {
         <section className="reflection shell" id="reflection" data-anna-prompt="What did this change about how you design AI?" data-anna-prompt-client="Could an assistant like this work on our site?">
           <SectionNumber>09 · Reflection</SectionNumber>
           <div className="reflection-grid">
-            <h2>The interface was never the most interesting part.</h2>
+            <h2><PersonaText t={conciergeCopy.reflectionHeading} /></h2>
             <div>
               <p className="lead">
-                The most important decision was to treat conversation as connective tissue across a complicated buying journey, not as a novelty placed at the edge of a page.
+                <PersonaText t={conciergeCopy.reflectionLead} />
               </p>
               <p>
                 That shift created room for better questions: what context should persist, what should become an artifact, when should a person enter, and how transparent should an adaptive system be about what it knows? Those questions shaped the Concierge and continue to shape how I think about agentic products now.
@@ -614,7 +616,7 @@ export default function Home() {
         <section className="next-case">
           <div className="shell next-case-inner">
             <div>
-              <p className="eyebrow">Part two</p>
+              <p className="eyebrow"><PersonaText t={conciergeCopy.nextEyebrow} /></p>
               <h2>AI-driven journey orchestration</h2>
             </div>
             <a className="next-case-status" href="/journey-orchestration">Read part two</a>
