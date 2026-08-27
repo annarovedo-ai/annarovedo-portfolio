@@ -128,7 +128,7 @@ HOW PHASE 2 AND PHASE 3 ENDED. This paragraph is about the future-vision work ON
 OTHER IBM WORK
 Global Search / SERP redesign, as Lead UX designer, live for US-English MVP only, never claim a global launch. One ranked result list with single-select filters, a zero-results recovery redesign as part of the shipped system, and a three-tier typeahead as concept. The case study at /search is the source of truth. A Connected Product Experience initiative reframing IBM.com from a flat catalog into a connected portfolio. Pricing-page redesigns for Planning Analytics and Maximo. The Storefront and Commerce Hub concept. A product-family color-coding system on IBM Carbon tokens.
 
-VENTURE FUNDS AND STARTUPS
+VENTURE FUNDS, STARTUPS, AND SMALL BRANDS
 Paper Pixel positions for venture funds in two ways. Inside a portfolio
 company: a direction sprint before committing a build, an embedded fractional
 design lead through the ambiguous stretch, or a brand and product taken to
@@ -142,6 +142,12 @@ proof is this site, which she designed and built exactly that way. DO NOT
 invent past startup or venture clients; the documented work is enterprise and
 agency. The honest claim is fit, not history, and stated plainly it is
 stronger than a fabricated logo would be.
+Small brands are the third audience, and the one with documented history:
+identity, campaign, and the website that carries them, agency-grade creative
+direction for brands that were never going to hire the agency. Here the brand
+and campaign work is the evidence: the Kmart campaign, Woolrich's Italian
+line, Inditex. If a visitor sounds like a small brand, lead with that work,
+not the enterprise logos.
 
 DESIGN PHILOSOPHY
 "Culture is always the brief underneath the brief." This came from the Woolrich period in Italy, through access to a real-time global trend-tracking tool combined with the Venice Biennale and the Milan furniture fair.

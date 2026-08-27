@@ -234,7 +234,7 @@ export default function ServicesBody() {
           none are documented; the claim is fit, not history. */}
       <section className="svc-block">
         <div className="shell">
-          <p className="eyebrow">For venture funds and their portfolios</p>
+          <p className="eyebrow">For venture funds, portfolios, and small brands</p>
           <div className="svc-get">
             <div>
               <h2>Inside a portfolio company</h2>
@@ -249,6 +249,19 @@ export default function ServicesBody() {
               <p>
                 Identity, website, and story work for the firm: how the fund looks, reads, and
                 explains itself to founders and LPs.
+              </p>
+            </div>
+            {/* Added 2026-08-27, same instruction, second pass: "it should
+                also include small brands". Grid already handles three cards
+                (whatYouGet). The last line leans on documented brand work,
+                Kmart, Woolrich, Inditex, all in resumeData; no invented
+                small-brand logos. */}
+            <div>
+              <h2>For small brands</h2>
+              <p>
+                Identity, campaign, and the website that carries them. Agency-grade creative
+                direction for brands that were never going to hire the agency, from visual
+                identity through launch.
               </p>
             </div>
           </div>
