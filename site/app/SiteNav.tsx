@@ -21,6 +21,36 @@ export default function SiteNav({
   personaOverride?: PersonaId;
 } = {}) {
   const [open, setOpen] = useState(false);
+  /* WHICH SECTION IS BEING READ (2026-08-27, Anna: "underline the page
+     you're on in the nav. it's unclear"). Resolved after mount from
+     window.location rather than a router hook: the links are plain <a>
+     tags and every navigation is a full document load, so the pathname
+     never changes during a page's life, and reading it in an effect avoids
+     a server/client hydration mismatch (the server does not know the URL
+     here). Crawlers and first paint see no underline, which is harmless.
+     Case-study pages and the archive count as Work: their breadcrumbs
+     already say "WORK /", so the nav agrees with the breadcrumb. */
+  const [section, setSection] = useState<"work" | "resume" | "contact" | null>(null);
+  useEffect(() => {
+    const path = window.location.pathname;
+    const workFamily = [
+      "/work",
+      "/archive",
+      "/concierge",
+      "/journey-orchestration",
+      "/search",
+      "/state-street",
+      "/nike",
+      "/kmart",
+    ];
+    if (workFamily.some((p) => path === p || path.startsWith(p + "/"))) {
+      setSection("work");
+    } else if (path === "/resume") {
+      setSection("resume");
+    } else if (path === "/contact") {
+      setSection("contact");
+    }
+  }, []);
   const store = useSyncExternalStore(subscribe, getSnapshot, getServerSnapshot);
   // Still resolved for ResumeNavLink below, which does vary by persona
   // (Resume vs. Services). Work itself no longer does: see WorkLink.
@@ -72,7 +102,9 @@ export default function SiteNav({
         {/* Points at the case study grid rather than "/", so it does something
             the wordmark does not already do. The work is the primary content of
             the site and until now had no entry in the nav at all. */}
-        <WorkLink onClick={() => setOpen(false)}>Work</WorkLink>
+        <WorkLink onClick={() => setOpen(false)} current={section === "work"}>
+          Work
+        </WorkLink>
         {/* About left the nav 2026-08-20 (Anna: "put this on the home page
             and remove the about tab") — the page’s two strongest sections,
             What I Bring and Why The Range Matters, now render directly on
@@ -86,8 +118,13 @@ export default function SiteNav({
         <ResumeNavLink
           personaOverride={personaOverride}
           onNavigate={() => setOpen(false)}
+          current={section === "resume"}
         />
-        <a href="/contact" onClick={() => setOpen(false)}>
+        <a
+          href="/contact"
+          onClick={() => setOpen(false)}
+          aria-current={section === "contact" ? "page" : undefined}
+        >
           Contact
         </a>
       </nav>

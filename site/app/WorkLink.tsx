@@ -12,13 +12,22 @@ export default function WorkLink({
   className,
   onClick,
   children = "Work",
+  current = false,
 }: {
   className?: string;
   onClick?: () => void;
   children?: React.ReactNode;
+  /** Marks this link as the section being read (aria-current="page"),
+      which the nav CSS renders as an underline. SiteNav decides. */
+  current?: boolean;
 }) {
   return (
-    <a href="/work" className={className} onClick={onClick}>
+    <a
+      href="/work"
+      className={className}
+      onClick={onClick}
+      aria-current={current ? "page" : undefined}
+    >
       {children}
     </a>
   );

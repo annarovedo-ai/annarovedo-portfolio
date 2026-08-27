@@ -18,16 +18,24 @@ import { resumeContent } from "./pageContent";
 export default function ResumeNavLink({
   onNavigate,
   personaOverride,
+  current = false,
 }: {
   onNavigate?: () => void;
   /** Entrance routes (/studio) force their persona so the server-rendered
       nav already says "Services" rather than waiting for hydration. */
   personaOverride?: PersonaId;
+  /** aria-current="page" when /resume is the page being read; SiteNav
+      decides, the nav CSS draws the underline. */
+  current?: boolean;
 }) {
   const store = useSyncExternalStore(subscribe, getSnapshot, getServerSnapshot);
   const persona = personaOverride ?? store;
   return (
-    <a href="/resume" onClick={onNavigate}>
+    <a
+      href="/resume"
+      onClick={onNavigate}
+      aria-current={current ? "page" : undefined}
+    >
       {resumeContent[persona].navLabel}
     </a>
   );

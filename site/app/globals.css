@@ -1305,6 +1305,17 @@ img {
   padding-block: 8px;
 }
 
+/* The page being read (2026-08-27, Anna: "underline the page you're on in
+   the nav. it's unclear"). aria-current="page" is set by SiteNav, so the
+   state and its styling share one vocabulary with assistive tech. Offset
+   clears the descenders; thickness stays hairline so it reads as a marker,
+   not a link affordance. */
+.site-header nav a[aria-current="page"] {
+  text-decoration: underline;
+  text-underline-offset: 7px;
+  text-decoration-thickness: 1.5px;
+}
+
 .site-header nav a:hover,
 .footer-links a:hover {
   opacity: 0.68;
