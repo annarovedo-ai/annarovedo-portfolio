@@ -162,6 +162,10 @@
      every rule using it silently fell back to nothing. .anna-dock-button:hover
      has therefore had no hover state at all. Caught 2026-08-12. */
   --blue-deep: #10233d;
+  /* The interior header's ground: the persona dark, one optical notch
+     lighter and at 0.97 so content ghosts under the sticky bar. Keep the
+     three personas' versions in step with --blue below. */
+  --header-bg: rgba(29, 61, 104, 0.97);
 
   /* Leading. The default is 1.55 and it lives on `body`, so most prose gets it
      by inheritance and never needs to say so; these three are the deliberate
@@ -196,6 +200,7 @@
    --------------------------------------------------------------------------- */
 html[data-persona="client"] {
   --blue: #17181c;
+  --header-bg: rgba(28, 29, 34, 0.97);
   --night: #17181c;
   --blue-deep: #0b0c0f;
   --blue-bright: #4a4f58;
@@ -204,6 +209,7 @@ html[data-persona="client"] {
 
 html[data-persona="ex"] {
   --blue: #521a26;
+  --header-bg: rgba(92, 29, 43, 0.97);
   --night: #521a26;
   --blue-deep: #3a1019;
   --blue-bright: #8a3a48;
@@ -1170,7 +1176,13 @@ img {
   display: flex;
   align-items: center;
   justify-content: space-between;
-  background: rgba(29, 61, 104, 0.97);
+  /* Was hardcoded rgba(29, 61, 104, 0.97), the one navy the persona-ground
+     sweep missed because it was written as rgba, not hex (2026-08-27, Anna,
+     on the Nike page in Client: "this should be black bc it's in client").
+     Now a token so the interior header changes rooms with the rest of the
+     site. The State Street page's own header override below stays: that page
+     deliberately wears its subject's navy. */
+  background: var(--header-bg);
   color: #fff;
   position: sticky;
   top: 0;
