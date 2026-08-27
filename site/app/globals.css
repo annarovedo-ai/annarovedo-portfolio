@@ -201,6 +201,13 @@
 html[data-persona="client"] {
   --blue: #17181c;
   --header-bg: rgba(28, 29, 34, 0.97);
+  /* The on-dark reading ladder is blue-tinted for navy; on ink it reads
+     as a cast (2026-08-27, Anna, on the Ex band: "this light blue on
+     burgundy doesnt work" — same problem both rooms). Neutral greys here,
+     rose-tinted on the Ex below, all AA-checked on their own grounds. */
+  --on-dark-body: #dcdcd9;
+  --on-dark-muted: #b6b6b3;
+  --on-dark-label: #a4a4a1;
   --night: #17181c;
   --blue-deep: #0b0c0f;
   --blue-bright: #4a4f58;
@@ -210,6 +217,9 @@ html[data-persona="client"] {
 html[data-persona="ex"] {
   --blue: #521a26;
   --header-bg: rgba(92, 29, 43, 0.97);
+  --on-dark-body: #eedbdb;
+  --on-dark-muted: #d3b2b6;
+  --on-dark-label: #c5a0a5;
   --night: #521a26;
   --blue-deep: #3a1019;
   --blue-bright: #8a3a48;
