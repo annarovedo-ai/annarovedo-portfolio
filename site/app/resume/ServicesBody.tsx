@@ -223,6 +223,38 @@ export default function ServicesBody() {
         </div>
       </section>
 
+      {/* Added 2026-08-27, Anna: "i want to position myself for VCs", both
+          the funds and their portfolio companies, client version first. Sits
+          after Selected experience on purpose: the logos establish the
+          pedigree, this band says what that pedigree looks like inside a
+          portfolio. Reuses the svc-get card pattern so it costs no new CSS.
+          "LPs" is deliberate: it is the audience's own word, not jargon to
+          them, and it signals she knows whose money is in the room. No past
+          startup or VC clients are claimed anywhere in this band, because
+          none are documented; the claim is fit, not history. */}
+      <section className="svc-block">
+        <div className="shell">
+          <p className="eyebrow">For venture funds and their portfolios</p>
+          <div className="svc-get">
+            <div>
+              <h2>Inside a portfolio company</h2>
+              <p>
+                A direction sprint before committing a build, an embedded design lead through the
+                ambiguous stretch, or a brand and product taken to launch. Senior direction when it
+                matters most, without an agency retainer or a full-time hire.
+              </p>
+            </div>
+            <div>
+              <h2>For the fund itself</h2>
+              <p>
+                Identity, website, and story work for the firm: how the fund looks, reads, and
+                explains itself to founders and LPs.
+              </p>
+            </div>
+          </div>
+        </div>
+      </section>
+
       <section className="svc-block">
         <div className="shell">
           <p className="eyebrow">What you get</p>

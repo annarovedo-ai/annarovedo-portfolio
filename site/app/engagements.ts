@@ -35,7 +35,7 @@ export const engagements: Engagement[] = [
     expanded:
       "A focused two-to-three-week engagement for a product, feature, or initiative that is important but poorly defined. It can include stakeholder conversations, an experience audit, opportunity framing, prototype directions, and a recommended path forward.",
     bestFor:
-      "A new product, feature, AI opportunity, or redesign that matters but is not yet clearly defined.",
+      "A new product, feature, AI opportunity, or redesign that matters but is not yet clearly defined, including a funded team's first product.",
   },
   {
     id: "embedded",
@@ -46,7 +46,7 @@ export const engagements: Engagement[] = [
     expanded:
       "Anna joins the product team for three to six months, normally three or four days per week. She can own an ambiguous area, establish direction, create prototypes, support decisions, and stay through detailed design and implementation.",
     bestFor:
-      "Teams facing an important product initiative without the senior design capacity to lead it.",
+      "Teams facing an important product initiative without the senior design capacity to lead it, including startups not ready to make a full-time design hire.",
   },
   {
     id: "system",
