@@ -337,13 +337,17 @@ export const homeContent: Record<PersonaId, HomeContent> = {
     // breaks the pattern on purpose.
     onboardingText:
       "Everything on this page answers what you’d ask me on a first call.",
-    // Single-line headline: headline[1] is intentionally empty and the soft
-    // span does not render. Client and Ex keep the two-part question/answer.
-    headline: ["UX is my specialty, not my boundary.", ""],
-    // Depth-led, number kept once (2026-08-19): the headline above already
-    // claims the range, so this line stopped restating it with vague nouns
-    // and started naming the niches recruiters actually search for.
-    subtext: "Enterprise AI, search, and design systems, practiced for twenty years.",
+    // Anna, 2026-08-28: UX, UI and branding are equal parts of the practice,
+    // not a UX specialty with everything else positioned outside it. The
+    // headline translates those disciplines into what a visitor experiences;
+    // the deck names all three explicitly so the breadth is unmistakable.
+    // headline[1] stays empty because recruiter mode remains a single thought.
+    headline: [
+      "I design how it works, how it looks, and what it stands for.",
+      "",
+    ],
+    subtext:
+      "I work across UX, UI, and branding to create digital products that feel coherent from first interaction to lasting impression.",
     conciergeHeading:
       "You can piece me together from my case studies, or you can ask Almost Anna.",
     conciergeBody:

@@ -1,5 +1,11 @@
 # Decisions Log
 
+## Recruiter positioning now names UX, UI, and branding equally (2026-08-28)
+
+- **Anna clarified the intended positioning:** she does UX, UI, and branding; UX should not be framed as the specialty with UI and brand sitting beyond its boundary.
+- **Recruiter homepage headline:** “I design how it works, how it looks, and what it stands for.” The line translates UX, UI, and branding into the three things a visitor experiences rather than presenting a services list.
+- **The deck makes the mapping explicit:** “I work across UX, UI, and branding to create digital products that feel coherent from first interaction to lasting impression.” The recruiter About page and homepage metadata now use the same positioning so the site does not contradict its opening claim.
+
 ## IBM THINK Leaders added; Ford gets real images (2026-08-05)
 
 - **New "clients" archive entry: IBM THINK Leaders.** Distinct from the existing Think 2019 (conference) entry, this is the recurring executive-community platform (`annarovedo.com/think-leaders` on the live site). Role and touchpoint list came directly from Anna's own description: Creative Director at VSA Partners, responsible for visual branding/direction/tone plus overseeing production across the website and portal, event app, illustration library, weekly newsletter, social graphics, real-time event infographics, and print. Five images supplied and added: the Berlin CIO Leadership event app, the THINK Leaders IBM.com site, the illustrated pattern library, a THINK Marketing article/PDF pairing, and a THINK Marketing brochure.

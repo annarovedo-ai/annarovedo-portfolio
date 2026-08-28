@@ -17,7 +17,7 @@ export const metadata: Metadata = {
   // more than keeping the studio out of one persona’s browser tab.
   title: "Anna Rovedo · Principal Experience Designer · Paper Pixel",
   description:
-    "Anna Rovedo, Principal Experience Designer and founder of Paper Pixel. UX, AI experiences, search and discovery, design systems, brand and campaign work.",
+    "Anna Rovedo, Principal Experience Designer and founder of Paper Pixel. UX, UI, AI experiences, search, design systems, branding, and campaigns.",
   alternates: { canonical: "/" },
 };
 

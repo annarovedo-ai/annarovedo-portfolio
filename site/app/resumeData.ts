@@ -12,10 +12,9 @@
  * This list had three groups and thirteen items, of which exactly one --
  * "Visual Design", fifth of six in the last group -- pointed at anything
  * visual, and nothing at all pointed at campaign, art direction or concept
- * work. Set against a homepage that opens "UX is my specialty, not my
- * boundary", it contradicted the site’s central claim: a recruiter skimming
- * the rail read a pure UX practitioner and stopped considering her for the
- * other half of her career.
+ * work. The homepage now explicitly connects how products work, how they
+ * look, and what they stand for; a recruiter skimming this rail should see
+ * that same UX, UI, and branding range rather than read a pure UX practice.
  *
  * A heading is what gets skimmed, so the range needs one of its own rather
  * than a word tucked into a list about prototyping. Every item below is
