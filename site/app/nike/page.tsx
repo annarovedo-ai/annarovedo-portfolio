@@ -15,21 +15,31 @@ export const metadata: Metadata = {
 
 const assetRoot = "/case-study/nike";
 
+/* Each concept carries Anna's own wireframe frame (supplied 2026-08-28),
+   which replaced the earlier composite board: three readable screens beat
+   one shrunken artboard, and each image sits inside the card that argues
+   for it. */
 const concepts = [
   {
     number: "1.0",
     name: "Quick search, flyout",
     body: "A panel pulls in from the side, answers the question, and gets out of the way. Deliberately limited.",
+    image: "concept-1-flyout.webp",
+    alt: "Wireframe: the Inventory Check flyout open over a Free of Charge Order form, with a search field and size availability list",
   },
   {
     number: "2.0",
     name: "Dedicated page, filters hidden",
     body: "Room for real digging, filters tucked away. Tidy, and it means opening that panel every single time.",
+    image: "concept-2-dedicated.webp",
+    alt: "Wireframe: a dedicated Inventory Availability page showing filter chips and a results table, with filters behind an Edit Filters button",
   },
   {
     number: "3.0",
     name: "Dedicated page, filters exposed",
     body: "The bet: most people reach for the same handful every time. This was the hypothesis I had to prove.",
+    image: "concept-3-flat.webp",
+    alt: "Wireframe: the dedicated page with a flat layout of always-visible filter fields above the results table",
   },
 ];
 
@@ -190,31 +200,13 @@ export default function NikeCaseStudy() {
           <div className="concept-grid">
             {concepts.map((c) => (
               <div className="concept-card" key={c.number}>
+                <img src={`${assetRoot}/${c.image}`} alt={c.alt} loading="lazy" width={1440} height={1024} />
                 <span>{c.number}</span>
                 <strong>{c.name}</strong>
                 <p>{c.body}</p>
               </div>
             ))}
           </div>
-
-          {/* Anna's own concept board (added 2026-08-28, "v1"): the three
-              doors as wireframes, which the text cards above describe. One
-              board rather than three crops so the comparison reads the way
-              she originally presented it. */}
-          <figure className="figure">
-            <div className="figure-image-wrap">
-              <img
-                src={`${assetRoot}/concepts-v1.webp`}
-                alt="Concept wireframe board: 1.0 Inventory Search Lite as a flyout during mass order create, 2.0 a dedicated Inventory Availability page with a filter flyout, and 3.0 the dedicated page with a flat field layout above the results table"
-                loading="lazy"
-                width={1544}
-                height={1618}
-              />
-            </div>
-            <figcaption>
-              The three doors as I drew them: the flyout for quick checks mid-task, the dedicated page with filters tucked away, and the flat field layout that became the bet.
-            </figcaption>
-          </figure>
 
           <p className="body-copy">
             I took all three to the subject matter experts and ran a feedback grid. The enthusiasm was useful. The anxiety was more useful, because in the same session, on the same wall, people told me two things that cannot both be solved by opinion.

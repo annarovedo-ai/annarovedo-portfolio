@@ -9442,6 +9442,17 @@ blockquote {
   margin: 2.5rem 0 1rem;
 }
 
+/* The concept wireframes inside the three-doors cards (2026-08-28):
+   full-bleed to the card's inner width, hairline border so the white
+   wireframes separate from the card surface. */
+.concept-card img {
+  display: block;
+  width: 100%;
+  height: auto;
+  margin-bottom: 14px;
+  border: 1px solid var(--line);
+}
+
 .concept-card {
   padding: 1.75rem 1.5rem;
   background: var(--surface);
