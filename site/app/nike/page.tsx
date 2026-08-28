@@ -197,6 +197,25 @@ export default function NikeCaseStudy() {
             ))}
           </div>
 
+          {/* Anna's own concept board (added 2026-08-28, "v1"): the three
+              doors as wireframes, which the text cards above describe. One
+              board rather than three crops so the comparison reads the way
+              she originally presented it. */}
+          <figure className="figure">
+            <div className="figure-image-wrap">
+              <img
+                src={`${assetRoot}/concepts-v1.webp`}
+                alt="Concept wireframe board: 1.0 Inventory Search Lite as a flyout during mass order create, 2.0 a dedicated Inventory Availability page with a filter flyout, and 3.0 the dedicated page with a flat field layout above the results table"
+                loading="lazy"
+                width={1544}
+                height={1618}
+              />
+            </div>
+            <figcaption>
+              The three doors as I drew them: the flyout for quick checks mid-task, the dedicated page with filters tucked away, and the flat field layout that became the bet.
+            </figcaption>
+          </figure>
+
           <p className="body-copy">
             I took all three to the subject matter experts and ran a feedback grid. The enthusiasm was useful. The anxiety was more useful, because in the same session, on the same wall, people told me two things that cannot both be solved by opinion.
           </p>
