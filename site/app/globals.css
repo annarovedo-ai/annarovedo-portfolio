@@ -3588,8 +3588,14 @@ blockquote {
     padding: 2px;
   }
 
+  /* 7px/8px read as too small once the pill was centred (Anna,
+     2026-08-28: "the buttons are too small now on mobile"). Wider and a
+     touch taller (~264px pill), which clears the hamburger down to 390px;
+     a narrower step for smaller phones lives beside the live dock offset
+     further down. 14px was tried first and measured into the hamburger at
+     390px — this is as wide as centred honesty allows. */
   .persona-band .persona-switch button {
-    padding: 7px 8px;
+    padding: 9px 11px;
     font-size: var(--type-label);
     letter-spacing: 0.03em;
   }
@@ -6757,12 +6763,22 @@ blockquote {
    84px lock below it in the file wins on order), so the real phone bar is
    84px and the pill was pinning 8px above the glyph and hamburger centres.
    Centre against the bar that actually renders: glyph and hamburger centre
-   at 41.5px; pill is 37px tall; 41.5 − 37/2 ≈ 23. Verified in render at
+   at 41.5px; the offset is 41.5 minus half the pill's height. Verified at
    360/390/430. This block must stay BELOW the base .persona-band rule. */
 @media (max-width: 720px) {
   .persona-band {
-    top: 23px;
+    top: 21px; /* pill is 41px tall at the 9px button padding; centre 41.5 */
     padding: 0 8px;
+  }
+}
+
+/* Small phones: the centred pill's right edge reaches (viewport + pill)/2,
+   and at 375px the wide 11px buttons put that on the hamburger. Step the
+   horizontal padding back to the size that measured clear at 360px; the
+   vertical padding stays so the pill height and centring hold. */
+@media (max-width: 375px) {
+  .persona-band .persona-switch button {
+    padding: 9px 8px;
   }
 }
 
@@ -7248,8 +7264,23 @@ blockquote {
 /* Below 360px the control genuinely does not fit at its normal padding:
    measured 27px of overflow at 320px before the pills were squeezed. The
    band still holds one row by letting the buttons flex-shrink. (The
-   .is-scrolled two-row header fallback that lived here left with V4.) */
+   .is-scrolled two-row header fallback that lived here left with V4.)
+
+   AND it does not fit in the bar at all (2026-08-28): these rules force a
+   full-width pill, which sat straight across the glyph and hamburger once
+   the pill started docking into the bar — measured 44px onto the hamburger
+   at 340px. The narrowest phones take the same cure as 721-1000px: the
+   pill pins as its own navy strip under the 84px bar, full width, never
+   overlapping. margin-top: base −66 minus the strip's 6px top padding. */
 @media (max-width: 359px) {
+  .persona-band {
+    top: 84px;
+    margin-top: -72px;
+    padding: 6px 12px 10px;
+    background: var(--blue);
+    pointer-events: auto;
+  }
+
   .persona-band .persona-switch-group {
     width: 100%;
     min-width: 0;
