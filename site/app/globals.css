@@ -3566,27 +3566,23 @@ blockquote {
     padding: 0 16px;
   }
 
-  /* The locked-height pair, phone edition — see the notes on
-     .home-header-plain and .persona-band. Change both together.
-     (62px bar − ~48px pill) / 2 = the pill docks centered in the bar. */
-  .home-header-plain {
-    height: 62px;
-    margin-bottom: -62px;
-  }
+  /* The phone-edition locked-height pair (62px bar) that lived here was
+     DEAD CODE and left 2026-08-28: the base .home-header-plain 84px lock
+     sits later in the file at the same specificity and always won, so the
+     phone bar has rendered at 84px all along. The live phone dock offset
+     lives beside the 721-1000px strip rules, below the base rule it has
+     to beat. If a slimmer phone bar is ever actually wanted, it must be
+     re-added BELOW the base lock, not here. */
 
   .persona-lead {
     padding-top: 74px;
   }
 
-  /* Phone: same dock-inside-the-bar as the 1000px rule, at the phone
-     bar's height and smaller again (Anna: "smaller on mobile"), so the
-     three options still clear the lockup and the hamburger on a 390px
-     screen. (62px bar − ~34px pill) / 2 = 14px. The wordmark gives way to
-     the 30px glyph below (see .brand-mark), which is what buys the width. */
-  .persona-band {
-    top: 14px;
-    padding: 0 8px;
-  }
+  /* The top: 14px dock offset that lived here was also dead (base
+     .persona-band top: 15px wins on order); the live phone offset is with
+     the strip rules below the base. The pill sizing and the glyph swap
+     below are alive — the wordmark gives way to the 30px glyph, which is
+     what buys the pill its width on a 390px screen. */
 
   .persona-band .persona-switch {
     padding: 2px;
@@ -6738,8 +6734,8 @@ blockquote {
      content. */
   .persona-band {
     top: 84px;
-    margin-top: -74px;
-    padding: 8px 12px 12px;
+    margin-top: -76px;
+    padding: 10px 12px;
     background: var(--blue);
     pointer-events: auto;
   }
@@ -6751,6 +6747,22 @@ blockquote {
   .persona-band .persona-switch button {
     padding: 7px 11px;
     font-size: var(--type-small);
+  }
+}
+
+/* Phone dock, the LIVE rule (2026-08-28, Anna: "vertically centered on the
+   blue background and align with the rest of the nav"). The "phone edition"
+   block near the top of the file pins the pill at top: 14px against a bar it
+   believes is 62px tall — but its 62px height lock is itself dead (the base
+   84px lock below it in the file wins on order), so the real phone bar is
+   84px and the pill was pinning 8px above the glyph and hamburger centres.
+   Centre against the bar that actually renders: glyph and hamburger centre
+   at 41.5px; pill is 37px tall; 41.5 − 37/2 ≈ 23. Verified in render at
+   360/390/430. This block must stay BELOW the base .persona-band rule. */
+@media (max-width: 720px) {
+  .persona-band {
+    top: 23px;
+    padding: 0 8px;
   }
 }
 
