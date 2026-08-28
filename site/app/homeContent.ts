@@ -146,6 +146,9 @@ export const BOOKING_URL = "https://calendly.com/anna-rovedo/30min";
  * one unit. Neither card carries the old "featured" badge any more: a 50/50
  * pair has no room for one half to outrank the other. Order matters, part
  * one first. Restructured 2026-08-05.
+ * Recruiter card copy rewritten to Anna's exact text 2026-08-28; Kmart and
+ * Nike card titles shortened to the bare brand the same day (client/ex card
+ * variants untouched, alt persona headlines still to come).
  */
 export const flagshipCaseStudies: CaseStudy[] = [
   {
@@ -153,7 +156,7 @@ export const flagshipCaseStudies: CaseStudy[] = [
     tag: "UX / Systems",
     part: "Part one",
     title: "IBM Chat Concierge",
-    body: "The brief was a chatbot. The useful question turned out to be who was actually buying, so I designed for two people at once: the developer evaluating it and the manager who had to approve it. A first version went live and the work has continued through the year since, from conversation history and prompt hints to AI summaries on Product Finder. Sole UX designer, on a team led by IBM’s Global Head of UX.",
+    body: "The brief was a chatbot. The useful question was what it should be: a concierge across IBM.com that guides visitors through the buying journey and beyond, into the product.",
     // Purpose-made 16:9 frame supplied for the homepage card.
     image: "/case-study/concierge/concierge-card-hero.png",
     client: {
@@ -166,7 +169,7 @@ export const flagshipCaseStudies: CaseStudy[] = [
     tag: "UX / Product",
     part: "Part two",
     title: "What if the page was the assistant?",
-    body: "Two ideas at once: agentic in the ordinary sense, able to act on a buyer’s behalf, and a page that reformats itself as it learns what they care about. Sections reorder, content changes, and the same signals score the lead while it happens. I built the model and the case for funding it.",
+    body: "Future vision: a page that reconfigures itself around visitor behavior. Time spent with the ROI calculator shapes what appears next and helps score the lead for sales, so one signal powers both personalization and qualification.",
     image: "/case-study/thumbs/journey-orchestration.jpg",
     client: {
       tag: "Product strategy",
@@ -192,7 +195,7 @@ export const supportingCaseStudies: CaseStudy[] = [
     href: "/state-street",
     tag: "Design systems",
     title: "State Street Alpha",
-    body: "I started from what a real screen had to hold. These users need density, so type, color and spacing were decided against live data in a working prototype rather than settled in the abstract, and the atomic, tokenized system came out of what actually held up. It became the North Star for State Street’s broader suite of products.",
+    body: "Investment teams work with dense financial data all day, so type, color, and spacing were tested against live data rather than settled in the abstract. The resulting atomic, tokenized UI kit was built from what actually held up on screen.",
     image: "/case-study/thumbs/state-street.jpg",
     client: {
       tag: "Design systems",
@@ -209,8 +212,8 @@ export const supportingCaseStudies: CaseStudy[] = [
     // "A secret worth keeping" carries the campaign’s own logic — a secret
     // is only worth having while it is still yours. The case study page
     // keeps SHHHHH; the drama belongs where there is room for it.
-    title: "Kmart: a secret worth keeping",
-    body: "Kmart built a design studio in New York to take on Target, and the clothes were good. Nobody knew they existed, and anyone who did was embarrassed to say where they shopped. The pitch flipped the embarrassment into a reason: keep it a secret, because the moment you say where the dress came from, everyone owns one. Duct tape over the logo, over the hangtag, over the model’s mouth.",
+    title: "Kmart",
+    body: "Nobody says they shop at Kmart. The launch pitch for its redesigned clothing line gave them a better reason not to: say where the dress came from and everyone owns one by Friday. Duct tape over the logo, the hangtag, the model’s mouth.",
     image: "/case-study/kmart/card-cover.png",
     client: {
       tag: "Brand and campaign",
@@ -245,7 +248,7 @@ export const supportingCaseStudies: CaseStudy[] = [
     // The rule this restates: a card is a promise the page has to keep. Sell
     // what launched, name the unlaunched work on the page where there is room
     // to label it honestly.
-    body: "Six tabs competed to answer one question: products, downloads, learning, support, developers, and an All that mixed them together. I led the UX from audit and research through to launch, and replaced them with one result set you can filter without losing your place.",
+    body: "Six tabs competed to answer one question, while “All” merely mixed them together. They became one result set you can filter without losing your place, from audit through launch.",
     image: "/case-study/search/search-card-hero.png",
     client: {
       tag: "Search and IA",
@@ -255,8 +258,8 @@ export const supportingCaseStudies: CaseStudy[] = [
   {
     href: "/nike",
     tag: "UX / Research",
-    title: "Nike: forty fields, five that mattered",
-    body: "The spec asked for forty search attributes in a data table. I went and found the people who actually did the work, and forty-seven of them told me they used five. So five became the default and the rest became something you add, because a product is built around what the majority need, not around its edge cases.",
+    title: "Nike",
+    body: "The spec asked for forty search attributes. Nobody had asked the people doing the work. Forty-seven of them converged on five, so those became the default and the rest became something you add.",
     image: "/case-study/nike/hero-w.png",
     client: {
       // The most persuasive card on the page for a client, because the
