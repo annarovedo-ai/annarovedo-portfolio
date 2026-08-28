@@ -6715,15 +6715,33 @@ blockquote {
    is small or on mobile"), so instead it pins as its own full-width navy
    strip immediately below the bar — always visible, never overlapping,
    and still one pill at one size in both states. */
-@media (max-width: 1000px) {
-  /* Docks INSIDE the bar here too (2026-08-24, Anna: "so it fits between
-     the hamburger and AR"), just smaller: the bar's middle is narrow at
-     this width, so the pill shrinks to fit between the lockup and the
-     hamburger rather than pinning as a strip underneath. (84px bar −
-     ~40px pill) / 2 = 22px. */
+@media (min-width: 721px) and (max-width: 1000px) {
+  /* TABLET ONLY since 2026-08-28 (Anna's phone screenshot: the pill sat on
+     the AR glyph and crowded the hamburger). The phone block near the top
+     of this file (≤720px: top 14px, 2px track, 7px/8px pills at
+     --type-label) is EARLIER in the file at the same specificity, so this
+     block was silently winning on order and phones rendered the tablet
+     pill — too big for a 62px bar. min-width: 721px hands phones back to
+     their own sizing. If these two blocks ever fight again, scope by
+     width; do not reorder the file. */
+  /* STRIP UNDER THE BAR, no longer docked inside it (2026-08-28). The
+     dock-inside fit died when Home joined the nav (2026-08-27): at 768px
+     the bar's middle is ~150px and even the phone-size pill is ~246px, so
+     the pinned pill sat on the Home and Work links (measured in render).
+     This range returns to the design the note above describes: the pill
+     pins as its own full-width navy strip immediately below the 84px bar
+     — always visible, never overlapping. At rest the strip is navy on
+     the persona block's navy and invisible. margin-top: base −66 minus
+     this strip's 8px top padding, so the pill's rest position doesn't
+     move. pointer-events returns to auto: the strip paints solid navy
+     when pinned, so clicks must not fall through it onto covered
+     content. */
   .persona-band {
-    top: 22px;
-    padding: 0 12px;
+    top: 84px;
+    margin-top: -74px;
+    padding: 8px 12px 12px;
+    background: var(--blue);
+    pointer-events: auto;
   }
 
   .persona-band .persona-switch {
