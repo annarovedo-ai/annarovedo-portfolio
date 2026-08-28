@@ -10529,6 +10529,16 @@ html[data-anna-razor="bar"] body {
   margin-top: 48px;
 }
 
+/* The sibling-spacing rule above out-cascades .nike-pair .figure's margin
+   reset (same specificity, later in the file), which pushed the pair's
+   second figure 24px below the first (Anna, 2026-08-27: "top align
+   these"). Grid gap owns the spacing inside the pair; the figures own
+   none. */
+.nike-pair .figure,
+.nike-pair .figure + .figure {
+  margin: 0;
+}
+
 .figure + .wide-figure,
 .chapter-intro + .wide-figure {
   margin-top: 52px;
