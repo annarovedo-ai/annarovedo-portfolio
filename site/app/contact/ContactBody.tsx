@@ -34,8 +34,20 @@ function isEmailField(label: string) {
 
 export default function ContactBody() {
   const store = useSyncExternalStore(subscribe, getSnapshot, getServerSnapshot);
-  // Ex is one page (2026-08-19): utility pages serve the Recruiter content.
-  const persona = store === "ex" ? "recruiter" : store;
+  /**
+   * Ex reads its own copy again as of 2026-08-31. This line used to be
+   * `store === "ex" ? "recruiter" : store`, added 2026-08-19 under "utility
+   * pages serve the Recruiter content" — but a full ex block already existed
+   * in pageContent (House Rules, the 140-character filter, "up to 3 business
+   * years"), so the override was silently throwing it away. Two commits on
+   * 2026-08-27 then wrote MORE ex contact copy on top of an override that was
+   * already discarding it, which is how a whole persona's page went eleven
+   * days without ever rendering.
+   *
+   * /resume never did this — it reads `store` directly and has its own ex
+   * block. Contact was the only page treating ex as a redirect.
+   */
+  const persona = store;
   const c = contactContent[persona];
 
   const [values, setValues] = useState<Record<string, string>>({});

@@ -587,6 +587,19 @@ export const homeContent: Record<PersonaId, HomeContent> = {
     // and "somewhere unclear" is closer to how she actually talks than the
     // longer clause was.
     casesHeader: "Most of these started somewhere unclear.",
+    // The client is not auditing a career, they are looking for their own
+    // problem in someone else's work. So the headline gives them a job to do
+    // and the deck names the next step, matching the contact page's "Bring it
+    // in whatever shape it's in" rather than the recruiter's "here is the
+    // record".
+    //
+    // No outcome is upgraded to make the pitch land: "solved" and "shipped"
+    // are both avoided on purpose, because Journey Orchestration is a future
+    // vision and Kmart is a pitch. Concept stays concept.
+    workPageHeadline: "Six engagements. Find the one that looks like yours.",
+    workPageDeck:
+      "The brief, the constraint, and what actually happened, for each one. If one of them looks like the problem you are holding, that is the conversation worth having.",
+    workArchiveHeading: "And the range it comes from.",
     // A client is not asking whether she is senior enough, they are asking
     // whether she will understand their problem. Same proof, but the second
     // paragraph names the sectors instead of the seniority, because "is she
