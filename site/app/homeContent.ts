@@ -592,15 +592,30 @@ export const homeContent: Record<PersonaId, HomeContent> = {
     // browse and never said what they would get out of it — polite, and worth
     // nothing to someone deciding whether to hire.
     //
-    // "Decisions you can defend" is Anna's own phrase, from the Nike close:
+    // An OFFER, not a description of the archive (2026-08-31, Anna: "more
+    // like, this is what i can do for you"). Two drafts missed by describing
+    // what is on the page — "Six engagements. Find the one that looks like
+    // yours." asked them to browse; "Six unclear briefs. Six decisions you
+    // can defend." was a caption for six case studies. Neither said what she
+    // would do for the person reading.
+    //
+    // So it takes the shape the contact page already uses: "Bring it in
+    // whatever shape it is in", first person, an exchange stated plainly.
+    // "The unclear part" rather than "the brief" on purpose — what a client
+    // actually brings is a product, a market or a category nobody has a fix
+    // on, and naming the vagueness is what makes it feel addressed.
+    //
+    // "A direction you can defend" is Anna's own phrase, from the Nike close:
     // "the difference between a design you can defend and one you can only
-    // assert". It is also the buyer's real anxiety, which is not whether the
+    // assert". It answers the buyer's real anxiety, which is not whether the
     // work is pretty but whether they can take it upstairs and hold the line
-    // on it. And it pairs with the client casesHeader on the homepage ("Most
-    // of these started somewhere unclear"): the unclear brief is the client
-    // thesis, so the headline states the transformation rather than the
-    // inventory.
-    workPageHeadline: "Six unclear briefs. Six decisions you can defend.",
+    // on it. It also pairs with the client casesHeader on the homepage ("Most
+    // of these started somewhere unclear").
+    //
+    // The six case studies below then read as evidence for the offer rather
+    // than as the subject of the page, which is what the deck's opening line
+    // makes explicit.
+    workPageHeadline: "Bring me the unclear part. I’ll give you a direction you can defend.",
     // The deck sells three specific things a buyer is actually shopping for:
     // that research happens even when it is blocked (Nike — standard user
     // interviews were closed to her, so she ran SME workshops and surveyed
@@ -613,7 +628,7 @@ export const homeContent: Record<PersonaId, HomeContent> = {
     // is upgraded to make the page land, and refusing to inflate is itself
     // the differentiator for a buyer who has read a lot of portfolios.
     workPageDeck:
-      "The brief, the constraint, and what actually happened, for each one. Research where it was available and a way around it where it was not, decisions traced to evidence rather than taste, and the outcome stated plainly, whether it shipped, pitched, or stayed a concept.",
+      "Six times I have done exactly that. The brief, the constraint, and what actually happened in each one: research where it was available and a way around it where it was not, decisions traced to evidence rather than taste, and the outcome stated plainly, whether it shipped, pitched, or stayed a concept.",
     workArchiveHeading: "And the range behind it.",
     // A client is not asking whether she is senior enough, they are asking
     // whether she will understand their problem. Same proof, but the second
