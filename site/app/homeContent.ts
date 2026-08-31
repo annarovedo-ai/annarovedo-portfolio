@@ -612,9 +612,20 @@ export const homeContent: Record<PersonaId, HomeContent> = {
     // on it. It also pairs with the client casesHeader on the homepage ("Most
     // of these started somewhere unclear").
     //
-    // The six case studies below then read as evidence for the offer rather
-    // than as the subject of the page, which is what the deck's opening line
-    // makes explicit.
+    // The case studies below then read as evidence for the offer rather than
+    // as the subject of the page.
+    //
+    // NO COUNT in this persona (2026-08-31, Anna: "why are you making the
+    // number such a big part of this?"). "Six" was dragged over from the
+    // recruiter version, where it earns its place — a recruiter is auditing
+    // whether the record is complete, so "six case studies, in full" is the
+    // useful fact. A client is not counting. Leading with the number caps her
+    // at six when the archive below shows considerably more, and it makes
+    // quantity the proof when the proof is the depth of any single one. No
+    // buyer needs six; they need the one that resembles their problem.
+    //
+    // The ex version keeps its "Six of them." on purpose — there the count is
+    // a comic beat about volume, not a credential.
     workPageHeadline: "Bring me the unclear part. I’ll give you a direction you can defend.",
     // The deck sells three specific things a buyer is actually shopping for:
     // that research happens even when it is blocked (Nike — standard user
@@ -628,7 +639,7 @@ export const homeContent: Record<PersonaId, HomeContent> = {
     // is upgraded to make the page land, and refusing to inflate is itself
     // the differentiator for a buyer who has read a lot of portfolios.
     workPageDeck:
-      "Six times I have done exactly that. The brief, the constraint, and what actually happened in each one: research where it was available and a way around it where it was not, decisions traced to evidence rather than taste, and the outcome stated plainly, whether it shipped, pitched, or stayed a concept.",
+      "The brief, the constraint, and what actually happened, each time: research where it was available and a way around it where it was not, decisions traced to evidence rather than taste, and the outcome stated plainly, whether it shipped, pitched, or stayed a concept.",
     workArchiveHeading: "And the range behind it.",
     // A client is not asking whether she is senior enough, they are asking
     // whether she will understand their problem. Same proof, but the second
