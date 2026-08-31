@@ -272,9 +272,11 @@ export default function NikeCaseStudy() {
             <figure className="figure">
               <div className="figure-image-wrap">
                 <img
-                  src={`${assetRoot}/more-filters-w.png`}
-                  alt="More Filters side panel open over the results, listing Plant, Contract Number, Availability Date, Quality, ISEG, Size, Division and Stock Type"
+                  src={`${assetRoot}/v2-more-filters.webp`}
+                  alt="More Filters side panel open over the dimmed results, listing Contract Number, Plant, Availability Date, Quality, ISEG, Size, Division and Stock Type, with a Plant chip applied and ISEG set to A"
                   loading="lazy"
+                  width={2880}
+                  height={2048}
                 />
               </div>
               <figcaption>
@@ -284,9 +286,11 @@ export default function NikeCaseStudy() {
             <figure className="figure">
               <div className="figure-image-wrap">
                 <img
-                  src={`${assetRoot}/excel-download-w.png`}
+                  src={`${assetRoot}/v2-download.webp`}
                   alt="Download dialog over the results asking whether the user would like to download an Excel version"
                   loading="lazy"
+                  width={2880}
+                  height={2048}
                 />
               </div>
               <figcaption>
