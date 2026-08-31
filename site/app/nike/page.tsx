@@ -328,9 +328,11 @@ export default function NikeCaseStudy() {
               <p className="figure-tag">After</p>
               <div className="figure-image-wrap">
                 <img
-                  src={`${assetRoot}/f-results.png`}
-                  alt="Results grid with three filter chips applied (Material, Plant and ISEG) and a row expanded to show quantities by size across successive availability dates"
+                  src={`${assetRoot}/v2-after.webp`}
+                  alt="Results grid with three filter chips applied (Material, Plant and ISEG), Set as Default checked, and a row expanded to show quantities by size across successive availability dates with a running total"
                   loading="lazy"
+                  width={1440}
+                  height={1024}
                 />
               </div>
               <figcaption>
