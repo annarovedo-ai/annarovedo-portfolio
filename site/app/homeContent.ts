@@ -587,19 +587,34 @@ export const homeContent: Record<PersonaId, HomeContent> = {
     // and "somewhere unclear" is closer to how she actually talks than the
     // longer clause was.
     casesHeader: "Most of these started somewhere unclear.",
-    // The client is not auditing a career, they are looking for their own
-    // problem in someone else's work. So the headline gives them a job to do
-    // and the deck names the next step, matching the contact page's "Bring it
-    // in whatever shape it's in" rather than the recruiter's "here is the
-    // record".
+    // Sells the capability, not the archive. An earlier draft ("Six
+    // engagements. Find the one that looks like yours.") asked the buyer to
+    // browse and never said what they would get out of it — polite, and worth
+    // nothing to someone deciding whether to hire.
     //
-    // No outcome is upgraded to make the pitch land: "solved" and "shipped"
-    // are both avoided on purpose, because Journey Orchestration is a future
-    // vision and Kmart is a pitch. Concept stays concept.
-    workPageHeadline: "Six engagements. Find the one that looks like yours.",
+    // "Decisions you can defend" is Anna's own phrase, from the Nike close:
+    // "the difference between a design you can defend and one you can only
+    // assert". It is also the buyer's real anxiety, which is not whether the
+    // work is pretty but whether they can take it upstairs and hold the line
+    // on it. And it pairs with the client casesHeader on the homepage ("Most
+    // of these started somewhere unclear"): the unclear brief is the client
+    // thesis, so the headline states the transformation rather than the
+    // inventory.
+    workPageHeadline: "Six unclear briefs. Six decisions you can defend.",
+    // The deck sells three specific things a buyer is actually shopping for:
+    // that research happens even when it is blocked (Nike — standard user
+    // interviews were closed to her, so she ran SME workshops and surveyed
+    // distribution lists instead), that decisions trace to evidence rather
+    // than taste, and that outcomes are reported honestly.
+    //
+    // That last clause is the sell AND the guardrail. "Shipped, pitched, or
+    // stayed a concept" is exactly accurate across the six — four shipped,
+    // Kmart is a pitch, Journey Orchestration is a future vision — so nothing
+    // is upgraded to make the page land, and refusing to inflate is itself
+    // the differentiator for a buyer who has read a lot of portfolios.
     workPageDeck:
-      "The brief, the constraint, and what actually happened, for each one. If one of them looks like the problem you are holding, that is the conversation worth having.",
-    workArchiveHeading: "And the range it comes from.",
+      "The brief, the constraint, and what actually happened, for each one. Research where it was available and a way around it where it was not, decisions traced to evidence rather than taste, and the outcome stated plainly, whether it shipped, pitched, or stayed a concept.",
+    workArchiveHeading: "And the range behind it.",
     // A client is not asking whether she is senior enough, they are asking
     // whether she will understand their problem. Same proof, but the second
     // paragraph names the sectors instead of the seniority, because "is she
