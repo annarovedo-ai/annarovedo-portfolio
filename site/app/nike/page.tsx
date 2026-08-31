@@ -258,13 +258,15 @@ export default function NikeCaseStudy() {
           <figure className="figure">
             <div className="figure-image-wrap">
               <img
-                src={`${assetRoot}/f-primary.png`}
-                alt="Inventory Availability filter panel showing Material Number, Availability Date, Size, General Availability, Quality, Plant and ISEG fields, two saved filter slots, and a See More Filters control"
+                src={`${assetRoot}/v2-primary.webp`}
+                alt="Inventory Availability filter panel showing Material Number, Availability Date, Size, General Availability, Quality, Plant and ISEG fields, a Set as Default control, and a See More Filters control"
                 loading="lazy"
+                width={1440}
+                height={1024}
               />
             </div>
             <figcaption>
-              The default panel: material number, plant, ISEG and quality all present without hunting, two slots for saved filter sets, and &ldquo;See More Filters&rdquo; holding everything else one click away. Nothing was taken from anyone; it was moved off the default path.
+              The default panel: material number, plant, ISEG and quality all present without hunting, &ldquo;Set as Default&rdquo; ready to keep whatever shape you settle on, and &ldquo;See More Filters&rdquo; holding everything else one click away. Nothing was taken from anyone; it was moved off the default path.
             </figcaption>
           </figure>
 
