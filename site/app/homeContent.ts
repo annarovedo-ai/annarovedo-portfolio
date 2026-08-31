@@ -665,29 +665,34 @@ export const homeContent: Record<PersonaId, HomeContent> = {
     ],
     workEyebrow: "What I’ve been up to",
     casesHeader: "It turns out I was busy.",
-    // The engine is the same one the hero uses: open by disarming, then let a
-    // plain fact sit there. Here the fact is the least gossipy payload
-    // imaginable. He clicked a button marked Ex-Boyfriend expecting some
-    // version of a personal answer and is about to read six case studies
-    // about enterprise software, and saying so out loud is funnier than
-    // pretending otherwise. "I’m as surprised as you are" carries the whole
-    // gap without naming it — it concedes that this was not the plan, which
-    // is the one thing an ex knows and a recruiter does not need to.
+    // REJECTED, and the reason is worth keeping: "It’s mostly enterprise
+    // software now. I’m as surprised as you are." (2026-08-31, Anna: "no, i
+    // don’t want to be that person"). It was funny by making her the butt of
+    // a joke about her own career — surprised to have ended up here, faintly
+    // apologetic about the work being unglamorous. Nothing else in this
+    // persona does that. Ex is unbothered and a step ahead of him: "I had a
+    // feeling you’d show up eventually", "It has absolutely no opinions about
+    // you", "This is probably not that". Even "It turns out I was busy" is a
+    // flex delivered as a shrug. The joke lands on HIM, never on the work,
+    // and never on her for doing it.
     //
-    // Accurate, not just funny: five of the six are enterprise product or
-    // systems work. "Mostly" is doing real work in that sentence.
-    workPageHeadline: "It’s mostly enterprise software now. I’m as surprised as you are.",
-    // "The fashion degree does come up" is the line only he gets, and it costs
-    // a recruiter nothing — they read it as a charming detail, he reads it as
-    // the thing he remembers about her. It is also true: Kmart is a clothing
-    // line launch, and the note on the ex hero already identifies the fashion
-    // degree as this persona’s live callback ("I did end up using it" is both
-    // the joke and the thesis).
+    // So the headline reverses the reunion script instead. The expected move
+    // is to ask what he has been up to; declining to, out loud, is both the
+    // joke and the boundary — the same move "let’s not make it weird" makes
+    // in the hero, one degree drier. It also sets up the page perfectly: what
+    // follows is six case studies and no small talk whatsoever.
+    workPageHeadline: "This is the part where I don’t ask what you’ve been doing.",
+    // The last beat is aimed at him too. "If you’re only here to be polite"
+    // names the actual reason he is on this page and lets him off the hook,
+    // which is funnier than pretending he came for the case studies — and a
+    // recruiter reads it as wit, not as an invitation to leave, because the
+    // sentence is offering the SHORT version rather than the exit.
     //
-    // Everything factual in the recruiter’s deck survives — what each case
-    // study contains, and that there are six.
+    // Everything factual in the recruiter’s deck survives: what each case
+    // study contains, that there are six, and that the homepage carries a
+    // shorter pass.
     workPageDeck:
-      "The brief, the constraint, and what actually happened, for each one. Six of them. The fashion degree does come up.",
+      "The brief, the constraint, and what actually happened, for each one. Six of them. The homepage has a shorter version, if you’re only here to be polite.",
     // Sets up the paragraph underneath, which lists client, agency, apparel
     // and editorial work and stays in one voice across all three personas.
     workArchiveHeading: "And that’s just the ones I wrote up.",
