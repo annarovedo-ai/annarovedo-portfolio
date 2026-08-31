@@ -89,6 +89,25 @@ export type HomeContent = {
   workEyebrow: string;
   casesHeader: string;
   /**
+   * /work's own frame. The page hardcoded its eyebrow, h1, deck and archive
+   * heading until 2026-08-31, so every persona read the recruiter's version of
+   * a page the switcher claims to change — the footer band at the bottom was
+   * ex-voiced while the top of the same page was not.
+   *
+   * Optional, and client deliberately inherits the recruiter's. Anna's rule
+   * for the voice layer is recruiter first, client and ex after; ex is the one
+   * with a reason to speak differently here, so it is the one written. A
+   * client variant is a three-line addition whenever it is wanted.
+   *
+   * The archive PARAGRAPH under workArchiveHeading is not in this list on
+   * purpose. Headings carry the register, the evidence underneath stays in one
+   * voice — the same rule that governs the case cards for the ex persona. See
+   * the note on CaseStudy.ex.
+   */
+  workPageHeadline?: string;
+  workPageDeck?: string;
+  workArchiveHeading?: string;
+  /**
    * The About block on the homepage. Was hardcoded in HomeBody until
    * 2026-08-07, so all three personas read copy written for the recruiter.
    *
@@ -394,6 +413,10 @@ export const homeContent: Record<PersonaId, HomeContent> = {
     // skimmer what they are looking at and how much of it there is. The
     // eyebrow drops to "Work" so the two lines are not both saying selected.
     casesHeader: "Selected case studies.",
+    workPageHeadline: "Six case studies, in full.",
+    workPageDeck:
+      "The brief, the constraint, and what actually happened, for each one, followed by the rest of it further down. The homepage carries a shorter preview of the six case studies.",
+    workArchiveHeading: "The rest of the work",
     // The homepage states the position without making one project carry the
     // whole argument. Kmart proves the range in its own case study.
     // A recruiter is asking whether it worked and whether you really did it.
@@ -642,6 +665,32 @@ export const homeContent: Record<PersonaId, HomeContent> = {
     ],
     workEyebrow: "What I’ve been up to",
     casesHeader: "It turns out I was busy.",
+    // The engine is the same one the hero uses: open by disarming, then let a
+    // plain fact sit there. Here the fact is the least gossipy payload
+    // imaginable. He clicked a button marked Ex-Boyfriend expecting some
+    // version of a personal answer and is about to read six case studies
+    // about enterprise software, and saying so out loud is funnier than
+    // pretending otherwise. "I’m as surprised as you are" carries the whole
+    // gap without naming it — it concedes that this was not the plan, which
+    // is the one thing an ex knows and a recruiter does not need to.
+    //
+    // Accurate, not just funny: five of the six are enterprise product or
+    // systems work. "Mostly" is doing real work in that sentence.
+    workPageHeadline: "It’s mostly enterprise software now. I’m as surprised as you are.",
+    // "The fashion degree does come up" is the line only he gets, and it costs
+    // a recruiter nothing — they read it as a charming detail, he reads it as
+    // the thing he remembers about her. It is also true: Kmart is a clothing
+    // line launch, and the note on the ex hero already identifies the fashion
+    // degree as this persona’s live callback ("I did end up using it" is both
+    // the joke and the thesis).
+    //
+    // Everything factual in the recruiter’s deck survives — what each case
+    // study contains, and that there are six.
+    workPageDeck:
+      "The brief, the constraint, and what actually happened, for each one. Six of them. The fashion degree does come up.",
+    // Sets up the paragraph underneath, which lists client, agency, apparel
+    // and editorial work and stays in one voice across all three personas.
+    workArchiveHeading: "And that’s just the ones I wrote up.",
     // The joke stays in the frame, the evidence stays straight — the same rule
     // that governs the case cards for this persona, and for the same reason:
     // recruiters and clients read this version too. So the headline and the
