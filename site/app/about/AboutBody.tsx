@@ -8,10 +8,22 @@ import SiteFooter from "../SiteFooter";
 
 export default function AboutBody() {
   const store = useSyncExternalStore(subscribe, getSnapshot, getServerSnapshot);
-  // Ex is one page (2026-08-19): utility pages serve the Recruiter content.
-  // This page itself left the Recruiter/Ex nav in the About/Resume merge;
-  // it remains reachable by URL and for the Client persona.
-  const persona = store === "ex" ? "recruiter" : store;
+  /**
+   * Ex reads its own copy again as of 2026-08-31, for the same reason /contact
+   * does: this line was `store === "ex" ? "recruiter" : store` under "utility
+   * pages serve the Recruiter content" (2026-08-19), while a full ex block sat
+   * in aboutContent the whole time — "Still designing. New everything else.",
+   * the plan-or-improvising callback, the shortcut. None of it had ever
+   * rendered.
+   *
+   * The page still left the Recruiter/Ex nav in the About/Resume merge and is
+   * reachable by URL rather than by link. That is a reason to leave it
+   * unlinked, not a reason to serve the wrong persona to whoever arrives.
+   *
+   * showResume below now goes false for ex, which is correct: the resume block
+   * is a hiring artifact and this version of the page is a catch-up.
+   */
+  const persona = store;
   const c = aboutContent[persona];
   const showResume = persona === "recruiter";
 
