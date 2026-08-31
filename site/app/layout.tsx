@@ -39,7 +39,7 @@ export const metadata: Metadata = {
         url: "/og.png",
         width: 1200,
         height: 630,
-        alt: "Anna Rovedo. I design how it works, how it looks, and what it stands for. And you are? Recruiter, Client, Ex-Boyfriend.",
+        alt: "Anna Rovedo + Paper Pixel. Experience Design.",
       },
     ],
   },
