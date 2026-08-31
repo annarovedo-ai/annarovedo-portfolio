@@ -5511,6 +5511,22 @@ blockquote {
   line-height: var(--leading-body);
 }
 
+/* Bottom-left on every card, whatever the body ran to. This used to happen by
+   accident: margin-top: auto lived on .home-case-cta until it was moved onto
+   the outcome panel so the panel and the CTA would bottom-align as one group.
+   The outcome panel has since been removed from these cards and the auto
+   margin went with it, leaving .home-case-cta with no rule of its own at all —
+   so the link sat wherever the paragraph above it stopped, and a row of cards
+   with three different body lengths showed three different CTA heights.
+
+   .home-case-content is already a flex column with align-items: flex-start, so
+   an auto top margin on the last child is the whole fix: it takes the slack,
+   the link lands on the bottom edge, and the left edge it shares with the tag,
+   the heading and the paragraph is the one they all already had. */
+.home-case-cta {
+  margin-top: auto;
+}
+
 /* The homepage's six-tile preview (2026-08-20): a smaller, uniform stand-in
    for the flagship pair + row of four that used to render directly on the
    homepage. Full detail (body copy, the Concierge/Journey Orchestration
