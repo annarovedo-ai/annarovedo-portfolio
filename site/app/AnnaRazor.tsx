@@ -548,6 +548,13 @@ export default function AnnaRazor() {
               placeholderOverride={
                 isPhone && !isClient && !chatStarted ? "Ask anything…" : undefined
               }
+              // Same action as the header's ×; rendered beside Send so a phone
+              // with the keyboard up (header scrolled out of view) still has
+              // a way out. See the prop's note in AlmostAnnaChat.
+              onClose={() => {
+                setOpen(false);
+                choose(modeBeforeOpen.current);
+              }}
             />
 
             {/* The worded restore button lived here until 2026-08-10

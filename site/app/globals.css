@@ -11109,6 +11109,14 @@ html[data-anna-razor="bar"] body {
   color: var(--ink);
 }
 
+/* The composer's own close. Desktop never shows it: the header's controls
+   are always in view there. On phones the panel is fixed full-screen and iOS
+   scrolls it under the keyboard, taking the header with it (2026-09-01), so
+   the × repeats beside Send, the one row Safari always keeps on screen. */
+.anna-chat-close {
+  display: none;
+}
+
 @media (max-width: 720px) {
   .anna-razor-panel {
     padding: 0 10px 10px;
@@ -11122,6 +11130,27 @@ html[data-anna-razor="bar"] body {
   .anna-chat-send {
     width: 44px;
     height: 44px;
+  }
+
+  .anna-chat-close {
+    display: grid;
+    place-items: center;
+    flex: none;
+    width: 44px;
+    height: 44px;
+    padding: 0;
+    border: 0;
+    border-radius: 9px;
+    background: none;
+    color: var(--on-dark-muted);
+    font-size: var(--type-heading-xs);
+    line-height: 1;
+    cursor: pointer;
+  }
+
+  .anna-chat-close:hover,
+  .anna-chat-close:focus-visible {
+    color: #fff;
   }
 }
 

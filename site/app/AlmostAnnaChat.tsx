@@ -37,6 +37,7 @@ export default function AlmostAnnaChat({
   seed,
   personaOverride,
   placeholderOverride,
+  onClose,
 }: {
   /** Opening question handed over from the razor bar’s hint, sent once on
       mount with suggested: true. */
@@ -46,6 +47,13 @@ export default function AlmostAnnaChat({
   /** The razor passes the short mobile placeholder ("Ask anything…") so
       this component needs no viewport detection of its own. */
   placeholderOverride?: string;
+  /** Close, for the composer's own × on phones. The panel header carries the
+      real controls, but on iOS the keyboard scrolls a fixed full-screen panel
+      so the header leaves the visible viewport the moment the input is
+      focused (Anna's screenshot, 2026-09-01: "there's no way to close out of
+      the chat on mobile"). The composer is the one element Safari keeps in
+      view, so the close lives there too. Hidden above 720px in CSS. */
+  onClose?: () => void;
 }) {
   const store = useSyncExternalStore(subscribe, getSnapshot, getServerSnapshot);
   const persona = personaOverride ?? store;
@@ -294,6 +302,17 @@ export default function AlmostAnnaChat({
             />
           </svg>
         </button>
+        {onClose ? (
+          <button
+            type="button"
+            className="anna-chat-close"
+            onClick={onClose}
+            aria-label="Close the conversation"
+            title="Close the conversation"
+          >
+            &times;
+          </button>
+        ) : null}
       </form>
     </div>
   );
