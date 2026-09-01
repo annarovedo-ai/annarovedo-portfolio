@@ -306,6 +306,7 @@ export default function AlmostAnnaChat({
           <button
             type="button"
             className="anna-chat-close"
+            onPointerDown={(e) => e.preventDefault()}
             onClick={onClose}
             aria-label="Close the conversation"
             title="Close the conversation"

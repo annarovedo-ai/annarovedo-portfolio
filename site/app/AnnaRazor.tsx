@@ -126,6 +126,39 @@ export default function AnnaRazor() {
   // placeholder takes over.
   const [inputFocused, setInputFocused] = useState(false);
   const [isPhone, setIsPhone] = useState(false);
+  const panelRef = useRef<HTMLDivElement | null>(null);
+
+  // THE PANEL FOLLOWS THE KEYBOARD ON PHONES (2026-09-01, Anna: "when I'm
+  // typing the x and header goes away"). The full-screen panel is
+  // position: fixed; top: 0; bottom: 0, and iOS does not shrink the layout
+  // viewport for the keyboard: it scrolls the visual viewport instead, so
+  // the top of a fixed panel, header and grip included, slides off the
+  // screen the moment the input gets focus. The VisualViewport API reports
+  // the rectangle that is actually visible; pinning the panel to it keeps
+  // the header, its x, and the swipe grip on screen above the keyboard.
+  // Inline top/height only — transform belongs to Motion (see the note on
+  // .anna-razor-panel in globals.css) and is never touched here.
+  useEffect(() => {
+    if (!open || !isPhone) return;
+    const vv = window.visualViewport;
+    const el = panelRef.current;
+    if (!vv || !el) return;
+    const apply = () => {
+      el.style.top = `${Math.max(0, vv.offsetTop)}px`;
+      el.style.height = `${vv.height}px`;
+      el.style.bottom = "auto";
+    };
+    apply();
+    vv.addEventListener("resize", apply);
+    vv.addEventListener("scroll", apply);
+    return () => {
+      vv.removeEventListener("resize", apply);
+      vv.removeEventListener("scroll", apply);
+      el.style.top = "";
+      el.style.height = "";
+      el.style.bottom = "";
+    };
+  }, [open, isPhone]);
   const [drag, setDrag] = useState<number | null>(null);
   const [dismissing, setDismissing] = useState(false);
   const dragFrom = useRef(0);
@@ -446,6 +479,7 @@ export default function AnnaRazor() {
             layoutId="anna-razor-shape"
             layout
             transition={SHAPE_TRANSITION}
+            ref={panelRef}
             className="anna-razor-panel"
             role="dialog"
             aria-label={assistantName}
@@ -508,6 +542,7 @@ export default function AnnaRazor() {
                 <button
                   type="button"
                   className="anna-razor-min"
+                  onPointerDown={(e) => e.preventDefault()}
                   onClick={() => {
                     setOpen(false);
                     choose("razor");
@@ -531,6 +566,10 @@ export default function AnnaRazor() {
                 <button
                   type="button"
                   className="anna-razor-close"
+                  // preventDefault on pointerdown keeps the composer's focus,
+                  // so a tap with the keyboard up is not lost to the blur ->
+                  // keyboard-dismiss -> reflow sequence iOS runs first.
+                  onPointerDown={(e) => e.preventDefault()}
                   onClick={() => {
                     setOpen(false);
                     choose(modeBeforeOpen.current);

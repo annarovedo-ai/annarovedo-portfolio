@@ -11142,7 +11142,8 @@ html[data-anna-razor="bar"] body {
     border: 0;
     border-radius: 9px;
     background: none;
-    color: var(--on-dark-muted);
+    color: #fff;
+    opacity: 0.8;
     font-size: var(--type-heading-xs);
     line-height: 1;
     cursor: pointer;
@@ -11150,7 +11151,7 @@ html[data-anna-razor="bar"] body {
 
   .anna-chat-close:hover,
   .anna-chat-close:focus-visible {
-    color: #fff;
+    opacity: 1;
   }
 }
 
