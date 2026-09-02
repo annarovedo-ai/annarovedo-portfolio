@@ -1,239 +1,13 @@
 @import "tailwindcss";
+@import "./design-tokens.css";
 
-/* The typefaces are served with the page instead of through a render-blocking
-   Google Fonts stylesheet. These files are the Latin subsets the site already
-   used in production; `swap` keeps first paint independent of font download. */
-@font-face {
-  font-family: "Inter";
-  font-style: normal;
-  font-weight: 400 700;
-  font-display: swap;
-  src: url("/fonts/inter-latin.woff2") format("woff2");
-  unicode-range: U+0000-00FF, U+0131, U+0152-0153, U+02BB-02BC, U+02C6,
-    U+02DA, U+02DC, U+0304, U+0308, U+0329, U+2000-206F, U+20AC, U+2122,
-    U+2191, U+2193, U+2212, U+2215, U+FEFF, U+FFFD;
-}
+/* Typefaces, type scale, palette, persona grounds and the orange all live in
+   design-tokens.css — THE LOCKED FILE (Anna, 2026-09-01). Nothing below may
+   declare a font-family with a literal typeface, a font-size that is not a
+   var(--type-*), or a new color token. Simulated client UIs inside case
+   studies are the documented exception and stay here. */
 
-@font-face {
-  font-family: "Newsreader";
-  font-style: normal;
-  font-weight: 400 700;
-  font-display: swap;
-  src: url("/fonts/newsreader-latin.woff2") format("woff2");
-  unicode-range: U+0000-00FF, U+0131, U+0152-0153, U+02BB-02BC, U+02C6,
-    U+02DA, U+02DC, U+0304, U+0308, U+0329, U+2000-206F, U+20AC, U+2122,
-    U+2191, U+2193, U+2212, U+2215, U+FEFF, U+FFFD;
-}
 
-@font-face {
-  font-family: "Newsreader";
-  font-style: italic;
-  font-weight: 400 700;
-  font-display: swap;
-  src: url("/fonts/newsreader-italic-latin.woff2") format("woff2");
-  unicode-range: U+0000-00FF, U+0131, U+0152-0153, U+02BB-02BC, U+02C6,
-    U+02DA, U+02DC, U+0304, U+0308, U+0329, U+2000-206F, U+20AC, U+2122,
-    U+2191, U+2193, U+2212, U+2215, U+FEFF, U+FFFD;
-}
-
-/* Paper Pixel design system v1.0.0 */
-:root {
-  --paper: #faf8f5;      /* page background, warm paper */
-  --paper-deep: #f2f0ed; /* chat / recessed area background */
-  --surface: #ffffff;    /* card surfaces */
-  --ink: #111111;        /* primary headings */
-  --body: #333333;       /* body text */
-  --muted: #555555;      /* muted text, secondary labels */
-  --placeholder: #888888;/* placeholder text, disabled states */
-  --line: #e5e7eb;       /* borders, dividers */
-  --blue: #1a365d;       /* navy accent, CTAs, active persona pill */
-  --blue-bright: #3d5f8a;/* secondary navy, small labels on paper */
-  --blue-pale: #ebf8ff;  /* tag background, light accent */
-  --night: #1a365d;      /* dark section ground */
-  --contrast: #000000;   /* logos, icons, high-contrast elements */
-  --error: #a3342b;      /* form and chat error text, 6.42:1 on paper */
-
-  /* TEXT ON A DARK GROUND
-     Three jobs — reading copy, secondary copy, mono micro-label — were being
-     done by about fifteen near-identical hexes and eight different
-     rgba(255,255,255,a) values, page by page, depending on when each page was
-     written. Search labelled with #a9c8dc, Journey Orchestration with #8fb0ce,
-     the shared .next-case chrome with #b8d0e5: three colours, one job.
-
-     One ladder now, and every step clears WCAG AA for normal text on BOTH
-     dark grounds in the system (--night #1a365d and --ss-navy #09283d):
-       body   #d3dfec   8.98:1 / 11.24:1
-       muted  #aec0d4   6.53:1 /  8.17:1
-       label  #9db4cf   5.70:1 /  7.13:1
-
-     Reach for these rather than an alpha white. rgba whites look identical to
-     a hex right up until the ground changes underneath them, which is exactly
-     how the eight different alphas got here. */
-  /* THE CHAT FRAME. One token, because the three states of Almost Anna --
-     the inline card in the hero, the docked razor bar, and the open panel --
-     must be styled identically, and the only reliable way to guarantee that
-     is to give them one thing to read from.
-
-     Was 1px solid var(--line) #e5e7eb on var(--surface) #ffffff, sitting on
-     var(--paper) #faf8f5. That is a 1.06:1 surface against the page and a
-     1.17:1 border; WCAG asks 3:1 of any boundary that carries meaning. In
-     practice the only thing separating the bar from the page was a shadow at
-     9% opacity, and Anna reported exactly that: she could not see it.
-     --blue is 11.45:1 against paper. */
-  --chat-frame: var(--blue);
-
-  --on-dark-body: #d3dfec;
-  --on-dark-muted: #aec0d4;
-  --on-dark-label: #9db4cf;
-
-  /* ==========================================================
-     TYPOGRAPHY SYSTEM (consolidated 2026-08-27)
-     ==========================================================
-     Two faces, eight size roles, four leadings, three trackings,
-     three weights. Everything editorial reads from here.
-
-     Faces: Newsreader (--font-display) carries display type and editorial
-     emphasis; Inter (--font-body) carries everything else. --font-label IS
-     Inter: the site has no third face, the token exists so label rules read
-     semantically, not because a monospace exists.
-
-     The eleven size roles (visual coherence outranked getting to eight:
-     collapsing supporting headings into fluid card scale grew 20px
-     lead-ins to 28px, caught in the 2026-08-27 QA pass):
-       --type-label       11px    eyebrows, section numbers, breadcrumbs,
-                                  metadata labels, persona label, uppercase
-                                  nav microcopy
-       --type-small       14px    captions, card metadata, footnotes,
-                                  supporting UI copy, form labels
-       --type-body        16px    paragraphs, card descriptions, forms,
-                                  navigation, buttons, resume details
-       --type-lead        19-22   hero decks, leads, pull-quote paragraphs
-       --type-heading-xs  20px    serif lead-ins that open a list item or
-                                  card; always subordinate to headings
-       --type-heading-sm  22px    h3s, card and section sub-headings
-       --type-heading-md  22-28   card titles and display statements at
-                                  card scale
-       --type-heading-band  28px  band-carrying sub-heads on the dark
-                                  concept pages; fixed, or the fluid md
-                                  sinks them to card scale at mid widths
-       --type-heading-lg  27-40   band headings, large modules
-       --type-heading-xl  36-54   section h2s, utility-page titles (Work,
-                                  Resume, Contact, Services)
-       --type-hero        52-84   true heroes only: homepage and case-study
-                                  h1s. The two client-persona heroes carry
-                                  a documented optical cap at their rules.
-
-     Weights: 400, 600, 700. Nothing else.
-     Long-form readability comes from --leading-reading on the container,
-     never from a private 17px size. Tracking never creates hierarchy that
-     size, weight, or colour already provides.
-
-     Allowed OFF-scale exceptions, each commented at its rule: content
-     specimens (the State Street Lato specimen), simulated product UIs,
-     large data numerals (.study-metrics, .stat-band, the Nike 47), the
-     brand lockup, icon and arrow dimensions, and the private /admin/chat
-     interface.
-
-     GOVERNANCE: No new public-site type-size token may be introduced
-     unless an existing role is demonstrably insufficient; the change must
-     either replace/consolidate an existing role or document the distinct
-     semantic job and visual evidence requiring it. */
-  --font-display: "Newsreader", Georgia, "Times New Roman", serif;
-  --font-body: "Inter", -apple-system, "Helvetica Neue", Arial, sans-serif;
-  --font-label: var(--font-body);
-
-  --type-label: 11px;
-  --type-small: 14px;
-  --type-body: 16px;
-  /* Split the difference between the old deck (18-22) and lead (20-23)
-     clamps: one role, and the QA render showed the deck value alone sank
-     leads 3.5px at 1024. */
-  --type-lead: clamp(19px, 1.9vw, 22px);
-  --type-heading-xs: 20px;
-  /* COLLAPSED 2026-09-01 (Anna, reading the style guide: "these are too
-     similar. less variety"). sm sat 2px above xs and band resolved to md's
-     own desktop maximum — two named roles per visible size. Both are
-     aliases now, kept only so 22 existing usage sites need no sweep; new
-     rules use the survivor directly. The heading ladder is five steps:
-     hero 52-84, xl 36-54, lg 27-40, md 22-28, xs 20 — every neighbour
-     visibly distinct. band's fixed-28 origin (fluid md sank below card
-     titles at 1024px when card titles were 22) is retired with sm: card
-     titles are 20 now, and md's 1024px value of ~22.5 clears them. */
-  --type-heading-sm: var(--type-heading-xs);
-  --type-heading-md: clamp(22px, 2.2vw, 28px);
-  --type-heading-band: var(--type-heading-md);
-  /* lg followed the same day ("make only 4 steps of serif fonts"): the
-     display ladder is hero 52-84, xl 36-54, md 22-28, xs 20, and every
-     case-study sub-heading that wore lg's 40 now sits at md. Alias, not
-     sweep, same as sm and band above. */
-  --type-heading-lg: var(--type-heading-md);
-  --type-heading-xl: clamp(36px, 4vw, 54px);
-  --type-hero: clamp(52px, 6.1vw, 84px);
-
-  /* The h1's historical value. The 2026-08-27 QA render proved this is
-     load-bearing: at -0.04 the client hero wrapped a fourth line at 1440
-     and State Street's phone hero a sixth. h2 joins from -0.04, a delta
-     below perception at section sizes; h3 keeps lighter tracking at its
-     own rule, small sizes need less squeeze. */
-  --tracking-display: -0.048em;
-  --tracking-label: 0.10em;
-  --tracking-ui: 0.06em;
-
-  /* Borders on a dark ground. The same job was rgba white at 0.16 on one page,
-     0.28 on another and 0.75 on a third. 0.42 is 3.46:1 on --night, which is
-     what WCAG asks of a control's edge; the others were 1.62, 2.33 and fine. */
-  --on-dark-line: rgba(255, 255, 255, 0.42);
-  /* Navy hover, one step down from --blue. This was written as
-     "--blue-deep: var(--blue-deep)" when the hardcoded value was tokenised,
-     which is a variable defined as itself: invalid at computed-value time, so
-     every rule using it silently fell back to nothing. .anna-dock-button:hover
-     has therefore had no hover state at all. Caught 2026-08-12. */
-  --blue-deep: #10233d;
-  /* The interior header's ground: the persona dark, one optical notch
-     lighter and at 0.97 so content ghosts under the sticky bar. Keep the
-     three personas' versions in step with --blue below. */
-  --header-bg: rgba(29, 61, 104, 0.97);
-
-  --leading-display: 0.98;
-  --leading-heading: 1.08;
-  --leading-body: 1.55;
-  --leading-reading: 1.7;
-}
-
-/* Token-level mobile: only the hero changes regime on phones (its desktop
-   clamp bottoms out too large at 390px). The QA render (2026-08-27) proved
-   the old bare-h2 phone override never actually applied, class-scoped h2
-   rules outranked it, so heading-xl keeps its own floor everywhere and
-   phone behavior matches the site as it really rendered. */
-@media (max-width: 720px) {
-  :root {
-    --type-hero: clamp(45px, 14vw, 65px);
-  }
-}
-
-/* ---------------------------------------------------------------------------
-   PERSONA GROUNDS (2026-08-27, Anna: "what if each persona had a different
-   color scheme?"). Three rooms in the same house, not three themes: each
-   persona swaps ONE color family, the navy that paints the dark grounds,
-   buttons, labels and links, and everything else stays. The orange stays
-   constant in the chat and the switcher across all three on purpose: same
-   person, different room, and the switcher is the doorway.
-
-   Recruiter is the default :root navy above and needs no rule here, which is
-   also what makes this flash-free: crawlers and first paint get recruiter,
-   and html[data-persona] arrives with hydration (personaStore.setPersona and
-   PersonaSwitch's mount effect already maintain the attribute).
-
-   Every pair was contrast-checked against the recruiter baseline before
-   shipping (white on ground, ground on paper/surface, bright on paper and on
-   pale). All pass AA with room; the darks beat navy's own ratios.
-
-   Client is ink-forward: Paper Pixel's own near-black now that the mark is
-   ink, studio rather than corporate. Ex is a deep bordeaux, warmer and a
-   shade off-register, which is the right room for that reader. If a token
-   joins the navy family (anything derived from --blue), it must be added to
-   BOTH rules below or that surface will stay navy in two personas.
-   --------------------------------------------------------------------------- */
 /* THE PERSONA CROSSFADE (2026-08-27, clarity pass). The View Transition
    API's default root crossfade, shortened to 200ms so switching reads as
    deliberate rather than cinematic. Only user selections start a
@@ -266,33 +40,6 @@
   border: 0;
 }
 
-html[data-persona="client"] {
-  --blue: #17181c;
-  --header-bg: rgba(28, 29, 34, 0.97);
-  /* The on-dark reading ladder is blue-tinted for navy; on ink it reads
-     as a cast (2026-08-27, Anna, on the Ex band: "this light blue on
-     burgundy doesnt work" — same problem both rooms). Neutral greys here,
-     rose-tinted on the Ex below, all AA-checked on their own grounds. */
-  --on-dark-body: #dcdcd9;
-  --on-dark-muted: #b6b6b3;
-  --on-dark-label: #a4a4a1;
-  --night: #17181c;
-  --blue-deep: #0b0c0f;
-  --blue-bright: #4a4f58;
-  --blue-pale: #eef0f3;
-}
-
-html[data-persona="ex"] {
-  --blue: #521a26;
-  --header-bg: rgba(92, 29, 43, 0.97);
-  --on-dark-body: #eedbdb;
-  --on-dark-muted: #d3b2b6;
-  --on-dark-label: #c5a0a5;
-  --night: #521a26;
-  --blue-deep: #3a1019;
-  --blue-bright: #8a3a48;
-  --blue-pale: #f7ecec;
-}
 
 /* State Street Alpha case study */
 
@@ -6918,7 +6665,6 @@ blockquote {
 }
 
 
-
 /* Expanded intro block, sits directly under the header on the navy ground.
    Holds the switcher and the onboarding line as one locked-up unit: the
    switcher docks into the header once this band scrolls out of view (see
@@ -10411,10 +10157,7 @@ html[data-anna-razor="bar"] body {
                   be small text on paper, this is the only version that passes.
    --------------------------------------------------------------------------- */
 
-:root {
-  --flare: #ff6a00;
-  --flare-ink: #bf4500;
-}
+/* --flare and --flare-ink live in design-tokens.css now. */
 
 /* The one real button on the homepage. Was black, which is a perfectly good
    button, except black is also the headline colour, so it never separated
