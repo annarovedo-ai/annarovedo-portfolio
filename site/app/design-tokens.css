@@ -280,6 +280,30 @@ html[data-persona="ex"] {
   --blue-pale: #f7ecec;
 }
 
+/* RADIUS (added 2026-09-01, Anna approving the button collapse: "yes and
+   make sure everything follows these guidelines in the future. commit to
+   it"). Two tokens, three meanings: pill for things you tap to pick one
+   (the switcher, prompt chips), control for the chat's compact controls
+   (send, close, minimise, dismiss), and NO token for structure — cards,
+   sections, CTAs and images stay square, which is the site's whole
+   posture. Case-study exhibits simulate client UIs and are exempt. */
+:root {
+  --radius-pill: 999px;
+  --radius-control: 9px;
+}
+
+/* RADIUS (added 2026-09-01, Anna approving the button collapse: "yes and
+   make sure everything follows these guidelines in the future. commit to
+   it"). Two tokens, three meanings: pill for things you tap to pick one
+   (the switcher, prompt chips), control for the chat's compact controls
+   (send, close, minimise, dismiss), and NO token for structure — cards,
+   sections, CTAs and images stay square, which is the site's whole
+   posture. Case-study exhibits simulate client UIs and are exempt. */
+:root {
+  --radius-pill: 999px;
+  --radius-control: 9px;
+}
+
 /* The orange. The full rationale (why ink type, never white, sits on it)
    stays with the button rules in globals.css. */
 :root {

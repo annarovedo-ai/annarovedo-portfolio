@@ -69,6 +69,47 @@ export default function StyleGuide() {
           </p>
         </section>
 
+        <section className="sg-rules">
+          <h2 style={{ fontSize: "var(--type-heading-md)" }}>Buttons</h2>
+          <p>
+            The August law, now enforced: FILLED is the one committed action a
+            section wants, at most one per section. OUTLINE only ever sits
+            beside a filled sibling. Everything that points at content is a
+            TEXT LINK. Round means pick one; orange means send or selected,
+            nowhere else. Corners come from two tokens — pill for choices,
+            control for the chat's compact controls — and structure has no
+            radius at all.
+          </p>
+        </section>
+
+        <section className="sg-row">
+          <p className="sg-meta"><code>filled · outline · text link</code><span>The CTA law, one 46px geometry</span></p>
+          <p className="sg-buttons">
+            <a className="home-cta-button" href="#top">Get in touch</a>
+            <a className="home-cta-secondary" href="#top">See services</a>
+            <a className="home-inline-link" href="#top">View case study</a>
+          </p>
+        </section>
+
+        <section className="sg-row">
+          <p className="sg-meta"><code>--radius-pill</code><span>Choices: the switcher and prompt chips (dashed = suggestion)</span></p>
+          <span className="sg-dark">
+            <span className="persona-switch" aria-hidden="true">
+              <button type="button" className="is-active" tabIndex={-1}>Recruiter</button>
+              <button type="button" tabIndex={-1}>Client</button>
+            </span>
+            <span className="sg-chip">Which project best shows how you think?</span>
+          </span>
+        </section>
+
+        <section className="sg-row">
+          <p className="sg-meta"><code>--radius-control</code><span>Chat controls: send (orange, always), quiet glyphs</span></p>
+          <span className="sg-dark">
+            <span className="sg-send" aria-hidden="true">→</span>
+            <span className="sg-glyph" aria-hidden="true">×</span>
+          </span>
+        </section>
+
         {scale.map((row) => (
           <section className="sg-row" key={row.token}>
             <p className="sg-meta">

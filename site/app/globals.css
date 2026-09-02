@@ -6718,7 +6718,7 @@ blockquote {
   padding: 4px;
   background: var(--paper);
   border: 1px solid var(--paper);
-  border-radius: 999px;
+  border-radius: var(--radius-pill);
   box-shadow: 0 0 0 4px rgba(255, 255, 255, 0.09), 0 10px 26px rgba(0, 0, 0, 0.26);
 }
 
@@ -6726,7 +6726,7 @@ blockquote {
   flex: none;
   padding: 12px 22px;
   border: 0;
-  border-radius: 999px;
+  border-radius: var(--radius-pill);
   background: transparent;
   color: var(--body);
   font-family: var(--font-body);
@@ -8708,16 +8708,12 @@ blockquote {
 }
 
 .svc-cta a {
-  display: inline-block;
-  padding: 15px 26px;
+  /* Geometry and type come from the unified button law; only the on-dark
+     colours live here. color went --ink to --blue 2026-09-01 so the label
+     matches the persona ground the band sits on. */
   background: var(--paper);
-  color: var(--ink);
-  font-size: var(--type-body);
-  font-weight: 700;
-  border: 1px solid var(--paper);
-  font-family: var(--font-body);
-  letter-spacing: -0.005em;
-  text-transform: none;
+  color: var(--blue);
+  border-color: var(--paper);
 }
 
 @media (max-width: 980px) {
@@ -9102,7 +9098,7 @@ blockquote {
   max-width: 100%;
   padding: 10px 16px;
   border: 1px dashed var(--line);
-  border-radius: 999px;
+  border-radius: var(--radius-pill);
   background: var(--paper-deep);
   color: var(--blue);
   font-family: var(--font-body);
@@ -9186,7 +9182,7 @@ blockquote {
   width: 34px;
   height: 28px;
   border: 0;
-  border-radius: 6px;
+  border-radius: var(--radius-control);
   cursor: pointer;
   transition: opacity 0.16s ease, background 0.16s ease, color 0.16s ease;
 }
@@ -9851,7 +9847,7 @@ html[data-anna-razor="bar"] body {
   width: 34px;
   height: 28px;
   border: 0;
-  border-radius: 6px;
+  border-radius: var(--radius-control);
   background: var(--blue);
   color: #fff;
   font-size: var(--type-small);
@@ -9887,7 +9883,7 @@ html[data-anna-razor="bar"] body {
   overflow: hidden;
   padding: 10px 16px;
   border: 1px dashed var(--line);
-  border-radius: 999px;
+  border-radius: var(--radius-pill);
   background: var(--paper-deep);
   color: var(--blue);
   font-family: var(--font-body);
@@ -9947,7 +9943,7 @@ html[data-anna-razor="bar"] body {
   margin-left: 4px;
   margin-right: -10px;
   border: 0;
-  border-radius: 6px;
+  border-radius: var(--radius-control);
   background: none;
   color: var(--on-dark-muted);
   font-size: var(--type-body);
@@ -9985,7 +9981,7 @@ html[data-anna-razor="bar"] body {
   margin-right: -10px;
   padding: 6px 10px;
   border: 0;
-  border-radius: 6px;
+  border-radius: var(--radius-control);
   background: none;
   color: #fff;
   font-family: var(--font-body);
@@ -10085,7 +10081,7 @@ html[data-anna-razor="bar"] body {
   height: 28px;
   padding: 0;
   border: 0;
-  border-radius: 6px;
+  border-radius: var(--radius-control);
   background: none;
   color: #fff;
   font-size: var(--type-heading-xs);
@@ -10269,7 +10265,7 @@ html[data-anna-razor="bar"] body {
 
   .anna-razor-send {
     margin-left: 8px;
-    border-radius: 999px;
+    border-radius: var(--radius-control);
     width: 36px;
     height: 36px;
   }
@@ -10446,7 +10442,11 @@ html[data-anna-razor="bar"] body {
 .home-cta-secondary,
 .contact-submit,
 .svc-primary,
-.svc-secondary {
+.svc-secondary,
+.svc-cta a {
+  /* .svc-cta a joined 2026-09-01 (button collapse, Anna's approval): it
+     was the last big-bold button on the site, still at the pre-merge
+     16px/700. Its colours (paper on navy) stay in its own rule. */
   display: inline-flex;
   align-items: center;
   justify-content: center;
@@ -10724,7 +10724,7 @@ html[data-anna-razor="bar"] body {
 .anna-chat-menu button {
   padding: 10px 16px;
   border: 1px solid rgba(255, 255, 255, 0.4);
-  border-radius: 999px;
+  border-radius: var(--radius-pill);
   background: transparent;
   color: #fff;
   font-family: var(--font-body);
@@ -10794,7 +10794,7 @@ html[data-anna-razor="bar"] body {
   width: 44px;
   height: 44px;
   border: 0;
-  border-radius: 10px;
+  border-radius: var(--radius-control);
   background: var(--flare);
   color: var(--ink);
   cursor: pointer;
@@ -10831,9 +10831,10 @@ html[data-anna-razor="bar"] body {
   transform: translateY(-50%);
   max-width: 100%;
   overflow: hidden;
-  padding: 7px 14px;
+  /* chip-compact since 2026-09-01: 8/14, matching the followup chips. */
+  padding: 8px 14px;
   border: 1px dashed rgba(255, 255, 255, 0.4);
-  border-radius: 999px;
+  border-radius: var(--radius-pill);
   background: rgba(255, 255, 255, 0.08);
   color: #fff;
   font-family: var(--font-body);
@@ -10865,7 +10866,7 @@ html[data-anna-razor="bar"] body {
 .anna-razor-bar .anna-razor-send {
   width: 38px;
   height: 38px;
-  border-radius: 9px;
+  border-radius: var(--radius-control);
   background: var(--flare);
   color: var(--ink);
 }
@@ -10901,7 +10902,7 @@ html[data-anna-razor="bar"] body {
     height: 44px;
     padding: 0;
     border: 0;
-    border-radius: 9px;
+    border-radius: var(--radius-control);
     background: none;
     color: #fff;
     opacity: 0.8;
@@ -10929,7 +10930,7 @@ html[data-anna-razor="bar"] body {
 .anna-chat-followups button {
   padding: 8px 14px;
   border: 1px dashed var(--blue-bright);
-  border-radius: 999px;
+  border-radius: var(--radius-pill);
   background: var(--paper-deep);
   color: var(--blue);
   font-family: var(--font-body);
@@ -11193,3 +11194,52 @@ html[data-anna-razor="bar"] body {
   margin: 0;
   overflow-wrap: break-word;
 }
+
+/* Style-guide button samples: real classes where possible, token-built
+   stand-ins where the real control is welded to the chat's layout. */
+.sg-buttons {
+  display: flex;
+  align-items: center;
+  gap: 16px;
+  flex-wrap: wrap;
+  margin: 0;
+}
+
+.sg-dark {
+  display: inline-flex;
+  align-items: center;
+  gap: 16px;
+  padding: 16px 18px;
+  background: var(--blue);
+}
+
+.sg-chip {
+  padding: 8px 14px;
+  border: 1px dashed rgba(255, 255, 255, 0.4);
+  border-radius: var(--radius-pill);
+  color: #fff;
+  font-size: var(--type-small);
+}
+
+.sg-send {
+  display: grid;
+  place-items: center;
+  width: 44px;
+  height: 44px;
+  border-radius: var(--radius-control);
+  background: var(--flare);
+  color: var(--ink);
+  font-weight: 700;
+}
+
+.sg-glyph {
+  display: grid;
+  place-items: center;
+  width: 28px;
+  height: 28px;
+  border-radius: var(--radius-control);
+  color: #fff;
+  font-size: var(--type-heading-xs);
+  opacity: 0.85;
+}
+
