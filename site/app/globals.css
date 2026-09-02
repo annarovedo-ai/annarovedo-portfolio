@@ -10436,6 +10436,21 @@ html[data-anna-razor="bar"] body {
  *              whose job is pointing at more content rather than asking
  *              for a commitment. Never gets a border or a fill.
  */
+/* The resume hero's outline secondary (2026-09-01, Anna: "always keep the
+   same primary and secondary buttons together"). Same outline grammar as
+   .home-cta-secondary; --blue keeps it on the persona ground. */
+.cv-email {
+  border-color: var(--blue);
+  background: transparent;
+  color: var(--blue);
+  transition: background 0.16s ease, color 0.16s ease, border-color 0.16s ease;
+}
+
+.cv-email:hover {
+  background: var(--blue);
+  color: #fff;
+}
+
 .cv-download,
 .about-cta-button,
 .home-cta-button,
@@ -10443,6 +10458,7 @@ html[data-anna-razor="bar"] body {
 .contact-submit,
 .svc-primary,
 .svc-secondary,
+.cv-email,
 .svc-cta a {
   /* .svc-cta a joined 2026-09-01 (button collapse, Anna's approval): it
      was the last big-bold button on the site, still at the pre-merge

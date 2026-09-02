@@ -271,7 +271,12 @@ export default function ServicesBody() {
       <section className="svc-block">
         <div className="shell">
           <p className="eyebrow">What you get</p>
-          <div className="svc-get">
+          {/* Was .svc-get, the same white cards as the venture band directly
+              above (Anna, 2026-09-01: "these two sections are too similar").
+              The offers keep the cards — three doors you pick from; these
+              are assurances, so they take the page's quieter hairline-column
+              treatment instead. Same grid, no new CSS. */}
+          <div className="svc-capabilities">
             {whatYouGet.map((w) => (
               <div key={w.title}>
                 <h2>{w.title}</h2>

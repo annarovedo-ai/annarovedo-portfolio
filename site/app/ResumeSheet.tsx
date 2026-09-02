@@ -57,19 +57,22 @@ export default function ResumeSheet({
             </>
           ) : null}
           {showContact ? (
-            /* One row, not a stack (Anna, 2026-08-19): filled primary first,
-               quiet link beside it, the same pair grammar as the About page.
+            /* One row, not a stack (Anna, 2026-08-19): filled primary
+               first. The companion was a quiet text link until 2026-09-01
+               (Anna, comparing the three persona versions: "even the button
+               sets are different. always keep the same primary and
+               secondary buttons together") — every persona version of this
+               page now shows the same filled + outline pair, matching the
+               client hero's grammar; only labels and ground change.
                LinkedIn sat here behind an unclaimed vanity URL, removed
                2026-08-07. */
             <div className="cv-contact-row">
               <a className="cv-download" href="/anna-rovedo-resume.pdf" download>
                 Download resume
               </a>
-              <p className="cv-contact">
-                <a className="cv-view-link" href="mailto:anna.rovedo@gmail.com">
-                  Email Anna &rarr;
-                </a>
-              </p>
+              <a className="cv-email" href="mailto:anna.rovedo@gmail.com">
+                Email Anna &rarr;
+              </a>
             </div>
           ) : null}
         </header>

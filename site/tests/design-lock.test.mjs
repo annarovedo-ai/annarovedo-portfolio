@@ -72,6 +72,6 @@ test("button radii come from the two radius tokens", () => {
 
 test("the Services CTA obeys the unified button geometry", () => {
   const css = readFileSync(new URL("../app/globals.css", import.meta.url), "utf8");
-  assert.match(css, /\.svc-secondary,\n\.svc-cta a \{/, ".svc-cta a left the unified button group");
+  assert.match(css, /,\n\.svc-cta a \{/, ".svc-cta a left the unified button group");
 });
 
