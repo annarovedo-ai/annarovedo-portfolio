@@ -1,7 +1,9 @@
 import type { Metadata } from "next";
 import SiteHeader from "../SiteHeader";
 import SiteFooter from "../SiteFooter";
+import PersonaText from "../PersonaCopy";
 import { archiveGroups } from "./archiveContent";
+import { archiveCopy } from "./archiveCopy";
 
 export const metadata: Metadata = {
   title: "The archive · Anna Rovedo",
@@ -20,13 +22,11 @@ export default function Archive() {
       <article id="top" className="archive">
         <section className="archive-intro shell" data-anna-prompt="What else have you made?" data-anna-prompt-ex="Did you keep any photos?">
           <p className="eyebrow">The archive</p>
-          <h1>Real work that hasn&rsquo;t gotten the full case-study treatment yet.</h1>
+          {/* Voiced since 2026-09-01 — recruiter baseline verbatim in
+              archiveCopy.ts, client and ex overrides beside it. */}
+          <h1><PersonaText t={archiveCopy.heading} /></h1>
           <p className="archive-deck">
-            These are not case studies and they are not pretending to be. Some of it is old
-            enough that there is no research left to point to and the people who could
-            confirm it have long since moved on. Some of it is current, just not written up
-            here yet. Either way, what is here is the idea and what I made. Click through for
-            the full images, or ask me about any of it directly.
+            <PersonaText t={archiveCopy.deck} />
           </p>
         </section>
 
