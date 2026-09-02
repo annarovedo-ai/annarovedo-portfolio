@@ -5054,14 +5054,16 @@ blockquote {
   margin-bottom: 14px;
 }
 
-/* The one deck deliberately off --type-lead. The homepage hero is a tuned
-   composition -- persona headline, this line, then the chat -- and growing
-   this by two or three pixels pushes the chat down the fold on a laptop.
-   Anna should make that call looking at it, not me guessing from the CSS. */
+/* Folded into --type-lead 2026-09-01. It sat at its own clamp(16,1.5vw,19)
+   with a note that only Anna should fold it in, looking at it; she looked,
+   sent this line beside three on-token decks, and asked for one system
+   ("it seems like every page is different"). The deck role is one size
+   everywhere now, including here. If the homepage fold ever feels tight on
+   a laptop, the answer is the hero's spacing, not a private deck size. */
 .home-hero-deck {
   margin: 0;
   color: var(--muted);
-  font-size: clamp(16px, 1.5vw, 19px);
+  font-size: var(--type-lead);
 }
 
 /* Recruiter only. Level, working arrangement and hours are what a recruiter
@@ -8885,7 +8887,10 @@ blockquote {
 
 .svc-process h2 {
   margin-bottom: 9px;
-  font-size: var(--type-body);
+  /* Item-title role, same as .svc-capabilities h2 above (2026-09-01). It
+     sat at --type-body, 16px, below every heading token — the one h2 on
+     the site with no heading role at all. */
+  font-size: var(--type-heading-sm);
 }
 
 .svc-process p {
@@ -11387,4 +11392,48 @@ html[data-anna-razor="bar"] body {
 
 .stat-band strong {
   font-family: var(--font-display);
+}
+
+/* /style-guide — internal reference page (2026-09-01). Deliberately minimal:
+   the page's whole argument is that the tokens do the work. */
+.styleguide {
+  padding: 140px 0 120px;
+}
+
+.styleguide h1 {
+  max-width: 20ch;
+}
+
+.sg-rules {
+  max-width: 68ch;
+  margin: 40px 0 64px;
+}
+
+.sg-rules p {
+  color: var(--muted);
+  line-height: var(--leading-reading);
+}
+
+.sg-row {
+  padding: 26px 0;
+  border-top: 1px solid var(--line);
+}
+
+.sg-meta {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 18px;
+  margin: 0 0 10px;
+  color: var(--muted);
+  font-size: var(--type-small);
+}
+
+.sg-meta code {
+  color: var(--ink);
+  font-weight: 600;
+}
+
+.sg-sample {
+  margin: 0;
+  overflow-wrap: break-word;
 }
