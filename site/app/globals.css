@@ -150,9 +150,18 @@
      leads 3.5px at 1024. */
   --type-lead: clamp(19px, 1.9vw, 22px);
   --type-heading-xs: 20px;
-  --type-heading-sm: 22px;
+  /* COLLAPSED 2026-09-01 (Anna, reading the style guide: "these are too
+     similar. less variety"). sm sat 2px above xs and band resolved to md's
+     own desktop maximum — two named roles per visible size. Both are
+     aliases now, kept only so 22 existing usage sites need no sweep; new
+     rules use the survivor directly. The heading ladder is five steps:
+     hero 52-84, xl 36-54, lg 27-40, md 22-28, xs 20 — every neighbour
+     visibly distinct. band's fixed-28 origin (fluid md sank below card
+     titles at 1024px when card titles were 22) is retired with sm: card
+     titles are 20 now, and md's 1024px value of ~22.5 clears them. */
+  --type-heading-sm: var(--type-heading-xs);
   --type-heading-md: clamp(22px, 2.2vw, 28px);
-  --type-heading-band: 28px;
+  --type-heading-band: var(--type-heading-md);
   --type-heading-lg: clamp(27px, 3vw, 40px);
   --type-heading-xl: clamp(36px, 4vw, 54px);
   --type-hero: clamp(52px, 6.1vw, 84px);

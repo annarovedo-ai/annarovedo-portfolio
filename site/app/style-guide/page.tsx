@@ -27,14 +27,16 @@ export const metadata: Metadata = {
  * pixel value, so this page cannot itself drift out of date.
  */
 
+/* Nine roles since 2026-09-01: heading-sm and heading-band were collapsed
+   into xs and md ("these are too similar. less variety") and survive only
+   as aliases in globals.css, so they never appear here. Five heading
+   steps, every neighbour visibly distinct. */
 const scale: Array<{ token: string; role: string; used: string }> = [
   { token: "--type-hero", role: "Page hero (h1)", used: "Case-study and interior page titles" },
   { token: "--type-heading-xl", role: "Editorial section (h2)", used: "Case-study sections, summary and next-case banners, CTA bands" },
-  { token: "--type-heading-lg", role: "Chapter (h2)", used: "Archive group headings" },
-  { token: "--type-heading-band", role: "Band heading (h3)", used: "Fixed-size band titles that must match across a row" },
-  { token: "--type-heading-md", role: "Utility section (h2)", used: "Home sections, resume blocks, contact side, about points" },
-  { token: "--type-heading-sm", role: "Item title (h2/h3)", used: "Services capabilities, engagement shapes, process steps" },
-  { token: "--type-heading-xs", role: "Card title (h3)", used: "Case cards, findings, roles" },
+  { token: "--type-heading-lg", role: "Sub-heading / chapter (h3, h2)", used: "Case-study sub-headings, archive group headings" },
+  { token: "--type-heading-md", role: "Utility section (h2)", used: "Home sections, resume blocks, contact side, matched band titles" },
+  { token: "--type-heading-xs", role: "Title (h3)", used: "Case cards, findings, roles, services items, base h3" },
   { token: "--type-lead", role: "Deck", used: "The sentence under every page title, and the homepage hero line" },
   { token: "--type-body", role: "Body", used: "Running text" },
   { token: "--type-small", role: "Small", used: "Captions, meta, supporting notes" },
@@ -47,7 +49,7 @@ export default function StyleGuide() {
       <SiteHeader />
       <article className="shell styleguide">
         <p className="eyebrow">Internal</p>
-        <h1>One type system. Eleven roles. No other sizes.</h1>
+        <h1>One type system. Nine roles. No other sizes.</h1>
         <p className="hero-deck">
           Every size on this page is rendered from the live token, so this page
           cannot lie. If a heading somewhere on the site does not match its row
@@ -57,13 +59,13 @@ export default function StyleGuide() {
         <section className="sg-rules">
           <h2 style={{ fontSize: "var(--type-heading-md)" }}>The rules</h2>
           <p>
-            An h1 is the hero, once per page. An h2 is one of four named roles
-            below, chosen by context, never by taste: editorial section on
-            long-form pages, chapter on index pages, utility section on
-            functional pages, item title inside card patterns. The deck under a
-            page title is one size everywhere. Serif for display, sans for
-            body and labels. Anything off this scale must carry a comment
-            naming itself an exception, next to the rule, with the reason.
+            An h1 is the hero, once per page. An h2 is editorial (xl) on
+            long-form pages or a utility section (md) on functional ones;
+            archive chapters borrow the sub-heading step (lg). Titles inside
+            card patterns are xs, whatever their tag. The deck under a page
+            title is one size everywhere. Serif for display, sans for body
+            and labels. Anything off this scale must carry a comment naming
+            itself an exception, next to the rule, with the reason.
           </p>
         </section>
 
