@@ -162,7 +162,11 @@
   --type-heading-sm: var(--type-heading-xs);
   --type-heading-md: clamp(22px, 2.2vw, 28px);
   --type-heading-band: var(--type-heading-md);
-  --type-heading-lg: clamp(27px, 3vw, 40px);
+  /* lg followed the same day ("make only 4 steps of serif fonts"): the
+     display ladder is hero 52-84, xl 36-54, md 22-28, xs 20, and every
+     case-study sub-heading that wore lg's 40 now sits at md. Alias, not
+     sweep, same as sm and band above. */
+  --type-heading-lg: var(--type-heading-md);
   --type-heading-xl: clamp(36px, 4vw, 54px);
   --type-hero: clamp(52px, 6.1vw, 84px);
 
