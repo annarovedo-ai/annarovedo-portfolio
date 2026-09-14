@@ -1,7 +1,3 @@
-"use client";
-
-import { useSyncExternalStore } from "react";
-import { getServerSnapshot, getSnapshot, subscribe } from "./personaStore";
 import type { PersonaId } from "./personaStore";
 
 /**
@@ -29,6 +25,19 @@ import type { PersonaId } from "./personaStore";
  * The footer’s existing CSS (.site-footer .brand-divider, .brand-credit) was
  * already written for a full lockup down there, so nothing new was needed to
  * support it.
+ *
+ * WHY IT IS NO LONGER A CLIENT COMPONENT (2026-09-14, the layout-shift fix)
+ * It used to read the persona store, which meant the server always rendered
+ * the Recruiter lockup and a returning Client/Ex visitor watched "Anna
+ * Rovedo" turn into the logo + "Paper Pixel" whenever hydration landed —
+ * seconds late on a slow machine. Cloudflare's field data named exactly this:
+ * the header was the site's single largest source of Cumulative Layout Shift
+ * (40 of 110 poor loads), because the wordmark swap re-flows the whole header
+ * row. Now all three lockups are server-rendered side by side and CSS shows
+ * the one html[data-persona] names (see .brand-for-* in globals.css). The
+ * pre-paint script in layout.tsx sets data-persona before first paint, so
+ * the right lockup is visible from frame one and nothing ever swaps —
+ * hydration has nothing to change, so there is nothing to shift.
  */
 /**
  * The mark follows the wordmark. It used to be "PP" for everyone, on the
@@ -44,15 +53,9 @@ const lockup: Record<string, { wordmark: string; mark: string; credit?: string }
   ex: { wordmark: "Paper Pixel", mark: "PP", credit: "Anna Rovedo" },
 };
 
-export default function BrandLockup({
-  personaOverride,
-}: {
-  /** Entrance routes (/studio) force their persona so the lockup is right in
-      the server-rendered HTML rather than after hydration. */
-  personaOverride?: PersonaId;
-} = {}) {
-  const store = useSyncExternalStore(subscribe, getSnapshot, getServerSnapshot);
-  const persona = personaOverride ?? store;
+/** One persona's complete lockup. `gate` adds the .brand-for-* class that
+    lets CSS show exactly one of the three when all are rendered. */
+function Lockup({ persona, gate }: { persona: PersonaId; gate?: boolean }) {
   const l = lockup[persona] ?? lockup.recruiter;
   // The wordmark links to the door it names: Paper Pixel goes back to the
   // studio entrance, from /studio itself and from every internal page a
@@ -64,7 +67,7 @@ export default function BrandLockup({
   // screen said Anna Rovedo or Paper Pixel, and a voice-control user saying
   // "click Anna Rovedo" got nothing. The link text itself is the right name.
   return (
-    <span className="brand">
+    <span className={gate ? `brand brand-for-${persona}` : "brand"}>
       <a className="brand-home" href={homeHref}>
       {/* THE MARK SITS IN FRONT OF THE WORDMARK, wherever the wordmark reads
           Paper Pixel. Client and Ex only: the Recruiter’s version of this site
@@ -138,5 +141,26 @@ export default function BrandLockup({
         </>
       ) : null}
     </span>
+  );
+}
+
+export default function BrandLockup({
+  personaOverride,
+}: {
+  /** Entrance routes (/studio) force their persona so the lockup is right in
+      the server-rendered HTML rather than after hydration. With an override
+      only that persona's lockup is rendered, exactly as before. */
+  personaOverride?: PersonaId;
+} = {}) {
+  if (personaOverride) return <Lockup persona={personaOverride} />;
+  // No override: render all three, CSS-gated by html[data-persona], so the
+  // correct name is on screen at first paint and never swaps. See the
+  // component comment above.
+  return (
+    <>
+      <Lockup persona="recruiter" gate />
+      <Lockup persona="client" gate />
+      <Lockup persona="ex" gate />
+    </>
   );
 }

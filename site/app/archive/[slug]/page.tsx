@@ -74,7 +74,16 @@ export default async function ArchiveEntryPage({
           <div className="archive-detail-images">
             {entry.images.map((im) => (
               <figure key={im.src}>
-                <img src={`${assetRoot}/${im.src}`} alt={im.alt} loading="lazy" />
+                {/* width/height are the real pixel size from imageDims.ts, so the
+                    lazy load cannot push the caption (2026-09-14, the
+                    layout-shift fix). */}
+                <img
+                  src={`${assetRoot}/${im.src}`}
+                  alt={im.alt}
+                  loading="lazy"
+                  width={im.width}
+                  height={im.height}
+                />
                 <figcaption>{im.alt}</figcaption>
               </figure>
             ))}

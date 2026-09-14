@@ -1023,6 +1023,30 @@ img {
   gap: 8px;
 }
 
+/* WHICH LOCKUP SHOWS IS CSS'S DECISION NOW (2026-09-14, the layout-shift
+   fix — see the header comment in BrandLockup.tsx). All three personas'
+   lockups are server-rendered side by side; the pre-paint script in
+   layout.tsx has already stamped html[data-persona] before anything draws,
+   so these rules pick the right name on frame one and hydration never
+   swaps it. Cloudflare's CLS debug view had the old swap as the site's
+   single largest shift source (the header, 40 of 110 poor loads).
+   Recruiter is the default: with no data-persona at all (fresh visitor,
+   JS off), her name shows. */
+.brand-for-client,
+.brand-for-ex {
+  display: none;
+}
+
+html[data-persona="client"] .brand-for-recruiter,
+html[data-persona="ex"] .brand-for-recruiter {
+  display: none;
+}
+
+html[data-persona="client"] .brand-for-client,
+html[data-persona="ex"] .brand-for-ex {
+  display: inline-flex;
+}
+
 /* Logo slot. Hidden until the header docks, where it takes over from the
    wordmark so the row can give its width to the persona switcher instead. */
 /* The logo, standing in front of the wordmark. Sized against the wordmark's

@@ -20,6 +20,8 @@
  * copy does not speculate.
  */
 
+import { archiveImageDims } from "./imageDims";
+
 export type ArchiveEntry = {
   slug: string;
   client: string;
@@ -27,7 +29,7 @@ export type ArchiveEntry = {
   body: string;
   role?: string;
   /** Full-size images, in display order. Omitted where none exist yet. */
-  images?: { src: string; alt: string }[];
+  images?: { src: string; alt: string; width?: number; height?: number }[];
   /** Optional Vimeo embed, rendered above the image gallery. */
   video?: { vimeoId: string; title: string };
   /** Links out to a full case study instead of the entry’s own /archive/[slug] page. */
@@ -43,7 +45,10 @@ export type ArchiveGroup = {
   entries: ArchiveEntry[];
 };
 
-const img = (src: string, alt: string) => ({ src, alt });
+// width/height ride along from the generated map so the detail page can
+// reserve each image’s box before it lazy-loads (2026-09-14, the
+// layout-shift fix — see imageDims.ts).
+const img = (src: string, alt: string) => ({ src, alt, ...archiveImageDims[src] });
 
 export const archiveGroups: ArchiveGroup[] = [
   {

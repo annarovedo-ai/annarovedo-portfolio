@@ -71,6 +71,36 @@ export default function RootLayout({
           If the storage key or default ever changes in personaStore.ts, this
           script changes with it. */}
       <body>
+        {/* FONTS ARE ANNOUNCED BEFORE THE CSS ASKS FOR THEM (2026-09-14,
+            the layout-shift fix). Without these, the browser discovers all
+            three faces only after parsing the stylesheet, so on a slow
+            connection the page paints in Georgia/Arial and re-flows when
+            Newsreader and Inter land seconds later — Cloudflare's CLS debug
+            view attributed the about-points, hero-deck and portrait shifts
+            to exactly that late reflow. React hoists <link> elements
+            rendered here into <head>. crossOrigin is required for font
+            preloads even same-origin, or the preload is fetched twice. */}
+        <link
+          rel="preload"
+          href="/fonts/newsreader-italic-latin.woff2"
+          as="font"
+          type="font/woff2"
+          crossOrigin="anonymous"
+        />
+        <link
+          rel="preload"
+          href="/fonts/newsreader-latin.woff2"
+          as="font"
+          type="font/woff2"
+          crossOrigin="anonymous"
+        />
+        <link
+          rel="preload"
+          href="/fonts/inter-latin.woff2"
+          as="font"
+          type="font/woff2"
+          crossOrigin="anonymous"
+        />
         {/* First child of body on purpose: a synchronous script here blocks
             rendering of everything after it, which is exactly the guarantee
             needed, and unlike a child of <html> it is valid HTML that the
